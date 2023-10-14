@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background-color: #0077ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center; /* Center the text in the header */
+    border-radius: 15px; /* Rounded corners only at the bottom */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Light Mode Styles */
+.light-mode {
+    background-color: #f7f7f7; /* Updated light mode background color */
+    color: #333;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Button Styles */
+.button-4 {
+    background-color: #3498db; /* Updated button background color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0; /* Remove border radius for the button */
+    display: block; /* Make the button a block element in the footer */
+    margin: 0 auto; /* Center the button horizontally in the footer */
+    font-weight: 600; /* Increase font weight for better visibility */
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+}
+
+.button-4:hover {
+    background-color: #0077ff; /* Updated button color on hover */
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+    background-color: #f7f7f7;
+    color: #959DA5;
+    cursor: default;
+}
+
+.button-4:active {
+    background-color: #0056b3; /* Updated button color on active state */
+    transition: none 0s;
+}
+
+.button-4:focus {
+    outline: none;
+}
