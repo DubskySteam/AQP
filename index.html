@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <title>Air Quality</title>
-</head>
-<body class="light-mode">
-    <header>
-        <h1>Project Air Quality</h1>
-    </header>
-    <div class="container">
-        <h2>Repository Activity</h2>
-        <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/DubskySteam/AQP/main?style=for-the-badge&logo=github&label=Master">
-        <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/DubskySteam/AQP/dev?style=for-the-badge&logo=github&label=Dev">
-        <h2>Build status</h2>
-        WIP
-    </div>
-    <footer>
-        <button id="mode-switch" class="button-4">Light / Dark</button>
-    </footer>
-    <script>
-        const modeSwitchButton = document.getElementById('mode-switch');
-        const body = document.body;
-
-        modeSwitchButton.addEventListener('click', () => {
-            if (body.classList.contains('light-mode')) {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-            } else {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-            }
-        });
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>Air Quality</title>
+    </head>
+    <body class="light-mode">
+        <header>
+            <h1>Project Air Quality</h1>
+        </header>
+        <div class="container">
+            <button id="mode-switch" class="github-button">
+                <img class="github-logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
+                <a href="https://github.com/dubskysteam/aqp" target="_blank">
+                    Visit the GitHub Repository
+                </a>
+            </button>
+            <h2>Repository Activity</h2>
+            <img src="https://img.shields.io/github/last-commit/DubskySteam/AQP/main?style=for-the-badge&logo=github&label=Master">
+            <img src="https://img.shields.io/github/last-commit/DubskySteam/AQP/dev?style=for-the-badge&logo=github&label=Dev">
+            <h2>Build status</h2>
+            WIP
+        </div>
+    </body>
 </html>

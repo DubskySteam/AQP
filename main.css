@@ -1,10 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Gabarito', Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
 
 header {
-    background-color: #0077ff;
+    background-color: #48cae4;
     color: #fff;
     padding: 20px;
     text-align: center; /* Center the text in the header */
@@ -12,12 +12,41 @@ header {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    text-shadow: 5px 5px 15px black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.github-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: white; /* GitHub color */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 25px;
+    font-family: 'Gabarito', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 110%;
+}
+
+.github-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    align-items: center;
+    text-align: center;
 }
 
 /* Light Mode Styles */
@@ -30,39 +59,4 @@ header {
 .dark-mode {
     background-color: #333;
     color: #fff;
-}
-
-/* Button Styles */
-.button-4 {
-    background-color: #3498db; /* Updated button background color */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 0; /* Remove border radius for the button */
-    display: block; /* Make the button a block element in the footer */
-    margin: 0 auto; /* Center the button horizontally in the footer */
-    font-weight: 600; /* Increase font weight for better visibility */
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-}
-
-.button-4:hover {
-    background-color: #0077ff; /* Updated button color on hover */
-    text-decoration: none;
-    transition-duration: 0.1s;
-}
-
-.button-4:disabled {
-    background-color: #f7f7f7;
-    color: #959DA5;
-    cursor: default;
-}
-
-.button-4:active {
-    background-color: #0056b3; /* Updated button color on active state */
-    transition: none 0s;
-}
-
-.button-4:focus {
-    outline: none;
 }
