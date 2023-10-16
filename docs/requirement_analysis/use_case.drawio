@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-16T12:58:07.464Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.46" etag="IcKZore8G5uuqSF0ajyF" version="21.2.9" type="device">
+<mxfile host="app.diagrams.net" modified="2023-10-16T13:39:21.579Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.46" etag="W-Exzn2na6Dm8VZpk91Z" version="21.2.9" type="device">
   <diagram name="Page-1" id="D8gVx_n0QD8tf8f8Ypey">
     <mxGraphModel dx="1148" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -44,6 +44,9 @@
         <mxCell id="JrDk5qaiKjgMLHOQlopK-7" value="Register" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="240" y="525" width="60" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="JrDk5qaiKjgMLHOQlopK-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JrDk5qaiKjgMLHOQlopK-8" target="JrDk5qaiKjgMLHOQlopK-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="JrDk5qaiKjgMLHOQlopK-8" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="320" y="120" width="100" height="40" as="geometry" />
         </mxCell>
@@ -88,6 +91,9 @@
         <mxCell id="JrDk5qaiKjgMLHOQlopK-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JrDk5qaiKjgMLHOQlopK-22" target="JrDk5qaiKjgMLHOQlopK-16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="JrDk5qaiKjgMLHOQlopK-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="JrDk5qaiKjgMLHOQlopK-22" target="JrDk5qaiKjgMLHOQlopK-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="JrDk5qaiKjgMLHOQlopK-22" value="&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;br&gt;Backend" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="690" y="210" width="30" height="60" as="geometry" />
         </mxCell>
@@ -108,6 +114,12 @@
         </mxCell>
         <mxCell id="JrDk5qaiKjgMLHOQlopK-37" value="&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;br&gt;Frontend" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="690" y="80" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JrDk5qaiKjgMLHOQlopK-48" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="50" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="JrDk5qaiKjgMLHOQlopK-49" value="Earn badges" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="55" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
