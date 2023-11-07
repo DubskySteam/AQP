@@ -1,5 +1,3 @@
-# WebEngineering Project - Air Quality
-
 ![](docs/repo/banner.png)
 
 ### Quickstart
