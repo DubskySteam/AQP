@@ -1,0 +1,19 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "name": "Datensatz 1",
+            "durchmesser": "DN32",
+            "x": 50,
+            "y": 75
+        },
+        {
+            "id": 2,
+            "name": "Datensatz 2",
+            "durchmesser": "DN32",
+            "kind": "rect",
+            "x": 100,
+            "y": 150
+        }
+    ]
+}

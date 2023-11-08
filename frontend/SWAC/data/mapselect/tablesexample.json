@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "id": 1,
+            "name": "Tabelle 1"
+        },
+        {
+            "id": 2,
+            "name": "Tabelle 2"
+        }
+    ]
+}

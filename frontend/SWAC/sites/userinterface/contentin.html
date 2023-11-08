@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Contentin PREMIUM component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/userinterface/contentin.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+        <div id="explaincomponent" swa="ExplainComponents"></div>
+        
+        <h2>Examples</h2>
+        <h3>Example 1: Including page content from wiktionary</h3>
+        <pre><code class="lang-html">
+&lt;div id="contentin_example1" swa="Contentin"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <div id="contentin_example1" swa="Contentin"></div>
+
+        <pre><code class="lang-javascript">
+var contentin_example1_options = {
+    sourcedefs: [
+        {
+            id: 1,
+            urls: ["https://de.wiktionary.org/wiki/extrahiere","https://de.wiktionary.org/wiki/extrahieren"],
+            data: [
+                {
+                    name: "type",
+                    csspath: 'a[title="Hilfe:Wortart"]',
+                    type: "plaintext"
+                },
+                {
+                    name: "syl",
+                    csspath: 'p[title="Trennungsmöglichkeiten am Zeilenumbruch"] + dl',
+                    type: "plaintext"
+                },
+                {
+                    name: "syn",
+                    csspath: 'p[title="bedeutungsgleich gebrauchte Wörter"] + dl',
+                    type: "plaintext"
+                }
+            ]
+        }
+    ]
+};
+        </code></pre>
+        
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

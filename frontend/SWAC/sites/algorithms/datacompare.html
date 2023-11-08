@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Algorithm - DataCompare</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/algorithms/datacompare.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>DataCompare</h1>
+            <p>The DataCompare Algorithm allows you to compare datasources and 
+            datasets. It makes it possible to find duplicated datasets.</p>
+
+            <!--<div id="explaincomponent" swa="ExplainComponents"></div>-->
+            
+            <h3>Example 1: Loading DataCompare as standalone</h3>
+            <p>This example demonstrates how to load the DataCompare as a 
+                single object to use in various usecases without need for a view 
+                component.</p>
+            
+            <pre><code class="lang-javascript">
+document.addEventListener('swac_components_complete', function () {
+    // Load DataCompare
+    window.swac.loadAlgorithm('DataCompare','DataCompare').then(function (requestor) {
+        // Get instantiated DataCompare
+        let dc = requestor.swac_comp;
+        console.log(dc);
+        // Here the DataCompare can be used
+        // Code of examples below can be placed here
+    });
+});
+            </code></pre>
+
+            <h3>Example 2: Check on duplicates in one datasource</h3>
+            <p>DataCompare can be used to check if there are duplicates in the 
+                datasets of a datasource. This works even with child datasets.</p>
+            <p>
+                MainSource:
+            </p>
+            <pre><code class="lang-javascript">
+{
+    "list": [
+        {
+            "id": 1,
+            "value1": 1,
+            "value2": 1.111,
+            "value3": "text"
+        },
+        {
+            "id": 2,
+            "value1": 1,
+            "value2": 1.111,
+            "value3": "text"
+        }
+    ]
+}
+            </code></pre>
+            <p>
+                Child datasets:
+            </p>
+            <pre><code class="lang-javascript">
+{
+    "list": [
+        {
+            "id": 1,
+            "value1": 2,
+            "value2": 2.222,
+            "value3": "text2",
+            "parent": 1
+        },
+        {
+            "id": 2,
+            "value1": 2,
+            "value2": 2.222,
+            "value3": "text2",
+            "parent": 2
+        }
+    ]
+}
+            </code></pre>
+            <p>Configuration:</p>
+            <pre><code class="lang-javascript">
+var DataCompare_options = {
+    excludeCompareAttrs: ['id','parent'],
+    mainSource: '../../data/datacompare/datacompare_exampleA_A.json'
+};
+            </code></pre>
+            <p>Call of compare:</p>
+            <pre><code class="lang-javascript">
+// Get instantiated DataCompare
+let dc = requestor.swac_comp;
+let loadProms = [];
+// Add datasets (main and chids)
+loadProms[0] = dc.addDataFromReference('ref://../../data/datacompare/datacompare_exampleA_A.json');
+loadProms[1] = dc.addDataFromReference('ref://../../data/datacompare/datacompare_exampleA_B.json');
+// Wait for data to be loaded
+Promise.all(loadProms).then(function() {
+let duplicates = dc.findDuplicates('../../data/datacompare/datacompare_exampleA_A.json');
+            </code></pre>            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

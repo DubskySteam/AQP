@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - navigation component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/userinterface/navigation.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Simple navigation bar</h3>
+
+            You can take a look into the sourcecode of this page to see nav in action.
+            <pre><code class="lang-html">
+&lt;div id="dataview" swa="Navigation FROM ../../data/routes.json"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <h3>Sample 2: Use navigation over javascript</h3>
+            <p>The following example creates a link that redirects to the present page.
+                You can add parameters by simply adding an object contianing the attributes 
+                and values.</p>
+
+            <pre><code class="lang-html">
+&lt;a href="#" onclick="Navigation.routeTo('present.html', {id: myid});"&gt;Ein Linktext&lt;/a&gt;
+        </code></pre>
+            
+            <h3>Example 3: Use custom logo and link</h3>
+            <p>By default the component searches and uses a logo file found in the /content directory.
+            It supports the formats *.avif, *.webp and *.png. If you want to use your own logo location 
+            or filename use the option <i>logoName</i> which is relative to the /content directory.
+            <br>By default a click on the logo redirects the user to the /index.html. You can change
+            this behavior with the <i>logoLink</i> option which is relative to the pages url.</p>
+            <pre><code class="lang-javascript">
+var head_navigation_options = {
+    logoName: 'mydir/logo',
+    logoLink: root + 'mydir/index.html'
+};
+        </code></pre>
+
+            <h3>Example 4: Create a sitemap from navigation data</h3>
+            <p>With the sitemap template you can simply create code for a sitemap.</p>
+
+            <div id="nav_example4" style="height: 100%" swa="Navigation FROM ../../data/routes.json TEMPLATE sitemap"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="dataview" swa="Navigation FROM ../../data/routes.json TEMPLATE sitemap"&gt;&lt;/div&gt;
+        </code></pre>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

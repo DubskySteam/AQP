@@ -1,0 +1,19 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Deutscher Testtext",
+            "content" : "Alle meine Entchen schwimmen auf dem See, Köpfchen unter's Wasser, Schwänzchen in die Höh."
+        },
+        {
+            "id": 2,
+            "title": "Example document one",
+            "content": "<h1>This is an example</h1>\n<p>There are some headlines and paragraphs, but the text is senseless.<p><h2>Headline 2</h2><p>This is a new text paragraph under headline 2</p><h3>Sub Headline 3</h3><p>This is a little subtext.</p><h1>Headline 2 of H1</h1><p>And this is the next chapter.</p>"
+        },
+        {
+            "id": 2,
+            "title": "Example document two",
+            "content": "<h1>This is another example</h1>\n<p>There is only one headline and on paragraph. And the text is senseless.<p>"
+        }
+    ]
+}

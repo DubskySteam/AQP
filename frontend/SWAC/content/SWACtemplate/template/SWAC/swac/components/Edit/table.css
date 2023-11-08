@@ -1,0 +1,9 @@
+.swac_edit_repeatForReftable {
+    display: none;
+}
+.swac_edit_repeatForRef {
+    display: none;
+}
+:required {
+    border: 1px solid red;
+}

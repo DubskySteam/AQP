@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Event and reactions</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article class="uk-article">
+            <h1 class="uk-article-title">Events and reactions</h1>
+            <p class="uk-text-lead">
+                Every important, concurrent action in SWAC fires events when it
+                changes it's state. Those events can be used to execute custom code
+                at the right time.
+            </p>
+
+            <h2 class="uk-heading-divider">State events</h2>
+            <p>The following table lists all events from SWAC core. Events fired
+                from components will be listed there.
+            </p>
+            <table class="uk-table">
+                <tr><th>Corepart</th><th>Event name</th><th>Explanation</th></tr>
+                <tr><td>swac</td><td>uiComplete</td><td>Fired when the user interface was loaded. (This is when swac system is initialised, but before all components are ready)</td></tr>
+                <tr><td>swac</td><td>swac_component_loaded</td><td>Fired when a single component has loaded. The requestor is given in detail field requestor</td></tr>
+                <tr><td>swac</td><td>swac_REQUESTOR.ID_complete</td><td>Fired by the requestor when it has completed its init() function.</td></tr>
+                <tr><td>swac</td><td>swac_components_complete</td><td>Fired when all components have loaded.</td></tr>
+                <tr><td>swac</td><td>swac_REQUESTOR.ID_reloaded</td><td>Fired when one component has reloaded.</td></tr>
+                <tr><td>swac</td><td>swac_fetchfail_STATUSCODE</td><td>Fired when an fetch attempt fails. STATUSCODE is the HTTP status code. (e.g. 401)</td></tr>
+                <tr><td>swac</td><td>swac_REQUESTOR.ID_inactive</td><td>Fired by the requestor when option 'activeOn' resolves to inactive.</td></tr>
+                <tr><td>View</td><td>swac_REQUESTOR.ID_repeatedForSet</td><td>Fired when a new gui element was created for an added set. Carries requestor, repeateds (DOM Elements), and set</td></tr>
+                <tr><td>View</td><td>swac_REQUESTOR.ID_invi</td><td>Fired when the requestors DOM element enters or leaves the viewport (e.g. visibility to user changes)</td></tr>
+                <tr><td>View</td><td>swac_REQUESTOR.ID_endvi</td><td>Fired when the user reaches the end of the components view by scrolling down. Also fires if the end leaves the viewport.</td></tr>
+            </table>
+
+            <pre><code class="lang-javascript">
+// Register event handler
+document.addEventListener('swac_' + requestor.id + '_reloaded', function (evt) {
+    // Do something here
+});
+        </code></pre>
+
+            <h2 class="uk-heading-divider">Online events</h2>
+            <p>SWAC brings support for actions performed when a client loses his 
+                internet connection, the server is not reachable or the client goes online 
+                again.
+                <br>Online / offline functions either work together with the progressive
+                functionality and / or without it.</p>
+
+            <h3>Offline / Online informations</h3>
+            <p>The user becomes an information if his client goes offline or the 
+                connection to the backend is lost, so no user must wonder why something
+                is not working. You can deactiate this by changeing the configuration:</p>
+            <pre><code class="lang-javascript">
+                offlineNotify: false,
+</code></pre>
+            
+            <h3>Extend your site with online / offline functions</h3>
+            <p>Even without useing a component you can extend your site with online
+                / offline functions by extending a simple class and adding a configuration.</p>
+
+            Implementing a reaction set by extending the OnlineReaction class:
+            <pre><code class="lang-javascript">
+var MyReactFactory = {};
+MyReactFactory.create = function (config) {
+    return new MyReact(config);
+};
+
+class MyReact extends OnlineReaction {
+    constructor(config) {
+        super(config);
+    }
+
+    onOnline(evt) {
+        console.log('Upload onOnline reaction');
+    }
+
+    onOffline(evt) {
+        console.log('Upload onOffline reaction');
+    }
+
+    onUnreachable(evt) {
+        console.log('Upload onUnreachable action');
+    }
+}
+        </code></pre>
+
+            Write an entry to the configuration.js to make the actions available on
+            all pages.
+            <pre><code class="lang-javascript">
+SWAC_config.onlinereactions[0] = {
+    path: 'path/to/MyReact.js',
+    config: {
+       someopts: 'Specify some opts here for your config'
+    }
+};
+        </code></pre>
+
+            <h3>Components with online / offline functionality</h3>
+            <p>All swac components can be easily extended with functions that will
+                be executed if client goes online / offline. It's done the
+                same way like defining a OnlineReaction without component except that the
+                script is located within the plugins directory.</p>
+
+            <h2 class="uk-heading-divider">Reactions</h2>
+            <p>
+                With Reactions you can register functions that will be executed
+                when a requestors component is completely loaded.
+                <br>Furthermore you can register functions that are executed
+                when all requestors from a list are completely loaded. You just 
+                have to list the names of the requestors as second and so on 
+                parameter.
+            </p>
+
+            <h3>Combining components</h3>
+            <p>Reactions allow it to combine components functunalities. So you can
+                create a reaction that executes when the search and the present component
+                are loaded and register code to update the presents data if a search
+                was performed.</p>
+
+            <h3>Example 1: Register Reaction to single requestor</h3>
+            <p>The simplest useage is to wait for a component to be ready and 
+            than execute a function.</p>
+            <pre><code class="lang-javascript">
+// Wait for swac reaction system to be ready
+document.addEventListener('swac_ready', function () {
+    // Register reaction to the component with id "head_navigation"
+    window.swac.reactions.addReaction(function () {
+        alert("This is a reaction: head_navigation is loaded.");
+    }, "head_navigation");
+});
+            </code></pre>
+
+            <h3>Example 2: Register Reaction to multiple requestors</h3>
+            <p>A bit more advanced you can wait for two (or more) components 
+            and execute a function when they all are ready.</p>
+            <pre><code class="lang-javascript">
+// Wait for swac reaction system to be ready
+document.addEventListener('swac_ready', function () {
+    // Register reaction to the compoenents "selectobject" and "chart"
+    window.swac.reactions.addReaction(function (requestors) {
+        // Accessing the requestors
+        let selectobjectreq = requestors['selectobject'];
+        let chartreq = requestors['chart'];
+        // Here you can do anything on those booth components
+    }, "selectobject", "chart");
+});
+            </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

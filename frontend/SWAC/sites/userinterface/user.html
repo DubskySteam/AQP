@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - user component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/userinterface/user.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+
+            <h3>Example 1: Useing user login form</h3>
+            <p>This example shows an login form that can be placed everywhere on your page.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="userexample1" swa="User TEMPLATE user_form"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var user_options = {
+    loginURL: '../data/user/exampleuserdata.json'   // URL where to verify user
+};
+        </code></pre>
+
+            <a href="user_example1.html" target="_blank">Open example</a>
+
+            <h3>Example 2: Overlay page with modal dialog for login</h3>
+            <p>This example hides the page contents behind a overlay that prompts 
+            the user to login. After login the page is shown.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="userexample2" swa="User TEMPLATE user_modal"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var user_options = {
+    loginURL: '../data/user/exampleuserdata.json'
+};
+        </code></pre>
+            <a href="user_example2.html" target="_blank">Open example</a>
+
+            <h3>Example 3: Login button with configured redirects</h3>
+            <p>Third kind of login dialog is a simple button that opens a menue on mouse over, 
+                where user can login.
+                <br>Also this example demonstrates how you can set locations to 
+                that the user is redirected after login or logout.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="user" swa="User"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var user_options = {
+    loginURL: '../data/user/exampleuserdata.json',
+    afterLoginLoc: '../sites/user_example1.html',
+    afterLogoutLoc: '../sites/user.html'
+};
+        </code></pre>
+            <a href="user_example3.html" target="_blank">Open example</a>
+            
+            <h3>Example 4: User registration page</h3>
+            <p>For a user registration page you can use the Edit component.
+            Simply create a form with the input fields you want and give them the 
+            names of the supported user attributes.
+            <br>List of supported user attributes:
+            </p>
+            <ul>
+                <li>Username</li>
+                <li>Password</li>
+                <li>Firstname</li>
+                <li>Lastname</li>
+                <li>Street</li>
+                <li>Houseno</li>
+                <li>Zipcode</li>
+                <li>City</li>
+                <li>Country</li>
+                <li>Email</li>
+                <li>Phone</li>
+                <li>Language</li>
+            </ul>
+            
+            <pre><code class="lang-html">
+&lt;div id="create_user" swa="Edit FROM ../../SmartUser/smartuser/user"&gt;
+    &lt;form class="swac_editForm"&gt;
+        &lt;label class="uk-label" for="username">Username&lt;/label&gt;
+        &lt;br&gt;&lt;input id="username" class="uk-input uk-form-width-medium" name="username" required&gt;
+            &lt;br&gt;
+                &lt;label class="uk-label" for="password">Password&lt;/label&gt;
+                &lt;br>&lt;input id="password" class="uk-input uk-form-width-medium" name="password" type="password" required&gt;
+                ...
+            &lt;div class="uk-margin"&gt;
+            &lt;button class="uk-button uk-button-default swac_editSaveButton">Edit.save&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var create_user_options = {
+    showWhenNoData: true,
+    allowAdd: true,
+    directOpenNew: true,
+    aterSave: function(fromName, set) {
+        UIkit.modal.alert(window.swac.lang.dict.RoNeKo.savedredirect);
+        window.location = 'regconfirm.html';
+    }
+}; 
+            </code></pre>
+            <a href="user_example4.html" target="_blank">Open example</a>
+            
+            <h3>Example 5: User registration confirmation page</h3>
+            <p>You can define define in the options of SmartUser, that email 
+            adresses must be confirmed. Than a conformation email is send to 
+            the user containing an activation code.
+            <br>To create a page that allows the confirmation put a simple form 
+            and the user component toghether. The login form will be hidden until 
+            the user has confirmed his adress.</p>
+            <a href="user_example5.html" target="_blank">Open example</a>
+            
+            <h3>Example 6: Onetime login per mail</h3>
+            <p>The User component in combination with SmartUser offers the possibility 
+            to login per mail. When the user enters his email or username he 
+            recives a mail containing a link for a one time login. Clicking this 
+            link the user is logged in.
+            <br>This can also be used for setting a new password.</p>
+            <a href="user_example6.html" target="_blank">Open example</a>
+            
+            <h3>Example 7: Check if user is logged in</h3>
+            <p>You can request the user component to get information about the currently logged in user.</p>
+            <pre><code class="lang-javascript">
+// Get user User component from page
+let userElem = document.querySelector('[swa^="User"]');
+// Check if component was found and user data is there
+if(userElem?.swac_comp.userData) {
+    ...
+    userElem.swac_comp.userData.isadmin // usersdata should provide this boolean flag
+}
+</code></pre>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

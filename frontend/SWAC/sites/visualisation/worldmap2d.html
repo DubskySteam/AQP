@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Worldmap2d component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/visualisation/worldmap2d.js"></script>
+
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            The Worldmap2D component can visualise data. It supports GeoJSON and 
+            visualisation of any json data that has a latitude and longitude 
+            information in it. Options and interface are similar to the Worldmap (3D)
+            component.
+            
+            <h3>Example 1: Simple Map</h3>
+            <p>This example shows a simple map with default options and no data.</p>
+            <a href="worldmap2d_example1.html" target="_blank">Open example</a>
+            
+            <pre><code class="lang-html">
+&lt;div id="worldmap2d_example1" swa="Worldmap2d"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <h3>Example 2: Visualising a GeoJSON area</h3>
+            <p>This example shows a simple map visualising GeoJSON data.</p>
+            <a href="worldmap2d_example2.html" target="_blank">Open example</a>
+            
+            <pre><code class="lang-javascript">
+var worldmap2d_example2_options = {    
+    modelFiles: [
+        {
+            url: '../../data/worldmap/example3/stadtgebiet.geojson',
+            name: 'Stadtgebiet Bielefeld',
+            fillColor: '0x67ADDFFF', // Default color of models (white if no setting is given)
+            outlineColor: 'blue', // Default color of models border (black if no setting is given)
+            outlineWidth: 2, // Width of the outline (1 if no setting is given)
+            zoomTo: true
+        },
+        {
+            url: '../../data/worldmap/example3/hausumringe.geojson',
+            name: 'Hausumrine Sennestadt',
+            zoomTo: false
+        }
+    ]
+    };
+            </code></pre>
+            
+            <h3>Example 3: Map with Geolocation Component</h3>
+            <p>The option to track your location is enabled in this example.<br>The Worldmap2d automatically detects the geoloation component.</p>
+            <a href="worldmap2d_example3.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript">
+&lt;div id="worldmap2d_example3" swa="Worldmap2d"&gt;&lt;/div&gt;
+&lt;div id="worldmap_geolocate" swa="Geolocation TEMPLATE geolocation_worldmap2d"&gt;&lt;/div&gt;
+            </code></pre>
+            
+            <pre><code class="lang-javascript">
+var worldmap2d_example3_options = {
+    zoom: 20,
+    showTimedDataAtOnce: true,
+};
+// add plugin to the worldmap2d component
+worldmap2d_example3_options.plugins = new Map();
+worldmap2d_example3_options.plugins.set('ToggleLatchOnLocation', {
+    id: 'togglelatchonlocation',
+    active: true
+});
+worldmap2d_example3_options.plugins.set('Help', {
+    id: 'help',
+    active: true
+});
+            </code></pre>
+            
+            <h3>Example 4: Map with Search</h3>
+            <p>The search component in this example can be used to quickly find places.</p>
+            <a href="worldmap2d_example4.html" target="_blank">Open example</a>
+            
+            <pre><code class="lang-javascript">
+// add plugin to the worldmap2d component
+worldmap2d_example4_options.plugins = new Map();
+worldmap2d_example4_options.plugins.set('SearchPlaces', {
+    id: 'searchplaces',
+    active: true
+});
+worldmap2d_example4_options.plugins.set('Help', {
+    id: 'help',
+    active: true
+});
+            </code></pre>
+            
+            <h3>Example 5: Display datasets as markers</h3>
+            <p>If the source datasets contain latitude and longitude information the 
+                datasets can be displayed on the map.</p>
+            
+            <a href="worldmap2d_example5.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-html">
+&lt;div id="worldmap2d_example5" swa="Worldmap2d FROM ../../data/worldmap2d/worldmap2d_example5.json"&gt;&lt;/div&gt;
+            </code></pre>            
+            
+            <h3>Example 6: Show multiple datasources</h3>
+            <p>Map can show data from multiple sources. You also can add and remove data on your needs.
+            It's just done like adding and removing data at any other component.</p>
+            <a href="worldmap2d_example6.html" target="_blank">Open example</a>
+
+          <pre><code class="lang-javascript">  
+    // Add / remove data from example6
+    let opt1elem2 = document.querySelector('.dataopt_2');
+    // When checkbox is clicked
+    opt1elem2.addEventListener('change', function (evt) {
+        // Get map element
+        let map = document.querySelector('#worldmap2d_example6');
+        if(evt.target.checked) {
+            map.swac_comp.addDataFromReference('ref://' + evt.target.value);
+        } else {
+            map.swac_comp.removeData(evt.target.value);
+        }
+    });            
+            </code></pre>
+            
+            <h3>Example 7: Show dataset values</h3>
+            <p>With the MapPinModal plugin you can show data from a location.
+            The option viewedAttrs give the attributes that should be shown and their order.</p>
+            
+            <a href="worldmap2d_example7.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript"> 
+var worldmap2d_example7_options = {
+    zoom: 18,
+    plugins: new Map()
+};
+worldmap2d_example7_options.plugins.set('DataShowModal', {
+    id: 'DataShowModal',
+    active: true
+});
+window["DataShowModal_worldmap2d_example7_options"] = {
+    attrsShown: ['measuredate', 'pm10', 'pm25', 'temperature'],
+    attrsFormat: new Map()
+};
+// Formating instructions for values
+window["DataShowModal_worldmap2d_example7_options"].attrsFormat.set('measuredate','datetime');
+</code></pre>
+            
+            <h3>Example 8: Display datasets with location from another table</h3>
+            <p>If there are datasets, that have their location in another, related database
+            they can also be displayed.</p>
+            <a href="worldmap2d_example8.html" target="_blank">Open example</a>
+            <pre><code class="lang-javascript">
+var worldmap2d_example8_options = {
+    zoom: 18,
+    showTimedDataAtOnce: true,
+    maxZoom: 18,
+    datasources: new Map([
+        ['tbl_observedobject', {
+            datacapsule: {
+                fromName: 'tbl_1',
+                fromWheres: {
+                    join: 'tbl_2_join_1,tbl_2',
+                },
+            },
+            latitudeAttr: 'tbl_2[0].coodinates.coordinates[0]',
+            longitudeAttr: 'tbl_2[0].coodinates.coordinates[1]',
+        }],
+    ]),
+};
+            </code></pre>
+            
+            <h3>Example 9: Map with Filter</h3>
+            <p>This map allows you to filter measuring points by category to only show data that is relevant for you.</p>
+            <p>Note: This example requires a compatible database to display the data correctly.</p>
+            <a href="worldmap2d_example9.html" target="_blank">Open example</a>
+            
+            <pre><code class="lang-javascript">
+// add plugin to the worldmap2d component
+worldmap2d_example5_options.plugins = new Map();
+worldmap2d_example5_options.plugins.set('FilterMeasurementPoints', {
+    id: 'filtermeasurementpoints',
+    active: true
+});
+worldmap2d_example5_options.plugins.set('Help', {
+    id: 'help',
+    active: true
+});
+            </code></pre>
+            
+            <h3>Example 10: View and edit Measurement Point Data</h3>
+            <p>This customised map allows you to view and edit data.</p>
+            <p>Note: This example requires a compatible database to display the data correctly.</p>
+            <a href="worldmap2d_example10.html" target="_blank">Open example</a>
+          
+            <pre><code class="lang-javascript">
+var worldmap2d_example10_options = {
+    datasources: new Map([
+        ['tbl_observedobject', {
+            datacapsule: {
+                fromName: 'tbl_1',
+                fromWheres: {
+                    join: 'tbl_2_join_1,tbl_2',
+                },
+            },
+            latitudeAttr: 'tbl_2[0].coodinates.coordinates[0]',
+            longitudeAttr: 'tbl_2[0].coodinates.coordinates[1]',
+        }],
+    ]),
+    zoom: 18,
+    showTimedDataAtOnce: true,
+    clusterMarkers: true,
+    maxZoom: 18,
+};
+
+
+//add plugin to the worldmap2d component
+worldmap2d_example10_options.plugins = new Map();
+worldmap2d_example10_options.plugins.set('ToggleClickInteractionButton', {
+    id: 'toggleclickinteractionbutton',
+    active: true
+});
+worldmap2d_example10_options.plugins.set('CreateMeasurementModal', {
+    id: 'createmeasurementmodal',
+    active: true
+});
+
+var createmeasurementmodal_worldmap2d_example10_options = {
+    datacapsuleLoad: worldmap2d_example10_options.datasources.get('tbl_observedobject').datacapsule,
+    createOoWithLocation: {
+        fromName: '',
+        responseIdAttr: '',
+        ooName: '',
+        ooDescription: '',
+        ooType: '',
+        ooCompleted: '',
+        ooCollection: '',
+        locLatitude: '',
+        locLongitude: '',
+        locName: '',
+        locDescription: '',
+    }
+}
+
+
+worldmap2d_example10_options.plugins.set('MapPinModal', {
+    id: 'mappinmodal',
+    active: true
+});
+
+var mappinmodal_worldmap2d_example10_options = {
+    table_names : {
+        locations_table: {
+            table_name: '',
+            idAttr: '',
+            geojsonattr: '',
+        },
+        oo_table: {
+            table_name: '',
+            idAttr: '',
+            completed: '',
+        },
+        file_table: {
+            table_name: '',
+            idAttr: ''
+        },
+        file_join_oo_table: {
+            table_name: '',
+            idAttr: '',
+            file_id: '',
+            oo_id: ''
+        },
+        uploadfile_options : {
+            uploadTargetURL: '',
+            docroot: ''
+        }
+    },
+}
+
+worldmap2d_example10_options.plugins.set('Help', {
+    id: 'help',
+    active: true
+});
+                
+            </code></pre>          
+
+            <h3>Example 11: View and edit Measurement Point Data and Magic Mapper</h3>
+            <p>The MagicMapper can be used to share your precise location and to adjust the position of measuring points.</p>
+            <p>Note: This example requires a compatible database to display the data correctly.</p>
+            <a href="worldmap2d_example11.html" target="_blank">Open example</a>
+            
+            <pre><code class="lang-javascript">
+var worldmap2d_example11_options = {
+    zoom: 18,
+    showTimedDataAtOnce: true,
+    latchOnLocation: true,
+    datasources: new Map([
+        ['tbl_observedobject', {
+            datacapsule: {
+                fromName: 'tbl_1',
+                fromWheres: {
+                    join: 'tbl_2_join_1,tbl_2',
+                },
+            },
+            latitudeAttr: 'tbl_2[0].coodinates.coordinates[0]',
+            longitudeAttr: 'tbl_2[0].coodinates.coordinates[1]',
+        }],
+    ]),
+
+    clusterMarkers: true,
+    maxZoom: 18
+};
+
+
+//add plugin to the worldmap2d component
+worldmap2d_example11_options.plugins = new Map();
+worldmap2d_example11_options.plugins.set('ToggleClickInteractionButton', {
+    id: 'toggleclickinteractionbutton',
+    active: true
+});
+worldmap2d_example11_options.plugins.set('CreateMeasurementModal', {
+    id: 'createmeasurementmodal',
+    active: true
+});
+
+var createmeasurementmodal_worldmap2d_example11_options = {
+    datacapsuleLoad: worldmap2d_example11_options.datasources.get('tbl_observedobject').datacapsule,
+    createOoWithLocation: {
+        fromName: '',
+        responseIdAttr: '',
+        ooName: '',
+        ooDescription: '',
+        ooType: '',
+        ooCompleted: '',
+        ooCollection: '',
+        locLatitude: '',
+        locLongitude: '',
+        locName: '',
+        locDescription: '',
+    }
+}
+
+worldmap2d_example11_options.plugins.set('MapPinModal', {
+    id: 'mappinmodal',
+    active: true
+});
+
+var mappinmodal_worldmap2d_example11_options = {
+    table_names : {
+        locations_table: {
+            table_name: '',
+            idAttr: '',
+            geojsonattr: '',
+        },
+        oo_table: {
+            table_name: '',
+            idAttr: '',
+            completed: '',
+        },
+        file_table: {
+            table_name: '',
+            idAttr: ''
+        },
+        file_join_oo_table: {
+            table_name: '',
+            idAttr: '',
+            file_id: '',
+            oo_id: ''
+        },
+        uploadfile_options : {
+            uploadTargetURL: '',
+            docroot: ''
+        }
+    },
+}
+
+
+worldmap2d_example11_options.plugins.set('InterfaceMagicMapper', {
+    id: 'interfacemagicmapper',
+    active: true
+});
+
+worldmap2d_example11_options.plugins.set('ToggleLatchOnLocation', {
+    id: 'togglelatchonlocation',
+    active: true
+});
+
+worldmap2d_example11_options.plugins.set('Help', {
+    id: 'help',
+    active: true
+});
+            </code></pre> 
+            
+            <h3>Example 12: Zoom to a certain point when its loaded</h3>
+            <p>You can esily make the map zoom to a point when it's dataset is added to the map.</p>
+            
+            <a href="worldmap2d_example12.html?zoomToSource=../../data/worldmap2d/worldmap2d_example5.json&zoomToSet=2" target="_blank">Open example</a>
+            
+            <pre><code class="lang-html">
+worldmap2d_example12.html?zoomToSource=../../data/worldmap2d/worldmap2d_example5.json&zoomToSet=2
+            </code></pre>            
+
+            
+            <h3>Example 13: Create and show routes</h3>
+            <p>The Navigation plugin allows it to display routes from the given datasets. Routes are calculated
+            as fastest routes, useing Leaflet routing.</p>
+            <a href="worldmap2d_example13.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript">
+var worldmap2d_example13_options = {
+    zoom: 18,
+    plugins: new Map()
+};
+worldmap2d_example13_options.plugins.set('Navigation', {
+    id: 'Navigation',
+    active: true
+});
+
+window["Navigation_worldmap2d_example13_options"] = {
+    createRouteFromData: true
+};
+            </code></pre>            
+            
+            <h3>Example 14: Use datadescription component for formatting</h3>
+            <p>You can use the <a href="datadescription.html">Datadescription component</a>
+                for coloring markers. This allows you to reuse a one defined colouring 
+            scheme over multiple components.</p>
+            <a href="worldmap2d_example14.html" target="_blank">Open example</a>
+            
+            <pre><code class="lang-html">
+&lt;div id="worldmap2d_example14" swa="Worldmap2d FROM ../../data/worldmap2d/worldmap2d_example5.json"&gt;&lt;/div&gt;
+&lt;div id="wordldmap2d_datadescription_example14" swa="Datadescription FROM worldmap2d_datadescription_example14"&gt;&lt;/div&gt;
+            </code></pre> 
+
+            <pre><code class="lang-javascript">
+window['worldmap2d_example14_options'] = {
+    zoom: 18,
+    datadescription: '#wordldmap2d_datadescription_example14',
+    plugins: new Map()
+};
+window['worldmap2d_example14_options'].plugins.set('DataShowModal', {
+    id: 'DataShowModal',
+    active: true
+});
+window["DataShowModal_worldmap2d_example14_options"] = {
+    attrsShown: ['measuredate', 'pm10', 'pm25', 'temperature','latitude'],
+    attrsFormat: new Map()
+};
+// Formating instructions for values
+window["DataShowModal_worldmap2d_example14_options"].attrsFormat.set('measuredate','datetime');
+
+window["wordldmap2d_datadescription_example14_options"] = {
+    visuAttribute: 'pm10'
+};
+            </code></pre>            
+            
+            <h3>Example 15: Show data within time bounds</h3>
+            <p>Shows data only from sets with a date within the given time bounds.
+                <br>Timeline symbols the time bound.</p>
+            <a href="worldmap2d_example15.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-html">
+&lt;div id="worldmap2d_example15" swa="Worldmap2d FROM ../../data/worldmap2d/worldmap2d_example5.json"&gt;&lt;/div&gt;
+            </code></pre> 
+            
+            <pre><code class="lang-javascript">
+window['worldmap2d_example15_options'] = {
+    zoom: 17,
+    plugins: new Map()
+};
+worldmap2d_example15_options.plugins.set('Timeline', {
+    id: 'Timeline',
+    active: true
+});
+
+window['Timeline_worldmap2d_example15_options'] = {
+    tsAttr: 'measuredate' // Name of the attribute that contains time data
+};
+            </code></pre>  
+            
+            <h3>Example 16: Play sets with timeline</h3>
+            <p>The datasets are shown from a time range. By running the timeline 
+            the sets appear and disapear accordingly to their time value.</p>
+            <a href="worldmap2d_example16.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-html">
+&lt;div id="worldmap2d_example16" swa="Worldmap2d FROM ../../data/worldmap2d/worldmap2d_example5.json"&gt;&lt;/div&gt;
+            </code></pre> 
+
+            <pre><code class="lang-javascript">
+window['worldmap2d_example16_options'] = {
+    zoom: 17,
+    plugins: new Map()
+};
+window['worldmap2d_example16_options'].plugins.set('Timeline', {
+    id: 'Timeline',
+    active: true
+});
+
+window['Timeline_worldmap2d_example16_options'] = {
+    tsAttr: 'measuredate', // Name of the attribute that contains time data
+    startTS: new Date('2023-02-01T08:59:00'),   // Timepoint to start timeline with
+    endTS: new Date('2023-02-01T09:15:00'),     // Timepoint to end timeline with
+    animationStepSize: 60,                      // Every animation step is 60 seconds father
+    animationSpeed: 1000,                       // Every second a new animation step
+    animationTimeRange: 30                      // Show data from 30 seconds before and after the animation time point
+};
+            </code></pre>  
+            
+            <h3>Example 17: Combine animation with datadescription</h3>
+            <p>This example shows the combination of time animation and coloring useing DataDescription component.</p>
+            <a href="worldmap2d_example17.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript">
+window['worldmap2d_example17_options'] = {
+    zoom: 17,
+    datadescription: '#wordldmap2d_datadescription_example17',
+    plugins: new Map()
+};
+window['worldmap2d_example17_options'].plugins.set('Timeline', {
+    id: 'Timeline',
+    active: true
+});
+
+window['Timeline_worldmap2d_example17_options'] = {
+    tsAttr: 'measuredate', // Name of the attribute that contains time data
+    startTS: new Date('2023-02-01T08:59:00'),   // Timepoint to start timeline with
+    endTS: new Date('2023-02-01T09:15:00'),     // Timepoint to end timeline with
+    animationStepSize: 60,                      // Every animation step is 60 seconds father
+    animationSpeed: 1000,                       // Every second a new animation step
+    animationTimeRange: 30                      // Show data from 30 seconds before and after the animation time point
+};
+
+// Formating instructions for values
+window["wordldmap2d_datadescription_example17_options"] = {
+    visuAttribute: 'pm10'
+};
+            </code></pre>  
+
+            <h3>Example 18: Display multiple datasources</h3>
+            <p>This example shows how to display different datasources. The user can select the datasource with the layer control button.</p>
+            <a href="worldmap2d_example18.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript">
+var worldmap2d_example18_options = {
+    datasources: new Map([
+        ['tbl_observedobject', {
+            datacapsule: {
+                fromName: 'tbl_1',
+                fromWheres: {
+                    join: 'tbl_2_join_1,tbl_2',
+                },
+            },
+            latitudeAttr: 'tbl_2[0].coodinates.coordinates[0]',
+            longitudeAttr: 'tbl_2[0].coodinates.coordinates[1]',
+        }],
+    ]),
+    zoom: 18,
+    showTimedDataAtOnce: true,
+    clusterMarkers: true,
+    maxZoom: 18,
+};
+
+
+//add plugin to the worldmap2d component
+worldmap2d_example10_options.plugins = new Map();
+worldmap2d_example10_options.plugins.set('ToggleClickInteractionButton', {
+    id: 'toggleclickinteractionbutton',
+    active: true
+});
+
+worldmap2d_example10_options.plugins.set('Help', {
+    id: 'help',
+    active: true
+});
+            </code></pre>  
+
+
+            <h3>Example 19: Navigate on the map </h3>
+            <p>This example shows how to how to navigate to a location.</p>
+            <a href="worldmap2d_example19.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript">
+var worldmap2d_example19_options = {
+    zoom: 10,
+    showTimedDataAtOnce: true,
+    maxZoom: 25,
+    plugins: new Map(),
+};
+    
+worldmap2d_example19_options.plugins.set('Navigation', {
+    id: 'navigation',
+    active: true
+})
+            </code></pre>  
+
+            <h3>Example 20: Shapefile </h3>
+            <p>This example shows how to use shapefile.</p>
+            <a href="worldmap2d_example20.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-javascript">
+var worldmap2d_example20_options = {
+    zoom: 9,
+    showTimedDataAtOnce: true,
+    startPointLat: 42.361145,
+    startPointLon: -71.057083,
+    modelFiles: [{
+            url: '../../data/worldmap2d/shapefiles/congress.zip',
+            name: 'CongressionalDistricts',
+            type: 'shapefile'
+    }],
+    maxZoom: 25,
+    plugins: new Map()
+};
+            </code></pre>             
+            
+            <h3>Example 21: Add model files per input</h3>
+            <p>While data can be added by datasets over the well known component interfaces (addSet())
+            model files are special to the map and can be added by addModelFile(), over input dialog or
+            per url parameter modelurl.</p>
+            <a href="worldmap2d_example21.html" target="_blank">Open example</a>
+            <br><b>Some more examples:</b>
+            <br><a href="worldmap2d_example21.html?modelurl=https://www.opengeodata.nrw.de/produkte/geologie/boden/BK/MOORKULISSENRW/LandesmoorkulisseNRW_EPSG25832_Shape.zip&type=SHAPE" target="_blank">Landesmoorkulisse NRW</a>
+            <br><a href="worldmap2d_example21.html?modelurl=https://www.opengeodata.nrw.de/produkte/umwelt_klima/wasser/oberflaechengewaesser/ogwk3d/OW-Wasserkoerper-3D-NRW_EPSG25832_Shape.zip&type=SHAPE" target="_blank">Oberflächenwasserkörper NRW</a>
+            
+            <pre><code class="lang-javascript">
+var worldmap2d_example21_options = {
+    zoom: 10,
+    allowAddModels: true // Adds the input diaog
+};
+            </code></pre> 
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

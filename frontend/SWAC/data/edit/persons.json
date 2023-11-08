@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Max Mustermann",
+        "eyecolor": "blue",
+        "age": 54
+    },
+    {
+        "id": 2,
+        "name": "Julia Mustermann",
+        "eyecolor": "brown",
+        "age": 22
+    }
+]

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - syncronisation component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/userinterface/sync.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+
+            <h3>Example 1: Simple syncronisation</h3>
+            <div id="sync_example1" swa="Sync FROM /SWAC/data/exampledata_biglist.json"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="sync_example1" swa="Forwarding FROM /SWAC/data/exampledata_biglist.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+window['sync_example1_options']={
+    syncTarget: '/SmartDataTest/smartdata/records/target_table?storage=smartmonitoring'
+};        
+</code></pre>
+
+            <h3>Example 2: Useing pre synchronisation data transformation</h3>
+            <div id="sync_example2" swa="Sync FROM /SWAC/data/exampledata_biglist.json"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="sync_example2" swa="Forwarding FROM /SWAC/data/exampledata_biglist.json"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <pre><code class="lang-javascript">
+window['sync_example2_options']={
+    syncTarget: '/SmartDataTest/smartdata/records/target_table?storage=smartmonitoring',
+    transformFuncs: new Map()
+};
+window['sync_example2_options'].transformFuncs.set('doubleval',function(set) {
+    // Convert double to only two decimal digits
+    return set.doubleval.toFixed(2);
+});  
+</code></pre>
+
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

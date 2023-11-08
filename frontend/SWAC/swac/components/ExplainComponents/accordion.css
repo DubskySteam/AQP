@@ -1,0 +1,11 @@
+.swac_repeatForOption {
+    display: none;
+}
+
+.swac_explain_options_table td {
+    width: 50%;
+}
+
+.swac_explain_option_type {
+    font-weight: bold;
+}

@@ -1,0 +1,1 @@
+Copy this to a webserver and open /SWACtemplate

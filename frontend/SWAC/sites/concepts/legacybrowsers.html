@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Support for legacy browsers</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="/SWAC/swac/legacybrowser.js"></script>
+        
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+        
+        <article class="uk-article">
+            <h1 class="uk-article-title">Support for legacy browsers</h1>
+            <p class="uk-text-lead">
+                SWAC 27.02.2022 introduces support for legacy browsers. Support
+                is limited to view of data from variables, but supports browsers
+                that miss import support.
+            </p>
+            
+            <h2>Activate support</h2>
+            <p>To activate legacy support add the legacy script to the imported 
+                script files in page header.</p>
+            
+            <pre><code class="lang-html">
+&lt;script src="/SWAC/swac/legacybrowser.js"&gt;&lt;/script&gt;
+        </code></pre>
+            
+            <div id="legacy_example1" swa="Present FROM exampledata_list"></div>
+            
+            <h2>Special areas for legacy browsers</h2>
+            <p>To show special content for legacy browsers just add the classes 
+                <b>swac_dontdisplay</b> <b>swac_legacy</b> </p>
+
+            <pre><code class="lang-html">
+&lt;div class="swac_dontdisplay swac_legacy"&gt;
+    This content is only viewd to legacy browsers
+&lt;/div&gt;
+            </code></pre>
+            
+            <div class="swac_dontdisplay swac_legacy">
+            This content is only viewd to legacy browsers
+        </div>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - icon component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/visualisation/icon.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+        <div id="explaincomponent" swa="ExplainComponents"></div>
+
+        <h2>Examples</h2>
+
+        <h3>Example 1: Show icons for each value in datasets</h3>
+        <p>You can visualise a dataset with icons.</p>
+        <div id="icon_example1" swa="Icon FROM exampledata_list"></div>
+
+        <pre><code class="lang-html">
+&lt;div id="icon_example1" swa="Icon FROM exampledata_list"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <h3>Example 2: Show only icons for the "mimetype" attributes</h3>
+        <p>You can choose which attribute of an dataset should be visualised.</p>
+        <div id="icon_example2" swa="Icon FROM exampledata_list"></div>
+
+        <pre><code class="lang-html">
+&lt;div id="icon_example2" swa="Icon FROM exampledata_list"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <pre><code class="lang-javascript">
+icon_example2_options = {
+    showAttributes: ['mimetype']
+};
+        </code></pre>
+
+        <h3>Example 3: Show only icons with larger dimensions</h3>
+        <div id="icon_example3" swa="Icon FROM exampledata_list"></div>
+
+        <pre><code class="lang-html">
+&lt;div id="icon_example3" swa="Icon FROM exampledata_list"&gt;&lt;/div&gt;
+        </code></pre>
+        <pre><code class="lang-javascript">
+icon_example3_options = {
+    iconsHeight: '100px',
+    iconsWidth: '100px'
+};
+        </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

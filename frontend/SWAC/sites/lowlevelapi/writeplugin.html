@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > low level api > How to write a plugin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>How to write a new plugin</h1>
+            <p>Sometimes it seams to be not a good idea to implement a requirement 
+                to an existing component, because it will overload the component
+                at other useplaces. For this the component plugin system was introduced.
+                <br>It allows to add or remove certain functionallity of a component 
+                depending on the usecase without reimplementing an existing function.</p>
+
+            <h2>Artifacts</h2>
+            <p>Plugins artifacts are very similar to the component artifacts.
+                Each plugin consists of a folder having the name of the plugin
+                and located in the components "plugin" folder. Inside this a ECMA6 Class
+                is stored and optionally templates and css files.</p>
+
+            <ul>
+                <li>swac
+                    <ul>
+                        <li>components
+                            <ul>
+                                <li>sample
+                                    <ul>
+                                        <li>sample.js</li>
+                                        <li>templateN.html</li>
+                                        <li>styleN.css</li>
+                                        <li>plugins
+                                            <ul>
+                                                <li>PluginName
+                                                    <ul>
+                                                        <li>langs
+                                                            <ul>
+                                                                <li>de.js</li>
+                                                                <li>en.js</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>PluginNameSPL.js</li>
+                                                        <li>plugintemplate.css</li>
+                                                        <li>plugintemplate.html</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2>Plugins template</h2>
+            <p>In the components template can be places where to insert content 
+                from the plugin. The following css-classes are used for 
+                identifying surch elements.
+                <br>Content for the plugin_content area comes from template files 
+            within the plugin.</p>
+            <table class="uk-table">
+                <tr><th>CSS-selector</th><th>Description</th></tr>
+                <tr><td>swac_repeatForPluginCont</td><td>Element wich contents will be repeated for each activated plugin.</td></tr>
+                <tr><td>swac_plugin_name</td><td>If available within the swac_repeatForPluginCont, it is filled with plugins displayName.</td></tr>
+                <tr><td>swac_plugin_content</td><td>If available within the swac_repeatForPluginCont, it will be filled with the plugins content. Else the content will be placed directly within swac_repeatForPluginCont.</td></tr>
+                <tr><td>swac_repeatForPluginNav</td><td>Element where a navigation entry for the plugin is placed. This is usually a tab. The nav is optional.</td></tr>
+            </table>
+
+            <h2>Plugin's ECMA6 class</h2>
+            <p>The plugins main javascript file contains a class with:</p>
+            <ul>
+                <li>Extends the class "Plugin"</li>
+                <li>A default constructor (from Plugin)
+                    <ul>
+                        <li>That is automatically called by the PluginSystem.</li>
+                        <li>Has a parameter "pluginconf". All contains of this 
+                            object are transfered to the new plugins this.optons 
+                            attribute.</li>
+                        <li>Can be overwritten to set plugins default options</li>
+                    </ul>
+                <li>The same desc attribute for documentation as components have. (from Plugin)</li>
+                <li>Automatically becomes the "requestor" attribute with a reference to the requestor where the plugin life in.</li>
+                <li>Must implement a init() function
+                    <ul>
+                        <li>Has no parameters</li>
+                        <li>Can do all the init stuff you wish</li>
+                        <li>Should respond with a promise that resolves if the plugin init is finished.</li>
+                    </ul>
+                </li>
+                <li>Can use the parent component with this.requestor.parent.swac_comp</li>
+            </ul>
+
+            <p>There can be more methods in this class and there can more classes used
+                by this class.</p>
+
+            <h2>Template files</h2>
+            <p>Each plugin can have one ore more template files. These contain the
+                view (html code) for the component. If a component is called with a
+                special template name, in the plugin is also searched for that template</p>
+
+            <h2>Useing components in plugins</h2>
+            <p>Components can be used in plugins the same way they are used on general webpages.
+            Components in Plugins get their data like other components over the swa statement
+            or by useing addSet(), addData() or addDataFromReference().</p>
+            <pre><code class="lang-html">
+&lt;div id="myPlugin_SubComponent" swa="Select FROM options.json"&gt;&lt/div&gt;
+</code></pre>
+            See <a href="sample.html">sample documentation</a> for a working example.
+            
+            <h2>Style files</h2>
+            <p>Each template can have a (optional) css file. If a template is choosen
+                then the style file is used, that is noted in the templates documentation.</p>
+
+            <h2>Plugin language</h2>
+            <p>Language entries for plugins are defined similar to language entries 
+            for components. Direct below the plugin direcory must be a directory 
+            "langs" and in this a js file for every language.</p>
+            
+            <pre><code class="lang-javascript">
+var ComponentName_PluginName_de = {
+    languageentry: "Translation",
+    ...
+};
+export default ComponentName_PluginName_de;
+        </code></pre>
+            <p>Language entries can be used in plugins language template by their full specified name.
+            </p>
+            
+            <pre><code class="lang-html">
+&lth4 class="uk-card-title" swac_lang="Sample_SamplePlugin.entry"&gt;Entry&lt/h4&gt;
+</code></pre>
+            
+            <h2>Functional documentation</h2>
+            <p>Each plugin has a special documentation that is not only intended 
+                for documenting available options, but also for automatic check 
+                and debug possibilities. Documenting is similar to documenting 
+                components.
+                For more information about the documentation see the <a href="documentcomponent.html">Document a component page</a></p>
+
+            <h2>Useing components in plugins</h2>
+            <p></p>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

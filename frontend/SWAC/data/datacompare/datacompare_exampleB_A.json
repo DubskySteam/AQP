@@ -1,0 +1,16 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "value1": 1,
+            "value2": 1.111,
+            "value3": "text"
+        },
+        {
+            "id": 2,
+            "value1": 1,
+            "value2": 1.111,
+            "value3": "text"
+        }
+    ]
+}

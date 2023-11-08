@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "ts": "2020-01-30 17:49",
+        "user_name": "Max Mustermann",
+        "message": "My first comment here"
+    },
+    {
+        "id": 2,
+        "ts": "2020-01-30 17:51",
+        "user_name": "Julia Mustermann",
+        "message": "Nice! Welcome!",
+        "parent_id": "ref://../data/comments/examplecomments.json/1"
+    },
+    {
+        "id": 3,
+        "ts": "2020-04-30 10:05",
+        "user_name": "Hansi Kleinlaus",
+        "message": "Glad to see you here",
+        "parent_id": "ref://../data/comments/examplecomments.json/1"
+    },
+    {
+        "id": 4,
+        "ts": "2020-05-01 15:08",
+        "user_name": "Max Mustermann",
+        "message": "Thanx for your comments",
+        "parent_id": "ref://../data/comments/examplecomments.json/3"
+    }
+]
