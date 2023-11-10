@@ -39,8 +39,14 @@ article {
 #head_navigation {
     position: sticky;
     top: 0px;
-    min-height: 50px;
+    min-height: 60px;
+    background-color: #073A5F;
     z-index: 10;
+}
+
+#head_navigation ul {
+    display: inline; 
+    list-style-type: none; 
 }
 
 /* footer */
@@ -48,12 +54,15 @@ body > footer {
     position: absolute;
     bottom: 0px;
     left: 0px;
-    height: 100px;
+    height: 50px;
     width: 100%;
-    background: #000011;
+    background: #073A5F;
     color: #ffffff;
     text-align: center;
 }
 body footer a {
     color: #ffffff;
+    text-decoration: none;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
 }
