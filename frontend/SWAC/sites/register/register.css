@@ -1,0 +1,34 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #398EDE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+h1, label {
+    color: white;
+}
+
+input {
+    border-radius: 10px;
+    border: 0px;
+    display: block;
+}
+
+button {
+    border-radius: 20px;
+    border: 0px;
+    margin-top: 40px;
+    padding: 15px 20px;
+    color: #398EDE;
+    font-weight: bold;
+}
