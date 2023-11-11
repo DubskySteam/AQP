@@ -305,4 +305,34 @@ public class SystemResource {
         rob.setStatus(Response.Status.OK);
         return rob.toResponse();
     }
+    
+    @GET
+    @Path("airtest")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Test endpoint",
+            description = "Test enpoint")
+    @APIResponse(
+            responseCode = "200",
+            description = "Objects with configuration informations",
+            content = @Content(
+                    mediaType = "application/json",
+                    example = "{\"list\" : [ { \"name\" : \"value\"} ]}"
+            ))
+    @APIResponse(
+            responseCode = "500",
+            description = "Error mesage",
+            content = @Content(mediaType = "application/json",
+                    example = "{\"errors\" : [ \" Could not load configuration: Because of ... \"]}"))
+    public Response getTest() {
+        ResponseObjectBuilder rob = new ResponseObjectBuilder();
+
+        // Init config
+        Configuration conf = new Configuration();
+
+        rob.add("project", "air quality");
+        
+        rob.setStatus(Response.Status.OK);
+
+        return rob.toResponse();
+    }
 }
