@@ -1,14 +1,18 @@
 <div id="swac_user_logindialog" class="uk-card uk-card-body uk-card-primary">
-    <h3 class="uk-card-title" swac_lang="User.login">Login</h3>
+    <h3 id="title" class="uk-card-title" swac_lang="User.login">Login</h3>
     <form class="swac_user_loginForms">
-        <label for="swac_user_username">Benutzername</label>
-        <input id="swac_input" name="swac_user_username" type="text" placeholder="User.username" class="uk-input" required autocomplete="username">
-        <label for="swac_user_password">Password</label>
-        <input id="swac_input" name="swac_user_password" type="password" placeholder="User.userpwd" class="uk-input" required autocomplete="current-password">
+        <div id="input_area">
+            <label for="swac_user_username">Benutzername</label>
+            <input id="swac_input" name="swac_user_username" type="text" placeholder="User.username" class="uk-input" required autocomplete="username">
+            <label for="swac_user_password">Password</label>
+            <input id="swac_input" name="swac_user_password" type="password" placeholder="User.userpwd" class="uk-input" required autocomplete="current-password">
+        </div>
         <br>
-        <a href="">Noch kein Konto?</a>
+        <div id="button_area">
+            <a href="">Noch kein Konto?</a>
         <br>
         <button id="login_button" class="swac_user_loginButtons uk-button uk-button-default" type="button">User.login</button>
+        </div>
     </form>
 </div>
 <div id="swac_user_logining" class="uk-card uk-card-body uk-card-primary swac_dontdisplay">
