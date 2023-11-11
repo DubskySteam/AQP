@@ -27,6 +27,7 @@ label {
 
 #swac_input {
     background-color: rgb(255, 255, 255);
+    color: #000;
     margin-bottom: 2%;
     border-radius: 5em;
 }
