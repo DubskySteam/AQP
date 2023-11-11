@@ -240,7 +240,7 @@ public class UserResource {
             return rob.toResponse();
         }
 
-        rob.add("users", users);
+        rob.add("users", users*100);
         rob.setStatus(Response.Status.OK);
         return rob.toResponse();
     }
