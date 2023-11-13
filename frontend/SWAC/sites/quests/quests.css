@@ -5,7 +5,6 @@
 body {
     margin: 0;
     background: white;
-    
 }
 
 .quest {
@@ -16,6 +15,17 @@ body {
     cursor: pointer;
     background-color: #D9D9D9; /* Grauer Hintergrund */
 }
+
+h1 {
+    text-align: center;
+    color: #398EDE;
+    padding: 40px;
+}
+
+#quest_container {
+    text-align: center;
+}
+
 .questDetails {
     display: none;
     padding: 10px;
@@ -23,6 +33,23 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
+.questTitle {
+    /* Allgemeine Stile für den Quest-Titel */
+    font-weight: bold;
+    align-items: center;
+}
+
+/* Abhängig vom Status blau oder dunkelgrau färben */
+.quest.aktiv .questTitle {
+    color: #398EDE; /* Hexadezimaler Farbwert mit # */
+}
+
+.quest.abgeschlossen .questTitle {
+    color: #6D6D6D; /* Hexadezimaler Farbwert mit # */
+}
+
+
 
 /*
 #registration * {

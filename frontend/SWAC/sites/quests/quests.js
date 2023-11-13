@@ -13,6 +13,13 @@ var quests = [
         status: 'Aktiv',
         reward: '900 XP'
     },
+    {
+        id: 3,
+        title: 'Landei',
+        description: 'Fahre 8km entlang eines Landweges',
+        status: 'Abgeschlossen',
+        reward: '750 XP'
+    },
 ];
 
 const createQuestElements = () => {
@@ -20,13 +27,13 @@ const createQuestElements = () => {
 
     quests.forEach(function(quest) {
         var questDiv = document.createElement('div');
-        questDiv.className = 'quest';
+        questDiv.className = 'quest ' + quest.status.toLowerCase(); // Füge Status als Klasse hinzu
         questDiv.innerHTML = `
-        <p>${quest.title}</p>
+        <h3 class="questTitle">${quest.title}</h3>
         <div class="questDetails">
             <p>${quest.description}</p>
-            <p>Status: ${quest.status}</p>
-            <p>Belohnung: ${quest.reward}</p>
+            <p><strong>Status:</strong> ${quest.status}</p>
+            <p><strong>Belohnung:</strong> ${quest.reward}</p>
         </div>
         `;
 
