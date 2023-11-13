@@ -12,34 +12,44 @@
 </head>
 <body>
 
-    <h1>Register</h1>
+    <header id="head_navigation">
+        <ul>
+            <li><a href="../../index.html" onclick="Navigation.routeTo('../../index.html', {id: 0});" style="float: left; margin-top: -15px; margin-left: 5px;"><img src="../../content/cloud.png" alt="Home" width="45" height="45"></a></li>
+            <li><a href="../userinterface/menu.html" onclick="Navigation.routeTo('../userinterface/menu.html', {id: 2});" style="float: right; margin-right: 5px; margin-top: -17px;"><img src="../../content/Menu.png" alt="Menu" width="45" height="45"></a></li>
+            <li><a href="../userinterface/login.html" onclick="Navigation.routeTo('../userinterface/login.html', {id: 1});" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
+        </ul>
+    </header>
 
-    <!-- Benutzername -->
-    <label for="benutzername">Benutzername</label>
-    <input type="text" id="benutzername" name="benutzername">
-    <br>
+    <div id="registration">
+        <h1>Register</h1>
 
-    <!-- Passwort -->
-    <label for="Passwort">Passwort</label>
-    <input type="text" id="Passwort" name="Passwort">
-    <br>
+        <!-- Benutzername -->
+        <label for="benutzername">Benutzername</label>
+        <input type="text" id="benutzername" name="benutzername">
+        <br>
 
-    <!-- Vorname -->
-    <label for="Vorname">Vorname</label>
-    <input type="text" id="Vorname" name="Vorname">
-    <br>
+        <!-- Passwort -->
+        <label for="Passwort">Passwort</label>
+        <input type="text" id="Passwort" name="Passwort">
+        <br>
 
-    <!-- Nachname -->
-    <label for="Nachname">Nachname</label>
-    <input type="text" id="Nachname" name="Nachname">
-    <br>
+        <!-- Vorname -->
+        <label for="Vorname">Vorname</label>
+        <input type="text" id="Vorname" name="Vorname">
+        <br>
 
-    <!-- E-Mail -->
-    <label for="E-Mail">E-Mail</label>
-    <input type="text" id="E-Mail" name="E-Mail">
-    <br>
+        <!-- Nachname -->
+        <label for="Nachname">Nachname</label>
+        <input type="text" id="Nachname" name="Nachname">
+        <br>
 
-    <button type="submit">Registrieren</button>
+        <!-- E-Mail -->
+        <label for="E-Mail">E-Mail</label>
+        <input type="text" id="E-Mail" name="E-Mail">
+        <br>
+
+        <button type="submit">Registrieren</button>
+    </div>
 
     <footer>
         <a id="more" href="./more.html">Mehr</a>

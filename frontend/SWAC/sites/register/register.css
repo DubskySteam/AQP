@@ -1,8 +1,17 @@
-* {
+body {
+    background: #398EDE;
+    margin: 0;
+}
+
+#registration * {
     font-family: 'Inter', sans-serif;
 }
 
-body {
+#registration {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #398EDE;
     display: flex;
     flex-direction: column;
@@ -10,21 +19,22 @@ body {
     justify-content: center;
 }
 
-h1 {
+#registration h1 {
     margin-bottom: 40px;
-}
-
-h1, label {
     color: white;
 }
 
-input {
+#registration label {
+    color: white;
+}
+
+#registration input {
     border-radius: 10px;
     border: 0px;
     display: block;
 }
 
-button {
+#registration button {
     border-radius: 20px;
     border: 0px;
     margin-top: 40px;
@@ -32,36 +42,3 @@ button {
     color: #398EDE;
     font-weight: bold;
 }
-
-#head_navigation {
-    position: sticky;
-    top: 0px;
-    min-height: 60px;
-    background-color: #398EDE; /* Hintergrundfarbe anpassen */
-    z-index: 10;
-}
-
-#head_navigation ul {
-    display: flex; /* Änderung für horizontales Layout */
-    justify-content: space-between; /* Änderung für gleichmäßige Verteilung der Elemente */
-    align-items: center; /* Zentriert die Elemente vertikal */
-    list-style-type: none;
-    margin: 0; /* Entfernt den standardmäßigen Listenabstand */
-    padding: 0; /* Entfernt den standardmäßigen Listenabstand */
-}
-
-#head_navigation li {
-    margin: 0 5px; /* Füge Abstand zwischen den Listenelementen hinzu */
-}
-
-#head_navigation a {
-    color: white;
-    text-decoration: none;
-}
-
-#head_navigation img {
-    width: 45px;
-    height: 45px;
-}
-
-/* Weitere spezifische Stile für den Header in register.css, falls erforderlich */
