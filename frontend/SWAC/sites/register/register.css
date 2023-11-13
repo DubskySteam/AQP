@@ -45,15 +45,15 @@ body {
     padding: 15px 20px;
     color: #398EDE;
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s; /* Hinzugefügte Übergangseffekte */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #registration button:hover {
-    background-color: #4CAF50; /* Helle grüne Farbe für Hover */
-    color: white; /* Weißer Text bei Hover */
+    background-color: #4CAF50;
+    color: white;
 }
 
 #registration button:active {
-    background-color: #45A049; /* Dunklere grüne Farbe für Klick */
-    color: white; /* Weißer Text bei Klick */
+    background-color: #45A049;
+    color: white;
 }
