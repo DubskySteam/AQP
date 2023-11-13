@@ -32,3 +32,36 @@ button {
     color: #398EDE;
     font-weight: bold;
 }
+
+#head_navigation {
+    position: sticky;
+    top: 0px;
+    min-height: 60px;
+    background-color: #398EDE; /* Hintergrundfarbe anpassen */
+    z-index: 10;
+}
+
+#head_navigation ul {
+    display: flex; /* Änderung für horizontales Layout */
+    justify-content: space-between; /* Änderung für gleichmäßige Verteilung der Elemente */
+    align-items: center; /* Zentriert die Elemente vertikal */
+    list-style-type: none;
+    margin: 0; /* Entfernt den standardmäßigen Listenabstand */
+    padding: 0; /* Entfernt den standardmäßigen Listenabstand */
+}
+
+#head_navigation li {
+    margin: 0 5px; /* Füge Abstand zwischen den Listenelementen hinzu */
+}
+
+#head_navigation a {
+    color: white;
+    text-decoration: none;
+}
+
+#head_navigation img {
+    width: 45px;
+    height: 45px;
+}
+
+/* Weitere spezifische Stile für den Header in register.css, falls erforderlich */
