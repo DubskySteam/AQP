@@ -34,6 +34,10 @@ body {
     display: block;
 }
 
+#registration input:focus {
+    outline: none;
+}
+
 #registration button {
     border-radius: 20px;
     border: 0px;
