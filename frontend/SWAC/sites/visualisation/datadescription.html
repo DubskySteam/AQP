@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - datadescription component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/visualisation/datadescription.js"></script>
+        <!-- Datasources -->
+        <script src="../../data/visualisation/datadescription/exampledatadescription.js"></script>
+        <script src="../../data/visualisation/datadescription/datadescription_example3.js"></script>
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+        <div id="explaincomponent" swa="ExplainComponents"></div>
+
+        <h3>Example 1: Showing a legend</h3>
+        <p>Show a legend for coloring of your data.</p>
+        
+        <pre><code class="lang-html">
+&lt;div id="datadescription_example1" swa="Datadescription FROM datadescription_data"&gt;&lt;/div&gt;
+        </code></pre>
+        Data that contains the definition of the legend:
+        <pre><code class="lang-javascript">
+var datadescription_data = {
+    sourcename: "Name der Quelle",
+    sourcelink: "http://www.beispiel.de",
+    doubleval: {
+        txt_title: 'DoubleWert',
+        txt_desc: 'Ein Wert mit double Genauigkeit',
+        txt_uknw: 'Es wurde kein Wert angegeben',
+        col: 'blue',
+        values: {
+            '12.0123': {
+                txt: 'ein niedriger Wert',
+                col: 'green'
+            },
+            '19.0234': {
+                txt: 'ein mittlerer Wert',
+                col: 'yellow'
+            },
+            '42.0345': {
+                txt: 'ein hoher Wert',
+                col: 'red'
+            }
+        }
+    },
+    stringval: {
+        txt_title: 'Strings',
+        txt_desc: 'Ein Wert mit einem String.',
+        col: 'red',
+        values: {
+            'string': {
+                txt: 'erster string',
+                col: 'green'
+            },
+            'string2': {
+                txt: 'zweiter string',
+                col: 'yellow'
+            }
+        }
+    }
+};  
+        </code></pre>
+
+        <div id="datadescription_example1" swa="Datadescription FROM datadescription_data"></div>
+
+        <h3>Example 2: Formatting data with use of the present component</h3>
+        <p>Datadescription component can be used to color displayed data.
+            <br>Data is formated on base of bindpoints, so data can be formated in any component that uses bindpoints in their template.
+            <br>Some components integrate support for datadescription, even if they use other display technique. e.g. Worldmap3D.</p>
+        
+        Data that should be presented:
+        <pre><code class="lang-javascript">
+var exampledata_list = [
+    {
+        id: 1,
+        name: "Datensatz 1",
+        doubleval: 12.0123,
+        intval: 1234,
+        boolval: true,
+        stringval: 'string',
+        ts: '28.10.2019 7:46:59',
+        dateval: '28.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/mp3',
+        colval: 'blue',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+    }, {
+        id: 2,
+        name: "Datensatz 2",
+        doubleval: 19.0234,
+        intval: 2345,
+        boolval: false,
+        stringval: 'string2',
+        ts: '29.10.2019 7:47:59',
+        dateval: '29.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/ogg',
+        colval: '#ffffff',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_star.svg'
+    }, {
+        id: 3,
+        name: "Datensatz 3",
+        doubleval: 42.0345,
+        intval: 3456,
+        boolval: true,
+        stringval: 'string',
+        ts: '30.10.2019 7:48:59',
+        dateval: '30.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'video/mpeg',
+        colval: '#000000',
+        urlval: 'https://someothersite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_fail.svg'
+    }
+];
+        </code></pre>
+
+        Page code:
+        <pre><code class="lang-html">
+&lt;div id="datadescription_example1" swa="Datadescription FROM datadescription_data"&gt;&lt;/div&gt;
+&lt;div id="datadescription_example2" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+
+        Binding javascript:
+        <pre><code class="lang-javascript">
+window.swac.reactions.addReaction(function(requestors) {
+    requestors['datadescription_example1'].swac_comp.formatDataElement(requestors['datadescription_example2']);
+},'datadescription_example1','datadescription_example2');
+        </code></pre>
+
+        <div id="datadescription_example2" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"></div>
+
+        <h3>Example 3: Useing class descriptions</h3>
+
+        Data can be visualised in classes useing the < calcmode. Then the data will
+        be grouped into classes on wich the visualisation applies.
+        <br>Support this project to get implementation of more calcmodes.
+
+        <pre><code class="lang-javascript">
+var datadescription_data3 = {
+    doubleval = {
+        txt_title: 'DoubleWert',
+        txt_desc: 'Ein Wert mit double Genauigkeit',
+        txt_uknw: 'Es wurde kein Wert angegeben',
+        col: 'blue',
+        calcmode: '<',
+        values: {
+            '15': {
+                txt: 'ein niedriger Wert',
+                col: 'green'
+            },
+            '25': {
+                txt: 'ein mittelniedriger Wert',
+                col: 'blue'
+            },
+            '35': {
+                txt: 'ein mittelhoher Wert',
+                col: 'yellow'
+            },
+            '45': {
+                txt: 'ein hoher Wert',
+                col: 'red'
+            }
+        }
+    }
+};
+        </code></pre>
+
+
+        Page code:
+        <pre><code class="lang-html">
+            &lt;div id="datadescription_example3" swa="Datadescription FROM datadescription_data"&gt;&lt;/div&gt;
+            &lt;div id="datadescription_example3_present" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+
+        Binding javascript:
+        <pre><code class="lang-javascript">
+// Use datadescription component "datadescription_example3" to format data in second component "datadescription_example3_present"
+window.swac.reactions.addReaction(function(requestors) {
+    requestors['datadescription_example3'].swac_comp.formatDataElement(requestors['datadescription_example3_present']);
+},'datadescription_example3','datadescription_example3_present');
+        </code></pre>
+
+        <div id="datadescription_example3" swa="Datadescription FROM datadescription_data3"></div>
+        <div id="datadescription_example3_present" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"></div>
+        
+        <h3>Example 4: Get description for one attribute only</h3>
+        <p>Sometimes you only want to only describe one attribute, or you are useing 
+            a component, which only displays one icon for a dataset.
+            (See Worldmap2d or Chart components)
+            <br>For this cases you can choose the attribute you want to visualise, 
+            by specifying it in the Datadescription components options.</p>
+        
+        Example for calculating color, description, etc. only for attribute "pm10"
+        <pre><code class="lang-javascript">
+window["wordldmap2d_datadescription_example14_options"] = {
+    visuAttribute: 'pm10'
+};
+        </code></pre>
+        
+        <h3>Example 5: Get description for a subattribute</h3>
+        <p>When data is more complex and the datasets attribute is an array or object, you can 
+        also create a description for an attribute of this sub object.</p>
+        
+        Example for calculating color, description, etc. only for attribute "pm10" that is in the datasets attribute "pollution"
+        <pre><code class="lang-javascript">
+window["wordldmap2d_datadescription_example14_options"] = {
+    visuDataset: 'pollution',
+    visuAttribute: 'pm10'
+};
+        </code></pre>
+        
+        <h3>Example 6: Useing gradient colors</h3>
+        <p>Use the gradient calcmode to get colors calculated from the value that
+        lies between fixed colors for values.</p>
+
+        <pre><code class="lang-javascript">
+var datadescription_data6 = {
+    doubleval: {
+        txt_title: 'DoubleWert',
+        txt_desc: 'Ein Wert mit double Genauigkeit',
+        txt_uknw: 'Es wurde kein Wert angegeben',
+        col: 'blue',
+        calcmode: 'gradient',
+        values: {
+            '10': {
+                txt: 'ein niedriger Wert',
+                col: '#008000'
+            },
+            '100': {
+                txt: 'ein mittelniedriger Wert',
+                col: '#0000FF'
+            },
+            '1000': {
+                txt: 'ein mittelhoher Wert',
+                col: '#FFFF00'
+            },
+            '10000': {
+                txt: 'ein hoher Wert',
+                col: '#FF0000'
+            }
+        }
+    }
+};
+        </code></pre>
+
+
+        Page code:
+        <pre><code class="lang-html">
+            &lt;div id="datadescription_example6" swa="Datadescription FROM datadescription_data"&gt;&lt;/div&gt;
+            &lt;div id="datadescription_example6_present" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+
+        Binding javascript:
+        <pre><code class="lang-javascript">
+// Use datadescription component "datadescription_example3" to format data in second component "datadescription_example6_present"
+window.swac.reactions.addReaction(function(requestors) {
+    requestors['datadescription_example6'].swac_comp.formatDataElement(requestors['datadescription_example6_present']);
+},'datadescription_example6','datadescription_example6_present');
+        </code></pre>
+
+        <div id="datadescription_example6" swa="Datadescription FROM datadescription_data6"></div>
+        <div id="datadescription_example6_present" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"></div>
+        
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

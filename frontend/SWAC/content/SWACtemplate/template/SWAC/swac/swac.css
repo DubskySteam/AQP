@@ -1,0 +1,33 @@
+.swac_repeatForSet {
+    display: none;
+}
+.swac_repeatForAttribute {
+    display: none;
+}
+.swac_repeatForValue {
+    display: none;
+}
+.swac_repeatForPluginNav {
+    display: none;
+}
+.swac_repeatForPluginCont {
+    display: none;
+}
+.swac_dontdisplay {
+    display: none !important;
+}
+[swac_display="true"] {
+    display: block;
+}
+[swac_hide="true"] {
+    display: none;
+}
+.swac_child {
+    display: none;
+}
+.swac_screencentered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 33%;
+}

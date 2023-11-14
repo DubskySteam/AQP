@@ -1,0 +1,48 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "mediaid": 2,
+            "timepoint": 3,
+            "comment": "Nice picture!"
+        },
+        {
+            "id": 2,
+            "mediaid": 5,
+            "timepoint": 12,
+            "comment": "Very nice song!"
+        },
+        {
+            "id": 3,
+            "mediaid": 5,
+            "timepoint": 47,
+            "comment": "I like the beat here"
+        },
+        {
+            "id": 4,
+            "mediaid": 4,
+            "timepoint": 2,
+            "media": "../data/media/breakone.html",
+            "mimetype": "text/html",
+            "stop": true,
+            "resumeafter": 5
+        },
+        {
+            "id": 4,
+            "mediaid": 5,
+            "timepoint": 10,
+            "media": "../data/media/overlayone.html",
+            "mimetype": "text/html",
+            "stop": false,
+            "resumeafter": 10
+        },
+        {
+            "id": 5,
+            "mediaid": 5,
+            "timepoint": 25,
+            "media": "../data/media/breaktwo.html",
+            "mimetype": "text/html",
+            "stop": true
+        }
+    ]
+}

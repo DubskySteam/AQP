@@ -1,0 +1,16 @@
+[
+    {
+        "swac_lng": "de",
+        "swac_files": [
+            "data/translator/Example_de.js",
+            "data/translator/app_de.js"
+        ]
+    },
+    {
+        "swac_lng": "en",
+        "swac_files": [
+            "data/translator/Example_en.js",
+            "data/translator/app_en.js"
+        ]
+    }
+]

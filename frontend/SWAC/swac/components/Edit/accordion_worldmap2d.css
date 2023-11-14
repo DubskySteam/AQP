@@ -1,0 +1,10 @@
+.label-options {
+    display: block !important;
+    background: var(--swacorange) !important;
+    width: auto;
+    float: none !important;
+}
+
+.input-options {
+    width: 10em !important;
+}

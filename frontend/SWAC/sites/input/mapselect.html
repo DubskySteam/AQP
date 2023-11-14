@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Mapselect component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/input/mapselect.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Simple selection on map</h3>
+            You can create a simple selection tool for areas on a map.
+            <pre><code class="lang-html">
+&lt;div id="mapselect_exampel" swa="Mapselect"&gt;&lt;/div&gt;
+            </code></pre>
+            <div id="mapselect_examplel" swa="Mapselect"></div>
+            <a id="mapselect_example1_btn" class="uk-button uk-button-default" href="#">Show selection data</a>
+
+            <h3>Example 2: Allow multiple selections</h3>
+            You can allow multiple selections on one map.
+            <pre><code class="lang-html">
+&lt;div id="mapselect_exampe2" swa="Mapselect"&gt;&lt;/div&gt;
+            </code></pre>
+            <pre><code class="lang-javascript">
+var mapselect_example2_options = {
+   multiple: true
+};
+                </code></pre>
+            <div id="mapselect_example2" swa="Mapselect"></div>
+            <a id="mapselect_example2_btn" class="uk-button uk-button-default" href="#">Show selection data</a>
+
+            <h3>Example 3: Show selections from data</h3>
+            Selections can be shown from data. Depending on the multiple flag a new
+            selection is added to the data or replaces the data.
+            <pre><code class="lang-html">
+&lt;div id="mapselect_exampe3" swa="Mapselect FROM ../data/mapselect/example3.json"&gt;&lt;/div&gt;
+            </code></pre>
+            <div id="mapselect_example3" swa="Mapselect FROM ../../data/mapselect/example3.json"></div>
+            <a id="mapselect_example3_btn" class="uk-button uk-button-default" href="#">Show selection data</a>
+
+            <h3>Example 4: Use mapselect to export data</h3>
+            With mapselect requesting data from a geo area is easy.
+            <pre><code class="lang-html">
+&lt;div id="mapselect_example4" swa="Mapselect"&gt;&lt;/div&gt;
+            </code></pre>
+            <div id="mapselect_example4" swa="Mapselect"></div>
+
+
+            <h3>Example 5: Use with other selection components</h3>
+            Use the select component to let the user choose the table where the data 
+            could be found. It also is an example for useing a custom onSelectMethod.
+            <br>In this example the custom method calls the onSelectFetch component 
+            method at the end.
+            <pre><code class="lang-html">
+&lt;div id="selectTableNames" swa="Select FROM ../data/mapselect/tablesexample.json"&gt;&lt;/div&gt;
+&lt;div id="mapselect_example5" swa="Mapselect"&gt;&lt;/div&gt;
+            </code></pre>
+            <pre><code class="lang-javascript">
+var mapselect_example5_options = {
+    // Function to use as long the user has no table choosen
+    onSelectMethod : function (evt) {
+        let tablesel = document.querySelector('#selectTableNames');
+        let inputs = tablesel.swac_comp.getInputs();
+
+        if (inputs.length < 1) {
+            UIkit.modal.alert("Please select a table.");
+            return;
+        }
+        let table_name = inputs[0].name;
+        this.options.dataRequestor = {
+            fromName: "/SmartData/smartdata/data/" + table_name + "/",
+            fromWheres: {
+                schema: 'smartmonitoring',
+                filter: 'column_name,sib,{min_x},{min_y},{max_x},{max_y},3857,3035'
+            }
+        };
+        
+        this.onSelectFetch(evt);
+    }
+};
+        </code></pre>
+            <div id="selectTableNames" swa="Select FROM ../../data/mapselect/tablesexample.json"></div>
+            <div id="mapselect_example5" swa="Mapselect"></div>
+
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

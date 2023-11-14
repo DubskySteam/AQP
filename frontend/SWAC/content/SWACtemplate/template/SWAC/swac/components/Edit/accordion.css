@@ -1,0 +1,27 @@
+/* 
+    Created on : 19.06.2018, 09:59:04
+    Author     : ffehring
+*/
+
+label {
+    width: 10em;
+    display: block;
+    float: left;
+}
+
+.swac_edit_dropzone {
+    width: 100%;
+    height: 50px;
+    border: 1px solid green;
+}
+
+:required {
+    border: 1px solid red;
+}
+
+.swac_edit_repeatForReftable {
+    display: none;
+}
+.swac_edit_repeatForRef {
+    display: none;
+}

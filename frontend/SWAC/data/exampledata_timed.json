@@ -1,0 +1,18 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "This is allways there"
+        },
+        {
+            "id": 2,
+            "title": "This is only shown before 01.10.2021",
+            "swac_until": "2021-10-01T00:00:00"
+        },
+        {
+            "id": 3,
+            "title": "This is only shown after 01.10.2021",
+            "swac_from": "2021-10-02T00:00:00"
+        }
+    ]
+}

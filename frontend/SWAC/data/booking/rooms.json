@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Zimmer 1",
+        "desc": "Ausstattung:<ul><li>2 Betten</li><li>1 Dusche</li><li>Freies WLAN</li></ul>",
+        "img": "../data/media/cat_snapwire.jpg",
+        "price": 9.99
+    },
+    {
+        "id": 2,
+        "title": "Zimmer 2",
+        "desc": "Ausstattung:<ul><li>2 Betten</li><li>1 Dusche</li></i>Freies WLAN</li></ul>",
+        "img": "../data/media/cover.jpg",
+        "price": 9.99
+    },
+    {
+        "id": 3,
+        "title": "Zimmer 3",
+        "desc": "Ausstattung:<ul><li>2 Betten</li><li>1 Dusche</li><li>Freies WLAN</li></ul>",
+        "price": 9.99
+    }
+]

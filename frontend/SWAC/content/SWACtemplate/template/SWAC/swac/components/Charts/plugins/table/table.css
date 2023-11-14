@@ -1,0 +1,19 @@
+/*
+Style for the "table" plugin vor SWAC_chart
+*/
+
+.swac_chart_table_repeatForDatasource {
+    display: none;
+}
+
+.swac_chart_table_repeatForAttribute {
+    display: none;
+}
+
+-swac_chart_table_repeatForSet {
+    display: none;
+}
+
+.swac_chart_table_repeatForValue {
+    display: none;
+}

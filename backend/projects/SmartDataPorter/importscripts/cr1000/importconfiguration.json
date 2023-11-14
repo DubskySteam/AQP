@@ -1,0 +1,41 @@
+{
+    "importer": "FilesImporter",
+    "sourcedir": "/var/home/mpp/data",
+    "inspectiondir": "/var/home/mpp/data/inspection",
+    "workingdir": "/var/home/mpp/data/working",
+    "archivedir": "/var/home/mpp/data/archiv",
+    "parser": "CSIParser",
+    "smartdata": "SmartDataTeststand",
+    "storage": "smartmonitoring",
+    "collection": "nomaintable_csi",
+    "sourcemapping": [
+        {
+            "namepattern": "^CmpSMS1.*",
+            "collection": "cr1000_irradiation_cmp"
+        },
+        {
+            "namepattern": "^CmpSMS1_10sec.*",
+            "collection": "cr1000_irradiation_cmp_10sec"
+        },
+        {
+            "namepattern": "^MS700SMS1.*",
+            "collection": "cr1000_irradiation_spectroradiometer"
+        },
+        {
+            "namepattern": "^RadSMS1.*",
+            "collection": "cr1000_irradiation_rad"
+        },
+        {
+            "namepattern": "^StaSMS.*",
+            "collection": "cr1000_irradiation_status"
+        },
+        {
+            "namepattern": "^TmpSMS.*",
+            "collection": "cr1000_irradiation_temperatur"
+        },
+        {
+            "namepattern": "^TotSMS.*",
+            "collection": "cr1000_irradiation_total"
+        }
+    ]
+}

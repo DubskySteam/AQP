@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - debugging</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>Debugging</h1>
+            <p>Debugmode is intended for giving insight into the dataflow and activateing
+                swac to detect possible errorsources in the useage. Each component can have it's
+                own debug information printed. Debugmode does not affect critical errors,
+                these are always printed to console.</p>
+
+            <h2>Activateing debugmode</h2>
+            <h3>Single call activateing debugmode</h3>
+            <p>If you want to activate the debugmode only for one page call, you can 
+                use the parameter debugmode=true in the url of the page.</p>
+
+            <pre>
+            http://localhost:8080/SWAC/sites/sourcebinding.html?id=1&debugmode=true
+            </pre>
+
+            <h3>Genneral activateing debugmode</h3>
+            <p>To activate the debugmode simply add the following line of code into 
+                the configuration.js file on rootlevel of your application. This entry
+                is allready there if you use the configuration template.</p>
+
+            <p>DEV NOTE: Until SWAC leafes alpha stage, debugmode is allways set to true,
+                but can be deactivated over the configuration.</p>
+
+            <pre>
+            SWAC_config.debugmode = true;
+            </pre>
+
+            <h2>Debugging URL parameters</h2>
+            The following table lists all URL parameters generally useable for debugging suposes. They are useable without setting debugmode=true in configuration.
+
+            <table class="uk-table">
+                <tr><th>Parameter</th><th>Value</th><th>Explanation</th></tr>
+                <tr><td>cleardatasourcestates</td><td>true</td><td>Resets the syncstate cache. Those prevents requests for data that was previous known as not available.</td></tr>
+                <tr><td>clearlocalstorage</td><td>true</td><td>Clears the local storage for all resources requested by the current pageload.</td></tr>
+            </table>
+            
+            <h2>Devhelper</h2>
+            <p>If debugmode is activated the Devhelper component is automatically 
+            activated. It enables a toolbar that is able to give you a look 
+            inside what is googing on in a component.
+            <br>By hovering over a component a smal icon is displayed in a corner.
+            This icon indicates the state of the component. With a single click 
+            on this icon the Devhelper toolbar is activated and shows errors, 
+            informations and hints.</p>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<div id="swac_searchbar" class="uk-offcanvas-content">
+    <a class="swac_searchbar_toggle" href="#swac_searchbar_offcanvas" uk-toggle><span uk-icon="icon: search; ratio: 1.5" uk-tooltip="Adresse suchen"></span></a>
+    <div id="swac_searchbar_offcanvas" uk-offcanvas="container: #swac_searchbar">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <form class="swac_search_form uk-search uk-search-default">
+                <span uk-search-icon></span>
+                <input class="swac_search uk-search-input" type="search" placeholder="Suche">
+            </form>
+            <ul class="swac_search_results uk-list"></ul>
+            <div class="swac_search_legend"></div>
+        </div>
+    </div>
+</div>

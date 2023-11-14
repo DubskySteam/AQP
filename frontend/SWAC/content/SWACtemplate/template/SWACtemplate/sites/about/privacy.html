@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SWAC - clock component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/routes.js"></script>
+    </head>
+    <body>
+        <header id="siteheader" class="uk-cover-container">
+            <img src="../../content/header.jpg" alt="Header" uk-cover>
+            <a href="../index.html" class="logo">
+                <img src="../../content/logo.jpg" alt="Logo" width="150" height="150">
+            </a>
+        </header>
+        <div id="head_navigation" swa="Navigation FROM routes"></div>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <h2>Examples</h2>
+
+        <h3>Example 1: Simple digital clock</h3>
+        <div id="clock" swa="Clock"></div>
+        <pre><code class="lang-html">
+            &lt;div id="clock" swa="Clock"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <footer>
+            <a href="privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="imprint.html">Imprint / Impressum</a>
+            &copy; 2018 - 2020 Florian Fehring <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

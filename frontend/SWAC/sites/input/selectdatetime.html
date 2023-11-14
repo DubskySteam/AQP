@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - selectdatetime component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/input/selectdatetime.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>         
+
+                        <h3>Example 1: Show datetime</h3>
+                        
+                        <div id="selectdatetime_example1" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"></div>
+                        
+                        <pre><code class="lang-html">
+            &lt;div id="selectdatetime_example1" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"&gt;&lt;/div&gt;
+                    </code></pre>
+                        
+                        <h3>Example 2: Show only date</h3>
+                        
+                        <div id="selectdatetime_example2" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"></div>
+                        
+                        <pre><code class="lang-html">
+            &lt;div id="selectdatetime_example2" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"&gt;&lt;/div&gt;
+                    </code></pre>
+                        <pre><code class="lang-javascript">
+            selectdatetime_example2_options = {
+                timepicker: false
+            };
+                    </code></pre>
+                        
+                        <h3>Example 3: Show only time</h3>
+                        
+                        <div id="selectdatetime_example3" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"></div>
+                        
+                        <pre><code class="lang-html">
+            &lt;div id="selectdatetime_example3" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"&gt;&lt;/div&gt;
+                    </code></pre>
+                        <pre><code class="lang-javascript">
+            selectdatetime_example3_options = {
+                datepicker: false
+            };
+                    </code></pre>
+
+                        <h3>Example 4: Use actual date / time</h3>
+                        <p>To show the actual time to the user use a calculated dataset. If user selects another date / time, dataset is updated 
+                        and date / time stays fixed.
+                        <br>Important note: The time to automatic reload the component should not set to a value below 5 seconds, to give users 
+                        enough time to change the date / time, before it refreshs.</p>
+                        
+                        <div id="selectdatetime_example4" swa="Selectdatetime FROM ../../data/selectdatetime/exampleEmptyDatetimes.json"></div>
+                        
+                        <pre><code class="lang-html">
+            &lt;div id="selectdatetime_example4" swa="Selectdatetime FROM ../../data/selectdatetime/exampleEmptyDatetimes.json"&gt;&lt;/div&gt;
+                    </code></pre>
+                        <pre><code class="lang-javascript">
+            selectdatetime_example4_options = {
+                actualTimeForEmpty: true,
+                reloadInterval: 5
+            };
+                    </code></pre>
+
+            <h3>Example 5: Get date / time</h3>
+            <p></p>
+            
+            <div id="selectdatetime_example5" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"></div>
+            <button id="selectdatetime_example5btn" class="uk-button uk-button-primary">Get the date / time</button>         
+            
+            <pre><code class="lang-html">
+&lt;div id="selectdatetime_example5" swa="Selectdatetime FROM ../../data/selectdatetime/exampleDatetimes.json"&gt;&lt;/div&gt;
+            </code></pre>
+
+            <pre><code class="lang-javascript">
+let example5Btn = document.querySelector('#selectdatetime_example5btn');
+example5Btn.addEventListener('click', function (evt) {
+    let dtElem = document.querySelector('#selectdatetime_example5');
+    console.log(dtElem.swac_comp.data);
+        
+    // For example static implemented with given name of source and hardcoded dateset id (1)
+    alert('The actual inputted date / time is: ' + dtElem.swac_comp.data['../../data/selectdatetime/exampleDatetimes.json'].getSet(1).datetime);
+});
+            </code></pre>
+            
+            <h3>Example 6: Listening to actual time update</h3>
+            <p>You can listen for a timechange when the component is in reload mode, 
+            by listening to the swac_REQUESTOR.ID_reloaded event.</p>
+            
+            <pre><code class="lang-javascript">
+document.addEventListener('swac_selectdatetime_example4_reloaded', function (evt) {
+    let requestor = evt.detail;
+    console.log('The actual time is: ');
+    console.log(requestor.querySelector('.swac_repeatedForSet .swac_selectdatetime_time').getAttribute('value'));
+});
+        </code></pre>
+            
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+{
+	"importer":"HTTPImporter", 
+	"parser":"OpenWeatherMapParser", 
+	"url":"http://api.openweathermap.org/data/2.5/weather?id=2871039&appid=e73cd8846a9717b9dae144bd44694677", 
+	"server":"http://127.0.0.1:8080/", 
+	"smartdata":"SmartDataEnvironmental", 
+	"storage":"public", 
+	"collection":"minden_weather" 
+}

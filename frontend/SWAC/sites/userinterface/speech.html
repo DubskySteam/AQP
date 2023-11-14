@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - speech component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/userinterface/speech.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+
+            <h3>Example 1: Recognise commands</h3>
+            <p>Detect spoken commands and perform an action. Say "say" to make the program say something or "show" to show something.
+                Also german language is supported. Use the language your browser has as main language.</p>
+            <a href="speech_example1.html" target="_blank">Open example</a>
+
+            <h3>Example 2: React only after keyword</h3>
+            <p>You can define a keyword that must be spoken at the beginning to avoid listening to everything.</p>
+            <a href="speech_example2.html" target="_blank">Open example</a>
+
+            <h3>Example 3: Useing speech with components</h3>
+            <p>Components can be controlled with speech.</p>
+            <a href="speech_example3.html" target="_blank">Open example</a>
+
+            <h3>Example 4: Integrate data sources</h3>
+            <p>Search can integrate data sources, those are defined by the options.</p>
+            <a href="speech_example4.html" target="_blank">Open example</a>
+
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

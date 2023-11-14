@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Events component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/visualisation/events.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+        <div id="explaincomponent" swa="ExplainComponents"></div>
+
+        <h2>Examples</h2>
+
+        <h3>Example 1: Event calendar</h3>
+        Create a browsable calendar listing your events.
+        <pre><code class="lang-html">
+&lt;div id="example1" swa="Events FROM ../data/events/exampleevents.json TEMPLATE calendar"&gt;&lt;/div&gt;
+        </code></pre>
+        
+        <div id="example1" swa="Events FROM ../../data/events/exampleevents.json TEMPLATE calendar"></div>
+
+        <h3>Example 2: Simple event list</h3>
+        Simply list all events in a list. Unlike presenting the data with the Present 
+        component here events are sortet by time and time display is automaticaly 
+        transfered to local time options of the user.
+        <pre><code class="lang-html">
+&lt;div id="example2" swa="Events FROM ../data/events/exampleevents.json TEMPLATE list"&gt;&lt;/div&gt;
+        </code></pre>
+        
+        <div id="example2" swa="Events FROM ../../data/events/exampleevents.json TEMPLATE list"></div>
+
+        <h3>Example 3: Showing a timeline</h3>
+        Create a nice timeline showing the events of the past or upcoming ones.
+        <pre><code class="lang-html">
+&lt;div id="example3" swa="Events FROM ../data/events/exampleevents.json TEMPLATE timeline"&gt;&lt;/div&gt;
+        </code></pre>
+        
+        <div id="example3" swa="Events FROM ../../data/events/exampleevents.json TEMPLATE timeline"></div>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

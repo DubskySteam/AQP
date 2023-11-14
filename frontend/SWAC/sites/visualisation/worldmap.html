@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - worldmap component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/visualisation/worldmap.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            The Worldmap component can visualise data. It supports GLTF, GeoJson, 
+            3DGeoJson, Tilesets and visualisation of any json data that has a 
+            latitude and longitude information in it.
+            
+            <h3>Example 1: Simple map</h3>
+            <a href="worldmap_example1.html" target="_blank">Open example</a>
+
+            <pre><code class="lang-html">
+&lt;div id="worldmap_example1" swa="Worldmap"&gt;&lt;/div&gt;
+        </code></pre>
+            
+            <h3>Example 2: Including data from cesium ion</h3>
+
+            <pre><code class="lang-javascript">
+worldmap_options = {};
+worldmap_options.ionAccessToken = 'your_accesstoken';
+worldmap_options.ionassets = [];
+worldmap_options.ionassets[0] = your_ion_assetnumber;
+        </code></pre>
+
+            <a href="worldmap_example2.html" target="_blank">Open example</a>
+
+            <h3>Example 3: Visualising a geojson area</h3>
+
+            <pre><code class="lang-javascript">
+var worldmap_options = {
+    datasources: [
+        {
+            url: '../data/worldmap/example3/stadtgebiet.geojson',
+            fillColor: '0x67ADDFFF', // Default color of models (white if no setting is given)
+            outlineColor: 'blue', // Default color of models border (black if no setting is given)
+            outlineWidth: 10, // Width of the outline (1 if no setting is given)
+            zoomTo: false
+        },
+        {
+            url: '../data/worldmap/example3/hausumringe.geojson',
+            zoomTo: false
+        }
+    ]
+};
+        </code></pre>
+
+            <a href="worldmap_example3.html" target="_blank">Open example</a>
+
+            <h4>Datasource attributes table</h4>
+            This table lists all possible attributes for datasources and their meaning.
+            <table class="uk-table">
+                <thead>
+                    <tr><th>Attribute</th><th>Possible values</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>url</td><td>URL</td><td>URL where to get the data to display. Can be either a file or a REST interface.</td></tr>
+                    <tr><td>type</td><td>geojson</td><td>Type of the data found unter that url. Can be left, then type is determined on fileending.</td></tr>
+                    <tr><td>fillColor</td><td>color name or hexcode</td><td>Color geometry objects from this datasource filled by.</td></tr>
+                    <tr><td>outlineColor</td><td>color name or hexcode</td><td>Color geometry object should be borderd with.</td></tr>
+                    <tr><td>outlineWidth</td><td>int4</td><td>Width of the geomentry objects border.</td></tr>
+                    <tr><td>extrudeHeight</td><td>int4</td><td>Height the geometry object should be extruded, only if two dimensional geometry.</td></tr>
+                    <tr><td>zoomTo</td><td>true|false</td><td>If true the viewer should zoom to this data, so that it is complete in viewport.</td></tr>
+                    <tr><td>fillColorProperty</td><td>String</td><td>Property from data that should be used as color for the model</td></tr>
+                    <tr><td>outlineColorProperty</td><td>String</td><td>Property from data that should be used as color for the models outline</td></tr>
+                    <tr><td>extrudeHeightProperty</td><td>String</td><td>Property from data that should be used for calculating the height</td></tr>
+                    <tr><td>datacaptionProperty</td><td>String</td><td>Property from data that should be used for model caption</td></tr>
+                    <tr><td>datadescription</td><td>DOMElement</td><td>Element holding a datadescription component instance. When used uses coloring from this component instead of the single values.</td></tr>
+                </tbody>
+            </table>
+            The following table lists all possible attributes for datasources of type json. They are additionaly to the above.
+            <table class="uk-table">
+                <thead>
+                    <tr><th>Attribute</th><th>Possible values</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>latattr</td><td>String</td><td>Name of the attribute that stores the latitude information</td></tr>
+                    <tr><td>lonattr</td><td>String</td><td>Name of the attribute that stores the longitude information</td></tr>
+                    <tr><td>heightattr</td><td>String</td><td>Name of the attribute that stores the height information (null is default, clamps to ground)</td></tr>
+                    <tr><td>datasetOffsetLat</td><td>int4</td><td>Offset to add to the latitude value recived from dataset</td></tr>
+                    <tr><td>datasetOffsetLon</td><td>int4</td><td>Offset to add to the longitude value recived from dataset</td></tr>
+                    <tr><td>datasetOffsetHeight</td><td>int4</td><td>Offset to add to the height value recived from dataset</td></tr>
+                    <tr><td>excludeAttrs</td><td>String[]</td><td>List of attribute names that should not show up in visualistion</td></tr>
+                    <tr><td>displayKind</td><td>rect|cylinder</td><td>How to display data that is only one point. Draw a rect around or a cylinder</td></tr>
+                    <tr><td>displayRadius</td><td>int4</td><td>How large the rect or cylinder should be (in meter)</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Example 4: Visualising complex geojson with useage of the description component</h3>
+
+            <pre><code class="lang-javascript">
+var worldmap_options = {};
+worldmap_options.datasources = [];
+
+window.onload = function (evt) {
+   worldmap_options.datasources[0] = {
+      url: '../data/worldmap/example4/thermischewirkungen.geojson',
+      fillColor: 'yellow', // Default color of models (white if no setting is given)
+      outlineColor: 'blue', // Default color of models border (black if no setting is given)
+      outlineWidth: 10, // Width of the outline (1 if no setting is given)
+      extrudeHeight: 10, // Default height of models
+//        fillColorProperty: 'Coloring property name', // Property from data that should be used as color for the model
+//        outlineColorProperty: 'Border coloring property name', // Property from data that should be used as color for the models outline
+      extrudeHeightProperty: 'PHK_class', // Property from data that should be used for calculating the height
+      datacaptionProperty: 'PHK_text', // Property from data that should be used for model caption
+      datadescription: document.getElementById('worldmap_legend'),
+      zoomTo: false
+   };
+};
+
+// Options defining WHAT is visualised
+worldmap_legend_options = {};
+worldmap_legend_options.visuAttribute = 'PHK_class';
+// Data defining HOW is visualised
+worldmap_legend_data = {};
+worldmap_legend_data.PHK_class = {};
+worldmap_legend_data.PHK_class.values = {};
+worldmap_legend_data.PHK_class.values['1'] = {};
+worldmap_legend_data.PHK_class.values['1'].col = '0xAA00A5FF';
+worldmap_legend_data.PHK_class.values['2'] = {};
+worldmap_legend_data.PHK_class.values['2'].col = '0xAA4763FF';
+worldmap_legend_data.PHK_class.values['3'] = {};
+worldmap_legend_data.PHK_class.values['3'].col = '0xAA8080F0';
+worldmap_legend_data.PHK_class.values['4'] = {};
+worldmap_legend_data.PHK_class.values['4'].col = '0xAA3C14DC';
+worldmap_legend_data.PHK_class.values['5'] = {};
+worldmap_legend_data.PHK_class.values['5'].col = '0xAA0000FF';
+worldmap_legend_data.PHK_class.values['6'] = {};
+worldmap_legend_data.PHK_class.values['6'].col = '0x7700FF00';
+worldmap_legend_data.PHK_class.values['7'] = {};
+worldmap_legend_data.PHK_class.values['7'].col = '0x777CFC00';
+worldmap_legend_data.PHK_class.values['8'] = {};
+worldmap_legend_data.PHK_class.values['8'].col = '0x7790EE90';
+worldmap_legend_data.PHK_class.values['9'] = {};
+worldmap_legend_data.PHK_class.values['9'].col = '0x77228B22';
+worldmap_legend_data.PHK_class.values['10'] = {};
+worldmap_legend_data.PHK_class.values['10'].col = '0x77006400';
+        </code></pre>
+
+            <a href="worldmap_example4.html" target="_blank">Open example</a>
+
+            <h3>Example 5: Useing worldmap and geolocation components together</h3>
+
+            <pre><code class="lang-javascript">
+window.SWAC.reactions.addReaction(function(requestors){
+    let worldmapComp = requestors['worldmap'].swac_comp;
+    requestors['worldmap_geolocate'].swac_comp.options.onLocateFunctions[0] = worldmapComp.onUserLocation.bind(worldmapComp);
+},'worldmap','worldmap_geolocate');
+        </code></pre>
+
+            <a href="worldmap_example5.html" target="_blank">Open example</a>
+
+            <h3>Example 6: Useing worldmap and search components together</h3>
+
+            <pre><code class="lang-javascript">
+window.SWAC.reactions.addReaction(function(requestors){
+    // Get search and worldmap component
+    let searchcomp = requestors['worldmap_search'].swac_comp;
+    let worldmapcomp = requestors['worldmap'].swac_comp;
+    // Register searchsources
+    searchcomp.addSearchsource({
+        type: 'SearchProviderFile',
+        url: '/SWAC/data/worldmap/example6/{expression}.glb'
+    });
+    searchcomp.addSearchsource({
+        type: 'SearchProviderFile',
+        url: '/SWAC/data/worldmap/example6/{expression}.geojson'
+    });
+    searchcomp.addSearchsource({
+        type: 'SearchProviderRest',
+        url: '/GeodataREST/geodataapi/building/ids/search?query={expression}'
+    });
+
+    // Register searchEntryMaker
+    searchcomp.options.searchresultentrymakers[0] = new SearchEntryMakerGeoJson();
+    searchcomp.options.searchresultentrymakers[0].setOnClickEventListener(Worldmap.onClickSearchResult);
+    searchcomp.options.searchresultentrymakers[1] = new SearchEntryMakerGLTF();
+    searchcomp.options.searchresultentrymakers[1].setOnClickEventListener(Worldmap.onClickSearchResult);
+    searchcomp.options.searchresultentrymakers[2] = new SearchEntryMakerHid();
+    searchcomp.options.searchresultentrymakers[2].setOnClickEventListener(Worldmap.onClickSearchResult);
+    searchcomp.options.searchresultentrymakers[2].groundpath = '/SWAC/data/worldmap/example6/{hid}.geojson';
+    searchcomp.options.searchresultentrymakers[2].modelpath = '/SWAC/data/worldmap/example6/{hid}.glb';
+
+    // Register search on worldmap
+    worldmapcomp.options.searchComp = searchcomp;
+},'worldmap','worldmap_search');
+        </code></pre>
+
+            <a href="worldmap_example8.html" target="_blank">Open example</a>
+
+            <h3>Example 7: Useing SmartMonitoring datasource</h3>
+
+            <pre><code class="lang-javascript">
+var worldmap_options = {};
+worldmap_options.datasources = [];
+
+window.onload = function (evt) {
+    worldmap_options.datasources[0] = {
+        url: 'http://localhost:8080/SmartMonitoringBackend/data/getSets?ooid=3&limit=100',
+        datadescription: document.getElementById('worldmap_legend')
+    };
+    worldmap_options.showTimedDataAtOnce = true;
+};
+
+// Options defining WHAT is visualised
+worldmap_legend_options = {};
+worldmap_legend_options.visuAttribute = null;
+
+var worldmap_legend_data = {};
+worldmap_legend_data.temperature = {};
+worldmap_legend_data.temperature.txt_title = 'Temperatur';
+worldmap_legend_data.temperature.txt_desc = 'Lufttemperatur';
+worldmap_legend_data.temperature.col = '0xAA00A5FF';
+worldmap_legend_data.temperature.minValue = -20;
+worldmap_legend_data.temperature.maxValue = 80;
+worldmap_legend_data.humidity = {};
+worldmap_legend_data.humidity.txt_title = 'Luftfeuchtigkeit';
+worldmap_legend_data.humidity.txt_desc = 'Luftfeuchtigkeit';
+worldmap_legend_data.humidity.col = '0xAAFFFFFF';
+worldmap_legend_data.humidity.minValue = 0;
+worldmap_legend_data.humidity.maxValue = 100;
+worldmap_legend_data.pressure = {};
+worldmap_legend_data.pressure.txt_title = 'Luftdruck';
+worldmap_legend_data.pressure.txt_desc = 'Luftdruck';
+worldmap_legend_data.pressure.col = '0x7790EE90';
+worldmap_legend_data.pressure.minValue = 500;
+worldmap_legend_data.pressure.maxValue = 1500;
+     </code></pre>
+
+            <a href="worldmap_example7.html" target="_blank">Open example</a>
+
+            <h3>Example 8: Useing zoomlevels and viewport requests</h3>
+
+            <pre><code class="lang-javascript">
+var worldmap_options = {};
+worldmap_options.model_zoomlevels = [];
+window.onload = function (evt) {
+    worldmap_options.model_zoomlevels[0] = {
+        below: 5000,
+        hidurl: '/GeodataREST/geodataapi/building/ids/listByViewport?northlimit={northlat}&southlimit={southlat}&eastlimit={eastlon}&westlimit={westlon}',
+        modelurl: '/SWAC/data/worldmap/example8/{hid}.geojson',
+        fillColor: 'yellow', // Default color of models (white if no setting is given)
+        outlineColor: 'blue', // Default color of models border (black if no setting is given)
+        outlineWidth: 10, // Width of the outline (10 if no setting is given)
+        extrudeHeight: 10, // Default height of models
+//        fillColorProperty: 'Coloring property name', // Property from data that should be used as color for the model
+//        outlineColorProperty: 'Border coloring property name', // Property from data that should be used as color for the models outline
+        extrudeHeightProperty: 'pv_wall', // Property from data that should be used for calculating the height
+        datacaptionProperty: 'pv_wall', // Property from data that should be used for model caption
+        datadescription: document.getElementById('worldmap_legend')
+    };
+    worldmap_options.model_zoomlevels[1] = {
+         below: 400,
+         hidurl: '/GeodataREST/geodataapi/building/ids/listByViewport?northlimit={northlat}&southlimit={southlat}&eastlimit={eastlon}&westlimit={westlon}',
+         modelurl: '/SWAC/data/worldmap/example8/{hid}.glb',
+         datadescription: document.getElementById('worldmap_legend')
+    };
+};
+
+// Options defining WHAT is visualised
+worldmap_legend_options = {};
+worldmap_legend_options.visuAttribute = 'pv_wall';
+worldmap_legend_data = {};
+worldmap_legend_data.pv_wall = {};
+worldmap_legend_data.pv_wall.txt_title = 'Wand-Photovoltaik';
+worldmap_legend_data.pv_wall.txt_desc = 'Die Waende sind fuer Photovoltaik {voc}.';
+worldmap_legend_data.pv_wall.txt_uknw = 'Es ist nicht bekannt, ob die Wände für Photovoltaik geeignet sind.';
+worldmap_legend_data.pv_wall.values = {};
+worldmap_legend_data.pv_wall.values['2'] = {};
+worldmap_legend_data.pv_wall.values['2'].txt = 'gut geeignet';
+worldmap_legend_data.pv_wall.values['2'].col = 'green';
+worldmap_legend_data.pv_wall.values['1'] = {};
+worldmap_legend_data.pv_wall.values['1'].txt = 'geeignet';
+worldmap_legend_data.pv_wall.values['1'].col = 'yellow';
+worldmap_legend_data.pv_wall.values['7'] = {};
+worldmap_legend_data.pv_wall.values['7'].txt = 'bedingt geeignet';
+worldmap_legend_data.pv_wall.values['7'].col = 'orange';
+worldmap_legend_data.pv_wall.values['0'] = {};
+worldmap_legend_data.pv_wall.values['0'].txt = 'ungeeignet';
+worldmap_legend_data.pv_wall.values['0'].col = 'red';
+worldmap_legend_data.pv_roof = {};
+worldmap_legend_data.pv_roof.txt_title = 'Dach-Photovoltaik';
+worldmap_legend_data.pv_roof.txt_desc = 'Das Dach ist fuer Photovoltaik {voc}.';
+worldmap_legend_data.pv_roof.values = {};
+worldmap_legend_data.pv_roof.values['2'] = {};
+worldmap_legend_data.pv_roof.values['2'].txt = 'gut geeignet';
+worldmap_legend_data.pv_roof.values['2'].col = 'green';
+worldmap_legend_data.pv_roof.values['1'] = {};
+worldmap_legend_data.pv_roof.values['1'].txt = 'geeignet';
+worldmap_legend_data.pv_roof.values['1'].col = 'yellow';
+worldmap_legend_data.pv_roof.values['7'] = {};
+worldmap_legend_data.pv_roof.values['7'].txt = 'bedingt geeignet';
+worldmap_legend_data.pv_roof.values['7'].col = 'orange';
+worldmap_legend_data.pv_roof.values['0'] = {};
+worldmap_legend_data.pv_roof.values['0'].txt = 'ungeeignet';
+worldmap_legend_data.pv_roof.values['0'].col = 'red';
+worldmap_legend_data.st_roof = {};
+worldmap_legend_data.st_roof.txt_title = 'Dach-Solarthermie';
+worldmap_legend_data.st_roof.txt_desc = 'Das Dach ist fuer Solarthermie {voc}.';
+worldmap_legend_data.st_roof.values = {};
+worldmap_legend_data.st_roof.values['2'] = {};
+worldmap_legend_data.st_roof.values['2'].txt = 'gut geeignet';
+worldmap_legend_data.st_roof.values['2'].col = 'green';
+worldmap_legend_data.st_roof.values['1'] = {};
+worldmap_legend_data.st_roof.values['1'].txt = 'geeignet';
+worldmap_legend_data.st_roof.values['1'].col = 'yellow';
+worldmap_legend_data.st_roof.values['7'] = {};
+worldmap_legend_data.st_roof.values['7'].txt = 'bedingt geeignet';
+worldmap_legend_data.st_roof.values['7'].col = 'orange';
+worldmap_legend_data.st_roof.values['0'] = {};
+worldmap_legend_data.st_roof.values['0'].txt = 'ungeeignet';
+worldmap_legend_data.st_roof.values['0'].col = 'red';
+worldmap_legend_data.st_wall = {};
+worldmap_legend_data.st_wall.txt_title = 'Wand-Solarthermie';
+worldmap_legend_data.st_wall.txt_desc = 'Die Waende sind fuer Solarthermie {voc}.';
+worldmap_legend_data.st_wall.values = {};
+worldmap_legend_data.st_wall.values['2'] = {};
+worldmap_legend_data.st_wall.values['2'].txt = 'gut geeignet';
+worldmap_legend_data.st_wall.values['2'].col = 'green';
+worldmap_legend_data.st_wall.values['1'] = {};
+worldmap_legend_data.st_wall.values['1'].txt = 'geeignet';
+worldmap_legend_data.st_wall.values['1'].col = 'yellow';
+worldmap_legend_data.st_wall.values['7'] = {};
+worldmap_legend_data.st_wall.values['7'].txt = 'bedingt geeignet';
+worldmap_legend_data.st_wall.values['7'].col = 'orange';
+worldmap_legend_data.st_wall.values['0'] = {};
+worldmap_legend_data.st_wall.values['0'].txt = 'ungeeignet';
+worldmap_legend_data.st_wall.values['0'].col = 'red';
+worldmap_legend_data.gd_roof = {};
+worldmap_legend_data.gd_roof.txt_title = 'Gr&uuml;ndachnutzung';
+worldmap_legend_data.gd_roof.txt_desc = 'Das Dach ist fuer die Gruendachnutzung {voc}.';
+worldmap_legend_data.gd_roof.values = {};
+worldmap_legend_data.gd_roof.values['2'] = {};
+worldmap_legend_data.gd_roof.values['2'].txt = 'gut geeignet';
+worldmap_legend_data.gd_roof.values['2'].col = 'green';
+worldmap_legend_data.gd_roof.values['1'] = {};
+worldmap_legend_data.gd_roof.values['1'].txt = 'geeignet';
+worldmap_legend_data.gd_roof.values['1'].col = 'yellow';
+worldmap_legend_data.gd_roof.values['7'] = {};
+worldmap_legend_data.gd_roof.values['7'].txt = 'bedingt geeignet';
+worldmap_legend_data.gd_roof.values['7'].col = 'orange';
+worldmap_legend_data.gd_roof.values['0'] = {};
+worldmap_legend_data.gd_roof.values['0'].txt = 'ungeeignet';
+worldmap_legend_data.gd_roof.values['0'].col = 'red';
+    </code></pre>        
+
+            <a href="worldmap_example8.html" target="_blank">Open example</a>
+
+            <h3>Example 9: Useing search for addresses</h3>
+
+            <pre><code class="lang-javascript">
+window.SWAC.reactions.addReaction(function(requestors){
+    // Get search and worldmap component
+    let searchcomp = requestors['worldmap_search'].swac_comp;
+    let worldmapcomp = requestors['worldmap'].swac_comp;
+    // Register searchsources
+    searchcomp.addSearchsource({
+        type: 'SearchProviderGeoREST',
+        url: 'https://nominatim.openstreetmap.org/search?q={expression}&format=geojson&addressdetails=1',
+        geolocationComp: requestors['worldmap_geolocate'].swac_comp
+    });
+
+    // Register searchEntryMaker
+    searchcomp.options.searchresultentrymakers[0] = new SearchEntryMakerGeoJson();
+    searchcomp.options.searchresultentrymakers[0].setOnClickEventListener(Worldmap.onClickSearchResult);
+
+    // Register search on worldmap
+    worldmapcomp.options.searchComp = searchcomp;
+},'worldmap','worldmap_search','worldmap_geolocate');
+        </code></pre>
+
+            <a href="worldmap_example9.html" target="_blank">Open example</a>
+
+            <h3>Example 10: Useing modelmenue plugin</h3>
+
+            <pre><code class="lang-javascript">
+var worldmap_options = {};
+worldmap_options.plugins = new Map();
+worldmap_options.plugins.set('modelmenue', {
+    id: 'modelmenue',
+    active: true
+});
+window.onload = function (evt) {
+    worldmap_options.datasources = [];
+    worldmap_options.datasources[0] = {
+        url: '../../data/worldmap/example6/house.glb',
+        fillColor: '0x67ADDFFF', // Default color of models (white if no setting is given)
+        outlineColor: 'blue', // Default color of models border (black if no setting is given)
+        outlineWidth: 10, // Width of the outline (1 if no setting is given)
+        extrudeHeight: 0.1,
+        datadescription: document.getElementById('worldmap_legend'),
+        zoomTo: true
+    };
+};
+
+// Options defining WHAT is visualised
+worldmap_legend_options = {};
+worldmap_legend_options.visuAttribute = 'pv_wall';
+worldmap_legend_data = {};
+worldmap_legend_data.pv_wall = {};
+worldmap_legend_data.pv_wall.txt_title = 'Wand-Photovoltaik';
+worldmap_legend_data.pv_wall.txt_desc = 'Die Waende sind fuer Photovoltaik {voc}.';
+worldmap_legend_data.pv_wall.txt_uknw = 'Es ist nicht bekannt, ob die Wände für Photovoltaik geeignet sind.';
+worldmap_legend_data.pv_wall.values = {};
+worldmap_legend_data.pv_wall.values['2'] = {};
+worldmap_legend_data.pv_wall.values['2'].txt = 'gut geeignet';
+worldmap_legend_data.pv_wall.values['2'].col = 'green';
+worldmap_legend_data.pv_wall.values['1'] = {};
+worldmap_legend_data.pv_wall.values['1'].txt = 'geeignet';
+worldmap_legend_data.pv_wall.values['1'].col = 'yellow';
+worldmap_legend_data.pv_wall.values['7'] = {};
+worldmap_legend_data.pv_wall.values['7'].txt = 'bedingt geeignet';
+worldmap_legend_data.pv_wall.values['7'].col = 'orange';
+worldmap_legend_data.pv_wall.values['0'] = {};
+worldmap_legend_data.pv_wall.values['0'].txt = 'ungeeignet';
+worldmap_legend_data.pv_wall.values['0'].col = 'red';
+     </code></pre>
+
+            <a href="worldmap_example10.html" target="_blank">Open example</a>
+
+            <h3>Example 11: Useing 3D geojson</h3>
+
+            <pre><code class="lang-javascript">
+ var worldmap_options = {};
+ worldmap_options.plugins = new Map();
+ worldmap_options.plugins.set('modelmenue', {
+    id: 'modelmenue',
+    active: true
+ });
+ window.onload = function (evt) {
+    worldmap_options.datasources[0] = {
+        url: '../../data/worldmap/example11/3dhouse.geojson',
+        fillColor: '0x67ADDFFF', // Default color of models (white if no setting is given)
+        outlineColor: 'black', // Default color of models border (black if no setting is given)
+        outlineWidth: 1, // Width of the outline (1 if no setting is given)
+        zoomTo: false,
+        datacaptionProperty: 'globalc', // Property from data that should be used for model caption
+        datadescription: document.getElementById('worldmap_legend')
+     };
+ };
+
+// Options defining WHAT is visualised
+worldmap_legend_options = {};
+worldmap_legend_options.visuAttribute = 'globalc';
+// Data defining HOW is visualised
+worldmap_legend_data = {};
+worldmap_legend_data.globalc = {};
+worldmap_legend_data.globalc.txt_title = 'Einstrahlungsklassen';
+worldmap_legend_data.globalc.txt_desc = 'Flächen mit solarer Einstrahlung';
+worldmap_legend_data.globalc.txt_uknw = 'Keine Berechnung vorhanden';
+worldmap_legend_data.globalc.values = {};
+worldmap_legend_data.globalc.values['100'] = {};
+worldmap_legend_data.globalc.values['100'].col = '0xFF00008B';
+worldmap_legend_data.globalc.values['100'].txt = 'Einstrahlungsklasse: 100';
+worldmap_legend_data.globalc.values['100'].desc = '100';
+worldmap_legend_data.globalc.values['200'] = {};
+worldmap_legend_data.globalc.values['200'].col = '0xFF0000FF';
+worldmap_legend_data.globalc.values['200'].txt = 'Einstrahlungsklasse: 200 ';
+worldmap_legend_data.globalc.values['200'].desc = '200';
+worldmap_legend_data.globalc.values['300'] = {};
+worldmap_legend_data.globalc.values['300'].col = '0xFF0045FF';
+worldmap_legend_data.globalc.values['300'].txt = 'Einstrahlungsklasse: 300';
+worldmap_legend_data.globalc.values['300'].desc = '300';
+worldmap_legend_data.globalc.values['400'] = {};
+worldmap_legend_data.globalc.values['400'].col = '0xFF008CFF';
+worldmap_legend_data.globalc.values['400'].txt = 'Einstrahlungsklasse: 400';
+worldmap_legend_data.globalc.values['400'].desc = '400';
+worldmap_legend_data.globalc.values['500'] = {};
+worldmap_legend_data.globalc.values['500'].col = '0xFF00FFFF';
+worldmap_legend_data.globalc.values['500'].txt = 'Einstrahlungsklasse: 500';
+worldmap_legend_data.globalc.values['500'].desc = '500';
+worldmap_legend_data.globalc.values['600'] = {};
+worldmap_legend_data.globalc.values['600'].col = '0xFF8CE6F0';
+worldmap_legend_data.globalc.values['600'].txt = 'Einstrahlungsklasse; 600';
+worldmap_legend_data.globalc.values['600'].desc = '600';
+worldmap_legend_data.globalc.values['700'] = {};
+worldmap_legend_data.globalc.values['700'].col = '0xFF90EE90';
+worldmap_legend_data.globalc.values['700'].txt = 'Einstrahlungsklasse: 700';
+worldmap_legend_data.globalc.values['700'].desc = '700';
+worldmap_legend_data.globalc.values['800'] = {};
+worldmap_legend_data.globalc.values['800'].col = '0xFF7CFC00';
+worldmap_legend_data.globalc.values['800'].txt = 'Einstrahlungsklasse: 800';
+worldmap_legend_data.globalc.values['800'].desc = '800';
+worldmap_legend_data.globalc.values['900'] = {};
+worldmap_legend_data.globalc.values['900'].col = '0xFF00FF00';
+worldmap_legend_data.globalc.values['900'].txt = 'Einstrahlungsklasse: 900';
+worldmap_legend_data.globalc.values['900'].desc = '900';
+worldmap_legend_data.globalc.values['1000'] = {};
+worldmap_legend_data.globalc.values['1000'].col = '0xFF228B22';
+worldmap_legend_data.globalc.values['1000'].txt = 'Einstrahlungsklasse: 1000';
+worldmap_legend_data.globalc.values['1000'].desc = '1000';
+worldmap_legend_data.globalc.values['1100'] = {};
+worldmap_legend_data.globalc.values['1100'].col = '0xFF006400';
+worldmap_legend_data.globalc.values['1100'].txt = 'Einstrahlungsklasse: 1100';
+worldmap_legend_data.globalc.values['1100'].desc = '1100';
+      </code></pre>
+
+            <a href="worldmap_example11.html" target="_blank">Open example</a>
+
+            <h3>Example 13: Simple map with sattelite photo useage</h3>
+
+            <pre><code class="lang-javascript">
+ var worldmap_options = {};
+ worldmap_options.ionAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMzJiZjEzOS05ZWI0LTRhMzEtOGQyZC05ZGQzYzIwY2EzMDIiLCJpZCI6MTUxNSwiaWF0IjoxNTI4ODA0Mzg1fQ.xHuoWaJsRIuvXJ7_-bxVoGVxDgilCddv0jz8ajltRNI';
+ worldmap_options.ionassets = [];
+ worldmap_options.ionassets[0] = 19199;
+ worldmap_options.enablePhotomap = true;
+        </code></pre>
+            <a href="worldmap_example13.html" target="_blank">Open example</a>
+
+            <h3>Example 14: Visualising point data expanded to areas</h3>
+
+            Visualising datasets that contain position information in its columns.
+
+            <pre><code class="lang-javascript">
+var worldmap_options = {
+    showTimedDataAtOnce: true
+};
+worldmap_options.datasources = [];
+
+window.onload = function (evt) {
+    worldmap_options.datasources[0] = {
+        url: '../../data/worldmap/example14/co2timed.json',
+        latattr: 'latitude', // Name of the attribute that stores the latitude information
+        lonattr: 'longitude', // Name of the attribute that stores the longitude information
+        heightattr: null, // Name of the attribute that stores the height information (null is default, clamps to ground)
+        datasetOffsetLat: 0, // This is the default value
+        datasetOffsetLon: 0, // This is the default value
+        datasetOffsetHeight: 1000,
+        excludeAttrs: ['id'], // This is the default value
+        displayKind: 'rect',
+        displayRadius: 2500,
+        datadescription: document.getElementById('worldmap_legend'),
+        zoomTo: true
+    };
+};
+
+worldmap_legend_data = {};
+worldmap_legend_data.sourcename = "ECCAD 2000 - 2019";
+worldmap_legend_data.sourcelink = "https://eccad3.sedoo.fr/";
+worldmap_legend_data.co2 = {};
+worldmap_legend_data.co2.txt_title = 'Anthropogene CO2 Emissionen';
+worldmap_legend_data.co2.txt_desc = 'Höhe der Anthropogenen CO2 Emissionen';
+worldmap_legend_data.co2.txt_uknw = 'unbekannt';
+worldmap_legend_data.co2.col = '0xAA00A5FF';
+worldmap_legend_data.co2.scale = 1000000000000;
+worldmap_legend_data.co2.calcmode = '<';
+worldmap_legend_data.co2.values = {};
+worldmap_legend_data.co2.values['1e-11'] = {};
+worldmap_legend_data.co2.values['1e-11'].col = '0x77930508';
+worldmap_legend_data.co2.values['1e-11'].txt = 'Sehr niedrige CO2 Emissionen';
+worldmap_legend_data.co2.values['1e-10'] = {};
+worldmap_legend_data.co2.values['1e-10'].col = '0x77fff836';
+worldmap_legend_data.co2.values['1e-10'].txt = 'Niedrige CO2 Emissionen';
+worldmap_legend_data.co2.values['1e-9'] = {};
+worldmap_legend_data.co2.values['1e-9'].col = '0x7742ff9b';
+worldmap_legend_data.co2.values['1e-9'].txt = 'Mittlere CO2 Emissionen';
+worldmap_legend_data.co2.values['1e-8'] = {};
+worldmap_legend_data.co2.values['1e-8'].col = '0x7700cafd';
+worldmap_legend_data.co2.values['1e-8'].txt = 'Hohe CO2 Emissionen';
+worldmap_legend_data.co2.values['1e-7'] = {};
+worldmap_legend_data.co2.values['1e-7'].col = '0x7700008c';
+worldmap_legend_data.co2.values['1e-7'].txt = 'Sehr hohe CO2 Emissionen';
+        </code></pre>
+            <a href="worldmap_example14.html" target="_blank">Open example</a>
+
+            <h3>Example 15: Visualising point data with more than one dataset per position</h3>
+
+            When datasets with positioned data contains more than one dataset per 
+            position the data will be automatically stacked.
+            <br>Code is the same as in previous example, but the dataset contains
+            more than one dataset per position.
+
+            <br><a href="worldmap_example15.html" target="_blank">Open example</a>
+
+            <h3>Example 16: Visualising massive point data as density map</h3>
+
+            This example visualises round about 68.000 datasets with anthropogenic 
+            co2 emission values, from a period of 12 month over a bounding rect 
+            including germany. The coloring options give a impression of value 
+            change over time.
+            <br>But be aware this causes havy browser load.
+
+            <br><a href="worldmap_example16.html" target="_blank">Open example</a>
+
+            <h3>Example 17: Visualising timed data with timeline</h3>
+
+            Visualising datasets that have time information with use of timeline.
+
+            <pre><code class="lang-javascript">
+window.onload = function (evt) {
+    worldmap_options.datasources[0] = {
+        url: '../../data/worldmap/example15/co2timed.json',
+        showTimedDataAtOnce: false,
+        latattr: 'latitude',// Name of the attribute that stores the latitude information
+        lonattr: 'longitude', // Name of the attribute that stores the longitude information
+        heightattr: null, // Name of the attribute that stores the height information (null is default, clamps to ground)
+        datasetOffsetLat: 0, // This is the default value
+        datasetOffsetLon: 0, // This is the default value
+        datasetOffsetHeight: 1000,
+        excludeAttrs: ['id'], // This is the default value
+        displayKind: 'rect',
+        displayRadius: 2500,
+//        fillColor: 'yellow', // Default color of models (white if no setting is given)
+//        outlineColor: 'blue', // Default color of models border (black if no setting is given)
+//        outlineWidth: 10, // Width of the outline (1 if no setting is given)
+//        extrudeHeight: 10, // Default height of models
+//        fillColorProperty: 'Coloring property name', // Property from data that should be used as color for the model
+//        outlineColorProperty: 'Border coloring property name', // Property from data that should be used as color for the models outline
+//        extrudeHeightProperty: 'PHK_class', // Property from data that should be used for calculating the height
+//        datacaptionProperty: 'ts', // Property from data that should be used for model caption
+        datadescription: document.getElementById('worldmap_legend')
+    };
+};
+        </code></pre>
+            <a href="worldmap_example17.html" target="_blank">Open example</a>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

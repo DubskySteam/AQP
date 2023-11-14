@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - screenboard component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/input/screenboard.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h3>Example 1: Standard screenboard</h3>
+
+            <pre><code class="lang-html">
+&lt;div swa="Screenboard"&gt;&lt;/div&gt;
+        </code></pre>
+            <a href="screenboard_example1.html" target="_blank">Open example</a>
+
+            <h3>Example 2: Screenboard only for selected intput fields</h3>
+
+            <pre><code class="lang-html">
+&lt;div swa="Screenboard"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var screenboard_options = {
+    for: ['[type="text"]']
+};
+        </code></pre>
+            <a href="screenboard_example2.html" target="_blank">Open example</a>
+
+            <h3>Example 3: Special button functions</h3>
+
+            You can give all buttons special functions to be executed on tipp.
+
+            <pre><code class="lang-html">
+&lt;div swa="Screenboard"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var screenboard_options = {};
+screenboard_options.specialButtons = [];
+screenboard_options.specialButtons[0] = {
+    key: 'icon: sign-in',
+    func: function(evt) {
+        alert('Special button pressed = custom function executed!');
+    }
+};
+        </code></pre>
+            <a href="screenboard_example3.html" target="_blank">Open example</a>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

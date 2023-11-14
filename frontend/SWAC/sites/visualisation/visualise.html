@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - visualise component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/visualisation/visualise.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Create a thermometer for a specific value in each dataset</h3>
+            <p>This visualisation visualises only one value from all datasets.
+                <br>It uses the Datadescription component for formatting scales.</p>        
+
+            <div id="example_thermometer" swa="Visualise FROM visualisation/visualise/weatherdata.json"></div>
+            <div id="visualise_legend" swa="Datadescription FROM weatherdata_legend"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="example_thermometer" swa="Visualise FROM visualisation/visualise/weatherdata.json"&gt;&lt;/div&gt;
+&lt;div id="visualise_legend" swa="Datadescription FROM weatherdata_legend"&gt;&lt;/div&gt;
+                    </code></pre>
+            <pre><code class="lang-javascript">
+// Define what to show
+window['example_thermometer_options'] = {
+    visus: [
+        {
+            attr: 'temp',                           // Name of the attribute to visualise
+            type: 'Thermometer',                    // Visualisation type Thermometer
+            datadescription: '#visualise_legend'    // CSS Selector where to find the Datadescription
+        }
+    ]
+};
+            
+// Data defining HOW is visualised
+window['weatherdata_legend'] = {
+    temp: {
+        txt_title: 'Temperature',
+        txt_desc: 'The air temperature',
+        txt_uknw: 'Unkown value',
+        minValue: -10,
+        maxValue: 40,
+        calcmode: '<',
+        values: {
+            '0': {
+                txt: 'ice cold',
+                col: 'blue'
+            },
+            '10': {
+                txt: 'cold',
+                col: 'green'
+            },
+            '20': {
+                txt: 'middle',
+                col: 'yellow'
+            },
+            '30': {
+                txt: 'hot',
+                col: 'orange'
+            },
+            '40': {
+                txt: 'extreme hot',
+                col: 'red'
+            }
+        }
+    }
+};
+                    </code></pre>
+
+            <h3>Example 2: Useing hygrometer</h3>
+            <p>This example shows the useage of the hygrometer with other data.</p>
+            <div id="example_hygrometer" swa="Visualise FROM exampledata_list"></div>
+            <div id="example_hygrometer_legend" swa="Datadescription FROM hygrometer_legend"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="example_hygrometer" swa="Visualise FROM exampledata_list"&gt;&lt;/div&gt;
+&lt;div id="example_hygrometer_legend" swa="Datadescription FROM hygrometer_legend"&gt;&lt;/div&gt;
+</code></pre>
+            
+            <pre><code class="lang-javascript">
+window['example_hygrometer_options'] = {
+    visus: [{
+            attr: 'doubleval',
+            type: 'Hygrometer',
+            datadescription: '#example_hygrometer_legend'
+        }]
+};
+
+window['hygrometer_legend'] = {
+    doubleval: {
+        txt_title: 'A double value',
+        txt_desc: 'Some value as double',
+        txt_uknw: 'Unkown value',
+        minValue: -10,
+        maxValue: 40,
+        calcmode: '<',
+        values: {
+            '15': {
+                txt: 'ein niedriger Wert',
+                col: 'green'
+            },
+            '25': {
+                txt: 'ein mittelniedriger Wert',
+                col: 'blue'
+            },
+            '35': {
+                txt: 'ein mittelhoher Wert',
+                col: 'yellow'
+            },
+            '45': {
+                txt: 'ein hoher Wert',
+                col: 'red'
+            }
+        }
+    }
+};
+                    </code></pre>
+
+            <h3>Example 3: Createing icons depending on one or more attributes</h3>
+            <p>With easy understandable definitions it's possible to choose icons
+                for your data on single attribute or more than one.
+                <br>Supported compare methods are &lt;,&gt;,=, &lt;=, &gt;= </p>
+
+            <div id="example_weathermeter" swa="Visualise FROM visualisation/visualise/weatherdata.json"></div>
+            <button class="example_weathermeter_clear uk-button">Clear datasets</button>
+            <button class="example_weathermeter_add uk-button">Add a dataset</button>
+
+            <pre><code class="lang-javascript">
+            var example_weathermeter_options = {
+                visus: [{
+                        attr: '*',
+                        type: 'Iconized',
+                        icons: [
+                            {
+                                path: '/SWAC/swac/components/Icon/imgs/weather/cloudy-light.png',
+                                conditions: [
+                                    'clouds > 50'
+                                ]
+                            },
+                            {
+                                path: '/SWAC/swac/components/Icon/imgs/weather/rain-heavy.png',
+                                conditions: [
+                                    'clouds > 50',
+                                    'rain > 50'
+                                ]
+                            },
+                            {
+                                path: '/SWAC/swac/components/Icon/imgs/weather/snow-storm.png',
+                                conditions: [
+                                    'wind > 75',
+                                    'wind < 125',
+                                    'snow >= 50'
+                                ]
+                            },
+                            {
+                                path: '/SWAC/swac/components/Icon/imgs/weather/sun.png'
+                            }
+                        ]
+                    }]
+            };
+            
+            var weatherdata = [];
+            weatherdata[0] = {
+                id: 1,
+                clouds: 0,
+                wind: 0,
+                rain: 0,
+                ts: '29.10.2019T7:46:59'
+            };
+            weatherdata[1] = {
+                id: 2,
+                clouds: 100,
+                wind: 0,
+                rain: 100,
+                ts: '29.10.2019T7:47:59'
+            };
+            weatherdata[2] = {
+                id: 3,
+                clouds: 100,
+                wind: 0,
+                rain: 0,
+                ts: '29.10.2019T7:48:59'
+            };
+                    </code></pre>          
+
+<h3>Example 4: Useing visualise as subcomponent</h3>
+            <p>You can combine visualise with present to create visualisations for differend datasets.
+                <br>Note that every subcomponent needs a unique id.</p>            
+
+            <div id="example4_repeatvisualise" swa="Present FROM visualisation/visualise/visualsets.json">
+                <div class="swac_repeatForSet">
+                    <div>
+                        <b>Clouds:</b><span>{clouds}</span>
+                        <br><b>Rain:</b><span>{rain}</span>
+                    </div>
+                    <div id="visu_{id}" swa="Visualise OPTIONS example_weathermeter_options"></div>
+                </div>
+            </div>
+            <button class="example4_addset uk-button uk-button-primary">Add set</button>
+
+            <pre><code class="lang-html">
+&lt;div id="example4_repeatvisualise" swa="Present FROM ../../data/visualise/visualsets.json"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        &lt;div&gt;
+            &lt;b&gt;Clouds:&lt;/b&gt;&lt;span&gt;{clouds}&lt;/span&gt;
+            &lt;br&gt;&lt;b&gt;Rain:&lt;/b&gt;&lt;span&gt;{rain}&lt;/span&gt;
+        &lt;/div>
+        &lt;!-- Do not use a FROM here to use only data from repeatedSet --&gt;
+        &lt;div id="visu_{id}" swa="Visualise OPTIONS example_weathermeter_options">&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+            <h3>Example 5: CircleProgress visualisation</h3>
+            <p>Visualise data as a circle progress. Values should be given within range of 0 - 100.</p>
+
+            <div id="visualise_example5" swa="Visualise FROM visualisation/visualise/weatherdata.json"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="visualise_example5" swa="Visualise FROM visualisation/visualise/weatherdata.json"&gt;&lt;/div&gt;                
+</code></pre>
+            
+            <pre><code class="lang-javascript">
+window['visualise_example5_options'] = {
+    visus: [{
+            attr: 'wind',
+            type: 'CircleProgress',
+            datadescription: '#visualise_legend'
+        }]
+};
+</code></pre>
+            
+            <h3>Example 6: StatusDisplay visualisation</h3>
+            <p>Visualise data as a circle progress. Values should be given within range of 0 - 100.</p>
+
+            <div id="visualise_example6" swa="Visualise FROM visualisation/visualise/statusdata.json"></div>
+            <div id="visualise_example6_legend" swa="Datadescription FROM statusdata_legend"></div>
+            
+            <pre><code class="lang-html">
+&lt;div id="visualise_example5" swa="Visualise FROM visualisation/visualise/statusdata.json"&gt;&lt;/div&gt;                
+</code></pre>
+            
+            <pre><code class="lang-javascript">
+window['visualise_example6_options'] = {
+    visus: [{
+            attr: 'states',
+            type: 'StatusDisplay',
+            datadescription: '#visualise_example6_legend'
+        }]
+};
+</code></pre>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

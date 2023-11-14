@@ -1,0 +1,28 @@
+{
+    "records": [
+        {
+            "measuredate": "2022-12-06T09:48:23",
+            "valid_until": "2022-12-06T09:48:23",
+            "pm25": 48,
+            "latitude": "52.2965",
+            "pm10": 5,
+            "temperature": 16.1,
+            "valid_from": "2022-12-06T09:48:17",
+            "oo_id": 2,
+            "id": 8,
+            "longitude": "8.89"
+        },
+        {
+            "measuredate": "2022-12-06T09:48:23",
+            "valid_until": "2022-12-06T09:48:23",
+            "pm25": 48,
+            "latitude": "52.2965",
+            "pm10": 5,
+            "temperature": 16.1,
+            "valid_from": "2022-12-06T09:48:17",
+            "oo_id": 2,
+            "id": 9,
+            "longitude": "8.9054"
+        }
+    ]
+}

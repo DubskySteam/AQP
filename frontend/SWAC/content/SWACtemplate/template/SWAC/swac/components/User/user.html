@@ -1,0 +1,30 @@
+<div id="swac_user_loginform" class="uk-card uk-card-body uk-card-primary swac_dontdisplay">
+    <h3 class="uk-card-title">##User.login##</h3>
+    <div class="message-placeholder">##User.enterlogindata##</div>
+    <form>
+        <input id="swac_user_form_username" type="text" placeholder="##User.username##" class="uk-input" required autocomplete="username">
+        <input id="swac_user_form_password" type="password" placeholder="##User.userpwd##" class="uk-input" required autocomplete="current-password">
+        <button class="swac_user_loginButtons uk-button uk-button-default" type="button">##User.login##</button>
+    </form>
+    <a href="#" class="swac_user_register">##User.registerhere##</a>
+</div>
+<div id="swac_user_logining" class="uk-card uk-card-body uk-card-primary swac_dontdisplay">
+    <div class="uk-align-center" uk-spinner="ratio: 5"></div>##User.loginprogress##
+</div>
+<div id="swac_user_loginmodal" uk-modal="bg-close: false; esc-close: false" class="swac_dontdisplay" style="background-color: #2196F3">
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">##User.login##</h2>
+        <div class="message-placeholder">##User.enterlogindata##</div>
+        <form>
+            <input id="swac_user_modal_username" type="text" placeholder="Benutzername" autocomplete="username" class="uk-input" required>
+            <input id="swac_user_modal_password" type="password" placeholder="Passwort" autocomplete="current-password" class="uk-input" required>
+            <button class="swac_user_loginButtons uk-button uk-button-default" type="button">##User.login##</button>
+        </form>
+    </div>
+</div>
+<button id="swac_user_userarea" class="uk-button uk-button-default swac_dontdisplay" type="button"><span uk-icon="icon: user"></span><span class="user_username">{username}</span></button>
+<div class="swac_dontdisplay" uk-dropdown>
+    <ul class="uk-nav uk-dropdown-nav">
+        <li class="swac_user_logout">##User.logout##</li>
+    </ul>
+</div>

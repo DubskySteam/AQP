@@ -1,0 +1,30 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Cat's eye",
+            "description": "A rect around the cat's eye",
+            "createdate": "2020-02-29",
+            "tagtype": "ref://../data/mediaeditor/tagtypes?id=1",
+            "media": "ref://../data/media/mediafiles.json?id=1",
+            "polygons": [{
+                    "vertices": [{
+                            "x": 2689,
+                            "y": 1849
+                        }, {
+                            "x": 3210,
+                            "y": 1832
+                        }, {
+                            "x": 3193,
+                            "y": 1538
+                        }, {
+                            "x": 2697,
+                            "y": 1538
+                        }, {
+                            "x": 2689,
+                            "y": 1849
+                        }]
+                }]
+        }
+    ]
+}

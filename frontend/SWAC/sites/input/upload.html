@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - upload component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/input/upload.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+
+            <h3>Example 1: Create an upload area</h3>
+            <p>Create a file upload dialog with support for drag and drop, file dialog and offline functionalit.</p>
+            <pre><code class="lang-html">
+&lt;div id="upload_example1" swa="Upload"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+window['upload_example1_options'] = {
+    uploadTargetURL: '../data/upload/exampletarget.json' // This is the url where files should be send to
+};
+        </code></pre>
+            <div id="upload_example1" swa="Upload"></div>
+
+            <h3>Example 2: Create upload area and use input fields to send data with the upload</h3>
+            <p>You can add data to the file upload by specifying other components in 
+                the upload components options.</p>
+            <div class="uk-margin">
+                <input id="example2_name" name="fullname" class="uk-input" type="text" required placeholder="Name">
+            </div>
+            <div class="uk-margin">
+                <input id="example2_email" name="email" class="uk-input" type="email" required placeholder="email">
+            </div>
+            <div class="uk-margin">
+                <textarea id="example2_message" name="message" class="uk-textarea" rows="5" placeholder="Message"></textarea>
+            </div>
+            <div id="example2_select" swa="Select FROM ../../data/upload/selectalongdata.json">
+                <select class="uk-select" name="{requestor.id}">
+                    <option value="">Select.noselection</option>
+                    <option value="{value}" name="{name}" class="swac_repeatForSet">{name}</option>
+                </select>
+            </div>
+            <div id="upload_example2" swa="Upload"></div>
+
+            <pre><code class="lang-javascript">
+var example2_options = {
+    uploadTargetURL: '../data/upload/exampletarget.json',
+    dataComponents: [
+        {
+            selector: '#example2_select',
+            sendAttribute: 'selection',
+            required: true,
+            requiredMessage: 'Please choose a target',
+            requiredGt: 0,
+            requiredGtMessage: 'The target must be greater than 0.'
+        },
+        {
+            selector: '#example2_name'
+        },
+        {
+            selector: '#example2_email'
+        },
+        {
+            selector: '#example2_message'
+        }
+    ]
+};
+        </code></pre>
+
+<!--        <h3>Example 3: Create an upload area</h3>
+        <p>Create a upload area where the upload begins imeaditly after choosing or droping a file.</p>-->
+
+        
+        <h3>Example 4: Useing upload component with SmartFile</h3>
+        <p>Use the Upload component with SmartFile REST-Webservice. You can find a example for this in the
+            <a href="/SmartFile/sites/uploadcomp.html">SmartFile REST Webpage</a></p>
+        
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

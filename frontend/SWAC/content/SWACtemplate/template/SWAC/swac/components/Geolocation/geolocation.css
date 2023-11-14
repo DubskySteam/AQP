@@ -1,0 +1,9 @@
+.swac_geolocation_ask {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    z-index: 999;
+}
+.swac_geolocation_nav {
+    background: white;
+}
