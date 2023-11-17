@@ -126,6 +126,14 @@ public class User implements Serializable {
     
     @Column(nullable = true)
     private LocalDateTime lastlogin;
+
+    @Size(max = 6)
+    @Column(nullable = true)
+    private String gender;
+
+    @Size(max = 20)
+    @Column(nullable = true)
+    private String display_name;
     
     @ManyToOne
     private User parent;
@@ -178,6 +186,8 @@ public class User implements Serializable {
         this.country = user.getCountry();
         this.phone = user.getPhone();
         this.password = user.getPassword();
+        this.display_name = user.getDisplayname();
+        this.gender = user.getGender();
     }
     
     public Long getId() {
@@ -295,6 +305,22 @@ public class User implements Serializable {
 
     public void setLang(String lang) {
         this.lang = lang;
+    }
+    
+    public String getDisplayname() {
+        return display_name;
+    }
+
+    public void setDisplayname(String display_name) {
+        this.display_name = display_name;
+    }
+    
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getConfirmToken() {
