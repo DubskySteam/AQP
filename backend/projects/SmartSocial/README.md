@@ -19,6 +19,22 @@
 ___
 [![](https://img.shields.io/badge/Download-Latest-blue?style=for-the-badge&logo=)](https://github.com/DubskySteam/AQP/releases)
 
+## Managed Dependencies
+
+```The dependencies are managed by Gradle, so you don't need to worry about them. ```
+```If you need to update a dependency, you can do so by editing the build.gradle file. ```
+
+    Spring JPA -> spring-boot-starter-data-jpa
+	Spring REST -> spring-boot-starter-web
+    Spring Test -> org.springframework.boot:spring-boot-starter-test
+    Lombok -> org.projectlombok:lombok
+    PostgreSQL -> org.postgresql:postgresql
+    Tomcat Webserver -> org.springframework.boot:spring-boot-starter-tomcat
+
+## Self-Managed Dependencies
+
+````The dependencies are included in the project, but critical updates may be needed to be done manually. ````
+
 ## How to use
 
 This microservice uses Gradle as build tool. Most IDEs with Gradle support will allow you to open the build.gradle file and build the entire project from there.
