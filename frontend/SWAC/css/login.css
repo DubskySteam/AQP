@@ -1,0 +1,45 @@
+* { padding: 0; margin: 0; }
+html, body {
+    min-height: 100% !important;
+    height: 100%;
+}
+
+#swac_user_logindialog {
+    position: absolute;
+    width: 100%;
+    height: 93%;
+    background-color: #398EDE;
+    text-align: center;
+}
+
+#login_button {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin-top: 1%;
+    border-radius: 5em;
+    width: 100%;
+}
+
+label {
+    float: left;
+    margin-left: 1.5%;
+}
+
+#swac_input {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    margin-bottom: 2%;
+    border-radius: 5em;
+}
+
+#button_area {
+    position: absolute;
+    width: 95%;
+    bottom: 100px;
+}
+
+#input_area {
+    position: absolute;
+    width: 95%;
+    bottom: 50%;
+}

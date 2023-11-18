@@ -1,0 +1,12 @@
+#main {
+    background-color: #398EDE;
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+#links {
+    color: rgb(255, 255, 255);
+}
