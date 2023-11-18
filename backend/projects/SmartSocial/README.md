@@ -21,8 +21,7 @@ ___
 
 ## Managed Dependencies
 
-```The dependencies are managed by Gradle, so you don't need to worry about them. ```
-```If you need to update a dependency, you can do so by editing the build.gradle file. ```
+```The dependencies are managed by Gradle, so you don't need to worry about them. If you need to update a dependency, you can do so by editing the build.gradle file. ```
 
     Spring JPA -> spring-boot-starter-data-jpa
 	Spring REST -> spring-boot-starter-web
