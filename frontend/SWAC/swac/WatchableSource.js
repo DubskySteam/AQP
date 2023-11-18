@@ -68,7 +68,7 @@ export default class WatchableSource {
         Msg.flow('WatchableSource', 'Dataset >' + set.swac_fromName + '[' + set.id + ']< deleted.', this.requestor);
         delete this.sets[set.id];
         for (let curObserver of this.swac_observers.keys()) {
-            curObserver.notifyDelSet(this, set);
+            curObserver.notifyDelSet(set);
         }
     }
 
@@ -90,7 +90,7 @@ export default class WatchableSource {
                 return;
             }
             if (typeof observer.notifyDelSet !== 'function') {
-                Msg.error('WatchableSource', 'The object added has no notifyDelSet(WatchableSource,id,set) function.');
+                Msg.error('WatchableSource', 'The object added has no notifyDelSet() function.');
                 console.log(observer);
                 return;
             }
@@ -140,10 +140,9 @@ export default class WatchableSource {
     /**
      * Recive notify from another WatchableSource of a deleted set. Delets the set in this WatchableSet if it is there.
      * 
-     * @param {WatchableSource} source Source where set was deleted
      * @param {WatchableSet} set Set to delete 
      */
-    notifyDelSet(source, set) {
+    notifyDelSet(set) {
         Msg.flow('WatchableSource', 'NOTIFY about deleted set >' + set.swac_fromName + '[' + set.id + ']< recived for Source >' + this.swac_fromName + '(' + this.requestor.id + ')<', this.requestor);
         if (!this.sets[set.id]) {
             return;

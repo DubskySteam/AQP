@@ -17,20 +17,16 @@ export default class Guid extends View {
             desc: 'Template with area for display guide messages.'
         };
         this.desc.reqPerTpl[0] = {
-            selc: 'swac_guide_message',
-            desc: 'Element thats content is used to display a message'
-        };
-        this.desc.reqPerTpl[1] = {
-            selc: 'swac_guide_message',
+            selc: '.swac_guide_message',
             desc: 'Element for placeing the messages content.'
         };
         this.desc.optPerTpl[0] = {
-            selc: 'swac_guide_step',
+            selc: '.swac_guide_step',
             desc: 'Element where to insert the number of the current guide step'
         };
         this.desc.optPerTpl[1] = {
-            selc: 'swac_guide_title',
-            desc: 'Element where to insert the number of the current step title'
+            selc: '.swac_guide_title',
+            desc: 'Element where to insert the current step title'
         };
         this.desc.reqPerSet[0] = {
             name: 'type',

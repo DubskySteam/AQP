@@ -67,17 +67,20 @@ export default class Worldmap2d extends View {
 
         this.desc.reqPerSet[0] = {
             name: "id",
-            desc: "Id that identifies the dataset."
+            desc: "Id that identifies the dataset.",
+            type: "long"
         };
         this.desc.reqPerSet[1] = {
             name: "name",
             alt: "title",
-            desc: "Name or title of the selection."
+            desc: "Name or title of the selection.",
+            type: "String"
         };
 
         this.desc.optPerSet[0] = {
             name: 'geoJSON',
-            desc: 'GeoJSON formatted JSON to display on the map'
+            desc: 'GeoJSON formatted JSON to display on the map',
+            type: 'application/geojson'
         };
 
         this.options.showWhenNoData = true;
@@ -101,7 +104,6 @@ export default class Worldmap2d extends View {
         if (typeof options.startPointLat === 'undefined')
             this.options.startPointLat = 52.296;
 
-        //Initial map zoom level
         this.desc.opts[2] = {
             name: "zoom",
             example: 17,
@@ -110,17 +112,14 @@ export default class Worldmap2d extends View {
         if (typeof options.zoom === 'undefined')
             this.options.zoom = 15;
 
-        //Map's max zoom level (needed for clustering feature)
-        //Value > 18 leads to issues loading/displaying the map
         this.desc.opts[3] = {
             name: "maxZoom",
             example: 18,
-            desc: "Map's max zoom level (needed for clustering feature)"
+            desc: "Map's max zoom level (needed for clustering feature). Value > 18 leads to issues loading/displaying the map."
         };
         if (typeof options.maxZoom === 'undefined')
             this.options.maxZoom = 18;
 
-        //Whether a zoom control is added to the map by default.
         this.desc.opts[4] = {
             name: "zoomControl",
             example: true,
@@ -129,12 +128,15 @@ export default class Worldmap2d extends View {
         if (typeof options.zoomControl === 'undefined')
             this.options.zoomControl = true;
 
+        this.desc.opts[5] = {
+            name: "zoomControlPosition",
+            example: "topright",
+            desc: "Position of the zoom control element. topleft / topright"
+        };
         if (!options.zoomControlPosition)
             this.options.zoomControlPosition = "topleft";
 
-
-        //Whether a attribution control is added to the map by default.
-        this.desc.opts[5] = {
+        this.desc.opts[6] = {
             name: "attributionControl",
             example: true,
             desc: "Whether a attribution control is added to the map by default."
@@ -142,7 +144,7 @@ export default class Worldmap2d extends View {
         if (typeof options.attributionControl === 'undefined')
             this.options.attributionControl = true;
 
-        this.desc.opts[6] = {
+        this.desc.opts[7] = {
             name: "mapProviderURL",
             example: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             desc: "URL of the map provider"
@@ -150,7 +152,7 @@ export default class Worldmap2d extends View {
         if (typeof options.mapProviderURL === 'undefined')
             this.options.mapProviderURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'; // Defaults to OpenStreetMap
 
-        this.desc.opts[7] = {
+        this.desc.opts[8] = {
             name: "mapAttribution",
             example: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             desc: "Attribution of the map provider"
@@ -158,7 +160,7 @@ export default class Worldmap2d extends View {
         if (typeof options.mapAttribution === 'undefined')
             this.options.mapAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 
-        this.desc.opts[8] = {
+        this.desc.opts[9] = {
             name: "latAttr",
             example: "lat",
             desc: "Name of datas attribute containing the latitude information"
@@ -166,7 +168,7 @@ export default class Worldmap2d extends View {
         if (!options.latAttr)
             this.options.latAttr = 'latitude';
 
-        this.desc.opts[9] = {
+        this.desc.opts[10] = {
             name: "lonAttr",
             example: "lon",
             desc: "Name of datas attribute containing the longitude information"
@@ -174,7 +176,7 @@ export default class Worldmap2d extends View {
         if (!options.lonAttr)
             this.options.lonAttr = 'longitude';
 
-        this.desc.opts[10] = {
+        this.desc.opts[11] = {
             name: "clusterMarkers",
             example: true,
             desc: "Whether or not the map should cluster markers"
@@ -182,14 +184,19 @@ export default class Worldmap2d extends View {
         if (typeof options.clusterMarkers === 'undefined' || options.clusterMarkers === "false")
             this.options.clusterMarkers = false;
 
-        this.desc.opts[11] = {
+        this.desc.opts[12] = {
             name: "modelFiles",
-            desc: "List of files with geo informations. Each entry is an object with url and layername"
+            desc: "List of files with geo informations. Each entry is an object with url, layername and filetype (shapefile / geojson)",
+            example: [{
+                    url: '../../data/worldmap2d/shapefiles/congress.zip',
+                    name: 'CongressionalDistricts',
+                    type: 'shapefile'
+                }]
         };
         if (!options.modelFiles)
             this.options.modelFiles = [];
 
-        this.desc.opts[12] = {
+        this.desc.opts[13] = {
             name: "idGeolocationComponent",
             example: "geolocation",
             desc: "(optional) If provided, the map will search for a geolocation component with the given id, and register itself as a listener for position updates."
@@ -197,7 +204,7 @@ export default class Worldmap2d extends View {
         if (typeof options.idGeolocationComponent === 'undefined')
             this.options.idGeolocationComponent = null;
 
-        this.desc.opts[13] = {
+        this.desc.opts[14] = {
             name: "latchOnLocation",
             example: "false",
             desc: "If true, the map will latch on the user's location, i.e. the map will move with the user's location."
@@ -207,7 +214,7 @@ export default class Worldmap2d extends View {
             this.options.latchOnLocation = (typeof this.options.idGeolocationComponent === 'string' && this.options.idGeolocationComponent.length > 0);
         }
 
-        this.desc.opts[14] = {
+        this.desc.opts[15] = {
             name: "customIconOptions",
             example: {
                 shadowUrl: '../../swac/libs/leaflet/images/marker-shadow.png',
@@ -221,7 +228,7 @@ export default class Worldmap2d extends View {
         if (typeof options.customIconOptions === 'undefined')
             this.options.customIconOptions = null;
 
-        this.desc.opts[15] = {
+        this.desc.opts[16] = {
             name: "userIcon",
             example: {
                 iconUrl: '../../swac/libs/leaflet/images/marker_person.png',
@@ -233,7 +240,7 @@ export default class Worldmap2d extends View {
         if (typeof options.userIcon === 'undefined')
             this.options.userIcon = null;
 
-        this.desc.opts[16] = {
+        this.desc.opts[17] = {
             name: "customIconVisited",
             example: {iconUrl: '../../swac/libs/leaflet/images/marker_icon_custom_visited.svg'},
             desc: "Custom icon for visited positions, only used if 'customCircleMarkerOptions' is not set"
@@ -241,7 +248,7 @@ export default class Worldmap2d extends View {
         if (typeof options.customIconVisited === 'undefined')
             this.options.customIconVisited = null;
 
-        this.desc.opts[17] = {
+        this.desc.opts[18] = {
             name: "customIconUnvisited",
             example: {iconUrl: '../../swac/libs/leaflet/images/marker_icon_custom_unvisited.svg'},
             desc: "Custom icon for unvisited positions, only used if 'customCircleMarkerOptions' is not set"
@@ -249,7 +256,7 @@ export default class Worldmap2d extends View {
         if (typeof options.customIconUnvisited === 'undefined')
             this.options.customIconUnvisited = null;
 
-        this.desc.opts[18] = {
+        this.desc.opts[19] = {
             name: "customCircleMarkerOptions",
             example: {
                 radius: 8, fillColor: "#ff7800", color: "#000",
@@ -260,14 +267,15 @@ export default class Worldmap2d extends View {
         if (typeof options.customCircleMarkerOptions === 'undefined')
             this.options.customCircleMarkerOptions = null;
 
-        this.desc.opts[19] = {
+        this.desc.opts[20] = {
             name: 'datadescription',
-            desc: 'Selector of the datadescription component that should be used.'
+            desc: 'Selector of the datadescription component that should be used.',
+            example: '#my_datadesc'
         };
         if (!options.datadescription)
             this.options.datadescription = null;
 
-        this.desc.opts[21] = {
+        this.desc.opts[22] = {
             name: 'baseLayers',
             desc: 'Map to add different base layers to the map.'
         };
@@ -279,30 +287,33 @@ export default class Worldmap2d extends View {
                 active: true});
         }
 
-        this.desc.opts[22] = {
+        this.desc.opts[23] = {
             name: 'baseLayerInit',
-            desc: 'Name of the base layer used on inital loading.'
+            desc: 'Name of the base layer used on inital loading.',
+            example: 'baselayer'
         };
         if (!options.baseLayerInit)
             this.options.baseLayerInit = null;
 
-        this.desc.opts[23] = {
+        this.desc.opts[24] = {
             name: 'geoJSONAttr',
-            desc: 'Name of the attribute that contains a geoJSON object.'
+            desc: 'Name of the attribute that contains a geoJSON object.',
+            example: 'point'
         }
         if (!options.geoJSONAttr)
             this.options.geoJSONAttr = null;
 
-        this.desc.opts[24] = {
+        this.desc.opts[25] = {
             name: 'allowAddModels',
             desc: 'If true shows the add model dialog.'
         }
         if (!options.allowAddModels)
             this.options.allowAddModels = false;
 
-        this.desc.opts[25] = {
+        this.desc.opts[26] = {
             name: 'corsavoidurl',
-            desc: 'URL to SmartFile that downloads the model file and allows on this way access to cors protected files. Includes %url% placeholder for original file url.'
+            desc: 'URL to SmartFile that downloads the model file and allows on this way access to cors protected files. Includes %url% placeholder for original file url.',
+            example: '/SmartFile'
         }
         if (!options.corsavoidurl)
             this.options.corsavoidurl = null;

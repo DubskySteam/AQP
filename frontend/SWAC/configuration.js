@@ -83,7 +83,7 @@ var SWAC_config = {
  * Used on every page
  */
 var user_options = {
-    loginurl: '../data/user/exampleuserdata.json',
+    loginurl: '../data/userinterface//user/exampleuserdata.json',
     afterLoginLoc: '../sites/user_example1.html',
     afterLogoutLoc: '../sites/user.html'
 };

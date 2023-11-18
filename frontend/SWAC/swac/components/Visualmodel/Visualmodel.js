@@ -191,7 +191,16 @@ export default class Visualmodel extends View {
 
         this.desc.opts[5] = {
             name: "drawAdditions",
-            desc: "Definitions of drawings that should be added to certain elements. Must contain: applyOnAttr, applyOnVal, "
+            desc: "Definitions of drawings that should be added to certain elements. Must contain: applyOnAttr, applyOnVal",
+            example: {
+                applyOnAttr: 'attributeToCheckValueAt',
+                applyOnVal: 'expectedValueToDrawAdditions',
+                reflectx: true,
+                draw: [
+                    'List of Konva Objects'
+                ],
+                textattr: 'attributeToGetTextFrom'
+            }
         };
         if (!options.drawAdditions)
             this.options.drawAdditions = [];
@@ -212,7 +221,10 @@ export default class Visualmodel extends View {
 
         this.desc.opts[20] = {
             name: "excludeFromScenegraph",
-            desc: "Object with attributes and values as search pattern for datasets that should be excluded from scenegraph only."
+            desc: "Object with attributes and values as search pattern for datasets that should be excluded from scenegraph only.",
+            example: {
+                name: 'excludeNameOnThisValue'
+            }
         };
         if (typeof options.excludeFromScenegraph === 'undefined')
             this.options.excludeFromScenegraph = null;
@@ -293,9 +305,10 @@ move: The siblings are moved along."
 
         this.desc.opts[30] = {
             name: "doNotRedrawOn",
-            desc: "Array of attributs that, when changed do not start a redraw"
+            desc: "Array of attributs that, when changed do not start a redraw",
+            example: ['count','name']
         };
-        if(!options.doNotRedrawOn)
+        if (!options.doNotRedrawOn)
             this.options.doNotRedrawOn = [];
 
         if (!options.plugins) {
@@ -371,7 +384,7 @@ move: The siblings are moved along."
             this.layer.draw();
 
             // Initial zoom
-            if(this.options.initialZoom != 1.0) {
+            if (this.options.initialZoom != 1.0) {
                 this.zoom(this.options.initialZoom);
             }
 
@@ -459,9 +472,9 @@ move: The siblings are moved along."
                         + parentId + ']< is not available. Skip drawing child >' + set.swac_fromName + '[' + set.id + ']<', this.requestor);
                 return;
             }
-            
+
             parentDrawn = this.stage.find('#' + this.getMainSourceName() + '_' + parentId)[0];
-            if(!parentDrawn) {
+            if (!parentDrawn) {
                 Msg.warn('Visualmodel', 'Parent set >' + this.getMainSourceName() + '['
                         + parentId + ']< is not drawn. Skip drawing child >' + set.swac_fromName + '[' + set.id + ']<', this.requestor);
                 return;
@@ -565,21 +578,21 @@ move: The siblings are moved along."
      * @param {type} value New value
      */
     notifyChangedValue(set, name, value) {
-        if(this.requestor.classList.contains('swac_dontdisplay')) {
+        if (this.requestor.classList.contains('swac_dontdisplay')) {
             Msg.flow('Visualmodel',
-                'Notification do not update drawing because is not visible', this.requestor);
+                    'Notification do not update drawing because is not visible', this.requestor);
             return;
         }
         Msg.flow('Visualmodel',
                 'Notification about new value >' + set.swac_fromName + '[' + set.id + '].' + name + '< =' + value
                 + ' recived.', this.requestor);
-        
+
         // Do not update id. remove old set and add new one instead
         if (name === 'id') {
             return;
         }
         // Exclude attr from redraw
-        if(this.options.doNotRedrawOn.includes(name))
+        if (this.options.doNotRedrawOn.includes(name))
             return;
         // No need to calculation on reseted values
         if (this.distancerevalidation) {
@@ -601,7 +614,7 @@ move: The siblings are moved along."
 //            this.requestor.remove();
 //            this.requestor.classList.add('swac_dontdisplay');            
 
-                // Redraw dataset
+            // Redraw dataset
 //                Msg.flow('Visualmodel', 'Remove visualisation for set ' + set.swac_fromName + '[' + set.id + ']', this.requestor);
 //                this.afterRemoveSet(set.swac_fromName, set.id, false);
 //                Msg.flow('Visualmodel', 'Readd visualisation for set ' + set.swac_fromName + '[' + set.id + ']', this.requestor);
@@ -1003,7 +1016,7 @@ move: The siblings are moved along."
         } else {
             elementOpts.x = set.x ? set.x : defaults.x;
         }
-        
+
         if (typeof elementOpts.x === 'undefined')
             elementOpts.x = this.stage.width() / 2;
         // Calculate with xFactor
@@ -1014,7 +1027,7 @@ move: The siblings are moved along."
         if (defaults.xOffset) {
             elementOpts.x += defaults.xOffset;
         }
-        
+
         if (defaults.yAttr && typeof set[defaults.yAttr] !== 'undefined') {
             elementOpts.y = set[defaults.yAttr];
         } else {
@@ -1138,12 +1151,12 @@ move: The siblings are moved along."
                 } else {
                     lfactor = (90 - (rotate - 180)) / -90;
                 }
-                if(rotate >= 45 && rotate <= 135) {
-                    elementOpts.y = elementOpts.y + (parentDrawn.attrs.height /2);
-                } else if(rotate > 135 && rotate <= 225){
+                if (rotate >= 45 && rotate <= 135) {
+                    elementOpts.y = elementOpts.y + (parentDrawn.attrs.height / 2);
+                } else if (rotate > 135 && rotate <= 225) {
                     elementOpts.y = elementOpts.y + parentDrawn.attrs.height;
-                } else if(rotate > 225 && rotate <= 325) {
-                    elementOpts.y = elementOpts.y + (parentDrawn.attrs.height /2);
+                } else if (rotate > 225 && rotate <= 325) {
+                    elementOpts.y = elementOpts.y + (parentDrawn.attrs.height / 2);
                 } else {
                     // No aditional y shift
                 }
@@ -1415,7 +1428,7 @@ move: The siblings are moved along."
             label.offsetX(curLabel.x);
             if (!curLabel.y)
                 curLabel.y = label.width() / 2;
-            
+
             label.offsetY(curLabel.y);
         }
         return labels;

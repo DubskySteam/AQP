@@ -26,6 +26,13 @@ export default class Visualise extends View {
             path: SWAC.config.swac_root + 'components/Visualise/ColorRange.js',
             desc: 'Class representing color ranges'
         };
+
+        this.desc.optPerSet[0] = {
+            name: 'ts',
+            desc: 'Timestamp information',
+            type: 'Datetime'
+        };
+
         this.desc.templates[0] = {
             name: 'visualise',
             style: 'visualise',
@@ -62,6 +69,22 @@ export default class Visualise extends View {
             selc: '.swac_visualise_attributions',
             desc: 'Element where attributions should be placed'
         };
+        this.desc.optPerTpl[5] = {
+            selc: '.swac_visualise_ts',
+            desc: 'Element where the timestamp of the data is displayed.'
+        };
+        this.desc.optPerTpl[6] = {
+            selc: '.swac_visualise_repeatForAttr',
+            desc: '(deprecated) Element repeated for every attribute of an dataset'
+        }
+        this.desc.optPerTpl[7] = {
+            selc: '.swac_visualise_legend_name',
+            desc: '(deprecated) Element where to insert the name of an attribute.'
+        }
+        this.desc.optPerTpl[8] = {
+            selc: '.swac_visualise_legend_value',
+            desc: '(deprecated) Element where to insert the value of an attribute.'
+        }
         this.desc.optPerPage[0] = {
             selc: '.swac_visualise_attributions',
             desc: 'Element where attributions should be placed'
@@ -69,7 +92,14 @@ export default class Visualise extends View {
 
         this.desc.opts[0] = {
             name: 'visus',
-            desc: 'Visualisation definitions with "attr", "type" and "datadescription" attributes.'
+            desc: 'Array of visualisation definitions with "attr", "type" and "datadescription" attributes.',
+            example: [
+                {
+                    attr: 'temp',
+                    type: 'Thermometer',
+                    datadescription: '#visualise_legend'
+                }
+            ]
         };
         if (!options.visus)
             this.options.visus = [];
@@ -87,13 +117,17 @@ export default class Visualise extends View {
         };
         if (typeof options.showAttributions === 'undefined')
             this.options.showAttributions = true;
-        
+
         this.desc.opts[3] = {
-            name: 'dataUnit',
-            desc: 'Unit of data to display'
+            name: 'dataUnits',
+            desc: 'Units for attributes. Diagram implementations can use them and add them to the value display.',
+            example: {
+                voltage: 'V',
+                power: 'W'
+            }
         };
-        if (!options.dataUnit)
-            this.options.dataUnit = null;
+        if (!options.dataUnits)
+            this.options.dataUnits = null;
     }
 
     init() {
@@ -103,7 +137,7 @@ export default class Visualise extends View {
     }
 
     afterAddSet(set, repeateds) {
-        Msg.flow('Visualise','afterAddSet() called for set ' + set.swac_fromName + '['+ set.id + ']',this.requestor);
+        Msg.flow('Visualise', 'afterAddSet() called for set ' + set.swac_fromName + '[' + set.id + ']', this.requestor);
         let repeatedForSets = this.requestor.querySelectorAll('.swac_repeatedForSet[swac_fromname="' + set.swac_fromName + '"][swac_setid="' + set.id + '"]');
         let foundVisus = 0;
         // For every repeatableArea
@@ -143,7 +177,7 @@ export default class Visualise extends View {
             }
         }
     }
-    
+
     /**
      * Creates a diagram for a single value
      * 
@@ -176,8 +210,8 @@ export default class Visualise extends View {
             let datadescription = null;
             if (diagramdef.datadescription) {
                 let ddElem = document.querySelector(diagramdef.datadescription);
-                if(!ddElem) {
-                    Msg.error('Visualise','Legend >' + diagramdef.datadescription + '< was not found.',thisRef.requestor);
+                if (!ddElem) {
+                    Msg.error('Visualise', 'Legend >' + diagramdef.datadescription + '< was not found.', thisRef.requestor);
                     return;
                 }
                 datadescription = ddElem.swac_comp;
@@ -194,15 +228,17 @@ export default class Visualise extends View {
                 }
                 let legsetElem = valueArea.querySelector('.swac_visualise_legend_set');
                 if (legsetElem) {
-                    let legTplElem = legsetElem.querySelector('.swac_visualise_legend_repeat');
-                    for (let curAttr of diagram.getAffectedAttributes()) {
-                        let curLeg = legTplElem.cloneNode(true);
-                        curLeg.classList.remove('swac_dontdisplay');
-                        let nameElem = curLeg.querySelector('.swac_visualise_legend_name');
-                        nameElem.innerHTML = curAttr;
-                        nameElem.setAttribute('swac_lang', curAttr);
-                        curLeg.querySelector('.swac_visualise_legend_value').innerHTML = set[curAttr];
-                        legTplElem.parentNode.appendChild(curLeg);
+                    let legTplElem = legsetElem.querySelector('.swac_visualise_repeatForAttr');
+                    if (legTplElem) {
+                        for (let curAttr of diagram.getAffectedAttributes()) {
+                            let curLeg = legTplElem.cloneNode(true);
+                            curLeg.classList.remove('swac_dontdisplay');
+                            let nameElem = curLeg.querySelector('.swac_visualise_legend_name');
+                            nameElem.innerHTML = curAttr;
+                            nameElem.setAttribute('swac_lang', curAttr);
+                            curLeg.querySelector('.swac_visualise_legend_value').innerHTML = set[curAttr];
+                            legTplElem.parentNode.appendChild(curLeg);
+                        }
                     }
                 }
                 // Update translation if present

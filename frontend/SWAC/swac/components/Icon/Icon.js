@@ -15,6 +15,10 @@ export default class Icon extends View {
             name: 'default',
             desc: 'Default template for presenting datasets as icons'
         };
+        this.desc.optPerTpl[0] = {
+            selc: '.attr_{attrName}',
+            desc: 'Class where attrName is replaced by the attribute name visualised. This allows attribut depended styling. Datadescription component uses this information if available.'
+        };
         this.desc.opts[0] = {
             name: 'iconsHeight',
             desc: 'The height of the icons'
@@ -29,7 +33,8 @@ export default class Icon extends View {
             this.options.iconsWidth = '50px';
         this.desc.opts[2] = {
             name: 'showAttributes',
-            desc: 'Array of attribute names that should be iconized. If the list is empty, all attributes will be iconized.'
+            desc: 'Array of attribute names that should be iconized. If the list is empty, all attributes will be iconized.',
+            example: ['temp','windspeed']
         };
         if (!options.showAttributes)
             this.options.showAttributes = [];

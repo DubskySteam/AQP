@@ -181,6 +181,7 @@ export default class Component {
         this.desc.opts[1015] = {
             name: 'makereadableDatesFrom',
             desc: 'Makes user readable dates from ISO Dates of the given attributes if present.',
+            example: ['ts','date']
         };
         if (!options.makereadableDatesFrom)
             this.options.makereadableDatesFrom = [];
@@ -833,11 +834,12 @@ DEFINTION of SET:\n\
             return;
         }
         if (!this.requestor) {
-            Msg.error('Component', 'addSet() called on component class instead on component instance');
+            Msg.error('Component', 'addSet() called on component class instead on component instance', this.requestor);
             return;
         }
         if (Array.isArray(set)) {
-            Msg.error('Component', 'Given array as set. Use only single sets on addSet()');
+            Msg.error('Component', 'Given array as set. Use only single sets on addSet()', this.requestor);
+            return;
         }
         set.swac_fromName = fromName;
 
@@ -848,7 +850,8 @@ DEFINTION of SET:\n\
         }
         // Create WatchableSet if is not
         if (set.constructor.name !== 'WatchableSet') {
-//            set = new WatchableSet(set);
+            Msg.warn('Component','Given set >'+set.id+'< was no WatchableSet. Created WatchableSet. If this makes problems please create a bug report.',this.requestor);
+            set = new WatchableSet(set);
         }
         // Check if set can be used here
         if (!this.checkAcceptSet(set))
@@ -928,7 +931,11 @@ DEFINTION of SET:\n\
         if (this.options.customAfterAddSet) {
             // Set method to this to use context of component in method
             this.customAfterAddSet = this.options.customAfterAddSet;
-            this.customAfterAddSet(set);
+            try {
+                this.customAfterAddSet(set);
+            } catch (e) {
+                Msg.error('Component', 'Error while executeing >.customAfterAddSet(' + set.swac_fromName + '[' + set.id + ']: ' + e, this.requestor);
+            }
         }
         // Inform plugins about added sets
         if (this.pluginsystem) {
@@ -1037,10 +1044,10 @@ DEFINTION of SET:\n\
      * @param {WatchableSource} source Source where the set was added
      * @param {WatchableSet} set Set that was added
      */
-    notifyDelSet(source, set) {
-        Msg.flow('Component', 'NOTIFY about deleted set >' + source.swac_fromName + '[' + set.id + ']< recived', this.requestor);
+    notifyDelSet(set) {
+        Msg.flow('Component', 'NOTIFY about deleted set >' + set.swac_fromName + '[' + set.id + ']< recived', this.requestor);
         set.id = parseInt(set.id);
-        this.afterRemoveSet(source.swac_fromName, set.id);
+        this.afterRemoveSet(set.swac_fromName, set.id);
     }
 
     //public function
@@ -1330,6 +1337,7 @@ DEFINTION of SET:\n\
             } else {
                 saveset = set;
             }
+            console.log('TEST',this.options.saveAlongData, this.options);
             if (this.options.saveAlongData !== null) {
                 for (let curAttr in this.options.saveAlongData) {
                     saveset[curAttr] = this.options.saveAlongData[curAttr];
