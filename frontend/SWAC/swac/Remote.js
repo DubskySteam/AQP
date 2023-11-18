@@ -129,7 +129,7 @@ remoteHandler.fetch = function (fromName, fromWheres, mode, supressErrorMessage,
         // Build request configuration
         let fetchConf = {
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *omit
+            credentials: 'include', // same-origin, include, *omit
             headers: {
                 'user-agent': 'SWAC/1.0 fetch',
                 'content-type': 'application/json'

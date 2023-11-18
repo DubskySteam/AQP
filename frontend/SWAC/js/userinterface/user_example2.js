@@ -1,5 +1,5 @@
 var userexample2_options = {
-    loginURL: '../data/user/exampleuserdata.json'
+    loginURL: '../../data/userinterface/user/exampleuserdata.json'
 };
 
 

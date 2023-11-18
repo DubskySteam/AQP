@@ -31,8 +31,8 @@ export default class Charts extends View {
             path: SWAC.config.swac_root + 'components/Charts/libs/chartjs/hammerjs.js',
             desc: 'Needed for zoom plugin.'
         };
-        
-        
+
+
 //        this.desc.depends[3] = {
 //            name: 'Chartjs datalables Plugin',
 //            path: SWAC.config.swac_root + 'components/Charts/libs/chartjs/chartjs-plugin-datalabels.min.js',
@@ -80,29 +80,25 @@ export default class Charts extends View {
             this.options.showWhenNoData = true;
         this.desc.opts[0] = {
             name: 'xAxisAttrName',
-            desc: 'Name of the attribut to show on xAxis. If not set the fist attribute with timestamp data will be used. If there is no timestampdata the first other attribute will be used.'
+            desc: 'Name of the attribut to show on xAxis. If not set the fist attribute with timestamp data will be used. If there is no timestampdata the first other attribute will be used.',
+            example: 'x'
         };
         if (!options.xAxisAttrName)
             this.options.xAxisAttrName = null;
         this.desc.opts[1] = {
             name: 'yAxis1AttrName',
-            desc: 'Name of the attribute to show on yAxis 1. Uses the first attribute of datasets that is not id or placed on xAxis.'
+            desc: 'Name of the attribute to show on yAxis 1. Uses the first attribute of datasets that is not id or placed on xAxis.',
+            example: 'y'
         };
         if (!options.yAxis1AttrName)
             this.options.yAxis1AttrName = null;
         this.desc.opts[2] = {
             name: 'yAxis2AttrName',
-            desc: 'Name of the attribute to show on yAxis 2. If not set there will be no yAxis 2'
+            desc: 'Name of the attribute to show on yAxis 2. If not set there will be no yAxis 2',
+            example: 'z'
         };
         if (!options.yAxis2AttrName)
             this.options.yAxis2AttrName = null;
-        this.desc.opts[2] = {
-            name: 'yAxis2AttrName',
-            desc: 'Name of the attribute to show on yAxis 2. If not set there will be no yAxis 2'
-        };
-        if (!options.yAxis2AttrName)
-            this.options.yAxis2AttrName = null;
-        
         this.desc.opts[3] = {
             name: 'sortXAxisValues',
             desc: 'If true the values on the x-axis are sorted'
@@ -117,7 +113,8 @@ export default class Charts extends View {
             this.options.viewSetAttributes = false;
         this.desc.opts[5] = {
             name: 'datadescription',
-            desc: 'Selector of the datadescription component that should be used.'
+            desc: 'Selector of the datadescription component that should be used.',
+            example: '#mydatadescription'
         };
         if (!options.datadescription)
             this.options.datadescription = null;
@@ -176,7 +173,7 @@ export default class Charts extends View {
     }
 
     afterRemoveSet(fromName, id) {
-        super.afterRemoveSet(fromName,id);
+        super.afterRemoveSet(fromName, id);
     }
 
     // public function
@@ -195,7 +192,7 @@ export default class Charts extends View {
     analyseSet(set) {
         let dtr = SWAC.loadedAlgorithms['DatatypeReflection'];
         let firstAttr;
-        
+
         for (let curAttr in set) {
             if (curAttr.startsWith('swac_'))
                 continue;
@@ -208,33 +205,33 @@ export default class Charts extends View {
                     max: set[curAttr]
                 });
                 // Autoconfigure xAxis to a timestamp if no option given
-                if(!this.options.xAxisAttrName && (dtype === 'date' || dtype === 'timestamp')) {
+                if (!this.options.xAxisAttrName && (dtype === 'date' || dtype === 'timestamp')) {
                     this.options.xAxisAttrName = curAttr;
-                    Msg.info('Charts','Automatic detected to use >' + curAttr + '< on xAxis',this.requestor);
-                } else if(curAttr !== 'id' && !this.options.yAxis1AttrName && dtype !== 'varchar' && dtype !== 'bool') {
+                    Msg.info('Charts', 'Automatic detected to use >' + curAttr + '< on xAxis', this.requestor);
+                } else if (curAttr !== 'id' && !this.options.yAxis1AttrName && dtype !== 'varchar' && dtype !== 'bool') {
                     this.options.yAxis1AttrName = curAttr;
-                    Msg.info('Charts','Automatic detected to use >' + curAttr + '< on yAxis',this.requestor);
-                } else if(!firstAttr && curAttr !== 'id') {
-                    
+                    Msg.info('Charts', 'Automatic detected to use >' + curAttr + '< on yAxis', this.requestor);
+                } else if (!firstAttr && curAttr !== 'id') {
+
                     firstAttr = curAttr;
                 }
             } else {
                 let cur = this.attributes.get(curAttr);
                 // Update min value
-                if(cur.min > set[curAttr])
+                if (cur.min > set[curAttr])
                     cur.min = set[curAttr];
                 // Update max value
-                if(cur.max < set[curAttr])
+                if (cur.max < set[curAttr])
                     cur.max = set[curAttr];
             }
         }
         // Set xAxis to first attribute if no time information present
-        if(!this.options.xAxisAttrName) {
+        if (!this.options.xAxisAttrName) {
             this.options.xAxisAttrName = firstAttr;
         }
         // Set visualised attribute for datadescription
-        if(this.datadescription && !this.datadescription.options.visuAttribute) {
-            Msg.info('Charts','Automatic setting descriped attribute to >' + this.options.yAxis1AttrName + '< to datadescription.');
+        if (this.datadescription && !this.datadescription.options.visuAttribute) {
+            Msg.info('Charts', 'Automatic setting descriped attribute to >' + this.options.yAxis1AttrName + '< to datadescription.');
             this.datadescription.options.visuAttribute = this.options.yAxis1AttrName;
         }
     }
@@ -660,7 +657,7 @@ export default class Charts extends View {
         else
             this.selectFirstChartTab();
     }
-    
+
     /**
      * Gets a human readable name from a source name
      * 
@@ -670,12 +667,12 @@ export default class Charts extends View {
     getReadableSourceName(fromName) {
         let rsName = fromName;
         let lastPos = rsName.lastIndexOf('/');
-        if(lastPos > 0) {
-            rsName = rsName.substring(lastPos,rsName.length);
+        if (lastPos > 0) {
+            rsName = rsName.substring(lastPos, rsName.length);
         }
         return rsName;
     }
-    
+
     /**
      * Get the chart.js scale type for an attribute
      * 
@@ -683,13 +680,15 @@ export default class Charts extends View {
      * @return {String} Matching scale type
      */
     getScaleTypeForAttr(attr) {
-        if(!this.attributes.get(attr)) {
-            Msg.error('Charts','There is no attributes def for ' + attr,this.requestor);
+        if (!this.attributes.get(attr)) {
+            Msg.error('Charts', 'There is no attributes def for ' + attr, this.requestor);
             return 'category';
         }
-        switch(this.attributes.get(attr).type) {
-            case 'timestamp': return 'time';
-            default: return 'category'
+        switch (this.attributes.get(attr).type) {
+            case 'timestamp':
+                return 'time';
+            default:
+                return 'category'
         }
     }
 }

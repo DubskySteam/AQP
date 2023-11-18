@@ -1,4 +1,4 @@
-.swac_repeatForOption {
+.swac_repeatForOption, .swac_repeatForTplElem {
     display: none;
 }
 
@@ -8,4 +8,7 @@
 
 .swac_explain_option_type {
     font-weight: bold;
+}
+.swac_explain_forDocErr {
+    display: none;
 }

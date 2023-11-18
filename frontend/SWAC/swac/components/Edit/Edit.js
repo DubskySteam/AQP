@@ -122,11 +122,17 @@ export default class Edit extends View {
             desc: 'Reference to a parent dataset'
         };
 
+        this.desc.optPerSet[1] = {
+            name: 'name',
+            desc: 'Name of the reference'
+        };
+
         if (options.showWhenNoData !== false)
             this.options.showWhenNoData = true;
         this.desc.opts[1] = {
             name: 'editorTargetElement',
-            desc: 'CSS Selector to the element where the editor form should be shown.'
+            desc: 'CSS Selector to the element where the editor form should be shown.',
+            example: '#myeditorarea'
         };
         if (!options.editorTargetElement)
             this.options.editorTargetElement = null;
@@ -202,61 +208,81 @@ The function gets the droped dataset and the dropzone element.'
             this.options.allowDelChild = false;
         this.desc.opts[13] = {
             name: 'thirdButtonAction',
-            desc: 'Function to execute, when the third button is clicked.'
+            desc: 'Function to execute, when the third button is clicked.',
+            example: function (evt) {
+                console.log('event: ', evt);
+            }
         };
         if (!options.thirdButtonAction)
             this.options.thirdButtonAction = null;
         this.desc.opts[14] = {
             name: 'thirdButtonCaption',
-            desc: 'Caption to show for the third button.'
+            desc: 'Caption to show for the third button.',
+            example: 'Programmable button'
         };
         if (!options.thirdButtonCaption)
             this.options.thirdButtonCaption = null;
         this.desc.opts[15] = {
             name: 'notShownAttrs',
-            desc: 'List of attribute names that should not be shown. Note in form of data {}.fromName[attrName]'
+            desc: 'List of attribute names that should not be shown. Note in form of data {[fromName]: [attr1Name, attr2Name]',
+            example: {
+                ['../../data/exampledata_list.json']: ['id', 'dateval']
+            }
         };
         if (!options.notShownAttrs)
             this.options.notShownAttrs = [];
         this.desc.opts[16] = {
             name: 'customDefaultSet',
-            desc: 'Default dataset to add when clicking add-Button'
+            desc: 'Default dataset to add when clicking add-Button',
+            example: {name: 'MyDefaultEntry', value: 'MyDefaultVaue'}
         };
         if (!options.customDefaultSet)
             this.options.customDefaultSet = null;
         this.desc.opts[17] = {
             name: 'customCheckAddChildAlowed',
-            desc: 'Function to execute before opening the new child dialog. If function return false no child can be added.'
+            desc: 'Function to execute before opening the new child dialog. If function return false no child can be added.',
+            example: function (parent) {}
         };
         if (!options.customCheckAddChildAlowed)
             this.options.customCheckAddChildAlowed = null;
         this.desc.opts[18] = {
             name: 'customDefaultChildSets',
-            desc: 'Default child datasets to add when clicking add-Button'
+            desc: 'Default child datasets to add when clicking add-Button',
+            example: [{name: 'Childset1'}, {name: 'Childset2'}]
         };
         if (!options.customDefaultChildSets)
             this.options.customDefaultChildSets = [];
         this.desc.opts[19] = {
             name: 'childSourceSelectAttribute',
-            desc: 'Name of the attribute that should be selectable when createing a new child source'
+            desc: 'Name of the attribute that should be selectable when createing a new child source',
+            example: 'title'
         };
         if (!options.childSourceSelectAttribute)
             this.options.childSourceSelectAttribute = null;
         this.desc.opts[20] = {
             name: 'childSourceSelectExclude',
-            desc: 'List of options to exclude from selection posibilities for new child dataset'
+            desc: 'List of options to exclude from selection posibilities for new child dataset',
+            example: ['NotSelectableValue1', 'NotSelectableValue2']
         };
         if (!options.childSourceSelectExclude)
             this.options.childSourceSelectExclude = [];
         this.desc.opts[21] = {
             name: 'inputsVisibility',
-            desc: 'Definition of input fields that should be shown or hidden depending on a certain value. Use attributes: applyOnAttr, aplyOnValue and hide: [Names of input elements]'
+            desc: 'Definition of input fields that should be shown or hidden depending on a certain value. Use attributes: applyOnAttr, aplyOnValue and hide: [Names of input elements]',
+            example: [
+                {
+                    applyOnAttr: 'stringval',
+                    applyOnVal: 'string',
+                    hide: ['id']
+                }
+            ]
         };
         if (!options.inputsVisibility)
             this.options.inputsVisibility = [];
         this.desc.opts[22] = {
             name: 'customAfterInput',
             desc: 'Function that should be executed, after input was done.',
+            example: function (attr, newval, set) {},
             params: [
                 {
                     name: 'attr',
@@ -280,6 +306,7 @@ The function gets the droped dataset and the dropzone element.'
         this.desc.opts[23] = {
             name: 'customAfterInputChanged',
             desc: 'Function that should be executed, after the input changed.',
+            example: function (attr, newval, set) {},
             params: [
                 {
                     name: 'attr',
@@ -302,7 +329,8 @@ The function gets the droped dataset and the dropzone element.'
             this.options.customAfterInputChanged = null;
         this.desc.opts[24] = {
             name: 'sendAlongData',
-            desc: 'Object with attributes that should be send everytime when saveing a dataset'
+            desc: 'Object with attributes that should be send everytime when saveing a dataset',
+            example: {attr1: 'A dataset with attributes to send'}
         };
         if (!options.sendAlongData)
             this.options.sendAlongData = null;
@@ -314,7 +342,8 @@ The function gets the droped dataset and the dropzone element.'
             this.options.newdatasetname = 'Edit.newdataset';
         this.desc.opts[26] = {
             name: 'newdatasetbtn',
-            desc: 'Language entry that is used on the add new button'
+            desc: 'Language entry that is used on the add new button',
+            example: 'edit_newcar'
         };
         if (!options.newdatasetbtn)
             this.options.newdatasetbtn = null;
@@ -347,10 +376,20 @@ The function gets the droped dataset and the dropzone element.'
 
     init() {
         return new Promise((resolve, reject) => {
+            // If there is no repForSet the template is static defined (for input only), and message about missing repeateds is not neccessery
+            let repForSets = this.requestor.querySelector('.swac_repeatForSet');
+            if (!repForSets) {
+                Msg.error('Edit', 'No .swac_repeatedForSet found in template. Use repeatForSet even for forms that are only for input of new datasets.', this.requestor);
+            }
+
             let addElem = this.requestor.querySelector('.swac_editAddSetButton');
             if (addElem !== null) {
                 if (this.options.allowAdd && this.options.mainSource) {
                     addElem.classList.remove('swac_dontdisplay');
+                    // Register event handler for add new object button
+                    addElem.addEventListener('click', this.onClickAdd.bind(this));
+                } else if (this.options.allowAdd && !this.options.mainSource && this.requestor.fromName) {
+                    this.options.mainSource = this.requestor.fromName;
                     // Register event handler for add new object button
                     addElem.addEventListener('click', this.onClickAdd.bind(this));
                 } else if (this.options.allowAdd) {
@@ -364,7 +403,7 @@ The function gets the droped dataset and the dropzone element.'
                             this.requestor);
                 }
             } else {
-                Msg.warn('Edit', 'There is no add button >.swac_editAddSetButton< in the template.', this.requestor);
+                Msg.warn('Edit', 'There is no add button >.swac_editAddSetButton< in the template. Users can not create new sets, except that were static input fields are coded in the template.', this.requestor);
             }
 
             // Add handler for saveall button
@@ -403,8 +442,9 @@ The function gets the droped dataset and the dropzone element.'
         } else {
             repeatedForSets = this.requestor.querySelectorAll('.swac_repeatedForSet[swac_fromname="' + set.swac_fromName + '"][swac_setid="' + set.id + '"]');
         }
+
         if (repeatedForSets.length === 0) {
-            Msg.error('Edit', 'There was a set added, but no repeatedForSets for this dataset >' + set.swac_fromName + '[' + set.id + ']< found.', this.requestor);
+            Msg.error('Edit', 'There was the following set added, but no repeatedForSets for this dataset >' + set.swac_fromName + '[' + set.id + ']< found.', this.requestor);
             console.log(set);
             return;
         }
@@ -672,14 +712,14 @@ The function gets the droped dataset and the dropzone element.'
                         .replaceAll('{*}', '');
                 inputTpl.parentNode.appendChild(newInput);
                 inputElem = newInput.querySelector('input');
-                if(!curDef.auto)
+                if (!curDef.auto)
                     this.modifyInputElem(inputElem, curDef, set);
 //                } else {
 //                    Msg.warn('Edit','Input element for >' + set.swac_fromName 
 //                            + '/' + curDef.name + '< is missing in template.',this.requestor);
             }
             if (curDef.auto) {
-                inputElem.setAttribute('readonly','readonly');
+                inputElem.setAttribute('readonly', 'readonly');
                 hasAutoData = true;
             }
         }
@@ -1144,9 +1184,8 @@ The function gets the droped dataset and the dropzone element.'
 
         // Get datasource name
         let fromName = this.options.mainSource;
-        if (fromName === null) {
-            fromName = Object.keys(this.data)[0];
-        }
+        if (!fromName)
+            fromName = this.requestor.fromName;
         if (!fromName) {
             Msg.error('Edit', 'Could not create a new set because the mainSource is unknown. Add configuration >options.mainSource<', this.requestor);
             return;
@@ -1502,14 +1541,14 @@ The function gets the droped dataset and the dropzone element.'
         let repForSet = this.findRepeatedForSet(formElem);
         let fromName = repForSet.getAttribute('swac_fromname');
         let setid = repForSet.getAttribute('swac_setid');
-        
+
         // Do not save if form is invalid
-        if(!formElem.checkValidity()) {
-            Msg.warn('Edit','Do not save information from form because input is invalid',this.requestor);
+        if (!formElem.checkValidity()) {
+            Msg.warn('Edit', 'Do not save information from form because input is invalid', this.requestor);
             return;
         }
-        
-        Msg.flow('edit', 'Save information from form for set >' + fromName + '<[' + setid + ']',this.requestor);
+
+        Msg.flow('edit', 'Save information from form for set >' + fromName + '<[' + setid + ']', this.requestor);
 
         if (!this.data[fromName]) {
             Msg.error('Edit', 'Datasource >' + fromName + '< does not exists.', this.requestor);
@@ -1621,6 +1660,7 @@ The function gets the droped dataset and the dropzone element.'
      * Executed when an single form should be saved
      */
     onClickSave(evt) {
+        Msg.flow('Edit', 'onClickSave()', this.requestor);
         evt.preventDefault();
         // Find form for validation
         let formElem = evt.target;
@@ -1635,16 +1675,31 @@ The function gets the droped dataset and the dropzone element.'
             return;
         }
 
-        let repSet = this.findRepeatedForSet(evt.target)
+        // Get set from sets element
+        let setElem = this.findRepeatedForSet(evt.target);
         let set;
-        if (repSet?.hasAttribute('swac_fromname')) {
-            set = this.data[repSet.getAttribute('swac_fromname')].getSet(repSet.getAttribute('swac_setid'));
+        if (setElem?.hasAttribute('swac_fromname')) {
         } else {
-            // Get affected set
-            let setElem = formElem.querySelector('[swac_fromname]');
-            set = this.data[setElem.getAttribute('swac_fromname')].getSet(setElem.getAttribute('swac_setid'));
+            setElem = formElem.querySelector('[swac_fromname]');
         }
+        set = this.data[setElem.getAttribute('swac_fromname')].getSet(setElem.getAttribute('swac_setid'));
 
+        // Update set from input fields
+        let inputElems = setElem.querySelectorAll('input');
+        for (let curInputElem of inputElems) {
+            let curName = curInputElem.name;
+            if(curInputElem.checked)
+                set[curName] = true;
+            else if(curInputElem.value)
+                set[curName] = curInputElem.value;
+            else
+                Msg.error('Edit','Input field >' + curName + '< not supported. Please contact support.',this.requestor);
+        }
+        let selectElems = setElem.querySelectorAll('select');
+        for (let curSelElem of selectElems) {
+            let curName = curSelElem.name;
+            set[curName] = curSelElem.value;
+        }
         // Call saveSets from component
         let thisRef = this;
         let setid_old = set.id;
@@ -2186,12 +2241,12 @@ The function gets the droped dataset and the dropzone element.'
                             }
                             if (set[inputElem.name]) {
                                 inputElem.value = set[inputElem.name];
-                            } else if(set.result) {
+                            } else if (set.result) {
                                 inputElem.value = set.result;
-                            } else if(set.value) {
+                            } else if (set.value) {
                                 inputElem.value = set.value;
                             } else {
-                                Msg.warn('Edit','There is no value for >' + inputElem.name + '< in result.',this.requestor);
+                                Msg.warn('Edit', 'There is no value for >' + inputElem.name + '< in result.', this.requestor);
                                 inputElem.setCustomValidity(SWAC.lang.dict.Edit.autodata_requestor_nodata);
                             }
                             inputElem.checkValidity();
