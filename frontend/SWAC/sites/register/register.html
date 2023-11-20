@@ -4,10 +4,17 @@
     <title>Register</title>
 
     <!-- SWAC -->
+    <!--
     <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
     <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
     <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
     <script src="/SWAC/swac/swac.js" type="module"></script>   
+    -->
+
+    <link rel="stylesheet" type="text/css" href="../../swac/libs/uikit/css/uikit.min.css">
+    <script src="../../swac/libs/uikit/js/uikit.min.js"></script>
+    <script src="../../swac/libs/uikit/js/uikit-icons.min.js"></script>
+    <script src="../../swac/swac.js" type="module"></script> 
 
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
@@ -15,7 +22,7 @@
     <script src="register.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="../../css/global.css">
-    <link rel="stylesheet" href="register.css">
+    <!--<link rel="stylesheet" href="register.css">-->
     
 </head>
 <body>
@@ -32,7 +39,7 @@
 
         <h1>Register</h1>
 
-        <div id="create_user" swa="Edit FROM ../../SmartUser/smartuser/user">
+        <div id="create_user" swa="Edit FROM http://localhost:8080/SmartUser/smartuser/user">
 
             <form class="swac_editForm">
 
@@ -61,6 +68,16 @@
                     <label class="uk-label" for="country">Country</label>
                     <br><input id="country" class="uk-input uk-form-width-medium" name="country">
                     <br>
+
+                    <input id="confirmed" class="uk-label" type="checkbox" name="confirmed" checked>
+                    <label for="confirmed">Confirmed</label>
+                    <br>
+                    <input id="privacy_accepted" class="uk-label" type="checkbox" name="privacy_accepted" checked>
+                    <label for="privacy_accepted">Privacy Accepted</label>
+                    <br>
+                    <input id="terms_accepted" class="uk-label" type="checkbox" name="terms_accepted" checked>
+                    <label for="terms_accepted">Terms Accepted</label>
+
                 </fieldset>
                 <div class="uk-margin">
                     <button class="uk-button uk-button-default swac_editSaveButton" id="register-button">Registrieren</button>
