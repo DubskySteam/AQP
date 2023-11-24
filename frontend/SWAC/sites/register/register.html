@@ -33,52 +33,32 @@
 
         <h1>Register</h1>
 
-        <div id="create_user" swa="Edit FROM http://localhost:8080/SmartUser/smartuser/user">
+        <!-- Benutzername -->
+        <label for="benutzername">Benutzername</label>
+        <input type="text" id="benutzername" name="benutzername">
+        <br>
 
-            <form class="swac_editForm">
+        <!-- Passwort -->
+        <label for="Passwort">Passwort</label>
+        <input type="text" id="Passwort" name="Passwort">
+        <br>
 
-                <fieldset class="uk-fieldset">
+        <!-- Vorname -->
+        <label for="Vorname">Vorname</label>
+        <input type="text" id="Vorname" name="Vorname">
+        <br>
 
-                    <label class="uk-label" for="username">Username</label>
-                    <br><input id="username" class="uk-input uk-form-width-medium" name="username" required>
-                    <br>
-                    <label class="uk-label" for="password">Password</label>
-                    <br><input id="password" class="uk-input uk-form-width-medium" name="password" type="password" required>
-                    <br>
-                    <label class="uk-label" for="name">Name</label>
-                    <br><input id="name" class="uk-input uk-form-width-medium" name="name" required>
-                    <br>
-                    <label class="uk-label" for="email">Email</label>
-                    <br><input id="email" class="uk-input uk-form-width-medium" name="email" type="email" required>
-                    <br>
-                    <label class="uk-label" for="street">Street</label>
-                    <br><input id="street" class="uk-input uk-form-width-large" name="street">
-                    <input id="houseno" class="uk-input uk-form-width-xsmall" name="houseno">
-                    <br>
-                    <label class="uk-label" for="zipcode">City</label>
-                    <br><input id="zipcode" class="uk-input uk-form-width-small" name="zipcode">
-                    <input id="city" class="uk-input uk-form-width-medium" name="city">
-                    <br>
-                    <label class="uk-label" for="country">Country</label>
-                    <br><input id="country" class="uk-input uk-form-width-medium" name="country">
-                    <br>
+        <!-- Nachname -->
+        <label for="Nachname">Nachname</label>
+        <input type="text" id="Nachname" name="Nachname">
+        <br>
 
-                    <input id="confirmed" class="uk-label" type="checkbox" name="confirmed" checked>
-                    <label for="confirmed">Confirmed</label>
-                    <br>
-                    <input id="privacy_accepted" class="uk-label" type="checkbox" name="privacy_accepted" checked>
-                    <label for="privacy_accepted">Privacy Accepted</label>
-                    <br>
-                    <input id="terms_accepted" class="uk-label" type="checkbox" name="terms_accepted" checked>
-                    <label for="terms_accepted">Terms Accepted</label>
+        <!-- E-Mail -->
+        <label for="E-Mail">E-Mail</label>
+        <input type="text" id="E-Mail" name="E-Mail">
+        <br>
 
-                </fieldset>
-                <div class="uk-margin">
-                    <!--<button class="uk-button uk-button-default swac_editSaveButton" id="register-button">Registrieren</button>-->
-                    <button onclick="fluppy()">Registrieren</button>
-                </div>
-            </form>
-        </div>
+        <button type="submit" onclick="register()">Registrieren</button>
     </div>
 
     <footer>
