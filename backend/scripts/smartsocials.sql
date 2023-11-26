@@ -6,14 +6,14 @@ CREATE TABLE smartsocial.Groups (
     group_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     creation_date DATE NOT NULL,
-    admin_user_id INT REFERENCES smartuser.users(userid),
+    admin_user_id INT REFERENCES smartuser.users(id),
     description TEXT
 );
 
 -- Create GroupMembers table
 CREATE TABLE smartsocial.GroupMembers (
     group_id INT REFERENCES smartsocial.Groups(group_id),
-    user_id INT REFERENCES smartuser.users(userid),
+    user_id INT REFERENCES smartuser.users(id),
     member_since DATE NOT NULL,
     status VARCHAR(100) NOT NULL,
     PRIMARY KEY (group_id, user_id)
@@ -29,14 +29,14 @@ CREATE TABLE smartsocial.Achievements (
 
 -- Create UserAchievements table
 CREATE TABLE smartsocial.UserAchievements (
-    user_id INT REFERENCES smartuser.users(userid),
+    user_id INT REFERENCES smartuser.users(id),
     achievement_id INT REFERENCES smartsocial.Achievements(achievement_id),
     PRIMARY KEY (user_id, achievement_id)
 );
 
 -- Create ProfileSettings table
 CREATE TABLE smartsocial.ProfileSettings (
-    user_id INT PRIMARY KEY REFERENCES smartuser.users(userid),
+    user_id INT PRIMARY KEY REFERENCES smartuser.users(id),
     profile_visibility VARCHAR(50) NOT NULL,
     notifications_enabled BOOLEAN NOT NULL,
     additional_settings JSONB
@@ -51,7 +51,7 @@ CREATE TABLE smartsocial.Quests (
 
 -- Create UserQuests table
 CREATE TABLE smartsocial.UserQuests (
-    user_id INT REFERENCES smartuser.users(userid),
+    user_id INT REFERENCES smartuser.users(id),
     quest_id INT REFERENCES smartsocial.Quests(quest_id),
     completion_date DATE NOT NULL,
     PRIMARY KEY (user_id, quest_id)
