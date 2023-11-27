@@ -10,6 +10,12 @@ import java.util.Map;
 
 @Entity
 @Table(name = "profilesettings", schema = "smartsocial")
+@NamedQueries({
+        @NamedQuery(name = "ProfileSetting.findAll", query = "SELECT p FROM ProfileSetting p"),
+        @NamedQuery(name = "ProfileSetting.findById", query = "SELECT p FROM ProfileSetting p WHERE p.id = :id"),
+        @NamedQuery(name = "ProfileSetting.findByProfileVisibility", query = "SELECT p FROM ProfileSetting p WHERE p.profileVisibility = :profileVisibility"),
+        @NamedQuery(name = "ProfileSetting.findByNotificationsEnabled", query = "SELECT p FROM ProfileSetting p WHERE p.notificationsEnabled = :notificationsEnabled")
+})
 public class ProfileSetting {
     @Id
     @Column(name = "user_id", nullable = false)

@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 
 public class ProfileSettingsRepository {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public ProfileSettingsRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
