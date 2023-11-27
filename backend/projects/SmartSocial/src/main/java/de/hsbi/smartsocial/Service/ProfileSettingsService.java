@@ -7,18 +7,16 @@ import jakarta.persistence.EntityManager;
 public class ProfileSettingsService {
 
     private final ProfileSettingsRepository profileSettingsRepository;
-    private final EntityManager entityManager;
 
     public ProfileSettingsService (EntityManager entityManager) {
-        this.entityManager = entityManager;
         this.profileSettingsRepository = new ProfileSettingsRepository(entityManager);
     }
 
     public String ping() {
-        return entityManager.toString();
+        return profileSettingsRepository.ping();
     }
 
-    public String getProfileSettingsById(Long id) {
+    public ProfileSetting getProfileSettingsById(Long id) {
         return profileSettingsRepository.getProfileSettingsById(id);
     }
 

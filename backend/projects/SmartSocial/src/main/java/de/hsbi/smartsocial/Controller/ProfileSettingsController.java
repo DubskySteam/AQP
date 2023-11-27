@@ -9,6 +9,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.Response;
 
 @Path("/profilesettings")
 public class ProfileSettingsController {
@@ -32,31 +33,35 @@ public class ProfileSettingsController {
     @GET
     public String ping() {
         init();
-        return profileSettingsService.ping();
+        return Response.ok(profileSettingsService.ping()).build().toString();
     }
 
     @GET
     @Path("/example")
     public String getExample() {
-        return new ProfileSetting().toString();
+        init();
+        return Response.ok(profileSettingsService.ping()).build().toString();
     }
 
     @GET
     @Path("/getProfileSettingsById/{id}")
-    public String getProfileSettingsById(@PathParam("id") Long id) {
-        return profileSettingsService.getProfileSettingsById(id);
+    public ProfileSetting getProfileSettingsById(@PathParam("id") Long id) {
+        init();
+        return Response.ok(profileSettingsService.getProfileSettingsById(id)).build().readEntity(ProfileSetting.class);
     }
 
     @GET
     @Path("/getVisibilityById/{id}")
     public String getVisibilityById(@PathParam("id") Long id) {
-        return profileSettingsService.getVisibilityById(id);
+        init();
+        return Response.ok(profileSettingsService.getVisibilityById(id)).build().toString();
     }
 
     @POST
     @Path("/setVisibilityById/{id}/{mode}")
     public String setVisibilityById(@PathParam("id") Long id, @PathParam("mode") boolean mode) {
-        return profileSettingsService.setVisibilityById(id, mode);
+        init();
+        return Response.ok(profileSettingsService.setVisibilityById(id, mode)).build().toString();
     }
 
 }

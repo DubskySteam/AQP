@@ -1,5 +1,6 @@
 package de.hsbi.smartsocial.Persistence;
 
+import de.hsbi.smartsocial.Model.ProfileSetting;
 import jakarta.persistence.EntityManager;
 
 public class ProfileSettingsRepository {
@@ -10,8 +11,12 @@ public class ProfileSettingsRepository {
         this.entityManager = entityManager;
     }
 
-    public String getProfileSettingsById(Long id) {
-        return entityManager.createQuery("SELECT p FROM ProfileSetting p WHERE p.id = :id", String.class)
+    public String ping() {
+        return entityManager.toString();
+    }
+
+    public ProfileSetting getProfileSettingsById(Long id) {
+        return entityManager.createQuery("SELECT p FROM ProfileSetting p WHERE p.id = :id", ProfileSetting.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }

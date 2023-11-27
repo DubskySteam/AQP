@@ -32,7 +32,8 @@ public class Group {
     @Column(name = "creation_date", nullable = false)
     private LocalDate creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "admin_user_id")
     private User adminUser;
 
