@@ -13,7 +13,7 @@ export default class Search extends View {
         this.desc.text = 'Create a flexible search box with extended features like autocompletition.';
         this.desc.developers = 'Florian Fehring (FH Bielefeld)';
         this.desc.license = 'GNU Lesser General Public License';
-        
+
         this.desc.depends[0] = {
             name: 'SearchEntryMaker Class',
             path: SWAC.config.swac_root + 'components/Search/SearchEntryMaker.js',
@@ -50,29 +50,94 @@ export default class Search extends View {
             desc: 'Advanced search that allows choosing from preloaded results'
         };
         this.desc.reqPerTpl[0] = {
-            selc: 'input .swac_search',
+            selc: '.swac_search_input',
             desc: 'Input element where the search expression is entered.'
         };
-        this.desc.reqPerTpl[0] = {
+        this.desc.reqPerTpl[1] = {
             selc: '.swac_search_results',
             desc: 'Area where search results should be displayed.'
         };
+        this.desc.reqPerTpl[2] = {
+            selc: '.swac_search_repeatForResult',
+            desc: 'Element repeated for every search result. If it contains an a-Element this is used for display a link to the result.'
+        };
+        
+        
         this.desc.optPerTpl[0] = {
+            selc: '.swac_search_repeatForSource',
+            desc: 'Element that will be repeated for every searchsource.'
+        };
+        this.desc.optPerTpl[1] = {
             selc: '.swac_search_legend',
             desc: 'Element where another component can place a legend to descripe the search results.'
         };
-        this.desc.optPerTpl[1] = {
-            selc: '#swac_searchbar',
+        this.desc.optPerTpl[2] = {
+            selc: '.swac_searchbar',
             desc: 'Container containing the search area. Needed for show and hiding search area functions.'
         };
-        this.desc.optPerTpl[2] = {
-            selc: 'a .swac_searchbar_toggle',
+        this.desc.optPerTpl[3] = {
+            selc: '.swac_search_info',
+            desc: 'Element where to place actual informations about the search progress.'
+        };
+        this.desc.optPerTpl[4] = {
+            selc: '.swac_searchbar_toggle',
             desc: 'Link for toggeling the visibility of the search area.'
         };
-        this.desc.optPerTpl[3] = {
+        this.desc.optPerTpl[5] = {
             selc: '.swac_searchbar_offcanvas',
             desc: 'Container holding the elements that should be disapear on hiding the search area.'
         };
+        this.desc.optPerTpl[6] = {
+            selc: '.swac_search_indextoggle',
+            desc: 'Button that toggles the view of the indexed search. Only available in template advanced.'
+        };
+        this.desc.optPerTpl[7] = {
+            selc: '.swac_search_index',
+            desc: 'Aera that shows the index of the search.'
+        };
+        this.desc.optPerTpl[8] = {
+            selc: '.swac_search_indexletters',
+            desc: 'Element that contains the letter of the index and its contentaera.'
+        };
+        this.desc.optPerTpl[9] = {
+            selc: '.swac_index_results',
+            desc: 'Area where to place the results of the index search.'
+        };
+        this.desc.optPerTpl[10] = {
+            selc: '.swac_search_typepic',
+            desc: 'img element where to show a picture of the result type.'
+        };
+        
+        this.desc.optPerTpl[11] = {
+            selc: '.swac_search_sourceEntry_name',
+            desc: 'Element to show the datasource name.'
+        };
+        this.desc.optPerTpl[12] = {
+            selc: '.swac_search_sourceEntry_author',
+            desc: 'Element to show the authors name.'
+        };
+        this.desc.optPerTpl[13] = {
+            selc: '.swac_search_sourceEntry_url',
+            desc: 'Element to show search results url.'
+        };
+        this.desc.optPerTpl[14] = {
+            selc: '.swac_search_sourceEntry_mapurl',
+            desc: 'Element to show url to a map.'
+        };
+        this.desc.optPerTpl[15] = {
+            selc: '.swac_search_sourceEntry_listurl',
+            desc: 'Element to show url to a list.'
+        };
+        this.desc.optPerTpl[16] = {
+            selc: '.swac_search_sourceEntry_importurl',
+            desc: 'Element to show url to a list.'
+        };
+        this.desc.optPerTpl[17] = {
+            selc: '.swac_search_sourceEntry_desc',
+            desc: 'Element to place a result description.'
+        };
+        
+        
         this.options.showWhenNoData = true;
         this.desc.opts[1] = {
             name: "showNotAccessable",
@@ -82,19 +147,40 @@ export default class Search extends View {
             this.options.showNotAccessable = false;
         this.desc.opts[2] = {
             name: "searchsources",
-            desc: "Array of objects defining search sources with url and type (Name of a SearchProvider implementation class)"
+            desc: "Array of objects defining search sources with url and type (Name of a SearchProvider implementation class)",
+            example: [
+                {
+                    type: 'SearchProviderRest',
+                    url: '/SWAC/data/search/search.json?query={expression}'
+                },
+                {
+                    type: 'SearchProviderRest',
+                    url: '/SWAC/data/search/a.json?query={expression}'
+                }
+            ]
         };
         if (!options.searchsources)
             this.options.searchsources = [];
         this.desc.opts[3] = {
             name: "searchresultentrymakers",
-            desc: "Array with instantiated SearchResultEntryMaker"
+            desc: "Array with instantiated SearchResultEntryMaker",
+            type: 'SearchEntryMakerTable[]'
         };
         if (!options.searchresultentrymakers)
             this.options.searchresultentrymakers = []; // List of instantieded entry generators
         this.desc.opts[4] = {
-            name: "indexSearchsource",
-            desc: "Search source that is used when clicking on an index element (only if template supports index)"
+            name: "indexSearchsources",
+            desc: "Search sources that are used when clicking on an index element (only if template supports index)",
+            example: [
+                {
+                    type: 'SearchProviderRest',
+                    url: '/SWAC/data/search/{expression}.json',
+                    name: 'Obst',
+                    options: {
+                        minchars: 1
+                    }
+                }
+            ]
         };
         if (!options.indexSearchsources)
             this.options.indexSearchsources = [];
@@ -123,7 +209,7 @@ export default class Search extends View {
             }
 
             // Register search input handler
-            let searchinput = this.requestor.querySelector('.swac_search');
+            let searchinput = this.requestor.querySelector('.swac_search_input');
             searchinput.addEventListener('keyup', this.onSearchInput.bind(this));
 
             // Init specials for styles
@@ -145,7 +231,7 @@ export default class Search extends View {
      * @returns {undefined}
      */
     hide() {
-        UIkit.offcanvas("#swac_searchbar_offcanvas").hide();
+        UIkit.offcanvas(".swac_searchbar_offcanvas").hide();
     }
 
     /**
@@ -325,8 +411,6 @@ export default class Search extends View {
             infoElem = document.createElement('span');
             infoElem.classList.add('swac_search_info');
             infoElem.innerHTML = SWAC.lang.dict.Search.running;
-            var sresultsElem = this.requestor.querySelector('.swac_search_results');
-            sresultsElem.appendChild(infoElem);
         } else {
             infoElem.innerHTML = '';
         }
@@ -357,13 +441,13 @@ export default class Search extends View {
                     entryElem = results[i].provider.getResultEntryMaker.make(results, i, resultElem);
                 } else {
                     // Default search result entry generation
-                    let li = document.createElement('li');
-                    entryElem = document.createElement('a');
-                    entryElem.setAttribute('href', results[i].url);
-                    entryElem.innerHTML = results[i].name;
-                    li.appendChild(entryElem);
-                    // Add element
-                    resultElem.appendChild(li);
+                    let repForRes = resultElem.querySelector('.swac_search_repeatForResult');
+                    let newForRes = repForRes.cloneNode(true);
+                    newForRes.classList.remove('swac_search_repeatForResult');
+                    let resLink = newForRes.querySelector('a');
+                    resLink.setAttribute('href', results[i].url);
+                    resLink.innerHTML = results[i].name;
+                    resultElem.appendChild(newForRes);
                 }
                 created++;
             }
@@ -446,7 +530,7 @@ export default class Search extends View {
         for (let curOldResult of oldResults) {
             curOldResult.parentElement.removeChild(curOldResult);
         }
-        
+
         // Perform search
         let thisRef = this;
         this.search(letter, this.options.indexSearchsources).then(function (results) {
@@ -472,6 +556,6 @@ export default class Search extends View {
      * @returns {undefined}
      */
     initOffcanvasTemplate() {
-        UIkit.offcanvas("#swac_searchbar_offcanvas").show();
+        UIkit.offcanvas(".swac_searchbar_offcanvas").show();
     }
 }

@@ -67,7 +67,7 @@ class SearchEntryMakerDatasource extends SearchEntryMaker {
         let result = searchResults[resultNo];
         let resources = this.findResources(result);
 
-        let repElem = placeElement.parentElement.querySelector('.swac_search_repForDatasource');
+        let repElem = placeElement.parentElement.querySelector('.swac_search_repeatForSource');
 
         for (let curRes of resources) {
             // Do not create entry when there is no url
@@ -79,36 +79,36 @@ class SearchEntryMakerDatasource extends SearchEntryMaker {
             
             let entry = repElem.cloneNode(true);
             entry.classList.remove('swac_dontdisplay');
-            entry.classList.remove('swac_search_repForDatasource');
-            entry.querySelector('.name').innerHTML = curRes.name;
+            entry.classList.remove('swac_search_repeatForSource');
+            entry.querySelector('.swac_search_sourceEntry_name').innerHTML = curRes.name;
             entry.querySelector('.url').href = curRes.url;
 
             if (curRes.desc)
-                entry.querySelector('.desc').innerHTML = curRes.desc;
+                entry.querySelector('.swac_search_sourceEntry_desc').innerHTML = curRes.desc;
             if (curRes.author)
-                entry.querySelector('.author').innerHTML = curRes.author;
-            let picElem = entry.querySelector('.typepic');
+                entry.querySelector('.swac_search_sourceEntry_author').innerHTML = curRes.author;
+            let picElem = entry.querySelector('.swac_search_typepic');
             let src = picElem.getAttribute('src');
             if (curRes.type)
                 picElem.setAttribute('src', src.replace('[TYPE]', curRes.type.toLowerCase()));
             else
                 picElem.setAttribute('src', src.replace('[TYPE]', '../unknown'));
 
-            let importElem = entry.querySelector('.importurl');
+            let importElem = entry.querySelector('.swac_search_sourceEntry_importurl');
             if (this.options.importurl && curType && curType.views.includes('import')) {
                 importElem.href = this.options.importurl.replace('%url%', encodeURIComponent(curRes.url)).replace('%type%',curRes.type);
             } else {
                 importElem.remove();
             }
 
-            let mapElem = entry.querySelector('.mapurl');
+            let mapElem = entry.querySelector('.swac_search_sourceEntry_mapurl');
             if (this.options.mapurl && curType && curType.views.includes('map')) {
                 mapElem.href = this.options.mapurl.replace('%url%', encodeURIComponent(curRes.url)).replace('%type%',curRes.type);
             } else {
                 mapElem.remove();
             }
 
-            let listElem = entry.querySelector('.listurl');
+            let listElem = entry.querySelector('.swac_search_sourceEntry_listurl');
             if (this.options.listurl && curType && curType.views.includes('list')) {
                 listElem.href = this.options.listurl.replace('%url%', encodeURIComponent(curRes.url)).replace('%type%',curRes.type);
             } else {

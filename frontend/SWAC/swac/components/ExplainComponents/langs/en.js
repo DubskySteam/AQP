@@ -40,6 +40,8 @@ var ExplainComponents_en = {
     optionsExample: "Example",
     optionsNoExample: "No example available",
     plugins: "Plugins",
-    params: "Parameters and return value"
+    params: "Parameters and return value",
+    events: 'Events',
+    eventsdesc: 'Here are the events listed, thrown by this component. Each event is implemented as a JS CustomEvent. The field "detail" contains the described data.'
 };
 export default ExplainComponents_en;

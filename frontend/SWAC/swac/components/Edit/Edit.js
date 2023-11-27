@@ -47,14 +47,14 @@ export default class Edit extends View {
         }
 
         this.desc.reqPerTpl[0] = {
-            selc: 'FORM .swac_editForm',
+            selc: '.swac_editForm',
             desc: 'Form element used to created new or edit existing dataset'
         };
         this.desc.reqPerTpl[1] = {
             selc: '.swac_editSaveButton',
             desc: 'Button that saves an single dataset'
         };
-        this.desc.reqPerTpl[1] = {
+        this.desc.reqPerTpl[2] = {
             selc: '.swac_editNotify',
             desc: 'Place where to place notifications from edit'
         };
@@ -110,6 +110,22 @@ export default class Edit extends View {
         this.desc.optPerTpl[12] = {
             selc: '.swac_editGroupModeButton',
             desc: 'Button to toggle state of the group edit mode.'
+        };
+        this.desc.optPerTpl[13] = {
+            selc: '.swac_editFormLegend',
+            desc: 'Element where the title or name of the dataset is placed.'
+        };
+        this.desc.optPerTpl[14] = {
+            selc: '.swac_editAutoDataButton',
+            desc: 'Button that toggles the autodata grabbing mode.'
+        };
+        this.desc.optPerTpl[15] = {
+            selc: '.swac_editThirdButton',
+            desc: '(deprecated) Optional thrid button, that calls the options.thirdButtonAction() on click. Custom emplate or modification of template with elem.appendChild() should be used instead.'
+        };
+        this.desc.optPerTpl[16] = {
+            selc: '.swac_edit_formToggle',
+            desc: 'Toggles the display of the input form for a dataset.'
         };
 
         this.desc.reqPerSet[0] = {
@@ -724,8 +740,8 @@ The function gets the droped dataset and the dropzone element.'
             }
         }
 
-        if (hasAutoData) {
-            let autoElem = inputAreaElem.querySelector('.swac_editAutoDataButton');
+        let autoElem = inputAreaElem.querySelector('.swac_editAutoDataButton');
+        if (autoElem && hasAutoData) {
             autoElem.classList.remove('swac_dontdisplay');
             autoElem.addEventListener('click', this.onClickToggleAutoData.bind(this));
         }
@@ -1677,29 +1693,33 @@ The function gets the droped dataset and the dropzone element.'
 
         // Get set from sets element
         let setElem = this.findRepeatedForSet(evt.target);
-        let set;
+        let set = {};
         if (setElem?.hasAttribute('swac_fromname')) {
-        } else {
+        } else if (formElem.querySelector('[swac_fromname]')) {
             setElem = formElem.querySelector('[swac_fromname]');
+            set = this.data[setElem.getAttribute('swac_fromname')].getSet(setElem.getAttribute('swac_setid'));
+        } else {
+            // Single input form (for forms with only add new but no editing of existing sets)
+            setElem = formElem;
         }
-        set = this.data[setElem.getAttribute('swac_fromname')].getSet(setElem.getAttribute('swac_setid'));
 
         // Update set from input fields
         let inputElems = setElem.querySelectorAll('input');
         for (let curInputElem of inputElems) {
             let curName = curInputElem.name;
-            if(curInputElem.checked)
+            if (curInputElem.checked)
                 set[curName] = true;
-            else if(curInputElem.value)
+            else if (curInputElem.value)
                 set[curName] = curInputElem.value;
             else
-                Msg.error('Edit','Input field >' + curName + '< not supported. Please contact support.',this.requestor);
+                Msg.error('Edit', 'Input field >' + curName + '< not supported. Please contact support.', this.requestor);
         }
         let selectElems = setElem.querySelectorAll('select');
         for (let curSelElem of selectElems) {
             let curName = curSelElem.name;
             set[curName] = curSelElem.value;
         }
+
         // Call saveSets from component
         let thisRef = this;
         let setid_old = set.id;
@@ -2181,6 +2201,12 @@ The function gets the droped dataset and the dropzone element.'
         //Currently nothing todo here
     }
 
+    /**
+     * Toggles the autodata function. If autodata is activated the component automatically fetches data as given in the configuration
+     * and fills in the form fields and creates new datasets.
+     * 
+     * @param {DOMEvent} evt Click event on button
+     */
     onClickToggleAutoData(evt) {
         evt.preventDefault();
         // Get set element

@@ -92,6 +92,13 @@ export default class Sample extends View {
             }
         };
         
+        //Documentation for events the component can fire
+        this.desc.events[0] = {
+            name: 'swac_REQUESTOR_ID_sample_click',
+            desc: 'An event fired when the user clicks on the component.',
+            data: 'Delivers the JS event object of the click event.'
+        }
+        
         // Definition of available plugins
         if (!options.plugins) {
             this.options.plugins = new Map();
@@ -119,6 +126,12 @@ export default class Sample extends View {
             Msg.hint('Sample', 'With hint messages you can give developers help how to use your component', this.requestor);
             Msg.warn('Sample', 'Give warnings for example when an element in the template is missing', this.requestor);
             Msg.error('Sample', 'This is a sample of createing an error message', this.requestor);
+            
+            // Custom event
+            this.requestor.addEventListener('click',function(e) {
+                // Create and fire custom event
+                document.dispatchEvent(new CustomEvent('swac_' + this.requestor.id + '_sample_click', {detail: e}))
+            });
             resolve();
         });
     }

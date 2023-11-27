@@ -133,18 +133,18 @@ export default class CreateMeasurementModalSPL extends Plugin {
     }
 
     // handler fn for map click event
-    onMapClick(event) {
+    onMapClick(e) {
         if(this.options.datacapsuleLoad) {
-            const e = event.detail
+            const ed = e.detail
             this.map.disableMapInteractions();
-            this.input_lat.value = e.latlng.lat;
-            this.input_lng.value = e.latlng.lng;
+            this.input_lat.value = ed.latlng.lat;
+            this.input_lng.value = ed.latlng.lng;
             this.marker = this.map.addMarker(
             {
                 type: 'Feature',
                 geometry: {
                     type: 'Point',
-                    coordinates: [e.latlng.lng, e.latlng.lat],
+                    coordinates: [ed.latlng.lng, ed.latlng.lat],
                 },
                 set: {swac_fromName: this.options.datacapsuleLoad.fromName, id: -1},
             }

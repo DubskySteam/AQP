@@ -98,10 +98,13 @@
             <tr><td>opts</td><td></td><td>An option of the component.</td></tr>
             <tr><td></td><td>name</td><td>Name of the option</td></tr>
             <tr><td></td><td>desc</td><td>Description of the option. (not their default value, this is get from the component class)</td></tr>
+            <tr><td></td><td>type</td><td>Datatype of the parameter. (determined automatically when default value or example is set)</td></tr>
+            <tr><td></td><td>example</td><td>Example value for this option (default value will be documented from value set in class)</td></tr>
             <tr><td>funcs</td><td></td><td>A external useable function</td></tr>
             <tr><td></td><td>name</td><td>Functions name</td></tr>
             <tr><td></td><td>desc</td><td>Description of the function.</td></tr>
             <tr><td></td><td>params</td><td>Array of objects with name and description describing a param.</td></tr>
+            <tr><td></td><td>returns</td><td>Object with description of the return value. desc and type attributes are used.</td></tr>
         </table>
 
         <pre><code class="lang-javascript">
@@ -181,6 +184,13 @@ class Sample extends Component {
                 type: 'WatchableSet'
             }
         };
+
+        //Documentation for events the component can fire
+        this.desc.events[0] = {
+            name: 'swac_REQUESTOR_ID_sample_click',
+            desc: 'An event fired when the user clicks on the component.',
+            data: 'Delivers the JS event object of the click event.'
+        }
     }
 
     /*
