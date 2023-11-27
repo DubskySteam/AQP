@@ -1,27 +1,26 @@
 package de.hsbi.smartsocial.Controller;
 
-import de.hsbi.smartsocial.Model.Leaderboard;
-import de.hsbi.smartsocial.Service.LeaderboardService;
+import de.hsbi.smartsocial.Service.GroupService;
+import de.hsbi.smartsocial.Service.QuestService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
-
-import java.util.List;
+import jdk.javadoc.doclet.Reporter;
 
 /**
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
-@Path("/leaderboard")
-public class LeaderboardController {
+@Path("/quest")
+public class QuestController {
 
     @PersistenceContext(unitName = "SmartUserPU")
     private EntityManager entityManager;
 
-    private LeaderboardService leaderboardService;
+    private QuestService questService;
 
     /**
      * SLW: This method is called before every request to initialize the GroupService object.
@@ -29,29 +28,38 @@ public class LeaderboardController {
      * (Because the EntityManager is injected by the application server after construction.)
      */
     private void init() {
-        if (leaderboardService == null) {
-            leaderboardService = new LeaderboardService(entityManager);
+        if (questService == null) {
+            questService = new QuestService(entityManager);
         }
     }
 
     @GET
     public String ping() {
         init();
-        return leaderboardService.ping();
+        return questService.ping();
     }
 
     @GET
-    @Path("/getList/{length}")
-    public Response getTopXUsersByKilometers(@PathParam("length") Long length) {
+    @Path("/example")
+    public Response getExample() {
         init();
-        return Response.ok(leaderboardService.getTopXUsersByKilometers(length)).build();
+        return Response.ok(questService.getExample()).build();
     }
 
     @GET
-    @Path("/getListByQuests/{length}")
-    public Response getTopXUsersByFinishedQuests(@PathParam("length") Long length) {
+    @Path("/getAll")
+    public Response getAll() {
         init();
-        return Response.ok(leaderboardService.getTopXUsersByFinishedQuests(length)).build();
+        return Response.ok(questService.getAll()).build();
     }
+
+    @GET
+    @Path("/getById/{id}")
+    public Response getById(@PathParam("id") Integer id) {
+        init();
+        return Response.ok(questService.getById(id)).build();
+    }
+
+
 
 }

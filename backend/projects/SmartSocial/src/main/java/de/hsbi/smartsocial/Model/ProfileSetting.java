@@ -8,6 +8,10 @@ import org.hibernate.type.SqlTypes;
 
 import java.util.Map;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
 @Entity
 @Table(name = "profilesettings", schema = "smartsocial")
 @NamedQueries({

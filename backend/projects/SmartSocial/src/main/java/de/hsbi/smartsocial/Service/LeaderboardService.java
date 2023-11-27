@@ -18,6 +18,10 @@ public class LeaderboardService {
         leaderboardRepository = new LeaderboardRepository(entityManager);
     }
 
+    public String ping() {
+        return leaderboardRepository.ping();
+    }
+
     public List<Leaderboard> getTopXUsersByKilometers(Long length) {
         return leaderboardRepository.getTopXUsersByKilometers(length);
     }

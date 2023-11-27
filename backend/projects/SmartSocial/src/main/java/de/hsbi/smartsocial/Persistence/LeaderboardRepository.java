@@ -11,10 +11,14 @@ import java.util.List;
  */
 public class LeaderboardRepository {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public LeaderboardRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
+    }
+
+    public String ping() {
+        return entityManager.toString();
     }
 
     public List<Leaderboard> getTopXUsersByKilometers(Long limit) {
