@@ -7,6 +7,10 @@ import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
 public class GroupService {
 
     private final GroupRepository groupRepository;

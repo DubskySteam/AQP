@@ -11,6 +11,10 @@ import jakarta.ws.rs.core.Response;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
 @Path("/group")
 public class GroupController {
 
@@ -19,6 +23,11 @@ public class GroupController {
 
     private GroupService groupService;
 
+    /**
+     * SLW: This method is called before every request to initialize the GroupService object.
+     * This is necessary because the EntityManager is not available during construction of the GroupService object.
+     * (Because the EntityManager is injected by the application server after construction.)
+     */
     private void init() {
         if (groupService == null) {
             groupService = new GroupService(entityManager);
@@ -59,6 +68,34 @@ public class GroupController {
         init();
         List<Group> groups = groupService.findAllGroups();
         return Response.ok(groups).build();
+    }
+
+    /**
+     * Create a group
+     * @param group
+     * @return Response
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/createGroup")
+    public Response createGroup(Group group) {
+        init();
+        Group createdGroup = groupService.createGroup(group);
+        return Response.status(Response.Status.CREATED).entity(createdGroup).build();
+    }
+
+    /**
+     * Delete a group
+     * @param id
+     * @return Response
+     */
+    @DELETE
+    @Path("/deleteGroup/{id}")
+    public Response deleteGroup(@PathParam("id") Long id) {
+        init();
+        groupService.deleteGroup(id);
+        return Response.status(Response.Status.NO_CONTENT).build();
     }
 
 

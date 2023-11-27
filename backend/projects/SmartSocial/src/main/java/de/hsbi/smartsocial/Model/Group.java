@@ -6,6 +6,10 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
 @Entity
 @Table(name = "groups", schema = "smartsocial")
 public class Group {
