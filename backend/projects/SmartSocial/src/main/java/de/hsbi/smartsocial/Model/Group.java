@@ -12,6 +12,11 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "groups", schema = "smartsocial")
+@NamedQueries({
+        @NamedQuery(name = "Group.findAll", query = "SELECT g FROM Group g"),
+        @NamedQuery(name = "Group.findById", query = "SELECT g FROM Group g WHERE g.id = :id"),
+        @NamedQuery(name = "Group.findByName", query = "SELECT g FROM Group g WHERE g.name = :name")
+})
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

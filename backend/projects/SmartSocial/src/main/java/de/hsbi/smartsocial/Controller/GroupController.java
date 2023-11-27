@@ -57,6 +57,26 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
+    //Get by id
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getGroupById/{id}")
+    public Response getGroupById(@PathParam("id") Long id) {
+        init();
+        Group group = groupService.findGroupById(id);
+        return Response.ok(group).build();
+    }
+
+    //Get by name
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getGroupByName/{name}")
+    public Response getGroupByName(@PathParam("name") String name) {
+        init();
+        Group group = groupService.findGroupByName(name);
+        return Response.ok(group).build();
+    }
+
     /**
      * Get all groups
      * @return Response

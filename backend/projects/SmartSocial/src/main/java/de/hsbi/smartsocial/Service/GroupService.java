@@ -19,6 +19,18 @@ public class GroupService {
         this.groupRepository = new GroupRepository(entityManager);
     }
 
+    public String ping() {
+        return groupRepository.ping();
+    }
+
+    public Group findGroupById(Long id) {
+        return groupRepository.findGroupById(id);
+    }
+
+    public Group findGroupByName(String name) {
+        return groupRepository.findGroupByName(name);
+    }
+
     public List<Group> findAllGroups() {
         return groupRepository.findAllGroups();
     }
@@ -30,10 +42,5 @@ public class GroupService {
     public void deleteGroup(Long id) {
         groupRepository.delete(id);
     }
-
-    public String ping() {
-        return groupRepository.ping();
-    }
-
 
 }

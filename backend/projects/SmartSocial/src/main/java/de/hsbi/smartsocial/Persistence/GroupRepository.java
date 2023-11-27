@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class GroupRepository {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
     public GroupRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -26,6 +26,16 @@ public class GroupRepository {
     //////////////////
     // GET Requests //
     //////////////////
+
+    public Group findGroupById(Long id) {
+        return entityManager.find(Group.class, id);
+    }
+
+    public Group findGroupByName(String name) {
+        return entityManager.createQuery("SELECT g FROM Group g WHERE g.name = :name", Group.class)
+                .setParameter("name", name)
+                .getSingleResult();
+    }
 
     public List<Group> findAllGroups() {
         return entityManager.createQuery("SELECT g FROM Group g", Group.class).getResultList();
