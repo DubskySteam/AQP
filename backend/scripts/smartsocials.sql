@@ -57,3 +57,9 @@ CREATE TABLE smartsocial.UserQuests (
     PRIMARY KEY (user_id, quest_id)
 );
 
+CREATE TABLE SmartSocial.leaderboard (
+    userid INT REFERENCES smartuser.users(id),
+    kilometers DECIMAL(10, 2) NOT NULL,
+    finished_quests INT NOT NULL,
+    PRIMARY KEY (userid)
+);
