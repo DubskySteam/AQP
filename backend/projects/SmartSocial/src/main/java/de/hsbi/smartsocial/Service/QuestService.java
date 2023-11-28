@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Quest;
+import de.hsbi.smartsocial.Model.Userquest;
 import de.hsbi.smartsocial.Persistence.QuestRepository;
 import jakarta.persistence.EntityManager;
 
@@ -25,11 +26,11 @@ public class QuestService {
 
     public List<Quest> getExample() {
         List<Quest> quests = new ArrayList<>();
-        Quest quest = new Quest(1, "Ride 10km", 100);
+        Quest quest = new Quest(1L, "Ride 10km", 100L);
         quests.add(quest);
-        Quest quest2 = new Quest(2, "Ride 20km", 200);
+        Quest quest2 = new Quest(2L, "Ride 20km", 200L);
         quests.add(quest2);
-        Quest quest3 = new Quest(3, "Ride 30km", 300);
+        Quest quest3 = new Quest(3L, "Ride 30km", 300L);
         quests.add(quest3);
         return quests;
     }
@@ -40,6 +41,10 @@ public class QuestService {
 
     public Quest getById(Integer id) {
         return questRepository.getById(id);
+    }
+
+    public List<Userquest> getQuestsByUser(Long userId) {
+        return questRepository.getQuestsByUser(userId);
     }
 
 }

@@ -19,7 +19,7 @@ public class Quest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "quest_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @NotNull
     @Column(name = "description", nullable = false, length = Integer.MAX_VALUE)
@@ -27,19 +27,22 @@ public class Quest {
 
     @NotNull
     @Column(name = "xp_reward", nullable = false)
-    private Integer xpReward;
+    private Long xpReward;
 
-    public Quest(int i, String s, int i1) {
+    public Quest(Long i, String s, Long i1) {
         this.id = i;
         this.description = s;
         this.xpReward = i1;
     }
 
-    public Integer getId() {
+    public Quest() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,11 +54,11 @@ public class Quest {
         this.description = description;
     }
 
-    public Integer getXpReward() {
+    public Long getXpReward() {
         return xpReward;
     }
 
-    public void setXpReward(Integer xpReward) {
+    public void setXpReward(Long xpReward) {
         this.xpReward = xpReward;
     }
 

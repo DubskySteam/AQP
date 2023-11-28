@@ -3,6 +3,10 @@ package de.hsbi.smartsocial.Persistence;
 import de.hsbi.smartsocial.Model.ProfileSetting;
 import jakarta.persistence.EntityManager;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
 public class ProfileSettingsRepository {
 
     private final EntityManager entityManager;
