@@ -7,7 +7,7 @@ export default class Calculate extends View {
     constructor(options = {}) {
         super(options);
         this.name = 'Calculate';
-        this.desc.text = 'This component allows calculations with values from datasets.';
+        this.desc.text = 'This component allows calculations with values from datasets. Use for forntend side calculations, when persistent results are not neccessery.';
         this.desc.developers = 'Florian Fehring';
         this.desc.license = '(c) by Florian Fehring';
 
@@ -34,13 +34,18 @@ export default class Calculate extends View {
 
         this.desc.opts[0] = {
             name: "calculations",
-            desc: "Definitions of calculations. These are objects with the attributes: formular (formular with names of the dataset attributes) and target (name of the attribute where the result will be stored)"
+            desc: "Definitions of calculations. These are objects with the attributes: formular (formular with names of the dataset attributes) and target (name of the attribute where the result will be stored)",
+            example: [
+                {formular: "(!voltage) ? 0 : 1", target: "modulecount"},
+                {formular: "voltage * current", target: "yield"}
+            ]
         };
         if (!options.calculations)
             this.options.calculations = [];
         this.desc.opts[1] = {
             name: "sourceattr",
-            desc: "Name of the attribute that contains a url to get a dataset to calculate with. Allows the calculation over multiple datasources."
+            desc: "Name of the attribute that contains a url to get a dataset to calculate with. Allows the calculation over multiple datasources.",
+            example: 'source'
         };
         if (!options.sourceattr)
             this.options.sourceattr = null;
@@ -93,7 +98,7 @@ export default class Calculate extends View {
         if (set[this.options.sourceattr]) {
             const response = await fetch(set[this.options.sourceattr]);
             dataset = await response.json();
-            if(dataset['records'])
+            if (dataset['records'])
                 dataset = dataset['records'][0];
         }
 

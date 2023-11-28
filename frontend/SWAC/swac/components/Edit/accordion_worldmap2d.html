@@ -1,3 +1,4 @@
+<div class="swac_editNotify"></div>
 <ul uk-accordion="multiple: true" uk-sortable>
     <li class="swac_repeatForSet">
         <a class="uk-accordion-title swac_editFormLegend" href="#">Datensatz {id}</a>
@@ -5,8 +6,8 @@
             <form class="swac_editForm"  swac_setid="{id}">
                 <fieldset class="uk-fieldset uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-around">
                     <div class="uk-margin swac_repeatForValue">
-                        <label class="uk-label label-options">{attrName}</label>
-                        <input class="uk-input uk-form-width-medium input-options" name="{attrName}" value="{*}">
+                        <label class="uk-label swac_formatLabelOptions">{attrName}</label>
+                        <input class="uk-input uk-form-width-medium swac_formatInputOptions" name="{attrName}" value="{*}">
                     </div>
                 </fieldset>
                 <div class="uk-margin">

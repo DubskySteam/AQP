@@ -1168,7 +1168,8 @@ export default class View extends Component {
      * @returns {BindPoint[]} Two dimensional Array with bindPoints orderd by bindpoint name
      */
     findBindPoints(req, stopAtClasses, lookatcontent = true) {
-        if (req.nodeName === 'CODE' || req.nodeName === 'PRE')
+        if ((req.nodeName === 'CODE' && !req.hasAttribute('swac_parseBindPoints')) 
+                || (req.nodeName === 'PRE' && !req.hasAttribute('swac_parseBindPoints')))
             return [];
 
         // Create list of bindPoints for return (use in bind.js for repeatables)

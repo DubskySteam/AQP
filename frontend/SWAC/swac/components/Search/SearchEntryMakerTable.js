@@ -58,7 +58,7 @@ class SearchEntryMakerTable extends SearchEntryMaker {
         }
         // Create table row
         let tbody = resultTable.querySelector('tbody');
-        let trtpl = tbody.querySelector('.swac_search_forResult');
+        let trtpl = tbody.querySelector('.swac_search_repeatForResult');
         let searchSource = searchResults[resultNo].provider.searchsource;
         let searchSourceName;
         if (searchSource.name) {
