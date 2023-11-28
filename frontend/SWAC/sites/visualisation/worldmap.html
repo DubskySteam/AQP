@@ -165,10 +165,12 @@ worldmap_legend_data.PHK_class.values['10'].col = '0x77006400';
             <h3>Example 5: Useing worldmap and geolocation components together</h3>
 
             <pre><code class="lang-javascript">
-window.SWAC.reactions.addReaction(function(requestors){
+document.addEventListener('swac_components_complete', function () {
+  window.swac.reactions.addReaction(function(requestors){
     let worldmapComp = requestors['worldmap'].swac_comp;
     requestors['worldmap_geolocate'].swac_comp.options.onLocateFunctions[0] = worldmapComp.onUserLocation.bind(worldmapComp);
-},'worldmap','worldmap_geolocate');
+  },'worldmap','worldmap_geolocate');
+});
         </code></pre>
 
             <a href="worldmap_example5.html" target="_blank">Open example</a>
@@ -176,7 +178,8 @@ window.SWAC.reactions.addReaction(function(requestors){
             <h3>Example 6: Useing worldmap and search components together</h3>
 
             <pre><code class="lang-javascript">
-window.SWAC.reactions.addReaction(function(requestors){
+document.addEventListener('swac_components_complete', function () {
+  window.swac.reactions.addReaction(function(requestors){
     // Get search and worldmap component
     let searchcomp = requestors['worldmap_search'].swac_comp;
     let worldmapcomp = requestors['worldmap'].swac_comp;
@@ -206,7 +209,8 @@ window.SWAC.reactions.addReaction(function(requestors){
 
     // Register search on worldmap
     worldmapcomp.options.searchComp = searchcomp;
-},'worldmap','worldmap_search');
+  },'worldmap','worldmap_search');
+});
         </code></pre>
 
             <a href="worldmap_example8.html" target="_blank">Open example</a>
@@ -372,7 +376,8 @@ worldmap_legend_data.gd_roof.values['0'].col = 'red';
             <h3>Example 9: Useing search for addresses</h3>
 
             <pre><code class="lang-javascript">
-window.SWAC.reactions.addReaction(function(requestors){
+document.addEventListener('swac_components_complete', function () {
+  window.swac.reactions.addReaction(function(requestors){
     // Get search and worldmap component
     let searchcomp = requestors['worldmap_search'].swac_comp;
     let worldmapcomp = requestors['worldmap'].swac_comp;
@@ -389,7 +394,8 @@ window.SWAC.reactions.addReaction(function(requestors){
 
     // Register search on worldmap
     worldmapcomp.options.searchComp = searchcomp;
-},'worldmap','worldmap_search','worldmap_geolocate');
+  },'worldmap','worldmap_search','worldmap_geolocate');
+});
         </code></pre>
 
             <a href="worldmap_example9.html" target="_blank">Open example</a>

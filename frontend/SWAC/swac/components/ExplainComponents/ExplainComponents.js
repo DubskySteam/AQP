@@ -127,6 +127,9 @@ export default class ExplainComponents extends View {
         let dependenciesDiv = this.explainDependencies(component);
         depElem.appendChild(dependenciesDiv);
 
+        // Add event documentation
+        this.explainEvents(component);
+
         // Explain plugins but only if component isnt a plugin itself
 //        if (!component.name.includes('/plugins/')) {
 //            let pluginsLi = document.createElement('li');
@@ -409,7 +412,7 @@ export default class ExplainComponents extends View {
                 response.text().then(function (htmlfragment) {
                     thisRef.explainHTMLFragment(htmlfragment, component, explDivTmpl);
                     let deElem = thisRef.requestor.querySelector('.swac_explain_forDocErr');
-                    
+
                     let placeHldrs = htmlfragment.match(/\{(.*?)\}/g);
                     if (placeHldrs) {
                         placeHldrs = placeHldrs.filter(onlyUnique);
@@ -426,7 +429,7 @@ export default class ExplainComponents extends View {
                             } else if (curName === 'attrName') {
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="Placeholder for attributes name. Use within swac_repeatForValue.">{' + curName + '}</span>');
                                 continue;
-                            } else if(curName === 'requestor.id') {
+                            } else if (curName === 'requestor.id') {
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="Placeholder for the id of the component.">{' + curName + '}</span>');
                                 continue;
                             }
@@ -464,20 +467,20 @@ export default class ExplainComponents extends View {
                     for (let curReqPerTpl of component.desc.reqPerTpl) {
                         requiredClasses.set(curReqPerTpl.selc, curReqPerTpl.selc);
                         // Check if required is id instead of class and warn
-                        if(curReqPerTpl.selc.startsWith('#')) {
-                                let ndeElem = deElem.cloneNode(true);
-                                ndeElem.classList.remove('swac_explain_forDocErr');
-                                ndeElem.innerHTML = 'Required template element >' + curReqPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
-                                deElem.parentElement.appendChild(ndeElem);
+                        if (curReqPerTpl.selc.startsWith('#')) {
+                            let ndeElem = deElem.cloneNode(true);
+                            ndeElem.classList.remove('swac_explain_forDocErr');
+                            ndeElem.innerHTML = 'Required template element >' + curReqPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
+                            deElem.parentElement.appendChild(ndeElem);
                         }
                     }
                     for (let curOptPerTpl of component.desc.optPerTpl) {
                         // Check if required is id instead of class and warn
-                        if(curOptPerTpl.selc.startsWith('#')) {
-                                let ndeElem = deElem.cloneNode(true);
-                                ndeElem.classList.remove('swac_explain_forDocErr');
-                                ndeElem.innerHTML = 'Required template element >' + curOptPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
-                                deElem.parentElement.appendChild(ndeElem);
+                        if (curOptPerTpl.selc.startsWith('#')) {
+                            let ndeElem = deElem.cloneNode(true);
+                            ndeElem.classList.remove('swac_explain_forDocErr');
+                            ndeElem.innerHTML = 'Required template element >' + curOptPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
+                            deElem.parentElement.appendChild(ndeElem);
                         }
                     }
 
@@ -493,26 +496,44 @@ export default class ExplainComponents extends View {
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This is a ui-kit styling instruction">' + curCls + '</span>');
                                 continue;
                             }
-                            if(curCls === 'swac_repeatForSet') {
+                            if (curCls.startsWith('swac_format')) {
+                                // Formating classes for templates without functional meaning
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This is a formating only class. See ' + curTemplate.name + '.css">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_repeatForSet') {
                                 var re = new RegExp(curCls, 'g');
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is repeated for every dataset added to the component.">' + curCls + '</span>');
                                 continue;
                             }
-                            if(curCls === 'swac_repeatForValue') {
+                            if (curCls === 'swac_repeatForValue') {
                                 var re = new RegExp(curCls, 'g');
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is repeated for every value available in a dataset.">' + curCls + '</span>');
                                 continue;
                             }
-                            if(curCls === 'swac_repeatForAttribute') {
+                            if (curCls === 'swac_repeatForAttribute') {
                                 var re = new RegExp(curCls, 'g');
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is repeated for every value attribute name in a dataset.">' + curCls + '</span>');
                                 continue;
                             }
-                            if(curCls === 'swac_dontdisplay') {
+                            if (curCls === 'swac_dontdisplay') {
                                 var re = new RegExp(curCls, 'g');
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is hidden. It may be displayed be removeing the class.">' + curCls + '</span>');
                                 continue;
                             }
+                            if (curCls === 'swac_forChilds') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is the place in the parent dataset visualisation, where childs are shown.">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_child') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element contains the representation for the dataset as it is when used as a child element of some other dataset.">' + curCls + '</span>');
+                                continue;
+                            }
+
+
 
                             // Search in descriptions
                             let found = false;
@@ -929,6 +950,23 @@ export default class ExplainComponents extends View {
             pluginsDiv.appendChild(document.createTextNode(SWAC.lang.dict.ExplainComponents.plugins));
         }
         return pluginsDiv;
+    }
+
+    /**
+     * Explains the events that the component defines
+     * 
+     * @param {Component} component 
+     */
+    explainEvents(component) {
+        let evtDivTpl = this.requestor.querySelector('.swac_expl_repForEvt');
+        for (let curEvt of component.desc.events) {
+            let evtDiv = evtDivTpl.cloneNode(true);
+            evtDiv.classList.remove('swac_expl_repForEvt');
+            evtDiv.querySelector('.swac_expl_name').innerHTML = curEvt.name;
+            evtDiv.querySelector('.swac_expl_desc').innerHTML = curEvt.desc;
+            evtDiv.querySelector('.swac_expl_data').innerHTML = curEvt.data;
+            evtDivTpl.parentElement.appendChild(evtDiv);
+        }
     }
 
     /**

@@ -137,3 +137,15 @@ input[type=range]::-moz-range-track {
         grid-template-columns: 125px auto 150px;
     }
 }
+
+@media print {
+    .swac_mediaplayer_title_download {
+        display: none;
+    }
+    .swac_mediaplayer_control {
+        display: none;
+    }
+    td {
+        padding: 0px !important;
+    }
+}

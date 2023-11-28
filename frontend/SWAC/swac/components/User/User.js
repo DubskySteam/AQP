@@ -173,7 +173,7 @@ export default class User extends View {
         this.desc.opts[13] = {
             name: "confirmURL",
             desc: "Link to the page where the confirm request should be send.",
-            example: "/SmartUser/sites/confirm.html"
+            example: "/SmartUser/smartuser/user/confirm"
         };
         if (!options.confirmURL)
             this.options.confirmURL = null;
@@ -755,6 +755,10 @@ export default class User extends View {
 
         let codeElem = document.querySelector('.swac_userRegconfirmInput');
         let confurl = this.options.confirmURL;
+        if(!this.options.confirmURL) {
+            Msg.error('User','Confirmation could not be done. The option confirmURL is not set.',this.requestor);
+            return;
+        }
         // Build up logout data
         let confdata = {
             confirmToken: codeElem.value

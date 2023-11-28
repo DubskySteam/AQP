@@ -18,7 +18,7 @@ export default class Events extends View {
         this.desc.text = 'Component for showing events and calendars.';
         this.desc.developers = 'Florian Fehring';
         this.desc.license = '(c) by Florian Fehring';
-        
+
         this.desc.templates[0] = {
             name: 'calendar',
             style: 'calendar',
@@ -106,6 +106,14 @@ export default class Events extends View {
         this.desc.optPerTpl[17] = {
             selc: '.swac_events_timepoint',
             desc: 'Element that should be positioned on the timeline.'
+        };
+        this.desc.optPerTpl[18] = {
+            selc: '.swac_events_starttime',
+            desc: 'Element that displays the event starttime.'
+        };
+        this.desc.optPerTpl[19] = {
+            selc: '.swac_events_container',
+            desc: 'Container element for events timeline.'
         };
 
         this.desc.reqPerSet[0] = {
@@ -360,10 +368,10 @@ export default class Events extends View {
      */
     positionTimelineElements() {
         let timelineElems = this.requestor.querySelectorAll('.swac_events_container');
-        let i=0;
-        for(let curTimelineElem of timelineElems) {
+        let i = 0;
+        for (let curTimelineElem of timelineElems) {
             let mod = i % 2;
-            if(mod === 0) {
+            if (mod === 0) {
                 curTimelineElem.classList.add('swac_events_contleft');
             } else {
                 curTimelineElem.classList.add('swac_events_contright');
