@@ -1,6 +1,10 @@
 package de.hsbi.smartsocial.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.time.Instant;
 
 /**
  * Author: Clemens Maas
@@ -16,6 +20,19 @@ public class User {
 
     @Column(name = "display_name", nullable = false)
     private String displayName;
+
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "username", nullable = false)
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Long getId() {
         return id;
