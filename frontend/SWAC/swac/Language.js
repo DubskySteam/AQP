@@ -46,11 +46,20 @@ export default class Language {
         this.loadTranslationFile('./langs/', 'core').then(function () {
             // Load translations for components if not loaded yet
             let loadProms = [];
+            let forRequestors = [];
             for (let curRequestor of thisRef.translatedComps) {
                 loadProms.push(thisRef.loadComponentTranslation(curRequestor));
+                forRequestors.push(curRequestor);
             }
             Promise.all(loadProms).then(function () {
                 thisRef.translateAll(document);
+                let completeEvent = new CustomEvent('swac_lang_loaded', {
+                    detail: {
+                        lang: lang,
+                        requestors: forRequestors
+                    }
+                });
+                document.dispatchEvent(completeEvent);
             });
 
         });
@@ -225,7 +234,7 @@ export default class Language {
 
         for (let curElem of elems) {
             //Do not translate elements with html content
-            if(curElem.firstElementChild)
+            if (curElem.firstElementChild)
                 continue;
             //Do not translate elements that have no lang_id and no content
             let langWordId = curElem.getAttribute('swac_lang_id');
@@ -240,7 +249,7 @@ export default class Language {
             if (translation) {
                 curElem.innerHTML = translation;
             }
-        }
+    }
     }
 
     /**
@@ -314,7 +323,9 @@ export default class Language {
      * @param {DOMElement} elem where to format
      */
     translateFormatLocale(elem = document) {
-        let decimalElems = elem.querySelectorAll('[swac_lang_format="decimal"]');
+        let decimalElems = [];
+        decimalElems.push(...elem.querySelectorAll('[swac_lang_format="decimal"]').values());
+        decimalElems.push(...elem.querySelectorAll('[itemprop="price"]').values());
         for (let curElem of decimalElems) {
             if (curElem.innerHTML.startsWith('{'))
                 continue;
@@ -369,6 +380,11 @@ export default class Language {
         }
         let parsed = Number.parseFloat(value);
         if (parsed) {
+            let decPlaces = elem.getAttribute('swac_round');
+            if (decPlaces)
+                parsed = parsed.toFixed(decPlaces);
+            else if(elem.parentElement.hasAttribute("itemprop") && elem.parentElement.getAttribute("itemprop") === 'price')
+                parsed = parsed.toFixed(2);
             elem.innerHTML = parsed.toLocaleString(this.activeLang);
         }
     }
@@ -403,9 +419,9 @@ export default class Language {
         if (!id || id.startsWith('{'))
             return null;
         // get from app level
-        if(this.dict.app && this.dict.app[id])
+        if (this.dict.app && this.dict.app[id])
             return this.dict.app[id];
-        
+
         let lngPath = id.split('.');
         // Search language entry
         let dict = this.dict;

@@ -44,6 +44,15 @@ export default class Select extends View {
             selc: '.swac_select_clickentry',
             desc: 'Marked entry that, when clicked calls the onClickEntry() function.'
         };
+        this.desc.optPerTpl[3] = {
+            selc: '.swac_select_expandbutton',
+            desc: 'Button where, on click sub selectable sets are expanded. Triggers a request to the subsets. Needs the >expandSources< option to be set.'
+        };
+        this.desc.optPerTpl[4] = {
+            selc: '.swac_child',
+            desc: 'Element that encapsulates an aera that contains a representation of a child dataset. The attribute swac_.'
+        };
+
         this.desc.reqPerSet[0] = {
             name: "id",
             desc: "Id that identifies the selection."
@@ -51,6 +60,10 @@ export default class Select extends View {
         this.desc.reqPerSet[1] = {
             name: "name",
             desc: "Name of the selection."
+        };
+        this.desc.optPerSet[0] = {
+            name: "parent",
+            desc: "ID or reference to the parent dataset. Used to order selectable entries in trees (only in supporting select elements like select box)"
         };
         this.desc.opts[0] = {
             name: "onChange",
@@ -72,7 +85,10 @@ export default class Select extends View {
             this.options.onUnselect = function () {};
         this.desc.opts[3] = {
             name: "selectedsSource",
-            desc: "Requestor where to get the selected elements"
+            desc: "Requestor where to get the selected elements",
+            example: {
+                fromName: '../../data/input/select/exampleSelecteds.json'
+            }
         };
         if (!options.selectedsSource)
             this.options.selectedsSource = null;
@@ -164,6 +180,12 @@ Example parameter:\n\
         });
     }
 
+    /**
+     * Register event listeners on input elements after a new set was added.
+     * 
+     * @param {WatchableSet} set Set that was added
+     * @param {DOMElement[]} repeateds New created repeated elements for the dataset
+     */
     afterAddSet(set, repeateds) {
         // Create select behavior on all occurences
         for (let curElem of repeateds) {
@@ -250,7 +272,7 @@ Example parameter:\n\
         let elem = evt.target;
         this.onChange = this.options.onChange;
         this.onChange(evt, elem.value);
-        
+
         // Get checkbox state
         if (elem.checked === true) {
             // Now element is checked
@@ -376,34 +398,34 @@ Example parameter:\n\
      * @returns {undefined}
      */
     setInputs(inputs) {
-        for (let value in inputs) {
+        for (let attr in inputs) {
             // Exclude internal attributes
-            if (value.startsWith('swac_'))
+            if (attr.startsWith('swac_'))
                 continue;
             let datalistElem = this.requestor.querySelector('datalist');
             if (datalistElem === null) {
                 // Select in single or multiselect
-                let selectedElem = this.requestor.querySelector('[value="' + value + '"]');
+                let selectedElem = this.requestor.querySelector('[value="' + attr + '"]');
                 // Only select if there is a elem with that value
                 if (selectedElem !== null) {
-                    if (inputs[value] === true) {
+                    if (inputs[attr] === true) {
                         selectedElem.selected = 'selected';
                     } else {
                         selectedElem.removeAttribute('selected');
                     }
-                    selectedElem.checked = inputs[value];
+                    selectedElem.checked = inputs[attr];
                 } else {
-                    Msg.warn('select', 'There is no option with the value >' + value + "< that could be selected.");
+                    Msg.warn('select', 'There is no option with the value >' + attr + "< that could be selected.");
                 }
             } else {
                 // Set inputs for datalist
                 // Get selected option from datalist
-                let selectedListElem = datalistElem.querySelector('[swac_setid="' + value + '"]');
+                let selectedListElem = datalistElem.querySelector('[swac_setid="' + attr + '"]');
                 if (selectedListElem !== null) {
                     let inputElem = this.requestor.querySelector('input');
                     inputElem.value = selectedListElem.value;
-                } else {
-                    Msg.error('select', 'There is no datalist entry for the selection of >' + value + '<');
+                } else if (attr != 'id') {
+                    Msg.error('select', 'There is no datalist entry for the selection of attribute >' + attr + '<');
                 }
             }
         }
@@ -654,6 +676,11 @@ Example parameter:\n\
         let thisRef = this;
         // Get expand button
         let expandButton = curExpandableElem.querySelector('.swac_select_expandbutton');
+        if (!expandButton) {
+            Msg.error('Select', 'options.expandSources is set, but there is no >swac_select_expandbutton< in the template.', this.requestor);
+            return;
+        }
+
 
         // Request size of possible expands
         this.getExpandableSize(curExpandableElem, sourceName).then(function (availSets) {
@@ -671,7 +698,7 @@ Example parameter:\n\
             }
         }).catch(function (reject) {
             // Remove expand function
-            expandButton.parentNode.removeChild(expandButton);
+            expandButton.remove();
         });
     }
 
@@ -698,9 +725,9 @@ Example parameter:\n\
 
             Model.load(sizeRequestor)
                     .then(function (resolveObj) {
-                        resolve(resolveObj.data[0].size);
+                        resolve(resolveObj.size);
                     }).catch(function (error) {
-                Msg.warn('Select',
+                Msg.error('Select',
                         'Could not fetch size for subElements for '
                         + curExpandableElem.getAttribute('swac_fromname')
                         + '[' + curExpandableElem.getAttribute('swac_setid') + ']: '

@@ -19,7 +19,7 @@ export default class Question extends View {
         this.desc.text = 'Component for createing survey forms.';
         this.desc.developers = 'Florian Fehring';
         this.desc.license = '(c) by Florian Fehring';
-        
+
         this.desc.templates[0] = {
             name: 'list',
             style: 'list',
@@ -44,6 +44,14 @@ export default class Question extends View {
         this.desc.reqPerTpl[4] = {
             selc: '.swac_question_msg',
             desc: 'Element where a message after saveing the data is displayed.'
+        };
+        this.desc.reqPerTpl[5] = {
+            selc: '.swac_question_sendbutton',
+            desc: 'Button that sends the answers after click.'
+        };
+        this.desc.optPerTpl[0] = {
+            selc: '.swac_question_countdown',
+            desc: 'Element where to display a countdown, after thats end the question can be reanswered.'
         };
 
         this.desc.reqPerSet[0] = {
@@ -94,31 +102,33 @@ export default class Question extends View {
             name: 'multiple',
             desc: 'If set to true the selection of more than one option is possible. Works for select and icon type.'
         };
-        this.desc.opts[1] = {
-            name: "defaultSaveData",
-            desc: "A object with attributes that should be saved every time along with the collected data. (maybe the users id or a page identifier)"
+        this.desc.optPerSet[9] = {
+            name: 'parent',
+            desc: 'Id of the parent dataset, to create an clustering of questions.'
         };
-        if (!options.defaultSaveData)
-            this.options.defaultSaveData = null;
-        this.desc.opts[2] = {
+
+        this.desc.opts[0] = {
             name: "timeToReanswer",
-            desc: "The time (in seconds) that should pass before the user can reanswer."
+            desc: "The time (in seconds) that should pass before the user can reanswer.",
+            example: 180
         };
         if (!options.timeToReanswer)
             this.options.timeToReanswer = null;
-        this.desc.opts[3] = {
+        this.desc.opts[1] = {
             name: "afterSaveTxt",
             desc: "Text which sould be displayed to the user after sending data."
         };
-        this.desc.opts[4] = {
+        this.desc.opts[2] = {
             name: "afterSaveLoc",
-            desc: "URL to wich the user should be redirected after sendin data."
+            desc: "URL to wich the user should be redirected after sendin data.",
+            example: '../mypage.html',
         };
         if (!options.afterSaveLoc)
             this.options.afterSaveLoc = null;
-        this.desc.opts[4] = {
+        this.desc.opts[3] = {
             name: "afterInputFunction",
-            desc: "A function that should be executed directly after the user made a input."
+            desc: "A function that should be executed directly after the user made a input.",
+            example: function () {}
         };
         if (!options.afterInputFunction)
             this.options.afterInputFunction = null;
@@ -609,14 +619,9 @@ export default class Question extends View {
             if (!dataCapsles.has(target)) {
                 // Create data capsle for storing data
                 let dataCapsle = {
-                    data: [],
+                    data: [{}],
                     fromName: Model.getSetnameFromRefernece(target)
                 };
-                if (this.options.defaultSaveData !== null) {
-                    dataCapsle.data[0] = Object.assign({}, this.options.defaultSaveData);
-                } else {
-                    dataCapsle.data[0] = {};
-                }
                 dataCapsles.set(target, dataCapsle);
             }
             // Get capsle and insert data

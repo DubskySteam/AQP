@@ -177,21 +177,21 @@ export default class View extends Component {
                     // Find child representation
                     let childRep = repeated.querySelector('.swac_child');
                     // find parent
-                    let parentElem = repeated.parentElement.querySelector('[swac_fromname="'+set.swac_fromName+'"][swac_setid="'+set.parent+'"]');
-                    if(parentElem) {
+                    let parentElem = repeated.parentElement.querySelector('[swac_fromname="' + set.swac_fromName + '"][swac_setid="' + set.parent + '"]');
+                    if (parentElem) {
                         // Find place for child
                         let childsElem = parentElem.querySelector('.swac_forChilds');
-                        if(childsElem) {
+                        if (childsElem) {
                             childRep.classList.remove('swac_child');
-                            childRep.setAttribute('swac_fromname',set.swac_fromName);
-                            childRep.setAttribute('swac_setid',set.id);
+                            childRep.setAttribute('swac_fromname', set.swac_fromName);
+                            childRep.setAttribute('swac_setid', set.id);
                             childRep.swac_dataset = set;
                             childsElem.appendChild(childRep);
                             repeated.remove();
                         } else
-                            Msg.warn('View','Do not move >' + set.swac_fromName + '[' + set.id + '] to its parent: [' + set.parent + '] because parent has no place for childs. Add swac_forChilds Element to template.');
+                            Msg.warn('View', 'Do not move >' + set.swac_fromName + '[' + set.id + '] to its parent: [' + set.parent + '] because parent has no place for childs. Add swac_forChilds Element to template.');
                     } else {
-                        Msg.warn('View','Do not move >' + set.swac_fromName + '[' + set.id + '] to its parent: [' + set.parent + '] because parent is not available.');
+                        Msg.warn('View', 'Do not move >' + set.swac_fromName + '[' + set.id + '] to its parent: [' + set.parent + '] because parent is not available.');
                     }
                 }
             }
@@ -257,6 +257,25 @@ export default class View extends Component {
         return super.checkAcceptSet(set);
     }
 
+    /**
+     * Notification from WatchableSource about new sets
+     * 
+     * @param {WatchableSource} source Source where the set was added
+     * @param {WatchableSet} set Set that was added
+     */
+    notifyAddSet(source, set) {
+        Msg.flow('View', 'NOTIFY about added set >' + set.swac_fromName + '[' + set.id + ']< recived', this.requestor);
+        set.addObserver(this);
+        // Get repeateds
+        let repeateds = this.requestor.querySelectorAll('[swac_fromname="' + set.swac_fromName + '"][swac_setid="' + set.id + '"]');
+
+        try {
+            this.afterAddSet(set, repeateds);
+        } catch (e) {
+            Msg.error('View', 'Error while executing >.afterAddSet(' + set.swac_fromName + '[' + set.id + ']): ' + e, this.requestor);
+        }
+    }
+
     removeSet(fromName, id) {
         // Parentset or childsets?
 //        let selector = '.swac_repeatedForSet[swac_fromname="' + fromName + '"]';
@@ -276,25 +295,20 @@ export default class View extends Component {
 //        this.afterRemoveSet(fromName, id);
     }
 
-    notifyDelSet(fromName, set) {
-        console.log('TEST notifyDelSet');
-        
+    notifyDelSet(set) {
+        Msg.flow('View', 'notifyDelSet(' + set.swac_fromName + '[' + set.id + ']', this.requestor);
+
         // Parentset or childsets?
-        let selector = '.swac_repeatedForSet[swac_fromname="' + fromName + '"]';
-        if (this.options.mainSource && fromName !== this.options.mainSource) {
-            selector = '.swac_repeatedForChild[swac_fromname="' + fromName + '"]';
+        let selector = '.swac_repeatedForSet[swac_fromname="' + set.swac_fromName + '"]';
+        if (this.options.mainSource && set.swac_fromName !== this.options.mainSource) {
+            selector = '.swac_repeatedForChild[swac_fromname="' + set.swac_fromName + '"]';
         }
         selector += '[swac_setid="' + set.id + '"]';
         let repeateds = this.requestor.querySelectorAll(selector);
         for (let curRepeated of repeateds) {
-            console.log('TEST remove',curRepeated);
             curRepeated.remove();
         }
-
-        
-        super.notifyDelSet(source, set);
-        
-        
+        super.notifyDelSet(set);
     }
 
     // public function
@@ -1154,7 +1168,8 @@ export default class View extends Component {
      * @returns {BindPoint[]} Two dimensional Array with bindPoints orderd by bindpoint name
      */
     findBindPoints(req, stopAtClasses, lookatcontent = true) {
-        if (req.nodeName === 'CODE' || req.nodeName === 'PRE')
+        if ((req.nodeName === 'CODE' && !req.hasAttribute('swac_parseBindPoints')) 
+                || (req.nodeName === 'PRE' && !req.hasAttribute('swac_parseBindPoints')))
             return [];
 
         // Create list of bindPoints for return (use in bind.js for repeatables)

@@ -37,9 +37,9 @@
 
             <h2>Useing language entries</h2>
             <p>To use a language entry in your skin (HTML fragment) there are a 
-            view options. The swac_lang attribute can be used on any tag to 
-            translate the contents inside this tag with the expression identified 
-            by the id that is noted in the attribute.</p>
+                view options. The swac_lang attribute can be used on any tag to 
+                translate the contents inside this tag with the expression identified 
+                by the id that is noted in the attribute.</p>
 
             <pre><code class="lang-html">
 &lt;div id="mytext" swa="Present FROM ../data/exampledata_list.json"&gt;
@@ -50,56 +50,56 @@
             <div id="mytext" swa="Present FROM ../../data/exampledata_list.json">
                 Text: <span swac_lang="core.model_nodata">No data</span>
             </div>
-            
+
             <p>In button, label, legend, option and a you can place the id directly inside the value-Attribute.</p>
-            
+
             <pre><code class="lang-html">
 &lt;input type="button" value="core.model_nodata"&gt;
         </code></pre>
-            
+
             <input type="button" value="core.model_nodata">
-            
+
             <pre><code class="lang-html">
 &lt;a href="#"&gt;core.model_nodata&lt;/a&gt; 
         </code></pre>
-            
+
             <a href="#">core.model_nodata</a>
-            
+
             <p>In the "placeholder", "title", "alt" and "uk-tooltip" attribute 
-            you can use the language id directly, too.</p>
-            
+                you can use the language id directly, too.</p>
+
             <pre><code class="lang-html">
 &lt;a href="#" title="core.model_nodata"&gt;Look at the title attribute&lt;/a&gt; 
         </code></pre>
-            
+
             <a href="#" title="core.model_nodata">Look at the title attribute</a>
-            
+
             <p>To use multilanguage on any attributes, define the swac_langattr 
                 attribute and state there the attribute names and the language id.                
             </p>
-            
-        <pre><code class="lang-html">
+
+            <pre><code class="lang-html">
 &lt;a href="#" swac_langattr="myattr:core.model_nodata"&gt;Look at the myattr attribute&lt;/a&gt; 
         </code></pre>
-            
+
             <a href="#" swac_langattr="myattr:core.model_nodata">Look at the myattr attribute</a>
 
             <h2>Custom messages for empty lists</h2>
             <p>When a component uses the option showWhenNoData: true. There is automatically a
-            message generated about no data available, when there is no dataset. You can customise 
-            the message for each useage of a component. Create a language entry in the app_LNGCODE.js
-            with the id of the requestor with "_nodata" appended.</p>
-            
+                message generated about no data available, when there is no dataset. You can customise 
+                the message for each useage of a component. Create a language entry in the app_LNGCODE.js
+                with the id of the requestor with "_nodata" appended.</p>
+
             <pre><code class="lang-html">
 &lt;div id="mypesonalid" swa="Present FROM emptydata"&gt;&lt;/div&gt; 
         </code></pre>
-            
+
             <pre><code class="lang-javascript">
 var app_en = {
     mypersonalid_nodata: "My personal no data message"
 };
         </code></pre>
-            
+
             <h2>Useing language entries in javascript code</h2>
             <p>All laguage entries of the currently loaded language are available in
                 an global variable, too. Use SWAC_lang for access to the language 
@@ -176,20 +176,20 @@ window.onload = function () {
             <script>
                 window.onload = function () {
                     window.swac.lang.loadTranslationFile('../swac/components/Mediaplayer/langs/mediacode', 'Mediacode').then(
-                            function() {
+                            function () {
                                 window.swac.lang.translateAll(document);
                             });
                 };
             </script>
 
             The translation of "no title" to your language is: <span swac_lang="Mediacode.notitle">No translation, sorry</span>
-            
+
             <h2>Useing app language file</h2>
             <p>You can define and load a app language file. This must be called app and within app_LANGCODE.js. If you load it over
-            the above descriped way to load custom languages this file has a special possibility. It can overwrite any default 
-            language anetries from the component language files. To do so, just add an entry with the full qualified language entry
-            name from the component.</p>
-            
+                the above descriped way to load custom languages this file has a special possibility. It can overwrite any default 
+                language anetries from the component language files. To do so, just add an entry with the full qualified language entry
+                name from the component.</p>
+
             <pre><code class="lang-javascript">
 var app_de = {
     "myownentry": "This entry is a extra languge entry for your app it does not overwrite any entries from the components.",
@@ -197,11 +197,42 @@ var app_de = {
 };
 export default app_de;
         </code></pre>
-            
-            
+
+            <h2>Language depending formations</h2>
+            <p>SWAC language support allows number and date formation to users localised language.
+                Use the following HTML attributes to control the localisation:</p>
+            <table class="uk-table">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Example</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>swac_lang_format</td>
+                        <td>swac_lang_format="decimal"</td>
+                        <td>Activates locale formation. Supported types are: decimal, datetime, date, time</td>
+                    </tr>
+                    <tr>
+                        <td>swac_round</td>
+                        <td>swac_round="2"</td>
+                        <td>In combination with swac_lang_format="decimal" rounds the value to the fixed number of digits.</td>
+                    </tr>
+                    <tr>
+                        <td>itemprop</td>
+                        <td>itemprop="price"</td>
+                        <td>RDF itemprop, activates translation for decimal without the need of swac_lang_format, if value is of: price</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
             <h2>Change the language on the fly</h2>
             <p>Language can be changed on the fly. The <a href="../userinterface/translator.html">translator component</a> provides 
-            a language change button.</p>
+                a language change button.</p>
         </article>
         <footer>
             <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>

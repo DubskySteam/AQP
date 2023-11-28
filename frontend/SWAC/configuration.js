@@ -83,9 +83,9 @@ var SWAC_config = {
  * Used on every page
  */
 var user_options = {
-    loginurl: '../data/user/exampleuserdata.json',
-    afterLoginLoc: '../sites/user_example1.html',
-    afterLogoutLoc: '../sites/user.html'
+    loginurl: 'localhost:8080/SmartUser/smartuser/user/performLogin',
+    afterLoginLoc: '../sites/userinterface/account.html',
+    afterLogoutLoc: '../sites/userinterface/login.html'
 };
 user_options.loggedinRedirects = new Map();
 user_options.loggedinRedirects.set('user_example3.html', '../sites/user_example2.html');

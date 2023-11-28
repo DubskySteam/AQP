@@ -97,10 +97,10 @@ export default class CircleProgress extends Diagram {
         percentageLabel.classList.add('swac_percentageLabel');
         
         percentageLabel.innerText = value;
-        if(this.comp.options.dataUnit) {
-            percentageLabel.innerText += this.comp.options.dataUnit;
+        if(this.comp.options.dataUnits && this.comp.options.dataUnits[name]) {
+            percentageLabel.innerText += this.comp.options.dataUnits[name];
             if(maxvalue !== 100)
-                percentageLabel.innerText += ' / ' + maxvalue + ' ' + this.comp.options.dataUnit;
+                percentageLabel.innerText += ' / ' + maxvalue + ' ' + this.comp.options.dataUnits[name];
         } else
             percentageLabel.innerText += '%';
         percentageLabel.style.margin = '0'

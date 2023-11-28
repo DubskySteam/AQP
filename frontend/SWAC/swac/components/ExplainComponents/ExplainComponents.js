@@ -40,6 +40,9 @@ export default class ExplainComponents extends View {
         };
         if (!this.options.componentName)
             this.options.componentName = null;
+
+        // Internal data
+        this.hilighteds = [];
     }
 
     init() {
@@ -61,8 +64,7 @@ export default class ExplainComponents extends View {
                         if (module.default) {
                             // Construct the component with default options
                             let explObj = Reflect.construct(module.default, []);
-                            let allDiv = thisRef.explainAll(explObj);
-                            thisRef.requestor.appendChild(allDiv);
+                            thisRef.explainAll(explObj);
                             resolve();
                         }
                     });
@@ -73,141 +75,75 @@ export default class ExplainComponents extends View {
      * Creates a explanation in html about all areas.
      * 
      * @param {SWACComponent} component Component to explain
-     * @returns {HTMLElement}
+     * @returns undefined
      */
     explainAll(component) {
-        let explainArticle = document.createElement('article');
-        explainArticle.classList.add('uk-article');
-        let explainHeadline = document.createElement('h1');
-        explainHeadline.classList.add("uk-article-title");
-        explainHeadline.appendChild(document.createTextNode(component.name));
-        explainArticle.appendChild(explainHeadline);
+        // Set component name
+        let comNameElem = this.requestor.querySelector('.swac_expl_compname');
+        comNameElem.innerHTML = component.name;
+
+        // Add developer names
         if (component.desc.developers) {
-            let devBadge = document.createElement('div');
-            devBadge.innerHTML = component.desc.developers;
-            devBadge.classList.add('uk-badge');
-            explainArticle.appendChild(document.createTextNode('by '));
-            explainArticle.appendChild(devBadge);
+            let devElem = this.requestor.querySelector('.swac_expl_forDeveloper');
+            devElem.innerHTML = component.desc.developers;
         }
 
-        let explainHeadtext = document.createElement('p');
-        explainHeadtext.classList.add("uk-article-meta");
-        explainHeadtext.appendChild(document.createTextNode(component.desc.text));
-        explainArticle.appendChild(explainHeadtext);
+        // Add component description text
+        let descElem = this.requestor.querySelector('.swac_expl_desc');
+        descElem.innerHTML = component.desc.text;
 
+        // Add component license
         if (component.desc.license) {
-            let licBadge = document.createElement('span');
-            licBadge.innerHTML = component.desc.license;
-            licBadge.classList.add('uk-badge');
-            explainArticle.appendChild(document.createTextNode('license: '));
-            explainArticle.appendChild(licBadge);
+            let licElem = this.requestor.querySelector('.swac_expl_lic');
+            licElem.innerHTML = component.desc.license;
         }
 
-        let explainAccordion = document.createElement('ul');
-        explainAccordion.setAttribute('uk-accordion', 'uk-accordion');
-        let dataReqLi = document.createElement('li');
-        let dataReqTitle = document.createElement('a');
-        dataReqTitle.classList.add('uk-accordion-title');
-        dataReqTitle.classList.add('uk-background-primary');
-        dataReqTitle.setAttribute('href', '#');
-        dataReqTitle.innerHTML = SWAC.lang.dict.ExplainComponents.datasets;
-        dataReqLi.appendChild(dataReqTitle);
+        // Add dataset requirements
+        let dataReqElem = this.requestor.querySelector('.dataReqDiv');
         let dataReqDiv = this.explainDataRequirements(component);
-        dataReqDiv.classList.add('uk-accordion-content');
-        dataReqLi.appendChild(dataReqDiv);
-        explainAccordion.appendChild(dataReqLi);
+        dataReqElem.appendChild(dataReqDiv);
 
-        let optionsLi = document.createElement('li');
-        let optionsTitle = document.createElement('a');
-        optionsTitle.classList.add('uk-accordion-title');
-        optionsTitle.classList.add('uk-background-primary');
-        optionsTitle.setAttribute('href', '#');
-        optionsTitle.innerHTML = SWAC.lang.dict.ExplainComponents.options;
-        optionsLi.appendChild(optionsTitle);
-        let optionsDiv = this.explainOptions(component);
-        optionsDiv.classList.add('uk-accordion-content');
-        optionsLi.appendChild(optionsDiv);
-        explainAccordion.appendChild(optionsLi);
+        // Add options explanaition
+        this.explainOptions(component);
 
-        let templateReqLi = document.createElement('li');
-        let templateReqTitle = document.createElement('a');
-        templateReqTitle.classList.add('uk-accordion-title');
-        templateReqTitle.classList.add('uk-background-primary');
-        templateReqTitle.setAttribute('href', '#');
-        templateReqTitle.innerHTML = SWAC.lang.dict.ExplainComponents.template;
-        templateReqLi.appendChild(templateReqTitle);
-        let tmplReqDiv = this.explainTplRequirements(component);
-        tmplReqDiv.classList.add('uk-accordion-content');
-        templateReqLi.appendChild(tmplReqDiv);
-        explainAccordion.appendChild(templateReqLi);
+        // Add template requirements
+        this.explainTplRequirements(component);
 
-        let templatesLi = document.createElement('li');
-        let templatesTitle = document.createElement('a');
-        templatesTitle.classList.add('uk-accordion-title');
-        templatesTitle.classList.add('uk-background-primary');
-        templatesTitle.setAttribute('href', '#');
-        templatesTitle.innerHTML = SWAC.lang.dict.ExplainComponents.templates;
-        templatesLi.appendChild(templatesTitle);
-        let tmplsDiv = this.explainAllTemplates(component);
-        tmplsDiv.classList.add('uk-accordion-content');
-        templatesLi.appendChild(tmplsDiv);
-        explainAccordion.appendChild(templatesLi);
+        // Add templates documentation
+        this.explainAllTemplates(component);
 
-        let stylesLi = document.createElement('li');
-        let stylesTitle = document.createElement('a');
-        stylesTitle.classList.add('uk-accordion-title');
-        stylesTitle.classList.add('uk-background-primary');
-        stylesTitle.setAttribute('href', '#');
-        stylesTitle.innerHTML = SWAC.lang.dict.ExplainComponents.styles;
-        stylesLi.appendChild(stylesTitle);
+        // Add styles documentation
+        let stylesElem = this.requestor.querySelector('.stylesDiv');
         let stylesDiv = this.explainStyles(component);
-        stylesDiv.classList.add('uk-accordion-content');
-        stylesLi.appendChild(stylesDiv);
-        explainAccordion.appendChild(stylesLi);
+        stylesElem.appendChild(stylesDiv);
 
-        let functionsLi = document.createElement('li');
-        let functionsTitle = document.createElement('a');
-        functionsTitle.classList.add('uk-accordion-title');
-        functionsTitle.classList.add('uk-background-primary');
-        functionsTitle.setAttribute('href', '#');
-        functionsTitle.innerHTML = SWAC.lang.dict.ExplainComponents.functions;
-        functionsLi.appendChild(functionsTitle);
+        // Add functions documentation
+        let funcsElem = this.requestor.querySelector('.functionsDiv');
         let functionsDiv = this.explainFunctions(component);
-        functionsDiv.classList.add('uk-accordion-content');
-        functionsLi.appendChild(functionsDiv);
-        explainAccordion.appendChild(functionsLi);
+        funcsElem.appendChild(functionsDiv);
 
-        let dependenciesLi = document.createElement('li');
-        let dependenciesTitle = document.createElement('a');
-        dependenciesTitle.classList.add('uk-accordion-title');
-        dependenciesTitle.classList.add('uk-background-primary');
-        dependenciesTitle.setAttribute('href', '#');
-        dependenciesTitle.innerHTML = SWAC.lang.dict.ExplainComponents.dependencies;
-        dependenciesLi.appendChild(dependenciesTitle);
+        // Add dependency documentation
+        let depElem = this.requestor.querySelector('.dependenciesDiv');
         let dependenciesDiv = this.explainDependencies(component);
-        dependenciesDiv.classList.add('uk-accordion-content');
-        dataReqTitle.classList.add('uk-background-primary');
-        dependenciesLi.appendChild(dependenciesDiv);
-        explainAccordion.appendChild(dependenciesLi);
+        depElem.appendChild(dependenciesDiv);
+
+        // Add event documentation
+        this.explainEvents(component);
 
         // Explain plugins but only if component isnt a plugin itself
-        if (!component.name.includes('/plugins/')) {
-            let pluginsLi = document.createElement('li');
-            let pluginsTitle = document.createElement('a');
-            pluginsTitle.classList.add('uk-accordion-title');
-            pluginsTitle.classList.add('uk-background-primary');
-            pluginsTitle.setAttribute('href', '#');
-            pluginsTitle.innerHTML = SWAC.lang.dict.ExplainComponents.plugins;
-            pluginsLi.appendChild(pluginsTitle);
-            let pluginsDiv = this.explainPlugins(component);
-            pluginsDiv.classList.add('uk-accordion-content');
-            pluginsLi.appendChild(pluginsDiv);
-            explainAccordion.appendChild(pluginsLi);
-        }
-
-        explainArticle.appendChild(explainAccordion);
-
-        return explainArticle;
+//        if (!component.name.includes('/plugins/')) {
+//            let pluginsLi = document.createElement('li');
+//            let pluginsTitle = document.createElement('a');
+//            pluginsTitle.classList.add('uk-accordion-title');
+//            pluginsTitle.classList.add('uk-background-primary');
+//            pluginsTitle.setAttribute('href', '#');
+//            pluginsTitle.innerHTML = SWAC.lang.dict.ExplainComponents.plugins;
+//            pluginsLi.appendChild(pluginsTitle);
+//            let pluginsDiv = this.explainPlugins(component);
+//            pluginsDiv.classList.add('uk-accordion-content');
+//            pluginsLi.appendChild(pluginsDiv);
+//            explainAccordion.appendChild(pluginsLi);
+//        }
     }
 
     /**
@@ -378,88 +314,50 @@ export default class ExplainComponents extends View {
      * @returns {Element|this.explainTplRequirements.reqDiv}
      */
     explainTplRequirements(component) {
-        let reqDiv = document.createElement('div');
-
-        // Create table
-        let table = document.createElement('table');
-        table.setAttribute('class', 'uk-table');
-        let th = document.createElement('tr');
-        let th1 = document.createElement('th');
-        th1.innerHTML = SWAC.lang.dict.ExplainComponents.tmplelemSelector;
-        th.appendChild(th1);
-        let th2 = document.createElement('th');
-        th2.innerHTML = SWAC.lang.dict.ExplainComponents.tmplelemDesc;
-        th.appendChild(th2);
-        let th3 = document.createElement('th');
-        th3.innerHTML = SWAC.lang.dict.ExplainComponents.tmplelemReq;
-        th.appendChild(th3);
-        table.appendChild(th);
+        let repForTplElem = this.requestor.querySelector('.swac_repeatForTplElem');
 
         if (typeof component.desc === 'undefined') {
-            let tr = document.createElement("tr");
+            let repForNoElem = repForTplElem.cloneNode();
+            repForNoElem.classList.remove('swac_repeatForTplElem');
             let td = document.creeateElement("td");
             td.setAttribute('colspan', '2');
             td.innerHTML = SWAC.lang.dict.ExplainComponents.noDescription;
-            tr.appendChild(td);
-            table.appendChild(tr);
-            reqDiv.appendChild(table);
-            return reqDiv;
+            repForTplElem.parentElement.appendChild(td);
+            return;
         }
 
         if (typeof component.desc.reqPerTpl === 'undefined' || component.desc.reqPerTpl.length === 0) {
-            let tr = document.createElement("tr");
+            let repForNoElem = repForTplElem.cloneNode();
+            repForNoElem.classList.remove('swac_repeatForTplElem');
             let td = document.createElement("td");
             td.setAttribute('colspan', '2');
             td.innerHTML = SWAC.lang.dict.ExplainComponents.tmplelemsNone;
-            tr.appendChild(td);
-            table.appendChild(tr);
+            repForTplElem.parentElement.appendChild(td);
+            return;
         }
 
         if (typeof component.desc.reqPerTpl !== 'undefined') {
             // Create tablerow for each required attribute
             for (let curReq of component.desc.reqPerTpl) {
-                let tr = document.createElement("tr");
-                let td1 = document.createElement("td");
-                td1.innerHTML = curReq.selc;
-                tr.appendChild(td1);
-                let td2 = document.createElement("td");
-                td2.innerHTML = curReq.desc;
-                tr.appendChild(td2);
-                let td3 = document.createElement("td");
-                let checkbox = document.createElement('input');
-                checkbox.setAttribute('type', 'checkbox');
-                checkbox.setAttribute('checked', 'checked');
-                checkbox.setAttribute('disabled', 'disabled');
-                checkbox.classList.add('uk-checkbox');
-                td3.appendChild(checkbox);
-                tr.appendChild(td3);
-                table.appendChild(tr);
+                let repForElem = repForTplElem.cloneNode(true);
+                repForElem.classList.remove('swac_repeatForTplElem');
+                repForElem.querySelector('.swac_expl_sel').innerHTML = curReq.selc;
+                repForElem.querySelector('.swac_expl_desc').innerHTML = curReq.desc;
+                repForElem.querySelector('.swac_expl_req').setAttribute('checked', 'checked');
+                repForTplElem.parentElement.appendChild(repForElem);
             }
         }
 
         if (typeof component.desc.optPerTpl !== 'undefined') {
             // Create tablerow for each optional attribute
             for (let curOpt of component.desc.optPerTpl) {
-                let tr = document.createElement("tr");
-                let td1 = document.createElement("td");
-                td1.innerHTML = curOpt.selc;
-                tr.appendChild(td1);
-                let td2 = document.createElement("td");
-                td2.innerHTML = curOpt.desc;
-                tr.appendChild(td2);
-                let td3 = document.createElement("td");
-                let checkbox = document.createElement('input');
-                checkbox.setAttribute('type', 'checkbox');
-                checkbox.setAttribute('disabled', 'disabled');
-                checkbox.classList.add('uk-checkbox');
-                td3.appendChild(checkbox);
-                tr.appendChild(td3);
-                table.appendChild(tr);
+                let repForElem = repForTplElem.cloneNode(true);
+                repForElem.classList.remove('swac_repeatForTplElem');
+                repForElem.querySelector('.swac_expl_sel').innerHTML = curOpt.selc;
+                repForElem.querySelector('.swac_expl_desc').innerHTML = curOpt.desc;
+                repForTplElem.parentElement.appendChild(repForElem);
             }
         }
-        reqDiv.appendChild(table);
-
-        return reqDiv;
     }
 
     /**
@@ -469,8 +367,6 @@ export default class ExplainComponents extends View {
      * @returns {undefined}
      */
     explainAllTemplates(component) {
-        let explDiv = document.createElement('div');
-
         // Get available templates
         let templates = [];
         if (typeof component.desc !== 'undefined'
@@ -483,20 +379,22 @@ export default class ExplainComponents extends View {
             };
         }
 
+        // Get template element
+        let tplTplElem = this.requestor.querySelector('.swac_expl_repForTpl');
+
         let notemplates = 0;
         for (let curTemplate of templates) {
             notemplates++;
-            let explDivHead = document.createElement('h3');
-            explDivHead.innerHTML = 'Template "' + curTemplate.name + '"';
-            explDiv.appendChild(explDivHead);
-            let explDivP = document.createElement('p');
-            explDivP.innerHTML = curTemplate.desc;
-            explDiv.appendChild(explDivP);
+            let tplElem = tplTplElem.cloneNode(true);
+            tplElem.classList.remove('swac_expl_repForTpl');
+            tplElem.querySelector('.swac_expl_tplname').innerHTML = 'Template "' + curTemplate.name + '"';
+            tplElem.querySelector('.swac_expl_desc').innerHTML = curTemplate.desc;
             let explDivTmpl = document.createElement('div');
-            explDiv.appendChild(explDivTmpl);
+            tplElem.appendChild(explDivTmpl);
+            tplTplElem.parentElement.appendChild(tplElem);
 
             let htmlfragment_url = SWAC.config.swac_root + 'components/' + component.name + '/' + curTemplate.name + '.html';
-            let thisObj = this;
+            let thisRef = this;
             // Get component sourcecode
             fetch(htmlfragment_url, {
                 // Data in url params not here
@@ -512,16 +410,180 @@ export default class ExplainComponents extends View {
                 referrer: 'no-referrer' // *client
             }).then(function (response) {
                 response.text().then(function (htmlfragment) {
-                    thisObj.explainHTMLFragment(htmlfragment, component, explDivTmpl);
+                    thisRef.explainHTMLFragment(htmlfragment, component, explDivTmpl);
+                    let deElem = thisRef.requestor.querySelector('.swac_explain_forDocErr');
+
+                    let placeHldrs = htmlfragment.match(/\{(.*?)\}/g);
+                    if (placeHldrs) {
+                        placeHldrs = placeHldrs.filter(onlyUnique);
+                        function onlyUnique(value, index, array) {
+                            return array.indexOf(value) === index;
+                        }
+
+                        for (let curPlaceHldr of placeHldrs) {
+                            let curName = curPlaceHldr.replace('{', '').replace('}', '');
+                            // Exclude default
+                            if (curName === '*') {
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="Placeholder for any attribute value. Use within swac_repeatForValue.">{' + curName + '}</span>');
+                                continue;
+                            } else if (curName === 'attrName') {
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="Placeholder for attributes name. Use within swac_repeatForValue.">{' + curName + '}</span>');
+                                continue;
+                            } else if (curName === 'requestor.id') {
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="Placeholder for the id of the component.">{' + curName + '}</span>');
+                                continue;
+                            }
+
+                            let found = false;
+
+                            // Check if it is required
+                            for (let curReq of component.desc.reqPerSet) {
+                                if (curName === curReq.name) {
+                                    found = true;
+                                    // Description tag for template
+                                    explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="' + curReq.desc + '">{' + curName + '}</span>');
+                                }
+                            }
+                            // Check if it is optional
+                            for (let curReq of component.desc.optPerSet) {
+                                if (curName === curReq.name) {
+                                    found = true;
+                                    // Description tag for template
+                                    explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace('{' + curName + '}', '<span uk-tooltip="' + curReq.desc + '">{' + curName + '}</span>');
+                                }
+                            }
+                            // Check if placehlolder isn't documented
+                            if (!found) {
+                                let ndeElem = deElem.cloneNode(true);
+                                ndeElem.classList.remove('swac_explain_forDocErr');
+                                ndeElem.innerHTML = 'Placeholder >' + curName + '< from template >' + curTemplate.name + '< is not documented.';
+                                deElem.parentElement.appendChild(ndeElem);
+                            }
+                        }
+                    }
+
+                    // List all required classes
+                    let requiredClasses = new Map();
+                    for (let curReqPerTpl of component.desc.reqPerTpl) {
+                        requiredClasses.set(curReqPerTpl.selc, curReqPerTpl.selc);
+                        // Check if required is id instead of class and warn
+                        if (curReqPerTpl.selc.startsWith('#')) {
+                            let ndeElem = deElem.cloneNode(true);
+                            ndeElem.classList.remove('swac_explain_forDocErr');
+                            ndeElem.innerHTML = 'Required template element >' + curReqPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
+                            deElem.parentElement.appendChild(ndeElem);
+                        }
+                    }
+                    for (let curOptPerTpl of component.desc.optPerTpl) {
+                        // Check if required is id instead of class and warn
+                        if (curOptPerTpl.selc.startsWith('#')) {
+                            let ndeElem = deElem.cloneNode(true);
+                            ndeElem.classList.remove('swac_explain_forDocErr');
+                            ndeElem.innerHTML = 'Required template element >' + curOptPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
+                            deElem.parentElement.appendChild(ndeElem);
+                        }
+                    }
+
+                    // Check classes
+                    let div = document.createElement('div');
+                    div.innerHTML = htmlfragment;
+                    let clsElems = div.querySelectorAll('[class]');
+                    for (let curClsElem of clsElems) {
+                        for (let curCls of curClsElem.classList) {
+                            // If class is a uikit class
+                            if (curCls.startsWith('uk-')) {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This is a ui-kit styling instruction">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls.startsWith('swac_format')) {
+                                // Formating classes for templates without functional meaning
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This is a formating only class. See ' + curTemplate.name + '.css">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_repeatForSet') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is repeated for every dataset added to the component.">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_repeatForValue') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is repeated for every value available in a dataset.">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_repeatForAttribute') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is repeated for every value attribute name in a dataset.">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_dontdisplay') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is hidden. It may be displayed be removeing the class.">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_forChilds') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element is the place in the parent dataset visualisation, where childs are shown.">' + curCls + '</span>');
+                                continue;
+                            }
+                            if (curCls === 'swac_child') {
+                                var re = new RegExp(curCls, 'g');
+                                explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element contains the representation for the dataset as it is when used as a child element of some other dataset.">' + curCls + '</span>');
+                                continue;
+                            }
+
+
+
+                            // Search in descriptions
+                            let found = false;
+                            for (let curReqPerTpl of component.desc.reqPerTpl) {
+                                if (curReqPerTpl.selc === '.' + curCls) {
+                                    var re = new RegExp(curCls, 'g');
+                                    explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="(required) ' + curReqPerTpl.desc + '">' + curCls + '</span>');
+                                    found = true;
+                                    requiredClasses.delete(curReqPerTpl.selc);
+                                    break;
+                                }
+                            }
+                            for (let curOptPerTpl of component.desc.optPerTpl) {
+                                if (curOptPerTpl.selc === '.' + curCls) {
+                                    var re = new RegExp(curCls, 'g');
+                                    explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="(optional) ' + curOptPerTpl.desc + '">' + curCls + '</span>');
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            // Info when cls not found
+                            if (!found) {
+                                if (deElem) {
+                                    let ndeElem = deElem.cloneNode(true);
+                                    ndeElem.classList.remove('swac_explain_forDocErr');
+                                    ndeElem.innerHTML = 'Used class >' + curCls + '< in template >' + curTemplate.name + '< is not documented.';
+                                    deElem.parentElement.appendChild(ndeElem);
+                                }
+                            }
+                        }
+                    }
+
+                    // Check if some required classes are not found
+                    if (requiredClasses.size > 0) {
+                        let ndeElem = deElem.cloneNode(true);
+                        ndeElem.classList.remove('swac_explain_forDocErr');
+                        let missingnames = Array.from(requiredClasses.keys()).join(', ');
+                        ndeElem.innerHTML = 'The required elements with class(es) >' + missingnames + '< were not found in template >' + curTemplate.name + '<.';
+                        deElem.parentElement.appendChild(ndeElem);
+                    }
                 });
             });
         }
 
         if (notemplates === 0) {
-            explDiv.appendChild(document.createTextNode(SWAC.lang.dict.ExplainComponents.tplsNone));
+            let tplElem = tplTplElem.cloneNode(true);
+            tplElem.classList.remove('swac_expl_repForTpl');
+            tplElem.querySelector('.swac_expl_desc').innerHTML = SWAC.lang.dict.ExplainComponents.tplsNone;
+            tplTplElem.parentElement.appendChild(tplElem);
         }
-
-        return explDiv;
     }
 
     /**
@@ -554,6 +616,7 @@ export default class ExplainComponents extends View {
 
             // Add description
             let desc = descmap.get(curOption);
+            let deElem = this.requestor.querySelector('.swac_explain_forDocErr');
             if (typeof desc !== 'undefined') {
                 // Description text
                 optDiv.querySelector('.swac_explain_option_desc').innerHTML = desc.desc;
@@ -566,6 +629,12 @@ export default class ExplainComponents extends View {
                     dval = desc.example;
             } else {
                 optDiv.querySelector('.swac_explain_option_desc').innerHTML = SWAC.lang.dict.ExplainComponents.optionsNodesc;
+                if (deElem) {
+                    let ndeElem = deElem.cloneNode(true);
+                    ndeElem.classList.remove('swac_explain_forDocErr');
+                    ndeElem.innerHTML = 'Option >' + curOption + '< is not documented.';
+                    deElem.parentElement.appendChild(ndeElem);
+                }
             }
             if (!type && typeof dval !== 'undefined' && dval != null) {
                 type = typeof dval;
@@ -576,6 +645,13 @@ export default class ExplainComponents extends View {
                 } else if (dval.constructor === Map) {
                     type = 'Map<>';
                 }
+            }
+
+            if (typeof type === 'undefined' || type.startsWith('undefined')) {
+                let ndeElem = deElem.cloneNode(true);
+                ndeElem.classList.remove('swac_explain_forDocErr');
+                ndeElem.innerHTML = 'Option >' + curOption + '< has no valid type information. Either add a default value, a example value, or a type name.';
+                deElem.parentElement.appendChild(ndeElem);
             }
 
             // Datatype
@@ -727,7 +803,7 @@ export default class ExplainComponents extends View {
         } else if (obj.constructor === Map) {
             string.push('new Map(');
             let fent = obj.entries().next().value;
-            if(fent)
+            if (fent)
                 string.push(this.convertToText(obj.entries().next().value));
             string.push(')');
         } else if (typeof (obj) == "object" && (obj.join == undefined)) {
@@ -760,10 +836,16 @@ export default class ExplainComponents extends View {
      * @returns {undefined}
      */
     explainHTMLFragment(htmlfragment, component, reqDiv) {
-        this.encodeHTML(htmlfragment).then(function (codeElem) {
-            let preElem = document.createElement('pre');
-            preElem.appendChild(codeElem);
-            reqDiv.appendChild(preElem);
+        // Insert code from template and highlight
+        let encodedhtml = he.encode(htmlfragment);
+        let codeElem = document.createElement('code');
+        codeElem.innerHTML = encodedhtml;
+        let preElem = document.createElement('pre');
+        preElem.appendChild(codeElem);
+        reqDiv.appendChild(preElem);
+
+        this.encodeHTML().then(function (codeElem) {
+
 
             //TODO insert highlights with popup that descripes the highlighted element
         });
@@ -871,24 +953,39 @@ export default class ExplainComponents extends View {
     }
 
     /**
+     * Explains the events that the component defines
+     * 
+     * @param {Component} component 
+     */
+    explainEvents(component) {
+        let evtDivTpl = this.requestor.querySelector('.swac_expl_repForEvt');
+        for (let curEvt of component.desc.events) {
+            let evtDiv = evtDivTpl.cloneNode(true);
+            evtDiv.classList.remove('swac_expl_repForEvt');
+            evtDiv.querySelector('.swac_expl_name').innerHTML = curEvt.name;
+            evtDiv.querySelector('.swac_expl_desc').innerHTML = curEvt.desc;
+            evtDiv.querySelector('.swac_expl_data').innerHTML = curEvt.data;
+            evtDivTpl.parentElement.appendChild(evtDiv);
+        }
+    }
+
+    /**
      * Encodes a htmlfragment string and highlights it.
      * 
-     * @param {String} htmlfragment HTML code fragment
      * @returns {Promise} Promise that resolves to an DOMElement with htmlfragment as text
      */
-    encodeHTML(htmlfragment) {
+    encodeHTML() {
+        let thisRef = this;
         return new Promise((resolve, reject) => {
             // Highlight code elements allready existing on page
             let codeElems = document.querySelectorAll('pre code');
             for (let codeElem of codeElems) {
-                hljs.highlightBlock(codeElem);
+                if (!thisRef.hilighteds.includes(codeElem)) {
+                    hljs.highlightElement(codeElem);
+                    thisRef.hilighteds.push(codeElem);
+                }
             }
-            // Insert code from template and highlight
-            let encodedhtml = he.encode(htmlfragment);
-            let codeElem = document.createElement('code');
-            codeElem.innerHTML = encodedhtml;
-            hljs.highlightBlock(codeElem);
-            resolve(codeElem);
+            resolve();
         });
     }
 

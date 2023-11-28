@@ -1,10 +1,10 @@
-.label-options {
+.swac_formatLabelOptions {
     display: block !important;
     background: var(--swacorange) !important;
     width: auto;
     float: none !important;
 }
 
-.input-options {
+.swac_formatInputOptions {
     width: 10em !important;
 }

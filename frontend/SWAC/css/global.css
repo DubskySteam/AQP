@@ -58,11 +58,28 @@ body > footer {
     width: 100%;
     background: #073A5F;
     color: #ffffff;
-    text-align: center;
 }
 body footer a {
     color: #ffffff;
+    position: relative;
+    bottom: -15px;
     text-decoration: none;
     font-weight: bolder;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#more {
+    left: 10%;
+}
+
+#about {
+    left: 30%;
+}
+
+#privacy {
+    left: 50%;
+}
+
+#imprint {
+    left: 70%;
 }

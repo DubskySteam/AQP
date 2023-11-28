@@ -100,6 +100,10 @@ remoteHandler.fetchDelete = function (fromName, fromWheres, supressErrorMessage)
  * @returns {Promise} Promise that resolves with datacapsle when data was recived
  */
 remoteHandler.fetch = function (fromName, fromWheres, mode, supressErrorMessage, data) {
+    if(!fromName) {
+        Msg.error('Remote','fromName is missing for fetch reequest. Check your dataRequestor.');
+        return;
+    }
     // Detect max requests
     if (remoteHandler.running > 50) {
         return this.addToWaitlist(fromName, fromWheres, mode, supressErrorMessage, data);
@@ -129,7 +133,7 @@ remoteHandler.fetch = function (fromName, fromWheres, mode, supressErrorMessage,
         // Build request configuration
         let fetchConf = {
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *omit
+            credentials: 'include', // same-origin, include, *omit
             headers: {
                 'user-agent': 'SWAC/1.0 fetch',
                 'content-type': 'application/json'
@@ -330,6 +334,7 @@ remoteHandler.fetchUpdate = function (fromName, fromWheres, supressErrorMessage,
  * @returns {mode,url} httpmode and url or null, if no one found
  */
 remoteHandler.determineMatchingResource = function (fromName, mode) {
+    Msg.flow('Remote','determineMatchingResource for source >' + fromName + '< with mode >' + mode + '<');
     // Set automatic mode
     let hmode;
     switch (mode) {

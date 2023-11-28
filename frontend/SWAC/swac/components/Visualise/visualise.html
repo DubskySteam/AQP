@@ -3,9 +3,13 @@
         <!-- Visualisation for complete sets -->
         <div class="swac_visualise_diagram_set"></div>
         <table class="swac_visualise_legend_set">
-            <tr class="swac_visualise_legend_repeat swac_dontdisplay">
+            <tr class="swac_visualise_repeatForAttr swac_dontdisplay">
                 <td class="swac_visualise_legend_name" swac_lang=""></td><td class="swac_visualise_legend_value"></td>
             </tr>
+            <!-- TODO why not use the following? -->
+<!--            <tr class="swac_repeatForValue">
+                <td swac_lang="{attrName}">{attrName}</td><td>{*}</td>
+            </tr>-->
         </table>
         <div>
             <div class="swac_repeatForValue">
@@ -16,8 +20,8 @@
                 </div>
             </div>
         </div>
-        <div class="diagram_info_state_div">
-            <b swac_lang="Visualise.state"></b>
+        <div class="swac_visualise_ts">
+            <b swac_lang="Visualise.ts"></b>
             <div>{ts}</div>
         </div>
     </div>

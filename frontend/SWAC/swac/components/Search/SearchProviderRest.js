@@ -39,9 +39,19 @@ export default class SearchProviderRest extends SearchProvider {
                 resolve();
                 return;
             }
+            // Search and language expression translation
+            if (this.searchsource.lngfiltercolumn) {
+                for (let curLngEntry in window.swac.lang.dict.app) {
+                    if (window.swac.lang.dict.app[curLngEntry] === searchExpr) {
+                        searchExpr += '&filter2=' + this.searchsource.lngfiltercolumn + ',' + this.searchsource.lngfilterkind + ',' + curLngEntry;
+                        break;
+                    }
+                }
+            }
 
             // Set searchExpr into apipath
             let searchpath = searchurl.replace('{expression}', searchExpr);
+
             // Call rest api
             fetch(searchpath).then(function (response) {
                 if (response.ok) {
@@ -61,17 +71,29 @@ export default class SearchProviderRest extends SearchProvider {
                                 searchresults.push(searchresult);
                             }
                         } else {
-                            Msg.flow('SearchProviderRest','Try detect results from unknown json.', searchcomp.requestor);
-                            searchresults = providerRef.detectResults(responsejson);
+                            Msg.flow('SearchProviderRest', 'Try detect results from unknown json.', searchcomp.requestor);
+
+                            let searchresultTpl = {
+                                name: searchExpr,
+                                status: 200,
+                                url: searchpath,
+                                provider: providerRef
+                            };
+                            providerRef.detectResults(responsejson, searchresultTpl, searchresults);
                         }
+                        if (searchresults.length < 1) {
+                            let infoElem = searchcomp.requestor.querySelector('.swac_search_info');
+                            infoElem.innerHTML = SWAC.lang.dict.Search.nothingfound;
+                        }
+
                         resolve(searchresults);
                     })
                 } else if (response.status === 404) {
                     Msg.info('SearchProviderRest', 'Nothing found on ' + searchpath, searchcomp.requestor);
                     resolve([]);
                 } else {
-                    Msg.error('SearchProviderRest', 'Error getting json response: ' + error, searchcomp.requestor);
-                    reject(error);
+                    Msg.error('SearchProviderRest', 'Error getting json response: ' + response.status, searchcomp.requestor);
+                    reject(response.status);
                 }
             }).catch(function (error) {
                 Msg.error('SearchProviderRest', 'Error getting json response: ' + error, searchcomp.requestor);
@@ -79,19 +101,19 @@ export default class SearchProviderRest extends SearchProvider {
             });
         });
     }
-    
+
     /**
      * Tries to detect results from unknown json structurs
      */
-    detectResults(resultjson) {
-        let results = [];
-        for(let curAttr in resultjson) {
-            if(resultjson[curAttr] instanceof Array) {
-                return resultjson[curAttr];
-            } else if(resultjson[curAttr] instanceof Object) {
-                results = this.detectResults(resultjson[curAttr]);
+    detectResults(resultjson, searchresultTpl, searchresults) {
+        for (let curAttr in resultjson) {
+            if (resultjson[curAttr] instanceof Array) {
+                this.detectResults(resultjson[curAttr], searchresultTpl, searchresults);
+            } else if (resultjson[curAttr] instanceof Object) {
+                let res = Object.assign({}, searchresultTpl);
+                res.result = resultjson[curAttr];
+                searchresults.push(res);
             }
         }
-        return results;
     }
 }

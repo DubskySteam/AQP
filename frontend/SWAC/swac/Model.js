@@ -742,6 +742,7 @@ export default class Model {
                     if (curPart.includes(',eq,')) {
                         // Saw equal needed here because numbers are strings in fromWheres
                         if (set[parts[0]] != parts[2] && set[parts[0]] + '' != parts[2] + '') {
+                            Msg.warn('Model','Set >' + set.swac_fromName + '[' + set.id + ']< not accepted because set.' + parts[0] + ' is not ' + parts[2] + ' but is ' + set[parts[0]]);
                             return false;
                         }
                     } else if (curPart.includes(',gt,')) {
@@ -806,7 +807,7 @@ export default class Model {
      * @param {WatchableSource} source Source where the set was added
      * @param {WatchableSet} set Added set
      */
-    static notifyDelSet(source, set) {
+    static notifyDelSet(set) {
         if (this.store[set.swac_fromName].hasSet(set.id))
             this.store[set.swac_fromName].delSet(set);
     }

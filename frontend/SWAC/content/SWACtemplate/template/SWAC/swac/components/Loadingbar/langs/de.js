@@ -1,4 +1,0 @@
-var Loadingbar_de = {
-};
-
-
