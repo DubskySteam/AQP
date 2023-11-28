@@ -10,4 +10,6 @@
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/DubskySteam/AQP/main?style=for-the-badge&label=Master)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/DubskySteam/AQP/dev?style=for-the-badge&label=Dev)
 
+[![](https://img.shields.io/badge/Releases-.war-orange?style=for-the-badge)](https://github.com/DubskySteam/AQP/releases)
+
 </div>
