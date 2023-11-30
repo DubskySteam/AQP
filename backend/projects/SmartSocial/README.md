@@ -28,6 +28,7 @@ ___
     Jakarta Web API -> org.glassfish.jaxb:jaxb-runtime:3.0.2
     Jakarta WS API -> org.glassfish.jaxb:jaxb-runtime:3.0.2
     Glassfish XML Bindings -> org.glassfish.jaxb:jaxb-runtime:3.0.2
+    Mockito -> org.mockito:mockito-core:5.7.0
 
 ## Self-Managed Dependencies
 
