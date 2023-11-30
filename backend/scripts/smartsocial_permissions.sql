@@ -1,3 +1,5 @@
+ALTER SCHEMATA smartuser.smartsocial TO OWNER smartuser
+
 DO $$
 DECLARE
     table_record RECORD;
