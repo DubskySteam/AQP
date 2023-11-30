@@ -49,7 +49,7 @@ public class GroupController {
     @Path("/example")
     public Response getExample() {
         Group group = new Group();
-        group.setId(1);
+        group.setId(1L);
         group.setName("Bike Club Minden");
         group.setDescription("We are a group of people who like to ride bikes.");
         group.setCreationDate(LocalDate.now());
