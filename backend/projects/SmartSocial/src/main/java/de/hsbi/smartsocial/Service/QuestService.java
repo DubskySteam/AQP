@@ -1,7 +1,6 @@
 package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Quest;
-import de.hsbi.smartsocial.Model.Userquest;
 import de.hsbi.smartsocial.Persistence.QuestRepository;
 import jakarta.persistence.EntityManager;
 
@@ -41,10 +40,6 @@ public class QuestService {
 
     public Quest getById(Integer id) {
         return questRepository.getById(id);
-    }
-
-    public List<Userquest> getQuestsByUser(Long userId) {
-        return questRepository.getQuestsByUser(userId);
     }
 
 }

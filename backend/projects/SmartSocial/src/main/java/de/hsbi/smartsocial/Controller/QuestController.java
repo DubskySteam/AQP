@@ -60,13 +60,5 @@ public class QuestController {
         return Response.ok(questService.getById(id)).build();
     }
 
-    @GET
-    @Path("/getUserQuests/{id}")
-    public Response getUserQuests(@PathParam("id") Long id) {
-        init();
-        return Response.ok(questService.getQuestsByUser(id)).build();
-    }
-
-
 
 }
