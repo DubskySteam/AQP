@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Plugins ###
+!/.idea/discord.xml
+!/.idea/jpa-buddy.xml
