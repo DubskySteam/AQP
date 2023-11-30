@@ -21,7 +21,7 @@ public class RestEntry extends Application {
         resources.add(QuestController.class);
         resources.add(TestController.class);
         resources.add(ProfileSettingsController.class);
-        //resources.add(OpenApiResource.class);
+        resources.add(OpenApiResource.class);
 
         return resources;
     }
