@@ -29,6 +29,10 @@ ___
     Jakarta WS API -> org.glassfish.jaxb:jaxb-runtime:3.0.2
     Glassfish XML Bindings -> org.glassfish.jaxb:jaxb-runtime:3.0.2
     Mockito -> org.mockito:mockito-core:5.7.0
+    Swagger Core -> io.swagger.core.v3:swagger-core:2.2.19
+    Swagger Jaxrs2 -> io.swagger.core.v3:swagger-jaxrs2:2.2.19
+    Swagger Jaxrs2 Servlet Initializer -> io.swagger.core.v3:swagger-jaxrs2-servlet-initializer:2.2.19
+    Swagger UI -> org.webjars:swagger-ui:5.9.0
 
 ## Self-Managed Dependencies
 
