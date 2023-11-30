@@ -22,6 +22,17 @@ var SWAC_config = {
         {
             url: "/SWAC/data/[fromName]"
         },
+        {
+            url: "/SmartUser/smartuser/[iface]/[fromName]",
+            interfaces: {
+                get: ['GET', 'records'],
+                list: ['GET', 'records'],
+                defs: ['GET', 'collection'],
+                create: ['POST', 'records'],
+                update: ['PUT', 'records'],
+                delete: ['DELETE', 'records']
+            }
+        },
 //        {
 //            url: "/SmartData/smartdata/[iface]/[fromName]?storage=smartmonitoring",
 //            interfaces: {

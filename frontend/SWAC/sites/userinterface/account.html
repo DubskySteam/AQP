@@ -13,7 +13,6 @@
         <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
         <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
         <script src="/SWAC/swac/swac.js" type="module"></script>
-        <script src="../js/account.js"></script>
     </head>
     <body>
         <header id="head_navigation">
@@ -34,7 +33,11 @@
                 <img src="./../../content/gear.png" alt="settings" style="float: right; margin-top: -2.5%;">
             </a>
             <img id="profil_img" src="./../../content/profil_img.png" alt="No Image in here!">
-            <h1 style="font-weight: bolder;">Tim Meier</h1>
+            <div id="user_name" swa="Present FROM user">
+                <div class="swac_repeatForSet">
+                    <h1 style="font-weight: bolder;">{username}</h1>
+                </div>
+            </div>
             <div id="group_link">
                 <ul>
                     <li>

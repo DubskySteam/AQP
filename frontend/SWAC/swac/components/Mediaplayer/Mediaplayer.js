@@ -13,10 +13,6 @@ import Mediacode from './Mediacode.js';
 
 export default class Mediaplayer extends View {
 
-    /*
-     * Constructs a new component object and transfers the config to the
-     * object
-     */
     constructor(options = {}) {
         super(options);
         this.name = 'Mediaplayer';

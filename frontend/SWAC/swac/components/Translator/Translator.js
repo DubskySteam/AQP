@@ -29,36 +29,37 @@ export default class Translator extends View {
         };
 
         this.desc.opts[0] = {
-            name: "lang",
-            desc: "Identifier of the language to show"
+            name: 'lang',
+            desc: 'Identifier of the language to show'
         };
         if (!options.lang) {
             this.options.lang = navigator.language || navigator.userLanguage;
         }
         this.desc.opts[1] = {
-            name: "contentlang",
-            desc: "Identifier of the content language in the document."
+            name: 'contentlang',
+            desc: 'Identifier of the content language in the document.',
+            example: 'en'
         };
         if (!options.contentlang)
             this.options.contentlang = null;
 
         this.desc.opts[2] = {
-            name: "translateAttrnames",
-            desc: "When true also attribute names are translated. This deactivates automatic synching of changed attribute names."
+            name: 'translateAttrs',
+            desc: 'When true also attribute names are translated. This deactivates automatic synching of changed attribute names.'
         };
         if (typeof options.translateAttrs === 'undefined')
             this.options.translateAttrs = true;
 
         this.desc.opts[3] = {
-            name: "showInNav",
-            desc: "If set to true, and the nav component is used. The translator will be shown in the navs addons section."
+            name: 'showInNav',
+            desc: 'If set to true, and the nav component is used. The translator will be shown in the navs addons section.'
         };
         if (typeof options.showInNav === 'undefined')
             this.options.showInNav = true;
 
         this.desc.opts[4] = {
-            name: "formatLocale",
-            desc: "If set to true numbers and dates are formatted to their locale representation."
+            name: 'formatLocale',
+            desc: 'If set to true numbers and dates are formatted to their locale representation.'
         };
         if (typeof options.formatLocale === 'undefined')
             this.options.formatLocale = true;
@@ -174,7 +175,7 @@ export default class Translator extends View {
         for (let curLngFile of this.curlng.swac_files) {
             curLngFile = SWAC.config.app_root + '/' + curLngFile;
             // Load translation if not loaded yet
-            Msg.flow('Translator', 'Try to load file >' + curLngFile + "<");
+            Msg.flow('Translator', 'Try to load file >' + curLngFile + '<');
             let lngfile = curLngFile.replace('_' + this.curlng.swac_lng + '.js', '');
             let lngcodeparts = lngfile.split('/');
             let lngcode = lngcodeparts[lngcodeparts.length - 1];

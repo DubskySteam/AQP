@@ -13,7 +13,8 @@ export default class Copy extends View {
 
         this.desc.opts[0] = {
             name: "sourceId",
-            desc: "Elemens id thats contents should be copied"
+            desc: "Elemens id thats contents should be copied",
+            example: 'myElementId'
         };
         // Setting a default value, only applying when the options parameter does not contain this option
         if (!options.sourceId)

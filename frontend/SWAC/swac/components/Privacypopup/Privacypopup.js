@@ -4,10 +4,6 @@ import Msg from '../../Msg.js';
 
 export default class Privacypopup extends View {
 
-    /*
-     * Constructs a new component object and transfers the config to the
-     * object
-     */
     constructor(options = {}) {
         super(options);
         this.name = 'Privacypopup';
@@ -19,14 +15,7 @@ export default class Privacypopup extends View {
             name: 'privacypopup',
             desc: 'Default template.'
         };
-        this.desc.reqPerTpl[0] = {
-            selc: 'cssSelectorForRequiredElement',
-            desc: 'Description why the element is expected in the template'
-        };
-        this.desc.optPerTpl[0] = {
-            selc: 'cssSelectorForOptionalElement',
-            desc: 'Description what is the expected effect, when this element is in the template.'
-        };
+
         if (!options.showWhenNoData)
             this.options.showWhenNoData = true;
     }

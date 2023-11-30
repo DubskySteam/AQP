@@ -1,4 +1,4 @@
-<div class="jsonrader_fileselectstep uk-card uk-card-default uk-width-1-2@m">
+<div class="swac_jsonreader_fileselectstep uk-card uk-card-default uk-width-1-2@m">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
             <div class="uk-width-auto">
@@ -12,24 +12,24 @@
     <div class="uk-card-body">
         <form class="uk-grid-small" uk-grid>
             <div class="uk-width-3-4@s">
-                <input class="jsonreader_fileurl uk-input" type="text" placeholder="JsonReader.fileurl">
+                <input class="swac_jsonreader_fileurl uk-input" type="text" placeholder="JsonReader.fileurl">
             </div>
             <div class="uk-width-1-4@s">
                 <div uk-form-custom>
-                    <input class="jsonreader_fileselect" type="file" aria-label="Custom controls">
+                    <input class="swac_jsonreader_fileselect" type="file" aria-label="Custom controls">
                     <button class="uk-button uk-button-default" type="button" tabindex="-1">JsonReader.jsonselect</button>
                 </div>
             </div>
             <div class="uk-width-1-1">
-                <textarea class="jsonreader_jsontext" placeholder="JsonReader.jsoncontent"></textarea>
+                <textarea class="swac_jsonreader_jsontext" placeholder="JsonReader.jsoncontent"></textarea>
             </div>
         </form>
     </div>
     <div class="uk-card-footer">
-        <button class="jsonreader_toconfig uk-button uk-button-primary">JsonReader.nextstep</button>
+        <button class="swac_jsonreader_toconfig uk-button uk-button-primary">JsonReader.nextstep</button>
     </div>
 </div>
-<div class="jsonreader_configstep swac_dontdisplay uk-card uk-card-default uk-width-1-2@m">
+<div class="swac_jsonreader_configstep swac_dontdisplay uk-card uk-card-default uk-width-1-2@m">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
             <div class="uk-width-auto">
@@ -42,11 +42,11 @@
     </div>
     <div class="uk-card-body">
         <div class="uk-width-3-4@s">
-            <input class="jsonreader_configurl uk-input" type="text" placeholder="JsonReader.configurl">
+            <input class="swac_jsonreader_configurl uk-input" type="text" placeholder="JsonReader.configurl">
         </div>
         <div class="uk-width-1-4@s">
             <div uk-form-custom>
-                <input class="jsonreader_configselect" type="file" aria-label="Custom controls">
+                <input class="swac_jsonreader_configselect" type="file" aria-label="Custom controls">
                 <button class="uk-button uk-button-default" type="button" tabindex="-1">JsonReader.configselect</button>
             </div>
         </div>
@@ -60,15 +60,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="jsonreader_repeatForKey">
-                        <td class="jsonreader_keyname"></td>
+                    <tr class="swac_jsonreader_repeatForKey">
+                        <td class="swac_jsonreader_keyname"></td>
                         <td>
-                            <select class="jsonreader_keycolection uk-select" aria-label="Select">
+                            <select class="swac_jsonreader_keycolection uk-select" aria-label="Select">
                                 <option value="noimport">JsonReader.noimport</option>
                             </select>
                         </td>
                         <td>
-                            <select class="jsonreader_keycolumn uk-select" aria-label="Select">
+                            <select class="swac_jsonreader_keycolumn uk-select" aria-label="Select">
                                 <option value="noselection">JsonReader.noselection</option>
                             </select>
                         </td>
@@ -76,15 +76,15 @@
                 </tbody>
             </table>
 
-            <textarea class="jsonreader_configtext" placeholder="JsonReader.configcontent"></textarea>
-            <a download="import_config.json" class="jsonreader_saveconf uk-button uk-button-default">JsonReader.saveconfig</a>
+            <textarea class="swac_jsonreader_configtext" placeholder="JsonReader.configcontent"></textarea>
+            <a download="import_config.json" class="swac_jsonreader_saveconf uk-button uk-button-default">JsonReader.saveconfig</a>
         </div>
     </div>
     <div class="uk-card-footer">
-        <button class="jsonreader_backtofileselect uk-button uk-button-primary">JsonReader.prevstep</button> <button class="jsonreader_topreview uk-button uk-button-primary">JsonReader.nextstep</button>
+        <button class="swac_jsonreader_backtofileselect uk-button uk-button-primary">JsonReader.prevstep</button> <button class="swac_jsonreader_topreview uk-button uk-button-primary">JsonReader.nextstep</button>
     </div>
 </div>
-<div class="jsonreader_previewstep uk-card uk-card-default swac_dontdisplay uk-width-1-2@m">
+<div class="swac_jsonreader_previewstep uk-card uk-card-default swac_dontdisplay uk-width-1-2@m">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
             <div class="uk-width-auto">
@@ -95,18 +95,18 @@
             </div>
         </div>
     </div>
-    <div class="jsonreader_preview uk-card-body">
-        <table class="jsonreader_repeatForCollection uk-table uk-table-striped">
-            <caption class="jsonreader_colcaption"></caption>
-            <tr><th class="jsonreader_repeatForDataKey"></th></tr>
-            <tr class="jsonreader_repeatForDataset"><td class="jsonreader_repeatForDataValue"></td></tr>
+    <div class="swac_jsonreader_preview uk-card-body">
+        <table class="swac_jsonreader_repeatForCollection uk-table uk-table-striped">
+            <caption class="swac_jsonreader_colcaption"></caption>
+            <tr><th class="swac_jsonreader_repeatForDataKey"></th></tr>
+            <tr class="swac_jsonreader_repeatForDataset"><td class="swac_jsonreader_repeatForDataValue"></td></tr>
         </table>
     </div>
     <div class="uk-card-footer">
-        <button class="jsonreader_backtoconfig uk-button uk-button-primary">JsonReader.prevstep</button> <button class="jsonreader_tosave uk-button uk-button-primary">JsonReader.nextstep</button>
+        <button class="swac_jsonreader_backtoconfig uk-button uk-button-primary">JsonReader.prevstep</button> <button class="swac_jsonreader_tosave uk-button uk-button-primary">JsonReader.nextstep</button>
     </div>
 </div>
-<div class="jsonreader_savestep uk-card uk-card-default swac_dontdisplay uk-width-1-2@m">
+<div class="swac_jsonreader_savestep uk-card uk-card-default swac_dontdisplay uk-width-1-2@m">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
             <div class="uk-width-auto">
@@ -119,9 +119,9 @@
     </div>
     <div class="uk-card-body">
         <p swac_lang="JsonReader.saveready">Data can now be imported</p>
-        <button class="jsonreader_startsavebtn uk-button uk-button-default">JsonReader.save_start</button>
+        <button class="swac_jsonreader_startsavebtn uk-button uk-button-default">JsonReader.save_start</button>
     </div>
     <div class="uk-card-footer">
-        <button class="jsonreader_backtopreview uk-button uk-button-primary">JsonReader.prevstep</button> <button class="jsonreader_restart uk-button uk-button-primary">JsonReader.restart</button>
+        <button class="swac_jsonreader_backtopreview uk-button uk-button-primary">JsonReader.prevstep</button> <button class="swac_jsonreader_restart uk-button uk-button-primary">JsonReader.restart</button>
     </div>
 </div>

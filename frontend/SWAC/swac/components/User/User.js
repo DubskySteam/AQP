@@ -98,7 +98,7 @@ export default class User extends View {
         this.options.showWhenNoData = true;
         this.desc.opts[2] = {
             name: 'loginURL',
-            desc: 'URL on which the login should be performed.',
+            desc: 'URL on which the login should be performed. URLs to other webservers have to include the protocol (e.g. https://)',
             example: '/SmartUser/smartuser/performLogin'
         };
         if (!options.loginURL)
