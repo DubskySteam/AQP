@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a435b0ea-8b45-473a-ad8c-b9ce21259244.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a435b0ea-8b45-473a-ad8c-b9ce21259244.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/QuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/QuestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/QuestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/QuestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/QuestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/QuestService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +53,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2YT74eEREmomHDCK47E9ovZXpBO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,11 +63,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "SmartSocial__v2.0",
+    "git-widget-placeholder": "backend",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -84,7 +93,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.SmartSocial [war]">
+  <component name="RunManager" selected="Gradle.SmartSocial [build]">
     <configuration name="SmartSocial [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -224,8 +233,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.SmartSocial [war]" />
         <item itemvalue="Gradle.SmartSocial [build]" />
+        <item itemvalue="Gradle.SmartSocial [war]" />
         <item itemvalue="Gradle.SmartSocial [clean]" />
       </list>
     </recent_temporary>
@@ -239,6 +248,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700537527106</updated>
       <workItem from="1700537528129" duration="2599000" />
+      <workItem from="1701344327630" duration="302000" />
     </task>
     <servers />
   </component>
