@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.test;
 
 import de.hsbi.smartsocial.Service.GroupService;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -18,6 +19,9 @@ import java.util.List;
 class GroupServiceTest {
 
     @Mock
+    private EntityManager entityManager;
+
+    @Mock
     private GroupRepository groupRepository;
 
     @InjectMocks
@@ -26,6 +30,8 @@ class GroupServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        groupRepository = new GroupRepository(entityManager);
+        doNothing().when(entityManager).persist(any(Group.class));
     }
 
     @Test
@@ -33,7 +39,7 @@ class GroupServiceTest {
         Long id = 1L;
         Group mockGroup = new Group();
         mockGroup.setId(id);
-        when(groupRepository.findGroupById(id)).thenReturn(mockGroup); // Adjusted to return Group directly
+        when(groupRepository.findGroupById(id)).thenReturn(mockGroup);
 
         Group result = groupService.findGroupById(id);
         assertNotNull(result);
@@ -43,10 +49,10 @@ class GroupServiceTest {
     @Test
     void testFindGroupByIdNotExists() {
         Long id = 1L;
-        when(groupRepository.findGroupById(id)).thenReturn(null); // Adjusted to return null
+        when(groupRepository.findGroupById(id)).thenReturn(null);
 
         Group result = groupService.findGroupById(id);
-        assertNull(result); // Changed to assertNull
+        assertNull(result);
     }
 
 
