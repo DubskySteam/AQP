@@ -1,4 +1,4 @@
-package de.hsbi.smartsocial;
+package de.hsbi.smartsocial.Config;
 
 import de.hsbi.smartsocial.Controller.*;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
