@@ -4,7 +4,7 @@
 var swac_login_options = {
     mode: 'form',
     loginURL: 'http://localhost:8080/SmartUser/smartuser/user/performLogin',
-    afterLoginLoc: '/SWAC/sites/userinterface/account.html',
+    afterLoginLoc: '/SWAC/sites/userinterface/login.html',
     afterLogoutLoc: '/SWAC/sites/userinterface/login.html',
     registrationLink: '/SWAC/sites/register/register.html'
 };

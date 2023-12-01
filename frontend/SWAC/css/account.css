@@ -40,11 +40,6 @@ ul {
     width: 100%;
 }
 
-#group_link {
-    float: left;  
-    margin-left: 1%; 
-}
-
 #distance_driven {
     float: right;
     margin-right: 3%;
