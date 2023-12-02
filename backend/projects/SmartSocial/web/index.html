@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/card.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +23,7 @@
     <div class="container">
         <nav class="sidebar">
             <ul>
-                <li><a href="#api-endpoints">API Endpoints</a></li>
+                <li><a href="index.html">API Endpoints</a></li>
                 <li><a href="#logs">Logs</a></li>
                 <li><a href="#documentation">Documentation</a></li>
                 <li><a href="quests.html">Quests</a></li>
@@ -30,28 +31,11 @@
             </ul>
         </nav>
         <main class="main-content">
-            <section id="api-endpoints">
-                <h2>API Endpoints</h2>
-                <!-- Content for API Endpoints -->
-            </section>
-            <section id="logs">
-                <h2>Logs</h2>
-                <!-- Content for Logs -->
-            </section>
-            <section id="documentation">
-                <h2>Documentation</h2>
-                <!-- Content for Documentation -->
-            </section>
-            <section id="settings">
-                <h2>Quests</h2>
-                <!-- Content for Settings -->
-            </section>
-            <section id="system-health">
-                <h2>Leaderboard</h2>
-                <!-- Content for System Health -->
-            </section>
+            <h1>API Endpoints</h1>
+            <div id="endpoint-status-container"></div>
         </main>
     </div>
+    <script src="js/api_check.js"></script>
 </body>
 
 </html>
