@@ -2,6 +2,7 @@ package de.hsbi.smartsocial.Controller;
 
 import de.hsbi.smartsocial.Model.Group;
 import de.hsbi.smartsocial.Service.GroupService;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.*;
@@ -18,9 +19,7 @@ import java.util.List;
 @Path("/group")
 public class GroupController {
 
-    @PersistenceContext(unitName = "SmartUserPU")
-    private EntityManager entityManager;
-
+    @Inject
     private GroupService groupService;
 
     /**
@@ -28,15 +27,9 @@ public class GroupController {
      * This is necessary because the EntityManager is not available during construction of the GroupService object.
      * (Because the EntityManager is injected by the application server after construction.)
      */
-    private void init() {
-        if (groupService == null) {
-            groupService = new GroupService(entityManager);
-        }
-    }
 
     @GET
     public String ping() {
-        init();
         return groupService.ping();
     }
 
@@ -62,7 +55,6 @@ public class GroupController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupById/{id}")
     public Response getGroupById(@PathParam("id") Long id) {
-        init();
         Group group = groupService.findGroupById(id);
         return Response.ok(group).build();
     }
@@ -72,7 +64,6 @@ public class GroupController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupByName/{name}")
     public Response getGroupByName(@PathParam("name") String name) {
-        init();
         Group group = groupService.findGroupByName(name);
         return Response.ok(group).build();
     }
@@ -85,7 +76,6 @@ public class GroupController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getAllGroups")
     public Response getAllGroups() {
-        init();
         List<Group> groups = groupService.findAllGroups();
         return Response.ok(groups).build();
     }
@@ -100,7 +90,6 @@ public class GroupController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/createGroup")
     public Response createGroup(Group group) {
-        init();
         Group createdGroup = groupService.createGroup(group);
         return Response.status(Response.Status.CREATED).entity(createdGroup).build();
     }
@@ -113,7 +102,6 @@ public class GroupController {
     @DELETE
     @Path("/deleteGroup/{id}")
     public Response deleteGroup(@PathParam("id") Long id) {
-        init();
         groupService.deleteGroup(id);
         return Response.status(Response.Status.NO_CONTENT).build();
     }

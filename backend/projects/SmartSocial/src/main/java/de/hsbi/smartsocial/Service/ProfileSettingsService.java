@@ -2,15 +2,19 @@ package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.ProfileSetting;
 import de.hsbi.smartsocial.Persistence.ProfileSettingsRepository;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
+@Stateless
 public class ProfileSettingsService {
 
-    private final ProfileSettingsRepository profileSettingsRepository;
-
-    public ProfileSettingsService (EntityManager entityManager) {
-        this.profileSettingsRepository = new ProfileSettingsRepository(entityManager);
-    }
+    @Inject
+    private ProfileSettingsRepository profileSettingsRepository;
 
     public String ping() {
         return profileSettingsRepository.ping();

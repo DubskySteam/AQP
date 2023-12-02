@@ -2,7 +2,8 @@ package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Quest;
 import de.hsbi.smartsocial.Persistence.QuestRepository;
-import jakarta.persistence.EntityManager;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +12,11 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class QuestService {
 
+    @Inject
     private QuestRepository questRepository;
-
-    public QuestService(EntityManager entityManager) {
-        questRepository = new QuestRepository(entityManager);
-    }
 
     public String ping() {
         return questRepository.ping();
