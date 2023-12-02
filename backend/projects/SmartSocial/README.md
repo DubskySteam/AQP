@@ -5,7 +5,7 @@
 
 ![](https://img.shields.io/badge/Current%20Version-1.9-green?style=for-the-badge&logo=git)
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/dubskysteam/FFXIV-RaidCompletion/.github%2Fworkflows%2Frust.yml?style=for-the-badge)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/dubskysteam/AQP/.github%2Fworkflows%2Fgradle.yml?branch=dev&style=for-the-badge&logo=github)
 
 ### Stack Info
 
