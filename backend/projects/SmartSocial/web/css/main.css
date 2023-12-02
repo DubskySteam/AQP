@@ -68,16 +68,27 @@ html {
     text-align: right;
 }
 
-/* Additional styles to maintain spacing if the right section is empty */
 .navbar-right:empty {
     visibility: hidden;
 }
 
-.leaderboard {
+table.leaderboard {
+    width: 100%;
     background-color: #FFFFFF;
     border-collapse: collapse;
     border-width: 0px;
     border-color: #4D53F8;
     border-style: inset;
     color: #000000;
-}
+  }
+  
+  table.leaderboard td, table.leaderboard th {
+    border-width: 0px;
+    border-color: #4D53F8;
+    border-style: inset;
+    padding: 5px;
+  }
+  
+  table.leaderboard thead {
+    background-color: #1EF8BE;
+  }

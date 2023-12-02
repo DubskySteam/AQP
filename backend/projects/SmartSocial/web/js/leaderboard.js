@@ -1,5 +1,5 @@
 function loadLeaderboard() {
-    fetch('http://localhost:8080/SmartSocial/api/leaderboard/getList/10')
+    fetch('http://localhost:8080/SmartSocial/api/leaderboard/getList/30')
         .then(response => response.json())
         .then(data => {
             createLeaderboardTable(data);
@@ -11,7 +11,7 @@ function loadLeaderboard() {
 
 function createLeaderboardTable(data) {
     const tableContainer = document.getElementById('leaderboard-table');
-    let tableHTML = '<table class="leaderboard"><tr><th>ID</th><th>Username</th><th>Finished Quests</th><th>Kilometers</th></tr>';
+    let tableHTML = '<table class="leaderboard"><thead><tr><th>ID</th><th>Username</th><th>Finished Quests</th><th>Kilometers</th></tr></thead><tbody>';
 
     data.forEach(item => {
         tableHTML += `<tr>
@@ -22,8 +22,9 @@ function createLeaderboardTable(data) {
                       </tr>`;
     });
 
-    tableHTML += '</table>';
+    tableHTML += '</tbody></table>';
     tableContainer.innerHTML = tableHTML;
 }
+
 
 window.onload = loadLeaderboard;
