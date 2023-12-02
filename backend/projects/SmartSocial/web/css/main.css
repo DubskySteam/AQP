@@ -3,7 +3,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'Gabarito', sans-serif;
-    background-color: #fff7f7;
+    background-color: white;
 }
 
 .container {
@@ -12,7 +12,7 @@ html {
 
 .sidebar {
     width: 200px;
-    background-color: #333;
+    background-color: #2b2d42;
     height: 100vh;
     padding: 20px 10px;
     border-top-right-radius: 75px;
@@ -33,13 +33,14 @@ html {
 }
 
 .sidebar ul li a:hover {
-    background-color: #555;
+    background-color: #ef233c;
+    border-radius: 15px;
 }
 
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #fff7f7;
+    background-color: white;
 }
 
 .main-content h2 {
@@ -50,8 +51,8 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff7f7;
-    color: black;
+    background-color: white;
+    color: #ef233c;
     padding: 10px 20px;
 }
 
@@ -77,36 +78,30 @@ html {
     visibility: hidden;
 }
 
-.leaderboard {
-    width: 80%;
-    background-color: #fff7f7;
+#leaderboard-table table {
+    width: 100%;
     border-collapse: collapse;
-    border-width: 0px;
-    border-color: #4D53F8;
-    border-style: inset;
-    color: #000000;
+    margin-bottom: 1em;
     -webkit-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.7);
     box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.7);
     border-radius: 20px;
 }
 
-.leaderboard td,
-th {
-    border-width: 0px;
-    border-style: inset;
-    padding: 5px;
+#leaderboard-table table th {
+    padding: 0.5em;
+    background-color: rgb(15, 247, 169);
+}
+
+#leaderboard-table table td {
+    padding: 0.5em;
+    border: 0px;
     text-align: center;
 }
 
-.leaderboard thead {
-    background-color: lightgreen;
-    border-radius: 20px;
-}
-
-.leaderboard thead th:first-child {
+#leaderboard-table table thead th:first-child {
     border-top-left-radius: 20px;
 }
 
-.leaderboard thead th:last-child {
+#leaderboard-table table thead th:last-child {
     border-top-right-radius: 20px;
 }

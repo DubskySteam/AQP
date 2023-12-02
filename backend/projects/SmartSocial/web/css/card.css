@@ -4,6 +4,12 @@
     justify-content: space-between;
 }
 
+#endpoint-status-global-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .card {
     flex: 0 0 calc(33.333% - 20px);
     max-width: calc(33.333% - 20px);
