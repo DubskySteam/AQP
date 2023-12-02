@@ -70,7 +70,6 @@ html {
     text-align: right;
 }
 
-/* Additional styles to maintain spacing if the right section is empty */
 .navbar-right:empty {
     visibility: hidden;
 }
