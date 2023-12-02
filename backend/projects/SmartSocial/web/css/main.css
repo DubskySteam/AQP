@@ -89,14 +89,13 @@ html {
 .leaderboard td,
 th {
     border-width: 0px;
-    border-color: #4D53F8;
     border-style: inset;
     padding: 5px;
     text-align: center;
 }
 
 .leaderboard thead {
-    background-color: #1EF8BE;
+    background-color: lightgreen;
     border-radius: 20px;
 }
 
