@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/card.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,11 +32,28 @@
             </ul>
         </nav>
         <main class="main-content">
-            <h1>API Endpoints</h1>
-            <div id="endpoint-status-container"></div>
+            <h1>RAW Payara Log</h1>
+            <div id="log-container">
+            </div>
+            
         </main>
     </div>
-    <script src="js/api_check.js"></script>
+    <script>
+        const logContainer = document.getElementById('log-container');
+        const logUrl = 'http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server';
+    
+        async function fetchLogData() {
+            try {
+                const response = await fetch(logUrl);
+                const text = await response.text();
+                logContainer.textContent = text;
+            } catch (error) {
+                console.error('Error fetching log data:', error);
+            }
+        }
+    
+        setInterval(fetchLogData, 5000);
+    </script>
 </body>
 
 </html>
