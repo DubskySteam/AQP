@@ -57,11 +57,13 @@ html {
 .navbar-right {
     flex: 1;
     text-align: center;
+    font-size: 120%;
 }
 
 .navbar-left {
     text-align: left;
     font-weight: bold;
+    font-size: 140%;
 }
 
 .navbar-right {
