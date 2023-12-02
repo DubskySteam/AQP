@@ -1,75 +1,100 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/endpoints.json')
+let currentEndpoints = [];
+
+document.addEventListener('DOMContentLoaded', function () {
+    const categorySelector = document.getElementById('category-selector');
+    const endpointSelector = document.getElementById('endpoint-selector');
+    const testButton = document.getElementById('test-button');
+
+    populateCategorySelector();
+
+    categorySelector.addEventListener('change', () => {
+        fetchCategoryEndpoints(categorySelector.value);
+    });
+    testButton.addEventListener('click', testEndpoint);
+
+    endpointSelector.addEventListener('change', () => {
+        const selectedEndpoint = currentEndpoints[endpointSelector.value];
+        toggleJsonInput(selectedEndpoint);
+    });
+
+    fetchCategoryEndpoints(categorySelector.value);
+});
+
+function populateCategorySelector() {
+    const categorySelector = document.getElementById('category-selector');
+    const categories = {
+        "Group": "group.json",
+        "Leaderboard": "leaderboard.json"
+    };
+
+    for (let categoryName in categories) {
+        let option = document.createElement('option');
+        option.value = categories[categoryName];
+        option.textContent = categoryName;
+        categorySelector.appendChild(option);
+    }
+
+    // Load endpoints for the first category
+    if (Object.keys(categories).length > 0) {
+        fetchCategoryEndpoints(categories[Object.keys(categories)[0]]);
+    }
+}
+
+function fetchCategoryEndpoints(categoryFile) {
+    fetch('data/' + categoryFile)
         .then(response => response.json())
         .then(data => {
+            currentEndpoints = data;
             populateEndpoints(data);
             toggleJsonInput(data);
         })
         .catch(error => console.error('Error loading endpoints:', error));
-
-    const testButton = document.getElementById('test-button');
-    testButton.addEventListener('click', testEndpoint);
-
-    const selector = document.getElementById('endpoint-selector');
-    selector.addEventListener('change', () => {
-        fetch('data/endpoints.json')
-            .then(response => response.json())
-            .then(data => toggleJsonInput(data));
-    });
-});
+}
 
 function populateEndpoints(endpoints) {
-    const selector = document.getElementById('endpoint-selector');
+    const endpointSelector = document.getElementById('endpoint-selector');
+    endpointSelector.innerHTML = '';
     endpoints.forEach((endpoint, index) => {
-        const option = document.createElement('option');
+        let option = document.createElement('option');
         option.value = index;
         option.textContent = endpoint.name;
-        selector.appendChild(option);
+        endpointSelector.appendChild(option);
     });
 }
 
-function toggleJsonInput(endpoints) {
-    const selector = document.getElementById('endpoint-selector');
-    const selectedEndpoint = endpoints[selector.value];
-    document.getElementById('json-input-container').style.display = 
+function toggleJsonInput(selectedEndpoint) {
+    document.getElementById('json-input-container').style.display =
         selectedEndpoint && selectedEndpoint.method === 'POST' ? 'block' : 'none';
 }
 
 function testEndpoint() {
-    const selector = document.getElementById('endpoint-selector');
-    const selectedIndex = selector.value;
+    const selectedEndpoint = currentEndpoints[document.getElementById('endpoint-selector').value];
     const resultButton = document.getElementById('response-result');
     const jsonInput = document.getElementById('json-input').value;
 
-    fetch('data/endpoints.json')
-        .then(response => response.json())
-        .then(endpoints => {
-            const selectedEndpoint = endpoints[selectedIndex];
-            const requestOptions = {
-                method: selectedEndpoint.method || 'GET',
-                headers: selectedEndpoint.headers
-            };
+    const requestOptions = {
+        method: selectedEndpoint.method || 'GET',
+        headers: selectedEndpoint.headers
+    };
 
-            if (selectedEndpoint.method === 'POST') {
-                requestOptions.body = jsonInput;
-            }
+    if (selectedEndpoint.method === 'POST' || selectedEndpoint.method === 'PUT' || selectedEndpoint.method === 'DELETE') {
+        requestOptions.body = jsonInput;
+    }
 
-            return fetch(selectedEndpoint.url, requestOptions);
-        })
+    fetch(selectedEndpoint.url, requestOptions)
         .then(response => {
             updateResultButton(response.status, resultButton);
             if (response.headers.get("content-type").includes("application/json")) {
                 return response.json();
             } else {
-                // If not JSON, return text response instead
-                return response.text().then(text => Promise.reject(text));
+                return response.text(); // Handle non-JSON responses
             }
         })
         .then(data => {
             displayResponse(data);
         })
         .catch(error => {
-            displayResponse({ error: error });
+            displayResponse({ error: error.message });
             updateResultButton('Error', resultButton, true);
         });
 }
@@ -85,9 +110,5 @@ function displayResponse(data) {
 
 function updateResultButton(status, button, isError = false) {
     button.textContent = "HTTP Code: " + status;
-    if (isError || (status >= 400 && status <= 599)) {
-        button.style.backgroundColor = 'red';
-    } else {
-        button.style.backgroundColor = 'lightgreen';
-    }
+    button.style.backgroundColor = isError || (status >= 400 && status <= 599) ? 'red' : 'lightgreen';
 }
