@@ -23,15 +23,35 @@ function displayEndpoints(swaggerJson) {
 function createEndpointCard(path, method, endpoint) {
     const card = document.createElement('div');
     card.className = 'api-card';
+    card.style.backgroundColor = getBackgroundColorForMethod(method);
 
     const title = document.createElement('h3');
     title.textContent = `${method.toUpperCase()} ${path}`;
 
     const description = document.createElement('p');
-    description.textContent = endpoint.summary || 'No description';
+    const successResponse = endpoint.responses["200"] || {}; // Get the 200 response
+    description.textContent = successResponse.description || 'No description available';
+
+    const httpCode = document.createElement('p');
+    httpCode.textContent = `HTTP Status Code: 200`; // Assuming success response; adjust as needed
 
     card.appendChild(title);
     card.appendChild(description);
+    card.appendChild(httpCode);
 
     return card;
 }
+
+function getBackgroundColorForMethod(method) {
+    switch (method.toLowerCase()) {
+        case 'get':
+            return 'lightgreen';
+        case 'post':
+            return '#fcbc26';
+        case 'delete':
+            return '#fc265f';
+        default:
+            return 'lightgray'; // Default background for other methods
+    }
+}
+
