@@ -27,6 +27,13 @@ dependencies {
   implementation('org.hibernate:hibernate-core:6.0.2.Final')
   implementation('org.glassfish.jaxb:jaxb-runtime:3.0.2')
   implementation('org.hibernate.validator:hibernate-validator:7.0.5.Final')
+  // MOCKITO DEPENDENCIES
+  implementation group: 'org.mockito', name: 'mockito-core', version: '5.7.0'
+  //SWAGGER DEPENDENCIES
+  implementation group: 'io.swagger.core.v3', name: 'swagger-core-jakarta', version: '2.2.19'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2-jakarta', version: '2.2.19'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2-servlet-initializer-v2', version: '2.2.19'
+  implementation group: 'org.webjars', name: 'swagger-ui', version: '5.9.0'
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

@@ -1,19 +1,19 @@
 package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.ProfileSetting;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class ProfileSettingsRepository {
 
-    private final EntityManager entityManager;
-
-    public ProfileSettingsRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    @PersistenceContext(unitName = "SmartUserPU")
+    private EntityManager entityManager;
 
     public String ping() {
         return entityManager.toString();

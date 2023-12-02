@@ -1,7 +1,9 @@
 package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.Leaderboard;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import java.util.List;
 
@@ -9,13 +11,11 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class LeaderboardRepository {
 
-    private final EntityManager entityManager;
-
-    public LeaderboardRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    @PersistenceContext(unitName = "SmartUserPU")
+    private EntityManager entityManager;
 
     public String ping() {
         return entityManager.toString();

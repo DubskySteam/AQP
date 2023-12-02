@@ -1,19 +1,22 @@
 package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.Group;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 import java.util.List;
 
 /**
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+
+@Stateless
 public class GroupRepository {
 
-    private final EntityManager entityManager;
-    public GroupRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    @PersistenceContext(unitName = "SmartUserPU")
+    private EntityManager entityManager;
 
     //////////////////
     // Utility Code //

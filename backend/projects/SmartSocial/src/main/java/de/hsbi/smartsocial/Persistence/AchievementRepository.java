@@ -1,7 +1,9 @@
 package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.Achievement;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import java.util.List;
 
@@ -9,12 +11,14 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class AchievementRepository {
 
+    @PersistenceContext(unitName = "SmartUserPU")
     private EntityManager entityManager;
 
-    public AchievementRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public String ping() {
+        return this.entityManager.toString();
     }
 
     public List<Achievement> getAllAchievements() {

@@ -2,6 +2,8 @@ package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Leaderboard;
 import de.hsbi.smartsocial.Persistence.LeaderboardRepository;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
 import java.util.ArrayList;
@@ -11,12 +13,11 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class LeaderboardService {
 
+    @Inject
     LeaderboardRepository leaderboardRepository;
-    public LeaderboardService(EntityManager entityManager) {
-        leaderboardRepository = new LeaderboardRepository(entityManager);
-    }
 
     public String ping() {
         return leaderboardRepository.ping();
