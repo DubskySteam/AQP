@@ -11,13 +11,14 @@ function loadLeaderboard() {
 
 function createLeaderboardTable(data) {
     const tableContainer = document.getElementById('leaderboard-table');
-    let tableHTML = '<table border="1"><tr><th>Rank</th><th>Name</th><th>Score</th></tr>';
+    let tableHTML = '<table border="1"><tr><th>ID</th><th>Username</th><th>Finished Quests</th><th>Kilometers</th></tr>';
 
-    data.forEach((item, index) => {
+    data.forEach(item => {
         tableHTML += `<tr>
-                        <td>${index + 1}</td>
+                        <td>${item.id}</td>
+                        <td>${item.users.username}</td>
+                        <td>${item.finishedQuests}</td>
                         <td>${item.kilometers}</td>
-                        <td>${item.quests}</td>
                       </tr>`;
     });
 
