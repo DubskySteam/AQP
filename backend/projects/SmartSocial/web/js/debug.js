@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const endpointSelector = document.getElementById('endpoint-selector');
     const testButton = document.getElementById('test-button');
 
-    populateCategorySelector();
+    //populateCategorySelector();
 
     categorySelector.addEventListener('change', () => {
         fetchCategoryEndpoints(categorySelector.value);
@@ -24,7 +24,11 @@ function populateCategorySelector() {
     const categorySelector = document.getElementById('category-selector');
     const categories = {
         "Group": "group.json",
-        "Leaderboard": "leaderboard.json"
+        "Leaderboard": "leaderboard.json",
+        "Achievements": "achievements.json",
+        "Quests": "quests.json",
+        "Profile Settings": "profilesettings.json",
+        "Utility": "utility.json"
     };
 
     for (let categoryName in categories) {
@@ -34,7 +38,6 @@ function populateCategorySelector() {
         categorySelector.appendChild(option);
     }
 
-    // Load endpoints for the first category
     if (Object.keys(categories).length > 0) {
         fetchCategoryEndpoints(categories[Object.keys(categories)[0]]);
     }
@@ -87,7 +90,7 @@ function testEndpoint() {
             if (response.headers.get("content-type").includes("application/json")) {
                 return response.json();
             } else {
-                return response.text(); // Handle non-JSON responses
+                return response.text();
             }
         })
         .then(data => {
