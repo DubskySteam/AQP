@@ -7,6 +7,10 @@
     margin-left: 10px;
     border: 1px solid #ccc;
     padding: 10px;
+    white-space: pre;
+    font-family: monospace;
+    overflow-x: auto;
+    background-color: #f9f9f9;
 }
 
 #json-input {

@@ -58,27 +58,36 @@ function testEndpoint() {
         })
         .then(response => {
             updateResultButton(response.status, resultButton);
-            return response.json();
+            if (response.headers.get("content-type").includes("application/json")) {
+                return response.json();
+            } else {
+                // If not JSON, return text response instead
+                return response.text().then(text => Promise.reject(text));
+            }
         })
         .then(data => {
             displayResponse(data);
         })
         .catch(error => {
-            displayResponse({ error: error.message });
+            displayResponse({ error: error });
             updateResultButton('Error', resultButton, true);
         });
 }
 
 function displayResponse(data) {
     const container = document.getElementById('response-container');
-    container.textContent = JSON.stringify(data, null, 2);
+    if (typeof data === 'object') {
+        container.textContent = JSON.stringify(data, null, 2);
+    } else {
+        container.textContent = data;
+    }
 }
 
 function updateResultButton(status, button, isError = false) {
-    button.textContent = "Response:  " + status;
+    button.textContent = "HTTP Code: " + status;
     if (isError || (status >= 400 && status <= 599)) {
         button.style.backgroundColor = 'red';
     } else {
-        button.style.backgroundColor = 'green';
+        button.style.backgroundColor = 'lightgreen';
     }
 }
