@@ -68,27 +68,42 @@ html {
     text-align: right;
 }
 
+/* Additional styles to maintain spacing if the right section is empty */
 .navbar-right:empty {
     visibility: hidden;
 }
 
-table.leaderboard {
-    width: 100%;
-    background-color: #FFFFFF;
+.leaderboard {
+    width: 80%;
+    background-color: #f4f4f4;
     border-collapse: collapse;
     border-width: 0px;
     border-color: #4D53F8;
     border-style: inset;
     color: #000000;
-  }
-  
-  table.leaderboard td, table.leaderboard th {
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+
+.leaderboard td,
+th {
     border-width: 0px;
     border-color: #4D53F8;
     border-style: inset;
     padding: 5px;
-  }
-  
-  table.leaderboard thead {
+    text-align: center;
+}
+
+.leaderboard thead {
     background-color: #1EF8BE;
-  }
+    border-radius: 20px;
+}
+
+.leaderboard thead th:first-child {
+    border-top-left-radius: 20px;
+}
+
+.leaderboard thead th:last-child {
+    border-top-right-radius: 20px;
+}
