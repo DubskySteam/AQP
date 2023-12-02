@@ -3,11 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             populateEndpoints(data);
+            toggleJsonInput(data);
         })
         .catch(error => console.error('Error loading endpoints:', error));
 
     const testButton = document.getElementById('test-button');
     testButton.addEventListener('click', testEndpoint);
+
+    const selector = document.getElementById('endpoint-selector');
+    selector.addEventListener('change', () => {
+        fetch('data/endpoints.json')
+            .then(response => response.json())
+            .then(data => toggleJsonInput(data));
+    });
 });
 
 function populateEndpoints(endpoints) {
@@ -20,20 +28,33 @@ function populateEndpoints(endpoints) {
     });
 }
 
+function toggleJsonInput(endpoints) {
+    const selector = document.getElementById('endpoint-selector');
+    const selectedEndpoint = endpoints[selector.value];
+    document.getElementById('json-input-container').style.display = 
+        selectedEndpoint && selectedEndpoint.method === 'POST' ? 'block' : 'none';
+}
+
 function testEndpoint() {
     const selector = document.getElementById('endpoint-selector');
     const selectedIndex = selector.value;
     const resultButton = document.getElementById('response-result');
+    const jsonInput = document.getElementById('json-input').value;
 
     fetch('data/endpoints.json')
         .then(response => response.json())
         .then(endpoints => {
             const selectedEndpoint = endpoints[selectedIndex];
-            return fetch(selectedEndpoint.url, {
+            const requestOptions = {
                 method: selectedEndpoint.method || 'GET',
-                headers: selectedEndpoint.headers,
-                body: selectedEndpoint.method === 'POST' ? JSON.stringify(selectedEndpoint.body) : null
-            });
+                headers: selectedEndpoint.headers
+            };
+
+            if (selectedEndpoint.method === 'POST') {
+                requestOptions.body = jsonInput;
+            }
+
+            return fetch(selectedEndpoint.url, requestOptions);
         })
         .then(response => {
             updateResultButton(response.status, resultButton);
@@ -54,10 +75,10 @@ function displayResponse(data) {
 }
 
 function updateResultButton(status, button, isError = false) {
-    button.textContent = "Response Code:  " + status;
+    button.textContent = "Response:  " + status;
     if (isError || (status >= 400 && status <= 599)) {
         button.style.backgroundColor = 'red';
     } else {
-        button.style.backgroundColor = 'lightgreen';
+        button.style.backgroundColor = 'green';
     }
 }
