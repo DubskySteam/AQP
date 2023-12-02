@@ -2,6 +2,7 @@ package de.hsbi.smartsocial.Controller;
 
 import de.hsbi.smartsocial.Model.Group;
 import de.hsbi.smartsocial.Service.GroupService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -22,21 +23,12 @@ public class GroupController {
     @Inject
     private GroupService groupService;
 
-    /**
-     * SLW: This method is called before every request to initialize the GroupService object.
-     * This is necessary because the EntityManager is not available during construction of the GroupService object.
-     * (Because the EntityManager is injected by the application server after construction.)
-     */
-
     @GET
     public String ping() {
         return groupService.ping();
     }
 
-    /**
-     * Get an example group
-     * @return Response
-     */
+    @ApiResponse(responseCode = "200", description = "Returns an example group")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/example")
@@ -50,7 +42,7 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
-    //Get by id
+    @ApiResponse(responseCode = "200", description = "Returns group by id")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupById/{id}")
@@ -59,7 +51,7 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
-    //Get by name
+    @ApiResponse(responseCode = "200", description = "Returns group by name")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupByName/{name}")
@@ -68,10 +60,7 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
-    /**
-     * Get all groups
-     * @return Response
-     */
+    @ApiResponse(responseCode = "200", description = "Returns all groups")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getAllGroups")
@@ -80,11 +69,7 @@ public class GroupController {
         return Response.ok(groups).build();
     }
 
-    /**
-     * Create a group
-     * @param group
-     * @return Response
-     */
+    @ApiResponse(responseCode = "201", description = "Returns created group")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -94,11 +79,7 @@ public class GroupController {
         return Response.status(Response.Status.CREATED).entity(createdGroup).build();
     }
 
-    /**
-     * Delete a group
-     * @param id
-     * @return Response
-     */
+    @ApiResponse(responseCode = "200", description = "Returns deleted group")
     @DELETE
     @Path("/deleteGroup/{id}")
     public Response deleteGroup(@PathParam("id") Long id) {

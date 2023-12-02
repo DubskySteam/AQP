@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Controller;
 
 import de.hsbi.smartsocial.Service.AchievementService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -22,6 +23,7 @@ public class AchievementController {
         return achievementService.ping();
     }
 
+    @ApiResponse(responseCode = "200", description = "Returns all achievements")
     @GET
     @Path("/getAllAchievements")
     @Produces("application/json")
@@ -29,6 +31,7 @@ public class AchievementController {
         return Response.ok(achievementService.getAllAchievements()).build();
     }
 
+    @ApiResponse(responseCode = "200", description = "Returns achievement by id")
     @GET
     @Path("/getById/{id}")
     @Produces("application/json")
@@ -36,6 +39,7 @@ public class AchievementController {
         return Response.ok(achievementService.findById(id)).build();
     }
 
+    @ApiResponse(responseCode = "200", description = "Returns achievement by name")
     @GET
     @Path("/getByName/{name}")
     @Produces("application/json")
