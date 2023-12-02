@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Leaderboard Top 5",
+        "url": "/SmartSocial/api/leaderboard/getList/5",
+        "method": "GET"
+    },
+    {
+        "name": "Leaderboard Top 5 [Q]",
+        "url": "/SmartSocial/api/leaderboard/getListByQuests/5",
+        "method": "GET"
+    }
+]
