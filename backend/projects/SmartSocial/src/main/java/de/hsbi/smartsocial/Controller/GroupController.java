@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Controller;
 
 import de.hsbi.smartsocial.Model.Group;
+import de.hsbi.smartsocial.Model.Groupmember;
 import de.hsbi.smartsocial.Service.GroupService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
@@ -58,6 +59,15 @@ public class GroupController {
     public Response getGroupByName(@PathParam("name") String name) {
         Group group = groupService.findGroupByName(name);
         return Response.ok(group).build();
+    }
+
+    @ApiResponse(responseCode = "200", description = "Returns all for a user")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getGroupByUser/{id}")
+    public Response getAllGroupsByUser(@PathParam("id") Long id) {
+        Groupmember groupmember = groupService.findGroupmemberByUserId(id);
+        return Response.ok(groupmember).build();
     }
 
     @ApiResponse(responseCode = "200", description = "Returns all groups")
