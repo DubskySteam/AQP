@@ -68,7 +68,7 @@ function createGroupTable(data) {
             <td>${item.description}</td>
             <td>${item.adminUser.id}</td>
             <td>${item.adminUser.username}</td>
-            <td>${item.creation_date}</td>
+            <td>${item.creationDate}</td>
                       </tr>`;
     });
 

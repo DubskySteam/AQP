@@ -90,7 +90,8 @@ html {
 
 .responsetable th {
     padding: 0.5em;
-    background-color: rgb(15, 247, 169);
+    background-color: #2b2d42;
+    color: white;
 }
 
 .responsetable td {
