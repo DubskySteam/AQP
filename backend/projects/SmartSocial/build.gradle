@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.hsbi'
-version '1.8.2'
+version '1.9'
 
 repositories {
   mavenCentral()
@@ -17,8 +17,19 @@ ext {
 sourceCompatibility = '11'
 targetCompatibility = '11'
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
+}
+
+jar {
+  manifest {
+    attributes(
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Java-Version': System.getProperty('java.version'),
+            'Gradle-Version': gradle.gradleVersion
+    )
+  }
 }
 
 dependencies {
