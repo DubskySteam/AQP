@@ -15,6 +15,21 @@
         "method": "GET"
     },
     {
+        "name": "Get Group by user",
+        "url": "http://localhost:8080/SmartSocial/api/group/getGroupByUser/",
+        "method": "GET"
+    },
+    {
+        "name": "Get Groupmembers by ID",
+        "url": "http://localhost:8080/SmartSocial/api/group/getMembersByGroup/",
+        "method": "GET"
+    },
+    {
+        "name": "Get Groupmembers by ID (SV)",
+        "url": "http://localhost:8080/SmartSocial/api/group/getMembersByGroup_SV/",
+        "method": "GET"
+    },
+    {
         "name": "Get Groups",
         "url": "http://localhost:8080/SmartSocial/api/group/getAllGroups",
         "method": "GET"
