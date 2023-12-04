@@ -1,6 +1,6 @@
 package de.hsbi.smartsocial.Controller;
 
-import de.hsbi.smartsocial.Exceptions.GroupForMemberNotFound;
+import de.hsbi.smartsocial.Exceptions.GroupForMemberNotFoundException;
 import de.hsbi.smartsocial.Exceptions.GroupNotFoundException;
 import de.hsbi.smartsocial.Exceptions.InvalidGroupDataException;
 import de.hsbi.smartsocial.Model.Group;
@@ -76,7 +76,7 @@ public class GroupController {
     public Response getAllGroupsByUser(@PathParam("id") Long id) {
         Groupmember groupmember = groupService.findGroupmemberByUserId(id);
         if (groupmember == null) {
-            throw new GroupForMemberNotFound(id);
+            throw new GroupForMemberNotFoundException(id);
         }
         return Response.ok(groupmember).build();
     }

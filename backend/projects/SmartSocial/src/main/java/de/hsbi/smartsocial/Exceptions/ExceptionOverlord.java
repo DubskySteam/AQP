@@ -15,7 +15,7 @@ public class ExceptionOverlord implements ExceptionMapper<RuntimeException> {
             status = Response.Status.NOT_FOUND;
         } else if (exception instanceof InvalidGroupDataException) {
             status = Response.Status.BAD_REQUEST;
-        } else if (exception instanceof GroupForMemberNotFound) {
+        } else if (exception instanceof GroupForMemberNotFoundException) {
             status = Response.Status.NOT_FOUND;
         } else {
             status = Response.Status.INTERNAL_SERVER_ERROR;
