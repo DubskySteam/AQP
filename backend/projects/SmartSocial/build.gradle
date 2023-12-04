@@ -21,16 +21,19 @@ tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
 
-jar {
-  manifest {
-    attributes(
-            'Implementation-Title': project.name,
-            'Implementation-Version': project.version,
-            'Java-Version': System.getProperty('java.version'),
-            'Gradle-Version': gradle.gradleVersion
-    )
-  }
+tasks.register('createPropertiesFile') {
+  def props = new Properties()
+  props['Implementation-Title'] = project.name
+  props['Implementation-Version'] = project.version
+  props['Java-Version'] = System.getProperty('java.version')
+  props['Gradle-Version'] = gradle.gradleVersion
+  def file = new File("$buildDir/resources/main/project-info.properties")
+  file.parentFile.mkdirs()
+  file.withOutputStream { props.store(it, null) }
 }
+
+processResources.dependsOn createPropertiesFile
+
 
 dependencies {
   compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
