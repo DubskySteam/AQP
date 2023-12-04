@@ -2,6 +2,7 @@ package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.Group;
 import de.hsbi.smartsocial.Model.Groupmember;
+import de.hsbi.smartsocial.Model.User;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -45,6 +46,18 @@ public class GroupRepository {
         return entityManager.createQuery("SELECT gm FROM Groupmember gm WHERE gm.user.id = :id", Groupmember.class)
                 .setParameter("id", id)
                 .getSingleResult();
+    }
+
+    public List<Groupmember> findGroupmembersByGroupId(Long id) {
+        return entityManager.createQuery("SELECT gm FROM Groupmember gm WHERE gm.group.id = :id", Groupmember.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
+
+    public List<User> findUsersByGroupId_SV(Long id) {
+        return entityManager.createQuery("SELECT u FROM User u WHERE u.id IN (SELECT gm.user.id FROM Groupmember gm WHERE gm.group.id = :id)", User.class)
+                .setParameter("id", id)
+                .getResultList();
     }
 
     public List<Group> findAllGroups() {
