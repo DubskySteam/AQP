@@ -1,13 +1,12 @@
 package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Group;
+import de.hsbi.smartsocial.Model.Groupmember;
+import de.hsbi.smartsocial.Model.User;
 import de.hsbi.smartsocial.Persistence.GroupRepository;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import jdk.jfr.Period;
 
 import java.util.List;
 
@@ -32,6 +31,18 @@ public class GroupService {
 
     public Group findGroupByName(String name) {
         return groupRepository.findGroupByName(name);
+    }
+
+    public Groupmember findGroupmemberByUserId(Long id) {
+        return groupRepository.findGroupmemberByUserId(id);
+    }
+
+    public List<Groupmember> findGroupmembersByGroupId(Long id) {
+        return groupRepository.findGroupmembersByGroupId(id);
+    }
+
+    public List<User> findUsersByGroupId_SV(Long id) {
+        return groupRepository.findUsersByGroupId_SV(id);
     }
 
     public List<Group> findAllGroups() {

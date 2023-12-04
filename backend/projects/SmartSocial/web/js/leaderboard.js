@@ -11,7 +11,7 @@ function loadLeaderboard() {
 
 function createLeaderboardTable(data) {
     const tableContainer = document.getElementById('leaderboard-table');
-    let tableHTML = '<table class="leaderboard"><thead><tr><th>ID</th><th>Username</th><th>Finished Quests</th><th>Kilometers</th></tr></thead><tbody>';
+    let tableHTML = '<table class="responsetable"><thead><tr><th>ID</th><th>Username</th><th>Finished Quests</th><th>Kilometers</th></tr></thead><tbody>';
 
     data.forEach(item => {
         tableHTML += `<tr>

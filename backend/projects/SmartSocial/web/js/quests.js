@@ -11,7 +11,7 @@ function loadQuests() {
 
 function createQuestTable(data) {
     const tableContainer = document.getElementById('quests-table');
-    let tableHTML = '<table class="questboard"><thead><tr><th>ID</th><th>Description</th><th>XP Reward</th></tr></thead><tbody>';
+    let tableHTML = '<table class="responsetable"><thead><tr><th>ID</th><th>Description</th><th>XP Reward</th></tr></thead><tbody>';
 
     data.forEach(item => {
         tableHTML += `<tr>
