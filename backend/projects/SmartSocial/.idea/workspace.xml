@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/de/hsbi/smartsocial/test/GroupServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/hsbi/smartsocial/test/GroupServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +39,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="com.haulmont.jpb.JpaEntity" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -93,19 +101,41 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.SmartSocial [build -x test]">
-    <configuration name="SmartSocial [build -x test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.SmartSocial [build]">
+    <configuration name="SmartSocial [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="-x test" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
             <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartSocial [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="check" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -138,7 +168,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="SmartSocial [war]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SmartSocial [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -149,7 +179,29 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="war" />
+            <option value="testClasses" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartSocial [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -231,11 +283,21 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.SmartSocial [build]" />
+      <item itemvalue="Gradle.SmartSocial [check]" />
+      <item itemvalue="Gradle.SmartSocial [clean]" />
+      <item itemvalue="Gradle.SmartSocial [test]" />
+      <item itemvalue="Gradle.SmartSocial [testClasses]" />
+      <item itemvalue="Payara Server.Payara SmartDev" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.SmartSocial [build -x test]" />
+        <item itemvalue="Gradle.SmartSocial [build]" />
+        <item itemvalue="Gradle.SmartSocial [test]" />
+        <item itemvalue="Gradle.SmartSocial [check]" />
+        <item itemvalue="Gradle.SmartSocial [testClasses]" />
         <item itemvalue="Gradle.SmartSocial [clean]" />
-        <item itemvalue="Gradle.SmartSocial [war]" />
       </list>
     </recent_temporary>
   </component>
@@ -251,6 +313,8 @@
       <workItem from="1701344327630" duration="11017000" />
       <workItem from="1701519610368" duration="7361000" />
       <workItem from="1701682272134" duration="67000" />
+      <workItem from="1701694292939" duration="9347000" />
+      <workItem from="1701713952767" duration="175000" />
     </task>
     <servers />
   </component>
