@@ -2,9 +2,9 @@ const endpoints = [
     { url: "http://localhost:8080/SmartSocial/api/group/", category: "Group" },
     { url: "http://localhost:8080/SmartSocial/api/leaderboard/", category: "Leaderboard" },
     { url: "http://localhost:8080/SmartSocial/api/profilesettings/", category: "Profile settings" },
-    { url: "http://localhost:8080/SmartSocial/api/quest", category: "Quests" },
-    { url: "http://localhost:8080/SmartSocial/api/achievements", category: "Achievements" },
-    { url: "http://localhost:8080/SmartSocial/api/utility", category: "Utility" },
+    { url: "http://localhost:8080/SmartSocial/api/quest/", category: "Quests" },
+    { url: "http://localhost:8080/SmartSocial/api/achievements/", category: "Achievements" },
+    { url: "http://localhost:8080/SmartSocial/api/utility/", category: "Utility" },
 ];
 
 const g_endpoints = [
