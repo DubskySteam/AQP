@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Settings example",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/example",
+        "method": "GET"
+    },
+    {
+        "name": "Get settings by ID",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getProfileSettingsByID/",
+        "method": "GET"
+    },
+    {
+        "name": "Get visibility by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getVisibilityByID/",
+        "method": "GET"
+    },
+    {
+        "name": "Set visibility by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setVisibilityByID/",
+        "method": "POST"
+    }
+]

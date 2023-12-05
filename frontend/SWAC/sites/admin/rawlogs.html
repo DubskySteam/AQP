@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-left">Admin Panel</div>
+        <div class="navbar-right">v1.9</div>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="index.html">✅ API Endpoints</a></li>
+                <li><a href="debug.html">🔧 Debug</a></li>
+                <li><a href="documentation.html">📖 Documentation</a></li>
+                <li><a href="groups.html">🤝 Groups</a></li>
+                <li><a href="quests.html">🔥 Quests</a></li>
+                <li><a href="leaderboard.html">🏆 Leaderboard</a></li>
+                <li><a href="http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server"
+                        target="_blank">👨‍💻 Logs</a></li>
+                <li><a href="rawlogs.html" target="_blank">👨‍💻 Logs [RAW]</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <h1>RAW Payara Log</h1>
+            <div id="log-container">
+            </div>
+            
+        </main>
+    </div>
+    <script>
+        const logContainer = document.getElementById('log-container');
+        const logUrl = 'http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server';
+    
+        async function fetchLogData() {
+            try {
+                const response = await fetch(logUrl);
+                const text = await response.text();
+                logContainer.textContent = text;
+            } catch (error) {
+                console.error('Error fetching log data:', error);
+            }
+        }
+    
+        setInterval(fetchLogData, 5000);
+    </script>
+</body>
+
+</html>
