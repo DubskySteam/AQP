@@ -1,0 +1,37 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: white;
+}
+
+h1 {
+    text-align: center;
+    color: #398EDE;
+    padding: 40px;
+  }
+  
+  .label-and-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .label-and-dropdown label {
+    margin-right: 5px; /* Hier kannst du die Breite des Abstands einstellen */
+  }
+  
+  #sortOptions {
+    border: none;
+    color: #398EDE;
+    background-color: transparent;
+    font-weight: bold;
+    height: auto;
+  }
+  
+  #sortOptions option {
+    font-weight: bold;
+    padding: 10px;
+  }
