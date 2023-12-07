@@ -54,6 +54,11 @@ h1 {
     padding-top: 2%;
     border-radius: 5em;
     width: 75%;
+    cursor: pointer;
+}
+
+.swac_user_loginButtons:focus {
+    background-color: #bdbdbd;
 }
 
 label {

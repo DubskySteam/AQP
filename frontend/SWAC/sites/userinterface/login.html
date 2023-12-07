@@ -27,7 +27,63 @@
         </div>
         </noscript>
 
-        <div id="userexample1" swa="User OPTIONS swac_login_options TEMPLATE user_form"></div>
+        <div id="user_login" swa="User OPTIONS swac_login_options TEMPLATE user_form"></div>
+
+        <div class="swac_user_userarea swac_dontdisplay">
+            <div>
+                <noscript>
+                <div class="noscript_nav">
+                    <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+                    <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+                </div>
+                </noscript>
+                <div class="acc-container-1">
+                    <a class="swac_user_logout">
+                        <img id="logout_img" src="./../../content/off_switch.png" alt="logout">
+                    </a>
+                    <a href="./settings.html">
+                        <img src="./../../content/gear.png" alt="settings" style="float: right; margin-top: -2.5%;">
+                    </a>
+                    <img id="profil_img" src="./../../content/profil_img.png" alt="No Image in here!">
+                    <br>
+                    <br>
+                    <div id="username" swa="Present FROM getMembersByGroup_SV/1"><p></p><h2>{username}</h2></div>
+                    <div id="group_link">
+                        <ul>
+                            <li>
+                                <h2>Meine Gruppe</h2>
+                            </li>
+                            <li>
+                                <h2>
+                                    <div id="group_name" swa="Present FROM getGroupByUser/5"><p></p><a href="./group.html">{name}</a></div>
+                                </h2>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="distance_driven">
+                        <ul>
+                            <li>
+                                <h2>Gefahrene KM</h2>
+                            </li>
+                            <li>
+                                <h2>345,6</h2>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acc-container-2-title">
+                    <h2 style="font-weight: bolder;">Letzte Erfolge</h2>
+                </div>
+                <div id="achievement_list" class="acc-container-2" swa="Present FROM getAllAchievements">
+                    <ul class="swac_repeatForSet">
+                        <li">
+                            <h2>{name}</h2>
+                        </li>
+                    </ul>
+                </div>
+            </div>    
+        </div>
+        
 
         <footer>
             <a id="more" href="../footer/more.html">Mehr</a>

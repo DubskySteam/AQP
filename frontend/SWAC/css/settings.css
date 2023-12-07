@@ -8,6 +8,14 @@
     padding-left: 5%;
 }
 
+#confirm_changes {
+    position: absolute;
+    right: 42.5%;
+    bottom: -18%;
+    background-color: #398EDE;
+    border: #398EDE;
+}
+
 #main h1, h1 a {
     text-align: center;
     color: #ffffff;
@@ -34,7 +42,7 @@ input {
 #img_area {
     position: absolute;
     width: 95%;
-    bottom: 8%;
+    bottom: 2%;
 }
 
 #input_area {

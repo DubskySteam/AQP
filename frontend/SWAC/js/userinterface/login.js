@@ -15,7 +15,7 @@ swac_screenboard_options.for = ["swac_user_username", "swac_user_password"];
 
 document.addEventListener('swac_components_complete', function () {
     let target_url = window.swac.getParameterFromURL('target_url', window.location);
-    if (target_url)
+    if (target_url) 
         swac_login_options.afterLoginLoc = target_url;
     // Redirect to account page if allready logged in
     swac_login_options.loggedinRedirects.set('login.html', target_url);
