@@ -23,7 +23,7 @@ var SWAC_config = {
             url: "/SWAC/data/[fromName]"
         },
         {
-            url: "/SmartSocial/api/group/[fromName]",
+            url: "/SmartSocial-1.9/api/group/[fromName]",
         },
 //            interfaces: {
 //                get: ['GET', 'records'],

@@ -148,13 +148,13 @@ ul {
 
 }
 
-#distance_driven {
+#group_link {
     float: left;
     margin-left: 3%;
     margin-top: 5%;
 }
 
-#group_link {
+#distance_driven {
     float: right;
     margin-right: 3%;
     margin-top: 5%;
