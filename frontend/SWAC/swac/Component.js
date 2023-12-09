@@ -1162,6 +1162,47 @@ DEFINTION of SET:\n\
             });
         });
     }
+    
+    /**
+     * Detects the attribute from data, that is best suited to be used for x-axis (labels)
+     * 
+     * @param {Object[]} data Object with datasources[datasets[dataobjects{}]]
+     * @param {Type} preferType Name of the datatype prefered for useage
+     * @param {String[]} ignore List of attribute names that should be ignored
+     * @returns {String} Name of the attribute to use for x-axis
+     */
+    getAllOverAvailableAttr(ignore = ['id'], typeOrder = ['timestamp', 'date', 'time', 'int8', 'int4', 'float8', 'float4']) {
+        let thisRef = this;
+        return new Promise((resolve, reject) => {
+            thisRef.getAttributeUseage().then(function (candidates) {
+                let allDatasetsCount = thisRef.countSets();
+                let candSorted = new Map();
+
+                // Sort after type
+                for (let curCandidate of candidates.values()) {
+                    if (!candSorted.has(curCandidate.type))
+                        candSorted.set(curCandidate.type, []);
+                    candSorted.get(curCandidate.type).push(curCandidate);
+                }
+                // Use first matching type
+                let firstMatch = null;
+                for (let curType of typeOrder) {
+                    let curCandidates = candSorted.get(curType);
+                    if (!curCandidates)
+                        continue;
+                    for (let curCand of curCandidates) {
+                        if (!ignore.includes(curCand.name) && curCand.count === allDatasetsCount) {
+                            firstMatch = curCand.name;
+                            break;
+                        }
+                    }
+                    if (firstMatch)
+                        break;
+                }
+                resolve(firstMatch);
+            });
+        });
+    }
 
     countSets(fromName) {
         let count = 0;

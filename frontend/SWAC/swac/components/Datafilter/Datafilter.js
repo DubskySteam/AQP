@@ -919,13 +919,13 @@ export default class Datafilter extends View {
 
         if (!y_axis_dd.hidden) {
             if (y_axis_dd.options[y_axis_dd.selectedIndex].value !== SWAC.lang.dict.datafilter.pleaseChoose) {
-                chart.swac_comp.options.yAxis1AttrName = y_axis_dd.options[y_axis_dd.selectedIndex].value;
+                chart.swac_comp.options.yAxisAttrNames[0] = y_axis_dd.options[y_axis_dd.selectedIndex].value;
             }
         } else {
             if (sumCheckbox.checked)
-                chart.swac_comp.options.yAxis1AttrName = "Summe";
+                chart.swac_comp.options.yAxisAttrNames[0] = "Summe";
             else if (countCheckbox.checked)
-                chart.swac_comp.options.yAxis1AttrName = "Anzahl";
+                chart.swac_comp.options.yAxisAttrNames[0] = "Anzahl";
         }
         // checks witch diagram is choosen
         let chart_arr = this.getChartList();

@@ -11,7 +11,7 @@
         "data_from_default": "2020-09-30T00:00:00",
         "data_until_default": "2020-10-30T00:00:00",
         "data_comp": "Charts",
-        "data_comp_opts": "{xAxisAttrName: 'ts', yAxis1AttrName: 'energyout'}",
+        "data_comp_opts": "{xAxisAttrName: 'ts', yAxisAttrNames: ['energyout']}",
         "data_from_min": "2020-09-30T00:00:00",
         "data_until_max": "2020-10-30T00:00:00",
         "ecomode": false

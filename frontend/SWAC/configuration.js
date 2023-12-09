@@ -89,7 +89,8 @@ var SWAC_config = {
 var user_options = {
     loginurl: 'localhost:8080/SmartUser/smartuser/user/performLogin',
     afterLoginLoc: '../sites/userinterface/account.html',
-    afterLogoutLoc: '../sites/userinterface/login.html'
+    afterLogoutLoc: '../sites/userinterface/login.html',
+    accountURL: '../sites/userinterface/account.html'
 };
 user_options.loggedinRedirects = new Map();
 user_options.loggedinRedirects.set('user_example3.html', '../sites/user_example2.html');

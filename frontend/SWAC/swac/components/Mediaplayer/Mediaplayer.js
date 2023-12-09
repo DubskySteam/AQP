@@ -724,7 +724,11 @@ export default class Mediaplayer extends View {
             if (slider.swac_dataset.fadein && mediaElem.currentTime === 0) {
                 this.fadein(mediaElem, slider.swac_dataset.fadein);
             } else {
-                mediaElem.play();
+                try {
+                    mediaElem.play();
+                } catch (e) {
+                    Msg.error('Mediaplayer','Error while start playing: ' + e, this.requestor);
+                }
             }
         }
         let setid = slider.getAttribute('swac_setid');
