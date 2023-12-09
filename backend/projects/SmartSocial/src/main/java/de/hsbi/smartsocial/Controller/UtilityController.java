@@ -21,7 +21,6 @@ import java.util.jar.Manifest;
 public class UtilityController {
 
     @GET
-    @Path("/")
     @ApiResponse(responseCode = "200", description = "Returns pong. Used to check if the utility controller is working")
     public String ping() {
         return "pong";
