@@ -1,5 +1,7 @@
 package de.hsbi.smartsocial.Controller;
 
+import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
+import de.hsbi.smartsocial.Model.Achievement;
 import de.hsbi.smartsocial.Service.AchievementService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
@@ -23,9 +25,17 @@ public class AchievementController {
         return achievementService.ping();
     }
 
+    @ApiResponse(responseCode = "200", description = "Returns an example achievement")
+    @GET
+    @Path("/example")
+    @Produces("application/json")
+    public Response getExample() {
+        return Response.ok(achievementService.getExample()).build();
+    }
+
     @ApiResponse(responseCode = "200", description = "Returns all achievements")
     @GET
-    @Path("/getAllAchievements")
+    @Path("/getAll")
     @Produces("application/json")
     public Response getAllAchievements() {
         return Response.ok(achievementService.getAllAchievements()).build();
@@ -36,7 +46,11 @@ public class AchievementController {
     @Path("/getById/{id}")
     @Produces("application/json")
     public Response getAchievementById(Long id) {
-        return Response.ok(achievementService.findById(id)).build();
+        Achievement achievement = achievementService.findById(id);
+        if (achievement == null) {
+            throw new AchievementNotFoundException(id);
+        }
+        return Response.ok(achievement).build();
     }
 
     @ApiResponse(responseCode = "200", description = "Returns achievement by name")
@@ -44,7 +58,11 @@ public class AchievementController {
     @Path("/getByName/{name}")
     @Produces("application/json")
     public Response getAchievementByName(String name) {
-        return Response.ok(achievementService.findByName(name)).build();
+        Achievement achievement = achievementService.findByName(name);
+        if (achievement == null) {
+            throw new AchievementNotFoundException(name);
+        }
+        return Response.ok(achievement).build();
     }
 
 }

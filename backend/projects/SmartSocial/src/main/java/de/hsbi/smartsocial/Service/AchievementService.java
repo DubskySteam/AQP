@@ -21,6 +21,14 @@ public class AchievementService {
         return achievementRepository.ping();
     }
 
+    public Achievement getExample() {
+        Achievement achievement = new Achievement();
+        achievement.setId(1L);
+        achievement.setName("Example");
+        achievement.setDescription("This is an example achievement");
+        return achievement;
+    }
+
     public List<Achievement> getAllAchievements() {
         return achievementRepository.getAllAchievements();
     }
