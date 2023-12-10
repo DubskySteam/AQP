@@ -32,4 +32,10 @@ public class LeaderboardRepository {
                 .setMaxResults(Math.toIntExact(limit))
                 .getResultList();
     }
+
+    public Leaderboard getPersonalStats(Long id) {
+        return entityManager.createQuery("SELECT l FROM Leaderboard l WHERE l.id = :id", Leaderboard.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
 }

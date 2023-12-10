@@ -40,6 +40,8 @@ public class Group {
     @Column(name = "description", length = Integer.MAX_VALUE)
     private String description;
 
+    private String image;
+
     public Long getId() {
         return id;
     }
@@ -78,6 +80,14 @@ public class Group {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

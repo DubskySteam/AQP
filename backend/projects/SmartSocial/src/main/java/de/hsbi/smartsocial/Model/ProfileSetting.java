@@ -43,6 +43,8 @@ public class ProfileSetting {
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, Object> additionalSettings;
 
+    private String picture;
+
     public Integer getId() {
         return id;
     }
@@ -81,6 +83,14 @@ public class ProfileSetting {
 
     public void setAdditionalSettings(Map<String, Object> additionalSettings) {
         this.additionalSettings = additionalSettings;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
 }

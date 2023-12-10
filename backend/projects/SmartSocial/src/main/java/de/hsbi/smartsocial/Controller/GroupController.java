@@ -1,13 +1,14 @@
 package de.hsbi.smartsocial.Controller;
 
+import de.hsbi.smartsocial.Exceptions.GroupForMemberNotFoundException;
+import de.hsbi.smartsocial.Exceptions.GroupNotFoundException;
+import de.hsbi.smartsocial.Exceptions.InvalidGroupDataException;
 import de.hsbi.smartsocial.Model.Group;
 import de.hsbi.smartsocial.Model.Groupmember;
 import de.hsbi.smartsocial.Model.User;
 import de.hsbi.smartsocial.Service.GroupService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -30,10 +31,10 @@ public class GroupController {
         return groupService.ping();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns an example group")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/example")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns an example group")
     public Response getExample() {
         Group group = new Group();
         group.setId(1L);
@@ -44,73 +45,91 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns group by id")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupById/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns group by id")
     public Response getGroupById(@PathParam("id") Long id) {
         Group group = groupService.findGroupById(id);
+        if (group == null) {
+            throw new GroupNotFoundException(id);
+        }
         return Response.ok(group).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns group by name")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupByName/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns group by name")
     public Response getGroupByName(@PathParam("name") String name) {
         Group group = groupService.findGroupByName(name);
+        if (group == null) {
+            throw new GroupNotFoundException(name);
+        }
         return Response.ok(group).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns all for a user")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/getGroupByUser/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns all for a user")
     public Response getAllGroupsByUser(@PathParam("id") Long id) {
         Groupmember groupmember = groupService.findGroupmemberByUserId(id);
+        if (groupmember == null) {
+            throw new GroupForMemberNotFoundException(id);
+        }
         return Response.ok(groupmember).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns members of a group")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/getMembersByGroup/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns members of a group")
     public Response getMembersByGroup(@PathParam("id") Long id) {
         List<Groupmember> groupmembers = groupService.findGroupmembersByGroupId(id);
+        if (groupmembers == null || groupmembers.isEmpty()) {
+            throw new GroupNotFoundException(id);
+        }
         return Response.ok(groupmembers).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns members of a group")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/getMembersByGroup_SV/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns members of a group")
     public Response getMembersByGroup_SV(@PathParam("id") Long id) {
         List<User> groupmembers = groupService.findUsersByGroupId_SV(id);
+        if (groupmembers == null || groupmembers.isEmpty()) {
+            throw new GroupNotFoundException(id);
+        }
         return Response.ok(groupmembers).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns all groups")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/getAllGroups")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns all groups")
     public Response getAllGroups() {
         List<Group> groups = groupService.findAllGroups();
         return Response.ok(groups).build();
     }
 
-    @ApiResponse(responseCode = "201", description = "Returns created group")
     @POST
+    @Path("/createGroup")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/createGroup")
+    @ApiResponse(responseCode = "201", description = "Returns created group")
     public Response createGroup(Group group) {
         Group createdGroup = groupService.createGroup(group);
+        if (createdGroup == null) {
+            throw new InvalidGroupDataException("Invalid group data");
+        }
         return Response.status(Response.Status.CREATED).entity(createdGroup).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns deleted group")
     @DELETE
     @Path("/deleteGroup/{id}")
+    @ApiResponse(responseCode = "200", description = "Returns deleted group")
     public Response deleteGroup(@PathParam("id") Long id) {
         groupService.deleteGroup(id);
         return Response.status(Response.Status.NO_CONTENT).build();

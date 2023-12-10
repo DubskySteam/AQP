@@ -13,13 +13,13 @@ import java.time.LocalDate;
         @NamedQuery(name = "Achievement.findById", query = "SELECT a FROM Achievement a WHERE a.id = :id"),
         @NamedQuery(name = "Achievement.findByName", query = "SELECT a FROM Achievement a WHERE a.name = :name"),
         @NamedQuery(name = "Achievement.findByDescription", query = "SELECT a FROM Achievement a WHERE a.description = :description"),
-        @NamedQuery(name = "Achievement.findByDateOfReceivement", query = "SELECT a FROM Achievement a WHERE a.dateOfReceivement = :dateOfReceivement")}
+}
 )
 public class Achievement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "achievement_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Size(max = 255)
     @NotNull
@@ -29,15 +29,11 @@ public class Achievement {
     @Column(name = "description", length = Integer.MAX_VALUE)
     private String description;
 
-    @NotNull
-    @Column(name = "date_of_receivement", nullable = false)
-    private LocalDate dateOfReceivement;
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,13 +52,4 @@ public class Achievement {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public LocalDate getDateOfReceivement() {
-        return dateOfReceivement;
-    }
-
-    public void setDateOfReceivement(LocalDate dateOfReceivement) {
-        this.dateOfReceivement = dateOfReceivement;
-    }
-
 }

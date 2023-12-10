@@ -39,4 +39,16 @@ public class LeaderboardController {
         return Response.ok(leaderboardService.getTopXUsersByFinishedQuests(length)).build();
     }
 
+    @GET
+    @Path("/getPersonalStats/{id}")
+    public Response getPersonalStats(@PathParam("id") Long id) {
+        Leaderboard leaderboard = leaderboardService.getPersonalStats(id);
+        if (leaderboard == null) {
+            //TODO: Custom UserNotFoundException
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(leaderboard).build();
+    }
+
+
 }

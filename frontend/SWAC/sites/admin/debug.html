@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/debug.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-left">Admin Panel</div>
+        <div class="navbar-right">v1.9</div>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="index.html">✅ API Endpoints</a></li>
+                <li><a href="debug.html">🔧 Debug</a></li>
+                <li><a href="documentation.html">📖 Documentation</a></li>
+                <li><a href="groups.html">🤝 Groups</a></li>
+                <li><a href="quests.html">🔥 Quests</a></li>
+                <li><a href="leaderboard.html">🏆 Leaderboard</a></li>
+                <li><a href="http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server"
+                        target="_blank">👨‍💻 Logs</a></li>
+                <li><a href="rawlogs.html" target="_blank">👨‍💻 Logs [RAW]</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <h1>API Debugger</h1>            
+            <div>
+                <select class="selector" id="category-selector">
+                    <option value="group.json">Group</option>
+                    <option value="leaderboard.json">Leaderboard</option>
+                    <option value="quests.json">Quests</option>
+                    <option value="achievements.json">Achievements</option>
+                    <option value="profilesettings.json">Profile settings</option>
+                    <option value="utility.json">Utility</option>
+                </select>
+                <select class="selector" id="endpoint-selector"></select>
+                <button id="test-button">Test Endpoint</button>
+            </div>
+            <button id="response-result">HTTP Code: </button>
+            <div id="json-input-container" style="display: none;">
+                <textarea id="json-input" placeholder="Enter JSON here"></textarea>
+            </div>
+            <div id="response-container"></div>
+        </main>
+    </div>
+    <script src="js/debug.js"></script>
+</body>
+
+</html>

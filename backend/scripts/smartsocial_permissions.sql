@@ -1,11 +1,11 @@
-ALTER SCHEMATA smartuser.smartsocial TO OWNER smartuser
-
 DO $$
 DECLARE
-    table_record RECORD;
+    table_name text;
 BEGIN
-    FOR table_record IN SELECT tablename FROM pg_tables WHERE schemaname = 'smartsocial' LOOP
-        EXECUTE 'ALTER TABLE smartsocial.' || quote_ident(table_record.tablename) || ' OWNER TO smartuser';
+    FOR table_name IN SELECT t.table_name FROM information_schema.tables t WHERE t.table_schema = 'smartsocial'
+    LOOP
+        EXECUTE 'ALTER TABLE smartsocial.' || quote_ident(table_name) || ' OWNER TO smartuser;';
     END LOOP;
-END
-$$;
+
+    EXECUTE 'ALTER SCHEMA smartsocial OWNER TO smartuser;';
+END $$;
