@@ -31,4 +31,8 @@ public class LeaderboardService {
         return leaderboardRepository.getTopXUsersByFinishedQuests(length);
     }
 
+    public Leaderboard getPersonalStats(Long id) {
+        return leaderboardRepository.getPersonalStats(id);
+    }
+
 }
