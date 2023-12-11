@@ -8,12 +8,6 @@ var swac_login_options = {
     afterLogoutLoc: './../../sites/userinterface/login.html',
     registrationLink: './../../sites/register/register.html',
     accountURL: './../../sites/userinterface/account.html',
-    activeON: {
-        fromName: 'users',         // Name of the datatable
-        fromWheres: {
-            filter: 'ckey,eq,func_userlogin&filter=active,eq,true'
-        }
-    }
 };
 swac_login_options.loggedinRedirects = new Map();
 

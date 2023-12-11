@@ -29,7 +29,10 @@ var SWAC_config = {
             url: "/SmartSocial/api/achievements/[fromName]"
         },
         {
-            url: "/Smartuser/smartuser/user/[fromName]"
+            url: "/SmartSocial/api/leaderboard/[fromName]"
+        },
+        {
+            url: "/Smartuser/smartuser/[fromName]",
         },
 //            interfaces: {
 //                get: ['GET', 'records'],

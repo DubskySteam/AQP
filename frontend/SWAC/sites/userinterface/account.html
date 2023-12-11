@@ -29,7 +29,7 @@
             <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
         </div>
         </noscript>
-        <div class="swac_user_userarea">
+        <divclass="swac_user_userarea">
                 <div class="acc-container-1">
                     <a class="swac_user_logout">
                         <a href="./login.html"><img id="logout_img" src="./../../content/off_switch.png" alt="logout"></a>
@@ -38,15 +38,15 @@
                         <img src="./../../content/gear.png" alt="settings" style="float: right; margin-top: -2.5%;">
                     </a>
                     <img id="profil_img" src="./../../content/profil_img.png" alt="No Image in here!">
-                    <div id="username" swa="Present FROM getMembersByGroup_SV/1"><p></p><h2>{username}</h2></div>
+                    <div id="username" swa="Present FROM user"><p></p><h2>{username}</h2></div>
                     <div id="group_link">
                         <ul>
                             <li>
                                 <h2>Meine Gruppe</h2>
                             </li>
-                            <li id="group_name" swa="Present FROM getGroupByUser/5">
+                            <li id="group_name" swa="Present FROM getGroupByUser/{id}">
                                 <h2>
-                                    <div><a href="./group.html">{name}</a></div>
+                                    <div><a href="./group.html">{group}</a></div>
                                 </h2>
                             </li>
                         </ul>
@@ -56,8 +56,8 @@
                             <li>
                                 <h2>Gefahrene KM</h2>
                             </li>
-                            <li>
-                                <h2>345,6</h2>
+                            <li id="group_name" swa="Present FROM getPersonalStats/{id}">
+                                <h2>{kilometers}</h2>
                             </li>
                         </ul>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="acc-container-2-title">
                     <h2 style="font-weight: bolder;">Letzte Erfolge</h2>
                 </div>
-                <div id="achievement_list" class="acc-container-2" swa="Present FROM getAllAchievements">
+                <div id="achievement_list" class="acc-container-2" swa="Present FROM getByUserId/{id}">
                     <ul class="swac_repeatForSet">
                         <li">
                             <h2>{name}</h2>
