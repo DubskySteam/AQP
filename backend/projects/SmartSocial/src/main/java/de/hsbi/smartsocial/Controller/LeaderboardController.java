@@ -53,7 +53,7 @@ public class LeaderboardController {
 
     @POST
     @Path("/addKilometers/{id}/{kilometers}")
-    public Response addKilometers(@PathParam("id") Long id, @PathParam("kilometers") Long kilometers) {
+    public Response addKilometers(@PathParam("id") Long id, @PathParam("kilometers") double kilometers) {
         leaderboardService.addKilometers(id, kilometers);
         return Response.ok().build();
     }

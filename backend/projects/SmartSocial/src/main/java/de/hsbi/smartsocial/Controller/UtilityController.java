@@ -9,7 +9,9 @@ import com.javadocmd.simplelatlng.util.LengthUnit;
 import de.hsbi.smartsocial.Exceptions.APICallException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
 import de.hsbi.smartsocial.Model.DataPoint;
+import de.hsbi.smartsocial.Service.LeaderboardService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -28,6 +30,9 @@ import java.util.jar.Manifest;
 
 @Path("/utility")
 public class UtilityController {
+
+    @Inject
+    private LeaderboardService leaderboardService;
 
     @GET
     @ApiResponse(responseCode = "200", description = "Returns pong. Used to check if the utility controller is working")
@@ -77,7 +82,9 @@ public class UtilityController {
 
         double totalDistance = calculateTotalDistance(dataPoints);
 
-        return Response.ok(totalDistance).build();
+        leaderboardService.addKilometers(6L, totalDistance);
+
+        return Response.ok("Refreshed data").build();
     }
 
     private String makeApiCall(String apiUrl) {
