@@ -5,6 +5,8 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import java.util.List;
+
 /**
  * Author: Clemens Maas
  * Date: 2023/11/27
@@ -36,6 +38,11 @@ public class ProfileSettingsRepository {
                 .setParameter("id", id)
                 .setParameter("profilesetting", profilesetting)
                 .getSingleResult();
+    }
+
+    public List<ProfileSetting> getAllProfileSettings() {
+        return entityManager.createQuery("SELECT p FROM ProfileSetting p", ProfileSetting.class)
+                .getResultList();
     }
 
 }

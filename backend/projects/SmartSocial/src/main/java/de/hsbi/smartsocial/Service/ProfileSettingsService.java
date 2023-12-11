@@ -6,6 +6,8 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 /**
  * Author: Clemens Maas
  * Date: 2023/11/27
@@ -30,6 +32,10 @@ public class ProfileSettingsService {
 
     public String setVisibilityById(Long id, boolean profilesetting) {
         return profileSettingsRepository.setVisibilityById(id, profilesetting);
+    }
+
+    public List<ProfileSetting> getAllProfileSettings() {
+        return profileSettingsRepository.getAllProfileSettings();
     }
 
 }

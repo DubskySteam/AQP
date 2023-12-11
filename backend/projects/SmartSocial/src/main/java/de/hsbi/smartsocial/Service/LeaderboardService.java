@@ -37,7 +37,7 @@ public class LeaderboardService {
 
     public void addKilometers(Long id, double kilometers) {
         Leaderboard leaderboard = leaderboardRepository.getPersonalStats(id);
-        leaderboard.setKilometers(leaderboard.getKilometers().add(new java.math.BigDecimal(kilometers)));
+        leaderboard.setKilometers(new java.math.BigDecimal(kilometers));
         leaderboardRepository.update(leaderboard);
     }
 

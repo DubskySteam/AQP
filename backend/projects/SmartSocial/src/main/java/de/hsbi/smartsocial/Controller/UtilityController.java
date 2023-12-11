@@ -9,7 +9,9 @@ import com.javadocmd.simplelatlng.util.LengthUnit;
 import de.hsbi.smartsocial.Exceptions.APICallException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
 import de.hsbi.smartsocial.Model.DataPoint;
+import de.hsbi.smartsocial.Model.ProfileSetting;
 import de.hsbi.smartsocial.Service.LeaderboardService;
+import de.hsbi.smartsocial.Service.ProfileSettingsService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -33,6 +35,9 @@ public class UtilityController {
 
     @Inject
     private LeaderboardService leaderboardService;
+
+    @Inject
+    private ProfileSettingsService profileSettingsService;
 
     @GET
     @ApiResponse(responseCode = "200", description = "Returns pong. Used to check if the utility controller is working")
@@ -76,13 +81,18 @@ public class UtilityController {
     @Path("/refreshData")
     @Produces(MediaType.APPLICATION_JSON)
     public Response refreshData() {
-        String jsonArrayString = makeApiCall("http://localhost:8080/SmartDataAirquality/smartdata/records/airquality_a1");
 
-        List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
+        List<ProfileSetting> valid_users = profileSettingsService.getAllProfileSettings();
 
-        double totalDistance = calculateTotalDistance(dataPoints);
+        for (ProfileSetting user : valid_users) {
+            String jsonArrayString = makeApiCall("http://localhost:8080/SmartDataAirquality/smartdata/records/" + user.getDevice());
 
-        leaderboardService.addKilometers(6L, totalDistance);
+            List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
+
+            double totalDistance = calculateTotalDistance(dataPoints);
+
+            leaderboardService.addKilometers(user.getId(), totalDistance);
+        }
 
         return Response.ok("Leaderboard data has refreshed :)").build();
     }
