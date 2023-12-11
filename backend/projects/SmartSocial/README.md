@@ -3,7 +3,7 @@
 
 ### Version & Build Info
 
-![](https://img.shields.io/badge/Current%20Version-1.9.4-green?style=for-the-badge&logo=git)
+![](https://img.shields.io/badge/Current%20Version-2.0-green?style=for-the-badge&logo=git)
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/dubskysteam/FFXIV-RaidCompletion/.github%2Fworkflows%2Frust.yml?style=for-the-badge)
 
