@@ -13,8 +13,13 @@ public class ExceptionOverlord implements ExceptionMapper<RuntimeException> {
         status = switch (exception.getClass().getSimpleName()) {
             case "GroupNotFoundException",
                     "GroupForMemberNotFoundException",
-                    "AchievementNotFoundException" -> Response.Status.NOT_FOUND;
-            case "InvalidGroupDataException" -> Response.Status.BAD_REQUEST;
+                    "AchievementNotFoundException",
+                    "RefreshException",
+                    "QuestByUserNotFoundException",
+                    "ProfileSettingsNotFoundException" -> Response.Status.NOT_FOUND;
+            case "InvalidGroupDataException",
+                    "ParseJsonArrayException",
+                    "APICallException" -> Response.Status.BAD_REQUEST;
             default -> Response.Status.INTERNAL_SERVER_ERROR;
         };
 
