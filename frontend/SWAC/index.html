@@ -15,6 +15,7 @@
         <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
         <script src="/SWAC/swac/swac.js" type="module"></script>
         <script src="/SWAC/swac/legacybrowser.js"></script>
+        <script type="module" src="/SWAC/js/userinterface/index.js"></script>
     </head>
     <body>
         <header id="head_navigation">
@@ -37,11 +38,11 @@
             <br>
             <a href="./sites/register/register.html" style="font-weight: bolder; color: #073A5F;">Schließe dich uns an</a>
         </div>
-        <div id="home_data" class="home-container-2" swa="Present FROM /SmartUser/smartuser/user/count">
+        <div id="home_data" class="home-container-2" >
             <ul>
-                <li><h2>Aktive Teilnehmer:       {users}</h2></li>
+                <li id="participants" swa="Present FROM count"><p></p><h2>Aktive Teilnehmer:       {users}</h2></li>
                 <li><h2>Gemessene Kilometer:  11.111</h2></li>
-                <li><h2>Aktive Gruppen:           25</h2></li>
+                <li id="groups"><h2>Aktive Gruppen:           </h2></li>
                 <li><h2>Von Minden gemessen:     36%</h2></li>
             </ul>
         </div>

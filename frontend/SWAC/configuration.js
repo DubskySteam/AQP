@@ -23,10 +23,13 @@ var SWAC_config = {
             url: "/SWAC/data/[fromName]"
         },
         {
-            url: "/SmartSocial-1.9/api/group/[fromName]"
+            url: "/SmartSocial/api/group/[fromName]"
         },
         {
-            url: "/SmartSocial-1.9/api/achievements/[fromName]"
+            url: "/SmartSocial/api/achievements/[fromName]"
+        },
+        {
+            url: "/Smartuser/smartuser/user/[fromName]"
         },
 //            interfaces: {
 //                get: ['GET', 'records'],
@@ -87,10 +90,9 @@ var SWAC_config = {
  * Used on every page
  */
 var user_options = {
-    loginurl: 'localhost:8080/SmartUser/smartuser/user/performLogin',
-    afterLoginLoc: '../sites/userinterface/account.html',
+    loginurl: 'http://localhost:8080/SmartUser/smartuser/user/performLogin',
     afterLogoutLoc: '../sites/userinterface/login.html',
-    accountURL: '../sites/userinterface/account.html'
+    accountURL: '../sites/userinterface/account.html',
 };
 user_options.loggedinRedirects = new Map();
 user_options.loggedinRedirects.set('user_example3.html', '../sites/user_example2.html');

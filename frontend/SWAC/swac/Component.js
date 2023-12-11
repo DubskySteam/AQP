@@ -553,6 +553,15 @@ DEFINTION of SET:\n\
                 type: 'boolean'
             }
         }
+        
+        this.desc.funcs[1026] = {
+            name: 'getData',
+            desc: 'Gets all datasources, with all data accessable by the component.',
+            returns: {
+                desc: 'Object with watchable sources. With key is the name of the source. Containing WatchableSets accessable with .getSets()',
+                type: 'WatchableSource{}'
+            }
+        }
 
         // Documentation for events
         this.desc.events = [];
@@ -637,6 +646,10 @@ DEFINTION of SET:\n\
                 this.data[fromName].addSet(curSet);
             }
         }
+    }
+    
+    getData() {
+        return this.data;
     }
 
     // public function

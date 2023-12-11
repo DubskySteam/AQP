@@ -4,9 +4,16 @@
 var swac_login_options = {
     mode: 'form',
     loginURL: 'http://localhost:8080/SmartUser/smartuser/user/performLogin',
-    afterLoginLoc: '/SWAC/sites/userinterface/account.html',
-    afterLogoutLoc: '/SWAC/sites/userinterface/login.html',
-    registrationLink: '/SWAC/sites/register/register.html'
+    afterLoginLoc: './../../sites/userinterface/account.html',
+    afterLogoutLoc: './../../sites/userinterface/login.html',
+    registrationLink: './../../sites/register/register.html',
+    accountURL: './../../sites/userinterface/account.html',
+    activeON: {
+        fromName: 'users',         // Name of the datatable
+        fromWheres: {
+            filter: 'ckey,eq,func_userlogin&filter=active,eq,true'
+        }
+    }
 };
 swac_login_options.loggedinRedirects = new Map();
 

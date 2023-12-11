@@ -13,7 +13,7 @@
         <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
         <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
         <script src="/SWAC/swac/swac.js" type="module"></script>
-        <script src="../js/account.js"></script>
+        <script src="../../js/userinterface/group.js"></script>
     </head>
     <body>
         <header id="head_navigation">
@@ -30,7 +30,11 @@
         </div>
         </noscript>
         <div id="group_data" class="group-container-1" >
-            <img id="group_profil_img" src="./../../content/group_profil_img.png" alt="No Image in here!">
+            <div id="group_image" swa="Present FROM getGroupByUser/5">
+                <div class="swac_repeatForSet">
+                    <div id="group_img" swa="Present FROM group"><p></p><h1>{name}</h1></div>
+                </div>
+            </div>
             <div id="group_name" swa="Present FROM getGroupByUser/5"><p></p><h1 style="font-weight: bolder;">{name}</h1></div>
             <div id="participants">
                 <ul>
@@ -39,7 +43,7 @@
                     </li>
                     <li>
                         <h1>
-                            <div id="participant_sum" swa="Calculate FROM getMembersByGroup_SV/1 TEMPLATE sumonly"><h1>{sumonly}</h1></div>
+                            <div id="participant_sum" swa="Present FROM getMembersByGroup_SV/1"><h1 id="group_title"></h1></div>
                         </h1>
                     </li>
                 </ul>

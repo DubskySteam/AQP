@@ -494,7 +494,8 @@ window['Timeline_worldmap2d_example15_options'] = {
             
             <h3>Example 16: Play sets with timeline</h3>
             <p>The datasets are shown from a time range. By running the timeline 
-            the sets appear and disapear accordingly to their time value.</p>
+            the sets appear and disapear accordingly to their time value.
+            <br>Per default time value is expected to be in the "ts" attribute.</p>
             <a href="worldmap2d_example16.html" target="_blank">Open example</a>
 
             <pre><code class="lang-html">
@@ -644,6 +645,16 @@ var worldmap2d_example21_options = {
 };
             </code></pre> 
             
+            <h3>Example 22: Add model files per script</h3>
+            <p>To add new model files (gejson / shape) to an map, use the loadModelFile() function.
+            The file will be instantly added to the map.</p>
+            <pre><code class="lang-javascript">
+let modelFile = {
+    url: '/path/to/myfile.geojson',
+    name: 'My Geojson'
+};
+document.querySelector('#mymap').swac_comp.loadModelFile(modelFile);
+            </code></pre> 
         </article>
         <footer>
             <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
