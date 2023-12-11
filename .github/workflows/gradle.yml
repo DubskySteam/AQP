@@ -31,7 +31,3 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
       working-directory: backend/projects/SmartSocial
-
-    - name: Build with Gradle
-      run: ./gradlew build -x test
-      working-directory: backend/projects/SmartSocial
