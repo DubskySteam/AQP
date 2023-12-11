@@ -41,7 +41,8 @@ CREATE TABLE smartsocial.ProfileSettings (
     profile_visibility VARCHAR(50) NOT NULL,
     notifications_enabled BOOLEAN NOT NULL,
     additional_settings JSONB,
-    picture VARCHAR(255)
+    picture VARCHAR(255),
+    device VARCHAR(100)
 );
 
 -- Create Quests table

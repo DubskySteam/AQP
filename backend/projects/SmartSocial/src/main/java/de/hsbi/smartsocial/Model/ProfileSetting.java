@@ -45,6 +45,8 @@ public class ProfileSetting {
 
     private String picture;
 
+    private String device;
+
     public Long getId() {
         return id;
     }
@@ -93,4 +95,11 @@ public class ProfileSetting {
         this.picture = picture;
     }
 
+    public String getDevice() {
+        return device;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
+    }
 }
