@@ -32,7 +32,15 @@ var SWAC_config = {
             url: "/SmartSocial/api/leaderboard/[fromName]"
         },
         {
-            url: "/Smartuser/smartuser/[fromName]",
+            url: "/Smartuser/smartuser/[iface]/[fromName]",
+            interfaces: {
+                get: ['GET','get'],
+                list: ['GET','list'],
+                defs: ["GET",'definition'],
+                create: ['POST','create'],
+                update: ['UPDATE','update'],
+                delete: ['DELETE','delete']
+            }
         },
 //            interfaces: {
 //                get: ['GET', 'records'],
