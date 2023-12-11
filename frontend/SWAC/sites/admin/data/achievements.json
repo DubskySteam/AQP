@@ -16,7 +16,7 @@
     },
     {
         "name": "Get all",
-        "url": "http://localhost:8080/SmartSocial/api/achievements/getAllAchivements",
+        "url": "http://localhost:8080/SmartSocial/api/achievements/getAll",
         "method": "GET"
     }
 ]

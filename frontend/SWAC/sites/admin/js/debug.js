@@ -74,6 +74,7 @@ function testEndpoint() {
     const selectedEndpoint = currentEndpoints[document.getElementById('endpoint-selector').value];
     const resultButton = document.getElementById('response-result');
     const jsonInput = document.getElementById('json-input').value;
+    const params = document.getElementById('endpoint-params').value;
 
     const requestOptions = {
         method: selectedEndpoint.method || 'GET',
@@ -84,7 +85,7 @@ function testEndpoint() {
         requestOptions.body = jsonInput;
     }
 
-    fetch(selectedEndpoint.url, requestOptions)
+    fetch(selectedEndpoint.url + params, requestOptions)
         .then(response => {
             updateResultButton(response.status, resultButton);
             if (response.headers.get("content-type").includes("application/json")) {
