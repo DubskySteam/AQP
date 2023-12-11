@@ -84,7 +84,7 @@ public class UtilityController {
 
         leaderboardService.addKilometers(6L, totalDistance);
 
-        return Response.ok("Refreshed data").build();
+        return Response.ok("Leaderboard data has refreshed :)").build();
     }
 
     private String makeApiCall(String apiUrl) {
