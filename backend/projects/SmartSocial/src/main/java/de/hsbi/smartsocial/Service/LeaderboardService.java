@@ -35,4 +35,10 @@ public class LeaderboardService {
         return leaderboardRepository.getPersonalStats(id);
     }
 
+    public void addKilometers(Long id, Long kilometers) {
+        Leaderboard leaderboard = leaderboardRepository.getPersonalStats(id);
+        leaderboard.setKilometers(leaderboard.getKilometers().add(new java.math.BigDecimal(kilometers)));
+        leaderboardRepository.update(leaderboard);
+    }
+
 }

@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
@@ -48,6 +49,13 @@ public class LeaderboardController {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(leaderboard).build();
+    }
+
+    @POST
+    @Path("/addKilometers/{id}/{kilometers}")
+    public Response addKilometers(@PathParam("id") Long id, @PathParam("kilometers") Long kilometers) {
+        leaderboardService.addKilometers(id, kilometers);
+        return Response.ok().build();
     }
 
 
