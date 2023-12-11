@@ -10,7 +10,6 @@ public class ExceptionOverlord implements ExceptionMapper<RuntimeException> {
     @Override
     public Response toResponse(RuntimeException exception) {
         Response.Status status;
-
         status = switch (exception.getClass().getSimpleName()) {
             case "GroupNotFoundException",
                     "GroupForMemberNotFoundException",

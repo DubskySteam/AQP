@@ -58,4 +58,13 @@ public class UtilityController {
         return info;
     }
 
+    @GET
+    @Path("/refreshData")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Refreshes the travel data by pulling it from SmartData")
+    public Response refreshData() {
+
+    }
+
+
 }
