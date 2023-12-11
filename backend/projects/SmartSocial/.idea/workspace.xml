@@ -6,6 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/ProfileSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/ProfileSettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/UtilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/UtilityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/APICallException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/APICallException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/AchievementNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/AchievementNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/ExceptionOverlord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/ExceptionOverlord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/GroupForMemberNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/GroupForMemberNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/GroupNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/GroupNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/InvalidGroupDataException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/InvalidGroupDataException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/ParseJsonArrayException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/ParseJsonArrayException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/ProfileSettingsNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/ProfileSettingsNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/QuestByUserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/QuestByUserNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/QuestInvalidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/QuestInvalidException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/QuestNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/QuestNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/RefreshException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Exceptions/RefreshException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/ProfileSettingsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/ProfileSettingsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/UtilityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/UtilityService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +52,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="com.haulmont.jpb.JpaEntity" />
         <option value="Class" />
       </list>
     </option>
@@ -42,41 +60,53 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2YT74eEREmomHDCK47E9ovZXpBO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "SmartSocial__v2.0",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cmaas\GitHub\AQ\backend\projects\SmartSocial\src\test\java\de\hsbi\smartsocial\test" />
+      <recent name="C:\Users\cmaas\GitHub\AQ\backend\projects\SmartSocial\src\test" />
+      <recent name="C:\Users\cmaas\GitHub\AQ\backend\projects\SmartSocial\src\test\resources" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -84,8 +114,30 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.SmartSocial [war]">
+  <component name="RunManager" selected="Gradle.SmartSocial [build]">
     <configuration name="SmartSocial [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartSocial [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -96,7 +148,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="check" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -129,7 +181,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="SmartSocial [war]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SmartSocial [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -140,7 +192,29 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="war" />
+            <option value="testClasses" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartSocial [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -222,10 +296,20 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.SmartSocial [build]" />
+      <item itemvalue="Gradle.SmartSocial [check]" />
+      <item itemvalue="Gradle.SmartSocial [clean]" />
+      <item itemvalue="Gradle.SmartSocial [test]" />
+      <item itemvalue="Gradle.SmartSocial [testClasses]" />
+      <item itemvalue="Payara Server.Payara SmartDev" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.SmartSocial [war]" />
         <item itemvalue="Gradle.SmartSocial [build]" />
+        <item itemvalue="Gradle.SmartSocial [test]" />
+        <item itemvalue="Gradle.SmartSocial [check]" />
+        <item itemvalue="Gradle.SmartSocial [testClasses]" />
         <item itemvalue="Gradle.SmartSocial [clean]" />
       </list>
     </recent_temporary>
@@ -239,10 +323,24 @@
       <option name="presentableId" value="Default" />
       <updated>1700537527106</updated>
       <workItem from="1700537528129" duration="2599000" />
+      <workItem from="1701344327630" duration="11017000" />
+      <workItem from="1701519610368" duration="7361000" />
+      <workItem from="1701682272134" duration="67000" />
+      <workItem from="1701694292939" duration="9347000" />
+      <workItem from="1701713952767" duration="4199000" />
+      <workItem from="1701763509596" duration="1787000" />
+      <workItem from="1701796624680" duration="599000" />
+      <workItem from="1702140443108" duration="6452000" />
+      <workItem from="1702217147865" duration="1442000" />
+      <workItem from="1702296419364" duration="9156000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -23,7 +23,7 @@ import java.util.Map;
 public class ProfileSetting {
     @Id
     @Column(name = "user_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @MapsId
     @OneToOne(fetch = FetchType.EAGER, optional = false)
@@ -43,11 +43,15 @@ public class ProfileSetting {
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, Object> additionalSettings;
 
-    public Integer getId() {
+    private String picture;
+
+    private String device;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -83,4 +87,19 @@ public class ProfileSetting {
         this.additionalSettings = additionalSettings;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getDevice() {
+        return device;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
+    }
 }

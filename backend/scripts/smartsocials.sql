@@ -7,7 +7,8 @@ CREATE TABLE smartsocial.Groups (
     name VARCHAR(255) NOT NULL,
     creation_date DATE NOT NULL,
     admin_user_id INT REFERENCES smartuser.users(id),
-    description TEXT
+    description TEXT,
+    image VARCHAR(255)
 );
 
 -- Create GroupMembers table
@@ -39,7 +40,9 @@ CREATE TABLE smartsocial.ProfileSettings (
     user_id INT PRIMARY KEY REFERENCES smartuser.users(id),
     profile_visibility VARCHAR(50) NOT NULL,
     notifications_enabled BOOLEAN NOT NULL,
-    additional_settings JSONB
+    additional_settings JSONB,
+    picture VARCHAR(255),
+    device VARCHAR(100)
 );
 
 -- Create Quests table

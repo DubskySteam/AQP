@@ -1,8 +1,10 @@
 package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Achievement;
+import de.hsbi.smartsocial.Model.Userachievement;
 import de.hsbi.smartsocial.Persistence.AchievementRepository;
-import jakarta.persistence.EntityManager;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 
 import java.util.List;
 
@@ -10,12 +12,22 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class AchievementService {
 
-    private final AchievementRepository achievementRepository;
+    @Inject
+    private AchievementRepository achievementRepository;
 
-    public AchievementService(EntityManager entityManager) {
-        achievementRepository = new AchievementRepository(entityManager);
+    public String ping() {
+        return achievementRepository.ping();
+    }
+
+    public Achievement getExample() {
+        Achievement achievement = new Achievement();
+        achievement.setId(1L);
+        achievement.setName("Example");
+        achievement.setDescription("This is an example achievement");
+        return achievement;
     }
 
     public List<Achievement> getAllAchievements() {
@@ -28,6 +40,14 @@ public class AchievementService {
 
     public Achievement findByName(String name) {
         return achievementRepository.findByName(name);
+    }
+
+    public List<Userachievement> getByUserId(Long id) {
+        return achievementRepository.getByUserId(id);
+    }
+
+    public Userachievement check(Long id, Long achievementId) {
+        return achievementRepository.check(id, achievementId);
     }
 
 }

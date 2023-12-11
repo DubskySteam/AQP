@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Group Example",
+        "url": "http://localhost:8080/SmartSocial/api/group/example",
+        "method": "GET"
+    },
+    {
+        "name": "Get Group by name",
+        "url": "/SmartSocial/api/group/getGroupByName/{name}",
+        "method": "GET"
+    },
+    {
+        "name": "Get Group by ID",
+        "url": "http://localhost:8080/SmartSocial/api/group/getAllGroups",
+        "method": "GET"
+    },
+    {
+        "name": "Get Groups",
+        "url": "http://localhost:8080/SmartSocial/api/group/getAllGroups",
+        "method": "GET"
+    },
+    {
+        "name": "Delete Group",
+        "url": "http://localhost:8080/SmartSocial/api/group/deleteGroup/{id}",
+        "method": "DELETE"
+    },
+    {
+        "name": "Create group",
+        "url": "http://localhost:8080/SmartSocial/api/group/createGroup",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "sampleKey": ".."
+        }
+    }
+]

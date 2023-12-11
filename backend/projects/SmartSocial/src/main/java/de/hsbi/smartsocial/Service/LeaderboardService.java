@@ -2,6 +2,8 @@ package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Leaderboard;
 import de.hsbi.smartsocial.Persistence.LeaderboardRepository;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
 import java.util.ArrayList;
@@ -11,12 +13,11 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
+@Stateless
 public class LeaderboardService {
 
+    @Inject
     LeaderboardRepository leaderboardRepository;
-    public LeaderboardService(EntityManager entityManager) {
-        leaderboardRepository = new LeaderboardRepository(entityManager);
-    }
 
     public String ping() {
         return leaderboardRepository.ping();
@@ -28,6 +29,16 @@ public class LeaderboardService {
 
     public List<Leaderboard> getTopXUsersByFinishedQuests(Long length) {
         return leaderboardRepository.getTopXUsersByFinishedQuests(length);
+    }
+
+    public Leaderboard getPersonalStats(Long id) {
+        return leaderboardRepository.getPersonalStats(id);
+    }
+
+    public void addKilometers(Long id, double kilometers) {
+        Leaderboard leaderboard = leaderboardRepository.getPersonalStats(id);
+        leaderboard.setKilometers(new java.math.BigDecimal(kilometers));
+        leaderboardRepository.update(leaderboard);
     }
 
 }
