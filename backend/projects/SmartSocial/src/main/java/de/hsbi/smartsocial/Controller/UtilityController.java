@@ -18,6 +18,10 @@ import java.util.Properties;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/06
+ */
 @Path("/utility")
 public class UtilityController {
 

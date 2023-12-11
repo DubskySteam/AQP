@@ -1,4 +1,11 @@
 package de.hsbi.smartsocial.Exceptions;
 
-public class QuestInvalidException {
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/06
+ */
+public class QuestInvalidException extends RuntimeException {
+    public QuestInvalidException(String message) {
+        super(message);
+    }
 }

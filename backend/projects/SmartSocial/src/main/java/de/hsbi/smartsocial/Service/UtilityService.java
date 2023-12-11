@@ -22,6 +22,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/27
+ */
 @Stateless
 public class UtilityService {
 

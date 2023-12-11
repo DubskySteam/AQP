@@ -4,6 +4,10 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/06
+ */
 @Provider
 public class ExceptionOverlord implements ExceptionMapper<RuntimeException> {
 
