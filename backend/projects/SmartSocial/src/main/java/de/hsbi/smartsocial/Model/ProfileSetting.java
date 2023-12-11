@@ -23,7 +23,7 @@ import java.util.Map;
 public class ProfileSetting {
     @Id
     @Column(name = "user_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @MapsId
     @OneToOne(fetch = FetchType.EAGER, optional = false)
@@ -45,11 +45,11 @@ public class ProfileSetting {
 
     private String picture;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

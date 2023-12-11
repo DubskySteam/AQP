@@ -77,7 +77,7 @@ public class UtilityController {
 
         double totalDistance = calculateTotalDistance(dataPoints);
 
-        return Response.ok(dataPoints).build();
+        return Response.ok(totalDistance).build();
     }
 
     private String makeApiCall(String apiUrl) {
