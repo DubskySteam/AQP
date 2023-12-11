@@ -73,6 +73,11 @@ public class GroupRepository {
         return group;
     }
 
+    public Group updateGroup(Group group) {
+        entityManager.merge(group);
+        return group;
+    }
+
     ////////////////////
     // DELETE Request //
     ////////////////////

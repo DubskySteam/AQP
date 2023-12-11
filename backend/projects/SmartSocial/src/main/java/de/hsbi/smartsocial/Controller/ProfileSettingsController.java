@@ -35,8 +35,12 @@ public class ProfileSettingsController {
 
     @GET
     @Path("/getProfileSettingsById/{id}")
-    public ProfileSetting getProfileSettingsById(@PathParam("id") Long id) {
-        return Response.ok(profileSettingsService.getProfileSettingsById(id)).build().readEntity(ProfileSetting.class);
+    public Response getProfileSettingsById(@PathParam("id") Long id) {
+        ProfileSetting profileSetting = profileSettingsService.getProfileSettingsById(id);
+        if (profileSetting == null) {
+            throw new RuntimeException("ProfileSetting not found");
+        }
+        return Response.ok(profileSetting).build();
     }
 
     @GET

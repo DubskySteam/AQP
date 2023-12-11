@@ -7,7 +7,8 @@ CREATE TABLE smartsocial.Groups (
     name VARCHAR(255) NOT NULL,
     creation_date DATE NOT NULL,
     admin_user_id INT REFERENCES smartuser.users(id),
-    description TEXT
+    description TEXT,
+    image VARCHAR(255)
 );
 
 -- Create GroupMembers table

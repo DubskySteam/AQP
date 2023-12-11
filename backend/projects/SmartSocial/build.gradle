@@ -33,11 +33,13 @@ processResources.dependsOn createPropertiesFile
 
 
 dependencies {
-  compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
+    // JAKARTA DEPENDENCIES
   compileOnly('jakarta.xml.ws:jakarta.xml.ws-api:3.0.1')
+  compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
   implementation('org.hibernate:hibernate-core:6.0.2.Final')
   implementation('org.glassfish.jaxb:jaxb-runtime:3.0.2')
   implementation('org.hibernate.validator:hibernate-validator:7.0.5.Final')
+  testImplementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.1.6'
   // SWAGGER DEPENDENCIES
   implementation group: 'io.swagger.core.v3', name: 'swagger-core-jakarta', version: '2.2.19'
   implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2-jakarta', version: '2.2.19'
@@ -47,11 +49,12 @@ dependencies {
   testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.7.0'
   testImplementation 'org.mockito:mockito-junit-jupiter:5.7.0'
   // JUNIT DEPENDENCIES
-  testImplementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.1.6'
   testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
   testImplementation 'org.assertj:assertj-core:3.17.2'
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  // CALCULATION DEPENDENCIES
+  implementation group: 'com.javadocmd', name: 'simplelatlng', version: '1.4.0'
 }
 
 test {

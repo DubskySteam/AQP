@@ -38,4 +38,8 @@ public class LeaderboardRepository {
                 .setParameter("id", id)
                 .getSingleResult();
     }
+
+    public void update(Leaderboard leaderboard) {
+        entityManager.merge(leaderboard);
+    }
 }
