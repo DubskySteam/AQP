@@ -55,6 +55,11 @@ public class GroupService {
     }
 
     @Transactional
+    public Group updateGroup(Group group) {
+        return groupRepository.updateGroup(group);
+    }
+
+    @Transactional
     public void deleteGroup(Long id) {
         groupRepository.delete(id);
     }

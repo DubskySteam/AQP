@@ -127,6 +127,19 @@ public class GroupController {
         return Response.status(Response.Status.CREATED).entity(createdGroup).build();
     }
 
+    @POST
+    @Path("/updateGroup")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns updated group")
+    public Response updateGroup(Group group) {
+        Group updatedGroup = groupService.updateGroup(group);
+        if (updatedGroup == null) {
+            throw new InvalidGroupDataException("Invalid group data");
+        }
+        return Response.ok(updatedGroup).build();
+    }
+
     @DELETE
     @Path("/deleteGroup/{id}")
     @ApiResponse(responseCode = "200", description = "Returns deleted group")
