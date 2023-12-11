@@ -29,8 +29,8 @@ public class ProfileSettingsController {
 
     @GET
     @Path("/example")
-    public String getExample() {
-        return Response.ok(profileSettingsService.ping()).build().toString();
+    public Response getExample() {
+        return Response.ok(profileSettingsService.example()).build();
     }
 
     @GET

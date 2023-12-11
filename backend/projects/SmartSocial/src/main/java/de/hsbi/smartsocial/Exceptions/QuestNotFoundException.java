@@ -1,4 +1,11 @@
 package de.hsbi.smartsocial.Exceptions;
 
-public class QuestNotFoundException {
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/06
+ */
+public class QuestNotFoundException extends  RuntimeException {
+    public QuestNotFoundException(String message) {
+        super(message);
+    }
 }

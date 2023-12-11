@@ -8,5 +8,10 @@
         "name": "Leaderboard Top 5 [Q]",
         "url": "/SmartSocial/api/leaderboard/getListByQuests/5",
         "method": "GET"
+    },
+    {
+        "name": "Get personal stats",
+        "url": "/SmartSocial/api/leaderboard/getPersonalStats/",
+        "method": "GET"
     }
 ]
