@@ -10,11 +10,6 @@
         "method": "GET"
     },
     {
-        "name": "Get Quest by name",
-        "url": "http://localhost:8080/SmartSocial/api/quest/getByName/",
-        "method": "GET"
-    },
-    {
         "name": "Get all Quests",
         "url": "http://localhost:8080/SmartSocial/api/quest/getAll",
         "method": "GET"
