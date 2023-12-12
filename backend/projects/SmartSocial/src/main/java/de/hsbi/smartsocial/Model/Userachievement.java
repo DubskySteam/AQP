@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "userachievements", schema = "smartsocial")
@@ -10,6 +11,9 @@ import jakarta.persistence.*;
         @NamedQuery(name = "Userachievement.findByAchievementId", query = "SELECT u FROM Userachievement u WHERE u.id.achievementId = :achievementId"),
         @NamedQuery(name = "Userachievement.findByUserIdAndAchievementId", query = "SELECT u FROM Userachievement u WHERE u.id.userId = :userId AND u.id.achievementId = :achievementId")
 })
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Userachievement {
     @EmbeddedId
     private UserachievementId id;
@@ -23,29 +27,4 @@ public class Userachievement {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "achievement_id", nullable = false)
     private Achievement achievement;
-
-    public UserachievementId getId() {
-        return id;
-    }
-
-    public void setId(UserachievementId id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Achievement getAchievement() {
-        return achievement;
-    }
-
-    public void setAchievement(Achievement achievement) {
-        this.achievement = achievement;
-    }
-
 }

@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Controller;
 
 import de.hsbi.smartsocial.Exceptions.GroupForMemberNotFoundException;
+import de.hsbi.smartsocial.Exceptions.GroupJoinException;
 import de.hsbi.smartsocial.Exceptions.GroupNotFoundException;
 import de.hsbi.smartsocial.Exceptions.InvalidGroupDataException;
 import de.hsbi.smartsocial.Model.Group;
@@ -87,7 +88,7 @@ public class GroupController {
     @ApiResponse(responseCode = "200", description = "Returns members of a group")
     public Response getMembersByGroup(@PathParam("id") Long id) {
         List<Groupmember> groupmembers = groupService.findGroupmembersByGroupId(id);
-        if (groupmembers == null || groupmembers.isEmpty()) {
+        if (groupmembers == null) {
             throw new GroupNotFoundException(id);
         }
         return Response.ok(groupmembers).build();
@@ -99,7 +100,7 @@ public class GroupController {
     @ApiResponse(responseCode = "200", description = "Returns members of a group")
     public Response getMembersByGroup_SV(@PathParam("id") Long id) {
         List<User> groupmembers = groupService.findUsersByGroupId_SV(id);
-        if (groupmembers == null || groupmembers.isEmpty()) {
+        if (groupmembers == null) {
             throw new GroupNotFoundException(id);
         }
         return Response.ok(groupmembers).build();
@@ -112,6 +113,18 @@ public class GroupController {
     public Response getAllGroups() {
         List<Group> groups = groupService.findAllGroups();
         return Response.ok(groups).build();
+    }
+
+    @GET
+    @Path("/joinGroup/{userId}/{code}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Joins a group")
+    public Response joinGroup( @PathParam("userId") Long userId, @PathParam("code") String code) {
+        Group group = groupService.joinGroup(userId, code);
+        if (group == null) {
+            throw new GroupJoinException("Couldn't find group or wrong code");
+        }
+        return Response.ok(group).build();
     }
 
     @POST
@@ -142,7 +155,7 @@ public class GroupController {
 
     @DELETE
     @Path("/deleteGroup/{id}")
-    @ApiResponse(responseCode = "200", description = "Returns deleted group")
+    @ApiResponse(responseCode = "204", description = "Deletes group")
     public Response deleteGroup(@PathParam("id") Long id) {
         groupService.deleteGroup(id);
         return Response.status(Response.Status.NO_CONTENT).build();

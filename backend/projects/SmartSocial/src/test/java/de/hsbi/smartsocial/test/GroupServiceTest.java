@@ -23,10 +23,6 @@ public class GroupServiceTest {
     @InjectMocks
     private GroupService groupService;
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     void testFindGroupById() {
         Long id = 1L;
@@ -37,4 +33,26 @@ public class GroupServiceTest {
         assertEquals(mockGroup, result);
         verify(groupRepository).findGroupById(id);
     }
+
+    @Test
+    void testFindGroupByName() {
+        String name = "test";
+        Group mockGroup = new Group();
+        when(groupRepository.findGroupByName(name)).thenReturn(mockGroup);
+
+        Group result = groupService.findGroupByName(name);
+        assertEquals(mockGroup, result);
+        verify(groupRepository).findGroupByName(name);
+    }
+
+    @Test
+    void testSaveGroup() {
+        Group mockGroup = new Group();
+        when(groupRepository.createGroup(mockGroup)).thenReturn(mockGroup);
+
+        Group result = groupService.createGroup(mockGroup);
+        assertEquals(mockGroup, result);
+        verify(groupRepository).createGroup(mockGroup);
+    }
+
 }

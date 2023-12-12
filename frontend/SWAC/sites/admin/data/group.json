@@ -35,6 +35,11 @@
         "method": "GET"
     },
     {
+        "name": "Join Group",
+        "url": "http://localhost:8080/SmartSocial/api/group/joinGroup/",
+        "method": "GET"
+    },
+    {
         "name": "Delete Group",
         "url": "http://localhost:8080/SmartSocial/api/group/deleteGroup/",
         "method": "DELETE"

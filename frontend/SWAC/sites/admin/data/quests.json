@@ -10,13 +10,23 @@
         "method": "GET"
     },
     {
-        "name": "Get Quest by name",
-        "url": "http://localhost:8080/SmartSocial/api/quest/getByName/",
-        "method": "GET"
-    },
-    {
         "name": "Get all Quests",
         "url": "http://localhost:8080/SmartSocial/api/quest/getAll",
         "method": "GET"
+    },
+    {
+        "name": "Get Quests by User",
+        "url": "http://localhost:8080/SmartSocial/api/quest/getByUserId/",
+        "method": "GET"
+    },
+    {
+        "name": "Create Quest",
+        "url": "http://localhost:8080/SmartSocial/api/quest/create",
+        "method": "POST"
+    },
+    {
+        "name": "Delete Quest",
+        "url": "http://localhost:8080/SmartSocial/api/quest/delete/",
+        "method": "DELETE"
     }
 ]

@@ -41,4 +41,16 @@ public class QuestService {
         return questRepository.getById(id);
     }
 
+    public List<Quest> getByUserId(Long id) {
+        return questRepository.getByUserId(id);
+    }
+
+    public Quest create(Quest quest) {
+        return questRepository.create(quest);
+    }
+
+    public Quest delete(int quest) {
+        return questRepository.delete(quest);
+    }
+
 }

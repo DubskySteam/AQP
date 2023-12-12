@@ -50,6 +50,11 @@ public class GroupService {
     }
 
     @Transactional
+    public Group joinGroup(Long userId, String code) {
+        return groupRepository.joinGroup(userId, code);
+    }
+
+    @Transactional
     public Group createGroup(Group group) {
         return groupRepository.createGroup(group);
     }
