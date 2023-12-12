@@ -7,13 +7,6 @@
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/QuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/QuestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Userquest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Userquest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/GroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/GroupRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/QuestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/QuestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/GroupService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/QuestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/QuestService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,7 +318,7 @@
       <workItem from="1702217147865" duration="1442000" />
       <workItem from="1702296419364" duration="10275000" />
       <workItem from="1702322463203" duration="1496000" />
-      <workItem from="1702341164037" duration="2882000" />
+      <workItem from="1702341164037" duration="3022000" />
     </task>
     <servers />
   </component>

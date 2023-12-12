@@ -155,7 +155,7 @@ public class GroupController {
 
     @DELETE
     @Path("/deleteGroup/{id}")
-    @ApiResponse(responseCode = "200", description = "Returns deleted group")
+    @ApiResponse(responseCode = "204", description = "Deletes group")
     public Response deleteGroup(@PathParam("id") Long id) {
         groupService.deleteGroup(id);
         return Response.status(Response.Status.NO_CONTENT).build();
