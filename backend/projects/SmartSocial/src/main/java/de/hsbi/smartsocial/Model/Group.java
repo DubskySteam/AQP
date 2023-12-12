@@ -3,6 +3,7 @@ package de.hsbi.smartsocial.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -17,6 +18,9 @@ import java.time.LocalDate;
         @NamedQuery(name = "Group.findById", query = "SELECT g FROM Group g WHERE g.id = :id"),
         @NamedQuery(name = "Group.findByName", query = "SELECT g FROM Group g WHERE g.name = :name")
 })
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,61 +46,4 @@ public class Group {
 
     private String image;
     private String code;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public User getAdminUser() {
-        return adminUser;
-    }
-
-    public void setAdminUser(User adminUser) {
-        this.adminUser = adminUser;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
 }

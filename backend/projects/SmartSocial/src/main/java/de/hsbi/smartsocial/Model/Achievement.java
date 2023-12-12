@@ -3,6 +3,7 @@ package de.hsbi.smartsocial.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,9 @@ import java.time.LocalDate;
         @NamedQuery(name = "Achievement.findByDescription", query = "SELECT a FROM Achievement a WHERE a.description = :description"),
 }
 )
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Achievement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,28 +32,4 @@ public class Achievement {
 
     @Column(name = "description", length = Integer.MAX_VALUE)
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

@@ -2,6 +2,7 @@ package de.hsbi.smartsocial.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 /**
  * Author: Clemens Maas
@@ -15,6 +16,10 @@ import jakarta.validation.constraints.NotNull;
         @NamedQuery(name = "Quest.findByDescription", query = "SELECT q FROM Quest q WHERE q.description = :description"),
         @NamedQuery(name = "Quest.findByXpReward", query = "SELECT q FROM Quest q WHERE q.xpReward = :xpReward")}
 )
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Quest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,38 +33,4 @@ public class Quest {
     @NotNull
     @Column(name = "xp_reward", nullable = false)
     private Long xpReward;
-
-    public Quest(Long i, String s, Long i1) {
-        this.id = i;
-        this.description = s;
-        this.xpReward = i1;
-    }
-
-    public Quest() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getXpReward() {
-        return xpReward;
-    }
-
-    public void setXpReward(Long xpReward) {
-        this.xpReward = xpReward;
-    }
-
 }

@@ -3,6 +3,7 @@ package de.hsbi.smartsocial.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.time.Instant;
 
@@ -12,6 +13,9 @@ import java.time.Instant;
  */
 @Entity
 @Table(name = "users", schema = "smartuser")
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,29 +29,4 @@ public class User {
     @NotNull
     @Column(name = "username", nullable = false)
     private String username;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
 }
