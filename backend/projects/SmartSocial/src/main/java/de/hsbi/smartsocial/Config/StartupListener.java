@@ -6,6 +6,10 @@ import jakarta.servlet.annotation.WebListener;
 /**
  * Author: Clemens Maas
  * Date: 2023/12/11
+ * <h3>
+ * This class is used to print a fancy ASCII art on startup and shutdown of the application.
+ * Please don't remove this class, it's important! Very important! :(
+ * </h3>
  */
 @WebListener
 public class StartupListener implements ServletContextListener {
