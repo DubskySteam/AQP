@@ -3,6 +3,7 @@ package de.hsbi.smartsocial.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -20,6 +21,9 @@ import java.util.Map;
         @NamedQuery(name = "ProfileSetting.findByProfileVisibility", query = "SELECT p FROM ProfileSetting p WHERE p.profileVisibility = :profileVisibility"),
         @NamedQuery(name = "ProfileSetting.findByNotificationsEnabled", query = "SELECT p FROM ProfileSetting p WHERE p.notificationsEnabled = :notificationsEnabled")
 })
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class ProfileSetting {
     @Id
     @Column(name = "user_id", nullable = false)
@@ -46,60 +50,4 @@ public class ProfileSetting {
     private String picture;
 
     private String device;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUsers() {
-        return users;
-    }
-
-    public void setUsers(User users) {
-        this.users = users;
-    }
-
-    public String getProfileVisibility() {
-        return profileVisibility;
-    }
-
-    public void setProfileVisibility(String profileVisibility) {
-        this.profileVisibility = profileVisibility;
-    }
-
-    public Boolean getNotificationsEnabled() {
-        return notificationsEnabled;
-    }
-
-    public void setNotificationsEnabled(Boolean notificationsEnabled) {
-        this.notificationsEnabled = notificationsEnabled;
-    }
-
-    public Map<String, Object> getAdditionalSettings() {
-        return additionalSettings;
-    }
-
-    public void setAdditionalSettings(Map<String, Object> additionalSettings) {
-        this.additionalSettings = additionalSettings;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public String getDevice() {
-        return device;
-    }
-
-    public void setDevice(String device) {
-        this.device = device;
-    }
 }

@@ -7,6 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/30
+ */
 @WebServlet("/swagger-ui/*")
 public class SwaggerConfig extends HttpServlet {
 

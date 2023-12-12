@@ -6,6 +6,14 @@ html {
     background-color: white;
 }
 
+.gif {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+
+}
+
 .container {
     display: flex;
 }

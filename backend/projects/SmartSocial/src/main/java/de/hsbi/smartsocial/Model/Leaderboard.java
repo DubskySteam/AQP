@@ -2,6 +2,7 @@ package de.hsbi.smartsocial.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -17,6 +18,9 @@ import java.math.BigDecimal;
         @NamedQuery(name = "Leaderboard.findByKilometers", query = "SELECT l FROM Leaderboard l WHERE l.kilometers = :kilometers"),
         @NamedQuery(name = "Leaderboard.findByFinishedQuests", query = "SELECT l FROM Leaderboard l WHERE l.finishedQuests = :finishedQuests")}
 )
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Leaderboard {
     @Id
     @Column(name = "userid", nullable = false)
@@ -34,37 +38,4 @@ public class Leaderboard {
     @NotNull
     @Column(name = "finished_quests", nullable = false)
     private Integer finishedQuests;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUsers() {
-        return users;
-    }
-
-    public void setUsers(User users) {
-        this.users = users;
-    }
-
-    public BigDecimal getKilometers() {
-        return kilometers;
-    }
-
-    public void setKilometers(BigDecimal kilometers) {
-        this.kilometers = kilometers;
-    }
-
-    public Integer getFinishedQuests() {
-        return finishedQuests;
-    }
-
-    public void setFinishedQuests(Integer finishedQuests) {
-        this.finishedQuests = finishedQuests;
-    }
-
 }

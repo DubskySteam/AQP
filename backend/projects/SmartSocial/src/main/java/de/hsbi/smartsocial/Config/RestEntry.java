@@ -8,6 +8,10 @@ import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/11/30
+ */
 @ApplicationPath("/api")
 public class RestEntry extends Application {
 

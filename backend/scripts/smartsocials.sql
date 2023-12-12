@@ -8,7 +8,8 @@ CREATE TABLE smartsocial.Groups (
     creation_date DATE NOT NULL,
     admin_user_id INT REFERENCES smartuser.users(id),
     description TEXT,
-    image VARCHAR(255)
+    image VARCHAR(255),
+    code VARCHAR(255)
 );
 
 -- Create GroupMembers table
@@ -56,7 +57,7 @@ CREATE TABLE smartsocial.Quests (
 CREATE TABLE smartsocial.UserQuests (
     user_id INT REFERENCES smartuser.users(id),
     quest_id INT REFERENCES smartsocial.Quests(quest_id),
-    completion_date DATE NOT NULL,
+    completion_date DATE,
     PRIMARY KEY (user_id, quest_id)
 );
 
