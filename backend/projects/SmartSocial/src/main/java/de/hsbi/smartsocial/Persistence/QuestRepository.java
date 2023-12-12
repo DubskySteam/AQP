@@ -29,4 +29,8 @@ public class QuestRepository {
         return entityManager.createNamedQuery("Quest.findById", Quest.class).setParameter("id", id).getSingleResult();
     }
 
+    public List<Quest> getByUserId(Long id) {
+        return entityManager.createNamedQuery("Userquest.findByUserId", Quest.class).setParameter("id", id).getResultList();
+    }
+
 }

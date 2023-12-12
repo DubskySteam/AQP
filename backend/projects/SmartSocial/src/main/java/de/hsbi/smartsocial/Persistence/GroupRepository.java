@@ -2,11 +2,14 @@ package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.Group;
 import de.hsbi.smartsocial.Model.Groupmember;
+import de.hsbi.smartsocial.Model.GroupmemberId;
 import de.hsbi.smartsocial.Model.User;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -63,6 +66,29 @@ public class GroupRepository {
     public List<Group> findAllGroups() {
         return entityManager.createQuery("SELECT g FROM Group g", Group.class).getResultList();
     }
+
+    public Group joinGroup(Long userId, String code) {
+        Group group = entityManager.createQuery("SELECT g FROM Group g WHERE g.code = :code", Group.class)
+                .setParameter("code", code)
+                .getSingleResult();
+        User user = entityManager.find(User.class, userId);
+        if (group != null && user != null) {
+            Groupmember groupmember = new Groupmember();
+            GroupmemberId groupId = new GroupmemberId();
+            groupId.setGroupId(group.getId());
+            groupId.setUserId(user.getId());
+            groupmember.setId(groupId);
+            groupmember.setGroup(group);
+            groupmember.setUser(user);
+            groupmember.setMemberSince(LocalDate.now());
+            groupmember.setStatus("member");
+            entityManager.persist(groupmember);
+            return group;
+        } else {
+            return null;
+        }
+    }
+
 
     ///////////////////
     // POST Requests //

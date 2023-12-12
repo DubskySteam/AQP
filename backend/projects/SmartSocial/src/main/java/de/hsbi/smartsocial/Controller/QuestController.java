@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Controller;
 
 import de.hsbi.smartsocial.Service.QuestService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -38,6 +39,13 @@ public class QuestController {
     @Path("/getById/{id}")
     public Response getById(@PathParam("id") Integer id) {
         return Response.ok(questService.getById(id)).build();
+    }
+
+    @ApiResponse(responseCode = "200", description = "Returns all quests by user id")
+    @GET
+    @Path("/getByUserId/{id}")
+    public Response getByUserId(@PathParam("id") Long id) {
+        return Response.ok(questService.getByUserId(id)).build();
     }
 
 

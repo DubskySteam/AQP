@@ -41,6 +41,7 @@ public class Group {
     private String description;
 
     private String image;
+    private String code;
 
     public Long getId() {
         return id;
@@ -88,6 +89,14 @@ public class Group {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
 }
