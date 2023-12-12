@@ -33,4 +33,14 @@ public class QuestRepository {
         return entityManager.createNamedQuery("Userquest.findByUserId", Quest.class).setParameter("id", id).getResultList();
     }
 
+    public Quest create(Quest quest) {
+        entityManager.persist(quest);
+        return quest;
+    }
+
+    public Quest delete(int quest) {
+        entityManager.remove(quest);
+        return entityManager.find(Quest.class, quest);
+    }
+
 }
