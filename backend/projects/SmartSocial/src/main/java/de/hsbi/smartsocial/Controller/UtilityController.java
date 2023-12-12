@@ -66,12 +66,28 @@ public class UtilityController {
         }
     }
 
-    @ApiResponse(responseCode = "200", description = "Refreshes the leaderboard data")
     @GET
     @Path("/refreshData")
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Refreshes the leaderboard data")
     public Response refreshData() {
         return utilityService.refreshData();
+    }
+
+    @GET
+    @Path("/remapQuests")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Re-maps the quests to the users")
+    public Response remapQuests() {
+        return utilityService.remapQuests();
+    }
+
+    @GET
+    @Path("/awardUsers")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Awards the users for their achievements")
+    public Response awardUsers() {
+        return utilityService.awardUsers();
     }
 
 }

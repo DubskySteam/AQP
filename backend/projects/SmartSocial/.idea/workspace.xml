@@ -6,20 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Achievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Achievement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/DataPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/DataPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Groupmember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Groupmember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/GroupmemberId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/GroupmemberId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Leaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Leaderboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/ProfileSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/ProfileSetting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Quest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Userachievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Userachievement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/UserachievementId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/UserachievementId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Userquest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Userquest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/UserquestId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/UserquestId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/UtilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/UtilityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/UtilityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/UtilityService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -331,7 +319,7 @@
       <workItem from="1702217147865" duration="1442000" />
       <workItem from="1702296419364" duration="10275000" />
       <workItem from="1702322463203" duration="1496000" />
-      <workItem from="1702341164037" duration="5286000" />
+      <workItem from="1702341164037" duration="9565000" />
     </task>
     <servers />
   </component>

@@ -137,4 +137,18 @@ public class UtilityService {
         return totalDistance;
     }
 
+    /**
+     * TODO: Implement
+     */
+    public Response remapQuests() {
+        return Response.ok(Response.Status.NOT_IMPLEMENTED).build();
+    }
+
+    /**
+     * TODO: Implement
+     */
+    public Response awardUsers() {
+        return Response.ok(Response.Status.NOT_IMPLEMENTED).build();
+    }
+
 }
