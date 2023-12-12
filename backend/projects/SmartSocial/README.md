@@ -15,7 +15,6 @@
 ![](https://img.shields.io/badge/Gradle-8.4-blue?style=for-the-badge&logo=gradle)
 ![](https://img.shields.io/badge/PostgreSQL-15.4-blue?style=for-the-badge&logo=postgresql)
 
-
 ___
 [![](https://img.shields.io/badge/Download-Latest-blue?style=for-the-badge&logo=)](https://github.com/DubskySteam/AQP/releases)
 
