@@ -8,6 +8,8 @@ import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import jakarta.inject.Inject;
 
+import java.util.logging.Logger;
+
 @Singleton
 @Startup
 public class RabbitOverlord {
@@ -23,11 +25,10 @@ public class RabbitOverlord {
             this.objectMapper = new ObjectMapper();
 
             rabbitMQConsumer.subscribe("user.created.sc", this::handleUserCreatedMessage);
-            System.out.println("RabbitMQ Overlord initialized");
+            Logger.getLogger("RabbitOverlord").info("RabbitMQ Overlord initialized");
 
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Could not initialize RabbitMQ Overlord");
+            Logger.getLogger("RabbitOverlord").severe("Could not initialize RabbitMQ Overlord");
         }
     }
 
