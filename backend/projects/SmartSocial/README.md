@@ -93,3 +93,10 @@ Go to "Admin" and create a new user with the following credentials
 admin | admin
 ````
 Now also give that user **all** permissions. This will be the admin user from now on.
+
+**5. Create the exchanges**
+Go to "Exchanges" and create the following exchanges
+````
+smartuser | direct
+````
+**6. 
