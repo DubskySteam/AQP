@@ -2,7 +2,9 @@ package de.hsbi.smartsocial.MessageBroker;
 
 import com.rabbitmq.client.*;
 import de.hsbi.smartsocial.MessageBroker.Handler.MessageHandler;
+import jakarta.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class RabbitConsumer {
 
     private Connection connection;
@@ -18,7 +20,7 @@ public class RabbitConsumer {
     }
 
     public void subscribe(String queueName, MessageHandler messageHandler) throws Exception {
-        channel.queueDeclare(queueName, false, false, false, null);
+        channel.queueDeclare(queueName, true, false, false, null);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             byte[] body = delivery.getBody();
