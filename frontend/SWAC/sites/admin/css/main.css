@@ -14,6 +14,13 @@ html {
 
 }
 
+.logo {
+    width: 15px;
+    height: 15px;
+    margin-right: 7px;
+    margin-left: 3px;
+}
+
 .container {
     display: flex;
 }
@@ -30,6 +37,10 @@ html {
 .sidebar ul {
     list-style: none;
     padding: 0;
+}
+
+.sidebar ul li {
+    vertical-align: auto;
 }
 
 .sidebar ul li a {
