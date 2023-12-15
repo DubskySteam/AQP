@@ -4,6 +4,10 @@ import com.rabbitmq.client.*;
 import de.hsbi.smartsocial.MessageBroker.Handler.MessageHandler;
 import jakarta.enterprise.context.ApplicationScoped;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/15
+ */
 @ApplicationScoped
 public class RabbitConsumer {
 

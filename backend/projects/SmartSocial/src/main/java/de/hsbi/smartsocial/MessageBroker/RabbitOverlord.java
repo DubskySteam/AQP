@@ -10,6 +10,10 @@ import jakarta.inject.Inject;
 
 import java.util.logging.Logger;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/15
+ */
 @Singleton
 @Startup
 public class RabbitOverlord {

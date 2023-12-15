@@ -5,6 +5,10 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import de.hsbi.smartsocial.Model.Group;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/12/15
+ */
 public class RabbitProducer {
 
 
