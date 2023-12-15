@@ -53,8 +53,8 @@ The dependencies are managed by Gradle, so you don't need to worry about them. I
 
 ### Self-Managed Dependencies
 
-````The dependencies are included in the project, but critical updates may be needed to be done manually. ````
-
+The dependencies are included in the project, but critical updates may be needed to be done manually.
+````
     NGI Logger 
 ````
 
