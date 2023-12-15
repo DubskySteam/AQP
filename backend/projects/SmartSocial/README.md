@@ -56,13 +56,13 @@ The dependencies are managed by Gradle, so you don't need to worry about them. I
 ````The dependencies are included in the project, but critical updates may be needed to be done manually. ````
 
     NGI Logger 
+````
 
 ## How to use
 
 This microservice uses Gradle as build tool. Most IDEs with Gradle support will allow you to open the build.gradle file and build the entire project from there.
 
 Installing Gradle is not required as the project comes with a Gradle wrapper, but it is recommended to install it to your system anyway, since it can make the build process faster to build by hand.
-````
 
 ## Setting up RabbitMQ
 
