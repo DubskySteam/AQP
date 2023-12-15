@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'de.hsbi'
-version '2.1'
+version '2.1-after_touch'
 
 repositories {
   mavenCentral()
@@ -57,7 +57,7 @@ dependencies {
   // CALCULATION DEPENDENCIES
   implementation group: 'com.javadocmd', name: 'simplelatlng', version: '1.4.0'
   // RabbitMQ DEPENDENCIES
-  compileOnly('com.rabbitmq:amqp-client:5.20.0')
+  implementation('com.rabbitmq:amqp-client:5.20.0')
 }
 
 test {
