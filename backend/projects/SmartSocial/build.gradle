@@ -29,7 +29,7 @@ tasks.register('createPropertiesFile') {
   file.parentFile.mkdirs()
   file.withOutputStream { props.store(it, null) }
 }
-
+1
 processResources.dependsOn createPropertiesFile
 
 
@@ -56,6 +56,8 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
   // CALCULATION DEPENDENCIES
   implementation group: 'com.javadocmd', name: 'simplelatlng', version: '1.4.0'
+  // RabbitMQ DEPENDENCIES
+  compileOnly('com.rabbitmq:amqp-client:5.20.0')
 }
 
 test {
