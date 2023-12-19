@@ -1,50 +1,101 @@
-var user_id = 1;
-var group_id = 1;
+const user_url = 'http://localhost:8080/SmartUser/smartuser/user';
+const group_url = 'http://localhost:8080/SmartSocial/api/group/getGroupByUser/';
+const participant_url = 'http://localhost:8080/SmartSocial/api/group/getMembersByGroup_SV/';
+const leaderboard_url = 'http://localhost:8080/SmartSocial/api/leaderboard/getPersonalStats/';
+
+var user_id;
+var group_id;
 var participant_sum = 0;
-var group_distance;
+var group_distance = 0.0;
 
-document.addEventListener('swac_ready', function () {
-    let Model = window.swac.Model;
-    let memeber_path ='getMembersByGroup_SV/' + group_id;
-// Request data
-    let dataPromise = Model.load({
-    fromName: memeber_path,         // Name of the datatable               
-    attributeDefaults: new Map(),   // Map of attributname / value for default values when the attribute is missing
-    attributeRenames: new Map(),    // Map of set attributename / wished attributename for renameing attributes
-    reloadInterval: 10000,           // Time in milliseconds after that the data should be refetched from source
-    });
-// Wait for data to be loaded
-dataPromise.then(function(data) {
-    // Direct access dataset with id 1
-    // Iterate over available datasets
-    for(let curSet of data) {
-        if(curSet != undefined) {
-            participant_sum++;
-            let participant = String(curSet);
-            let participant_id = participant.split('id = ')[1].split(',')[0]; 
-            getParticipantKilometer(parseInt(participant_id));
-            document.getElementById('group_distance').innerHTML = group_distance;
-            document.getElementById('participant_sum').innerHTML = participant_sum;
-        }
+/**
+ * Get the ID of the user.
+ *
+ */
+fetch(user_url, {
+    method: 'GET'
+}).then(response => {
+    if(!response.ok) {
+        throw new Error('RESPONSE-ERROR-MSG: $(response.status)');
     }
-}).catch(function(err) {
-    console.log("ERROR-Message-EventListener-ParticipantSum: " + err);
-    });
-});
+    return response.json();
+}).then(data => {
+    user_id = data.records[0].id;
+    get_group_id();
+}).catch(error => {
+    console.error('FETCH-ERROR-MSG:', error);
+})
 
-function getParticipantKilometer(member_id) {
-    let Model2 = window.swac.Model;
-    let dataPromise = Model2.load({
-        fromName: 'getPersonalStats/' + member_id,         // Name of the datatable               
-        attributeDefaults: new Map(),   // Map of attributname / value for default values when the attribute is missing
-        attributeRenames: new Map(),    // Map of set attributename / wished attributename for renameing attributes
-        reloadInterval: 10000,           // Time in milliseconds after that the data should be refetched from source
-    });
-    dataPromise.then(function(data) {
-        for(let curSet of data) {
-            if(curSet != undefined) {
-                let participant = String(curSet);
-                group_distance += parseFloat(participant.split('kilometers = ')[1].split(',')[0]);
+/**
+ * Get the id, image and name of the group
+ */
+function get_group_id() {
+    fetch(group_url+user_id, {
+        method: 'GET'
+    }).then(response => {
+        if(!response.ok) {
+            throw new Error('RESPONSE-ERROR-MSG: $(response.status)');
         }
-    }});
+        return response.json();
+    }).then(data => {
+        document.getElementById('group_image').src = data.group.image;
+        document.getElementById('group_name').innerHTML = data.group.name;
+        group_id = data.group.id;
+        get_participants();
+    }).catch(error => {
+        console.error('FETCH-ERROR-MSG:', error);
+    })
+}
+
+
+/**
+ * Increase the group distance by the participant distance
+ * 
+ * @param id participant-ID
+ */
+function getGroupDistance(id) {
+    var distance = 0.0;
+    fetch(leaderboard_url+id, {
+        method: 'GET'
+    }).then(response => {
+        if(!response.ok) {
+            throw new Error('RESPONSE-ERROR-MSG: $(response.status)');
+        }
+        return response.json();
+    }).then(data => {
+        group_distance += data.kilometers;
+        document.getElementById('group_distance').innerHTML = group_distance.toFixed(2);
+        distance = data.kilometers;
+    }).catch(error => {
+        console.error('FETCH-ERROR-MSG:', error);
+    })
+    return distance;
+}
+
+/**
+ * Get the ID of the user.
+ */
+function get_participants() {
+    fetch(participant_url+group_id, {
+        method: 'GET'
+    }).then(response => {
+        if(!response.ok) {
+            throw new Error('RESPONSE-ERROR-MSG: $(response.status)');
+        }
+        return response.json();
+    }).then(data => {
+        var participant_table = document.getElementById('all_participants');
+        for(const participant of data) {
+            let participant_distance = getGroupDistance(participant.id);
+            participant_sum += 1;
+            let row = participant_table.insertRow();
+            let name = row.insertCell(0);
+            name.innerHTML = "<h1>" + participant.username + "</h1>";
+            let distance = row.insertCell(1);
+            distance.innerHTML = "<h1>" + participant_distance + "</h1>";
+        };
+        document.getElementById('participant_sum').innerHTML = participant_sum;
+    }).catch(error => {
+        console.error('FETCH-ERROR-MSG:', error);
+    })
 }

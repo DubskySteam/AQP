@@ -37,16 +37,18 @@
                     <a href="./settings.html">
                         <img src="./../../content/gear.png" alt="settings" style="float: right; margin-top: -2.5%;">
                     </a>
-                    <img id="profil_img" src="https://images.unsplash.com/photo-1587764379873-97837921fd44?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="No Image in here!">
-                    <div id="username" swa="Present FROM user"><p></p><h2>{username}</h2></div>
+                    <img id="profil_img" src="" alt="No Image in here!">
+                    <br>
+                    <br>
+                    <div><h2 id="username">Keine Daten Vorhanden</h2></div>
                     <div id="group_link">
                         <ul>
                             <li>
                                 <h2>Meine Gruppe</h2>
                             </li>
-                            <li id="group_name" swa="Present FROM getGroupByUser/5">
-                                <h2>
-                                    <div><a href="./group.html">{group}</a></div>
+                            <li>
+                                <h2 id="group_name">
+                                    Keine Daten Vorhanden
                                 </h2>
                             </li>
                         </ul>
@@ -65,12 +67,8 @@
                 <div class="acc-container-2-title">
                     <h2 style="font-weight: bolder;">Letzte Erfolge</h2>
                 </div>
-                <div id="achievement_list" class="acc-container-2" swa="Present FROM getByUserId/5">
-                    <ul class="swac_repeatForSet">
-                        <li">
-                            <h2>{name}</h2>
-                        </li>
-                    </ul>
+                <div class="acc-container-2">
+                    <ul id="achievement_list"></ul>
                 </div>
         </div>
     </body>
