@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="../../../SWAC/swac/libs/uikit/css/uikit.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/global.css">
         <script src="/SWAC/swac/swac.js" type="module"></script>
-        <script src="../../js/userinterface/user_example1.js"></script>
+        <script src="../../js/userinterface/settings.js"></script>
 </head>
 <body style="margin-left: -10%;">
     <header id="head_navigation">
@@ -29,20 +29,18 @@
     </div>
     </noscript>
     <div id="main">
-        <h1>Einstellungen</h1>
+        <h1 style="margin-left: 4%;">Einstellungen</h1>
         <div id="input_area">
-            <form class="swac_editForm">
-                <label for="username">Benutzername</label>
-                <input id="username" type="text" placeholder="{username}">
+            <form id="user_settings_form">
                 <label for="firstname">Vorname</label>
-                <input id="firstname" type="text" placeholder="{firstname}">
+                <input id="firstname" type="text" placeholder="">
                 <label for="lastname">Nachname</label>
-                <input id="lastname" type="text" placeholder="{lastname}">
+                <input id="lastname" type="text" placeholder="">
                 <label for="email">E-mail</label>
-                <input id="email" type="email" placeholder="{email}">
+                <input id="email" type="email" placeholder="">
                 <label for="password">Passwort</label>
-                <input id="password" type="password" placeholder="{password}">
-                <button id="confirm_changes" class="swac_editSaveButton"><h1 style="cursor: pointer;">Bestätigen</h1></button>
+                <input id="password" type="password" placeholder="">
+                <button id="confirm_changes" type="submit" onclick="send()"><h1 style="cursor: pointer;">Bestätigen</h1></button>
             </form>
         </div>
         <div id="img_area">

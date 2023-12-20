@@ -10,8 +10,8 @@
 
 #confirm_changes {
     position: absolute;
-    right: 42.5%;
-    bottom: -18%;
+    right: 40%;
+    bottom: -40%;
     background-color: #398EDE;
     border: #398EDE;
 }
@@ -41,13 +41,13 @@ input {
 
 #img_area {
     position: absolute;
-    width: 95%;
+    left: 46%;
     bottom: 2%;
 }
 
 #input_area {
     position: absolute;
     width: 95%;
-    bottom: 33%;
+    bottom: 40%;
     margin-left: -2.5%;
 }
