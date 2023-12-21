@@ -1,4 +1,5 @@
 const user_url = 'http://localhost:8080/SmartUser/smartuser/user';
+const settings_url = 'http://localhost:8080/SmartSocial/api/profilesettings/getProfileSettingsById/';
 var username = "";
 var firstname = "";
 var lastname = "";
@@ -65,4 +66,23 @@ function send() {
     } else {
         console.log('No send-data!');
     }
+}
+
+function delete_img() {
+    var data = {};
+    data.picture = "";
+    fetch(settings_url+user_id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response Data:', data);
+    })
+    .catch(error => {
+        console.error('FETCH-ERROR-MSG:', error);
+    });
 }

@@ -13,13 +13,14 @@
         <link rel="stylesheet" type="text/css" href="../../css/global.css">
         <script src="/SWAC/swac/swac.js" type="module"></script>
         <script src="../../js/userinterface/settings.js"></script>
+        <script src="/SWAC/js/navibar.js"></script>
 </head>
 <body style="margin-left: -10%;">
     <header id="head_navigation">
         <ul>
             <li><a href="../../index.html" onclick="Navigation.routeTo('../../index.html', {id: 0});" style="float: left; margin-top: -15px; margin-left: 5px;"><img src="../../content/cloud.png" alt="Home" width="45" height="45"></a></li>
             <li><a href="./menu.html" onclick="Navigation.routeTo('./sites/userinterface/menu.html', {id: 2});" style="float: right; margin-right: 5px; margin-top: -17px;"><img src="../../content/Menu.png" alt="Menu" width="45" height="45"></a></li>
-            <li><a href="./login.html" onclick="Navigation.routeTo('./sites/userinterface/login.html', {id: 1});" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
+            <li><a id="account_login_link" href="" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
         </ul>
     </header>
     <noscript>
@@ -45,7 +46,7 @@
         </div>
         <div id="img_area">
             <h1><a href="img_uploader.html">Profilbild hochladen</a></h1>
-            <h1><a href="account.html">Profilbild löschen</a></h1>
+            <h1><a href="account.html" onclick="delete_img()">Profilbild löschen</a></h1>
         </div>
         
     </div>
