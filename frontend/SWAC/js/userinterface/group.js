@@ -53,9 +53,8 @@ function get_group_id() {
  * 
  * @param id participant-ID
  */
-function getGroupDistance(id) {
-    var distance = 0.0;
-    fetch(leaderboard_url+id, {
+async function getGroupDistance(id) {
+    return fetch(leaderboard_url+id, {
         method: 'GET'
     }).then(response => {
         if(!response.ok) {
@@ -65,11 +64,10 @@ function getGroupDistance(id) {
     }).then(data => {
         group_distance += data.kilometers;
         document.getElementById('group_distance').innerHTML = group_distance.toFixed(2);
-        distance = data.kilometers;
+        return data.kilometers;
     }).catch(error => {
         console.error('FETCH-ERROR-MSG:', error);
-    })
-    return distance;
+    });
 }
 
 /**
@@ -83,16 +81,16 @@ function get_participants() {
             throw new Error('RESPONSE-ERROR-MSG: $(response.status)');
         }
         return response.json();
-    }).then(data => {
+    }).then(async data => {
         var participant_table = document.getElementById('all_participants');
         for(const participant of data) {
-            let participant_distance = getGroupDistance(participant.id);
+            let participant_distance = await getGroupDistance(participant.id);
             participant_sum += 1;
             let row = participant_table.insertRow();
             let name = row.insertCell(0);
             name.innerHTML = "<h1>" + participant.username + "</h1>";
             let distance = row.insertCell(1);
-            distance.innerHTML = "<h1>" + participant_distance + "</h1>";
+            distance.innerHTML = "<h1>" + participant_distance.toFixed(2) + "</h1>";
         };
         document.getElementById('participant_sum').innerHTML = participant_sum;
     }).catch(error => {
