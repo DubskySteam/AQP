@@ -22,6 +22,7 @@ var SWAC_config = {
         {
             url: "/SWAC/data/[fromName]"
         },
+        /*
         {
             url: "/SmartSocial/api/group/[fromName]"
         },
@@ -42,6 +43,7 @@ var SWAC_config = {
                 delete: ['DELETE','delete']
             }
         },
+        */
 //            interfaces: {
 //                get: ['GET', 'records'],
 //                list: ['GET', 'records'],
