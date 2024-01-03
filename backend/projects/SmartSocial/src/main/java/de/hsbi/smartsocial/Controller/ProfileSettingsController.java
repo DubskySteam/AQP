@@ -1,5 +1,6 @@
 package de.hsbi.smartsocial.Controller;
 
+import de.hsbi.smartsocial.Exceptions.ProfileSettingsNotFoundException;
 import de.hsbi.smartsocial.Model.ProfileSetting;
 import de.hsbi.smartsocial.Service.GroupService;
 import de.hsbi.smartsocial.Service.ProfileSettingsService;
@@ -34,25 +35,63 @@ public class ProfileSettingsController {
     }
 
     @GET
-    @Path("/getProfileSettingsById/{id}")
-    public Response getProfileSettingsById(@PathParam("id") Long id) {
-        ProfileSetting profileSetting = profileSettingsService.getProfileSettingsById(id);
+    @Path("/getSettings/{id}")
+    public Response getSettings(@PathParam("id") Long id) {
+        ProfileSetting profileSetting = profileSettingsService.getSettings(id);
         if (profileSetting == null) {
-            throw new RuntimeException("ProfileSetting not found");
+            throw new ProfileSettingsNotFoundException("No settings found for id " + id);
         }
         return Response.ok(profileSetting).build();
     }
 
+    @POST
+    @Path("/setSettings/{id}")
+    public ProfileSetting setSettings(@PathParam("id") Long id, ProfileSetting profileSetting) {
+        ProfileSetting tmp = profileSettingsService.setSettings(id, profileSetting);
+        if (tmp == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting settings for id " + id);
+        }
+        return tmp;
+    }
+
     @GET
-    @Path("/getVisibilityById/{id}")
+    @Path("/getVisibility/{id}")
     public String getVisibilityById(@PathParam("id") Long id) {
-        return Response.ok(profileSettingsService.getVisibilityById(id)).build().toString();
+        String visibility = profileSettingsService.getVisibility(id);
+        if (visibility == null) {
+            throw new ProfileSettingsNotFoundException("No settings found for id " + id);
+        }
+        return Response.ok(visibility).build().toString();
     }
 
     @POST
-    @Path("/setVisibilityById/{id}/{mode}")
+    @Path("/setVisibility/{id}/{mode}")
     public String setVisibilityById(@PathParam("id") Long id, @PathParam("mode") boolean mode) {
-        return Response.ok(profileSettingsService.setVisibilityById(id, mode)).build().toString();
+        String visibility = profileSettingsService.setVisibility(id, mode);
+        if (visibility == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting visibility for id " + id);
+        }
+        return Response.ok(visibility).build().toString();
+    }
+
+    @GET
+    @Path("/getPicture/{id}")
+    public String getPicture(@PathParam("id") Long id) {
+        String picture = profileSettingsService.getPicture(id);
+        if (picture == null) {
+            throw new ProfileSettingsNotFoundException("No settings(image) found for id " + id);
+        }
+        return Response.ok(picture).build().toString();
+    }
+
+    @POST
+    @Path("/setPicture/{id}/{picture}")
+    public String setPicture(@PathParam("id") Long id, @PathParam("picture") String picture) {
+        String tmp = profileSettingsService.setPicture(id, picture);
+        if (tmp == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting image for id " + id);
+        }
+        return Response.ok(tmp).build().toString();
     }
 
 }
