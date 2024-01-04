@@ -22,13 +22,15 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
     compileOnly('jakarta.xml.ws:jakarta.xml.ws-api:3.0.1')
+    compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
+    implementation('org.hibernate:hibernate-core:6.0.2.Final')
+    implementation('org.glassfish.jaxb:jaxb-runtime:3.0.2')
+    implementation('org.hibernate.validator:hibernate-validator:7.0.5.Final')
+    testImplementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.1.6'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-
-    implementation group: 'fish.payara.api', name: 'payara-api', version: '6.2023.9'
 }
 
 test {
