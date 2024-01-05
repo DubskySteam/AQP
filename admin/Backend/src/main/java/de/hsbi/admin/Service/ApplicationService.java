@@ -21,10 +21,20 @@ import java.util.HashMap;
 @Stateless
 public class ApplicationService {
 
+    /**
+     * Pings the server.
+     *
+     * @return "pong"
+     */
     public String ping() {
-        return "pggo";
+        return "pong";
     }
 
+    /**
+     * Fetches all applications from the Payara server.
+     *
+     * @return HashMap with application name as key and application URL as value
+     */
     public HashMap<String, String> getApplications() {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(Manager.PAYARA_SERVER_URL + "management/domain/applications/application");

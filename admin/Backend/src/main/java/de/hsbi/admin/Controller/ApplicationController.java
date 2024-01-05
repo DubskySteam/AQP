@@ -4,6 +4,7 @@ import de.hsbi.admin.Service.ApplicationService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 
 /**
@@ -18,12 +19,14 @@ public class ApplicationController {
 
     @GET
     @Path("/ping")
+    @Produces("text/plain")
     public String ping() {
         return applicationService.ping();
     }
 
     @GET
     @Path("/getApplications")
+    @Produces("application/json")
     public Response getApplications() {
         return Response.ok(applicationService.getApplications()).build();
     }
