@@ -26,7 +26,34 @@ function createApplicationCard(appName, appUrl) {
     card.appendChild(header);
     card.appendChild(body);
 
+    const enableButton = document.createElement('button');
+    enableButton.classList.add('enable-button');
+    enableButton.title = 'Enable Application'; // Hover text
+    enableButton.onclick = () => performAction(appName, 'enable');
+
+    const disableButton = document.createElement('button');
+    disableButton.classList.add('disable-button');
+    disableButton.title = 'Disable Application'; // Hover text
+    disableButton.onclick = () => performAction(appName, 'disable');
+
+    const relaunchButton = document.createElement('button');
+    relaunchButton.classList.add('relaunch-button');
+    relaunchButton.title = 'Relaunch Application'; // Hover text
+    relaunchButton.onclick = () => performRelaunch(appName);
+
+    card.appendChild(enableButton);
+    card.appendChild(disableButton);
+    card.appendChild(relaunchButton);
+
     return card;
+}
+
+function performAction(appName, action) {
+    // TODO: Implement action logic
+}
+
+function performRelaunch(appName) {
+    // TODO: Implement relaunch logic
 }
 
 async function displayApplicationStatuses() {

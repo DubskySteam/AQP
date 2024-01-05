@@ -10,6 +10,12 @@
     justify-content: space-between;
 }
 
+#application-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .card {
     flex: 0 0 calc(33.333% - 20px);
     max-width: calc(33.333% - 20px);
@@ -19,6 +25,30 @@
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+}
+
+.card button {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 40%;
+    border: none;
+    cursor: pointer;
+    line-height: 30px;
+}
+
+.enable-button {
+    background-color: lightgreen;
+}
+
+.disable-button {
+    background-color: rgb(255, 0, 76);
+}
+
+.relaunch-button {
+    background-color: rgb(0, 119, 255);
 }
 
 .card-header {
