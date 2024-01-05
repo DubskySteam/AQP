@@ -8,6 +8,7 @@ import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 
@@ -63,25 +64,27 @@ public class ApplicationService {
     }
 
     /**
-     * Disables an application on the Payara server.
+     * Toggles the application with the given name.
      *
-     * @param applicationName name of the application to disable
-     * @return true if the application was disabled successfully, false otherwise
+     * @param appName Name of the application to toggle
+     * @return String with success message
      */
-    public boolean disableApplication(String applicationName) {
+    public String toggleApplication(String appName, String action) {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(Manager.PAYARA_SERVER_URL + "management/domain/applications/application/" + applicationName);
+        String url = "http://localhost:4848/management/domain/applications/application/" + appName + "/" + action;
 
         try {
-            Response response = target.request().header("Accept", "application/json").delete();
+            Response response = client.target(url)
+                    .request()
+                    .post(Entity.text(""));
+
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-                return true;
+                return appName + " " + action + "d successfully";
             } else {
-                throw new RuntimeException("Error disabling application: " + response.getStatus());
+                return "Failed to " + action + " " + appName + ": " + response.getStatus();
             }
         } finally {
             client.close();
         }
     }
-
 }

@@ -3,6 +3,7 @@ package de.hsbi.admin.Controller;
 import de.hsbi.admin.Service.ApplicationService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 /**
@@ -30,8 +31,9 @@ public class ApplicationController {
     }
 
     @POST
-    @Path("/disableApplication/{name}")
-    public Response disableApplication(@PathParam("name") String name) {
-        return Response.ok(applicationService.disableApplication(name)).build();
+    @Path("/toggle/{appName}/{action}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String toggleApplication(@PathParam("appName") String appName, @PathParam("action") String action) {
+        return applicationService.toggleApplication(appName, action);
     }
 }
