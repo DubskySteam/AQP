@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/GroupController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,6 +320,14 @@
       <workItem from="1702296419364" duration="10275000" />
       <workItem from="1702322463203" duration="1496000" />
       <workItem from="1702341164037" duration="13919000" />
+      <workItem from="1702754779041" duration="1268000" />
+      <workItem from="1702911198813" duration="21000" />
+      <workItem from="1702939740910" duration="575000" />
+      <workItem from="1702964854117" duration="2327000" />
+      <workItem from="1704179571545" duration="625000" />
+      <workItem from="1704249215182" duration="2860000" />
+      <workItem from="1704269296460" duration="1260000" />
+      <workItem from="1704338349285" duration="154000" />
     </task>
     <servers />
   </component>
