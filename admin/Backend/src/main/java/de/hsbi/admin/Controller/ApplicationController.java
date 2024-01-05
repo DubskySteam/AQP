@@ -2,9 +2,7 @@ package de.hsbi.admin.Controller;
 
 import de.hsbi.admin.Service.ApplicationService;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 
 /**
@@ -31,4 +29,9 @@ public class ApplicationController {
         return Response.ok(applicationService.getApplications()).build();
     }
 
+    @POST
+    @Path("/disableApplication/{name}")
+    public Response disableApplication(@PathParam("name") String name) {
+        return Response.ok(applicationService.disableApplication(name)).build();
+    }
 }

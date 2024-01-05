@@ -62,4 +62,26 @@ public class ApplicationService {
         }
     }
 
+    /**
+     * Disables an application on the Payara server.
+     *
+     * @param applicationName name of the application to disable
+     * @return true if the application was disabled successfully, false otherwise
+     */
+    public boolean disableApplication(String applicationName) {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(Manager.PAYARA_SERVER_URL + "management/domain/applications/application/" + applicationName);
+
+        try {
+            Response response = target.request().header("Accept", "application/json").delete();
+            if (response.getStatus() == Response.Status.OK.getStatusCode()) {
+                return true;
+            } else {
+                throw new RuntimeException("Error disabling application: " + response.getStatus());
+            }
+        } finally {
+            client.close();
+        }
+    }
+
 }
