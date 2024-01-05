@@ -30,10 +30,10 @@ function createApplicationCard(appName, appUrl) {
 }
 
 async function displayApplicationStatuses() {
-    const container = document.getElementById('application-container'); // Ensure this container exists in your HTML
+    const container = document.getElementById('application-container');
     container.innerHTML = '';
 
-    const response = await fetch('http://localhost:8080/Admin/api/application/getApplications'); // Replace with your API endpoint
+    const response = await fetch('http://localhost:8080/Admin/api/application/getApplications');
     const applications = await response.json();
 
     Object.keys(applications).forEach(appName => {
