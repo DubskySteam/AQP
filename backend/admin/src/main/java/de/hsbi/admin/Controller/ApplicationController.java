@@ -4,10 +4,6 @@ import de.hsbi.admin.Service.ApplicationService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 
 /**
@@ -28,8 +24,8 @@ public class ApplicationController {
 
     @GET
     @Path("/getApplications")
-    public String getApplications() {
-        return applicationService.getApplications();
+    public Response getApplications() {
+        return Response.ok(applicationService.getApplications()).build();
     }
 
 }
