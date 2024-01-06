@@ -1,17 +1,20 @@
-const fetchLogData = async () => {
-    try {
-        const response = await fetch('http://localhost:4848/management/domain/view-log',
-            {
-                method: 'GET',
-                mode: 'no-cors',  // Set mode to 'no-cors'
-            });
-        const logData = await response;
+document.addEventListener('DOMContentLoaded', async function() {
+    const logText = await fetchLog();
+    const logContainer = document.getElementById('log-container');
+    logContainer.innerHTML = formatLogEntry(logText);
+    logContainer.scrollTop = logContainer.scrollHeight;
+});
 
-        console.log('Raw Log Data:', logData);
-    } catch (error) {
-        console.error('Error fetching log data:', error);
-    }
-};
+async function fetchLog() {
+    const response = await fetch('http://localhost:8080/Admin/api/log/getLog');
+    return await response.text();
+}
 
-// Call fetchLogData on window load
-window.onload = fetchLogData;
+function formatLogEntry(logText) {
+    const logEntries = logText.split('\n');
+    const formattedEntries = logEntries.map(entry => {
+        return entry.replace(/\[(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}\+\d{4})\]/, '<span class="timestamp">[$1]</span>')
+                    .replace(/\[Payara (.+?)\]/, '<span class="payara-version">[Payara $1]</span>');
+    });
+    return formattedEntries.join('\n');
+}
