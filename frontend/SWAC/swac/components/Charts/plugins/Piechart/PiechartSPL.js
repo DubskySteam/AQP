@@ -74,18 +74,14 @@ export default class PiechartSPL extends Plugin {
         // Get draw area (only one contElement supported)
         var ctx = this.contElements[0].querySelector('canvas');
 
-        let rsName = comp.getReadableSourceName(set.swac_fromName);
-
         // Fill datasets
         let datasets = [];
         if (comp.options.xAxisAttrName) {
             datasets.push(this.createSet(set, comp.options.xAxisAttrName));
         }
-        if (comp.options.yAxis1AttrName) {
-            datasets.push(this.createSet(set, comp.options.yAxis1AttrName));
-        }
-        if (comp.options.yAxis2AttrName) {
-            datasets.push(this.createSet(set, comp.options.yAxis2AttrName));
+        // Create for y axis
+        for (let curYAttr of comp.options.yAxisAttrNames) {
+            datasets.push(this.createSet(set, curYAttr));
         }
 
         this.chart = new Chart(ctx, {

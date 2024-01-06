@@ -340,7 +340,20 @@ export default class Worldmap2d extends View {
             params: [
                 {
                     name: 'modelfile',
-                    desc: 'Object with at least url parameter containing the url to the model file. Can have name and type [gejson,json,shapefile]'
+                    desc: 'Object with at least url parameter containing the url to the model file. Can have name and type [gejson,json,shapefile]',
+                    type: 'URL'
+                }
+            ]
+        };
+
+        this.desc.funcs[1] = {
+            name: 'removeModelFile',
+            desc: 'Removes a model file to the map.',
+            params: [
+                {
+                    name: 'modelfile',
+                    desc: 'Object with at least url parameter containing the url to the model file. Can have name and type [gejson,json,shapefile]',
+                    type: 'URL'
                 }
             ]
         };
@@ -348,14 +361,14 @@ export default class Worldmap2d extends View {
         this.desc.events[0] = {
             name: 'swac_REQUESTOR_ID_map_click',
             desc: 'Event is fired, when a user clicks somewhere on the map (not on markers).',
-            data: 'Delivers the Leaflet onClickMap data in parameter e. Coordinates could be found in: e.latlng.lat and e.latlng.lon.'
+            data: 'Delivers the Leaflet onClickMap data in parameter e. Coordinates could be found in: e.detail.latlng.lat and e.detail.latlng.lon.'
         };
         this.desc.events[1] = {
             name: 'swac_REQUESTOR_ID_marker_click',
             desc: 'Event is fired, when a user clicks somewhere on a marker.',
             data: 'Delivers the Leaflet onClickMarker data in parameter e. Dataset could be found in: e.detail.target.feature.set'
         };
-        
+
 
         // Attributes for internal usage
         this.viewer = null;      // Leaflet base layer
@@ -605,6 +618,15 @@ export default class Worldmap2d extends View {
             Msg.error('Worldmap2d', 'Error loading model >'
                     + modelFile.url + '<: ' + error);
         });
+    }
+
+    removeModelFile(modelFile) {
+        for (let curModel of this.models) {
+            if (curModel && curModel.filepath === modelFile) {
+                curModel.erase(this.viewer);
+                break;
+            }
+        }
     }
 
     onAddModel(evt) {

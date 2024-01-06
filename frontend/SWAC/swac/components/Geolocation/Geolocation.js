@@ -16,7 +16,7 @@ export default class Geolocation extends View {
             style: 'geolocation',
             desc: 'Shows dialog for accepting, stopping and restarting geolocation.'
         };
-        
+
         this.desc.templates[1] = {
             name: 'geolocation_worldmap2d',
             style: 'geolocation_worldmap2d',
@@ -64,6 +64,26 @@ export default class Geolocation extends View {
             selc: '.swac_geolocation_geoprovider',
             desc: 'Container which shows the name of the used geolocation provider (google, bingmaps or openstreetmap)'
         };
+        this.desc.reqPerTpl[10] = {
+            selc: '.swac_geolocation',
+            desc: 'Container contianting ui elements for geolocation.'
+        };
+        this.desc.reqPerTpl[11] = {
+            selc: '.swac_geolocation_remember',
+            desc: 'Checkbox to select if the kind of allow should be remembered.'
+        };
+        this.desc.reqPerTpl[12] = {
+            selc: '.swac_geolocation_unavailable',
+            desc: 'Element to show when geolocation is unavailable.'
+        };
+        this.desc.reqPerTpl[13] = {
+            selc: '.swac_geolocation_info',
+            desc: 'Element containing info text about availability of geolocation.'
+        };
+        this.desc.reqPerTpl[14] = {
+            selc: '.swac_geolocation_close_unavailable',
+            desc: 'Button to close unavailable info.'
+        };
 
         this.desc.optPerPage[0] = {
             selc: '.swac_geolocation',
@@ -83,7 +103,13 @@ export default class Geolocation extends View {
         this.options.watchlocation = true;
         this.desc.opts[2] = {
             name: 'onLocateFunctions',
-            desc: 'Array of functions that should be executed on each location event'
+            desc: 'Array of functions that should be executed on each location event',
+            example: [
+                function (position) {
+                    alert("position recived. See javascript console for more information");
+                    console.log(position);
+                }
+            ]
         };
         // this.options.onLocateFunctions = []; // this would override the options given from the configuration!
         if (!this.options.hasOwnProperty('onLocateFunctions') || !Array.isArray(this.options.onLocateFunctions)) {
@@ -92,12 +118,14 @@ export default class Geolocation extends View {
 
         this.desc.opts[3] = {
             name: 'googleApiKey',
-            desc: 'Apikey for geocoding with google service.'
+            desc: 'Apikey for geocoding with google service.',
+            example: 'exampleGoogleAPIkey'
         };
         this.options.googleApiKey = null;
-        this.desc.opts[2] = {
+        this.desc.opts[4] = {
             name: 'bingApiKey',
-            desc: 'Apkey for geocoding with bing service'
+            desc: 'Apkey for geocoding with bing service',
+            example: 'exampleBingAPIkey'
         };
         this.options.bingApiKey = null;
 
@@ -114,56 +142,56 @@ export default class Geolocation extends View {
             this.nolocate();
         }
 
-        return new Promise((resolve, reject) => {            
-                // Get memo from cookie
-                if (document.cookie === 'swac_geolocation_memo=nolocate') {
-                    this.nolocate();
-                    resolve();
-                    return;
-                } else if (document.cookie === 'swac_geolocation_memo=watchlocate') {
-                    this.watchlocate();
-                    resolve();
-                    return;
-                } else if (document.cookie === 'swac_geolocation_memo=oncelocate') {
-                    this.oncelocate();
-                    resolve();
-                    return;
-                }
-
-                // Bind event handler
-                let yesonceElem = this.requestor.querySelector('.swac_geolocation_oncelocate');
-                yesonceElem.addEventListener('click', this.oncelocate.bind(this));
-                let yeswatchElem = this.requestor.querySelector('.swac_geolocation_watchlocate');
-                yeswatchElem.addEventListener('click', this.watchlocate.bind(this));
-                let nolocElem = this.requestor.querySelector('.swac_geolocation_nolocate');
-                nolocElem.addEventListener('click', this.nolocate.bind(this));
-                let closeUnavailableElem = this.requestor.querySelector('.swac_geolocation_close_unavailable');
-                closeUnavailableElem.addEventListener('click', this.closeUnavailableModal.bind(this));
-
-                // Hide start element
-                let startElem = this.requestor.querySelector('.swac_geolocatioon_start');
-                startElem.addEventListener('click', this.showAsk.bind(this));
-                startElem.style.display = 'none';
-                let stopElem = this.requestor.querySelector('.swac_geolocatioon_stop');
-                stopElem.addEventListener('click', this.stoplocate.bind(this));
-
-                // Automatic locate on start
-                if (this.requestor.swac_comp.options.locateOnStart === true
-                        && this.requestor.swac_comp.options.watchlocation === false) {
-                    // Hide stop element
-                    let stopElem = requestor.querySelector('.swac_geolocatioon_stop');
-                    stopElem.style.display = 'none';
-                    requestor.swac_comp.oncelocate();
-                } else if (this.requestor.swac_comp.options.locateOnStart === true
-                        && this.requestor.swac_comp.options.watchlocation === true) {
-                    this.requestor.swac_comp.watchlocate();
-                } else {
-                    // Show dialog
-                    this.showAsk();
-                    // Hide stop button
-                    stopElem.style.display = 'none';
-                }
+        return new Promise((resolve, reject) => {
+            // Get memo from cookie
+            if (document.cookie === 'swac_geolocation_memo=nolocate') {
+                this.nolocate();
                 resolve();
+                return;
+            } else if (document.cookie === 'swac_geolocation_memo=watchlocate') {
+                this.watchlocate();
+                resolve();
+                return;
+            } else if (document.cookie === 'swac_geolocation_memo=oncelocate') {
+                this.oncelocate();
+                resolve();
+                return;
+            }
+
+            // Bind event handler
+            let yesonceElem = this.requestor.querySelector('.swac_geolocation_oncelocate');
+            yesonceElem.addEventListener('click', this.oncelocate.bind(this));
+            let yeswatchElem = this.requestor.querySelector('.swac_geolocation_watchlocate');
+            yeswatchElem.addEventListener('click', this.watchlocate.bind(this));
+            let nolocElem = this.requestor.querySelector('.swac_geolocation_nolocate');
+            nolocElem.addEventListener('click', this.nolocate.bind(this));
+            let closeUnavailableElem = this.requestor.querySelector('.swac_geolocation_close_unavailable');
+            closeUnavailableElem.addEventListener('click', this.closeUnavailableModal.bind(this));
+
+            // Hide start element
+            let startElem = this.requestor.querySelector('.swac_geolocation_start');
+            startElem.addEventListener('click', this.showAsk.bind(this));
+            startElem.style.display = 'none';
+            let stopElem = this.requestor.querySelector('.swac_geolocation_stop');
+            stopElem.addEventListener('click', this.stoplocate.bind(this));
+
+            // Automatic locate on start
+            if (this.requestor.swac_comp.options.locateOnStart === true
+                    && this.requestor.swac_comp.options.watchlocation === false) {
+                // Hide stop element
+                let stopElem = requestor.querySelector('.swac_geolocation_stop');
+                stopElem.style.display = 'none';
+                requestor.swac_comp.oncelocate();
+            } else if (this.requestor.swac_comp.options.locateOnStart === true
+                    && this.requestor.swac_comp.options.watchlocation === true) {
+                this.requestor.swac_comp.watchlocate();
+            } else {
+                // Show dialog
+                this.showAsk();
+                // Hide stop button
+                stopElem.style.display = 'none';
+            }
+            resolve();
         });
     }
 
@@ -236,7 +264,7 @@ export default class Geolocation extends View {
         icoElem.style.color = 'orange';
         icoElem.setAttribute('uk-tooltip', SWAC.lang.dict.Geolocation.oncelocated);
         // Show the relocate button
-        let startElem = document.querySelector('.swac_geolocatioon_start');
+        let startElem = document.querySelector('.swac_geolocation_start');
         startElem.style.display = 'inline';
         // Prevent from asking again
         if (document.querySelector('.swac_geolocation_remember').checked) {
@@ -255,10 +283,10 @@ export default class Geolocation extends View {
         let askElem = document.querySelector('.swac_geolocation_ask');
         askElem.style.display = 'none';
         // Hide start button
-        let startElem = document.querySelector('.swac_geolocatioon_start');
+        let startElem = document.querySelector('.swac_geolocation_start');
         startElem.style.display = 'none';
         // Show stop button
-        let stopElem = document.querySelector('.swac_geolocatioon_stop');
+        let stopElem = document.querySelector('.swac_geolocation_stop');
         stopElem.style.display = 'inline';
         // Set icon color and info text
         let icoElem = document.querySelector('.swac_geolocation_icon');
@@ -307,10 +335,10 @@ export default class Geolocation extends View {
         icoElem.style.color = 'blue';
         icoElem.setAttribute('uk-tooltip', SWAC.lang.dict.Geolocation.notlocated);
         // Hide stop button
-        let stopElem = document.querySelector('.swac_geolocatioon_stop');
+        let stopElem = document.querySelector('.swac_geolocation_stop');
         stopElem.style.display = 'none';
         // Show start element
-        let startElem = document.querySelector('.swac_geolocatioon_start');
+        let startElem = document.querySelector('.swac_geolocation_start');
         startElem.style.display = 'inline';
     }
 
@@ -366,7 +394,7 @@ export default class Geolocation extends View {
     onError(error) {
         let askElem = document.querySelector('.swac_geolocation_nav');
         let infoElem = askElem.querySelector('.swac_geolocation_info');
-        
+
         switch (error.code) {
             case error.PERMISSION_DENIED:
                 Msg.warn('geolocation', 'User denied the request for Geolocation.');
@@ -494,29 +522,29 @@ export default class Geolocation extends View {
         let addressElem = document.querySelector('.swac_geolocation_address');
         console.log(address);
         let addressline = '';
-        if(address.name) {
+        if (address.name) {
             addressline = address.name + ' (';
         }
-        if(address.street) {
+        if (address.street) {
             addressline += address.street + ' ';
         }
-        if(address.house_number) {
+        if (address.house_number) {
             addressline += address.house_number + ' ';
         }
-        if(address.postcode) {
+        if (address.postcode) {
             addressline += address.postcode + ' ';
         }
-        if(address.city) {
+        if (address.city) {
             addressline += address.city;
         }
-        if(address.name) {
+        if (address.name) {
             addressline += ')';
         }
         // Display lat / lon if no address info found
-        if(addressline === '') {
+        if (addressline === '') {
             addressline = 'Latitude: ' + position.coords.latitude + ' Longitude: ' + position.coords.longitude;
         }
-        
+
         addressElem.innerHTML = addressline;
     }
 }

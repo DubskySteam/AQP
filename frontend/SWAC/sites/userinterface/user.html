@@ -146,7 +146,15 @@ var create_user_options = {
             <br>This can also be used for setting a new password.</p>
             <a href="user_example6.html" target="_blank">Open example</a>
             
-            <h3>Example 7: Check if user is logged in</h3>
+            <h3>Example 7: How to use userdata on page</h3>
+            <p>Userdata is loaded after login and stored in localstorage. To use users data on the page, create tags with a class named user_ followed by the attribute you want to display on page.</p>
+            <pre><code class="lang-html">
+&lt;div class="user_firstname"&gt;&lt;/div&gt;
+&lt;div class="user_lastname"&gt;&lt;/div&gt;
+&lt;div class="user_otherattribute"&gt;&lt;/div&gt;
+            </code></pre>
+            
+            <h3>Example 8: Check if user is logged in and use usersdata</h3>
             <p>You can request the user component to get information about the currently logged in user.</p>
             <pre><code class="lang-javascript">
 // Get user User component from page
@@ -158,8 +166,9 @@ if(userElem?.swac_comp.userData) {
 }
 </code></pre>
             
-            <h3>Example 8: How to use userdata on page</h3>
-            <p>Userdate loaded after login can be used on the page, by </p>
+            
+            
+            
             
         </article>
         <footer>

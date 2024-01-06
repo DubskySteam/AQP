@@ -45,7 +45,8 @@
             <h2>Getting the component</h2>
             <p>You can get the component object by getting the components container
                 element. (id "present_example1" in this example) Note that the 
-                component must be completely loaded before you can access it.</p>
+                component must be completely loaded before you can access it.
+                <br>Use <a href="../concepts/events_reactions.html">Reactions</a> to wait for the component.</p>
             <pre><code class="lang-javascript">
 // Wait for component to be ready
 window.swac.reactions.addReaction(function (requestors) {
@@ -76,7 +77,7 @@ removedataBtn.addEventListener('click', function () {
 
             <h2>Calling functions with parameter</h2>
             <p>Calling functions with parameter is the same.
-                <br>The folowing example calls the </p>
+                <br>The folowing example calls the addDataFromReference() function. This is used to add datasets that can be loaded by SWAC with a reference.</p>
             <pre><code class="lang-javascript">
 let newdataBtn = document.querySelector('#example_addnewdata');
 newdataBtn.addEventListener('click', function () {

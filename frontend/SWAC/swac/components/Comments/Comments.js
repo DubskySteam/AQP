@@ -25,9 +25,26 @@ export default class Comments extends View {
             desc: 'Button in \'.swac_comments_form\' to send the comment.'
         };
         this.desc.reqPerTpl[2] = {
-            selc: 'textarea[name="comment"]',
+            selc: 'textarea[name="message"]',
             desc: 'Textarea in \'.swac_comments_form\' for the comment.'
         };
+        this.desc.reqPerTpl[3] = {
+            selc: '.swac_comments_new',
+            desc: 'Button to create a new comment.'
+        };
+        this.desc.reqPerTpl[4] = {
+            selc: '.swac_comments_reply',
+            desc: 'Button to create a reply on a comment.'
+        };
+        this.desc.reqPerTpl[5] = {
+            selc: '.swac_comment_reply_{id}',
+            desc: 'Form that contains the input elements for reply on comments.'
+        };
+        this.desc.reqPerTpl[6] = {
+            selc: '.swac_comment_replyes_{id}',
+            desc: 'Element that contains a list of replyes.'
+        };
+        
         this.desc.reqPerSet[0] = {
             name: 'id',
             desc: 'The comments id. Used for replys.'
@@ -77,9 +94,9 @@ export default class Comments extends View {
 
         if (this.options.disallowNew) {
             // Remove not applicable elements
-            let newCommentElem = this.requestor.querySelector('.sac_comments_new');
-            newCommentElem.parentNode.removeChild(newCommentElem);
-            let replyElems = elem.querySelectorAll('.sac_comments_reply');
+            let newCommentElem = this.requestor.querySelector('.swac_comments_new');
+            newCommentElem.remove();
+            let replyElems = elem.querySelectorAll('.swac_comments_reply');
             for (let replyElem of replyElems) {
                 replyElem.parentNode.removeChild(replyElem);
             }

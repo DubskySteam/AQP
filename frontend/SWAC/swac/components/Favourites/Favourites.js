@@ -17,11 +17,11 @@ export default class Favourites extends View {
             desc: 'Default template.'
         };
         this.desc.reqPerTpl[0] = {
-            selc: 'swac_favs_favbtn',
+            selc: '.swac_favs_favbtn',
             desc: 'Button to set the page as fav'
         };
         this.desc.reqPerTpl[1] = {
-            selc: 'swac_favs_listfavs',
+            selc: '.swac_favs_listfavs',
             desc: 'Element where to list the favs.'
         };
 
@@ -38,8 +38,12 @@ export default class Favourites extends View {
             desc: 'Favourites name'
         };
         this.desc.optPerSet[0] = {
-            name: 'nameOfTheAttributeOptionalInEachSet',
-            desc: 'Description what is the expected effect, when this attribute is in the set.'
+            name: 'icon',
+            desc: 'Path to a icon file or icon base64 encoded string.'
+        };
+        this.desc.optPerSet[1] = {
+            name: 'visits',
+            desc: 'Number of past visits.'
         };
 
         this.desc.opts[0] = {

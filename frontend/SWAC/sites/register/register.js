@@ -11,19 +11,19 @@ var create_user_options = {
 }; 
 */
 
-const fluppy = () => {
+const register = () => {
     const url = 'http://localhost:8080/SmartUser/smartuser/user';
 
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
-    let privacy_accepted = document.getElementById('privacy_accepted').checked;
-    let terms_accepted = document.getElementById('terms_accepted').checked;
+    //let privacy_accepted = document.getElementById('privacy_accepted').checked;
+    //let terms_accepted = document.getElementById('terms_accepted').checked;
 
     const data = {
     username: username,
     password: password,
-    privacy_accepted: privacy_accepted,
-    terms_accepted: terms_accepted
+    privacy_accepted: true,
+    terms_accepted: true
     };
 
 

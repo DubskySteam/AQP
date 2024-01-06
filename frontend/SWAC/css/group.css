@@ -62,3 +62,9 @@ ul {
     float: right;
     margin-right: 3%;
 }
+
+#group_image{
+    border-radius: 2em;
+    height: 15%;
+    width: 15%;
+}

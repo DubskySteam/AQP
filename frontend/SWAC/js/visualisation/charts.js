@@ -2,11 +2,6 @@ var explaincomponent_options = {
     componentName: 'Charts'
 };
 
-// Example 1
-charts_example1_options = {
-    showWhenNoData: true
-};
-
 // Register example 1 button events
 document.addEventListener('swac_components_complete', function () {
     window.swac.reactions.addReaction(function (requestors) {
@@ -118,13 +113,8 @@ document.addEventListener('swac_components_complete', function () {
 charts_example2_options = {
     showWhenNoData: true,
     xAxisAttrName: 'intval',
-    yAxis1AttrName: 'doubleval',
-    plugins: new Map()
+    yAxisAttrNames: ['doubleval']
 };
-charts_example2_options.plugins.set('Barchart', {
-    id: 'Barchart',
-    active: true
-});
 
 // Example 3
 charts_example3_options = {
@@ -140,7 +130,7 @@ charts_example3_options.plugins.set('Linechart', {
 charts_example4_options = {
     viewSetAttributes: 'partyone,partytwo,partythree',
     xAxisAttrName: 'ts',
-    yAxis1AttrName: 'intval',
+    yAxisAttrNames: ['intval'],
     datadescription: '#charts_example4_legend'
 };
 // Options defining WHAT is visualised
@@ -175,7 +165,7 @@ charts_example5_options = {
     showWhenNoData: true,
     plugins: new Map(),
     xAxisAttrName: 'doubleval',
-    yAxis1AttrName: 'intval'
+    yAxisAttrNames: ['intval']
 };
 charts_example5_options.plugins.set('Piechart', {
     id: 'Piechart',
@@ -186,14 +176,13 @@ charts_example5_options.plugins.set('Piechart', {
 charts_example6_options = {
     showWhenNoData: true,
     xAxisAttrName: 'u',
-    yAxis1AttrName: 'i',
-    yAxis2AttrName: 'p',
-//    plugins: new Map()
+    yAxisAttrNames: ['i','p'],
+    plugins: new Map()
 };
-//charts_example6_options.plugins.set('Barchart', {
-//    id: 'Barchart',
-//    active: true
-//});
+charts_example6_options.plugins.set('Linechart', {
+    id: 'Linechart',
+    active: true
+});
 
 
 

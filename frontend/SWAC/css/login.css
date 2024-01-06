@@ -4,31 +4,97 @@ html, body {
     height: 100%;
 }
 
+h1 {
+    position: absolute;
+    top: 5%;
+    right: 48.5%;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+
+#head_navigation ul li a img {
+    margin-top: 50%;
+}
+
 #swac_user_logindialog {
     position: absolute;
     width: 100%;
-    height: 93%;
+    height: 93.5%;
     background-color: #398EDE;
     text-align: center;
 }
 
-#login_button {
+#logout_img {
+    cursor: pointer;
+    height: 45px;
+    width: 45px; 
+    float: right;
+    margin-top: -2.6%;
+    margin-right: 2%;
+}
+
+#register_link {
+    color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    font-weight: bolder;
+    position: absolute;
+    bottom: 24%;
+    right: 44.5%;
+}
+
+.swac_user_loginButtons {
     background-color: rgb(255, 255, 255);
+    position: absolute;
+    right: 13%;
+    bottom: 14%;
+    border: 0cm;
     color: black;
-    margin-top: 1%;
+    font-weight: bolder;
+    font-size: xx-large;
+    padding-top: 2%;
     border-radius: 5em;
-    width: 100%;
+    width: 75%;
+    cursor: pointer;
+}
+
+.swac_user_loginButtons:focus {
+    background-color: #bdbdbd;
 }
 
 label {
-    float: left;
-    margin-left: 1.5%;
-    padding-bottom: 1%;
+    position: absolute;
+    color: #ffffff;
+    left: 13.5%;
+    font-weight: bolder;
 }
 
-#swac_input {
+#label_username {
+    top: 27.5%;
+}
+
+#label_password {
+    top: 40.5%;
+}
+
+#swac_user_username {
+    position: absolute;
+    top: 30%;
+    right: 13%;
+}
+
+#swac_user_password {
+    position: absolute;
+    top: 43%;
+    right: 13%;
+}
+
+#swac_user_username, #swac_user_password {
     background-color: rgb(255, 255, 255);
     color: #000;
+    height: 6%;
+    width: 75%;
+    border: 0cm;
+    text-align: center;
     margin-bottom: 2%;
     border-radius: 5em;
 }
@@ -43,4 +109,33 @@ label {
     position: absolute;
     width: 95%;
     bottom: 50%;
+}
+
+#swac_user_userarea {
+    position: absolute;
+    width: 100%;
+    height: 93.5%;
+    background-color: #398EDE;
+    text-align: center;
+}
+
+#swac_user_logout {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    right: 13%;
+    bottom: 24%;
+    border: 0cm;
+    color: black;
+    font-weight: bolder;
+    font-size: xx-large;
+    padding-top: 2%;
+    border-radius: 5em;
+    width: 75%;
+    cursor: pointer;
+}
+
+#logout_label {
+    position: absolute;
+    bottom: 35%;
+    left: 45.7%;
 }
