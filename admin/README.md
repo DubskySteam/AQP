@@ -2,7 +2,8 @@
 
 ### Version & Stack Info
 
-![](https://img.shields.io/badge/Current%20Version-1.1-green?style=for-the-badge&logo=git)
+![](https://img.shields.io/badge/Web%20Version-2.4-green?style=for-the-badge&logo=git)
+![](https://img.shields.io/badge/API%20Version-1.4-green?style=for-the-badge&logo=git)
 
 ### Stack Info
 
