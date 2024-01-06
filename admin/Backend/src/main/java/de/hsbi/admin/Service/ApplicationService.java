@@ -10,9 +10,12 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Form;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.io.StringReader;
+import java.util.Base64;
 import java.util.HashMap;
 
 /**
@@ -68,6 +71,8 @@ public class ApplicationService {
      *
      * @param appName Name of the application to toggle
      * @return String with success message
+     *
+     * TODO: Currently not working
      */
     public String toggleApplication(String appName, String action) {
         Client client = ClientBuilder.newClient();
@@ -87,4 +92,36 @@ public class ApplicationService {
             client.close();
         }
     }
+
+    /**
+     * Deploys the application with the given name.
+     *
+     * @param appName Name of the application to deploy
+     * @return String with success message
+     */
+    public String undeployApplication(String appName) {
+        Client client = ClientBuilder.newClient();
+        String url = Manager.PAYARA_SERVER_URL + "/management/domain/applications/undeploy";
+
+        try {
+            JsonObject jsonBody = Json.createObjectBuilder()
+                    .add("id", appName)
+                    .build();
+
+            Response response = client.target(url)
+                    .request(MediaType.APPLICATION_JSON)
+                    .header("X-Requested-By", "GlassFish REST HTML interface")
+                    .post(Entity.json(jsonBody.toString()));
+
+            if (response.getStatus() == Response.Status.OK.getStatusCode()) {
+                return appName + " undeployed successfully";
+            } else {
+                return "Failed to undeploy " + appName + ": " + response.getStatus();
+            }
+        } finally {
+            client.close();
+        }
+    }
+
+
 }

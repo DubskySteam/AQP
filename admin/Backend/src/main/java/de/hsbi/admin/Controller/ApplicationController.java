@@ -34,6 +34,13 @@ public class ApplicationController {
     @Path("/toggle/{appName}/{action}")
     @Produces(MediaType.TEXT_PLAIN)
     public String toggleApplication(@PathParam("appName") String appName, @PathParam("action") String action) {
-        return applicationService.toggleApplication(appName, action);
+        return Response.ok(applicationService.toggleApplication(appName, action)).build().toString();
+    }
+
+    @POST
+    @Path("/undeploy/{appName}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String undeployApplication(@PathParam("appName") String appName) {
+        return applicationService.undeployApplication(appName);
     }
 }
