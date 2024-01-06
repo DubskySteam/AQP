@@ -1,7 +1,6 @@
 package de.hsbi.admin.Service;
 
 import de.hsbi.admin.Config.Manager;
-import de.hsbi.admin.Controller.ApplicationController;
 import jakarta.ejb.Stateless;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -10,12 +9,10 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.Form;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.io.StringReader;
-import java.util.Base64;
 import java.util.HashMap;
 
 /**
@@ -71,7 +68,7 @@ public class ApplicationService {
      *
      * @param appName Name of the application to toggle
      * @return String with success message
-     *
+     * <p>
      * TODO: Currently not working
      */
     public String toggleApplication(String appName, String action) {
@@ -94,14 +91,15 @@ public class ApplicationService {
     }
 
     /**
-     * Deploys the application with the given name.
+     * Un-deploys the application with the given name.
      *
      * @param appName Name of the application to deploy
      * @return String with success message
+     * @apiNote Working, but still throws an exception in the Payara server log. TODO: Fix exception
      */
     public String undeployApplication(String appName) {
         Client client = ClientBuilder.newClient();
-        String url = Manager.PAYARA_SERVER_URL + "/management/domain/applications/undeploy";
+        String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/undeploy";
 
         try {
             JsonObject jsonBody = Json.createObjectBuilder()
