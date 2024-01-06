@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5e9a8d52-74f1-400b-86af-60d2af70b83a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/rawlogs.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/rawlogs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Service/LogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -133,7 +133,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704525685490</updated>
-      <workItem from="1704525686570" duration="3187000" />
+      <workItem from="1704525686570" duration="4909000" />
     </task>
     <servers />
   </component>
