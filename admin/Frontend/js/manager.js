@@ -79,7 +79,7 @@ async function performAction(appName, action) {
 }
 
 function performRelaunch(appName) {
-    // TODO: Implement relaunch logic
+    alert(`Relaunching is not yet implemented for ${appName}`);
 }
 
 async function displayApplicationStatuses() {
