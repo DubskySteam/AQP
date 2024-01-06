@@ -33,8 +33,8 @@ function createApplicationCard(appName, appUrl) {
 
     const disableButton = document.createElement('button');
     disableButton.classList.add('disable-button');
-    disableButton.title = 'Disable Application'; // Hover text
-    disableButton.onclick = () => performAction(appName, 'disable');
+    disableButton.title = 'Undeploy Application';
+    disableButton.onclick = () => performAction(appName, 'undeploy');
 
     const relaunchButton = document.createElement('button');
     relaunchButton.classList.add('relaunch-button');
@@ -48,8 +48,27 @@ function createApplicationCard(appName, appUrl) {
     return card;
 }
 
-function performAction(appName, action) {
-    // TODO: Implement action logic
+async function performAction(appName, action) {
+    const url = `http://localhost:8080/Admin/api/application/${action}/${appName}`;
+    const headers = {
+        'X-Requested-By': 'GlassFish REST HTML interface'
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST', // Assuming the action is a POST request
+            headers: headers
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error performing action:', error);
+    }
 }
 
 function performRelaunch(appName) {
