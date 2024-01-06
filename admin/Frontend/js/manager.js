@@ -3,10 +3,10 @@ async function checkApplicationStatus(appName) {
         const url = `http://localhost:8080/Admin/api/application/getStatus/${appName}`;
         const response = await fetch(url);
         const data = await response.json(); // Parse the JSON response
-        return data.status === "enabled" ? "Online" : "Offline";
+        return data.status === "enabled" ? "Enabled" : "Disabled";
     } catch (error) {
         console.error('Error checking application status:', error);
-        return "Offline";
+        return "Disabled";
     }
 }
 
@@ -23,7 +23,7 @@ function createApplicationCard(appName, appUrl) {
 
     checkApplicationStatus(appName).then(status => {
         body.textContent = status;
-        body.classList.add(status === "Offline" ? 'offline' : 'online');
+        body.classList.add(status === "Disabled" ? 'disabled' : 'enabled');
     });
 
     card.appendChild(header);

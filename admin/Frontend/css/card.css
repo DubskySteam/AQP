@@ -67,3 +67,7 @@
 .card-body.offline {
     background-color: red;
 }
+
+.card-body.disabled {
+    background-color: red;
+}
