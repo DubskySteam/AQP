@@ -91,19 +91,20 @@ public class ApplicationService {
         }
     }
 
-    public String toggleApplication(String appName, String action) {
+    public boolean toggleApplication(String appName, String action) {
         Client client = ClientBuilder.newClient();
-        String url = "http://localhost:4848/management/domain/applications/application/" + appName + "/" + action;
+        String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/application/" + appName + "/" + action;
 
         try {
             Response response = client.target(url)
-                    .request()
-                    .post(Entity.text(""));
+                    .request(MediaType.APPLICATION_JSON)
+                    .header("X-Requested-By", "GlassFish REST HTML interface")
+                    .post(Entity.text("{}"));
 
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-                return appName + " " + action + "d successfully";
+                return true;
             } else {
-                return "Failed to " + action + " " + appName + ": " + response.getStatus();
+                return false;
             }
         } finally {
             client.close();

@@ -41,17 +41,22 @@ public class ApplicationController {
     }
 
     /**
-     * Deploys/Un-deploys the application with the given name.
-     * @param appName Name of the application to deploy
-     * @param action Action to perform (deploy/undeploy)
+     * Enables/Disabled the application with the given name.
+     * @param appName Name of the application
+     * @param action Action to perform (enable/disable)
      * @return String with success message
      * @apiNote Not working
      */
     @POST
     @Path("/toggle/{appName}/{action}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String toggleApplication(@PathParam("appName") String appName, @PathParam("action") String action) {
-        return Response.ok(applicationService.toggleApplication(appName, action)).build().toString();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response toggleApplication(@PathParam("appName") String appName, @PathParam("action") String action) {
+        boolean status = applicationService.toggleApplication(appName, action);
+        if (status) {
+            return Response.ok("{\"message\": \"success\"}").build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).entity("{\"message\": \"error\"}").build();
+        }
     }
 
     /**

@@ -31,17 +31,17 @@ function createApplicationCard(appName, appUrl) {
 
     const enableButton = document.createElement('button');
     enableButton.classList.add('enable-button');
-    enableButton.title = 'Enable Application'; // Hover text
+    enableButton.title = 'Enable Application';
     enableButton.onclick = () => performAction(appName, 'enable');
 
     const disableButton = document.createElement('button');
     disableButton.classList.add('disable-button');
-    disableButton.title = 'Undeploy Application';
-    disableButton.onclick = () => performAction(appName, 'undeploy');
+    disableButton.title = 'Disable Application';
+    disableButton.onclick = () => performAction(appName, 'disable');
 
     const relaunchButton = document.createElement('button');
     relaunchButton.classList.add('relaunch-button');
-    relaunchButton.title = 'Relaunch Application'; // Hover text
+    relaunchButton.title = 'Relaunch Application';
     relaunchButton.onclick = () => performRelaunch(appName);
 
     card.appendChild(enableButton);
@@ -52,15 +52,18 @@ function createApplicationCard(appName, appUrl) {
 }
 
 async function performAction(appName, action) {
-    const url = `http://localhost:8080/Admin/api/application/${action}/${appName}`;
-    const headers = {
-        'X-Requested-By': 'GlassFish REST HTML interface'
-    };
+    /*
+    * This function is still bugged, because the server returns a 500 error even though the action is performed correctly.
+    * This is because of an API bug, which will be fixed in the next version.
+    */
+    const url = `http://localhost:8080/Admin/api/application/toggle/${appName}/${action}`;
 
     try {
         const response = await fetch(url, {
-            method: 'POST', // Assuming the action is a POST request
-            headers: headers
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
 
         if (!response.ok) {
@@ -68,9 +71,10 @@ async function performAction(appName, action) {
         }
 
         const data = await response.json();
-        console.log(data);
+        console.log(data.message);
     } catch (error) {
-        console.error('Error performing action:', error);
+        console.error('Error toggling application:', error);
+        //alert(`Error toggling application: ${error.message}`);
     }
 }
 
