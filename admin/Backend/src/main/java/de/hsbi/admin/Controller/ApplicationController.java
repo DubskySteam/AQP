@@ -16,6 +16,11 @@ public class ApplicationController {
     @Inject
     private ApplicationService applicationService;
 
+    /**
+     * Pings the Payara server.
+     * @return String with pong
+     * @apiNote Working
+     */
     @GET
     @Path("/ping")
     @Produces("text/plain")
@@ -23,13 +28,25 @@ public class ApplicationController {
         return applicationService.ping();
     }
 
+    /**
+     * Gets all applications from the Payara server.
+     * @return JSON with all applications and their urls
+     * @apiNote Working
+     */
     @GET
     @Path("/getApplications")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getApplications() {
         return Response.ok(applicationService.getApplications()).build();
     }
 
+    /**
+     * Deploys/Un-deploys the application with the given name.
+     * @param appName Name of the application to deploy
+     * @param action Action to perform (deploy/undeploy)
+     * @return String with success message
+     * @apiNote Not working
+     */
     @POST
     @Path("/toggle/{appName}/{action}")
     @Produces(MediaType.TEXT_PLAIN)
@@ -37,22 +54,34 @@ public class ApplicationController {
         return Response.ok(applicationService.toggleApplication(appName, action)).build().toString();
     }
 
+    /**
+     * Un-deploys the application with the given name.
+     *
+     * @param appName Name of the application to deploy
+     * @return String with success message
+     * @apiNote Working, but still throws an exception in the Payara server log. TODO: Fix exception
+     */
     @POST
     @Path("/undeploy/{appName}")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String undeployApplication(@PathParam("appName") String appName) {
-        return applicationService.undeployApplication(appName);
+        boolean status = applicationService.isApplicationEnabled(appName);
+        if (status) {
+            return Response.ok(applicationService.undeployApplication(appName)).build().toString();
+        } else {
+            return Response.ok("Application is already disabled").build().toString();
+        }
     }
 
     /**
      * Fetches the status of the application with the given name.
      * @param appName Name of the application to fetch the status from
-     * @return true if the application is enabled, false if not
+     * @return True if the application is enabled, False if not
      * @apiNote Working
      */
     @GET
     @Path("/getStatus/{appName}")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getStatus(@PathParam("appName") String appName) {
         boolean status = applicationService.isApplicationEnabled(appName);
         if (status) {

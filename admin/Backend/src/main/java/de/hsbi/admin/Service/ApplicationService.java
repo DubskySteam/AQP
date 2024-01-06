@@ -110,14 +110,7 @@ public class ApplicationService {
         }
     }
 
-    /**
-     * Un-deploys the application with the given name.
-     *
-     * @param appName Name of the application to deploy
-     * @return String with success message
-     * @apiNote Working, but still throws an exception in the Payara server log. TODO: Fix exception
-     */
-    public String undeployApplication(String appName) {
+    public boolean undeployApplication(String appName) {
         Client client = ClientBuilder.newClient();
         String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/undeploy";
 
@@ -131,11 +124,7 @@ public class ApplicationService {
                     .header("X-Requested-By", "GlassFish REST HTML interface")
                     .post(Entity.json(jsonBody.toString()));
 
-            if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-                return appName + " undeployed successfully";
-            } else {
-                return "Failed to undeploy " + appName + ": " + response.getStatus();
-            }
+            return response.getStatus() == Response.Status.OK.getStatusCode();
         } finally {
             client.close();
         }
