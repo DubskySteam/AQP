@@ -1,7 +1,7 @@
 package de.hsbi.admin.Service;
 
 import de.hsbi.admin.Config.Manager;
-import de.hsbi.admin.RequestBuilder;
+import RequestBuilder;
 import jakarta.ejb.Stateless;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
