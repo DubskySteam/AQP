@@ -43,4 +43,22 @@ public class ApplicationController {
     public String undeployApplication(@PathParam("appName") String appName) {
         return applicationService.undeployApplication(appName);
     }
+
+    /**
+     * Fetches the status of the application with the given name.
+     * @param appName Name of the application to fetch the status from
+     * @return true if the application is enabled, false if not
+     * @apiNote Working
+     */
+    @GET
+    @Path("/getStatus/{appName}")
+    @Produces("application/json")
+    public Response getStatus(@PathParam("appName") String appName) {
+        boolean status = applicationService.isApplicationEnabled(appName);
+        if (status) {
+            return Response.ok("{\"status\": \"enabled\"}").build();
+        } else {
+            return Response.ok("{\"status\": \"disabled\"}").build();
+        }
+    }
 }

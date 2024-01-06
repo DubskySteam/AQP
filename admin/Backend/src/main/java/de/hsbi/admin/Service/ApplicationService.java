@@ -3,8 +3,13 @@ package de.hsbi.admin.Service;
 import de.hsbi.admin.Config.Manager;
 import jakarta.ejb.Stateless;
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -22,20 +27,10 @@ import java.util.HashMap;
 @Stateless
 public class ApplicationService {
 
-    /**
-     * Pings the server.
-     *
-     * @return "pong"
-     */
     public String ping() {
         return "pong";
     }
 
-    /**
-     * Fetches all applications from the Payara server.
-     *
-     * @return HashMap with application name as key and application URL as value
-     */
     public HashMap<String, String> getApplications() {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(Manager.PAYARA_SERVER_URL + "management/domain/applications/application");
@@ -63,14 +58,39 @@ public class ApplicationService {
         }
     }
 
-    /**
-     * Toggles the application with the given name.
-     *
-     * @param appName Name of the application to toggle
-     * @return String with success message
-     * <p>
-     * TODO: Currently not working
-     */
+    public boolean isApplicationEnabled(@PathParam("appName") String appName) {
+        Client client = ClientBuilder.newClient();
+        String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/application/" + appName + "/show-component-status";
+
+        try {
+            Response response = client.target(url)
+                    .request(MediaType.APPLICATION_JSON)
+                    .get();
+
+            if (response.getStatus() == Response.Status.OK.getStatusCode()) {
+                String jsonResponse = response.readEntity(String.class);
+
+                JsonReader jsonReader = Json.createReader(new StringReader(jsonResponse));
+                JsonObject jsonObject = jsonReader.readObject();
+                JsonArray children = jsonObject.getJsonArray("children");
+
+                if (!children.isEmpty()) {
+                    JsonObject child = children.getJsonObject(0);
+                    JsonObject properties = child.getJsonObject("properties");
+                    String state = properties.getString("state");
+
+                    return "enabled".equals(state);
+                } else {
+                    return false;
+                }
+            } else {
+                throw new RuntimeException("Error fetching application status: " + response.getStatus());
+            }
+        } finally {
+            client.close();
+        }
+    }
+
     public String toggleApplication(String appName, String action) {
         Client client = ClientBuilder.newClient();
         String url = "http://localhost:4848/management/domain/applications/application/" + appName + "/" + action;
@@ -120,6 +140,5 @@ public class ApplicationService {
             client.close();
         }
     }
-
 
 }
