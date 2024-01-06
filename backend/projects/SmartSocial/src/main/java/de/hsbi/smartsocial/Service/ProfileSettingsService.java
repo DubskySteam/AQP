@@ -30,21 +30,39 @@ public class ProfileSettingsService {
         profileSetting.setDevice("pi1234123");
         return profileSetting;
     }
-
-    public ProfileSetting getProfileSettingsById(Long id) {
-        return profileSettingsRepository.getProfileSettingsById(id);
-    }
-
-    public String getVisibilityById(Long id) {
-        return profileSettingsRepository.getVisibilityById(id);
-    }
-
-    public String setVisibilityById(Long id, boolean profilesetting) {
-        return profileSettingsRepository.setVisibilityById(id, profilesetting);
-    }
-
     public List<ProfileSetting> getAllProfileSettings() {
         return profileSettingsRepository.getAllProfileSettings();
+    }
+
+    public ProfileSetting getSettings(Long id) {
+        return profileSettingsRepository.getSettings(id);
+    }
+    public ProfileSetting setSettings(Long id, ProfileSetting profileSetting) {
+        return profileSettingsRepository.setSettings(id, profileSetting);
+    }
+
+    public String getVisibility(Long id) {
+        return profileSettingsRepository.getVisibility(id);
+    }
+
+    public String setVisibility(Long id, boolean profilesetting) {
+        return profileSettingsRepository.setVisibility(id, profilesetting);
+    }
+
+    public String getPicture(Long id) {
+        return profileSettingsRepository.getPicture(id);
+    }
+
+    public String setPicture(Long id, String picture) {
+        return profileSettingsRepository.setPicture(id, picture);
+    }
+
+    public String getDevice(Long id) {
+        return profileSettingsRepository.getDevice(id);
+    }
+
+    public String setDevice(Long id, String device) {
+        return profileSettingsRepository.setDevice(id, device);
     }
 
 }

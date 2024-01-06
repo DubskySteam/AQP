@@ -4,6 +4,7 @@ import de.hsbi.smartsocial.Exceptions.GroupForMemberNotFoundException;
 import de.hsbi.smartsocial.Exceptions.GroupJoinException;
 import de.hsbi.smartsocial.Exceptions.GroupNotFoundException;
 import de.hsbi.smartsocial.Exceptions.InvalidGroupDataException;
+import de.hsbi.smartsocial.MessageBroker.RabbitProducer;
 import de.hsbi.smartsocial.Model.Group;
 import de.hsbi.smartsocial.Model.Groupmember;
 import de.hsbi.smartsocial.Model.User;
@@ -43,6 +44,8 @@ public class GroupController {
         group.setDescription("We are a group of people who like to ride bikes.");
         group.setCreationDate(LocalDate.now());
         group.setAdminUser(null);
+        RabbitProducer rabbitProducer = new RabbitProducer();
+        rabbitProducer.doStuff(group);
         return Response.ok(group).build();
     }
 
