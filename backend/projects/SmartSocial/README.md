@@ -99,4 +99,16 @@ Go to "Exchanges" and create the following exchanges
 ````
 smartuser | direct
 ````
-**6. 
+
+## Deployment errors & solutions
+
+````
+Initialization failed for Singleton RabbitOverlord
+````
+**Solution:** RabbitMQ is not running. Start it up and try again.
+
+````
+SmartUserPU Hibernate Error
+````
+**Solution:** The database is not running. Start it up and try again.
+Also has been known to happen when the database is not setup correctly.
