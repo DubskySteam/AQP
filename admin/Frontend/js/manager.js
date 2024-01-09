@@ -1,6 +1,6 @@
 async function checkApplicationStatus(appName) {
     try {
-        const url = `http://localhost:8080/Admin/api/application/getStatus/${appName}`;
+        const url = `http://localhost:8080/admin/api/application/getStatus/${appName}`;
         const response = await fetch(url);
         const data = await response.json(); // Parse the JSON response
         return data.status === "enabled" ? "Enabled" : "Disabled";
@@ -56,7 +56,7 @@ async function performAction(appName, action) {
     * This function is still bugged, because the server returns a 500 error even though the action is performed correctly.
     * This is because of an API bug, which will be fixed in the next version.
     */
-    const url = `http://localhost:8080/Admin/api/application/toggle/${appName}/${action}`;
+    const url = `http://localhost:8080/admin/api/application/toggle/${appName}/${action}`;
 
     try {
         const response = await fetch(url, {
@@ -86,7 +86,7 @@ async function displayApplicationStatuses() {
     const container = document.getElementById('application-container');
     container.innerHTML = '';
 
-    const response = await fetch('http://localhost:8080/Admin/api/application/getApplications');
+    const response = await fetch('http://localhost:8080/admin/api/application/getApplications');
     const applications = await response.json();
 
     Object.keys(applications).forEach(appName => {

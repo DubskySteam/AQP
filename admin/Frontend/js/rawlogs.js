@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 async function fetchLog() {
-    const response = await fetch('http://localhost:8080/Admin/api/log/getLog');
+    const response = await fetch('http://localhost:8080/admin/api/log/getLog');
     return await response.text();
 }
 
