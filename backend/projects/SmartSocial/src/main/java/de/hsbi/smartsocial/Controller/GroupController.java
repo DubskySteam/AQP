@@ -50,7 +50,7 @@ public class GroupController {
     }
 
     @GET
-    @Path("/getGroupById/{id}")
+    @Path("/getById/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns group by id")
     public Response getGroupById(@PathParam("id") Long id) {
@@ -62,7 +62,7 @@ public class GroupController {
     }
 
     @GET
-    @Path("/getGroupByName/{name}")
+    @Path("/getByName/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns group by name")
     public Response getGroupByName(@PathParam("name") String name) {
@@ -74,7 +74,7 @@ public class GroupController {
     }
 
     @GET
-    @Path("/getGroupByUser/{id}")
+    @Path("/getByUserId/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns all for a user")
     public Response getAllGroupsByUser(@PathParam("id") Long id) {
@@ -86,7 +86,7 @@ public class GroupController {
     }
 
     @GET
-    @Path("/getMembersByGroup/{id}")
+    @Path("/getMembersByGroupId/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns members of a group")
     public Response getMembersByGroup(@PathParam("id") Long id) {
@@ -98,7 +98,7 @@ public class GroupController {
     }
 
     @GET
-    @Path("/getMembersByGroup_SV/{id}")
+    @Path("/getMembersByGroupId_SV/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns members of a group")
     public Response getMembersByGroup_SV(@PathParam("id") Long id) {
@@ -110,7 +110,7 @@ public class GroupController {
     }
 
     @GET
-    @Path("/getAllGroups")
+    @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns all groups")
     public Response getAllGroups() {
@@ -119,10 +119,10 @@ public class GroupController {
     }
 
     @GET
-    @Path("/joinGroup/{userId}/{code}")
+    @Path("/join/{userId}/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Joins a group")
-    public Response joinGroup( @PathParam("userId") Long userId, @PathParam("code") String code) {
+    public Response joinGroup(@PathParam("userId") Long userId, @PathParam("code") String code) {
         Group group = groupService.joinGroup(userId, code);
         if (group == null) {
             throw new GroupJoinException("Couldn't find group or wrong code");
@@ -131,7 +131,7 @@ public class GroupController {
     }
 
     @POST
-    @Path("/createGroup")
+    @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "201", description = "Returns created group")
@@ -144,7 +144,7 @@ public class GroupController {
     }
 
     @POST
-    @Path("/updateGroup")
+    @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Returns updated group")
@@ -157,7 +157,7 @@ public class GroupController {
     }
 
     @DELETE
-    @Path("/deleteGroup/{id}")
+    @Path("/delete/{id}")
     @ApiResponse(responseCode = "204", description = "Deletes group")
     public Response deleteGroup(@PathParam("id") Long id) {
         groupService.deleteGroup(id);

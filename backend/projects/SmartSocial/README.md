@@ -3,7 +3,7 @@
 
 ### Version & Build Info
 
-![](https://img.shields.io/badge/Current%20Version-2.1-green?style=for-the-badge&logo=git)
+![](https://img.shields.io/badge/Current%20Version-2.3-green?style=for-the-badge&logo=git)
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/dubskysteam/AQP/.github%2Fworkflows%2Fgradle.yml?branch=dev&style=for-the-badge&logo=github)
 
@@ -99,4 +99,16 @@ Go to "Exchanges" and create the following exchanges
 ````
 smartuser | direct
 ````
-**6. 
+
+## Deployment errors & solutions
+
+````
+Initialization failed for Singleton RabbitOverlord
+````
+**Solution:** RabbitMQ is not running. Start it up and try again.
+
+````
+SmartUserPU Hibernate Error
+````
+**Solution:** The database is not running. Start it up and try again.
+Also has been known to happen when the database is not setup correctly.

@@ -18,7 +18,7 @@ import java.util.List;
  * Author: Clemens Maas
  * Date: 2023/11/27
  */
-@Path("/achievements")
+@Path("/achievement")
 public class AchievementController {
 
     @Inject
@@ -29,26 +29,26 @@ public class AchievementController {
         return achievementService.ping();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns an example achievement")
     @GET
     @Path("/example")
     @Produces("application/json")
+    @ApiResponse(responseCode = "200", description = "Returns an example achievement")
     public Response getExample() {
         return Response.ok(achievementService.getExample()).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns all achievements")
     @GET
     @Path("/getAll")
     @Produces("application/json")
+    @ApiResponse(responseCode = "200", description = "Returns all achievements")
     public Response getAllAchievements() {
         return Response.ok(achievementService.getAllAchievements()).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns achievement by id")
     @GET
     @Path("/getById/{id}")
     @Produces("application/json")
+    @ApiResponse(responseCode = "200", description = "Returns achievement by id")
     public Response getAchievementById(@PathParam("id") Long id) {
         Achievement achievement = achievementService.findById(id);
         if (achievement == null) {
@@ -57,10 +57,10 @@ public class AchievementController {
         return Response.ok(achievement).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns achievement by name")
     @GET
     @Path("/getByName/{name}")
     @Produces("application/json")
+    @ApiResponse(responseCode = "200", description = "Returns achievement by name")
     public Response getAchievementByName(@PathParam("name") String name) {
         Achievement achievement = achievementService.findByName(name);
         if (achievement == null) {
@@ -69,10 +69,10 @@ public class AchievementController {
         return Response.ok(achievement).build();
     }
 
-    @ApiResponse(responseCode = "200", description = "Returns all achievements of a user")
     @GET
     @Path("/getByUserId/{id}")
     @Produces("application/json")
+    @ApiResponse(responseCode = "200", description = "Returns all achievements of a user")
     public Response getByUserId(@PathParam("id") Long id) {
         List<Userachievement> userachievement = achievementService.getByUserId(id);
         if (userachievement == null || userachievement.isEmpty()) {
@@ -80,8 +80,5 @@ public class AchievementController {
         }
         return Response.ok(userachievement).build();
     }
-
-
-
 
 }
