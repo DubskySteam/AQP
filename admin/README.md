@@ -55,6 +55,11 @@ As the payara server admin panel is not very user friendly, this project aims to
    
     **Note:** The move script has a static path to the payara server document root. If you are using a different folder structure, you will have to change the path in the script.
 
+## Fast deployment using shell scripts
+Deploying applications through the web-interface is slow and frustrating.
+Edit the 'deploy.sh' (if linux) or 'deploy.bat' (if windows) and change the paths.
+After you build the application you can now just run the script, which will deploy it for you.
+
 ## Bugs and known issues
 
 - Nothing noteworthy at the moment
