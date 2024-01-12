@@ -1,1 +1,0 @@
-Bitte lesen Sie die Dokumentation im Wiki

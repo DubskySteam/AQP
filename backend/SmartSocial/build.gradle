@@ -1,0 +1,64 @@
+plugins {
+  id 'java'
+  id 'war'
+  id "io.freefair.lombok" version "8.4"
+}
+
+group 'de.hsbi'
+version '2.2'
+
+repositories {
+  mavenCentral()
+}
+
+ext {
+  junitVersion = '5.9.2'
+}
+
+tasks.withType(JavaCompile).configureEach {
+  options.encoding = 'UTF-8'
+}
+
+tasks.register('createPropertiesFile') {
+  def props = new Properties()
+  props['Implementation-Title'] = project.name
+  props['Implementation-Version'] = project.version
+  props['Java-Version'] = System.getProperty('java.version')
+  props['Gradle-Version'] = gradle.gradleVersion
+  def file = new File("$buildDir/resources/main/project-info.properties")
+  file.parentFile.mkdirs()
+  file.withOutputStream { props.store(it, null) }
+}
+
+processResources.dependsOn createPropertiesFile
+
+
+dependencies {
+    // JAKARTA DEPENDENCIES
+  compileOnly('jakarta.xml.ws:jakarta.xml.ws-api:3.0.1')
+  compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
+  implementation('org.hibernate:hibernate-core:6.0.2.Final')
+  implementation('org.glassfish.jaxb:jaxb-runtime:3.0.2')
+  implementation('org.hibernate.validator:hibernate-validator:7.0.5.Final')
+  testImplementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.1.6'
+  // SWAGGER DEPENDENCIES
+  implementation group: 'io.swagger.core.v3', name: 'swagger-core-jakarta', version: '2.2.19'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2-jakarta', version: '2.2.19'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2-servlet-initializer-v2', version: '2.2.19'
+  implementation group: 'org.webjars', name: 'swagger-ui', version: '5.9.0'
+  // MOCKITO DEPENDENCIES
+  testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.7.0'
+  testImplementation 'org.mockito:mockito-junit-jupiter:5.7.0'
+  // JUNIT DEPENDENCIES
+  testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+  testImplementation 'org.assertj:assertj-core:3.17.2'
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  // CALCULATION DEPENDENCIES
+  implementation group: 'com.javadocmd', name: 'simplelatlng', version: '1.4.0'
+  // RabbitMQ DEPENDENCIES
+  implementation('com.rabbitmq:amqp-client:5.20.0')
+}
+
+test {
+useJUnitPlatform()}
