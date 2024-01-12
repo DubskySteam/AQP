@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../../css/global.css">
-        <link rel="stylesheet" type="text/css" href="../../css/registrierung.css">
         <noscript>
         <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
         </noscript>
@@ -26,11 +25,16 @@
 
         <article>
             <p>
-                Input your data below. Remember the therms of service.
+                Input your data below for registration.
+                <br>Note: This example uses SmartUser. You need a running SmartUser 
+                instance reachable from this site under /SmartUser/smartuser/user
+                for complete work.
+                <br>If there is an error message like "error loading data from..." 
+                SmartUser is not reachable.
             </p>
-            <h3>Contact data</h3>
-            <div id="create_user" swa="Edit FROM ../../SmartUser/smartuser/user">
-                <form class="swac_editForm">
+            <h3>Users data</h3>
+            <div id="create_user" swa="Edit FROM /SmartUser/smartuser/user">
+                <form class="swac_repeatForSet swac_editForm">
                     <fieldset class="uk-fieldset">
                         <label class="uk-label" for="username">Username</label>
                         <br><input id="username" class="uk-input uk-form-width-medium" name="username" required>
@@ -60,6 +64,14 @@
                             <option value="de">Deutsch</option>
                             <option value="en">English</option>
                         </select>
+                        <br>
+                        <label class="uk-label" for="privacy_accepted">Privacy</label>
+                        <br><input id="privacy_accepted" name="privacy_accepted" type="checkbox">
+                        <span swac_lang="privacy_accepted">I accept the privacy statement</span>
+                        <br>
+                        <label class="uk-label" for="terms_accepted">Terms</label>
+                        <br><input id="terms_accepted" name="terms_accepted" type="checkbox">
+                        <span swac_lang="terms_accepted">I accept the terms of service</span>
                         <br>
                     </fieldset>
                     <div class="uk-margin">

@@ -41,63 +41,63 @@
 
             <br>Use folowing code:
             <pre><code class="lang-html">
-                        &lt;div id="charts_example1" swa="Charts FROM exampledata_list"&gt;&lt;/div&gt;
+&lt;div id="charts_example1" swa="Charts FROM exampledata_list"&gt;&lt;/div&gt;
                     </code></pre>
 
             <br>Used example data:
             <pre><code class="lang-javascript">
-            var exampledata_list = [
-                {
-                    id: 1,
-                    name: "Datensatz 1",
-                    doubleval: 12.0123,
-                    intval: 1234,
-                    boolval: true,
-                    stringval: 'string',
-                    ts: '28.10.2019 7:46:59',
-                    dateval: '28.10.2019',
-                    refval: 'ref://exampledata_list/2',
-                    mimetype: 'audio/mp3',
-                    colval: 'blue',
-                    urlval: 'https://somesite',
-                    emailval: 'support@swac.de',
-                    passwordval: 'MyUnsecurePwd',
-                    icopath: '../../swac/components/Icon/imgs/book_checked.svg'
-                }, {
-                    id: 2,
-                    name: "Datensatz 2",
-                    doubleval: 19.0234,
-                    intval: 2345,
-                    boolval: false,
-                    stringval: 'string2',
-                    ts: '29.10.2019 7:47:59',
-                    dateval: '29.10.2019',
-                    refval: 'ref://exampledata_list/2',
-                    mimetype: 'audio/ogg',
-                    colval: '#ffffff',
-                    urlval: 'https://somesite',
-                    emailval: 'support@swac.de',
-                    passwordval: 'MyUnsecurePwd',
-                    icopath: '../../swac/components/Icon/imgs/book_star.svg'
-                }, {
-                    id: 3,
-                    name: "Datensatz 3",
-                    doubleval: 42.0345,
-                    intval: 3456,
-                    boolval: true,
-                    stringval: 'string',
-                    ts: '30.10.2019 7:48:59',
-                    dateval: '30.10.2019',
-                    refval: 'ref://exampledata_list/2',
-                    mimetype: 'video/mpeg',
-                    colval: '#000000',
-                    urlval: 'https://someothersite',
-                    emailval: 'support@swac.de',
-                    passwordval: 'MyUnsecurePwd',
-                    icopath: '../../swac/components/Icon/imgs/book_fail.svg'
-                }
-            ];
-                    </code></pre>
+var exampledata_list = [
+{
+    id: 1,
+    name: "Datensatz 1",
+    doubleval: 12.0123,
+    intval: 1234,
+    boolval: true,
+    stringval: 'string',
+    ts: '28.10.2019 7:46:59',
+    dateval: '28.10.2019',
+    refval: 'ref://exampledata_list/2',
+    mimetype: 'audio/mp3',
+    colval: 'blue',
+    urlval: 'https://somesite',
+    emailval: 'support@swac.de',
+    passwordval: 'MyUnsecurePwd',
+    icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+}, {
+    id: 2,
+    name: "Datensatz 2",
+    doubleval: 19.0234,
+    intval: 2345,
+    boolval: false,
+    stringval: 'string2',
+    ts: '29.10.2019 7:47:59',
+    dateval: '29.10.2019',
+    refval: 'ref://exampledata_list/2',
+    mimetype: 'audio/ogg',
+    colval: '#ffffff',
+    urlval: 'https://somesite',
+    emailval: 'support@swac.de',
+    passwordval: 'MyUnsecurePwd',
+    icopath: '../../swac/components/Icon/imgs/book_star.svg'
+}, {
+    id: 3,
+    name: "Datensatz 3",
+    doubleval: 42.0345,
+    intval: 3456,
+    boolval: true,
+    stringval: 'string',
+    ts: '30.10.2019 7:48:59',
+    dateval: '30.10.2019',
+    refval: 'ref://exampledata_list/2',
+    mimetype: 'video/mpeg',
+    colval: '#000000',
+    urlval: 'https://someothersite',
+    emailval: 'support@swac.de',
+    passwordval: 'MyUnsecurePwd',
+    icopath: '../../swac/components/Icon/imgs/book_fail.svg'
+}
+];
+        </code></pre>
 
             <br>Results in a automatic chart:
             <div id="charts_example1" swa="Charts FROM exampledata_list"></div>
@@ -114,30 +114,30 @@
                 y-axis and the first timestamp, date, time or varchar value for the x-axis.</p>
 
             <pre><code class="lang-javascript">
-                        charts_example2_options = {
-                            showWhenNoData: true,
-                            xAxisAttrName: 'intval',
-                            yAxis1AttrName: 'doubleval'
-                        };
-                                </code></pre>
+charts_example2_options = {
+    showWhenNoData: true,
+    xAxisAttrName: 'intval',
+    yAxisAttrNamed: ['doubleval']
+};
+    </code></pre>
 
             <div id="charts_example2" swa="Charts FROM exampledata_list"></div>
 
-            <h3>Example 3: Deactivateing charttypes</h3>
+            <h3>Example 3: Only activate needed charttypes</h3>
             <p>Charttypes are defined as plugins. If you want only a special 
-                chart type you can specify to only show one of the types, 
-                or any combination. Just activate the plugins.</p>
+                chart type you can use only show one of the types, 
+                or any combination. Just activate the matching charttype plugins.</p>
 
             <pre><code class="lang-javascript">
-            charts_example3_options = {
-                showWhenNoData: true,
-                plugins: new Map()
-            };
-            charts_example3_options.plugins.set('Linechart', {
-                id: 'Linechart',
-                active: true
-            });
-                    </code></pre>
+charts_example3_options = {
+    showWhenNoData: true,
+    plugins: new Map()
+};
+charts_example3_options.plugins.set('Linechart', {
+    id: 'Linechart',
+    active: true
+});
+    </code></pre>
 
             <div id="charts_example3" swa="Charts FROM exampledata_list"></div>
 
@@ -147,51 +147,50 @@
             <div id="charts_example4_legend" swa="Datadescription FROM charts_example4_legend_data"></div>
 
             <pre><code class="lang-javascript">
-            charts_example4_options = {
-                viewSetAttributes: 'partyone,partytwo,partythree',
-                xAxisAttrName: 'name',
-                yAxis1AttrName: 'value',
-                datadescription: '#charts_example4_legend'
-            };
-            // Options defining WHAT is visualised
-            charts_example4_legend_options = {
-                visuAttribute: 'name'
-            };
-            // Data defining HOW is visualised
-            charts_example4_legend_data = {
-                name: {
-                    txt_title: 'Coloring after name',
-                    txt_desc: 'the color depends on the name attribute',
-                    txt_uknw: 'Unkown value',
-                    values: {
-                        'partyone': {
-                            txt: 'partyone',
-                            col: 'red'
-                        },
-                        'partytwo': {
-                            txt: 'partytwo',
-                            col: 'green'
-                        },
-                        'partythree': {
-                            txt: 'partythree',
-                            col: 'blue'
-                        }
-                    }
-                }
-            };
+charts_example4_options = {
+    viewSetAttributes: 'partyone,partytwo,partythree',
+    xAxisAttrName: 'name',
+    yAxisAttrNames: ['value'],
+    datadescription: '#charts_example4_legend'
+};
+// Options defining WHAT is visualised
+charts_example4_legend_options = {
+    visuAttribute: 'name'
+};
+// Data defining HOW is visualised
+charts_example4_legend_data = {
+    name: {
+        txt_title: 'Coloring after name',
+        txt_desc: 'the color depends on the name attribute',
+        txt_uknw: 'Unkown value',
+        values: {
+            'partyone': {
+                txt: 'partyone',
+                col: 'red'
+            },
+            'partytwo': {
+                txt: 'partytwo',
+                col: 'green'
+            },
+            'partythree': {
+                txt: 'partythree',
+                col: 'blue'
+            }
+        }
+    }
+};
                     </code></pre>
-
 
             <h3>Example 5: Create Piechart</h3>
             <p>Piechart shows same attribute from multiple sets and their values relation.
-                <br>It can show more than one attribute by useing the yAxis1AttrName and yAxis2AttrName optins.</p>
+                <br>It can show more than one attribute by useing the yAxisAttrNames.</p>
 
             <pre><code class="lang-javascript">
 charts_example5_options = {
     showWhenNoData: true,
     plugins: new Map(),
     xAxisAttrName: 'doubleval',
-    yAxis1AttrName: 'intval'
+    yAxisAttrNames: ['intval']
 };
 charts_example5_options.plugins.set('Piechart', {
     id: 'Piechart',
@@ -201,47 +200,46 @@ charts_example5_options.plugins.set('Piechart', {
 
             <div id="charts_example5" swa="Charts FROM exampledata_list"></div>
 
-
-            <!--
-<h3>Example 6: Chart with two y axis</h3>
-            <div id="charts_example6" swa="Charts FROM ../../data/charts/uicurve.json"></div>
+            <h3>Example 6: Chart with two y axis</h3>
+            <p>To create a chart with multiple y axis. Add the names of the attributes to use as y axis
+            into the yAxisAttrNames attribute.</p>
+            <div id="charts_example6" swa="Charts FROM ../../data/visualisation/charts/uicurve.json"></div>
 
             <pre><code class="lang-javascript">
 charts_example6_options = {
     showWhenNoData: true,
     xAxisAttrName: 'u',
-    yAxis1AttrName: 'i',
-    yAxis2AttrName: 'p'
+    yAxisAttrNames: ['i','p']
 };
         </code></pre>
-           
-           
-            
-            <h3>Example 5: Chart from attributes of one datast</h3>
-            <div id="charts_example5" swa="Charts FROM example5"></div>
 
-            <pre><code class="lang-javascript">
-charts_example5_options = {
-    viewSetAttributes: 'partyone,partytwo,partythree',
-    xAxisAttrName: 'name',
-    yAxis1AttrName: 'value'
-};
-        </code></pre>
-            Datasource:
-            <pre><code class="lang-javascript">
-var example5 = [{
-    id: 1,
-    name: "Datensatz 1",
-    partyone: 23.2,
-    partytwo: 25.3,
-    partythree: 12.2,
-    emailval: 'support@swac.de',
-    passwordval: 'MyUnsecurePwd'
-}];
-            </code></pre>
+
+
+            <!--            <h3>Example 5: Chart from attributes of one datast</h3>
+                        <div id="charts_example5" swa="Charts FROM example5"></div>
             
-            
+                        <pre><code class="lang-javascript">
+            charts_example5_options = {
+                viewSetAttributes: 'partyone,partytwo,partythree',
+                xAxisAttrName: 'name',
+                yAxis1AttrName: 'value'
+            };
+                    </code></pre>
+                        Datasource:
+                        <pre><code class="lang-javascript">
+            var example5 = [{
+                id: 1,
+                name: "Datensatz 1",
+                partyone: 23.2,
+                partytwo: 25.3,
+                partythree: 12.2,
+                emailval: 'support@swac.de',
+                passwordval: 'MyUnsecurePwd'
+            }];
+                        </code></pre>
             -->
+
+
         </article>
         <footer>
             <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>

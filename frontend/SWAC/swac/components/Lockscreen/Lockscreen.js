@@ -10,12 +10,18 @@ export default class Lockscreen extends View {
         this.desc.text = 'Creates a lock for the screen.';
         this.desc.developers = 'Florian Fehring (FH Bielefeld)';
         this.desc.license = 'GNU Lesser General Public License';
-        
+
         this.desc.templates[0] = {
             name: 'lockscreen',
             style: false,
             desc: 'Contains the overlay modal.'
         };
+        
+        this.desc.reqPerTpl[0] = {
+            selc: '.swac_lockscreen_message',
+            desc: 'Element where to place the lookckscreen message.'
+        };
+        
         this.options.showWhenNoData = true;
         this.desc.opts[0] = {
             name: "unlockable",
@@ -60,7 +66,7 @@ export default class Lockscreen extends View {
     lock(message, closeable = true) {
         if (typeof message !== 'undefined') {
             // Change message
-            document.querySelector('.swac_lockscreenMessage').innerHTML = message;
+            document.querySelector('.swac_lockscreen_message').innerHTML = message;
         }
         // Finaly lock screen
         if (closeable === false || this.options.unlockable === false) {
@@ -71,7 +77,6 @@ export default class Lockscreen extends View {
                 return;
             });
         }
-        ;
 
         let event = new Event('click');
         let element = document.getElementById('lockscreenLockButton');

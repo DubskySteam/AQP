@@ -10,17 +10,28 @@ export default class Screenboard extends View {
         this.desc.text = 'Create a responsive onscreen keyboard. This component does not work with data.';
         this.desc.developers = 'Florian Fehring (FH Bielefeld)';
         this.desc.license = 'GNU Lesser General Public License';
-        
+
         this.desc.templates[0] = {
             name: 'screenboard',
             style: 'screenboard',
             desc: 'Shows the screenboard with touchable keys.'
         };
+        
+        this.desc.reqPerTpl[0] = {
+            selc: '.swac_screenboard_hidden',
+            desc: 'Element that contains the virutal keys and is hidden per default.'
+        };
+        this.desc.reqPerTpl[1] = {
+            selc: '.swac_screenboard_enterbutton',
+            desc: 'Element that is used as enter button.'
+        };
+        
         this.options.showWhenNoData = true;
         this.desc.opts[0] = {
             name: 'for',
             desc: 'CSS Selectors for elements on which the screenboad should be '
-                    + 'activated. If not given screenboard will be activated on all textual input elements.'
+                    + 'activated. If not given screenboard will be activated on all textual input elements.',
+            example: '.myinputelement'
         };
         if (!options.for)
             this.options.for = [];
@@ -28,7 +39,13 @@ export default class Screenboard extends View {
             name: 'specialButtons',
             desc: 'List of special buttons (objects with "key" = value contained '
                     + 'in button, "func" = function to execute on click)'
-                    + 'If attribute processfurther is set the button press is executed further.'
+                    + 'If attribute processfurther is set the button press is executed further.',
+            example: {
+                key: 'icon: sign-in',
+                func: function (evt) {
+                    alert('Special button pressed = custom function executed!');
+                }
+            }
         };
         if (!options.specialButtons)
             this.options.specialButtons = [];
@@ -93,7 +110,7 @@ export default class Screenboard extends View {
                 }
                 for (let curInputField of inputFields) {
                     curInputField.addEventListener('focus', this.onFocus.bind(this));
-            }
+                }
             }
         } else {
             // Register on all texutal input elements

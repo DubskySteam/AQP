@@ -98,7 +98,9 @@
 SWAC_config.datasources = [
     {
         // Simple path as source for all CRUD operations, may a simple docroot path
-        url: "/SWAC/data/[fromName]"
+        url: "/SWAC/data/[fromName]",
+        // Exclude names that should never tried to fiend on this resource
+        exclude: ['name_of_dbtable','name_of_rest_api']
     },
     {
         // Complex configuration, may a REST interface path
@@ -709,6 +711,9 @@ var SWAC_config = {
     // ...
 };
             </code></pre> 
+            
+            <h2 class="uk-heading-divider">Accessing data programaticly</h2>
+            <p>If you need to access the components data from a custom script, have a look at the Low Level API > </p>
             
         </article>
 

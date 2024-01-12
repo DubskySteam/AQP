@@ -1,5 +1,5 @@
 var Visualise_de = {
-  state: "Stand: ",
+  ts: "Stand: ",
   clock: "Uhr",
   thermometer: "Temperatur",
   hygrometer: "Luftfeuchtigkeit"

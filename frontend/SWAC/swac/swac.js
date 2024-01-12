@@ -12,7 +12,7 @@ import Model from './Model.js';
 var SWAC = {
     desc: {
         name: 'core',
-        version: '31.10.2023'
+        version: '01.12.2023'
     },
     config: {},
     msgs: new Map(),
@@ -108,6 +108,7 @@ SWAC.init = function () {
     });
     scriptElem.addEventListener('error', function () {
         console.error('Could not load >' + scriptElem.src + '<');
+        alert("configuration.js could not be found. It is expected in " + app_root + '/configuration.js');
     });
     document.head.appendChild(scriptElem);
 };

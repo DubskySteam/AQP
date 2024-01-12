@@ -4,22 +4,21 @@
     <title>More</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../css/global.css">
         <noscript>
         <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
         </noscript>
 
         <link rel="stylesheet" type="text/css" href="../../../SWAC/swac/libs/uikit/css/uikit.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
         <script src="/SWAC/swac/swac.js" type="module"></script>
-        <script src="../../js/userinterface/user_example1.js"></script>
+        <script src="/SWAC/js/navibar.js"></script>
 </head>
-<body style="text-align: center;">
+<body>
     <header id="head_navigation">
         <ul>
             <li><a href="../../index.html" onclick="Navigation.routeTo('../../index.html', {id: 0});" style="float: left; margin-top: -15px; margin-left: 5px;"><img src="../../content/cloud.png" alt="Home" width="45" height="45"></a></li>
             <li><a href="../userinterface/menu.html" onclick="Navigation.routeTo('../userinterface/menu.html', {id: 2});" style="float: right; margin-right: 5px; margin-top: -17px;"><img src="../../content/Menu.png" alt="Menu" width="45" height="45"></a></li>
-            <li><a href="../userinterface/login.html" onclick="Navigation.routeTo('../userinterface/login.html', {id: 1});" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
-        </ul>
+            <li><a id="account_login_link" href="" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
     </header>
     <noscript>
     <div class="noscript_nav">
@@ -27,38 +26,38 @@
         <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
     </div>
     </noscript>
-
-        <h1>Mehr</h1>
-        <h2>Was ist Feinstaub?</h2>
-        <br>
-        <p>
-            Feinstaub sind kleine Teilchen,
+        <article style="text-align: center;">
+            <h1>Mehr</h1>
+            <h2>Was ist Feinstaub?</h2>
             <br>
-            welche eine Zeit lang in der 
-            Luft schweben
-            und nicht direkt
-            zu Boden sinken.
-            <br>
-            Der Feinstaub wird in zwei Größen
-            gemessen
-            10 und 2,5 Mikrometer
-            (PM10 und PM2,5).
-            <br>
-            PM steht für
-            Particular Matter was übersetzt 
-            Schwebestaub heißt.
-        </p>
-        <h6>
-            Quelle: <a href="https://www.umweltbundesamt.de/
-            service/uba-fragen/was-ist-feinstaub">https://www.umweltbundesamt.de/
-            service/uba-fragen/was-ist-feinstaub</a>
-        </h6>
-
-    <footer>
-        <a href="./more.html">Mehr</a>
-        <a href="./about.html">Über</a>
-        <a href="./privacy.html">Datenschutzerklärung</a>
-        <a href="./imprint.html">Impressum</a>
-    </footer>
+            <p>
+                Feinstaub sind kleine Teilchen,
+                <br>
+                welche eine Zeit lang in der 
+                Luft schweben
+                und nicht direkt
+                zu Boden sinken.
+                <br>
+                Der Feinstaub wird in zwei Größen
+                gemessen
+                10 und 2,5 Mikrometer
+                (PM10 und PM2,5).
+                <br>
+                PM steht für
+                Particular Matter was übersetzt 
+                Schwebestaub heißt.
+            </p>
+            <h6>
+                Quelle: <a href="https://www.umweltbundesamt.de/
+                service/uba-fragen/was-ist-feinstaub">https://www.umweltbundesamt.de/
+                service/uba-fragen/was-ist-feinstaub</a>
+            </h6>
+        </article>
+        <footer>
+            <a id="more" href="./more.html">Mehr</a>
+            <a id="about" href="./about.html">Über</a>
+            <a id="privacy" href="./privacy.html">Datenschutzerklärung</a>
+            <a id="imprint" href="./imprint.html">Impressum</a>
+        </footer>
 </body>
 </html>

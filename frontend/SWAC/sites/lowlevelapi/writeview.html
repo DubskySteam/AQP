@@ -109,7 +109,7 @@ export default ViewName_de;
             <h2>Template files</h2>
             <p>Each view can have one ore more template files. These contain the
                 view (html code). Templates are written like described
-                on <a href="skinable.html">Skinnable</a> page. And can be choosen
+                on <a href="../concepts/4_design.html">Design</a> page. And can be choosen
                 in the requestors tag statement by the TEMPLATE keyword.</p>
 
             <h2>Style files</h2>
@@ -203,6 +203,13 @@ export default class Sample extends View {
                 }
             ]
         };
+
+        //Documentation for events the component can fire
+        this.desc.events[0] = {
+            name: 'swac_REQUESTOR_ID_sample_click',
+            desc: 'An event fired when the user clicks on the component.',
+            data: 'Delivers the JS event object of the click event.'
+        }
     }
 
     /*

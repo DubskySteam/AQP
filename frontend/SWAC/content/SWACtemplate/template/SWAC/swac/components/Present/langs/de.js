@@ -1,4 +1,0 @@
-var Present_de = {
-};
-
-

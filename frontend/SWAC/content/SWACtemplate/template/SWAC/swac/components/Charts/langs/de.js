@@ -1,5 +1,0 @@
-var Chart_de = {
-    
-};
-
-

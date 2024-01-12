@@ -1,4 +1,0 @@
-var Clock_de = {
-};
-
-

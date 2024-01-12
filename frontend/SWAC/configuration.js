@@ -22,8 +22,28 @@ var SWAC_config = {
         {
             url: "/SWAC/data/[fromName]"
         },
-//        {
-//            url: "/SmartData/smartdata/[iface]/[fromName]?storage=smartmonitoring",
+        /*
+        {
+            url: "/SmartSocial/api/group/[fromName]"
+        },
+        {
+            url: "/SmartSocial/api/achievements/[fromName]"
+        },
+        {
+            url: "/SmartSocial/api/leaderboard/[fromName]"
+        },
+        {
+            url: "/Smartuser/smartuser/[iface]/[fromName]",
+            interfaces: {
+                get: ['GET','get'],
+                list: ['GET','list'],
+                defs: ["GET",'definition'],
+                create: ['POST','create'],
+                update: ['UPDATE','update'],
+                delete: ['DELETE','delete']
+            }
+        },
+        */
 //            interfaces: {
 //                get: ['GET', 'records'],
 //                list: ['GET', 'records'],
@@ -83,9 +103,9 @@ var SWAC_config = {
  * Used on every page
  */
 var user_options = {
-    loginurl: '../data/user/exampleuserdata.json',
-    afterLoginLoc: '../sites/user_example1.html',
-    afterLogoutLoc: '../sites/user.html'
+    loginurl: 'http://localhost:8080/SmartUser/smartuser/user/performLogin',
+    afterLogoutLoc: '../sites/userinterface/login.html',
+    accountURL: '../sites/userinterface/account.html',
 };
 user_options.loggedinRedirects = new Map();
 user_options.loggedinRedirects.set('user_example3.html', '../sites/user_example2.html');

@@ -181,6 +181,7 @@ export default class Component {
         this.desc.opts[1015] = {
             name: 'makereadableDatesFrom',
             desc: 'Makes user readable dates from ISO Dates of the given attributes if present.',
+            example: ['ts', 'date']
         };
         if (!options.makereadableDatesFrom)
             this.options.makereadableDatesFrom = [];
@@ -552,6 +553,18 @@ DEFINTION of SET:\n\
                 type: 'boolean'
             }
         }
+        
+        this.desc.funcs[1026] = {
+            name: 'getData',
+            desc: 'Gets all datasources, with all data accessable by the component.',
+            returns: {
+                desc: 'Object with watchable sources. With key is the name of the source. Containing WatchableSets accessable with .getSets()',
+                type: 'WatchableSource{}'
+            }
+        }
+
+        // Documentation for events
+        this.desc.events = [];
 
         // Component data
         // key = fromName = Sooure of the data
@@ -633,6 +646,10 @@ DEFINTION of SET:\n\
                 this.data[fromName].addSet(curSet);
             }
         }
+    }
+    
+    getData() {
+        return this.data;
     }
 
     // public function
@@ -771,8 +788,8 @@ DEFINTION of SET:\n\
 
     //public function
     removeAllData() {
-        for (let curFromName in this.data) {
-            this.removeData(curFromName);
+        for (let curRemSource in this.data) {
+            this.removeData(curRemSource);
         }
     }
 
@@ -833,11 +850,12 @@ DEFINTION of SET:\n\
             return;
         }
         if (!this.requestor) {
-            Msg.error('Component', 'addSet() called on component class instead on component instance');
+            Msg.error('Component', 'addSet() called on component class instead on component instance', this.requestor);
             return;
         }
         if (Array.isArray(set)) {
-            Msg.error('Component', 'Given array as set. Use only single sets on addSet()');
+            Msg.error('Component', 'Given array as set. Use only single sets on addSet()', this.requestor);
+            return;
         }
         set.swac_fromName = fromName;
 
@@ -848,7 +866,8 @@ DEFINTION of SET:\n\
         }
         // Create WatchableSet if is not
         if (set.constructor.name !== 'WatchableSet') {
-//            set = new WatchableSet(set);
+            Msg.warn('Component', 'Given set >' + set.id + '< was no WatchableSet. Created WatchableSet. If this makes problems please create a bug report.', this.requestor);
+            set = new WatchableSet(set);
         }
         // Check if set can be used here
         if (!this.checkAcceptSet(set))
@@ -928,7 +947,11 @@ DEFINTION of SET:\n\
         if (this.options.customAfterAddSet) {
             // Set method to this to use context of component in method
             this.customAfterAddSet = this.options.customAfterAddSet;
-            this.customAfterAddSet(set);
+            try {
+                this.customAfterAddSet(set);
+            } catch (e) {
+                Msg.error('Component', 'Error while executeing >.customAfterAddSet(' + set.swac_fromName + '[' + set.id + ']: ' + e, this.requestor);
+            }
         }
         // Inform plugins about added sets
         if (this.pluginsystem) {
@@ -1037,10 +1060,10 @@ DEFINTION of SET:\n\
      * @param {WatchableSource} source Source where the set was added
      * @param {WatchableSet} set Set that was added
      */
-    notifyDelSet(source, set) {
-        Msg.flow('Component', 'NOTIFY about deleted set >' + source.swac_fromName + '[' + set.id + ']< recived', this.requestor);
+    notifyDelSet(set) {
+        Msg.flow('Component', 'NOTIFY about deleted set >' + set.swac_fromName + '[' + set.id + ']< recived', this.requestor);
         set.id = parseInt(set.id);
-        this.afterRemoveSet(source.swac_fromName, set.id);
+        this.afterRemoveSet(set.swac_fromName, set.id);
     }
 
     //public function
@@ -1149,6 +1172,47 @@ DEFINTION of SET:\n\
                     }
                 }
                 resolve(attrs);
+            });
+        });
+    }
+    
+    /**
+     * Detects the attribute from data, that is best suited to be used for x-axis (labels)
+     * 
+     * @param {Object[]} data Object with datasources[datasets[dataobjects{}]]
+     * @param {Type} preferType Name of the datatype prefered for useage
+     * @param {String[]} ignore List of attribute names that should be ignored
+     * @returns {String} Name of the attribute to use for x-axis
+     */
+    getAllOverAvailableAttr(ignore = ['id'], typeOrder = ['timestamp', 'date', 'time', 'int8', 'int4', 'float8', 'float4']) {
+        let thisRef = this;
+        return new Promise((resolve, reject) => {
+            thisRef.getAttributeUseage().then(function (candidates) {
+                let allDatasetsCount = thisRef.countSets();
+                let candSorted = new Map();
+
+                // Sort after type
+                for (let curCandidate of candidates.values()) {
+                    if (!candSorted.has(curCandidate.type))
+                        candSorted.set(curCandidate.type, []);
+                    candSorted.get(curCandidate.type).push(curCandidate);
+                }
+                // Use first matching type
+                let firstMatch = null;
+                for (let curType of typeOrder) {
+                    let curCandidates = candSorted.get(curType);
+                    if (!curCandidates)
+                        continue;
+                    for (let curCand of curCandidates) {
+                        if (!ignore.includes(curCand.name) && curCand.count === allDatasetsCount) {
+                            firstMatch = curCand.name;
+                            break;
+                        }
+                    }
+                    if (firstMatch)
+                        break;
+                }
+                resolve(firstMatch);
             });
         });
     }
@@ -1270,6 +1334,7 @@ DEFINTION of SET:\n\
 
     // public function
     saveData() {
+        Msg.flow('Component', 'saveData()', this.requestor);
         // Execute custom customBeforeSave()
         if (this.options.customBeforeSave) {
             this.options.customBeforeSave.bind(this);
@@ -1292,11 +1357,15 @@ DEFINTION of SET:\n\
                 fromName: curFromName
             };
             // Save data
-            Model.save(dataCapsle).then(function (dataCaps) {
+            Model.save(dataCapsle).then(function (data) {
                 thisRef.afterSave(dataCapsle);
                 if (thisRef.options.customAfterSave) {
                     thisRef.options.customAfterSave.bind(thisRef);
-                    thisRef.options.customAfterSave(thisRef.data[curFromName]);
+                    try {
+                        thisRef.options.customAfterSave(data);
+                    } catch (e) {
+                        Msg.error('Component', 'Error execution options.customAfterSave(): ' + e, this.requestor);
+                    }
                 }
             }).catch(function (error) {
                 UIkit.modal.alert(SWAC.lang.dict.core.model_saveerror);
@@ -1312,11 +1381,12 @@ DEFINTION of SET:\n\
     // public function
     async saveSet(set, supressMessages, setupdate = true) {
         Msg.flow('Component', 'saveSet()', this.requestor);
+        let thisRef = this;
         return new Promise((resolve, reject) => {
             // Execute custom customBeforeSave()
             if (this.options.customBeforeSave) {
-                this.options.customBeforeSave.bind(this);
-                if (this.options.customBeforeSave(set) === false) {
+                this.customBeforeSave = this.options.customBeforeSave;
+                if (this.customBeforeSave(set) === false) {
                     Msg.warn('Edit', 'customBeforeSave() returned false');
                     return;
                 }
@@ -1335,33 +1405,62 @@ DEFINTION of SET:\n\
                     saveset[curAttr] = this.options.saveAlongData[curAttr];
                 }
             }
+            // Set fromName if not given
+            if (!saveset.swac_fromName) {
+                saveset.swac_fromName = this.options.mainSource ? this.options.mainSource : this.requestor.fromName;
+            }
+
             let dataCapsule = {
                 data: [saveset],
                 fromName: saveset.swac_fromName
             };
-            let thisRef = this;
             Model.save(dataCapsule, supressMessages).then(function (dataCaps) {
+                // Get first dataset
+                let savedSet;
+                for (let curSet of dataCaps) {
+                    if (!curSet)
+                        continue;
+                    savedSet = curSet;
+                    break;
+                }
+
                 // Reorder when id has changed
-                let newId = parseInt(dataCaps[0].data[0].id);
+                // Following line is old implementation that made error: dataCaps[0].data[0] is null
+//                let newId = parseInt(dataCaps[0].data[0].id);
+                let newId = savedSet.id;
                 // There is no id deliverd on update
                 if (setupdate && !isNaN(newId) && newId !== oldId) {
                     saveset.id = newId;
-                    thisRef.removeSet(set.swac_fromName, oldId);
+                    thisRef.removeSet(savedSet.swac_fromName, oldId);
                     thisRef.addSet(saveset.swac_fromName, saveset);
                 } else {
                     newId = oldId;
                 }
                 // Save childs if there
-                if (thisRef.options.mainSource === set.swac_fromName) {
+                if (thisRef.options.mainSource === savedSet.swac_fromName) {
                     thisRef.saveChilds(oldId, newId).then(function (savedChilds) {
                         thisRef.afterSave(dataCapsule);
                         if (thisRef.options.customAfterSave) {
                             thisRef.options.customAfterSave.bind(thisRef);
-                            thisRef.options.customAfterSave([saveset], oldId);
+                            try {
+                                thisRef.options.customAfterSave(savedSet);
+                            } catch (e) {
+                                Msg.error('Component', 'Error execution options.customAfterSave(); ' + e, thisRef.requestor);
+                            }
                         }
                         resolve(saveset);
                     });
                 } else {
+                    thisRef.afterSave(dataCapsule);
+                    if (thisRef.options.customAfterSave) {
+                        Msg.flow('Component', 'Calling customAfterSave() from ' + thisRef.requestor.id + '_options', thisRef.requestor);
+                        thisRef.options.customAfterSave.bind(thisRef);
+                        try {
+                            thisRef.options.customAfterSave(savedSet);
+                        } catch (e) {
+                            Msg.error('Component', 'Error executing options.customAfterSave(): ' + e, thisRef.requestor);
+                        }
+                    }
                     resolve(saveset);
                 }
             }).catch(function (err) {
