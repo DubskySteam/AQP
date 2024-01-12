@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../admin/Backend/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../admin/Backend/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../admin/Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../admin/Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a435b0ea-8b45-473a-ad8c-b9ce21259244.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a435b0ea-8b45-473a-ad8c-b9ce21259244.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../admin/Frontend/move.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../../admin/Frontend/move.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/docroot/SWAC" beforeDir="false" afterPath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/docroot/SWAC" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/docroot/SmartMonitoringCustomisations" beforeDir="false" afterPath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/docroot/SmartMonitoringCustomisations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/docroot/SmartMonitoringFrontend" beforeDir="false" afterPath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/docroot/SmartMonitoringFrontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/logs/server.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../env/payara6/glassfish/domains/domain1/logs/server.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,6 +344,7 @@
       <workItem from="1704524828643" duration="608000" />
       <workItem from="1704806527920" duration="100000" />
       <workItem from="1704807148204" duration="332000" />
+      <workItem from="1705056557805" duration="613000" />
     </task>
     <servers />
   </component>
