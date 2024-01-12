@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Info",
+        "url": "http://localhost:8080/SmartSocial/api/utility/info",
+        "method": "GET"
+    },
+    {
+        "name": "Refresh Data",
+        "url": "http://localhost:8080/SmartSocial/api/utility/refreshData",
+        "method": "GET"
+    }
+]

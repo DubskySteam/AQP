@@ -1,0 +1,136 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
+    <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+    <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: "/openapi",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout",
+        onComplete: function() {
+
+	let selectElem = document.querySelector('.servers select');
+
+	// Add message contianer for warning message
+	let txtDiv = document.createElement('div');
+        txtDiv.classList.add('showing_msg');
+        txtDiv.innerHTML = 'WARNING: Below you see all APIs available for all endpoints on this server. To show only applicable APIs for an entpoint select one above.';
+	selectElem.parentElement.appendChild(txtDiv);
+
+	// Register event listener for changeing api
+	selectElem.addEventListener('change',function(evt) {
+	   let selName = evt.target.options[selectElem.selectedIndex].value;
+	   showMatchingOnly(selName);
+	});
+
+      // Work with direct selection parameter
+      let url = new URL(window.location.href);
+      let params = url.searchParams; 
+      let selectapi = params.get('selectapi');
+      // If a selection was made
+      if(selectapi) {
+      	let opts = selectElem.options;
+      	let foundWished = false;
+      	let selName = 'http://epigraf01.ad.fh-bielefeld.de:8080/'+selectapi;
+	document.querySelector('.servers select [value="' + selName + '"]').selected = true;
+      	for (var opt, j = 0; opt = opts[j]; j++) {
+	 if (opt.value == 'http://epigraf01.ad.fh-bielefeld.de:8080/'+selectapi) {
+	   selectElem.selectedIndex = j;
+	   foundWished = true;
+      	   break;
+    	 }
+      	}
+      	// Inform about missing api
+      	if(!foundWished) {
+	   alert("The API >" + selectapi + "< you wished to use, seems to be curently not online.");
+      	}
+	showMatchingOnly(selName);
+       }	}
+      });
+      // End Swagger UI call region
+
+      window.ui = ui;
+    };
+
+    var appPathNames = {};
+    appPathNames['/SmartData'] = '/smartdata/';
+
+    function showMatchingOnly(selName) {
+	// Get warning message div
+	let msgDiv = document.querySelector('.showing_msg');
+	// Search data-path elems
+	   let dataPathElems = document.querySelectorAll('[data-path]');
+	   // Search entry in map
+	   let applicableFound = false;
+	   for(let key in appPathNames) {
+	      // If entry is applicable
+	      if(selName.includes(key)) {
+		applicableFound = true;
+		for(let curDataPathElem of dataPathElems) {
+		   if(!curDataPathElem.getAttribute('data-path').includes(appPathNames[key])) {
+		      curDataPathElem.parentElement.parentElement.parentElement.parentElement.style = 'display: none';
+		   }
+		}		
+	      }
+	   }
+	   // If no applicable found make all visible
+	   if(!applicableFound) {
+		showAll();
+        	msgDiv.innerHTML = 'WARNING: Below you see all APIs available for all endpoints on this server. The selected endpoint has no API qualifier.';
+	   } else {
+		msgDiv.innerHTML = 'Below are only APIs shown applicable to enpoint >' + selName + '<.';
+	   }
+    }
+
+    function showAll() {
+	let dataPathElems = document.querySelectorAll('[data-path]');
+	for(let curDataPathElem of dataPathElems) {
+	   curDataPathElem.parentElement.parentElement.parentElement.parentElement.style = 'display: block';
+	}
+    }
+  </script>
+  </body>
+</html>
