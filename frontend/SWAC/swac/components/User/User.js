@@ -98,7 +98,7 @@ export default class User extends View {
         this.options.showWhenNoData = true;
         this.desc.opts[2] = {
             name: 'loginURL',
-            desc: 'URL on which the login should be performed.',
+            desc: 'URL on which the login should be performed. URLs to other webservers have to include the protocol (e.g. https://)',
             example: '/SmartUser/smartuser/performLogin'
         };
         if (!options.loginURL)
@@ -494,26 +494,29 @@ export default class User extends View {
             thisRef.hideLoginProgress();
             thisRef.showLogin();
             let mphs = document.querySelectorAll('.message-placeholder');
-            if (response.status === 404) {
+
+            response.json().then(function (erg) {
+                // Get and translate messages
+                let errmsg;
+                for (let curErr of erg.errors) {
+                    if (SWAC.lang.dict.App && SWAC.lang.dict.User[curErr])
+                        errmsg += SWAC.lang.dict.User[curErr];
+                    else
+                        errmsg += curErr;
+                }
+                // Default err message
+                if (!errmsg)
+                    errmsg = SWAC.lang.dict.User.nologinpossible;
+
+                // Show messages
                 if (mphs.length === 0) {
-                    UIkit.modal.alert(SWAC.lang.dict.User.nologinpossible);
+                    UIkit.modal.alert(errmsg);
                 } else {
                     for (let placeholder of mphs) {
-                        placeholder.innerHTML = SWAC.lang.dict.User.nologinpossible;
+                        placeholder.innerHTML = erg.errors[0];
                     }
                 }
-            } else if (response.json) {
-                response.json().then(function (erg) {
-                    if (mphs.length === 0) {
-                        UIkit.modal.alert(erg.errors[0]);
-                    } else {
-                        for (let placeholder of mphs) {
-                            placeholder.innerHTML = erg.errors[0];
-                        }
-                    }
-                    return true;
-                });
-            } else {
+            }).catch(function (e) {
                 if (mphs.length === 0) {
                     UIkit.modal.alert(response);
                 } else {
@@ -521,7 +524,7 @@ export default class User extends View {
                         placeholder.innerHTML = response;
                     }
                 }
-            }
+            });
         });
     }
 
@@ -755,8 +758,8 @@ export default class User extends View {
 
         let codeElem = document.querySelector('.swac_userRegconfirmInput');
         let confurl = this.options.confirmURL;
-        if(!this.options.confirmURL) {
-            Msg.error('User','Confirmation could not be done. The option confirmURL is not set.',this.requestor);
+        if (!this.options.confirmURL) {
+            Msg.error('User', 'Confirmation could not be done. The option confirmURL is not set.', this.requestor);
             return;
         }
         // Build up logout data

@@ -7,10 +7,6 @@ import Msg from '../../Msg.js';
  */
 export default class Speech extends View {
 
-    /*
-     * Constructs a new component object and transfers the config to the
-     * object
-     */
     constructor(options = {}) {
         super(options);
         this.name = 'Speech';
@@ -27,38 +23,47 @@ export default class Speech extends View {
             desc: 'The attribute id is required for the component to work properly.'
         };
         this.desc.opts[0] = {
-            name: "lang",
-            desc: "Language to use."
+            name: 'lang',
+            desc: 'Language to use.',
+            example: 'en'
         };
         if (!options.lang)
             this.options.lang = null;
         this.desc.opts[1] = {
-            name: "commands",
-            desc: "A map of commands and corosponding actions."
+            name: 'commands',
+            desc: 'A map of commands and corosponding actions.'
         };
         if (!options.commands)
             this.options.commands = new Map();
         this.desc.opts[2] = {
-            name: "pitch",
-            desc: "The pitch used for speak."
+            name: 'pitch',
+            desc: 'The pitch used for speak.'
         };
         if (!options.pitch)
             this.options.pitch = 1.0;
         this.desc.opts[3] = {
-            name: "rate",
-            desc: "The rate used for speak."
+            name: 'rate',
+            desc: 'The rate used for speak.'
         };
         if (!options.rate)
             this.options.rate = 1.0;
         this.desc.opts[4] = {
-            name: "startword",
-            desc: "A word that is needed to prefly commands."
+            name: 'startword',
+            desc: 'A word that is needed to prefly commands.',
+            example: 'Computer'
         };
         if (!options.startword)
             this.options.startword = null;
         this.desc.opts[5] = {
-            name: "sources",
-            desc: "Array of sources where to send spoken words to and recive an answer from."
+            name: 'sources',
+            desc: 'Array of sources where to send spoken words to and recive an answer from.',
+            example: [{
+                    url: 'https://api.openai.com/v1/chat/completions',
+                    auth: 'myOoepnAI authtoken',
+                    method: 'POST',
+                    body: '{"messages": [{"role": "user", "content": "%words%"}],"temperature": 0.6, "model": "gpt-3.5-turbo"}',
+                    jpath: 'choices/0/message/content'
+                }]
         };
         if (!options.sources)
             this.options.sources = [];
@@ -247,12 +252,12 @@ export default class Speech extends View {
         if (this.options.sources.length < 1) {
             Msg.info('Speech', 'There are no sources for speech detection registered.', this.requestor);
         }
-        
+
         // Try send to sources
         for (let curSource of this.options.sources) {
             const opts = {
                 headers: {
-                    "Content-Type": "application/json"
+                    'Content-Type': 'application/json'
                 }
             };
             if (curSource.auth)
@@ -324,7 +329,7 @@ export default class Speech extends View {
         utterThis.onpause = this.speakOnpause.bind(this);
         utterThis.onresume = this.speakOnresume.bind(this);
         utterThis.onstart = this.speakOnstart.bind(this);
-        console.log('test',res);
+        console.log('test', res);
     }
 
     speakOnboundary(evt) {

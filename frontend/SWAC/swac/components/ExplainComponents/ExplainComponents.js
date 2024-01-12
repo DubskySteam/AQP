@@ -462,16 +462,26 @@ export default class ExplainComponents extends View {
                         }
                     }
 
+                    // Create template element
+                    let div = document.createElement('div');
+                    div.innerHTML = htmlfragment;
+
                     // List all required classes
                     let requiredClasses = new Map();
                     for (let curReqPerTpl of component.desc.reqPerTpl) {
-                        requiredClasses.set(curReqPerTpl.selc, curReqPerTpl.selc);
                         // Check if required is id instead of class and warn
                         if (curReqPerTpl.selc.startsWith('#')) {
                             let ndeElem = deElem.cloneNode(true);
                             ndeElem.classList.remove('swac_explain_forDocErr');
                             ndeElem.innerHTML = 'Required template element >' + curReqPerTpl.selc + '< from template >' + curTemplate.name + '< has an id selector. You should use class selectors instead to avoid problems with multiple component useages on one page.';
                             deElem.parentElement.appendChild(ndeElem);
+                        } else if (!curReqPerTpl.selc.startsWith('.')) {
+                            let found = div.querySelector(curReqPerTpl.selc);
+                            if(!found) {
+                                requiredClasses.set(curReqPerTpl.selc, curReqPerTpl.selc);
+                            }
+                        } else {
+                            requiredClasses.set(curReqPerTpl.selc, curReqPerTpl.selc);
                         }
                     }
                     for (let curOptPerTpl of component.desc.optPerTpl) {
@@ -485,8 +495,6 @@ export default class ExplainComponents extends View {
                     }
 
                     // Check classes
-                    let div = document.createElement('div');
-                    div.innerHTML = htmlfragment;
                     let clsElems = div.querySelectorAll('[class]');
                     for (let curClsElem of clsElems) {
                         for (let curCls of curClsElem.classList) {
@@ -494,6 +502,7 @@ export default class ExplainComponents extends View {
                             if (curCls.startsWith('uk-')) {
                                 var re = new RegExp(curCls, 'g');
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This is a ui-kit styling instruction">' + curCls + '</span>');
+                                requiredClasses.delete('.'+curCls);
                                 continue;
                             }
                             if (curCls.startsWith('swac_format')) {
@@ -532,9 +541,7 @@ export default class ExplainComponents extends View {
                                 explDivTmpl.innerHTML = explDivTmpl.innerHTML.replace(re, '<span uk-tooltip="This element contains the representation for the dataset as it is when used as a child element of some other dataset.">' + curCls + '</span>');
                                 continue;
                             }
-
-
-
+                            
                             // Search in descriptions
                             let found = false;
                             for (let curReqPerTpl of component.desc.reqPerTpl) {

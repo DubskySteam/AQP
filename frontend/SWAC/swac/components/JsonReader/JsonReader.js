@@ -19,8 +19,124 @@ export default class JsonReader extends View {
         };
 
         this.desc.reqPerTpl[0] = {
-            selc: 'jsonrader_fileselectstep',
+            selc: '.swac_jsonreader_fileselectstep',
             desc: 'Dialog div to show in file select step.'
+        };
+        this.desc.reqPerTpl[1] = {
+            selc: '.swac_jsonreader_fileurl',
+            desc: 'Element where to input a url to a json file.'
+        };
+        this.desc.reqPerTpl[2] = {
+            selc: '.swac_jsonreader_fileselect',
+            desc: 'Element where to select a json file.'
+        };
+        this.desc.reqPerTpl[3] = {
+            selc: '.swac_jsonreader_jsontext',
+            desc: 'Element where to input json text.'
+        };
+        this.desc.reqPerTpl[4] = {
+            selc: '.swac_jsonreader_toconfig',
+            desc: 'Button to go to config step.'
+        };
+        this.desc.reqPerTpl[5] = {
+            selc: '.swac_jsonreader_configstep',
+            desc: 'Element that contains the configuration step form.'
+        };
+        this.desc.reqPerTpl[6] = {
+            selc: '.swac_jsonreader_configurl',
+            desc: 'Input element for an url to the configuration file.'
+        };
+        this.desc.reqPerTpl[7] = {
+            selc: '.swac_jsonreader_configselect',
+            desc: 'Input element for file selection for configuration file.'
+        };
+        this.desc.reqPerTpl[8] = {
+            selc: '.swac_jsonreader_repeatForKey',
+            desc: 'Element repeated for every json attribute in file.'
+        };
+        this.desc.reqPerTpl[9] = {
+            selc: '.swac_jsonreader_keyname',
+            desc: 'Element where to place the keyname for json attribute.'
+        };
+        this.desc.reqPerTpl[10] = {
+            selc: '.swac_jsonreader_keycolection',
+            desc: 'Select element where to chose the target collection of that attribute.'
+        };
+        this.desc.reqPerTpl[11] = {
+            selc: '.swac_jsonreader_keycolumn',
+            desc: 'Select element where to chose the target column of that attribute.'
+        };
+        this.desc.reqPerTpl[12] = {
+            selc: '.swac_jsonreader_configtext',
+            desc: 'Textarea where to show the configuration json.'
+        };
+        this.desc.reqPerTpl[13] = {
+            selc: '.swac_jsonreader_saveconf',
+            desc: 'Button to save the configuration.'
+        };
+        this.desc.reqPerTpl[14] = {
+            selc: '.swac_jsonreader_backtofileselect',
+            desc: 'Button to go back to fileselect.'
+        };
+        this.desc.reqPerTpl[15] = {
+            selc: '.swac_jsonreader_topreview',
+            desc: 'Button to go forward to preview.'
+        };
+        this.desc.reqPerTpl[16] = {
+            selc: '.swac_jsonreader_topreview',
+            desc: 'Button to go forward to preview.'
+        };
+        this.desc.reqPerTpl[17] = {
+            selc: '.swac_jsonreader_previewstep',
+            desc: 'Element that contains content of preview step.'
+        };
+        this.desc.reqPerTpl[18] = {
+            selc: '.swac_jsonreader_preview',
+            desc: 'Element that contains preview.'
+        };
+        this.desc.reqPerTpl[19] = {
+            selc: '.swac_jsonreader_repeatForCollection',
+            desc: 'Element that should be repeated for every collection.'
+        };
+        this.desc.reqPerTpl[20] = {
+            selc: '.swac_jsonreader_colcaption',
+            desc: 'Element that contains the caption for a collection.'
+        };
+        this.desc.reqPerTpl[21] = {
+            selc: '.swac_jsonreader_repeatForDataKey',
+            desc: 'Element repeated for every data key.'
+        };
+        this.desc.reqPerTpl[22] = {
+            selc: '.swac_jsonreader_repeatForDataset',
+            desc: 'Element repeated for every dataset.'
+        };
+        this.desc.reqPerTpl[23] = {
+            selc: '.swac_jsonreader_repeatForDataValue',
+            desc: 'Element repeated for every data value.'
+        };
+        this.desc.reqPerTpl[24] = {
+            selc: '.swac_jsonreader_backtoconfig',
+            desc: 'Button for going back to config setp.'
+        };
+        this.desc.reqPerTpl[25] = {
+            selc: '.swac_jsonreader_tosave',
+            desc: 'Button for going to save step.'
+        };
+        this.desc.reqPerTpl[26] = {
+            selc: '.swac_jsonreader_savestep',
+            desc: 'Element contianting content for save step.'
+        };
+        this.desc.reqPerTpl[27] = {
+            selc: '.swac_jsonreader_startsavebtn',
+            desc: 'Button to perform save.'
+        };
+        this.desc.reqPerTpl[28] = {
+            selc: '.swac_jsonreader_backtopreview',
+            desc: 'Button to go back to preview step.'
+        };
+        this.desc.reqPerTpl[29] = {
+            selc: '.swac_jsonreader_restart',
+            desc: 'Button to restart import process.'
         };
 
         this.desc.opts[0] = {
@@ -55,35 +171,35 @@ export default class JsonReader extends View {
     init() {
         return new Promise((resolve, reject) => {
             // Register function for when file selected
-            let jsonfileElem = this.requestor.querySelector('.jsonreader_fileselect');
+            let jsonfileElem = this.requestor.querySelector('.swac_jsonreader_fileselect');
             jsonfileElem.addEventListener('change', this.loadJSONFile.bind(this));
             // Register function for when inserting url
-            let jsonurlElem = this.requestor.querySelector('.jsonreader_fileurl');
+            let jsonurlElem = this.requestor.querySelector('.swac_jsonreader_fileurl');
             jsonurlElem.addEventListener('change', this.loadJSONURL.bind(this));
 
             // Register function for go to configuration step
-            let toconfigElem = this.requestor.querySelector('.jsonreader_toconfig');
+            let toconfigElem = this.requestor.querySelector('.swac_jsonreader_toconfig');
             toconfigElem.addEventListener('click', this.onToConfig.bind(this));
             // Register function for go back to fileselect step
-            let toFileselectElem = this.requestor.querySelector('.jsonreader_backtofileselect');
+            let toFileselectElem = this.requestor.querySelector('.swac_jsonreader_backtofileselect');
             toFileselectElem.addEventListener('click', this.onBackToFileselect.bind(this));
             // Register function for go to preview
-            let toPreviewElem = this.requestor.querySelector('.jsonreader_topreview');
+            let toPreviewElem = this.requestor.querySelector('.swac_jsonreader_topreview');
             toPreviewElem.addEventListener('click', this.onToPreview.bind(this));
             // Register function for go back to configuration
-            let backToConfigElem = this.requestor.querySelector('.jsonreader_backtoconfig');
+            let backToConfigElem = this.requestor.querySelector('.swac_jsonreader_backtoconfig');
             backToConfigElem.addEventListener('click', this.onBackToConfig.bind(this));
             // Register function for go to save
-            let toSaveElem = this.requestor.querySelector('.jsonreader_tosave');
+            let toSaveElem = this.requestor.querySelector('.swac_jsonreader_tosave');
             toSaveElem.addEventListener('click', this.onToSave.bind(this));
             // Register function for go back to preview
-            let backToPrevieElem = this.requestor.querySelector('.jsonreader_backtopreview');
+            let backToPrevieElem = this.requestor.querySelector('.swac_jsonreader_backtopreview');
             backToPrevieElem.addEventListener('click', this.onBackToPreview.bind(this));
             // Register function for restart
-            let restartElem = this.requestor.querySelector('.jsonreader_restart');
+            let restartElem = this.requestor.querySelector('.swac_jsonreader_restart');
             restartElem.addEventListener('click', this.onRestart.bind(this));
             // Register function for import start
-            let savestartElem = this.requestor.querySelector('.jsonreader_startsavebtn');
+            let savestartElem = this.requestor.querySelector('.swac_jsonreader_startsavebtn');
             savestartElem.addEventListener('click', this.onSaveStart.bind(this));
 
             this.loadAvailableCollections();
@@ -145,8 +261,8 @@ export default class JsonReader extends View {
      */
     loadJSONFile(evt) {
         Msg.flow('JsonReader', 'JSON source file was selected', this.requestor);
-        let jsonfileElem = this.requestor.querySelector('.jsonreader_fileselect');
-        let jsontxtElem = this.requestor.querySelector('.jsonreader_jsontext');
+        let jsonfileElem = this.requestor.querySelector('.swac_jsonreader_fileselect');
+        let jsontxtElem = this.requestor.querySelector('.swac_jsonreader_jsontext');
 
         // Read file content and add to textarea
         let files = jsonfileElem.files;
@@ -172,8 +288,8 @@ export default class JsonReader extends View {
      * @param {DOMEvent} evt Event for inserting url
      */
     loadJSONURL(evt) {
-        var url = this.requestor.querySelector('.jsonreader_fileurl').value;
-        let jsontxtElem = this.requestor.querySelector('.jsonreader_jsontext');
+        var url = this.requestor.querySelector('.swac_jsonreader_fileurl').value;
+        let jsontxtElem = this.requestor.querySelector('.swac_jsonreader_jsontext');
         if (url == "") {
             jsontxtElem.value = "";
         } else {
@@ -203,15 +319,15 @@ export default class JsonReader extends View {
     onToConfig(evt) {
         evt.preventDefault();
         // Check if json is there
-        let jsontxtElem = this.requestor.querySelector('.jsonreader_jsontext');
+        let jsontxtElem = this.requestor.querySelector('.swac_jsonreader_jsontext');
         if (!jsontxtElem.value) {
             UIkit.modal.alert(SWAC.lang.dict.JsonReader.toconfig_missingjson);
             return;
         }
         // Hide step 1 show step 2
-        let firstStepElem = this.requestor.querySelector('.jsonrader_fileselectstep');
+        let firstStepElem = this.requestor.querySelector('.swac_jsonreader_fileselectstep');
         firstStepElem.classList.add('swac_dontdisplay');
-        let secondStepElem = this.requestor.querySelector('.jsonreader_configstep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_configstep');
         secondStepElem.classList.remove('swac_dontdisplay');
 
         // Read jsonstructure
@@ -227,7 +343,7 @@ export default class JsonReader extends View {
      * The function only adds keys, that contain only premitive values. No Arrays or Objects are added, except for Arrays, which only contain values.
      */
     readJSONStructure() {
-        let jsontxtElem = this.requestor.querySelector('.jsonreader_jsontext');
+        let jsontxtElem = this.requestor.querySelector('.swac_jsonreader_jsontext');
         let data = JSON.parse(jsontxtElem.value);
         this.jsondata = data;
 
@@ -288,8 +404,8 @@ export default class JsonReader extends View {
      * Creates the ordering table for keys to collections and columns
      */
     createKeyOrdering(uniqueKeys) {
-        let configStepElem = this.requestor.querySelector('.jsonreader_configstep');
-        let repeatForKeyElem = configStepElem.querySelector('.jsonreader_repeatForKey');
+        let configStepElem = this.requestor.querySelector('.swac_jsonreader_configstep');
+        let repeatForKeyElem = configStepElem.querySelector('.swac_jsonreader_repeatForKey');
 
         // Delete old key orderings if existend
         let oldOrderings = this.requestor.querySelectorAll('.jsonreader_repeatedForKey');
@@ -299,13 +415,13 @@ export default class JsonReader extends View {
 
         for (let curKey of uniqueKeys) {
             let curKeyElem = repeatForKeyElem.cloneNode(true);
-            curKeyElem.classList.remove('jsonreader_repeatForKey');
+            curKeyElem.classList.remove('swac_jsonreader_repeatForKey');
             curKeyElem.classList.add('jsonreader_repeatedForKey');
             curKeyElem.setAttribute('forKey', curKey);
             // Set name
-            curKeyElem.querySelector('.jsonreader_keyname').innerHTML = curKey;
+            curKeyElem.querySelector('.swac_jsonreader_keyname').innerHTML = curKey;
             // Set available collections
-            let curColsElem = curKeyElem.querySelector('.jsonreader_keycolection');
+            let curColsElem = curKeyElem.querySelector('.swac_jsonreader_keycolection');
             for (let curCol of this.availableCollections) {
                 let curOption = document.createElement('option');
                 curOption.value = curCol;
@@ -317,7 +433,7 @@ export default class JsonReader extends View {
             repeatForKeyElem.parentNode.appendChild(curKeyElem);
 
             // Create listener for column change
-            let keyColumnElem = curKeyElem.querySelector('.jsonreader_keycolumn');
+            let keyColumnElem = curKeyElem.querySelector('.swac_jsonreader_keycolumn');
             keyColumnElem.addEventListener('change', this.onSelectColumn.bind(this));
         }
     }
@@ -331,9 +447,9 @@ export default class JsonReader extends View {
         evt.preventDefault();
 
         // Hide step 2 show step 1
-        let secondStepElem = this.requestor.querySelector('.jsonreader_configstep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_configstep');
         secondStepElem.classList.add('swac_dontdisplay');
-        let firstStepElem = this.requestor.querySelector('.jsonrader_fileselectstep');
+        let firstStepElem = this.requestor.querySelector('.swac_jsonreader_fileselectstep');
         firstStepElem.classList.remove('swac_dontdisplay');
     }
 
@@ -346,9 +462,9 @@ export default class JsonReader extends View {
         evt.preventDefault();
 
         // Hide step 2 show step 3
-        let secondStepElem = this.requestor.querySelector('.jsonreader_configstep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_configstep');
         secondStepElem.classList.add('swac_dontdisplay');
-        let thirdStepElem = this.requestor.querySelector('.jsonreader_previewstep');
+        let thirdStepElem = this.requestor.querySelector('.swac_jsonreader_previewstep');
         thirdStepElem.classList.remove('swac_dontdisplay');
 
         this.createPreview();
@@ -359,12 +475,12 @@ export default class JsonReader extends View {
         // Reset datasets
         this.datasets = {};
         // Get config json
-        let cjsonElem = this.requestor.querySelector('.jsonreader_configtext');
+        let cjsonElem = this.requestor.querySelector('.swac_jsonreader_configtext');
         let cjson;
         cjson = JSON.parse(cjsonElem.innerHTML);
 
-        let preElem = this.requestor.querySelector('.jsonreader_preview');
-        let tabElem = preElem.querySelector('.jsonreader_repeatForCollection');
+        let preElem = this.requestor.querySelector('.swac_jsonreader_preview');
+        let tabElem = preElem.querySelector('.swac_jsonreader_repeatForCollection');
 
         // Remove prev created tables
         let prevTables = preElem.querySelectorAll('.jsonreader_repeatedForCollection');
@@ -373,32 +489,32 @@ export default class JsonReader extends View {
         }
 
         // Build header
-        let repForKeyElem = this.requestor.querySelector('.jsonreader_repeatForDataKey');
+        let repForKeyElem = this.requestor.querySelector('.swac_jsonreader_repeatForDataKey');
         for (let curKeySet of cjson) {
             // Check if table allready exists
             let tableElem = preElem.querySelector('.jsonreader_col_' + curKeySet.collection);
             if (!tableElem) {
                 // Create table
                 tableElem = tabElem.cloneNode(true);
-                tableElem.classList.remove('jsonreader_repeatForCollection');
+                tableElem.classList.remove('swac_jsonreader_repeatForCollection');
                 tableElem.classList.add('jsonreader_col_' + curKeySet.collection);
                 tableElem.classList.add('jsonreader_repeatedForCollection');
                 tableElem.setAttribute('collection', curKeySet.collection);
                 tabElem.parentElement.appendChild(tableElem);
-                let captElem = tableElem.querySelector('.jsonreader_colcaption');
+                let captElem = tableElem.querySelector('.swac_jsonreader_colcaption');
                 captElem.innerHTML = curKeySet.collection;
             }
             // Add header
-            let hElem = tableElem.querySelector('.jsonreader_repeatForDataKey');
+            let hElem = tableElem.querySelector('.swac_jsonreader_repeatForDataKey');
             let headerElem = hElem.cloneNode(true);
-            headerElem.classList.remove('jsonreader_repeatForDataKey');
+            headerElem.classList.remove('swac_jsonreader_repeatForDataKey');
             headerElem.innerHTML = curKeySet.dbcolumn;
             hElem.parentElement.appendChild(headerElem);
 
             // Get level of sets
             let lvls = curKeySet.path.split('/');
             let dataset = this.jsondata;
-            console.log('TEST DBcol1',curKeySet.dbcolumn);
+            console.log('TEST DBcol1', curKeySet.dbcolumn);
             this.diveData(dataset, lvls, tableElem, null, curKeySet.dbcolumn);
         }
     }
@@ -422,16 +538,16 @@ export default class JsonReader extends View {
                     // Get row for set
                     let rowElem = tableElem.querySelector('.jsonreader_repeatedForDataset_' + setid);
                     if (!rowElem) {
-                        let rElem = tableElem.querySelector('.jsonreader_repeatForDataset');
+                        let rElem = tableElem.querySelector('.swac_jsonreader_repeatForDataset');
                         rowElem = rElem.cloneNode(true);
-                        rowElem.classList.remove('jsonreader_repeatForDataset');
+                        rowElem.classList.remove('swac_jsonreader_repeatForDataset');
                         rowElem.classList.add('jsonreader_repeatedForDataset_' + setid);
                         rElem.parentElement.appendChild(rowElem);
                     }
                     // Create column for value
-                    let cElem = rowElem.querySelector('.jsonreader_repeatForDataValue');
+                    let cElem = rowElem.querySelector('.swac_jsonreader_repeatForDataValue');
                     let colElem = cElem.cloneNode(true);
-                    colElem.classList.remove('jsonreader_repeatForDataValue');
+                    colElem.classList.remove('swac_jsonreader_repeatForDataValue');
                     colElem.classList.add('jsonreader_repeatedForDataValue');
                     colElem.innerHTML = dataset;
                     cElem.parentElement.appendChild(colElem);
@@ -441,7 +557,7 @@ export default class JsonReader extends View {
                         sets = [];
                     if (!sets[setid])
                         sets[setid] = {};
-                    console.log('TEST dbcol2',dbcolumn);
+                    console.log('TEST dbcol2', dbcolumn);
                     sets[setid][dbcolumn] = dataset;
                     this.datasets[tableElem.getAttribute('collection')] = sets;
 
@@ -466,9 +582,9 @@ export default class JsonReader extends View {
         evt.preventDefault();
 
         // Hide step "preview" shos step "config"
-        let secondStepElem = this.requestor.querySelector('.jsonreader_previewstep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_previewstep');
         secondStepElem.classList.add('swac_dontdisplay');
-        let thirdStepElem = this.requestor.querySelector('.jsonreader_configstep');
+        let thirdStepElem = this.requestor.querySelector('.swac_jsonreader_configstep');
         thirdStepElem.classList.remove('swac_dontdisplay');
     }
 
@@ -481,11 +597,11 @@ export default class JsonReader extends View {
         evt.preventDefault();
 
         // Hide step 2 show step 3
-        let secondStepElem = this.requestor.querySelector('.jsonreader_previewstep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_previewstep');
         secondStepElem.classList.add('swac_dontdisplay');
-        let thirdStepElem = this.requestor.querySelector('.jsonreader_savestep');
+        let thirdStepElem = this.requestor.querySelector('.swac_jsonreader_savestep');
         thirdStepElem.classList.remove('swac_dontdisplay');
-        
+
         console.log('TEST data', this.datasets);
     }
 
@@ -498,9 +614,9 @@ export default class JsonReader extends View {
         evt.preventDefault();
 
         // Hide step "save" and show step "preview"
-        let secondStepElem = this.requestor.querySelector('.jsonreader_savestep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_savestep');
         secondStepElem.classList.add('swac_dontdisplay');
-        let thirdStepElem = this.requestor.querySelector('.jsonreader_previewstep');
+        let thirdStepElem = this.requestor.querySelector('.swac_jsonreader_previewstep');
         thirdStepElem.classList.remove('swac_dontdisplay');
     }
 
@@ -513,9 +629,9 @@ export default class JsonReader extends View {
         evt.preventDefault();
 
         // Hide step "save" and show step "preview"
-        let secondStepElem = this.requestor.querySelector('.jsonreader_savestep');
+        let secondStepElem = this.requestor.querySelector('.swac_jsonreader_savestep');
         secondStepElem.classList.add('swac_dontdisplay');
-        let thirdStepElem = this.requestor.querySelector('.jsonrader_fileselectstep');
+        let thirdStepElem = this.requestor.querySelector('.swac_jsonreader_fileselectstep');
         thirdStepElem.classList.remove('swac_dontdisplay');
     }
 
@@ -530,17 +646,17 @@ export default class JsonReader extends View {
         while (!repeatedElem.classList.contains('jsonreader_repeatedForKey') && repeatedElem.parentElement) {
             repeatedElem = repeatedElem.parentElement;
         }
-        let colsElem = repeatedElem.querySelector('.jsonreader_keycolection');
+        let colsElem = repeatedElem.querySelector('.swac_jsonreader_keycolection');
         let collection = colsElem.value;
-        let columnsElem = repeatedElem.querySelector('.jsonreader_keycolumn');
+        let columnsElem = repeatedElem.querySelector('.swac_jsonreader_keycolumn');
         // Remove old options
         let oldopts = columnsElem.querySelectorAll('option');
         for (let curOpt of oldopts) {
             if (curOpt.value !== 'noselection')
                 curOpt.remove();
         }
-        
-        if(collection === 'noimport') {
+
+        if (collection === 'noimport') {
             return;
         }
 
@@ -574,12 +690,12 @@ export default class JsonReader extends View {
             repElem = repElem.parentElement;
         }
 
-        let jpath = repElem.querySelector('.jsonreader_keyname').innerHTML;
-        let collection = repElem.querySelector('.jsonreader_keycolection').value;
-        let column = repElem.querySelector('.jsonreader_keycolumn').value;
+        let jpath = repElem.querySelector('.swac_jsonreader_keyname').innerHTML;
+        let collection = repElem.querySelector('.swac_jsonreader_keycolection').value;
+        let column = repElem.querySelector('.swac_jsonreader_keycolumn').value;
 
         // Get config json
-        let cjsonElem = this.requestor.querySelector('.jsonreader_configtext');
+        let cjsonElem = this.requestor.querySelector('.swac_jsonreader_configtext');
         let cjson;
         if (cjsonElem.innerHTML !== '') {
             cjson = JSON.parse(cjsonElem.innerHTML);
@@ -608,7 +724,7 @@ export default class JsonReader extends View {
         cjsonElem.innerHTML = JSON.stringify(cjson, null, 2);
 
         // Update code in save button
-        let saveconfBtn = this.requestor.querySelector('.jsonreader_saveconf');
+        let saveconfBtn = this.requestor.querySelector('.swac_jsonreader_saveconf');
         saveconfBtn.setAttribute('href', 'data:text/csv;charset=utf-8,' + escape(cjsonElem.innerHTML));
     }
 
@@ -636,11 +752,11 @@ export default class JsonReader extends View {
             saveproms.push(Model.save(dataCapsule, true));
         }
 
-        Promise.all(saveproms).then(function(){
-            console.log('TEST suc',SWAC.lang.dict);
+        Promise.all(saveproms).then(function () {
+            console.log('TEST suc', SWAC.lang.dict);
             UIkit.modal.alert(SWAC.lang.dict.JsonReader.save_succsessfull);
-        }).catch(function(e) {
-            console.log('TEST error',SWAC.lang.dict);
+        }).catch(function (e) {
+            console.log('TEST error', SWAC.lang.dict);
             UIkit.modal.alert(SWAC.lang.dict.JsonReader.save_failed);
         });
 

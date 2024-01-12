@@ -1,0 +1,7 @@
+[
+    {"title": "Superradler", "medal": "Gold", "besitz": true},
+    {"title": "Wassersportler", "medal": "Silber", "besitz": true},
+    {"title": "Waldmeister", "medal": "Bronze", "besitz": true},
+    {"title": "Datendealer", "medal": "Gold", "besitz": false},
+    {"title": "Teamsportler", "medal": "Gold", "besitz": false}
+]

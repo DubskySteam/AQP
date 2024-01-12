@@ -1,0 +1,151 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gabarito', sans-serif;
+    background-color: white;
+}
+
+.gif {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+
+}
+
+.logo {
+    width: 15px;
+    height: 15px;
+    margin-right: 7px;
+    margin-left: 3px;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #2b2d42;
+    height: 100vh;
+    padding: 20px 10px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    vertical-align: auto;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ef233c;
+    border-radius: 15px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    padding-top: 0px;
+    background-color: white;
+}
+
+.main-content h1 {
+    padding-left: 10px;
+}
+
+.main-content h2 {
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: #2b2d42;
+    padding: 10px 20px;
+}
+
+.navbar-left,
+.navbar-center,
+.navbar-right {
+    flex: 1;
+    text-align: center;
+    font-size: 120%;
+}
+
+.navbar-left {
+    text-align: left;
+    font-weight: bold;
+    font-size: 140%;
+}
+
+.navbar-right {
+    text-align: right;
+    font-weight: bold;
+}
+
+.navbar-right:empty {
+    visibility: hidden;
+}
+
+.responsetable {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+
+.responsetable th {
+    padding: 0.5em;
+    background-color: #2b2d42;
+    color: white;
+}
+
+.responsetable td {
+    padding: 0.5em;
+    border: 0px;
+    text-align: center;
+}
+
+.responsetable thead th:first-child {
+    border-top-left-radius: 20px;
+}
+
+.responsetable thead th:last-child {
+    border-top-right-radius: 20px;
+}
+
+.dialog {
+    position: absolute;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}

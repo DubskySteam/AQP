@@ -17,7 +17,7 @@ export default class Loadingbar extends View {
             desc: 'Contains the visual progress element.'
         };
         this.desc.reqPerTpl[0] = {
-            selc: 'progress .swac_loadingbar_elem',
+            selc: '.swac_loadingbar_elem',
             desc: 'HTML progress element that would be modified to show the progress of an operation.'
         };
 
@@ -30,7 +30,8 @@ export default class Loadingbar extends View {
             this.options.value = null;
         this.desc.opts[1] = {
             name: 'max',
-            desc: 'The maximum that can be reached by the value'
+            desc: 'The maximum that can be reached by the value',
+            example: 100
         };
         if (!options.max)
             this.options.max = null;
@@ -56,7 +57,7 @@ export default class Loadingbar extends View {
     }
     init() {
         return new Promise((resolve, reject) => {
-            let loadingbar_elem = this.requestor.querySelector("progress[id='swac_loadingbar_elem']");
+            let loadingbar_elem = this.requestor.querySelector('.swac_loadingbar_elem');
             // Register value and max
             if (this.options.max !== null) {
                 loadingbar_elem.setAttribute("max", this.options.max);
@@ -79,7 +80,7 @@ export default class Loadingbar extends View {
 
     addValue(value = 1) {
         if (value > 0) {
-            let loadingbar_elem = this.requestor.querySelector("progress[id='swac_loadingbar_elem']");
+            let loadingbar_elem = this.requestor.querySelector('.swac_loadingbar_elem');
             this.options.value += value;
             loadingbar_elem.setAttribute("value", this.options.value);
             if (this.options.value >= this.options.max) {
@@ -89,12 +90,12 @@ export default class Loadingbar extends View {
     }
 
     errorState() {
-        let loadingbar_elem = this.requestor.querySelector("progress[id='swac_loadingbar_elem']");
+        let loadingbar_elem = this.requestor.querySelector('.swac_loadingbar_elem');
         loadingbar_elem.classList.add("uk-progress-danger");
     }
 
     clearErrorState() {
-        let loadingbar_elem = this.requestor.querySelector("progress[id='swac_loadingbar_elem']");
+        let loadingbar_elem = this.requestor.querySelector('.swac_loadingbar_elem');
         loadingbar_elem.classList.remove("uk-progress-danger");
     }
 
