@@ -3,15 +3,14 @@ const endpoints = [
     { url: "http://localhost:8080/SmartSocial/api/leaderboard/", category: "Leaderboard" },
     { url: "http://localhost:8080/SmartSocial/api/profilesettings/", category: "Profile settings" },
     { url: "http://localhost:8080/SmartSocial/api/quest/", category: "Quests" },
-    { url: "http://localhost:8080/SmartSocial/api/achievements/", category: "Achievements" },
+    { url: "http://localhost:8080/SmartSocial/api/achievement/", category: "Achievements" },
     { url: "http://localhost:8080/SmartSocial/api/utility/", category: "Utility" },
 ];
 
 const g_endpoints = [
     { url: "http://localhost:8080/SmartSocial/api/test/ping", category: "SmartSocial" },
     { url: "http://localhost:8080/SmartUser/smartuser/user/", category: "SmartUser" },
-    { url: "http://localhost:8080/SmartDataAirquality/smartdata/system/config", category: "SmartData" },
-    { url: "http://localhost:8080/SmartDataLyser/smartdatalyser/system/config", category: "SmartDatalyzer" },
+    { url: "http://localhost:8080/SmartData/smartdata/system/info", category: "SmartData" },
 ];
 
 function checkEndpointStatus(endpoint) {
