@@ -41,14 +41,89 @@
     </jdbc-connection-pool>
     <managed-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedExecutorService"></managed-executor-service>
     <managed-scheduled-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedScheduledExecutorService"></managed-scheduled-executor-service>
+    <context-service object-type="system-all" jndi-name="concurrent/__defaultContextService"></context-service>
+    <managed-thread-factory object-type="system-all" jndi-name="concurrent/__defaultManagedThreadFactory"></managed-thread-factory>
+    <jdbc-connection-pool datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource" name="SmartUser" res-type="javax.sql.ConnectionPoolDataSource">
+      <property name="ServerName" value="localhost"></property>
+      <property name="Url" value="jdbc:postgresql://localhost/smartuser"></property>
+      <property name="URL" value="jdbc:postgresql://localhost/smartuser"></property>
+      <property name="DatabaseName" value="smartuser"></property>
+      <property name="User" value="smartuser"></property>
+      <property name="Password" value="smartuser"></property>
+    </jdbc-connection-pool>
+    <jdbc-resource pool-name="SmartUser" jndi-name="jdbc/SmartUser"></jdbc-resource>
+    <jdbc-connection-pool datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource" name="smartmonitoring_airquality" res-type="javax.sql.ConnectionPoolDataSource">
+      <property name="TargetServerType" value="any"></property>
+      <property name="BinaryTransfer" value="true"></property>
+      <property name="UnknownLength" value="2147483647"></property>
+      <property name="DisableColumnSanitiser" value="false"></property>
+      <property name="UseSpNego" value="false"></property>
+      <property name="SspiServiceClass" value="POSTGRES"></property>
+      <property name="ProtocolVersion" value="0"></property>
+      <property name="AdaptiveFetch" value="false"></property>
+      <property name="SendBufferSize" value="-1"></property>
+      <property name="ReceiveBufferSize" value="-1"></property>
+      <property name="LoadBalanceHosts" value="false"></property>
+      <property name="ReadOnly" value="false"></property>
+      <property name="LogUnclosedConnections" value="false"></property>
+      <property name="GssResponseTimeout" value="5000"></property>
+      <property name="GssEncMode" value="allow"></property>
+      <property name="CleanupSavepoints" value="false"></property>
+      <property name="GssLib" value="auto"></property>
+      <property name="EscapeSyntaxCallMode" value="select"></property>
+      <property name="LogServerErrorDetail" value="true"></property>
+      <property name="CancelSignalTimeout" value="10"></property>
+      <property name="PortNumber" value="0"></property>
+      <property name="DefaultRowFetchSize" value="0"></property>
+      <property name="GroupStartupParameters" value="false"></property>
+      <property name="User" value="smartmonitoring_airquality"></property>
+      <property name="DatabaseMetadataCacheFieldsMiB" value="5"></property>
+      <property name="RecvBufferSize" value="-1"></property>
+      <property name="URL" value="jdbc:postgresql://localhost/smartmonitoring_airquality"></property>
+      <property name="Url" value="jdbc:postgresql://localhost/smartmonitoring_airquality"></property>
+      <property name="TcpNoDelay" value="true"></property>
+      <property name="JaasApplicationName" value="pgjdbc"></property>
+      <property name="AllowEncodingChanges" value="false"></property>
+      <property name="JaasLogin" value="true"></property>
+      <property name="PrepareThreshold" value="5"></property>
+      <property name="ReWriteBatchedInserts" value="false"></property>
+      <property name="AdaptiveFetchMinimum" value="0"></property>
+      <property name="HideUnprivilegedObjects" value="false"></property>
+      <property name="SocketTimeout" value="0"></property>
+      <property name="HostRecheckSeconds" value="10"></property>
+      <property name="Password" value="smartmonitoring_airquality"></property>
+      <property name="ConnectTimeout" value="10"></property>
+      <property name="SslResponseTimeout" value="5000"></property>
+      <property name="ApplicationName" value="PostgreSQL JDBC Driver"></property>
+      <property name="AdaptiveFetchMaximum" value="-1"></property>
+      <property name="PreparedStatementCacheQueries" value="256"></property>
+      <property name="Sslfactory" value="org.postgresql.ssl.LibPQFactory"></property>
+      <property name="Ssl" value="false"></property>
+      <property name="PreparedStatementCacheSizeMiB" value="5"></property>
+      <property name="ReadOnlyMode" value="transaction"></property>
+      <property name="LoginTimeout" value="0"></property>
+      <property name="ServerName" value="localhost"></property>
+      <property name="DatabaseMetadataCacheFields" value="65536"></property>
+      <property name="QuoteReturningIdentifiers" value="true"></property>
+      <property name="TcpKeepAlive" value="false"></property>
+    </jdbc-connection-pool>
+    <jdbc-resource pool-name="smartmonitoring_airquality" jndi-name="jdbc/SmartMonitoringAirquality"></jdbc-resource>
   </resources>
   <servers>
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
+      <application-ref ref="AdminPanel" virtual-servers="server"></application-ref>
+      <application-ref ref="SmartSocial" virtual-servers="server"></application-ref>
+      <application-ref ref="SmartUser" virtual-servers="server"></application-ref>
+      <application-ref ref="SmartData" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedScheduledExecutorService"></resource-ref>
+      <resource-ref ref="concurrent/__defaultContextService"></resource-ref>
+      <resource-ref ref="concurrent/__defaultManagedThreadFactory"></resource-ref>
+      <resource-ref ref="jdbc/SmartUser"></resource-ref>
+      <resource-ref ref="jdbc/SmartMonitoringAirquality"></resource-ref>
     </server>
   </servers>
   <nodes>
@@ -108,6 +183,23 @@
       <stuck-threads-checker></stuck-threads-checker>
       <microprofile-healthcheck-configuration></microprofile-healthcheck-configuration>
       <microprofile-fault-tolerance-configuration></microprofile-fault-tolerance-configuration>
+      <ejb-container>
+        <ejb-timer-service></ejb-timer-service>
+      </ejb-container>
+      <web-container>
+        <session-config>
+          <session-manager>
+            <store-properties></store-properties>
+            <manager-properties></manager-properties>
+          </session-manager>
+          <session-properties></session-properties>
+        </session-config>
+      </web-container>
+      <microprofile-openapi-configuration></microprofile-openapi-configuration>
+      <jdbc-config-source-configuration></jdbc-config-source-configuration>
+      <rest-config></rest-config>
+      <environment-warning-configuration></environment-warning-configuration>
+      <cdi-service></cdi-service>
       <diagnostic-service></diagnostic-service>
       <security-service>
         <auth-realm classname="com.sun.enterprise.security.auth.realm.file.FileRealm" name="admin-realm">
@@ -523,5 +615,83 @@
   </secure-admin>
   <deployment-groups></deployment-groups>
   <clusters></clusters>
-  <applications></applications>
+  <applications>
+    <application deployment-time="3067" context-root="/admin" object-type="user" name="AdminPanel" location="${com.sun.aas.instanceRootURI}/applications/AdminPanel/" time-deployed="1705055224594">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111742499065888768"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="archiveType" value="war"></property>
+      <property name="preserveAppScopedResources" value="false"></property>
+      <property name="defaultAppName" value="admin-115413763035069725582.4"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/AdminPanel/admin-115413763035069725582.4.war"></property>
+      <property name="implicitCdiEnabled" value="true"></property>
+      <module name="AdminPanel">
+        <engine sniffer="cdi"></engine>
+        <engine sniffer="ejb"></engine>
+        <engine sniffer="health"></engine>
+        <engine sniffer="metrics"></engine>
+        <engine sniffer="openapi"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="config"></engine>
+        <engine sniffer="jpa"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+    <application deployment-time="11235" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705074889365">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111743766022651904"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="archiveType" value="war"></property>
+      <property name="preserveAppScopedResources" value="false"></property>
+      <property name="defaultAppName" value="SmartSocial-21440449521802214252.2"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-21440449521802214252.2.war"></property>
+      <property name="implicitCdiEnabled" value="true"></property>
+      <module name="SmartSocial">
+        <engine sniffer="cdi"></engine>
+        <engine sniffer="ejb"></engine>
+        <engine sniffer="health"></engine>
+        <engine sniffer="metrics"></engine>
+        <engine sniffer="openapi"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="config"></engine>
+        <engine sniffer="jpa"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+    <application deployment-time="9116" context-root="/SmartUser" object-type="user" name="SmartUser" location="${com.sun.aas.instanceRootURI}/applications/SmartUser/" time-deployed="1705074933954">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="0"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="archiveType" value="war"></property>
+      <property name="preserveAppScopedResources" value="false"></property>
+      <property name="defaultAppName" value="SmartUser11088104336518931612"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartUser/SmartUser11088104336518931612.war"></property>
+      <property name="implicitCdiEnabled" value="true"></property>
+      <module name="SmartUser">
+        <engine sniffer="health"></engine>
+        <engine sniffer="metrics"></engine>
+        <engine sniffer="openapi"></engine>
+        <engine sniffer="cdi"></engine>
+        <engine sniffer="config"></engine>
+        <engine sniffer="jpa"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+    <application deployment-time="1062" context-root="/SmartData" object-type="user" name="SmartData" location="${com.sun.aas.instanceRootURI}/applications/SmartData/" time-deployed="1705075156654">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="0"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="archiveType" value="war"></property>
+      <property name="preserveAppScopedResources" value="false"></property>
+      <property name="defaultAppName" value="SmartData14780004298106094157"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartData/SmartData14780004298106094157.war"></property>
+      <property name="implicitCdiEnabled" value="true"></property>
+      <module name="SmartData">
+        <engine sniffer="health"></engine>
+        <engine sniffer="metrics"></engine>
+        <engine sniffer="openapi"></engine>
+        <engine sniffer="cdi"></engine>
+        <engine sniffer="config"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+  </applications>
 </domain>
