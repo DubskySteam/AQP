@@ -1,1 +1,11 @@
 .DS_Store
+
+# Payara Server specific
+env/payara6/glassfish/domains/domain1/logs/*
+env/payara6/glassfish/domains/domain1/generated/*
+env/payara6/glassfish/domains/domain1/osgi-cache/*
+
+# More generic patterns (optional)
+*.log
+*.tmp
+*.temp
