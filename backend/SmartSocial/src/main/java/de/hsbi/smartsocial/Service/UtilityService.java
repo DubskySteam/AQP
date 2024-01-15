@@ -5,14 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javadocmd.simplelatlng.LatLng;
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
+import de.fhbielefeld.smartuser.securitycontext.SmartPrincipal;
 import de.hsbi.smartsocial.Exceptions.APICallException;
+import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
 import de.hsbi.smartsocial.Exceptions.RefreshException;
 import de.hsbi.smartsocial.Model.DataPoint;
 import de.hsbi.smartsocial.Model.ProfileSetting;
+import de.hsbi.smartsocial.Model.Userachievement;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -149,6 +154,25 @@ public class UtilityService {
      */
     public Response awardUsers() {
         return Response.ok(Response.Status.NOT_IMPLEMENTED).build();
+    }
+
+    /**
+     * Checks if the user is valid
+     * TODO: SmartUserAuth is semi-broken at the moment. If it's fixes, reverse the return values.
+     */
+    public static boolean isUserValid(Long userId, ContainerRequestContext requestContext) {
+        SecurityContext sc = requestContext.getSecurityContext();
+        if (sc != null) {
+            SmartPrincipal sp = (SmartPrincipal) sc.getUserPrincipal();
+            if (sp != null) {
+                for (Long curSet : sp.getContextRight().getIds()) {
+                    if (curSet.equals(userId)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 }
