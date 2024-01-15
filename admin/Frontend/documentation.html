@@ -23,7 +23,8 @@
         <nav class="sidebar">
             <ul>
                 <li><a href="index.html">✅ API Endpoints</a></li>
-                <li><a href="http://localhost:15672" target="_blank"><img src="res/rabbitmq_logo.png" class="logo" />RabbitMQ</a></li>
+                <li><a href="http://localhost:15672" target="_blank"><img src="res/rabbitmq_logo.png"
+                            class="logo" />RabbitMQ</a></li>
                 <li><a href="debug.html">🔧 Debug</a></li>
                 <li><a href="manager.html">🎛️ Payara Manager</a></li>
                 <li><a href="documentation.html">📖 Documentation</a></li>
@@ -36,8 +37,21 @@
             </ul>
         </nav>
         <main class="main-content">
-            <h1>API Documentation</h1>            
-            <div id="api-endpoints-container"></div>
+            <h1>API Documentation</h1>
+            <div class="button-group">
+                <button onclick="sortCards('group')">Group</button>
+                <button onclick="sortCards('achievement')">Achievement</button>
+                <button onclick="sortCards('leaderboard')">Leaderboard</button>
+                <button onclick="sortCards('profilesettings')">Profile-Settings</button>
+                <button onclick="sortCards('quest')">Quest</button>
+                <button onclick="sortCards('utility')">Utility</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" onkeyup="searchCards()" placeholder="Search for endpoints...">
+            </div>
+
+            <div id="api-cards" class="grid-container"></div>
         </main>
     </div>
     <script src="js/docu.js"></script>

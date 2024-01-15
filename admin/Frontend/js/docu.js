@@ -1,57 +1,62 @@
+let apiData = [];
+
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://localhost:8080/SmartSocial/api/openapi.json')
-        .then(response => response.json())
-        .then(swaggerJson => {
-            displayEndpoints(swaggerJson);
-        })
-        .catch(error => console.error('Error loading Swagger JSON:', error));
+    loadApiData();
 });
 
-function displayEndpoints(swaggerJson) {
-    const container = document.getElementById('api-endpoints-container');
+function loadApiData() {
+    fetch('http://localhost:8080/SmartSocial/api/openapi.json')
+        .then(response => response.json())
+        .then(data => {
+            apiData = Object.entries(data.paths);
+            renderCards(apiData);
+        });
+}
+
+function renderCards(data) {
+    const container = document.getElementById('api-cards');
     container.innerHTML = '';
+    data.forEach(([path, details]) => {
+        Object.keys(details).forEach(method => {
+            const card = document.createElement('div');
+            card.className = 'api-card ' + `${method}-method`;
 
-    for (const path in swaggerJson.paths) {
-        for (const method in swaggerJson.paths[path]) {
-            const endpoint = swaggerJson.paths[path][method];
-            const card = createEndpointCard(path, method, endpoint);
+            const responses = details[method].responses;
+            const firstResponseKey = Object.keys(responses)[0];
+            const firstResponse = responses[firstResponseKey];
+            const description = firstResponse.description || 'No description available';
+
+            const trimmedPath = path.replace('api/', '');
+
+            card.innerHTML = `
+                <h4>${trimmedPath}</h4>
+                <p>${description}</p>
+            `;
             container.appendChild(card);
+        });
+    });
+}
+
+function truncateString(str, num) {
+    if (str.length <= num) {
+        return str;
+    }
+    return str.slice(0, num) + '...';
+}
+
+function sortCards(category) {
+    const sortedData = apiData.filter(([path, details]) => path.includes(category));
+    renderCards(sortedData);
+}
+
+function searchCards() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.api-card');
+    cards.forEach(card => {
+        if (card.innerText.toLowerCase().includes(searchInput)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
         }
-    }
+    });
 }
-
-function createEndpointCard(path, method, endpoint) {
-    const card = document.createElement('div');
-    card.className = 'api-card';
-    card.style.backgroundColor = getBackgroundColorForMethod(method);
-
-    const title = document.createElement('h3');
-    title.textContent = `${method.toUpperCase()} ${path}`;
-
-    const description = document.createElement('p');
-    const successResponse = endpoint.responses["200"] || {};
-    description.textContent = successResponse.description || 'No description available';
-
-    const httpCode = document.createElement('p');
-    httpCode.textContent = `HTTP Status Code: 200`;
-
-    card.appendChild(title);
-    card.appendChild(description);
-    card.appendChild(httpCode);
-
-    return card;
-}
-
-function getBackgroundColorForMethod(method) {
-    switch (method.toLowerCase()) {
-        case 'get':
-            return 'lightgreen';
-        case 'post':
-            return '#fcbc26';
-        case 'delete':
-            return '#fc265f';
-        default:
-            return 'lightgray';
-    }
-}
-
