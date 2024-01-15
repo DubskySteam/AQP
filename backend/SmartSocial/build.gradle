@@ -58,6 +58,8 @@ dependencies {
   implementation group: 'com.javadocmd', name: 'simplelatlng', version: '1.4.0'
   // RabbitMQ DEPENDENCIES
   implementation('com.rabbitmq:amqp-client:5.20.0')
+  // SmartUserAuth
+  implementation files('../war/SmartUserAuth.jar')
 }
 
 test {
