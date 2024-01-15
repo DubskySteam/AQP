@@ -6,47 +6,47 @@
     },
     {
         "name": "Get Group by ID",
-        "url": "http://localhost:8080/SmartSocial/api/group/getGroupById/",
+        "url": "http://localhost:8080/SmartSocial/api/group/getById/",
         "method": "GET"
     },
     {
         "name": "Get Group by name",
-        "url": "http://localhost:8080/SmartSocial/api/group/getGroupByName/",
+        "url": "http://localhost:8080/SmartSocial/api/group/getByName/",
         "method": "GET"
     },
     {
         "name": "Get Group by user",
-        "url": "http://localhost:8080/SmartSocial/api/group/getGroupByUser/",
+        "url": "http://localhost:8080/SmartSocial/api/group/getByUserId/",
         "method": "GET"
     },
     {
         "name": "Get Groupmembers by ID",
-        "url": "http://localhost:8080/SmartSocial/api/group/getMembersByGroup/",
+        "url": "http://localhost:8080/SmartSocial/api/group/getMembersByGroupId/",
         "method": "GET"
     },
     {
         "name": "Get Groupmembers by ID (SV)",
-        "url": "http://localhost:8080/SmartSocial/api/group/getMembersByGroup_SV/",
+        "url": "http://localhost:8080/SmartSocial/api/group/getMembersByGroupId_SV/",
         "method": "GET"
     },
     {
         "name": "Get Groups",
-        "url": "http://localhost:8080/SmartSocial/api/group/getAllGroups",
+        "url": "http://localhost:8080/SmartSocial/api/group/getAll",
         "method": "GET"
     },
     {
         "name": "Join Group",
-        "url": "http://localhost:8080/SmartSocial/api/group/joinGroup/",
+        "url": "http://localhost:8080/SmartSocial/api/group/join/",
         "method": "GET"
     },
     {
         "name": "Delete Group",
-        "url": "http://localhost:8080/SmartSocial/api/group/deleteGroup/",
+        "url": "http://localhost:8080/SmartSocial/api/group/delete/",
         "method": "DELETE"
     },
     {
         "name": "Create group",
-        "url": "http://localhost:8080/SmartSocial/api/group/createGroup",
+        "url": "http://localhost:8080/SmartSocial/api/group/create",
         "method": "POST",
         "headers": {
             "Content-Type": "application/json"

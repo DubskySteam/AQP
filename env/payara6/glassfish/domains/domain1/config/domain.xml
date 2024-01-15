@@ -113,10 +113,10 @@
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
       <application-ref ref="AdminPanel" virtual-servers="server"></application-ref>
-      <application-ref ref="SmartSocial" virtual-servers="server"></application-ref>
       <application-ref ref="SmartUser" virtual-servers="server"></application-ref>
       <application-ref ref="SmartData" virtual-servers="server"></application-ref>
       <application-ref ref="SmartMonitoringBackend" virtual-servers="server"></application-ref>
+      <application-ref ref="SmartSocial" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
@@ -637,26 +637,6 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/SmartSocial" deployment-time="11235" object-type="user" name="SmartSocial" time-deployed="1705074889365" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/">
-      <property name="org.glassfish.ejb.container.application_unique_id" value="111743766022651904"></property>
-      <property name="cdiDevModeEnabled" value="false"></property>
-      <property name="archiveType" value="war"></property>
-      <property name="preserveAppScopedResources" value="false"></property>
-      <property name="defaultAppName" value="SmartSocial-21440449521802214252.2"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-21440449521802214252.2.war"></property>
-      <property name="implicitCdiEnabled" value="true"></property>
-      <module name="SmartSocial">
-        <engine sniffer="cdi"></engine>
-        <engine sniffer="ejb"></engine>
-        <engine sniffer="health"></engine>
-        <engine sniffer="metrics"></engine>
-        <engine sniffer="openapi"></engine>
-        <engine sniffer="security"></engine>
-        <engine sniffer="config"></engine>
-        <engine sniffer="jpa"></engine>
-        <engine sniffer="web"></engine>
-      </module>
-    </application>
     <application context-root="/SmartUser" deployment-time="9116" object-type="user" name="SmartUser" time-deployed="1705074933954" location="${com.sun.aas.instanceRootURI}/applications/SmartUser/">
       <property name="org.glassfish.ejb.container.application_unique_id" value="0"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
@@ -703,6 +683,25 @@
       <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartMonitoringBackend/SmartMonitoringBackend6460723504470273664.war"></property>
       <property name="implicitCdiEnabled" value="true"></property>
       <module name="SmartMonitoringBackend">
+        <engine sniffer="cdi"></engine>
+        <engine sniffer="ejb"></engine>
+        <engine sniffer="health"></engine>
+        <engine sniffer="metrics"></engine>
+        <engine sniffer="openapi"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="config"></engine>
+        <engine sniffer="jpa"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+    <application deployment-time="12419" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705312847713">
+      <property name="archiveType" value="war"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="defaultAppName" value="SmartSocial-215118486196220234085.2"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-215118486196220234085.2.war"></property>
+      <property name="java-web-start-enabled" value="true"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111743766022651904"></property>
+      <module name="SmartSocial">
         <engine sniffer="cdi"></engine>
         <engine sniffer="ejb"></engine>
         <engine sniffer="health"></engine>

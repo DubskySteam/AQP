@@ -31,7 +31,17 @@
     },
     {
         "name": "Set image by Id",
-        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setImage/",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setPicture/",
+        "method": "POST"
+    },
+    {
+        "name": "Get device by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getDevice/",
+        "method": "GET"
+    },
+    {
+        "name": "Set device by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setDevice/",
         "method": "POST"
     }
 ]

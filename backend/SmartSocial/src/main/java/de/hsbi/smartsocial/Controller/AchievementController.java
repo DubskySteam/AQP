@@ -1,5 +1,6 @@
 package de.hsbi.smartsocial.Controller;
 
+import de.fhbielefeld.smartuser.annotations.SmartUserAuth;
 import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
 import de.hsbi.smartsocial.Model.Achievement;
 import de.hsbi.smartsocial.Model.Userachievement;
@@ -72,6 +73,7 @@ public class AchievementController {
     @GET
     @Path("/getByUserId/{id}")
     @Produces("application/json")
+    @SmartUserAuth
     @ApiResponse(responseCode = "200", description = "Returns all achievements of a user")
     public Response getByUserId(@PathParam("id") Long id) {
         List<Userachievement> userachievement = achievementService.getByUserId(id);
