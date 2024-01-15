@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="data_upload_title">Data > Upload</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/data/upload.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        
+        <h1>Diese Seite muss überarbeitet werden!</h1>
+
+        <article class="uk-article">
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="">Datenupload</a></h1>
+            <p class="uk-article-meta">Wählen Sie Dateien aus, deren Daten in die Datenbank importiert werden sollen</p>
+            <div style="display: none;" class="uk-alert uk-alert-danger"></div>
+            <div id="noobservedobjectswarning" class="swac_dontdisplay uk-card uk-card-body">
+                <img src="/SWAC/swac/components/Icon/imgs/warning.svg" width="100" height="100" alt="">
+                Bisher wurden keine beobachtbaren Objekte angelegt, daher können keine Daten hochgeladen werden.
+            </div>
+            <div id="datauploadarea">
+                <form class="uk-form-stacked">
+                    <label class="uk-form-label" for="observedobject">ObservedObject</label>
+                    <div id="observedobject_select" swa="Select FROM tbl_observedobject" style="width: 80%; float: left;">
+                        <select name="ooid" class="uk-select" id="observedobject">
+                            <option value="0">Keine Auswahl</option>
+                            <option value="{id}" class="swac_repeatForSet">{name}</option>
+                        </select>
+                    </div>
+                    <button id="gotoobservedobject" class="uk-button" uk-tooltip="Zum ObservedObject gehen">Zur Objektansicht</button>
+                    <div id="fileupload" swa="Upload"></div>
+                </form>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>
+

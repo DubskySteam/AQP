@@ -1,0 +1,54 @@
+{
+    "attributes": [
+        {
+            "isAutoIncrement": false,
+            "isNullable": false,
+            "name": "measurementtype_id",
+            "isIdentity": false,
+            "type": "int8"
+        },
+        {
+            "isAutoIncrement": false,
+            "isNullable": true,
+            "name": "importkey",
+            "isIdentity": false,
+            "type": "varchar"
+        },
+        {
+            "isAutoIncrement": false,
+            "isNullable": true,
+            "name": "name",
+            "isIdentity": false,
+            "type": "varchar"
+        },
+        {
+            "isAutoIncrement": false,
+            "isNullable": true,
+            "name": "description",
+            "isIdentity": false,
+            "type": "varchar"
+        },
+        {
+            "isAutoIncrement": false,
+            "isNullable": true,
+            "name": "referencedoo_id",
+            "isIdentity": false,
+            "type": "int8"
+        },
+        {
+            "isAutoIncrement": true,
+            "isNullable": false,
+            "name": "id",
+            "isIdentity": true,
+            "defaultvalue": "nextval('smartmonitoring.tbl_ootype_join_mtype_id_seq'::regclass)",
+            "type": "int8"
+        },
+        {
+            "isAutoIncrement": false,
+            "isNullable": false,
+            "name": "observedobjecttype_id",
+            "isIdentity": false,
+            "type": "int8"
+        }
+    ]
+}

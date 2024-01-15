@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": true,
+            "name": "PVServe Dunkelkennliniengerät",
+            "description": "Erfassung von Dunkelkennliniendaten vom PVServe"
+        }
+    ]
+}

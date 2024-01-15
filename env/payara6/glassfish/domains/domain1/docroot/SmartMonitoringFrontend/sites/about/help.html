@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="about_help_title">SmartMonitoring > Help</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/object/list.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+        
+        <article>
+            <h1 class="uk-article-title">SENSORpi Setup</h1>
+            <p>Diese Anleitung begleitet Sie Schritt f&uuml;r Schritt durch die Einrichtung Ihres SENSORpi.</p>
+            <ol>
+                <li>Erstellen Sie einen HotSpot mit den Namen "NaoSpot" und dem Passwort "Nao2022!"</li>
+                <li>Schließen Sie den SENSORpi an den Strom an</li>
+                <li>Öffnen Sie <a href="https://scl.fh-bielefeld.de/SmartMonitoringAirquality/sites/object/list.html">https://scl.fh-bielefeld.de/SmartMonitoringAirquality/sites/object/list.html</a></li>
+                <li>Suchen Sie ihren SENSORpi und klicken Sie auf den Eintrag</li>
+                <li>Klicken Sie auf "Zum Gerät gehen"</li>
+                <li>Klicken Sie im Menü auf "Einstellungen / WLAN-Verbindung"</li>
+                <li>Geben Sie die Zugangsdaten Ihres Smartphone Hotspots ein</li>
+                <li>Klicken Sie auf Bestätigen und warten Sie, biss der SENSORpi sich mit Ihrem Hotspot verbunden hat.</li>
+            </ol>
+            <h1 class="uk-article-title">SENSORpi Nutzung</h1>
+            <p>Diese Anleitung begleitete Sie bei der Nutzung des SENSORpi. Bei diese Variante benötigt ihr Smartphone anfangs eine aktive Internetverbindung.</p>
+            <ol>
+                <li>Sorgen Sie dafür, dass ihr Smartphone eine Internetverbindung hat</li>
+                <li>Sorgen Sie dafür, dass der Hotspot ihres Smartphones aktiv ist</li>
+                <li>Schließen Sie den SENSORpi an den Strom an</li>
+                <li>Öffnen Sie <a href="https://scl.fh-bielefeld.de/SmartMonitoringAirquality/sites/object/list.html">https://scl.fh-bielefeld.de/SmartMonitoringAirquality/sites/object/list.html</a></li>
+                <li>Suchen Sie ihren SENSORpi und klicken Sie auf den Eintrag</li>
+                <li>Klicken Sie auf "Zum Gerät gehen"</li>
+                <li>Jetzt können Sie die Internetverbindung trennen</li>
+                <li>Jetzt können Sie die Erfassung starten</li>
+            </ol>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

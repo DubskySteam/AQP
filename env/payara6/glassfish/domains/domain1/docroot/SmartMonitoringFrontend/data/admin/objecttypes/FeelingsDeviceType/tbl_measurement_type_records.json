@@ -1,0 +1,19 @@
+{
+    "records": [
+        {
+            "name": "state",
+            "description": "Gerätezustand: Bitte immer Bedeutung der Werte angeben.",
+            "type": "integer"
+        },
+        {
+            "name": "id",
+            "description": "Identifikationsnummer: Bitte immer mit Alias verwenden.",
+            "type": "integer"
+        },
+        {
+            "name": "ts",
+            "description": "Zeitstempel",
+            "type": "timestamp"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "records": [
+        {
+            "name": "ts",
+            "description": "Zeitstempel",
+            "type": "timestamp"
+        },
+        {
+            "unit": "%",
+            "name": "humidity",
+            "description": "Luftfeuchtigkeit",
+            "type": "float8"
+        },
+        {
+            "unit": "C",
+            "name": "temperature",
+            "description": "Temperatur",
+            "type": "float8"
+        },
+        {
+            "unit": "ppm",
+            "name": "co2",
+            "description": "Kohlenstoffdioxidgehalt",
+            "type": "integer"
+        },
+        {
+            "name": "count",
+            "description": "Anzahl",
+            "type": "integer"
+        }
+    ]
+}

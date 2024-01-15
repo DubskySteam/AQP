@@ -1,0 +1,96 @@
+\resizebox{\textwidth}{!}{
+	\begin{tikzpicture}
+	\begin{umlpackage}[x=0, y=0]{jobs}
+	\umlclass[x=0, y=0,type=interface]{JobInterface}{}{
+		+run() : JobResult\\ +setId(id : int)\\ +getId() : int\\ +setName(name : String)\\ +getName() : String\\ +setDescription(description : String)\\ +getDescription() : String\\ +setResponsiblePerson(person : Person)\\ +getResponsiblePerson() : Person\\ +setStartTime(start : Date)\\ +startTime() : Date\\+setEndTime(end : Date)\\ +endTime() : Date\\ +getStatus() : int[]\\ +hasTimeout() : boolean\\ +getTimeout() : long\\ +setTimeout(timeout : long)\\ +setParameters(params : JobParameter[]) : boolean\\ +setParametersFromJob(params : JobParameter[]) : boolean\\ +getParameters() : JobParameterInfo[]\\ +setNextOnSuccess(nextJob : JobInterface)\\ +setNextOnFailure(nextJob : JobInterface)\\ +setInterval(interval : String)\\ +interval() : String\\ +stop()\\ +isStopped() : boolean\\ +abort()\\ +nextOnSuccess() : JobInterface\\ +nextOnFailure() : JobInterface\\ +nexParams() : JobParameter[]
+	}
+	\umlclass[x=14,y=1.4]{Person}{
+		-name : String\\ -email : String
+	}{
+		+Person(name : String, email : String)\\ +getName() : String\\ +getEMail() : String
+	}
+	\umlclass[x=0,y=-11]{JobResult}{
+		-success : boolean\\ -message : String\\ -result : Byte[]\\ -MIMEType : String\\ -outputParams : JobParameter[]
+	}{
+		+JobResult()\\ +JobResult(success: boolean, message : String)\\ +hasSucceded() : boolean\\ +getMessage() : String\\ +getResult() : Byte[]\\ +getMIMEType() : String\\ +getParams()
+	}
+	\umlclass[x=10,y=-4]{JobParameter}{
+		-type : ParameterType\\ -name : String\\ -intP : int\\ -doubleP : double\\ -stringP : string\\ -fileId : int
+	}{
+		+JobParameter(name : String, i : int)\\ +JobParameter(name : String, d : double)\\ +JobParameter(name : String, s : String)\\ +JobParameter(name : String, fileId : int, nothing : boolean)\\ +getType() : ParameterType\\ +getName() : String\\ +getInt() : int\\ +getDouble() : double\\ +getString() : String\\ +getFileId() : int
+	}
+	\umlclass[x=14,y=-10,type=enum]{ParameterType}{
+		INT, DOUBLE, STRING, FILEID
+	}{
+		
+	}
+	\umlclass[x=8,y=-12]{JobParameterInfo}{
+		-type : ParameterType\\ -name : String\\ -description : String
+	}{
+		+getType() : ParameterType\\ +getName() : String\\ +getDescription() : String\\ +check(i : int) : boolean\\ +check(d : double) : boolean\\ +checkId(fileId : int) : boolean\\ +check(s : String) : boolean\\ +getHint(i : int) : String\\ +getHint(d : double) : String\\ +getHintId(fileId : int) : boolean\\ +getHint(s : String) : boolean
+	}
+	\umlclass[x=10, y=5]{JobController}{
+		\umlstatic{-jobController : JobController}\\ -jobs : ArrayList\textless{}JobInterface\textgreater{}
+	}{
+		-JobController()\\ \umlstatic{+getInstance() : JobController}\\ addJob(job : JobInterface) : boolean\\ +scheduleJob(job : JobInterface)\\ +scheduleJobOnce(job : JobInterface, delay : long)
+	}
+	\umlclass[x=8, y=1.5]{JobRunner}{
+		-job : JobInterface\\ -timer : Timer
+	}{
+		+run()
+	}
+	\umlclass[x=-3, y=-17]{PingJob}{
+
+	}{
+		
+	}
+	\umlclass[x=0, y=-17]{RESTJob}{
+
+	}{
+		
+	}
+	\umlclass[x=3, y=-17]{EMailJob}{
+
+	}{
+		
+	}
+	\umlclass[x=6, y=-17]{CommandJob}{
+
+	}{
+		
+	}
+	\umlclass[x=9, y=-17]{DockerJob}{
+
+	}{
+		
+	}
+	\end{umlpackage}
+	\begin{umlpackage}[x=-4, y=-22]{server}
+	\umlclass[x=0, y=0]{Receiver}{
+
+	}{
+		+createNewJob(job : JobInterface)\\ +startJob(job : JobInterface)\\ +getDashboardInfo()\\ +getJobStatus(job : JobInterface)\\ +updateJob(job : JobInterface)
+	}
+	\umlclass[x=10, y=0]{DBHandler}{
+		\umlstatic{-handler : DBHandler}\\ \umlstatic{-smartData : Connection}
+	}{
+		-DBHandler()\\ \umlstatic{+getInstance() : DBHandler}\\ +save(result : JobResult) : boolean\\ +addJob(job : JobInterface) : boolean\\ +updateJob(job : JobInterface) : boolean\\ +getLogs() : Log[]\\ +getJobs() : JobInterface[]\\ +getJob(id : int) : JobInterface\\ +existsUnseenFailure() : boolean\\ +getUnseenFailures() : JobResult[]\\ +setLogSeen(log : Log) : boolean\\ +getParameterMap() : Map<String>\\+removeParameterMap(jobPreviousId : int, jobNextId : int, map : Map<String>)\\ +addParameterMap(jobPreviousId : int, jobNextId : int, map : Map<String>)
+	}
+	\umlclass[x=5, y=-6.5]{Log}{
+		-timestamp : Date\\ -jobName : String\\ -jobId : int\\ -success : boolean\\ -message : String
+	}{
+		+Log(timestamp : Date, job : JobInterface, success : boolean, message : String)\\ +getTimestamp() : Date\\ +getJobName() : String\\ +getJobId() : int\\ +getStatus() : boolean\\ +getMessage() : String
+	}
+	\end{umlpackage}
+	\umlcompo{JobRunner}{JobInterface}
+	\umlcompo{JobParameterInfo}{ParameterType}
+	\umlcompo{JobParameter}{ParameterType}
+	\umlaggreg{JobController}{JobInterface}
+	\umlaggreg{JobResult}{JobParameter}
+	\umlimpl{PingJob}{JobInterface}
+	\umlimpl{RESTJob}{JobInterface}
+	\umlimpl{EMailJob}{JobInterface}
+	\umlimpl{CommandJob}{JobInterface}
+	\umlimpl{DockerJob}{JobInterface}
+	\end{tikzpicture}
+}

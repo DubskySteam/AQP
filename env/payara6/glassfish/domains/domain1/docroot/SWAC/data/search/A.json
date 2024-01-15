@@ -1,0 +1,22 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Apfel",
+            "desc": "Kernobst",
+            "cat": "Kernobst"
+        },
+        {
+            "id": 2,
+            "title": "Apfelbeere",
+            "desc": "Aroniabeeren oder Schwarze Eberesche",
+            "cat": "Kernobst"
+        },
+        {
+            "id": 3,
+            "title": "Aprikose",
+            "desc": "Steinobst",
+            "cat": "Steinobst"
+        }
+    ]
+}

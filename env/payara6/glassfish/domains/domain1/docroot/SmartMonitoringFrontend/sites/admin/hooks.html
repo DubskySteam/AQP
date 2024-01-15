@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de" class="uk-height-1-1 uk-width-1-1">
+    <head>
+        <title>SmartMonitoring - Einstellungen: Hooks</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/admin/hooks.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        
+        <h1>Diese Seite muss überarbeitet werden!</h1>
+
+            <article class="uk-article">
+                <h1 class="uk-article-title"><a class="uk-link-reset" href="">Einstellungen: Hooks</a></h1>
+                <p class="uk-article-meta">Hier können Sie die Schnittstellen des SmartMonitoring verwalten</p>
+
+                <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+        
+        
+        <!--<div id="userform" swa="User"></div>-->
+		<div id="subscription-outer">
+			<div id="subscription-table" swa="Present FROM subscriptionData TEMPLATE table_for_all_datasets"></div>
+		</div>
+        <div class="uk-modal-footer">
+            <button type="button" uk-toggle="target: #subscription-detail" onclick="resetSubscriptionDetails()" class="uk-button uk-button-default uk-button-primary" uk-tooltip="" style="width: 100%">Neue Konfiguration erstellen</button>
+        </div>
+        <div id="subscription-detail" style="height: 100%" class="uk-modal-full uk-width-1-1" uk-modal="stack: true">
+            <div id="mainPanel" style="overflow-y:scroll;height: 100%;position: relative" class="uk-modal-dialog uk-modal-body">
+                <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+                <div>
+                    <form>
+							<div class="uk-container">
+							<span class="uk-label">Name:</span>
+							<input id="subscription_name" class="uk-input">
+							<hr>
+							<span class="uk-label">Event:</span> 
+							<input id="subscription_event" class="uk-input">
+						</div>
+						<hr>
+						<div class="uk-container">
+							<span class="uk-label">Aktion:</span>    
+							<ul id ="subscription_actionswitcher" class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade">
+								<li id="subscription_http_request"><a href="#">HTTPRequest</a></li>
+								<li id="subscription_java_execute"><a href="#">JavaExecute</a></li>
+							</ul>
+							<ul class="uk-switcher uk-margin">
+								<li style='padding-left: 50px'>
+									<span class="uk-label">URL:</span>
+									<input id="subscription_http_url" class="uk-input">
+									<span class="uk-label">Methode:</span>
+									<select id="subscription_http_method" class="uk-select">
+									<option>POST</option>
+										<option>PUT</option>
+									</select>
+									<span class="uk-label">Header:</span>
+									<div id="subscription_http_header"></div>
+									<span class="uk-label">Parameter:</span>
+									<div id="subscription_http_params"></div>
+									<span class="uk-label">Body:</span>
+									<textarea id="subscription_http_body" class="uk-textarea"></textarea>
+								</li>
+								<li style='padding-left: 50px'>
+									<span class="uk-label">Methode:</span>  
+									<input id="subscription_java_method" class="uk-input">
+								</li>
+							</ul>
+						</div>
+                        <hr>
+						<div class="uk-container">
+							<span class="uk-label">Aktiv:</span>
+							<input id="subscription_active" class="uk-checkbox" type="checkbox">
+                        </div>
+						<hr>
+						<div class="uk-container">
+							<button id="subscription_filter" type="button" uk-toggle="target: #filter-edit" onclick="" class="uk-button uk-button-default uk-button-primary" uk-tooltip="" style="width: 100%">Filter bearbeiten/Filter hinzufügen</button>
+                        </div>
+						<hr>
+						<div class="uk-container">
+							<button id="subscription_save" type="button" onclick="" class="uk-button uk-button-default uk-button-primary uk-modal-close" uk-tooltip="" style="width: 49%">Speichern</button>
+							<button type="button" onclick="" class="uk-modal-close uk-button uk-button-default uk-button-primary" uk-tooltip="" style="width: 49%">Abbrechen</button>
+						</div>
+                        </br></br>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="filter-edit" style="height: 100%" class="uk-modal-full uk-width-1-1" uk-modal="stack: true">
+            <div id="mainPanel" style="overflow-y:scroll;height: 100%;position: relative" class="uk-modal-dialog uk-modal-body">
+                <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+                <div>
+                    <form>
+                        <ul id ="filter_switcher" class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade"></ul>
+                        <ul id="filter_content" class="uk-switcher uk-margin"></ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+		<div id="delete-modal" style="height: 100%" class="uk-modal-full uk-width-1-1" uk-modal="stack: true">
+            <div id="mainPanel" style="overflow-y:scroll;height: 100%;position: relative" class="uk-modal-dialog uk-modal-body">
+                <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+                <div>
+                    <form>
+						<div class="uk-container">
+							<h1>Wirklich löschen?</h1>
+							<button id="deleteBTN_Modal" type="button" onclick="" class="uk-button uk-button-default uk-button-primary uk-modal-close" uk-tooltip="" style="width: 49%">Löschen</button>
+							<button type="button" onclick="" class="uk-modal-close uk-button uk-button-default uk-button-primary" uk-tooltip="" style="width: 49%">Abbrechen</button>
+						</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

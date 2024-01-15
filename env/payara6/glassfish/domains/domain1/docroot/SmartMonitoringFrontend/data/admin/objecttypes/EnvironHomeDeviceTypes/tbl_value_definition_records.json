@@ -1,0 +1,89 @@
+{
+    "records": [
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 10,
+            "name": "Geschlossen"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 10,
+            "name": "Offen"
+        },
+        {
+            "val": "2",
+            "ootypejoinmtype_id": 10,
+            "name": "Kippposition"
+        },
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 17,
+            "name": "Nicht Lüften"
+        },
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 18,
+            "name": "Keine Schimmelgefahr"
+        },
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 19,
+            "name": "gute Raumluftqualität"
+        },
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 20,
+            "name": "Heizkörper hat konstante Temperatur"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 17,
+            "name": "Lüften"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 18,
+            "name": "Schimmelgefahr"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 19,
+            "name": "normale Raumluftqualität"
+        },
+        {
+            "val": "2",
+            "ootypejoinmtype_id": 19,
+            "name": "schlechte Raumluftqualität"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 20,
+            "name": "Heizkörper heizt auf"
+        },
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 27,
+            "name": "Geschlossen"
+        },
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 28,
+            "name": "Kein gleichzeitiges Heizen und Lüften"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 27,
+            "name": "Kippposition"
+        },
+        {
+            "val": "2",
+            "ootypejoinmtype_id": 27,
+            "name": "Offen"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 28,
+            "name": "gleichzeitiges Heizen und Lüften"
+        }
+    ]
+}

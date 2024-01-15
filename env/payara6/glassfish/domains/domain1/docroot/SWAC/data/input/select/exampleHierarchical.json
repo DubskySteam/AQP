@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "set1 - root element"
+    },
+    {
+        "id": 2,
+        "name": "set2",
+        "parent": 1
+    },
+    {
+        "id": 3,
+        "name": "set3",
+        "parent": 2
+    },
+    {
+        "id": 4,
+        "name": "set4",
+        "parent": 2
+    },
+    {
+        "id": 5,
+        "name": "set5",
+        "parent": 1
+    }
+]

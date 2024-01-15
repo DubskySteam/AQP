@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de" class="uk-height-1-1 uk-width-1-1">
+    <head>
+        <title swac_lang="object_status_title">Object > Status</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/object/status.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+    <body class="uk-overflow-auto uk-height-1-1">
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        <article>
+            <h1 class="uk-heading-bullet">Status</h1>
+            <h2>Overview</h2>
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <h2 class="uk-card-title">Whole</h2>
+                        <div id="objectdata" swa="Present FROM tbl_observedobject/{{id}}">
+                            <table class="uk-table uk-table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td swac_lang="name">Name</td>
+                                        <td>{name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="description">Description</td>
+                                        <td>{description}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="measurerate">Measurerate</td>
+                                        <td>{measurerate}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="objectdata_stat" swa="Present FROM /SmartDataLyser/smartdatalyser/statistic/whole?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts">
+                            <table class="uk-table uk-table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td swac_lang="setscount">Datasets count</td>
+                                        <td>{count}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="firstset">First dataset</td>
+                                        <td>{firstset}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="lastset">Last dataset</td>
+                                        <td>{lastset}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <div class="uk-card-badge uk-label"><span uk-icon="info" uk-tooltip="Andere Zeiträume anzeigen mit &start=2018-11-24T18%3A00&end=2018-12-01T19%3A00&measurefreq=30"></span></div>
+                        <h2 class="uk-card-title">Timeframe</h2>
+                        <div id="missdata" swa="Present FROM /SmartDataLyser/smartdatalyser/check/completeness?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts&measurefreq={{measurefreq}}">
+                            <table class="uk-table uk-table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td swac_lang="observedtime">Observed timeframe</td>
+                                        <td>{requestedperiod}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="expectedsets">Expected datasets</td>
+                                        <td>{expectedentries}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="availablesets">Available datasets</td>
+                                        <td>{availableentries}</td>
+                                    </tr>
+                                    <tr>
+                                        <td swac_lang="missingsets">Missing datasets</td>
+                                        <td>{missingentries}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <div id="misschart" swa="Charts FROM /SmartDataLyser/smartdatalyser/check/completeness?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts&measurefreq={{measurefreq}}"></div>
+                        <div id="misschart_legend" swa="Datadescription FROM misschart_legend_data"></div>
+                    </div>
+                </div>
+            </div>
+            <h2 swac_lang="missingperiods">Periods missing data</h2>
+            <p swac_lang="missingperiods_desc"></p>
+            <div id="missingperiods" swa="Present FROM /SmartDataLyser/smartdatalyser/check/missingperiods?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts&measurefreq={{measurefreq}}">
+                <table class="uk-table uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th>Timeframe</th>
+                            <th>Number of missing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="swac_repeatForSet">
+                            <td>{timespan}</td>
+                            <td>{missingentries}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p swac_lang="missingperiods_link">Link for custom analysis: </p>
+            <a href="/SmartDataLyser/smartdatalyser/check/missingperiods?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts&measurefreq={{measurefreq}}">/SmartDataLyser/smartdatalyser/check/missingperiods?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts&measurefreq={{measurefreq}}</a>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

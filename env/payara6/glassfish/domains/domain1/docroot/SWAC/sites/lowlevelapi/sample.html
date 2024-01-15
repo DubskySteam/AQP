@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - lowlevel API - sample component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/lowlevelapi/sample.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+            <p>The sample component is a template component as startpoint for your own components.
+            It shows the possible esiest structure and how to define options, use templates and activate plugins.
+            <br>Also this page is a sample for a documentation page. You can find it at sites/lowlevelapi/sample.html.
+            <br>The js/lowlevelapi/sample.js belonging to this site gives you an example on how to configure a component.</p>
+            
+            <h2>Examples</h2>
+
+            <h3>Example 1: Use sample component</h3>
+            <p>A simple example on how to use a component.</p>
+            <div id="example1" swa="Sample"></div>
+            <pre><code class="lang-html">
+&lt;div id="example1" swa="Sample"&gt;&lt;/div&gt;
+        </code></pre>
+            
+            <h3>Example 2: Use sample with plugin</h3>
+            <p>This is an example of the sample component with enabled plugin, that contains a subcomponent.</p>
+            <div id="example2" swa="Sample"></div>
+            <pre><code class="lang-html">
+&lt;div id="example2" swa="Sample"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var example2_options = {
+    plugins: new Map()
+};
+example2_options.plugins.set('SamplePlugin', {
+    id: 'SamplePlugin',
+    active: true
+});
+        </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

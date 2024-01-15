@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > concepts > components</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/concepts/2_components.js"></script>
+        <!-- Datasources -->
+        <script src="../../data/exampledata_list.js"></script>
+        <script src="../../data/exampleoptions.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+        <article>
+            <h1>Components</h1>
+            <p>SWAC is component based. Every component has a set of tasks it is 
+                intended for. All components share a set of usefull options and 
+                functions. There are two main kinds of components: views and 
+                algorithms.
+                <br>Components are bound to data, they work with the data thats
+                given to them on load or trough operations.
+            </p>
+            
+            <h2 class="uk-heading-divider">Views</h2>
+            <p>Views representing data and / or allowing user interaction with 
+            the data. Views are created trough Requestor Elements. Those contain 
+            a swa attribute that defines the view component.</p>
+            <pre><code class="lang-html">
+&lt;div id="present_example1" swa="Present FROM routes"&gt;&lt;/div&gt;
+            </code></pre>
+            Will create an presentation of example data.
+
+            <div id="present_example1" swa="Present FROM exampledata_list"></div>
+            
+            <h3>Useing view functions from custom code</h3>
+            <p>Most functions of views are public accessable and useable from 
+                custom code.
+            <a href="../progusecomp.html">See details</a></p>
+            
+            <h2 class="uk-heading-divider">Algorithms</h2>
+            <p>Algorithms purpose is to serve complex algorithms as standalone 
+            accessable parts, that come without predefined userinterface and can 
+            be integrated into views or custom code.
+            <br>Algorithms can share data with views, so that an algorithmical 
+            operation on the data is instantly shown to the user.</p>
+            <pre><code class="lang-html">
+// Load an algorithm
+window.swac.loadAlgorithm('AlgorithmsName','IdYouWantForTheAlgorithmInstance').then(function (requestor) {
+    // Get instantiated algorithm object
+    let cs = requestor.swac_comp;
+    console.log(cs);
+    // Here the Algorithm can be used
+});
+            </code></pre>
+            
+            <h2>Easy to customize</h2>
+            <p>The components are designed to be easy customizable. On the components page
+                are all options listed, that are currently available.</p>
+
+            <table class="uk-table">
+                <tr>
+                    <th>Component</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Present</td>
+                    <td>Option "sortable" makes the presented objects can be sorted.</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Option "allowAdd" aktivates the dialog for createing new data objects.</td>
+                </tr>
+                <tr>
+                    <td>Navigation</td>
+                    <td>Has no options</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </table>
+
+            <h3>Customize by object</h3>
+            <p>You just have to put the options into an global javascript object, that 
+                is named after the schema YOUR_TAG_ID_options.
+                <br>
+                You can see a hint on javascript console that
+                says what options are available and where you can put your options.
+                <br>
+                The available options and a sample of useage you can find with the 
+                SWAC Debugger. Simply click on the debugger button and scrol down.</p>
+
+            <pre><code class="lang-javascript">
+var customizable_default_options = {
+    showWhenNoData: false,
+    sortable: false
+};
+        </code></pre>
+
+            <pre><code class="lang-html">
+&lt;div id="customizable_default" swa="Present FROM exampledata_list"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <div id="customizable_default" swa="Present FROM exampledata_list"></div>
+
+
+            <h3>Options from data</h3>
+            <p>Another way is to use data as options. Simply add the datasource name 
+                after the OPTIONS keyword in swa statement. It works the same way 
+                as getting data for your component.
+                <br> In this example we use a javascript file as datasource, but it can
+                be every datasource that is supported as datasource for displaying data.</p>
+
+            <pre><code class="lang-javascript">
+var exampleoptions = {
+    showWhenNoData: false,
+    sortable: false
+};
+        </code></pre>
+
+            <pre><code class="lang-html">
+&lt;div id="customizable_data" swa="Present FROM exampledata_list OPTIONS exampleoptions"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <div id="customizable_data" swa="Present FROM exampledata_list OPTIONS exampleoptions"></div>
+
+            <h3>Global options</h3>
+            <p>SWAC defines some global options, that are available on each component.</p>
+
+            <table class="uk-table">
+                <tr><th>Available on</th><th>Option</th><th>Explanation</th></tr>
+                <tr><td>Component</td><td>attributeOrder (array)</td><td>Let you specify the order in which the attributes are used in the component. Not noted attributes are used after the specified.</td></tr>
+                <tr><td>Component</td><td>attributeDefaults (object)</td><td>Let you specify default values for missing data attributes.</td></tr>
+                <tr><td>Component</td><td>attributeRenames (Map)</td><td>Rename attributes from datasource to a name of your wish. Usefull if a component exepects a specific attribute name.</td></tr>
+                <tr><td>Component</td><td>reloadInterval</td><td>Time in seconds after that a component should automatically reload.</td></tr>
+                <tr><td>View</td><td>showWhenNoData (boolean)</td><td>When set to true the components layout is shown even if there is no data.</td></tr>
+            </table>
+
+            <pre><code class="lang-javascript">
+var exampleoptions = {
+    showWhenNoData : false,
+    attributeOrder : [id,title,name],
+    attributeDefaults : new Map([['job', 'programmer']])
+};
+        </code></pre>
+
+            <h2>Plugins</h2>
+            <p>SWAC components deliver a set of basic features that can be activated 
+                by options or automatically acitvated by data in the datasets. 
+                There are special sets of features "plugins" that can be activated by 
+                the options. See <a href="plugins.html">Plugins</a></p>
+            
+            <h2>Deactivate components by data</h2>
+            <p>When you want components only active in your app, when a condition is filled. 
+                You can use the activeOn option. It allowes definition of a datarequetor 
+            and the component is only is build up, when at least one dataset is returned.</p>
+            
+            <pre><code class="lang-javascript">
+var mycomp_options = {
+    activeOn: {
+        fromName: 'tbl_systemconfiguration', // Name of the datatable
+        fromWheres: {
+            filter: 'ckey,eq,func_objecttagging&filter=active,eq,true'
+        }
+    }
+};
+        </code></pre>
+            
+            <h2 class="uk-heading-divider">Next</h2>
+            <p>See next how to use data with components at the <a href="3_data.html">data</a> page.</p>
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

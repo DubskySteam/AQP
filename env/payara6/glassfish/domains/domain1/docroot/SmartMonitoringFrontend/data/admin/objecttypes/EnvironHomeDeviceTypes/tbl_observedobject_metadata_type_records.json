@@ -1,0 +1,8 @@
+{
+    "records": [
+        {
+            "name": "SMAC",
+            "description": "SensorMachineAccessCode - Used for identifiing an sensor device"
+        }
+    ]
+}

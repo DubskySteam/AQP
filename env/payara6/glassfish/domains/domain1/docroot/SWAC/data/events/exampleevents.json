@@ -1,0 +1,48 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Große Neueröffnung!",
+            "desc": "Feiern Sie mit uns unsere große Neueröffnung. Es erwarten Sie viele spannende Aktionen für Groß und Klein.",
+            "start": "2020-01-28 10:00",
+            "end": "2020-01-28 22:00",
+            "picture": "../data/events/event1.jpg",
+            "places": 30
+        },
+        {
+            "id": 2,
+            "title": "Spielenachmittag",
+            "desc": "Ein schöner Spielenachmittag für Groß und Klein.",
+            "start": "2020-02-01 14:00",
+            "end": "2020-02-01 18:00",
+            "picture": "../data/events/event1.jpg",
+            "places": 15
+        },
+        {
+            "id": 3,
+            "title": "Mittags: Tisch!",
+            "desc": "Mittagessen in besonderer Atmosphäre. Lassen Sie sich überraschen von unserer ausergewöhnlichen Tischdekoration.",
+            "start": "2020-02-20 11:00",
+            "end": "2020-02-20 13:00",
+            "picture": "../data/events/event1.jpg",
+            "places": 999
+        },
+        {
+            "id": 4,
+            "title": "Unser Kreativabend",
+            "desc": "An unserem Kreativabend entwickeln wir neue Ideen und setzen diese um.",
+            "start": "2020-02-20 17:00",
+            "end": "2020-02-20 22:00",
+            "picture": "../data/events/event1.jpg",
+            "places": 15
+        },
+        {
+            "id": 5,
+            "title": "Schlemmertage",
+            "desc": "Probieren Sie unsere Spezialitäten zum Vorzugspreis. In dieser Woche gibt es alle Nudelgerichte mit 20% Rabatt.",
+            "start": "2020-02-22 10:00",
+            "end": "2020-02-24 22:00",
+            "places": 999
+        }
+    ]
+}

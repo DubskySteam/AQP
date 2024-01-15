@@ -1,0 +1,11 @@
+.funcshow .uk-card {
+    transform: skewY(3deg);
+}
+#livepresent_input textarea {
+    height: 100%;
+}
+#livepresent_arrow {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}

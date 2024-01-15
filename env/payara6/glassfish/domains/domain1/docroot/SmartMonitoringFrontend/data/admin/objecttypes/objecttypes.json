@@ -1,0 +1,3362 @@
+{
+    "list": [
+        {
+            "name": "Wetterdaten",
+            "desc": "Erfassung von Wetterdaten aus dem OpenWeatherMap Dienst",
+            "version": "3.0 Alpha",
+            "state": [
+                {
+                    "name": "tbl_measurement_type_ts",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,ts"
+                },
+                {
+                    "name": "tbl_measurement_type_Grad",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,Grad"
+                },
+                {
+                    "name": "tbl_measurement_type_Prozentsatz",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,Prozentsatz"
+                },
+                {
+                    "name": "tbl_measurement_type_Druck",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,Druck"
+                },
+                {
+                    "name": "tbl_measurement_type_Temperatur",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,Temperatur"
+                },
+                {
+                    "name": "tbl_measurement_type_Geschwindigkeit",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,Geschwindigkeit"
+                },
+                {
+                    "name": "tbl_observedobject_type_Wetterdaten",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_observedobject_type?storage=smartmonitoring&filter=name,eq,Wetterdaten"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_Zeitpunkt der Messung",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,Zeitpunkt der Messung"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_wind_dir",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,wind_dir"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_clouds",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,clouds"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_humidity",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,humidity"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_pressure",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,pressure"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_temp",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,temp"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_wind_speed",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=name,eq,wind_speed"
+                }
+            ],
+            "data": [
+                {
+                    "name": "tbl_measurement_type_ts",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                            {
+                                "name": "ts",
+                                "description": "Zeitstempel",
+                                "type": "timestamp"
+                            }
+                        ]
+                },
+                {
+                    "name": "tbl_measurement_type_Grad",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "post",
+                    "body": [
+                            {
+                                "unit": "deg",
+                                "name": "Grad",
+                                "description": "Grad",
+                                "type": "float8"
+                            }
+                        ]
+                },
+                {
+                    "name": "tbl_measurement_type_Prozentsatz",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "post",
+                    "body": [
+                            {
+                                "unit": "%",
+                                "name": "Prozentsatz",
+                                "description": "Prozentsatz",
+                                "type": "float8"
+                            }
+                        ]
+                },
+                {
+                    "name": "tbl_measurement_type_Druck",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "post",
+                    "body": [
+                            {
+                                "unit": "hPa",
+                                "name": "Druck",
+                                "description": "Druck",
+                                "type": "float8"
+                            }
+                        ]
+                },
+                {
+                    "name": "tbl_measurement_type_Temperatur",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "post",
+                    "body": [
+                            {
+                                "unit": "°C",
+                                "name": "Temperatur",
+                                "description": "Temperatur",
+                                "type": "float8"
+                            }
+                        ]
+                },
+                {
+                    "name": "tbl_measurement_type_Geschwindigkeit",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "post",
+                    "body": [
+                            {
+                                "unit": "km/h",
+                                "name": "Geschwindigkeit",
+                                "description": "Geschwindigkeit",
+                                "type": "float8"
+                            }
+                        ]
+                },
+                {
+                    "name": "tbl_observedobject_type_Wetterdaten",
+                    "url": "records/tbl_observedobject_type?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "flatendsets": false,
+                            "name": "Wetterdaten",
+                            "description": "Erfassung von Wetterdaten"
+                        }
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_Zeitpunkt der Messung",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "ts",
+                            "name": "Zeitpunkt der Messung",
+                            "description": "Zeitstempel",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_wind_dir",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "Grad",
+                            "name": "wind_dir",
+                            "description": "Windrichtung",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_clouds",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "Prozentsatz",
+                            "name": "clouds",
+                            "description": "Grad der Bewölkung",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_humidity",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "Prozentsatz",
+                            "name": "humidity",
+                            "description": "Luftfeutigkeit",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_pressure",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "Druck",
+                            "name": "pressure",
+                            "description": "Luftdruck",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_temp",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "Temperatur",
+                            "name": "temp",
+                            "description": "Lufttemperatur",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype_wind_speed",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "Geschwindigkeit",
+                            "name": "wind_speed",
+                            "description": "Windgeschwindigkeit",
+                            "observedobjecttype_name": "Wetterdaten"
+                        } 
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Navigationsmenü",  
+            "desc": "Erstellung des Navigationsmenüs",
+            "version": "3.0 Alpha",
+            "state": [
+                {
+                    "name": "tbl_navigationroute",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "tbl_navigationroute",
+                    "url": "collection/tbl_navigationroute?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": {
+                        "name": "tbl_navigationroute",
+                        "attributes": [
+                            {
+                                "isIdentity": true,
+                                "isAutoIncrement": true,
+                                "isNullable": false,
+                                "name": "id",
+                                "type": "bigserial"
+                            },
+                            {
+                                "name": "name",
+                                "type": "varchar(255)"
+                            },
+                            {
+                                "name": "rfrom",
+                                "type": "varchar(255)"
+                            },
+                            {
+                                "name": "rto",
+                                "type": "varchar(255)"
+                            },
+                            {
+                                "name": "parent",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "active",
+                                "type": "bool"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "data": [
+                {
+                    "name": "tbl_navigationroute",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "id": 1,
+                            "name": "menu_object",
+                            "rfrom": "*",
+                            "rto": "#",
+                            "active": true
+                        },
+                        {
+                            "id": 2,
+                            "name": "menu_object_dashboard",
+                            "rfrom": "*",
+                            "rto": "object/dashboard.html",
+                            "parent": 1,
+                            "active": true
+                        },
+                        {
+                            "id": 3,
+                            "name": "menu_object_create",
+                            "rfrom": "*",
+                            "rto": "object/create.html",
+                            "parent": 1,
+                            "active": true
+                        },
+                        {
+                            "id": 4,
+                            "name": "menu_object_list",
+                            "rfrom": "*",
+                            "rto": "object/list.html",
+                            "parent": 1,
+                            "active": true
+                        }, 
+                        {
+                            "id": 5,
+                            "name": "menu_object_sheme",
+                            "rfrom": "*",
+                            "rto": "object/scheme.html",
+                            "parent": 1,
+                            "active": false
+                        },
+                        {
+                            "id": 6,
+                            "name": "menu_object_map",
+                            "rfrom": "*",
+                            "rto": "object/map.html",
+                            "parent": 1,
+                            "active": true
+                        },
+                        {
+                            "id": 10,
+                            "name": "menu_data",
+                            "rfrom": "*",
+                            "rto": "#",
+                            "active": true
+                        },
+                        {
+                            "id": 11,
+                            "name": "menu_data_upload",
+                            "rfrom": "*",
+                            "rto": "data/upload.html",
+                            "parent": 10,
+                            "active": true
+                        },
+                        {
+                            "id": 20,
+                            "name": "menu_media",
+                            "rfrom": "*",
+                            "rto": "#",
+                            "active": true
+                        },
+                        {
+                            "id": 21,
+                            "name": "menu_media_gallery",
+                            "rfrom": "*",
+                            "rto": "media/gallery.html",
+                            "parent": 20,
+                            "active": true
+                        },
+                        {
+                            "id": 22,
+                            "name": "menu_media_upload",
+                            "rfrom": "*",
+                            "rto": "media/upload.html",
+                            "parent": 20,
+                            "active": true
+                        },
+                        {
+                            "id": 30,
+                            "name": "menu_admin",
+                            "rfrom": "*",
+                            "rto": "#",
+                            "active": true
+                        },
+                        {
+                            "id": 31,
+                            "name": "menu_admin_objecttypes",
+                            "rfrom": "*",
+                            "rto": "admin/objecttypes.html",
+                            "parent": 30,
+                            "active": true
+                        },
+                        {
+                            "id": 32,
+                            "name": "menu_admin_labels",
+                            "rfrom": "*",
+                            "rto": "admin/labels.html",
+                            "parent": 30,
+                            "active": true
+                        },
+                        {
+                            "id": 33,
+                            "name": "menu_admin_layout",
+                            "rfrom": "*",
+                            "rto": "admin/layout.html",
+                            "parent": 30,
+                            "active": true
+                        },
+                        {
+                            "id": 34,
+                            "name": "menu_admin_functions",
+                            "rfrom": "*",
+                            "rto": "admin/functions.html",
+                            "parent": 30,
+                            "active": true
+                        },
+                        {
+                            "id": 40,
+                            "name": "menu_about",
+                            "rfrom": "*",
+                            "rto": "#",
+                            "active": true
+                        },
+                        {
+                            "id": 41,
+                            "name": "menu_about_privacy",
+                            "rfrom": "*",
+                            "rto": "about/privacy.html",
+                            "parent": 40,
+                            "active": true
+                        },
+                        {
+                            "id": 42,
+                            "name": "menu_about_imprint",
+                            "rfrom": "*",
+                            "rto": "about/imprint.html",
+                            "parent": 40,
+                            "active": true
+                        },
+                        {
+                            "id": 43,
+                            "name": "menu_about_system",
+                            "rfrom": "*",
+                            "rto": "about/system.html",
+                            "parent": 40,
+                            "active": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Admin Funktionsverwaltung",
+            "desc": "Erstellung der Admin Funktionsverwaltung",
+            "version": "3.0 Alpha",
+            "state": [
+                {
+                    "name": "tbl_systemconfiguration",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "tbl_systemconfiguration",
+                    "url": "collection/tbl_systemconfiguration?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": {
+                        "name": "tbl_systemconfiguration",
+                        "attributes": [
+                            {
+                                "isIdentity": true,
+                                "isAutoIncrement": true,
+                                "isNullable": false,
+                                "name": "id",
+                                "type": "bigserial"
+                            },
+                            {
+                                "name": "ckey",
+                                "type": "varchar(255)"
+                            },
+                            {
+                                "name": "ctype",
+                                "type": "varchar(255)"
+                            },
+                            {
+                                "name": "cvalue",
+                                "type": "varchar(255)"
+                            },
+                            {
+                                "name": "active",
+                                "type": "bool"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "data": [
+                {
+                    "name": "tbl_systemconfiguration",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "id": 1,
+                            "ckey": "func_objecttagging",
+                            "active": true
+                        },
+                        {
+                            "id": 2,
+                            "ckey": "func_datatagging",
+                            "active": true
+                        },
+                        {
+                            "id": 3,
+                            "ckey": "func_datamap",
+                            "active": true
+                        },
+                        {
+                            "id": 4,
+                            "ckey": "func_datavisualisation",
+                            "active": true
+                        },
+                        {
+                            "id": 5,
+                            "ckey": "func_objectmap_createobject",
+                            "active": false
+                        },
+                        {
+                            "id": 6,
+                            "ckey": "func_objectmap_objectdata",
+                            "active": false
+                        },
+                        {
+                            "id": 7,
+                            "ckey": "func_objectmap_objectdata",
+                            "active": false
+                        },
+                        {
+                            "id": 8,
+                            "ckey": "func_objectmap_magicmapper",
+                            "active": false
+                        },
+                        {
+                            "id": 9,
+                            "ckey": "func_objectmap_search",
+                            "active": false
+                        },
+                        {
+                            "id": 10,
+                            "ckey": "func_objectmap_filter",
+                            "active": false
+                        },
+                        {
+                            "id": 11,
+                            "ckey": "func_objectmap_toggleclickinteraction",
+                            "active": false
+                        },
+                        {
+                            "id": 12,
+                            "ckey": "func_objectmap_togglelatchonlocation",
+                            "active": false
+                        },
+                        {
+                            "id": 13,
+                            "ckey": "func_objectmap_help",
+                            "active": false
+                        },
+                        {
+                            "id": 14,
+                            "ckey": "func_datamap_datashowmodal",
+                            "active": true
+                        },
+                        {
+                            "id": 15,
+                            "ckey": "func_datamap_timeline",
+                            "active": false
+                        },
+                        {
+                            "id": 16,
+                            "ckey": "func_datamap_navigation",
+                            "active": false
+                        },
+                        {
+                            "id": 17,
+                            "ckey": "func_datamap_magicmapper",
+                            "active": false
+                        },
+                        {
+                            "id": 18,
+                            "ckey": "func_datamap_search",
+                            "active": false
+                        },
+                        {
+                            "id": 19,
+                            "ckey": "func_datamap_filter",
+                            "active": false
+                        },
+                        {
+                            "id": 20,
+                            "ckey": "func_datamap_toggleclickinteraction",
+                            "active": false
+                        },
+                        {
+                            "id": 21,
+                            "ckey": "func_datamap_togglelatchonlocation",
+                            "active": false
+                        },
+                        {
+                            "id": 22,
+                            "ckey": "func_datamap_help",
+                            "active": false
+                        },
+                        {
+                            "id": 23,
+                            "ckey": "func_datamap_labels",
+                            "active": true
+                        },
+                        {
+                            "id": 24,
+                            "ckey": "func_objectmap_labels",
+                            "active": true
+                        },
+                        {
+                            "id": 25,
+                            "ckey": "func_userlogin",
+                            "active": true
+                        },
+                        {
+                            "id": 26,
+                            "ckey": "func_mediaupload",
+                            "active": true
+                        },
+                        {
+                            "id": 27,
+                            "ckey": "func_mediagalery",
+                            "active": true
+                        },
+                        {
+                            "id": 28,
+                            "ckey": "func_medialabeling",
+                            "active": false
+                        },
+                        {
+                            "id": 29,
+                            "ckey": "func_userdashboard",
+                            "active": false
+                        }
+                        ,
+                        {
+                            "id": 30,
+                            "ckey": "func_userfavs",
+                            "active": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "PapendorfPVKennlinien",
+            "desc": "Erfassung der Daten",
+            "version": "3.0 Alpha",
+            "state": [
+                {
+                    "name": "tbl_observedobject_type_Papendorf_Hellkennliniengerät",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_observedobject_type?storage=smartmonitoring&filter=name,eq,Papendorf Hellkennliniengerät"
+                },
+                {
+                    "name": "tbl_measurement_type_ts",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,ts"
+                },
+                {
+                    "name": "tbl_measurement_type_I",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,I"
+                },
+                {
+                    "name": "tbl_measurement_type_U",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring&filter=name,eq,U"
+                },
+                {
+                    "name": "tbl_ootype_join_mtype",
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring&filter=measurementtype_name,eq,ts&filter=observedobjecttype_name,eq,Papendorf Hellkennliniengerät"
+                }
+            ],
+            "data": [
+                {
+                    "name": "tbl_observedobject_type_Papendorf_Hellkennliniengerät",
+                    "url": "records/tbl_observedobject_type?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "flatendsets": true,
+                            "name": "Papendorf Hellkennliniengerät",
+                            "description": "Erfassung von Hellkennliniendaten einer Papendorfanlage"
+                        }
+                    ]
+                },
+                {
+                    "name": "tbl_measurement_type_ts",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "name": "ts",
+                            "description": "Zeitstempel",
+                            "type": "timestamp"
+                        }
+                    ]
+                },
+                {
+                    "name": "tbl_measurement_type_I",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "unit": "A",
+                            "name": "I",
+                            "description": "Stromstärke",
+                            "type": "float8"
+                        }
+                    ]
+                },
+                {
+                    "name": "tbl_measurement_type_U",
+                    "url": "records/tbl_measurement_type?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "unit": "V",
+                            "name": "U",
+                            "description": "Spannungsstärke",
+                            "type": "float8"
+                        }
+                    ]
+                },
+                {
+                    "name": "tbl_ootype_join_mtype",
+                    "url": "records/tbl_ootype_join_mtype?storage=smartmonitoring",
+                    "method": "POST",
+                    "body": [
+                        {
+                            "measurementtype_name": "ts",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i1",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u1",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i2",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u2",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i3",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u3",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i4",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u4",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i5",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u5",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i6",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u6",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i7",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u7",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i8",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u8",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i9",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u9",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i10",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u10",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i11",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u11",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i12",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u12",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i13",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u13",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i14",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u14",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i15",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u15",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i16",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u16",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i17",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u17",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i18",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u18",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i19",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u19",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i20",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u20",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i21",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u21",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i22",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u22",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i23",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u23",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i24",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u24",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i25",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u25",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i26",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u26",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i27",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u27",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i28",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u28",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i29",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u29",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i30",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u30",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i31",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u31",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i32",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u32",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i33",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u33",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i34",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u34",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i35",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u35",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i36",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u36",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i37",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u37",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i38",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u38",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i39",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u39",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i40",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u40",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i41",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u41",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i42",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u42",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i43",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u43",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i44",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u44",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i45",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u45",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i46",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u46",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i47",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u47",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i48",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u48",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i49",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u49",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i50",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u50",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i51",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u51",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i52",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u52",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i53",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u53",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i54",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u54",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i55",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u55",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i56",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u56",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i57",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u57",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i58",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u58",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i59",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u59",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i60",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u60",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i61",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u61",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i62",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u62",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i63",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u63",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i64",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u64",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i65",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u65",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i66",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u66",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i67",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u67",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i68",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u68",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i69",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u69",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i70",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u70",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i71",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u71",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i72",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u72",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i73",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u73",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i74",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u74",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i75",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u75",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i76",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u76",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i77",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u77",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i78",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u78",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i79",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u79",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i80",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u80",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i81",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u81",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i82",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u82",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i83",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u83",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i84",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u84",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i85",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u85",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i86",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u86",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i87",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u87",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i88",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u88",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i89",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u89",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i90",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u90",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i91",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u91",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i92",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u92",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i93",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u93",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i94",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u94",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i95",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u95",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i96",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u96",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i97",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u97",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i98",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u98",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i99",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u99",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i100",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u100",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i101",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u101",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i102",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u102",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i103",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u103",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i104",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u104",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i105",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u105",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i106",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u106",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i107",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u107",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i108",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u108",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i109",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u109",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i110",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u110",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i111",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u111",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i112",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u112",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i113",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u113",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i114",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u114",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i115",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u115",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i116",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u116",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i117",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u117",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i118",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u118",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i119",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u119",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i120",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u120",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i121",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u121",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i122",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u122",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i123",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u123",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i124",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u124",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i125",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u125",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i126",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u126",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i127",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u127",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i128",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u128",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i129",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u129",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i130",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u130",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i131",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u131",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i132",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u132",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i133",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u133",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i134",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u134",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i135",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u135",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i136",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u136",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i137",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u137",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i138",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u138",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i139",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u139",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i140",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u140",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i141",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u141",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i142",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u142",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i143",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u143",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i144",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u144",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i145",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u145",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i146",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u146",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i147",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u147",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i148",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u148",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i149",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u149",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i150",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u150",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i151",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u151",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i152",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u152",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i153",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u153",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i154",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u154",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i155",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u155",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i156",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u156",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i157",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u157",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i158",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u158",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i159",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u159",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i160",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u160",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i161",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u161",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i162",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u162",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i163",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u163",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i164",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u164",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i165",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u165",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i166",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u166",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i167",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u167",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i168",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u168",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i169",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u169",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i170",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u170",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i171",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u171",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i172",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u172",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i173",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u173",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i174",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u174",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i175",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u175",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i176",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u176",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i177",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u177",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i178",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u178",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i179",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u179",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i180",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u180",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i181",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u181",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i182",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u182",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i183",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u183",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i184",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u184",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i185",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u185",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i186",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u186",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i187",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u187",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i188",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u188",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i189",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u189",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i190",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u190",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i191",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u191",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i192",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u192",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i193",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u193",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i194",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u194",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i195",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u195",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i196",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u196",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i197",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u197",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i198",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u198",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i199",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u199",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i200",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u200",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i201",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u201",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i202",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u202",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i203",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u203",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i204",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u204",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i205",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u205",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i206",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u206",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i207",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u207",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i208",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u208",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i209",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u209",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i210",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u210",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i211",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u211",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i212",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u212",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i213",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u213",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i214",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u214",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i215",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u215",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i216",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u216",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i217",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u217",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i218",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u218",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i219",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u219",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i220",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u220",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i221",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u221",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i222",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u222",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i223",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u223",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i224",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u224",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i225",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u225",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i226",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u226",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i227",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u227",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i228",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u228",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i229",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u229",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i230",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u230",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i231",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u231",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i232",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u232",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i233",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u233",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i234",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u234",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i235",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u235",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i236",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u236",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i237",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u237",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i238",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u238",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i239",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u239",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i240",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u240",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i241",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u241",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i242",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u242",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i243",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u243",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i244",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u244",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i245",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u245",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i246",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u246",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i247",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u247",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i248",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u248",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i249",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u249",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i250",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u250",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i251",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u251",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i252",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u252",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i253",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u253",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i254",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u254",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i255",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u255",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "I",
+                            "name": "i256",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        },
+                        {
+                            "measurementtype_name": "U",
+                            "name": "u256",
+                            "observedobjecttype_name": "Papendorf Hellkennliniengerät"
+                        }
+                    ]
+
+                }
+            ]
+        }
+    ]
+}

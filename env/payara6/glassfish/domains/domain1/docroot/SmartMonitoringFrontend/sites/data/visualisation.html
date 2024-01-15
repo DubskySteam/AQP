@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de" class="uk-height-1-1 uk-width-1-1">
+    <head>
+        <title swac_lang="data_visualisation_title">Data > Visualisation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/data/visualisation.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+    <body class="uk-overflow-auto uk-height-1-1">
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../data/languages/translations.json"></div>
+
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        
+        <div id="parents" swa="Present FROM observedobject/listParents WHERE id={{id}}">
+            <ul class="uk-breadcrumb">
+                <li class="swac_repeatForSet"><a href="list.html?id={id}">{name}</a></li>
+            </ul>
+        </div>
+        <article id="objectarticle" swa="Present FROM tbl_observedobject WHERE filter=id,eq,{{id}} AND includes=name,id,collection">
+            <h1 class="uk-article-title" uk-tooltip="AnlagenID {id}">{name}</h1>
+            <p class="uk-text-lead">{description}</p>
+            <div uk-grid>
+                <div class="uk-width-1-3@m">
+                    <div id="countset_{id}" swa="Present FROM {collection} WHERE countonly=true">{count} Datens&auml;tze</div>
+                    <div id="visualise_{id}" swa="Visualise FROM {collection} WHERE size=1 AND order=ts,desc OPTIONS visualise_temperatur"></div>
+                    <div style="display:none;" id="visualise_legend" swa="Datadescription FROM visualise_legend_data"></div>
+                </div>
+                <div class="uk-width-expand">
+                    <h4>Die letzten 20 Datensätze</h4>
+                    <div id="datapresent_{id}" swa="Present FROM {collection} WHERE size=20 AND order=ts,desc TEMPLATE table_for_all_datasets"></div>
+                </div>
+            </div>
+            <div class="uk-card uk-card-primary">
+                <div class="uk-card-header">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <img class="uk-border-circle" width="40" height="40" src="/SWAC/swac/components/Icon/imgs/data/database_download.svg" alt="data download icon">
+                        </div>
+                        <div class="uk-width-expand">
+                            <h3 class="uk-card-title uk-margin-remove-bottom">Datenzugriff</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <p>Alle Datensätze können über die folgende URL abgerufen werden:</p>
+                    <code>{{smartdataurlnenc}}/smartdata/records/data_{{id}}?storage=smartmonitoring&size=10&order=ts,desc</code>
+                    <br>Der Parameter size gibt an, wieviele Datensätze auf einmal abgerufen werden sollen.
+                    <br><a href="http://git04-ifm-min.ad.fh-bielefeld.de/forschung/smartecosystem/smartdata/-/wikis/home">Weitere Informationen in der SmartData Dokumentation</a>
+                </div>
+                <div class="uk-card-footer">
+                    <a href="{{smartdataurlnenc}}/smartdata/records/data_{{id}}?storage=smartmonitoring&size=10&order=ts,desc" class="uk-button uk-button-text">Versuche 10 Datensätze abzurufen</a>
+                </div>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

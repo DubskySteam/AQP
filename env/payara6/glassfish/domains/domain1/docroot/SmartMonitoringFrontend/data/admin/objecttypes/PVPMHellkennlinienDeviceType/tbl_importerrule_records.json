@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "filenamepattern": ".*-HKL_PVPM.*.((XLS)|(xls))",
+            "savefile": true,
+            "importername": "FilesImporter",
+            "defaultdevicename": "PVPM Hellkennlinien",
+            "parsername": "PVPMHellkennlinienParser",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

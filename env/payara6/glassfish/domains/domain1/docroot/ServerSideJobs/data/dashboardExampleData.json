@@ -1,0 +1,26 @@
+{
+    "list": [{
+            "id": 1,
+            "name": "Update Server",
+            "start time": "11:00",
+            "repeat": "weekly",
+            "subjobs": 2,
+            "active": true
+    },{
+        "id": 2,
+            "name": "Check Docker",
+            "start time": "03:00",
+            "repeat": "daily",
+            "subjobs": 0,
+            "active": true
+            
+    },{
+        "id": 3,
+            "name": "Ping Host 1",
+            "start time": "06:00",
+            "repeat": "Every 6 hours",
+            "subjobs": 0,
+            "active": false
+    }
+    ]
+}

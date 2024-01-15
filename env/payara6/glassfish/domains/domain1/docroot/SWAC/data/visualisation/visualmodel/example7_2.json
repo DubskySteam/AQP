@@ -1,0 +1,48 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "name": "Above 1",
+            "x": 150,
+            "y": 50,
+            "width": 20,
+            "height": 50,
+            "parent": 1,
+            "label0fillColor": "#000000",
+            "rotation": 45
+        },
+        {
+            "id": 2,
+            "name": "Above 2",
+            "x": 300,
+            "y": 50,
+            "width": 10,
+            "height": 50,
+            "parent": 1,
+            "label0fillColor": "#000000",
+            "rotation": 105
+        },
+        {
+            "id": 3,
+            "name": "Below 1",
+            "x": 500,
+            "y": 61,
+            "width": 5,
+            "height": 50,
+            "parent": 1,
+            "label0fillColor": "#000000",
+            "rotation": 45
+        },
+        {
+            "id": 4,
+            "name": "Below 2",
+            "x": 700,
+            "y": 61,
+            "width": 1,
+            "height": 50,
+            "parent": 1,
+            "label0fillColor": "#000000",
+            "rotation": 235
+        }
+    ]
+}

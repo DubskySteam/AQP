@@ -1,0 +1,11 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url(../customisations/loginbg.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

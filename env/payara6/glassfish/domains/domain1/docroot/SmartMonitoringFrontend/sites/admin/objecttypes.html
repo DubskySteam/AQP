@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="admin_objecttypes_title">Administration > Manage object types</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/admin/objecttypes.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <article class="uk-article">
+            <h1 class="uk-article-title" swac_lang="adm_objtypes">Object types</h1>
+            <p class="uk-article-meta" swac_lang="adm_objtypesdesc">Manage object types that should be available in this installation</p>
+            
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                <div class="uk-width-1-5@m">
+                    <ul uk-accordion>
+                        <li class="uk-open">
+                            <a class="uk-accordion-title" href="#" swac_lang="adm_objtypes">Object types</a>
+                            <div class="uk-accordion-content">
+                                <div id="observedobjecttypes" swa="Edit FROM tbl_observedobject_type TEMPLATE list"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" href="#" swac_lang="adm_measuretypes">Measurement types</a>
+                            <div class="uk-accordion-content">
+                                <div id="measurementtypes" swa="Edit FROM tbl_measurement_type TEMPLATE list"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" href="#" swac_lang="adm_otype_mtype">Measurements for object type</a>
+                            <div class="uk-accordion-content">
+                                <div id="ootypesjoinmtypes" swa="Edit FROM tbl_ootype_join_mtype TEMPLATE list"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" href="#" swac_lang="adm_metatypes">Metadata types</a>
+                            <div class="uk-accordion-content">
+                                <div id="metadatatypes" swa="Edit FROM tbl_observedobject_metadata_type TEMPLATE list"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" href="#" swac_lang="adm_otype_metatype">Metadata for object type</a>
+                            <div class="uk-accordion-content">
+                                <div id="ootypesjoinmetatypes" swa="Edit FROM tbl_ootype_join_oometadatatype TEMPLATE list"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uk-width-expand@m swac_edit_editorTarget"></div>
+            </div>
+        </article>
+        
+                <article class="uk-article">
+            <h1 class="uk-article-title" swac_lang="adm_objtypes">Object types</h1>
+            <p class="uk-article-meta" swac_lang="adm_objtypesdesc">Manage object types that should be available in this installation</p>
+        
+            <div id="admin_objecttypes" swa="Present FROM ../../data/admin/objecttypes/objecttypes.json">
+                <ul class="uk-list">
+                    <li class="swac_repeatForSet" swac_parent="{parent}">
+                        <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                            <div class="uk-card-badge uk-label">{version}</div>
+                            <h3 class="uk-card-title">{name}</h3>
+                            <p>{desc}</p>
+                            <p class="notice"></p>
+                            <button class="install uk-button uk-button-primary" swac_lang="adm_objtypesinstall">Install</button>
+                            <button class="uninstall uk-button uk-button-primary" swac_lang="adm_objtypeuninstall">Uninstall</button>  
+                            <ul class="swac_forChilds uk-list">
+                                <li class="swac_child">
+                                    <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                                        <div class="uk-card-badge uk-label">{version}</div>
+                                        <h3 class="uk-card-title">{name}</h3>
+                                        <p>{desc}</p>
+                                        <p class="notice"></p>
+                                        <button class="install uk-button uk-button-primary" swac_lang="adm_objtypesinstall">Install</button>
+                                        <button class="uninstall uk-button uk-button-primary" swac_lang="adm_objtypeuninstall">Uninstall</button> 
+                                    </div>
+                                    <ul class="swac_forChilds uk-list uk-list-decimal"></ul>
+                                    <hr>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

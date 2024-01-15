@@ -1,0 +1,64 @@
+{
+    "records": [
+        {
+            "flatendsets": false,
+            "name": "Wohnung",
+            "description": "Messwohnung"
+        },
+        {
+            "flatendsets": false,
+            "name": "HausRaspi",
+            "description": "Ein RaspberryPi Kleincomputer zum Anschluss von Sensorik"
+        },
+        {
+            "flatendsets": false,
+            "name": "BME280",
+            "description": "LFDT-Sensor mit Luftfeuchtigkeit (humidity), Luftdruck (pressure) und Temperatur (temperature) Sensor in einem Gert."
+        },
+        {
+            "flatendsets": false,
+            "name": "T6613",
+            "description": "CO2-Sensor"
+        },
+        {
+            "flatendsets": false,
+            "name": "DS18B20",
+            "description": "Temperatursensor"
+        },
+        {
+            "flatendsets": false,
+            "name": "FensterZustandsErfasser",
+            "description": "Erfasst den Zustand eines Fensters"
+        },
+        {
+            "flatendsets": false,
+            "name": "WetterdatenWebsiteCrawler",
+            "description": "Naheliegende Wetterstation mit werten zur Auentemperatur (temperature), Luftfeuchtigkeit (hum), Windrichtung als Winkel (angle) und Windgeschwindigkeit (speed)"
+        },
+        {
+            "flatendsets": false,
+            "name": "RaumKlima",
+            "description": "Erfasst den Zustand des Raumklimas"
+        },
+        {
+            "flatendsets": false,
+            "name": "LueftungsKI",
+            "description": "KI berechnet den Zustand des Lftungsverhaltens"
+        },
+        {
+            "flatendsets": false,
+            "name": "Vergleich24h",
+            "description": "Zusammenfass zu Raumluftgren zu den letzten 24h, letzter Woche und letztem Monat"
+        },
+        {
+            "flatendsets": false,
+            "name": "Vergleich7d",
+            "description": "Zusammenfass zu Raumluftgren zu den letzten 7d,der letzten Woche"
+        },
+        {
+            "flatendsets": false,
+            "name": "Vergleich30d",
+            "description": "Zusammenfass zu Raumluftgren zu den letzten 30d,der letzten Woche"
+        }
+    ]
+}

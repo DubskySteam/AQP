@@ -1,0 +1,16 @@
+{
+    "name": "SCL SmartMonitoring",
+    "id": "/SmartMonitoringFrontend",
+    "short_name": "SCL",
+    "display": "standalone",
+    "start_url": "/SmartMonitoringFrontend/sites/login.html",
+    "background_color": "#34495e",
+    "theme_color": "#8e44ad",
+    "icons": [
+        {
+            "src": "customisations/favicon.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        }
+    ]
+}

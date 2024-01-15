@@ -1,0 +1,84 @@
+{
+    "list": [
+        {
+            "id": 2,
+            "winkel": 0,
+            "durchmesser": "DN100",
+            "laenge": 0,
+            "position": -1,
+            "rohre_id": 1,
+            "col": "Nut"
+        },
+        {
+            "id": 3,
+            "winkel": 0,
+            "durchmesser": "DN100",
+            "laenge": 0,
+            "position": 10501,
+            "rohre_id": 1,
+            "col": "Sägeschnitt"
+        },
+        {
+            "id": 4,
+            "winkel": 0,
+            "abschluss": "Nutstutzen",
+            "anschluss": "Geschweisst",
+            "durchmesser": "DN32",
+            "laenge": 250,
+            "position": 750,
+            "rohre_id": 1,
+            "col": "Nutstutzen"
+        },
+        {
+            "id": 5,
+            "winkel": 0,
+            "abschluss": "Anbohrschelle",
+            "anschluss": "Geklemmt",
+            "durchmesser": "DN32",
+            "laenge": 250,
+            "position": 1750,
+            "rohre_id": 1,
+            "col": "Anbohrschelle mit Innengewinde"
+        },
+        {
+            "id": 6,
+            "winkel": 0,
+            "durchmesser": "DN100",
+            "laenge": 0,
+            "position": -1,
+            "rohre_id": 2,
+            "col": "Nut"
+        },
+        {
+            "id": 7,
+            "winkel": 0,
+            "durchmesser": "DN100",
+            "laenge": 0,
+            "position": 10501,
+            "rohre_id": 2,
+            "col": "Sägeschnitt"
+        },
+        {
+            "id": 8,
+            "winkel": 0,
+            "abschluss": "Nutstutzen",
+            "anschluss": "Geschweisst",
+            "durchmesser": "DN32",
+            "laenge": 250,
+            "position": 750,
+            "rohre_id": 2,
+            "col": "Nutstutzen"
+        },
+        {
+            "id": 9,
+            "winkel": 0,
+            "abschluss": "Anbohrschelle",
+            "anschluss": "Geklemmt",
+            "durchmesser": "DN32",
+            "laenge": 250,
+            "position": 1750,
+            "rohre_id": 2,
+            "col": "Anbohrschelle mit Innengewinde"
+        }
+    ]
+}

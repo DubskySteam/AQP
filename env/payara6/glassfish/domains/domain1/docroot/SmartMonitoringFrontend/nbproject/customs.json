@@ -1,0 +1,65 @@
+{
+    "elements": {},
+    "attributes": {
+        "parent": {},
+        "swac_lang": {},
+        "uk-navbar": {},
+        "uk-tooltip": {
+            "context": "a"
+        },
+        "uk-navbar-toggle-icon": {
+            "context": "span"
+        },
+        "uk-accordion": {
+            "context": "ul"
+        },
+        "swac_setid": {},
+        "uk-switcher": {},
+        "swac_display": {},
+        "uk-modal": {},
+        "swac_datalistvalue": {},
+        "uk-close": {
+            "context": "button"
+        },
+        "uk-form-custom": {
+            "context": "div"
+        },
+        "uk-offcanvas": {
+            "context": "div"
+        },
+        "swac_hide": {},
+        "uk-spinner": {
+            "context": "div"
+        },
+        "uk-grid": {
+            "context": "div"
+        },
+        "uk-filter": {},
+        "uk-icon": {
+            "context": "span"
+        },
+        "uk-margin": {},
+        "uk-sticky": {},
+        "uk-overflow-auto": {},
+        "uk-toggle": {
+            "context": "a"
+        },
+        "uk-slideshow": {
+            "context": "div"
+        },
+        "swac_id": {},
+        "uk-search-icon": {
+            "context": "span"
+        },
+        "swa": {
+            "context": "div"
+        },
+        "swac_parent": {},
+        "uk-parallax": {
+            "context": "div"
+        },
+        "uk-tab": {
+            "context": "ul"
+        }
+    }
+}

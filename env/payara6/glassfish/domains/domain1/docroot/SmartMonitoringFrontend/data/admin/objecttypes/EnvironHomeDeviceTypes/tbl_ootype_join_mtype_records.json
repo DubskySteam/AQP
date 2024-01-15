@@ -1,0 +1,405 @@
+{
+    "records": [
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 3
+        },
+        {
+            "measurementtype_id": 2,
+            "description": "Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 3
+        },
+        {
+            "measurementtype_id": 3,
+            "description": "Luftdruck in Hektopascal",
+            "observedobjecttype_id": 3
+        },
+        {
+            "measurementtype_id": 4,
+            "description": "Temperatur",
+            "observedobjecttype_id": 3
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 4
+        },
+        {
+            "measurementtype_id": 5,
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft",
+            "observedobjecttype_id": 4
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 5
+        },
+        {
+            "measurementtype_id": 4,
+            "description": "Temperatur",
+            "observedobjecttype_id": 5
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 6
+        },
+        {
+            "measurementtype_id": 6,
+            "description": "Der erfasste Fensterzustand",
+            "observedobjecttype_id": 6
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 7
+        },
+        {
+            "measurementtype_id": 4,
+            "description": "Temperatur",
+            "observedobjecttype_id": 7
+        },
+        {
+            "measurementtype_id": 2,
+            "description": "Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 7
+        },
+        {
+            "measurementtype_id": 7,
+            "description": "Windrichtung",
+            "observedobjecttype_id": 7
+        },
+        {
+            "measurementtype_id": 8,
+            "name": "windspeed",
+            "description": "Windgeschwindigkeit in km/h. 1,852 km/h sind 1 Knoten",
+            "observedobjecttype_id": 7
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "ventilation_recommendation",
+            "description": "Die Lftungsempfehlung",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "mold_risk",
+            "description": "Gibt die Schimmelgefahr an",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "air_quality",
+            "description": "Die Raumluftqualitt gem. DIN Normen",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "heating_activated",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_temperature_inside_delta",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_kg_emission_kwh_to_half_minute",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "how_many_beech_trees_emission_to_half_minute",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen",
+            "observedobjecttype_id": 8
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 9
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "window_state_ai",
+            "description": "Der interpretierte Fensterzustand",
+            "observedobjecttype_id": 9
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "heating_and_ventilate",
+            "description": "Zeigt an ob man beim Lften Heizt",
+            "observedobjecttype_id": 9
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "ventilation_recommendation_1_count24h",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "mold_risk_1_count24h",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_0_count24h",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_1_count24h",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_2_count24h",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "heating_activated_1_count24h",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_temperature_inside_delta_count24h",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_count24h",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_median_count24h",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter_count24h",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter_median_count24h",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 10
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "ventilation_recommendation_1_count7d",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "mold_risk_1_count7d",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_0_count7d",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_1_count7d",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_2_count7d",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "heating_activated_1_count7d",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_temperature_inside_delta_count7d",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_count7d",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_median_count7d",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter_count7d",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter_median_count7d",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 11
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "ventilation_recommendation_1_count30d",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "mold_risk_1_count30d",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_0_count30d",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_1_count30d",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "air_quality_2_count30d",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "heating_activated_1_count30d",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_temperature_inside_delta_count30d",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_count30d",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_median_count30d",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter_count30d",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "heater_wattage_per_cubic_meter_median_count30d",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 12
+        }
+    ]
+}

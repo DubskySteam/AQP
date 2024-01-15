@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": true,
+            "name": "PVPM Hellkennliniengerät",
+            "description": "Erfassung von Hellkennliniendaten eines PVPM"
+        }
+    ]
+}

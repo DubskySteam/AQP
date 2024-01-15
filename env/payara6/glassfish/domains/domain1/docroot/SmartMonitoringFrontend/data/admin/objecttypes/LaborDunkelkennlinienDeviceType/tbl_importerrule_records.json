@@ -1,0 +1,13 @@
+{
+    "records": [
+        {
+            "importerconfiguration": "import.dataset_vertical_header=A1\nimport.dataset_vertical_start=B1\nimport.dataset_horizontal_header=A2\nimport.dataset_horizontal_start=A3\nimport.dataset_flatten=true\nimport.rename=Spannung/V - Plot 0->u;Strom/A - Plot 0->i",
+            "filenamepattern": ".*-DKL_Labor.xlsx",
+            "savefile": true,
+            "importername": "FilesImporter",
+            "defaultdevicename": "Labor Dunkelkennlinien",
+            "parsername": "XLSXParser",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

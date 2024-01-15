@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Landesmoorkulisse NRW",
+        "url": "../data/map.html?modelurl=https://www.opengeodata.nrw.de/produkte/geologie/boden/BK/MOORKULISSENRW/LandesmoorkulisseNRW_EPSG25832_Shape.zip&type=SHAPE",
+        "img": "showcase_moor",
+        "desc": "Zeigt die Moorflächen in NRW",
+        "urltitle": "Flächen anzeigen"
+    },
+    {
+        "title": "Oberflächenwasserkörper NRW",
+        "url": "../data/map.html?modelurl=https://www.opengeodata.nrw.de/produkte/umwelt_klima/wasser/oberflaechengewaesser/ogwk3d/OW-Wasserkoerper-3D-NRW_EPSG25832_Shape.zip&type=SHAPE",
+        "img": "showcase_wasserflaechen",
+        "desc": "Zeigt zusammenhängende Wasserflächen",
+        "urltitle": "Wasserflächen anzeigen"
+    },
+    {
+        "title": "Rhein-Kreis Neuss: Hochwasserrisikogebiete",
+        "url": "../data/map.html?modelurl=https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/hochwasserrisikogebiete/exports/geojson&type=GEOJSON",
+        "img": "showcase_hochwasser",
+        "desc": "Zeigt Hochwasserrisikogebiete",
+        "urltitle": "Hochwasserrisikogebiete anzeigen"
+    },
+    {
+        "title": "Rhein-Kreis Neuss: Windenergieanlagen",
+        "url": "../data/list.html?datalist_data=https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/rhein-kreis-neuss-windenergieanlagen/exports/json",
+        "img": "showcase_windkraft",
+        "desc": "Liste der Standorte von Windkraftanlagen",
+        "urltitle": "Liste anzeigen"
+    }
+]

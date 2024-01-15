@@ -1,0 +1,124 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Alpha",
+            "desc": "1. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 2,
+            "title": "Beta",
+            "desc": "2. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 3,
+            "title": "Gamma",
+            "desc": "3. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 4,
+            "title": "Delta",
+            "desc": "4. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 5,
+            "title": "Epsilon",
+            "desc": "5. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 6,
+            "title": "Zeta",
+            "desc": "6. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 7,
+            "title": "Eta",
+            "desc": "7. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 8,
+            "title": "Theta",
+            "desc": "8. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 9,
+            "title": "Iota",
+            "desc": "9. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 10,
+            "title": "Kappa",
+            "desc": "10. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 11,
+            "title": "Lambda",
+            "desc": "11. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 12,
+            "title": "My",
+            "desc": "12. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 13,
+            "title": "Ny",
+            "desc": "13. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 14,
+            "title": "Xi",
+            "desc": "14. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 15,
+            "title": "Omikron",
+            "desc": "15. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 16,
+            "title": "Pi",
+            "desc": "16. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 17,
+            "title": "Rho",
+            "desc": "17. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 18,
+            "title": "Sigma",
+            "desc": "18. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 19,
+            "title": "Tau",
+            "desc": "19. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 20,
+            "title": "Ypsilon",
+            "desc": "20. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 21,
+            "title": "Phi",
+            "desc": "21. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 22,
+            "title": "Chi",
+            "desc": "22. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 23,
+            "title": "Psi",
+            "desc": "23. Buchstabe des griechischen Alphabets"
+        },
+        {
+            "id": 24,
+            "title": "Omega",
+            "desc": "24. Buchstabe des griechischen Alphabets"
+        }
+    ]
+}

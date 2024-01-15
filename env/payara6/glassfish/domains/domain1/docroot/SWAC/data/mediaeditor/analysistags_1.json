@@ -1,0 +1,11 @@
+{
+    "list": [
+        {
+            "tagtype": "ref://1",
+            "media": "ref://1",
+            "polygons": "[{\"vertices\":[{\"x\":3427,\"y\":1492},{\"x\":4024,\"y\":1492},{\"x\":4008,\"y\":1121},{\"x\":3452,\"y\":1113},{\"x\":3427,\"y\":1492}]}]",
+            "title": "Cat's nose",
+            "description": "Cat's sweet nose"
+        }
+    ]
+}

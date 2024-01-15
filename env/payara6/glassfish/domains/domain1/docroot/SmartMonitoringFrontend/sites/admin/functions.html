@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="admin_functions_title">SmartMonitoring > Admin functions</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/admin/functions.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <article class="uk-article">
+            <h1 class="uk-article-title" swac_lang="adm_functions">Functions</h1>
+            <p class="uk-article-meta" swac_lang="adm_functionsdesc">Manage functions available in this installation.</p>
+
+            <div id="admin_functions" swa="Present FROM ../../data/admin/functions/functions.json">
+                <ul class="uk-list">
+                    <li class="swac_repeatForSet" swac_parent="{parent}">
+                        <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                            <h3 class="uk-card-title" swac_lang="{name}">{name}</h3>
+                            <p>{desc}</p>
+                            <ul class="swac_forChilds uk-list">
+                                <li class="swac_child">
+                                    <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                                        <div class="uk-card-badge uk-label">{version}</div>
+                                        <h3 class="uk-card-title" swac_lang="{name}">{name}</h3>
+                                        <p swac_lang="{name}_desc"></p>
+                                        <button class="activate uk-button uk-button-primary" swac_lang="adm_funcactivate">Activate</button>
+                                        <button class="deactivate uk-button uk-button-primary" swac_lang="adm_funcdeactivate">Deactivate</button>  
+                                    </div>
+                                    <ul class="swac_forChilds uk-list uk-list-decimal"></ul>
+                                    <hr>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>
