@@ -1,0 +1,12 @@
+{
+    "list": [
+        {
+            "id": 2,
+            "title": "Important parts of a flower",
+            "description": "The most important parts of a flower.",
+            "tagtype": "ref://../data/mediaeditor/tagtypes?id=2",
+            "media": "ref://../data/media/mediafiles.json?id=2",
+            "polygons": "[{\"vertices\":[{\"x\":51,\"y\":4536},{\"x\":2652,\"y\":4536},{\"x\":2652,\"y\":5959},{\"x\":51,\"y\":5969},{\"x\":51,\"y\":4536}]},{\"vertices\":[{\"x\":3256,\"y\":3133},{\"x\":1372,\"y\":3113},{\"x\":1392,\"y\":1454},{\"x\":3369,\"y\":1474},{\"x\":3256,\"y\":3133}]}]"
+        }
+    ]
+}

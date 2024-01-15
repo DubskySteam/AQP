@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - visualmodel component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/visualisation/visualmodel.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/visualisation/datadescription/datadescription_example3.js"></script>
+        <script src="../../data/visualisation/visualmodel/example1.js"></script>
+        <script src="../../data/visualisation/visualmodel/example2.js"></script>
+        <script src="../../data/visualisation/visualmodel/example3.js"></script>
+        <script src="../../data/visualisation/visualmodel/example4.js"></script>
+        <script src="../../data/visualisation/visualmodel/example5_1.js"></script>
+        <script src="../../data/visualisation/visualmodel/example7_1.js"></script>
+        <script src="../../data/visualisation/visualmodel/example8.js"></script>
+        <script src="../../data/visualisation/visualmodel/example10.js"></script>
+        <script src="../../data/visualisation/visualmodel/example11.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h3>Example 1: Visual model with connections</h3>
+            This example shows how to create a visualisation of datasets.
+
+            <pre><code class="lang-html">
+            &lt;div id="visualmodel_example1" swa="Visualmodel FROM example1"&gt;&lt;/div&gt;
+                    </code></pre>
+
+
+            <div id="visualmodel_example1" swa="Visualmodel FROM example1"></div>
+
+            The used datasource looks like this:
+            <pre><code class="lang-javascript">
+            var example1 = [
+                    {
+                    id: 1,
+                    name: "A",
+                            label1: "B label 1",
+                    x: 200,
+                    y: 200,
+                    width: 50,
+                    height: 50
+                },
+                {
+                    id: 2,
+                    name: "B",
+                    x: 300,
+                    y: 100,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 3,
+                    name: "C",
+                    x: 300,
+                    y: 200,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 4,
+                    name: "D",
+                    x: 300,
+                    y: 300,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 5,
+                    name: "E",
+                    x: 200,
+                    y: 300,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 6,
+                    name: "F",
+                    x: 100,
+                    y: 300,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 7,
+                    name: "G",
+                    x: 100,
+                    y: 200,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 8,
+                    name: "H",
+                    x: 100,
+                    y: 100,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 9,
+                    name: "I",
+                    x: 200,
+                    y: 100,
+                    width: 50,
+                    height: 50
+                },
+                    {
+                    id: 10,
+                    name: "I-child",
+                    x: 225,
+                    y: 125,
+                    width: 25,
+                    height: 25,
+                            parent: 9
+                },
+                {
+                    id: 11,
+                    name: "C A-B",
+                    type: "con",
+                    part1: 1,
+                    part2: 2
+                },
+                {
+                    id: 12,
+                    name: "C A-C",
+                    type: "con",
+                    part1: 1,
+                    part2: 3
+                },
+                {
+                    id: 13,
+                    name: "C A-D",
+                    type: "con",
+                            linecalc: "curve",
+                    part1: 1,
+                    part2: 4
+                },
+                {
+                    id: 14,
+                    name: "C A-E",
+                    type: "con",
+                    part1: 1,
+                    part2: 5
+                },
+                {
+                    id: 15,
+                    name: "C A-F",
+                    type: "con",
+                            linecalc: "curve",
+                    part1: 1,
+                    part2: 6
+                },
+                {
+                    id: 16,
+                    name: "C A-G",
+                    type: "con",
+                    part1: 1,
+                    part2: 7
+                },
+                {
+                    id: 17,
+                    name: "C A-H",
+                    type: "con",
+                    part1: 1,
+                    part2: 8
+                },
+                {
+                    id: 18,
+                    name: "C A-I",
+                    type: "con",
+                            linecalc: "curve",
+                    part1: 1,
+                    part2: 9
+                }
+            ];
+                    </code></pre>
+
+            <h3>Example 2: Execute functions on click</h3>
+            <p>It is simple to add functions for clicks on visual elements.
+                <br>This example also shows how to set connection line width with 
+                dataset attribute.
+            </p>
+
+            <pre><code class="lang-html">
+            &lt;div id="visualmodel_example2" swa="Visualmodel FROM example2"&gt;&lt;/div&gt;
+                    </code></pre>
+
+            <div id="visualmodel_example2" swa="Visualmodel FROM example2"></div>
+
+            On click events are defined within the component options. You can set
+            other defaults here, too:
+            <pre><code class="lang-javascript">
+var visualmodel_example2_options = {
+    defaults: new Map()
+};
+visualmodel_example2_options.defaults.set('example2', {
+    width: 100,
+    height: 50,
+    fillColor: '#000',
+    borderColor: '#000',
+    visuMargin: 10,
+    onClick: function (evt) {
+        alert('clicked element of dataset: ' + evt.target.attrs.swac_set.id);
+    },
+    labelFrontFamily: 'Arial',
+    labelFrontStyle: 'Arial',
+    labelFrontSize: 12,
+    labelPadding: 2,
+    labelStrokeWidth: 0.3,
+    labelFillColor: '#000',
+    labelBorderColor: '#000',
+    conLinecalc: 'direct', // direct, curve
+    conColor: '#000',
+    conWidth: 1,
+    conTension: 0.5,
+    conOnClick: function (evt) {
+        alert('clicked connection of dataset: ' + evt.target.attrs.swac_set.id);
+    }
+});
+                    </code></pre>
+
+            Connection line width is defined within the dataset (default value can 
+            also be set by component option)
+            <pre><code class="lang-javascript">
+            var example2 = [
+                {
+                    id: 1,
+                    name: "A",
+                    label1: "B label 1",
+                    x: 200,
+                    y: 200,
+                    width: 50,
+                    height: 50
+                },
+                {
+                    id: 2,
+                    name: "B",
+                    x: 300,
+                    y: 100,
+                    width: 50,
+                    height: 50
+                },
+                {
+                    id: 3,
+                    name: "C A-B",
+                    type: "con",
+                    part1: 1,
+                    part2: 2,
+                    strokeWidth: 4
+                }
+            ];
+                    </code></pre>
+
+            <h3>Example 3: Stage is scrollable for overflow content</h3>
+
+            <div id="visualmodel_example3" swa="Visualmodel FROM example3"></div>
+
+
+            <h3>Example 4: Visual model of photovoltaik plant with orthographic photo</h3>
+
+            <pre><code class="lang-html">
+                        &lt;div id="visualmodel_example4" swa="Visualmodel FROM example4"&gt;&lt;/div&gt;
+                    </code></pre>
+
+            <div id="visualmodel_example4" swa="Visualmodel FROM example4"></div>
+
+            The used datasource looks like this:
+            <pre><code class="lang-javascript">
+var example4 = [
+    {
+        id: 2,
+        name: "Roof",
+        // roof.tif available in examples
+        image: "../../data/visualmodel/roof.jpg",
+        x: 10,
+        y: 10,
+        width: 1413,
+        height: 1746
+    },
+    {
+        id: 3,
+        name: "Inverter 1",
+        parent: 'ref://../example4/2',
+        x: 662,
+        y: 370,
+        width: 45,
+        height: 20,
+        fillColor: 'grey'
+    },
+    {
+        id: 4,
+        name: "Inverter 2",
+        parent: 2,
+        x: 662,
+        y: 420,
+        width: 45,
+        height: 20,
+        fillColor: '#0000ff'
+    },
+    {
+        id: 5,
+        name: "Inverter 3",
+        parent: 2,
+        x: 662,
+        y: 470,
+        width: 45,
+        height: 20,
+        fillColor: 'red'
+    },
+    {
+        id: 6,
+        name: "String 5",
+        parent: 4,
+        x: 708,
+        y: 1384,
+        width: 567,
+        height: 226
+    },
+    {
+        id: 7,
+        name: "2-5-1",
+        parent: 6,
+        x: 720,
+        y: 1556,
+        width: 65,
+        height: 40
+    },
+..
+                    </code></pre>
+
+            <h3>Example 5: Adding datasets from a second source</h3>
+            <p>Visualmodel can handle datasets from more than one datasource. 
+                Additional datasets can be added by the generall available SWAC 
+                component functions e.g. addSet(), addDataFromReference().</p>
+            <p>First dataset added with FROM clause:</p>
+            <pre><code class="lang-html">
+            &lt;div id="visualmodel_example5" swa="Visualmodel FROM example5_1"&gt;&lt;/div&gt;
+                    </code></pre>
+            <p>More datasets are added by addDataFromReference():</p>
+            <pre><code class="lang-javascript">
+            var visualmodel_example5_options = {
+                stageHeight: 100,
+                showScenegraph: false,
+                customAfterLoad: function (requestor) {
+                    // Add child datasets
+                    requestor.swac_comp.addDataFromReference('ref://../data/visualisation/visualmodel/example5_2.json?filter=parent;eq;1', 'id');
+                }
+            };
+            </code></pre>
+
+
+            <div id="visualmodel_example5" swa="Visualmodel FROM example5_1"></div>
+
+            <h3>Example 6: Adding a legend and default values</h3>
+            <p>You can set default values that are used on all datasets of a specific datasource. 
+                In the right area of the default template a legend can be displayed.
+                <br>Its contents are shown on mousover the legend button.</p>
+
+            <pre><code class="lang-html">
+            &lt;div id="visualmodel_example6" swa="Visualmodel FROM example5_1"&gt;&lt;/div&gt;
+                    </code></pre>
+
+            <div id="visualmodel_example6" swa="Visualmodel FROM example5_1"></div>
+
+            <pre><code class="lang-javascript">
+            var visualmodel_example6_options = {
+                stageHeight: 100,
+                showScenegraph: false,
+                customAfterLoad: function (requestor) {
+                    // Add child datasets
+                    requestor.swac_comp.addDataFromReference('ref://../data/visualisation/visualmodel/example5_2.json?filter=parent;eq;1', 'id');
+                }
+            };
+            visualmodel_example6_options.defaults = new Map();
+            visualmodel_example6_options.defaults.set('example5_1', {
+                xAttr: 'position',  // Value of the attibute 'position' gives the x value, also possible: yAttr
+                xOffset: 50,        // Offset to add to the x value
+                xFactor: 0.1,       // Scale factor for the x value
+                y: 50,              // Also possible: yAttr, yOffset, yFactor
+                width: 20,          // Also possible: widthAttr, widthOffset, widthFactor
+                height: 50,         // Also possible: heightAttr, heightOffset, heightFactor
+                heightFactor: -1,   // Inverting print direction
+                fillColor: '#000',
+                borderColor: '#000',
+                visuMargin: 10,
+                onClick: null,
+                labelParts: 'col,durchmesser',  // Names of the attributes used for createing the label
+                labelFrontFamily: 'Arial',
+                labelFrontStyle: 'Arial',
+                labelFrontSize: 12,
+                labelX: 0,
+                labelY: 45,
+                labelPadding: 0,
+                labelStrokeWidth: 0.3,
+                labelFillColor: '#000',
+                labelBorderColor: '#000',
+                conLinecalc: 'direct', // direct, curve
+                conColor: '#000',
+                conWidth: 1,
+                conTension: 0.5,
+                conOnClick: null
+            });
+            visualmodel_example6_options.legendMap = new Map();
+            visualmodel_example6_options.legendMap.set('Kk', 'Kupferkabel');
+            visualmodel_example6_options.legendMap.set('Ke', 'Eisenkabel');
+            visualmodel_example6_options.legendMap.set('Kl', 'Lichtphaserkabel');
+            visualmodel_example6_options.plugins = new Map();
+                    </code></pre>
+
+            <h3>Example 7: Rotate elements depending on attributes and positions</h3>
+            <p>Elements can be rotated on x-axis or z-axis depending on the values 
+                of the elements dataset. Furthermore the rotation can be depend on 
+                the relation to their parent element.
+                <br>z-axis rotation shortens the height appeareance or results in a x-axis flip</p>
+
+            <div id="visualmodel_example7" swa="Visualmodel FROM example7_1"></div>
+
+            <pre><code class="lang-html">
+&lt;div id="visualmodel_example7" swa="Visualmodel FROM example7_1"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <pre><code class="lang-javascript">
+visualmodel_example7_options.defaults.set('../data/visualmodel/example7_2.json', {
+    zRotateAttr: 'rotation',    // Name of the attribute that contains rotation in degrees
+    zRotateApplyOn: 'below',    // Apply when child is below / above / before / after
+    xRotateAttr: 'rotation',    // Name of the attribute that contains rotation in degrees
+    xRotateApplyOn: 'above',    // Apply when child is below / above / before / after
+    // Above here are options from examples before example 7
+            </code></pre>
+
+            
+            
+                        <h3>Example 8: Createing visual models with VisucreatorSPL</h3>
+                        <p>By activateing the Visucreator Plugin you can add new elements 
+                            to the drawing. Created objects are stored as datasets, so they 
+                            can be saved afterwards by use of the View.save() function.
+                            <br>Note: This plugin is experimental
+                        </p>
+            
+                        <pre><code class="lang-html">
+            &lt;div id="visualmodel_example8" swa="Visualmodel FROM example8"&gt;&lt;/div&gt;
+                    </code></pre>
+                    
+                    Creating visualmodels can be activated by useing the Visucreator Plugin.
+                    <pre><code class="lang-javascript">
+var visualmodel_example8_options = {
+    stageHeight: 200,
+    showScenegraph: false
+};
+visualmodel_example8_options.plugins = new Map();
+visualmodel_example8_options.plugins.set('Visucreator', {
+    id: 'Visucreator',
+    active: true
+});
+                    </code></pre>
+            
+                        <div id="visualmodel_example8" swa="Visualmodel FROM example8"></div>
+                               
+            <h3>Example 9: Visual model with helper lines</h3>
+                                    
+                                                <pre><code class="lang-html">
+                                    &lt;div id="visualmodel_example9" swa="Visualmodel FROM example5_1"&gt;&lt;/div&gt;
+                                            </code></pre>
+                                    
+                                                <div id="visualmodel_example9" swa="Visualmodel FROM example5_1"></div>
+
+            <h3>Example 10: Support other forms</h3>
+            <p>Elements can be rotated on x-axis or z-axis depending on the values 
+                of the elements dataset. Furthermore the rotation can be depend on 
+                the relation to their parent element.
+                <br>z-axis rotation shortens the height appeareance or results in a x-axis flip</p>
+
+            <div id="visualmodel_example10" swa="Visualmodel FROM example10"></div>
+
+            <h3>Example 11: Display data in schema</h3>
+            <p>You can visualise actual data in your schema useing the data plugin.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="visualmodel_example11" swa="Visualmodel FROM example11"&gt;&lt;/div&gt;
+&lt;div id="visualmodel_example11dd" swa="Datadescription FROM datadescription_data3"&gt;&lt;/div&gt;
+            </code></pre>
+
+            Configuration:
+            <pre><code class="lang-javascript">
+var visualmodel_example11_options = {
+    stageHeight: 120,
+    showScenegraph: false,
+    plugins: new Map()
+};
+visualmodel_example11_options.plugins.set('Data', {
+    id: 'Data',
+    active: true
+});
+window['Data_visualmodel_example11_options'] = {
+    datasouceattr: 'datasource',
+    attrsShown: ['doubleval'],
+    datareload: 0, // Time in seconds to auto update data
+    datadescription: '#visualmodel_example11dd'
+};
+            </code></pre>
+            
+            Datasource:
+            <pre><code class="lang-javascript">
+var example11 = [
+    {
+        id: 1,
+        name: "A",
+        x: 200,
+        y: 50,
+        width: 50,
+        height: 50,
+        datasource: '../../data/visualisation/visualmodel/example11o1.json?size=1&order=ts,desc'
+    },
+    {
+        id: 2,
+        name: "B",
+        x: 300,
+        y: 50,
+        width: 50,
+        height: 50,
+        datasource: '../../data/visualisation/visualmodel/example11o2.json'
+    }
+];
+            </code></pre>
+
+            <div id="visualmodel_example11" swa="Visualmodel FROM example11"></div>
+            <div id="visualmodel_example11dd" swa="Datadescription FROM datadescription_data3"></div>
+        
+            
+                        <!--
+
+<h3>Example 11: Visual model calculated side view</h3>
+
+<pre><code class="lang-html">
+&lt;div id="visualmodel_example11" swa="Visualmodel FROM example11"&gt;&lt;/div&gt;
+</code></pre>
+
+<div id="visualmodel_example11" swa="Visualmodel FROM example11"></div>-->
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

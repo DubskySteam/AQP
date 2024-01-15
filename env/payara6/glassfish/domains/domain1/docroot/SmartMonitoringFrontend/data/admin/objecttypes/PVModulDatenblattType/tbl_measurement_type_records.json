@@ -1,0 +1,58 @@
+{
+    "records": [
+        {
+            "unit": "A",
+            "name": "I",
+            "description": "Stromstärke",
+            "type": "float8"
+        },
+        {
+            "unit": "text",
+            "name": "Text",
+            "description": "Text",
+            "type": "text"
+        },
+        {
+            "unit": "W",
+            "name": "P",
+            "description": "Leistung in Watt",
+            "type": "float8"
+        },
+        {
+            "unit": "V",
+            "name": "U",
+            "description": "Spannungsstärke",
+            "type": "float8"
+        },
+        {
+            "unit": "%",
+            "name": "Prozent",
+            "description": "Der Anteil von etwas an etwas in Prozent",
+            "type": "float8"
+        },
+        {
+            "unit": "mm",
+            "name": "Länge",
+            "description": "Längenmaß in Millimeter",
+            "type": "float8"
+        },
+        {
+            "unit": "stk",
+            "name": "Anzahl",
+            "description": "Anzahl von Dingen",
+            "type": "integer"
+        },
+        {
+            "unit": "Ohm",
+            "name": "R",
+            "description": "elektrischer Widerstand",
+            "type": "float8"
+        },
+        {
+            "unit": "%/K",
+            "name": "Koeffizient",
+            "description": "Koeffizient zum herausrechnen von Werten",
+            "type": "float8"
+        }
+    ]
+}

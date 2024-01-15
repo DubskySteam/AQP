@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="data_map_title">Data > Map</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/data/map.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        <script src="../../customisations/data/datadesc.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        
+        <article class="uk-article">
+            <h2 class="uk-article-title" swac_lang="data_map_title">Datamap</h2>
+            <p class="uk-article-meta" swac_lang="data_map_desc"></p>
+            <div uk-grid>
+                <div class="uk-width-1-6">
+                    <div id="datamap_datadescription" swa="Datadescription FROM datadesc"></div>
+                </div>
+                <div class="uk-width-5-6">
+                    <div id="datamap" swa="Worldmap2d FROM {{collection}}"></div>
+                </div>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

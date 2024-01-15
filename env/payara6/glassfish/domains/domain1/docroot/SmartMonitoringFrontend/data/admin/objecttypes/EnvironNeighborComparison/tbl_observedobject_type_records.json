@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": false,
+            "name": "NachbarschaftsVergleich",
+            "description": "Zusammenfassung zu Raumluftgren im Nachbarschaftsvergleich. 5 Messpunkte von lowest bis zu highest und der aktuelle Mittelwert zu den jeweiligen Positionen"
+        }
+    ]
+}

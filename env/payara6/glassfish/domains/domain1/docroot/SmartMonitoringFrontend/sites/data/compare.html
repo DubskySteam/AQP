@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de" class="uk-height-1-1 uk-width-1-1">
+    <head>
+        <title swac_lang="data_compare_title">Data > Compare</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/data/compare.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+    <body class="uk-overflow-auto uk-height-1-1">
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../data/languages/translations.json"></div>
+
+        <article>
+            <div id="compareview" swa="Present FROM tables">
+                <table>
+                    <tr>
+                        <th>Source 1</th>
+                        <th>Diff</th>
+                        <th>Source 2</th>
+                    </tr>
+                    <tr class="swac_repeatForSet">
+                        <td>{collection_1}</td>
+                        <td class="comapreresult" id="{
+                            id
+                        }"></td>
+                        <td>{collection_2}</td>
+                    </tr>
+                </table>
+            </div>
+            <button class="runcompare">Run compare</button>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

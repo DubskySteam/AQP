@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="object_scheme_title">Object > Schema</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <link rel="stylesheet" href="../../css/global.css" />
+        <script src="../../js/object/scheme.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+        <script src="../../customisations/data/datadesc.js"></script>
+        <script src="../../customisations/object/scheme.js"></script>
+    </head>
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <article class="uk-article">
+            <div class="uk-grid-collapse uk-grid-match" uk-grid>
+                <div class="uk-width-small">
+                    <!-- Usecase dependend content. TODO: de/activateble contents -->
+<!--                    <div class="uk-position-relative" tabindex="-1" uk-slideshow="ratio: 2:8; autoplay: true">
+                        <ul class="uk-slideshow-items">
+                             Irradiation display for photovoltaic usecases
+                            <li>
+                                <div class="uk-position-center uk-position-small">
+                                    <h4 class="uk-heading-divider" swac_lang="Irradiation">Irradiation</h4>
+                                    <b swac_lang="Actual">Actual</b>
+                                    <div id="irradiation_cur" swa="Present FROM irradiation_1 WHERE size=1 AND order=ts,desc OPTIONS irradiation_options">
+                                        <div class="swac_repeatForSet"><h3 swac_round="2">{value} kW</h3></div>
+                                    </div>
+                                    <b swac_lang="Yesterday">Yesterday</b>
+                                    <div id="irradiation_yest" swa="Present FROM irradiation_1 WHERE size=1 AND filter=ts,lt,{{date:m-1438}} AND order=ts,desc OPTIONS irradiation_options">
+                                        <div class="swac_repeatForSet"><h3 swac_round="2">{value} kW</h3></div>
+                                    </div>
+                                    <b swac_lang="Average">Average</b>
+                                    <div id="yield_" swa="Present FROM irradiation_1 WHERE size=1 OPTIONS yield_options">
+                                        <div class="swac_repeatForSet"><h3 swac_round="2">{temperature} kW</h3></div>
+                                    </div>
+                                    <div id="irradiation_legend" swa="Datadescription FROM irradiation_legend_data"></div>
+                                </div>
+                            </li>
+                             Temperature display 
+                            <li>
+                                <div class="uk-position-center uk-position-small">
+                                    <h4 class="uk-heading-divider" swac_lang="Temperature">Temperature</h4>
+                                    <b swac_lang="Actual">Actual</b>
+                                    <div id="temp_cur" swa="Visualise FROM /SmartDataEnvironmental/smartdata/records/minden_weather?storage=public&size=1&page=1&order=ts%2Cdesc TEMPLATE visualise_without_state OPTIONS temp_options"></div>
+                                    <b swac_lang="Yesterday">Yesterday</b>
+                                    <div id="temp_yest" swa="Visualise FROM /SmartDataEnvironmental/smartdata/records/minden_weather?storage=public&size=1&page=1&order=ts%2Cdesc&filter=ts,lt,{{date:m-1438}} TEMPLATE visualise_without_state OPTIONS temp_options"></div>
+                                    <div id="temp_legend" swa="Datadescription FROM temp_legend_data"></div>
+                                </div>
+                            </li>
+                             Weather display 
+                            <li>
+                                <div class="uk-position-center uk-position-small">
+                                    <h4 class="uk-heading-divider" swac_lang="Weather">Weather</h4>
+                                    <b swac_lang="Actual">Actual</b>
+                                    <div id="weather_cur" swa="Visualise FROM /SmartDataEnvironmental/smartdata/records/minden_weather?storage=public&size=1&page=1&order=ts%2Cdesc TEMPLATE visualise_without_state"></div>
+                                    <b swac_lang="Yesterday">Yesterday</b>
+                                    <div id="weather_past" swa="Visualise FROM /SmartDataEnvironmental/smartdata/records/minden_weather?storage=public&size=1&page=1&order=ts%2Cdesc&filter=ts,lt,{{date:m-1438}} TEMPLATE visualise_without_state"></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="uk-slideshow-nav uk-dotnav"></ul>
+                    </div>-->
+                </div>
+                <div class="uk-width-expand">
+                    <!-- TODO add support in the compoennt (Plugin: Datasource) to change the filter to change the schema -->
+                    <div id="scheme" swa="Visualmodel FROM schemes_visuals WHERE filter=schemes_id,eq,1"></div>
+                </div>
+            </div>
+            <div id="datadesc" swa="Datadescription FROM datadesc"></div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

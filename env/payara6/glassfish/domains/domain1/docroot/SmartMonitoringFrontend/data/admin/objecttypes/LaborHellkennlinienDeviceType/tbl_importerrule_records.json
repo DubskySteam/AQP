@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "filenamepattern": ".*-HKL_Labor.csv",
+            "savefile": true,
+            "importername": "FilesImporter",
+            "defaultdevicename": "Labor Hellkennlinien",
+            "parsername": "LaborHellkennlinienParser",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

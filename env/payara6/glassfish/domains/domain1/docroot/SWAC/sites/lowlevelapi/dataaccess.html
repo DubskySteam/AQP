@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > low level api > data access</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/lowlevelapi/dataaccess.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+        <article>
+            <h1>Data access</h1>
+            <p>If you need values in your own code, use the SWAC Model. You will
+                get WatchableSets. You can simply modify the attributes 
+                as allways but you will have the advantage of databinding. Modify in 
+                your code - automatic see results in components.</p>
+
+            <h2>Load data with DataRequestor</h2>
+            <p>You can access data by useing window.swac.Model.load(). The 
+                object given to Model.load() is a DataRequestor.
+                <br>It can contain one of the sources configured in configuration 
+                or global variable name or URL.</p>
+            <pre><code class="lang-javascript">
+// Get the model
+let Model = window.swac.Model;
+// Request data
+let dataPromise = Model.load({
+    fromName: 'mytablename',         // Name of the datatable
+    fromWheres: {
+        filter: 'id,lt,10',         // Filter datasets (when use TreeQL / SmartData)
+                                    // Note: When you need to use two or more filters, add them in the filter attribute: id,gt,5&filter=id,lt,10
+        other: 'This is another attribute to send with request'
+    },
+    idAttr: 'id',                   // Name of sets attribute that contains the id
+    attributeDefaults: new Map(),   // Map of attributname / value for default values when the attribute is missing
+    attributeRenames: new Map(),    // Map of set attributename / wished attributename for renameing attributes
+    reloadInterval: 10000,           // Time in milliseconds after that the data should be refetched from source
+});
+// Wait for data to be loaded
+dataPromise.then(function(data) {
+    // Direct access dataset with id 1
+    let set = data[1];
+    // Iterate over available datasets
+    for(let curSet of data) {
+        // Make something with the dataset here
+    }
+}).catch(function(err) {
+    // Handle load error
+});
+
+// Edit dataset
+set.myattr = 'new value';
+// Done every component will be informed about the new value
+            </code></pre>
+
+            <h2>Load data with reference</h2>
+            <p>You can access data by useing window.swac.Model.getFromReference().
+            This gives you the opportunity to get data from references found in 
+            another datasets.</p>
+            <pre><code class="lang-javascript">
+// Get the model
+let Model = window.swac.Model;
+// Specify parameters
+let reference = 'ref://some.of.this/format?filter=id,gt,5';
+// Each parameter below is optionally
+let idAttr = 'id',                   // Name of sets attribute that contains the id
+let attributeDefaults = new Map(),   // Map of attributname / value for default values when the attribute is missing
+let attributeRenames= new Map(),    // Map of set attributename / wished attributename for renameing attributes
+let reloadInterval = 10000,           // Time in milliseconds after that the data should be refetched from source
+
+// Request data
+let dataPromise = Model.getFromReference(reference,idAttr,attributeDefaults,attributeRenames,reloadInterval);
+// Wait for data to be loaded
+dataPromise.then(function(dataCapsule) {
+    // Direct access dataset with id 1
+    let set = dataCapsule.data[1];
+    // Iterate over available datasets
+    for(let curSet of dataCapsule.data) {
+        // Make something with the dataset here
+    }
+}).catch(function(err) {
+    // Handle load error
+});
+
+// Edit dataset
+set.myattr = 'new value';
+// Done every component will be informed about the new value
+            </code></pre>
+
+
+            <h2>Load data into component</h2>
+            <p>You can load data from a reference directly into an component.
+            The component is than automatically observer of each dataset the source.</p>
+            <div id="datapresent" swa="Present"></div>
+            <button id="getdata">Get data</button>
+            <pre><code class="lang-javascript">
+let req = document.getElementById('datapresent');
+req.swac_comp.addDataFromReference("ref://../../data/exampledata_list.json?filter=id,gt,3&filter=id,lt,7&storage=smartmonitoring");
+            </code></pre>
+
+            <h2>Remove data from component</h2>
+            <p>To remove all data from a component, simply use the removeAllData() or removeData(source) methods available on every component.</p>
+<pre><code class="lang-javascript">
+let req = document.getElementById('datapresent');
+req.swac_comp.removeAllData();
+            </code></pre>
+            
+            <h1>Watch single sets</h1>
+            <p>You can register own code to watch changes in datasets.</p>
+            <pre><code class="lang-javascript">
+// Simple observer
+let observer = {
+    notify: function(set, attrName, attrValue) {
+        // Get name of modified and new value
+    }
+};
+// Request data
+let loadProm = Model.load({fromName: 'mytablename'});
+loadProm.then(function(data) {
+    // Get dataset with id 1
+    let set = data[1];
+    // Register observer
+    set.addObserver(observer,'watchedattributename');
+    // Done. You will be notified on data updates
+});
+            </code></pre>
+            
+            <h2>Watch all sets</h2>
+            <p>You can watch all sets you requested with your own code useing 
+            model.loadData() or model.getFromReference()</p>
+
+            <pre><code class="lang-javascript">
+// Simple observer
+let observer = {
+    notify: function(set, attrName, attrValue) {
+        // Get name of modified and new value
+    }
+};
+
+// Get the model
+let Model = window.swac.Model;
+// Request data
+let dataPromise = Model.load({
+    fromName: 'mytablename',         // Name of the datatable
+    fromWheres: {
+        filter: 'id,lt,10',         // Filter datasets (when use TreeQL / SmartData)
+        other: 'This is another attribute to send with request'
+    },
+    observers: [observer]
+});
+// Wait for data to be loaded
+dataPromise.then(function(dataCapsule) {
+    // Edit dataset with id 1
+    dataCapsule[1].myattr = 'new value';
+    // Done every component will be informed about the new value
+}).catch(function(err) {
+    // Handle load error
+});
+            </code></pre>
+            
+            Useing the getFromReference the array of observers is the last parameter:
+            <pre><code>
+let dataPromise = Model.getFromReference(reference,idAttr,attributeDefaults,attributeRenames,reloadInterval,observers);
+</code></pre>
+            
+            <h2>Save data</h2>
+            <p>To save datasets, use the Model.save() method. If your dataset 
+                contains an id, the dataset will be updated, else it will be created.</p>
+
+            <pre><code class="lang-javascript">
+// Get the model
+let Model = window.swac.Model;
+// Build dataCapsule
+let dataCapsule = {
+    fromName: 'nameofyourdatasource'
+};
+dataCapsule.data = [{ // Creates a new dataset
+    name: 'Elia Neumeier',
+    age: 34
+}];
+
+// Request data (returns promise)
+Model.save(dataCapsule).then(function(dataCaps) {
+    // Possible returns rsults from more than one save target
+    let saveTarged0 = datacaps[0];  // Is a dataCapsule with fromName and data-Array.
+    // Access saved dataset of savetarget0
+    let firstSet = datacaps[0].data[0];
+    // If REST interface only response with an id, you find it in data[0].id
+    let firstSetId = datacaps[0].data[0].id;
+}).catch();
+            </code></pre>
+
+            <h2>Update data</h2>
+            <p>Updateing data is done with the Model too.</p>
+            <pre><code class="lang-javascript">
+// Get the model
+let Model = window.swac.Model;
+// Build dataCapsule
+let dataCapsule = {
+    fromName: 'nameofyourdatasource'
+};
+dataCapsule.data = [
+{
+    id: 2,              // Updates dataset with id 2
+    name: 'Hans Test',
+    age: 32
+}
+];
+
+// Request data (returns promise)
+Model.save(dataCapsule).then().catch();
+</code></pre>
+            
+            <h2>Delete data</h2>
+            <p>Deleteing data is is the same way.</p>
+            <pre><code class="lang-javascript">
+// Get the model
+let Model = window.swac.Model;
+// Build dataCapsule
+let dataCapsule = {
+    fromName: 'nameofyourdatasource'
+};
+dataCapsule.data = [{
+    id: 2,              // Deletes dataset with id 2
+}];
+
+// Request data (returns promise)
+Model.delete(dataCapsule).then().catch();
+            </code></pre>
+            
+            <h1>Data creation</h1>
+            <p>to create your own data that is automatic synchronising over differend 
+                components, create a WatchableSource and WatchableSets.</p>
+            
+            <h2>Create a WatchableSource</h2>
+            <p>A WatchableSource is observeable and auto observed by components, 
+            that use date of that source.</p>
+            
+            <pre><code class="lang-javascript">
+let ws = window.swac.Model.createWatchableSource({fromName: 'sourcename', requestId: 'sourcename?filter=id,es,1'});
+            </code></pre>
+            
+            <h2>Create a WatchableSet</h2>
+            <p>WatchableSets are observeable and inform the components they are 
+            used in about changes of data values.</p>
+            
+            <pre><code class="lang-javascript">
+let set = window.swac.Model.createWatchableSet(dataobject);
+            </code></pre>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

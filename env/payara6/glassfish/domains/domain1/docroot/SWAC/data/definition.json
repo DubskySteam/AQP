@@ -1,0 +1,33 @@
+{
+    "list": [{
+            "generated": true,
+            "name": "id",
+            "type": "int8"
+        }, {
+            "name": "name",
+            "type": "varchar",
+            "required": true
+        }, {
+            "name": "doubleval",
+            "type": "float8"
+        }, {
+            "name": "intval",
+            "type": "int4"
+        }, {
+            "name": "stringval",
+            "type": "varchar"
+        }, {
+            "name": "dateval",
+            "type": "date"
+        }, {
+            "name": "refval",
+            "type": "reference"
+        }, {
+            "name": "mimetype",
+            "type": "varchar",
+            "possibleValues": ["audio/mp3","video/mp4","audio/ogg","video/mpeg"]
+        }, {
+            "name": "favcol",
+            "type": "color"
+        }]
+}

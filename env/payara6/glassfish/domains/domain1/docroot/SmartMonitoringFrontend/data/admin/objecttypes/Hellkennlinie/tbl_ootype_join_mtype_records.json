@@ -1,0 +1,3021 @@
+{
+    "records": [
+        {
+            "measurementtype_id": 2,
+            "name": "Temperatur",
+            "description": "Temperatur des Solarmoduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "Einstrahlung",
+            "description": "Leistung der Sonneneinstrahlung",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I1",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U1",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I2",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U2",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I3",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U3",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I4",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U4",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I5",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U5",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I6",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U6",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I7",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U7",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I8",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U8",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I9",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U9",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I10",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U10",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I11",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U11",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I12",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U12",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I13",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U13",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I14",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U14",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I15",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U15",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I16",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U16",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I17",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U17",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I18",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U18",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I19",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U19",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I20",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U20",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I21",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U21",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I22",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U22",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I23",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U23",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I24",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U24",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I25",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U25",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I26",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U26",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I27",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U27",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I28",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U28",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I29",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U29",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I30",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U30",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I31",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U31",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I32",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U32",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I33",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U33",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I34",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U34",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I35",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U35",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I36",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U36",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I37",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U37",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I38",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U38",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I39",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U39",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I40",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U40",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I41",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U41",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I42",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U42",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I43",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U43",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I44",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U44",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I45",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U45",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I46",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U46",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I47",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U47",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I48",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U48",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I49",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U49",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I50",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U50",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I51",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U51",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I52",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U52",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I53",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U53",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I54",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U54",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I55",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U55",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I56",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U56",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I57",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U57",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I58",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U58",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I59",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U59",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I60",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U60",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I61",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U61",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I62",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U62",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I63",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U63",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I64",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U64",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I65",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U65",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I66",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U66",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I67",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U67",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I68",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U68",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I69",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U69",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I70",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U70",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I71",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U71",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I72",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U72",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I73",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U73",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I74",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U74",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I75",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U75",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I76",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U76",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I77",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U77",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I78",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U78",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I79",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U79",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I80",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U80",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I81",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U81",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I82",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U82",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I83",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U83",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I84",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U84",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I85",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U85",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I86",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U86",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I87",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U87",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I88",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U88",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I89",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U89",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I90",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U90",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I91",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U91",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I92",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U92",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I93",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U93",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I94",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U94",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I95",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U95",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I96",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U96",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I97",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U97",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I98",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U98",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I99",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U99",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I100",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U100",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I101",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U101",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I102",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U102",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I103",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U103",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I104",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U104",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I105",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U105",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I106",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U106",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I107",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U107",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I108",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U108",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I109",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U109",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I110",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U110",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I111",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U111",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I112",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U112",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I113",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U113",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I114",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U114",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I115",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U115",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I116",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U116",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I117",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U117",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I118",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U118",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I119",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U119",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I120",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U120",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I121",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U121",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I122",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U122",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I123",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U123",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I124",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U124",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I125",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U125",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I126",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U126",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I127",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U127",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I128",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U128",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I129",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U129",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I130",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U130",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I131",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U131",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I132",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U132",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I133",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U133",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I134",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U134",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I135",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U135",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I136",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U136",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I137",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U137",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I138",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U138",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I139",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U139",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I140",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U140",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I141",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U141",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I142",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U142",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I143",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U143",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I144",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U144",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I145",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U145",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I146",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U146",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I147",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U147",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I148",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U148",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I149",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U149",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I150",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U150",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I151",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U151",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I152",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U152",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I153",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U153",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I154",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U154",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I155",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U155",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I156",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U156",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I157",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U157",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I158",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U158",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I159",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U159",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I160",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U160",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I161",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U161",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I162",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U162",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I163",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U163",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I164",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U164",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I165",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U165",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I166",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U166",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I167",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U167",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I168",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U168",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I169",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U169",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I170",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U170",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I171",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U171",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I172",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U172",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I173",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U173",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I174",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U174",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I175",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U175",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I176",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U176",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I177",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U177",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I178",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U178",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I179",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U179",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I180",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U180",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I181",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U181",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I182",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U182",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I183",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U183",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I184",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U184",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I185",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U185",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I186",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U186",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I187",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U187",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I188",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U188",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I189",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U189",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I190",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U190",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I191",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U191",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I192",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U192",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I193",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U193",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I194",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U194",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I195",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U195",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I196",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U196",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I197",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U197",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I198",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U198",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I199",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U199",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I200",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U200",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I201",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U201",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I202",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U202",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I203",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U203",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I204",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U204",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I205",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U205",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I206",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U206",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I207",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U207",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I208",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U208",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I209",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U209",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I210",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U210",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I211",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U211",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I212",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U212",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I213",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U213",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I214",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U214",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I215",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U215",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I216",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U216",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I217",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U217",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I218",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U218",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I219",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U219",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I220",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U220",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I221",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U221",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I222",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U222",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I223",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U223",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I224",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U224",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I225",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U225",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I226",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U226",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I227",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U227",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I228",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U228",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I229",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U229",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I230",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U230",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I231",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U231",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I232",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U232",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I233",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U233",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I234",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U234",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I235",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U235",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I236",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U236",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I237",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U237",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I238",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U238",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I239",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U239",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I240",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U240",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I241",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U241",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I242",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U242",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I243",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U243",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I244",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U244",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I245",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U245",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I246",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U246",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I247",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U247",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I248",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U248",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I249",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U249",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "I250",
+            "description": "Stromwert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "U250",
+            "description": "Spannungswert der Kennlinie",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitpunkt der Messung",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

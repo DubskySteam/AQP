@@ -1,0 +1,13 @@
+{
+    "elements": {},
+    "attributes": {
+        "uk-tooltip": {},
+        "uk-icon": {
+            "context": "span"
+        },
+        "swa": {},
+        "uk-svg": {
+            "context": "img"
+        }
+    }
+}

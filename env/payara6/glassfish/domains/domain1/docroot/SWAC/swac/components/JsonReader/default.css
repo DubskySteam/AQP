@@ -1,0 +1,12 @@
+textarea {
+    width: 100%;
+    height: 400px;
+}
+
+.jsonreader_repeatForKey {
+    display: none;
+}
+
+.jsonreader_repeatForCollection, .jsonreader_repeatForDataKey, .jsonreader_repeatForDataset, .jsonreader_repeatForDataValue {
+    display: none;
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - multi language support</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <!-- Datasources -->
+        <script src="../../js/concepts/multilanguage.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+        <article>
+            <h1>Use youre favourite language</h1>
+            <p>SWAC includes multi language support for the whole page.
+                <br>Each component has a language directory where language files for
+                a concrete language is stored. For example langs/de.js.
+                <br>The language file is automatically loaded with the component and the
+                language is automatically choosen useing the browser options.
+                <br>However it can be overwritten by setting SWAC.config.lang in 
+                the confguration.</p>
+
+            <h2>Useing language entries</h2>
+            <p>To use a language entry in your skin (HTML fragment) there are a 
+            view options. The swac_lang attribute can be used on any tag to 
+            translate the contents inside this tag with the expression identified 
+            by the id that is noted in the attribute.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="mytext" swa="Present FROM ../data/exampledata_list.json"&gt;
+   Text: &lt;span swac_lang="core.model_nodata"&gt;No data&lt;/span&gt;
+&lt;/div&gt;
+        </code></pre>
+
+            <div id="mytext" swa="Present FROM ../../data/exampledata_list.json">
+                Text: <span swac_lang="core.model_nodata">No data</span>
+            </div>
+            
+            <p>In button, label, legend, option and a you can place the id directly inside the value-Attribute.</p>
+            
+            <pre><code class="lang-html">
+&lt;input type="button" value="core.model_nodata"&gt;
+        </code></pre>
+            
+            <input type="button" value="core.model_nodata">
+            
+            <pre><code class="lang-html">
+&lt;a href="#"&gt;core.model_nodata&lt;/a&gt; 
+        </code></pre>
+            
+            <a href="#">core.model_nodata</a>
+            
+            <p>In the "placeholder", "title", "alt" and "uk-tooltip" attribute 
+            you can use the language id directly, too.</p>
+            
+            <pre><code class="lang-html">
+&lt;a href="#" title="core.model_nodata"&gt;Look at the title attribute&lt;/a&gt; 
+        </code></pre>
+            
+            <a href="#" title="core.model_nodata">Look at the title attribute</a>
+            
+            <p>To use multilanguage on any attributes, define the swac_langattr 
+                attribute and state there the attribute names and the language id.                
+            </p>
+            
+        <pre><code class="lang-html">
+&lt;a href="#" swac_langattr="myattr:core.model_nodata"&gt;Look at the myattr attribute&lt;/a&gt; 
+        </code></pre>
+            
+            <a href="#" swac_langattr="myattr:core.model_nodata">Look at the myattr attribute</a>
+
+            <h2>Custom messages for empty lists</h2>
+            <p>When a component uses the option showWhenNoData: true. There is automatically a
+            message generated about no data available, when there is no dataset. You can customise 
+            the message for each useage of a component. Create a language entry in the app_LNGCODE.js
+            with the id of the requestor with "_nodata" appended.</p>
+            
+            <pre><code class="lang-html">
+&lt;div id="mypesonalid" swa="Present FROM emptydata"&gt;&lt;/div&gt; 
+        </code></pre>
+            
+            <pre><code class="lang-javascript">
+var app_en = {
+    mypersonalid_nodata: "My personal no data message"
+};
+        </code></pre>
+            
+            <h2>Useing language entries in javascript code</h2>
+            <p>All laguage entries of the currently loaded language are available in
+                an global variable, too. Use SWAC_lang for access to the language 
+                entries. The current active langauge is accessable in dict attribute.</p>
+
+            <pre><code class="lang-javascript">
+window.swac.lang.dict.core.model.nodata;
+        </code></pre>
+
+            <a id="langtestlink" href="#">Show language entry >model.nodata<</a>
+            <script>
+                let langtestlink = document.getElementById('langtestlink');
+                langtestlink.addEventListener('click', function (evt) {
+                    evt.preventDefault();
+                    UIkit.modal.alert(window.swac.lang.dict.core.model_nodata);
+                });
+            </script>
+
+            <h2>Useing placeholders in language entires</h2>
+            <p>Some language entries have placeholders in it. You can fill this 
+                placeholders by useing the SWAC_language.replacePlaceholders function.</p>
+
+            <pre><code class="lang-javascript">
+// Language entry is defined as: moreerrors: "Es sind %number% weitere Fehler aufgetreten."
+let moreMsgs = window.swac.lang.dict.core.moreerrors;
+moreMsgs = window.swac.lang.replacePlaceholders(moreMsgs, 'number', 5);
+UIkit.modal.alert(moreMsgs);
+        </code></pre>
+
+            <a id="replacelink" href="#">Show language entry with replaced placeholder</a>
+            <script>
+                let replacelink = document.getElementById('replacelink');
+                replacelink.addEventListener('click', function (evt) {
+                    evt.preventDefault();
+                    let moreMsgs = window.swac.lang.dict.core.moreerrors;
+                    moreMsgs = window.swac.lang.replacePlaceholders(moreMsgs, 'number', 5);
+                    UIkit.modal.alert(moreMsgs);
+                });
+            </script>
+
+            <h2>Writing own language files</h2>
+            <p>You can add language files eayseily with some simplte javascript object.
+                <br>The file can have any name but must end with the short language abbrivation.
+                <br>Language files for components are name only with the language abbrivation and placed in the components lang folder.
+                <br>The content of the language file is a simple javascript object with a name corosponding to the components name or a free choosen name followed by _ and the language abbrivation.
+            </p>
+
+            <pre><code class="lang-javascript">
+var Mediacode_de = {
+    notitle: 'Kein Titel',
+    novideosupport: 'Ihr Browser unterstützt leider keine Videovidergabe.',
+    noaudiosupport: 'Ihr Browser unterstützt leider keine Audiovidergabe',
+};
+export default Mediacode_de;
+</code></pre>
+
+            <h2>Loading additional language files</h2>
+            <p>You can load additional language files. Those are applied automatically 
+                to the pages content after load.
+                <br>The path to the file does not contain the language abbrivation and the .js.
+                Also the objects name does not append the _ and the language abbrivation.</p>
+
+            <pre><code class="lang-javascript">
+window.onload = function () {
+    // Load language file for mediacode
+    SWAC.lang.loadTranslationFile('../swac/components/Mediaplayer/langs/mediacode', 'Mediacode').then(
+        function() {
+            window.swac.lang.translateAll(document);
+         });
+    );
+}
+        </code></pre>
+
+            <script>
+                window.onload = function () {
+                    window.swac.lang.loadTranslationFile('../swac/components/Mediaplayer/langs/mediacode', 'Mediacode').then(
+                            function() {
+                                window.swac.lang.translateAll(document);
+                            });
+                };
+            </script>
+
+            The translation of "no title" to your language is: <span swac_lang="Mediacode.notitle">No translation, sorry</span>
+            
+            <h2>Useing app language file</h2>
+            <p>You can define and load a app language file. This must be called app and within app_LANGCODE.js. If you load it over
+            the above descriped way to load custom languages this file has a special possibility. It can overwrite any default 
+            language anetries from the component language files. To do so, just add an entry with the full qualified language entry
+            name from the component.</p>
+            
+            <pre><code class="lang-javascript">
+var app_de = {
+    "myownentry": "This entry is a extra languge entry for your app it does not overwrite any entries from the components.",
+    "Edit.adddataset": "This entry overwrites the language entry from the Edit component."
+};
+export default app_de;
+        </code></pre>
+            
+            
+            <h2>Change the language on the fly</h2>
+            <p>Language can be changed on the fly. The <a href="../userinterface/translator.html">translator component</a> provides 
+            a language change button.</p>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="data_list_title">Data > List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/data/list.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        <script src="../../customisations/data/datadesc.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        
+        <article class="uk-article">
+            <h2 class="uk-article-title" swac_lang="data_list_title">Data > List</h2>
+            <p class="uk-article-meta" swac_lang="data_list_desc"></p>
+
+            <div id="datalist" swa="Present FROM {{collection}} WHERE geotransform=latlon TEMPLATE table_for_all_datasets">
+                <table id="datatable" class="uk-table uk-table-divider uk-table-striped">
+                    <tr>
+                        <th class="func_labels" swac_lang="data_list_labels"></th>
+                        <th></th>
+                        <th class="swac_repeatForAttribute">{attrName}</th>
+                    </tr>
+                    <tr class="swac_repeatForSet">
+                        <td class="func_labels">
+                            <div id="labels_{id}" swa="Labeling FROM label_datasets WHERE filter=set_id,eq,{id} AND filter=collection,eq,{{collection}} OPTIONS labels_options"></div>
+                        </td>
+                        <td>
+                            <a href="map.html?id={{id}}&collection={{collection}}&zoomToSet={id}" class="datamap">data_list_showonmap</a>
+                            <a href="map.html?id={{id}}&collection={{collection}}&filter=cluster,eq,{cluster},datamap">data_list_showcluster</a>
+                        </td>
+                        <td class="swac_repeatForValue">
+                            <span uk-tooltip="title: {attrName}">{*}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Datenzugriff</h3>
+            <p>Diese Daten abrufen über:</p>
+            <code>
+                http://epigraf01.ad.fh-bielefeld.de/SmartData/{{collection}}
+            </code>
+            
+            <div id="datalist_datadescription" swa="Datadescription FROM datadesc"></div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

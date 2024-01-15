@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="data_sync_title">Data > Syncronisation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/data/sync.js"></script>
+        <script src="../../customisations/data/sync.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        
+        <article>
+            <div id="object" swa="Present FROM tbl_observedobject WHERE filter=id,eq,{{id}}">
+                <h1 class="uk-heading-bullet">{name}</h1>
+            </div>
+            <div class="countsets" style="text-align:center;font-size:24pt;"></div>
+            <div style="text-align:center;" swac_lang="data_sync_desc"></div>
+            <div id="sync" swa="Sync FROM {{collection}} WHERE filter=synced,neq,true"></div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

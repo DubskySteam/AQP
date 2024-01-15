@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Algorithm - Constraint Solveing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/algorithms/constraintsolver.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/constraintsolver/example_rohrnetz_csp.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>ConstraintSolver</h1>
+            <p>The ConstraintSolver Algorithm aims to solve constraints between 
+                different attributes of datasets. It makes it possible to validate 
+                complex dependend inputs from users.</p>
+
+            <!--<div id="explaincomponent" swa="ExplainComponents"></div>-->
+
+            <h2>ConstraintSolvingProblem</h2>
+            <p>A ConstraintSolveingPorblem contains of data and constraints.</p>
+            
+            <h2>ConstraintSolveingDatasets</h2>
+            <p>The ConstraintsSolveingDatasets are the current occupancy of the 
+            given problem. They come into the component as normal datasets, as 
+            in every other SWAC component. There are no dependencies for the 
+            datasts put into this component, but as allways its strongly adviced 
+            that every dataset has an id attribute.
+            <br>Datasets that should be checked by the constraintsolver can be 
+            loaded from reference or set by set. (Those possiblities exists on 
+            every SWAC component)
+            <br>See examples below.</p>
+            
+            <h2>ConstraintSolvingDefinitions</h2>
+            <p>The CSD (ConstraintSolvingDefinitions) defines the possibile occupancys 
+            in the dataset and their constraints. SWAC ConstraintSolving can 
+            handle not only constraints within one dataset but also over different 
+            datasets, even datasets of different kinds.</p>
+            
+            <pre><code class="lang-javascript">
+var example_rohrnetz_csp = [
+    {
+        col: 'Rohr',
+        source: 'rohr',
+        desc: '',
+        typ: 'Rohr',
+        avail: true,
+        din: ['10217', '10220', '10255'],
+        durchmesser: ['DN32', 'DN40', 'DN50', 'DN65', 'DN80', 'DN100', 'DN125', 'DN150', 'DN200', 'DN250', 'DN300', '1/2"', '3/4"', '1"', '1 1/4"', '1 1/2"', '2"', '2 1/2"', '3"'],
+        abgeklebt: [true, false],
+        abschluss_links: ['Sägeschnitt'], // Hier nur die Möglichkeit, die sich nicht aus den combinations ergibt (ist aber auch kein Problem hier alle aufzulisten)
+        abschluss_rechts: ['Sägeschnitt'],
+        beschichtung: ['grundiert (Handarbeit)', 'Pulverbeschichtung', 'Lakierung'], // Muss nicht angegeben werden, da in den combinations enthalten, soll aber auch nicht schaden
+        combinations: [
+            {
+                // Constraints 1.1 und 1.3
+                laenge: [{min: 50, max: 7800}],
+                beschichtung: ['Pulverbeschichtung']
+            },
+            {
+                // Constraint 1.2
+                laenge: [{min: 50, max: 7800}, {min: 50, max: 10500}],
+                beschichtung: ['grundiert (Handarbeit)', 'Lakierung']
+            },
+            {
+                beschichtung: ['grundiert (Handarbeit)', 'Lakierung'],
+                farbe: ['1x rot-braun', '2x rot-braun', '1x grau', '2x grau', 'RAL3000', 'RAL9006 (grau)', 'RAL9002 (weiß)']
+            },
+            {
+                beschichtung: ['Pulverbeschichtung', 'Lakierung'],
+                farbe: ['RAL3000', 'RAL9006 (grau)', 'RAL9002 (weiß)']
+            },
+            {
+                abschluss_links: ['Nut'],
+                durchmesser: ['DN32', 'DN40', 'DN50', 'DN65', 'DN80', 'DN100', 'DN125', 'DN150', 'DN200', 'DN250', 'DN300']
+            },
+            {
+                abschluss_rechts: ['Nut'],
+                durchmesser: ['DN32', 'DN40', 'DN50', 'DN65', 'DN80', 'DN100', 'DN125', 'DN150', 'DN200', 'DN250', 'DN300']
+            },
+            {
+                abschluss_links: ['Gewinde'],
+                durchmesser: ['1/2"', '3/4"', '1"', '1 1/4"', '1 1/2"', '2"', '2 1/2"', '3"']
+            },
+            {
+                abschluss_rechts: ['Gewinde'],
+                durchmesser: ['1/2"', '3/4"', '1"', '1 1/4"', '1 1/2"', '2"', '2 1/2"', '3"']
+            },
+            {
+                abschluss_links: ['Endboden, geschweißt'],
+                durchmesser: ['DN32', 'DN40', 'DN50', 'DN65', 'DN80', 'DN100', 'DN125', 'DN150', 'DN200', 'DN250', 'DN300']
+            },
+            {
+                abschluss_rechts: ['Endboden, geschweißt'],
+                durchmesser: ['DN32', 'DN40', 'DN50', 'DN65', 'DN80', 'DN100', 'DN125', 'DN150', 'DN200', 'DN250', 'DN300']
+            },
+            {
+                abschluss_links: ['Gewinde-Kappe Nr. 300, n. GF-Katalog'],
+                durchmesser: ['1/2"', '3/4"', '1"', '1 1/4"', '1 1/2"', '2"', '2 1/2"', '3"']
+            },
+            {
+                abschluss_rechts: ['Gewinde-Kappe Nr. 300, n. GF-Katalog'],
+                durchmesser: ['1/2"', '3/4"', '1"', '1 1/4"', '1 1/2"', '2"', '2 1/2"', '3"']
+            }
+        ]
+    },
+    {
+        col: 'Verbindung zwischen Rohren und Anbauteilen',
+        typ: 'Verbindung',
+        desc: '',
+        avail: true,
+        parent: [{typ: 'Rohr'}],
+        child: [{typ: 'Anbauteile'}],
+        functions: [
+            // Constraint 3.1
+            {
+                vars: ['parent.durchmesser','child.durchmesser'],
+                func: function (rohr, anbauteil) {
+                    if (anbauteil.istAmEndeVon(rohr) || anbauteil.istAmAnfangVon(rohr))
+                        return anbauteil.durchmesser === rohr.durchmesser;
+                    else
+                        return anbauteil.durchmesser <= rohr.durchmesser;
+                }
+            }
+        ]
+    }
+    // Beispiel gekürzt ...
+];
+            </code></pre>
+            
+            <h3>Example 1: Loading ConstriantSolver as standalone</h3>
+            <p>This example demonstrates how to load the ConstraintSolver as a 
+                single object to use in various usecases without need for a view 
+                component.</p>
+            
+            <pre><code class="lang-javascript">
+// Load ConstraintSolver
+window.swac.loadAlgorithm('ConstraintSolver','ConstraintSolver').then(function (requestor) {
+    // Get instantiated ConstraintSolver
+    let cs = requestor.swac_comp;
+    console.log(cs);
+    // Here the ConstraintSolver can be used
+    // Code of examples below example 2 can be placed here
+});
+            </code></pre>
+
+            <h3>Example 2: Include ConstraintSolver into component</h3>
+            <p>This example demonstrates how to include the ConstraintSolver into 
+                another component. A full example can be found at the 
+                <a href="constraintvisualiser.html">
+                    ConstraintVisualiser component
+                </a>.</p>
+
+            <p>
+                Load the ConstriantSolver as a dependency:
+            </p>
+            <pre><code class="lang-javascript">
+// Place this inside a component
+this.desc.depends[0] = {
+    name: 'ConstraintSolver',
+    algorithm: 'ConstraintSolver',
+    desc: 'ConstraintSolver algorithm'
+};
+            </code></pre>
+
+            <p>
+                Get the ConstraintSolver class inside the component:
+            </p>
+            <pre><code class="lang-javascript">
+let solver = this.algorithms['ConstraintSolver'];
+// Now you can use all methods
+solver.calcCollections();
+solver.calcAllDomainCollections();
+            </code></pre>
+
+            <h3>Example 3: Initiate ConstraintSolver</h3>
+            <p>The CSP is set as an option of the ConstraintSolver component.</p>
+            <pre><code class="lang-javascript">
+// Variable "example_rohrnet_csp" contains the CSP object as shown above
+ConstraintSolver_options = {};
+ConstraintSolver_options.domainDefs = example_rohrnetz_csp;
+            </code></pre>
+            <p>The ConstraintsSolver has to calculate some constraint functions 
+            from the CSD, and create cloneable CSDs per domaincollection 
+            (domain per kind of dataset). This is done by calling the functions 
+            cs.calcCollections(); and cs.calcAllDomainCollections();
+            <br>This has to be done only once (or redone if the CSD has changed)</p>
+            <pre><code class="lang-javascript">
+cs.calcCollections();
+cs.calcAllDomainCollections();
+            </code></pre>
+            
+            <h3>Example 4: Adding a dataset</h3>
+            <p>Datasets added to the ConstraintSolver are than checked against 
+            its definition. Setting is done the same way as on every other SWAC 
+            component.</p>
+            
+            <pre><code class="lang-javascript">
+// Add main dataset
+let rohrset = cs.addSet('../data/example_rohre.json', {
+    id: 1,
+    col: 'Rohr' // This attribute is important to identify the matching constraints (same value as in CSDs)
+});
+            </code></pre>
+            
+            <h3>Example 5: Trigger constraint check</h3>
+            <p>Constraint check is automatically triggerd when a value of a 
+            dataset was changed.</p>
+            
+            <pre><code class="lang-javascript">
+// Test set occupancy
+// Should be run without problems
+set.din = '10220';
+// Should run without problem
+rohrset.beschichtung = 'Pulverbeschichtung';
+// Now there should only a length between 50 and 7800 possible
+// Should be run without problem
+rohrset.laenge = 7700;
+// Should create a constraint violation message
+rohrset.laenge = 10000;
+            </code></pre>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

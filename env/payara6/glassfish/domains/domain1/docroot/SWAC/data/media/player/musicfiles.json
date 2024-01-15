@@ -1,0 +1,62 @@
+{
+    "list": [
+        {
+            "id": 5,
+            "title": "Put the needle down",
+            "path": "Put_the_Needle_Down.mp3",
+            "mimetype": "audio/mp3",
+            "artist": "Benjamin Orth",
+            "album": "ccMixter",
+            "license": "CC BY-3.0",
+            "trackNum": 1,
+            "image": "cover.jpg",
+            "duration": 207
+        },
+        {
+            "id": 6,
+            "title": "Put the needle down",
+            "path": "Put_the_Needle_Down.ogg",
+            "mimetype": "audio/ogg",
+            "artist": "Benjamin Orth",
+            "album": "ccMixter",
+            "license": "CC BY-3.0",
+            "trackNum": 1,
+            "image": "cover.jpg",
+            "duration": 207,
+            "alternative": 5
+        },
+        {
+            "id": 7,
+            "title": "I Remember U",
+            "path": "I Remember U.ogg",
+            "mimetype": "audio/ogg",
+            "artist": "Cartoon",
+            "album": "NCS - NoCopyrightSounds",
+            "image": "cover.jpg",
+            "duration": 223
+        },
+        {
+            "id": 8,
+            "title": "I Remember U",
+            "path": "I Remember U.mp3",
+            "mimetype": "audio/mp3",
+            "artist": "Cartoon",
+            "album": "NCS - NoCopyrightSounds",
+            "image": "cover.jpg",
+            "duration": 223,
+            "alternative": 7
+        },
+        {
+            "id": 9,
+            "title": "Smile",
+            "path": "Smile.mp3",
+            "mimetype": "audio/mp3",
+            "artist": "David Amber",
+            "album": "David Amber and Friends, Vol. 1",
+            "license": "CC BY-4.0",
+            "trackNum": 1,
+            "image": "cover.jpg",
+            "duration": 232
+        }
+    ]
+}

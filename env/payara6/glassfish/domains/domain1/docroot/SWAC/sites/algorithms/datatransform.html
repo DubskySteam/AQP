@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Algorithm - DataTransform</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/algorithms/datatransform.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>DataTransform</h1>
+            <p>The DataTransform Algorithm allows you to transform datasets from 
+                one source by specifing transform-maps or transform-functions. It 
+                gives the advantage that when data changes not all data has to be 
+                transformed again. Instead it transforms the change data only and 
+                informs all components, that use these transformed data.</p>
+
+            <h3>Example 1: Create and execute transforms</h3>
+            <p>This example demonstrates how to create a transform and use it.
+                When transforming a set all attributes where a transform definition 
+                is given, will be transformed, the others are tranfered with original 
+                value to the new created transformed set.</p>
+            <p>Transformed are configured inside the component options. There are three kinds of transform:</p>
+            <dl>
+                <dt>Overwriting</dt>
+                <dd>Set a single value to a attribute overwrites the value from the original set.</dd>
+                <dt>Objectmap</dt>
+                <dd>Each attribute in the object has the value, that should be used in the new set instead of the old value.</dd>
+                <dt>Function</dt>
+                <dd>New value is calcualted by function. The function gets the original and transformed set as parameter.</dd>
+            </dl>
+            <pre><code class="lang-javascript">
+var DataTransform_example1_options = {
+    ignoredAttributes: ['id','parent'],  //Attributes listet here are not transformed and not transfered
+    transformTarget: 'datatransform_example2_watchablesource', //Save the data in the named storage to inform watchers of these on data change
+    transforms: {
+        "../../data/datatransform/datatransform_exampleA.json": {
+            "kind": "circle",   // Always set kind to "circle" regardles of the value kind has in the original dataset
+            "durchmesser": {    // Map durchmesser from a DN or Zoll value to a number (mm)
+                "DN32": 40,
+                "DN40": 48,
+                "DN48": 50,
+                "DN50": 63,
+                "DN65": 75,
+                "DN80": 90,
+                "DN100": 110,
+                "DN125": 140,
+                "DN150": 160,
+                "DN200": 225,
+                "DN250": 280,
+                "DN300": 315,
+                '1/2"': 20,
+                '3/4"': 26,
+                '1"': 33,
+                '1 1/4"': 40,
+                '1 1/2"': 47,
+                '2"': 59,
+                '2 1/2"': 76,
+                '3"': 89
+            },
+            // Gets the original dataset, must return the new value for the named attribute
+            "x": function(set, transset) {
+                return set.y;
+            },
+            // When changeing y recalculateing x and leave y
+            "y": function(set, transset) {
+                transset.x = set.y;
+                return set.y;
+            }
+        }
+    }
+};
+</code></pre>
+
+            Transform loading and execution:
+            <pre><code class="lang-javascript">
+document.addEventListener('swac_components_complete', function () {
+    // Load DataTransform
+    window.swac.loadAlgorithm('DataTransform_example1','DataTransform').then(function (requestor) {
+        // Get instantiated DataTransform
+        let dt = requestor.swac_comp;
+        dt.addDataFromReference('ref://../../data/datatransform/datatransform_exampleA.json').then(function() {
+           let transformeddata = dt.transform('../../data/datatransform/datatransform_exampleA.json');
+           console.log(transformeddata);
+        });
+    });
+});
+            </code></pre>
+
+            <h3>Example 2: Set transformed data to another component</h3>
+            <p>Data transformed with DataTransform can easily be added to another 
+                component. And it is automatically updated, when the original source 
+                changes and a new transformation is needed.</p>
+            <p>Try to change the durchmesser value to DN100 and the y value to some other number.</p>
+
+            <div class="uk-child-width-expand@s" uk-grid>
+                <div id="datatransform_example2_edit" swa="Edit FROM ../../data/datatransform/datatransform_exampleA.json"></div>
+                <div id="datatransform_example2_view" swa="Present"></div>
+            </div>
+
+            Use two separate components. The transform gets the original data on load. The second one becomes a empty source, where the TransformComponent
+            will store her data.
+            <pre><code class="lang-html">
+&lt;div class="uk-child-width-expand@s" uk-grid&gt;
+    &lt;div id="datatransform_example2_edit" swa="Edit FROM ../../data/datatransform/datatransform_exampleA.json">&lt;/div&gt;
+    &lt;div id="datatransform_example2_view" swa="Present">&lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+
+            <pre><code class="lang-javascript">
+// Empty source where booth componente share their data
+var datatransform_example2_watchablesource = [];
+// Because the source is empty at load time set the view to always visable
+var datatransform_example2_view_options = {
+    showWhenNoData: true
+};
+...
+    // After transforming set the transformed data to the view
+    let transformeddata = dt.transform('../../data/datatransform/datatransform_exampleA.json');
+    example2_viewElem.swac_comp.addData('datatransform_example2_watchablesource',transformeddata);
+...
+            </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

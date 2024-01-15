@@ -1,0 +1,4 @@
+{
+    "id": 0,
+    "notice": "Because there is no real storage on server side, all files become id 0."
+}

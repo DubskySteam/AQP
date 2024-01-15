@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - copy component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/userinterface/copy.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Copy simple static content</h3>
+            <pre><code class="lang-html">
+&lt;div id="tocopy_example1"&gt;
+            &lt;h1&gt;This content should be copied&lt;/h1&gt;
+            &lt;p&gt;Every static content can be copied. This example should be repeated 
+            directly after the horizontal line.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;hr&gt;
+
+&lt;div id="copy_example1" swa="Copy"&gt;&lt;/div&gt;
+            </code></pre>
+
+            <pre><code class="lang-javascript">
+ var copy_example1_options = {
+    sourceId: 'tocopy_example1'
+};
+            </code></pre>
+
+            <div id="tocopy_example1">
+                <h1>This content should be copied</h1>
+                <p>Every static content can be copied. This example should be repeated 
+                    directly after the horizontal line.</p>
+            </div>
+
+            <hr>
+
+            <div id="copy_example1" swa="Copy"></div>
+
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

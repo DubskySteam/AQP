@@ -1,0 +1,64 @@
+{
+    "records": [
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Room",
+            "observedobjecttype_id": 2
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Home",
+            "observedobjecttype_id": 1
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata LFDT",
+            "observedobjecttype_id": 3
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Carb",
+            "observedobjecttype_id": 4
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Temp",
+            "observedobjecttype_id": 5
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Window",
+            "observedobjecttype_id": 6
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Weather",
+            "observedobjecttype_id": 7
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metada RoomClimate",
+            "observedobjecttype_id": 8
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Ventilation",
+            "observedobjecttype_id": 9
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Compare24h",
+            "observedobjecttype_id": 10
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Compare",
+            "observedobjecttype_id": 11
+        },
+        {
+            "oometadatatype_id": 1,
+            "name": "Metadata Compare30d",
+            "observedobjecttype_id": 12
+        }
+    ]
+}

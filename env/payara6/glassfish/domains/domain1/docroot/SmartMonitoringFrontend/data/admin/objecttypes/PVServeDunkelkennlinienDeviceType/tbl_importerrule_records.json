@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "filenamepattern": ".*-DKL_pvServe.txt",
+            "savefile": true,
+            "importername": "FilesImporter",
+            "defaultdevicename": "PVServe Dunkelkennlinien",
+            "parsername": "PVServeDunkelkennlinienParser",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

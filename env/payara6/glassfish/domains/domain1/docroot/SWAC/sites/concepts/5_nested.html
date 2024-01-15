@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - concepts > Nested components</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>Nested components</h1>
+            <p>Components can be nested, so that one component may list a set of datasets
+                and the dataset's display (inside the swac_repeatedForSet) contains 
+                another component that displays details.</p>
+
+            <h2>Nested component with useage of parents data</h2>
+            <p>If the child component should use the same data as the parent component 
+                simply use a component requestor without FROM-clause. 
+                <br>Scince every component div needs a id 
+            and every id must be unambiguous use the {id} from the parent dataset
+            to identify the child component.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="nested_example1" swa="Present FROM ../../data/exampledata_object.json"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        The nested data of {name} is:
+        &lt;div id="nested_example1_child_{id}" swa="Present"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+
+            <div id="nested_example1" swa="Present FROM ../../data/exampledata_object.json">
+                <div class="swac_repeatForSet">
+                    The nested data of {name} is:
+                    <div id="nested_example1_child_{id}" swa="Present"></div>
+                </div>
+            </div>
+
+            <h2>Nested component with own data</h2>
+            <p>If the child component has its own data without reference to the data 
+                of the parent its simple. Only put the child component in parents 
+            template.</p>
+            
+            <pre><code class="lang-html">
+&lt;div id="nested_example1" swa="Present FROM ../../data/exampledata_object.json"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        The dataset {name} is one of:
+        &lt;div id="nested_example1_child_{id}" swa="Present FROM ../../data/exampledata_list.json"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>            
+            
+            <div id="nested_example2" swa="Present FROM ../../data/exampledata_object.json">
+                <div class="swac_repeatForSet">
+                    The dataset {name} is one of:
+                    <div id="nested_example2_child_{id}" swa="Present FROM ../../data/exampledata_list.json"></div>
+                </div>
+            </div>
+            
+            <h2>Filter nested sets</h2>
+            <p>The datasets show in the nested component can be filtered.
+                <br>In folowing example only datasets are shown in the nested component,
+            that have the value of parents set {id} in their attribute "simpleref".</p>
+            
+            <pre><code class="lang-html">
+&lt;div id="nested_example1" swa="Present FROM ../../data/exampledata_object.json"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        The dataset {name} (id: {id}) is refenced by set (over attribute simpleref):
+        &lt;div id="nested_example1_child_{id}" swa="Present FROM ../../data/exampledata_list.json WHERE filter=simpleref,eq,{id}"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>  
+            
+            <div id="nested_example3" swa="Present FROM ../../data/exampledata_object.json">
+                <div class="swac_repeatForSet">
+                    The dataset {name} (id: {id}) is refenced by set (over attribute simpleref):
+                    <div id="nested_example3_child_{id}" swa="Present FROM ../../data/exampledata_list.json WHERE filter=simpleref,eq,{id}"></div>
+                </div>
+            </div>
+            
+            <h2>Nested component without data</h2>
+            <p>Sometimes you need a nested component that does not get data at page load
+            nor from parent set and from own datasource. For this cases use FROM none 
+            to create an empty component. This can be filled with data over javascript 
+            later.</p>
+            
+            <pre><code class="lang-html">
+&lt;div id="nested_example1" swa="Present FROM ../../data/exampledata_object.json"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        The dataset {name} (id: {id}) has a empty sub component:
+        &lt;div id="nested_example1_child_{id}" swa="Present FROM none"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre> 
+            
+            <div id="nested_example3" swa="Present FROM ../../data/exampledata_object.json">
+                <div class="swac_repeatForSet">
+                    The dataset {name} (id: {id}) has a empty sub component:
+                    <div id="nested_example3_child_{id}" swa="Present FROM none"></div>
+                </div>
+            </div>
+            
+            <h2>Filter for parent and child sets</h2>
+            <p>With options.mainSource you can set a souce which holds the main data 
+            for your component. All Datasets from this source are named parent sets.
+            All other sets from other sources are child sources.
+            <br>If you use this mechanism you can define rules, when to accept the 
+            sets in your component. This works on nested components, too.</p>
+            
+            <pre><code class="lang-html">
+&lt;div id="nested_example1" swa="Present FROM ../../data/exampledata_object.json"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        The dataset {name} (id: {id}) has a empty sub component:
+        &lt;div id="nested_example1_child_{id}" swa="Present FROM none" parentFilter="id,eq,{id}" childFilter="ref_id,eq,{id}"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre> 
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

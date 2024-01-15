@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="media_upload_title">Media > Upload</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/media/upload.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis"></div>
+        <article class="uk-article">
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="" swac_lang="media_upload_header">Media Upload</a></h1>
+            <div class="media-upload">
+                <ul uk-tab class="tabs">
+                    <li class="uk-active">
+                        <a href="#" swac_lang="media_upload_tab_upload">Upload</a>
+                    </li>
+                    <li class="uk-active"><a href="#" swac_lang="media_upload_tab_capture">Capture</a></li>
+                </ul>
+                <ul class="uk-switcher">
+                    <li>
+                        <div class="upload-content">
+                            <div id="upload_media" class="upload-media" swa="Upload TEMPLATE preview"></div>
+                        </div>
+                    </li>   
+                    <li>
+                        <div class="recording-content">
+                            <div class="recording-settings">
+                                <label class="uk-form-label" swac_lang="media_upload_device_list_label">Media Device</label>
+                                <select class="media-device-list uk-select"></select>
+                            </div>
+                            <div class="recording-stream uk-flex uk-flex-center uk-padding">
+                                <video id="media-cam" class="media-cam" autoplay width="640px" height="480px">Video stream not available</video>
+                                <canvas class="recording-canvas" width="640px" height="480px"></canvas>
+                            </div>
+                            <div class="media-cam-actions uk-flex uk-flex-center" uk-margin>
+                                <button class="take-picture uk-button uk-button-primary uk-margin-right" swac_lang="media_upload_take_photo">Take photo</button>
+                                <button class="record-video uk-button uk-button-primary uk-margin-left" swac_lang="media_upload_capture_video">Capture video</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="info_noselect uk-text-large" swac_lang="media_upload_noselect"></div>
+            <div class="info_notavail uk-text-large uk-text-warning" swac_lang="media_upload_notavail"></div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

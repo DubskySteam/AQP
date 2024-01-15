@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - progressive</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>Simply build progressive webapps with SWAC</h1>
+            <p>SWAC includes features for progressive webapps. With SWAC it's simplte
+                to make a progressive webapp.</p>
+
+            <h2>Makeing a webapp progressive</h2>
+            <p>To make your webapp progressive there are only a view steps todo.</p>
+            <ol>
+                <li>Configure the manifest.json</li>
+                <li>Activate progressive mode in configuration.js</li>
+                <li>Declare pages and content for precaching</li>
+            </ol>
+
+            <h2>Configure the manifest.json</h2>
+            <p>Place a manifest.json file in the root directory. An example can be 
+                downloaded here <a href="/SWAC/manifest.json">manifest.json download</a>
+                <br>Set the title of your application and the icons path.
+                <br>This will give users the possibilty to install your webapp right
+                to there homescreen (on supported mobile devices).</p>
+
+            <h2>Activate progressive mode</h2>
+            <p>Progressive mode can be simply activated in configuration.js in your
+                application root.</p>
+
+            <pre><code class="lang-javascript">
+...
+
+SWAC_config.progressive = {};
+SWAC_config.progressive.active = true;
+
+...
+        </code></pre>
+
+            <h2>Intelligent cacheing</h2>
+            <p>SWAC caches application parts intelligent after usecase. Program 
+                components as scripts and pages are used from cache first to reduce
+                bandwidth useage. Data is fetched from datasources first to get the
+                actual data.</p>
+
+            <div id="fetching_example" swa="Present FROM ../../data/exampledata_list.json"></div>
+
+            <h2>Control pre cached files</h2>
+            <p>Simply note all files that should be precached for offline use. Most
+                common once are allready listed.</p>
+
+            <pre><code class="lang-javascript">
+...
+
+SWAC_config.progressive.precache = [];
+// List files here that should be available offline for the user after first visit
+SWAC_config.progressive.precache[0] = SWAC_config.app_root + '/css/global.css';
+SWAC_config.progressive.precache[1] = SWAC_config.app_root + '/sites/index.html';
+SWAC_config.progressive.precache[2] = SWAC_config.app_root + '/css/index.css';
+// basic content (design pictures)
+SWAC_config.progressive.precache[3] = SWAC_config.app_root + '/content/header.jpg';
+SWAC_config.progressive.precache[4] = SWAC_config.app_root + '/content/logo.jpg';
+// default data
+SWAC_config.progressive.precache[5] = SWAC_config.app_root + '/manifest.json';
+SWAC_config.progressive.precache[6] = SWAC_config.app_root + '/configuration.js';
+SWAC_config.progressive.precache[7] = SWAC_config.app_root + '/data/routes.json';
+
+...
+        </code></pre>
+
+            <h2>Control maximum age of cached files</h2>
+            <p>You can set the maximum age of cached files in days. After those days
+                the cached files are replaced with new ones. If the time is over but the 
+                user is offline, the old cached once are used until next connection.</p>
+
+            <pre><code class="lang-javascript">
+SWAC_config.progressive.cachetimeout = 30;
+        </code></pre>
+
+            <h2>Useing components offline</h2>
+            <p>You don't only can precache your content files, but also the components
+                you are useing. Simply note the name of the component you use, SWAC cares
+                about caching all the files needed by the component.</p>
+
+            <pre><code class="lang-javascript">
+SWAC_config.progressive.components = [];
+SWAC_config.progressive.components[0] = 'Navigation';
+        </code></pre>        
+
+            <h2>Offline fallback content</h2>
+            <p>If your application is offline and some sources could not be loaded
+                from cache, than fallbacks are used to show the users information on how
+                to get the latest content.</p>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

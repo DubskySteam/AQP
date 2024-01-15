@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SmartMonitoring - Setup</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../customisations/favicon.png">
+        <link rel="stylesheet" href="../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../js/setup.js"></script>
+    </head>
+
+    <body>
+        <h1 class="uk-heading-divider">SmartMonitoring <span id="version"></span> Setup</h1>
+
+        <div id="statusinfo" class="uk-position-center">
+            <span uk-spinner="ratio: 4.5"></span>
+            <h1>Setup wird geladen...</h1>
+        </div>
+
+        <div id="modal-group-1" class="uk-modal-full" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">SmartMonitoring Setup - Schritt 1</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div uk-grid>
+                        <div class="uk-width-expand@m">
+                            <p>Bitte überprüfen Sie die angezeigten Werte<p>
+                            <div>
+                                <h2 class="uk-heading-divider">Prüfung</h2>
+
+                                <table>
+                                    <tr><td><span id="internetConnectivity" class="uk-margin-small-right" uk-icon="ban"></span></td><td>Internetverbindung aktiv</td></tr>
+                                    <tr><td><span id="httpsSupported" class="uk-margin-small-right" uk-icon="ban"></span></td><td>httpsSupport aktiviert</td></tr>
+                                    <tr><td><span id="masterConnecticity" class="uk-margin-small-right" uk-icon="ban"></span></td><td>Der FH Server ist erreichbar</td></tr>
+                                    <tr><td><span id="deviceAutomaticCreation" class="uk-margin-small-right" uk-icon="ban"></span></td><td>Automatisches Anlegen von Geräten aktiv</td></tr>
+                                    <tr><td><span id="deviceAutomaticCreation" class="uk-margin-small-right" uk-icon="question"></span></td><td>Aktuelle Uhrzeit: <span id="clock"></span></td></tr>
+                                </table>
+                                <br>
+                                <span id="debugmodemessage"></span>
+                                <span id="debugtable"></span>
+
+                                <h2>Identifizierungsdaten</h2>
+                                <table>
+                                    <tr><td>System MAC:</td><td id="systemMAC"></td></tr>
+                                    <tr><td>Öffentliche IP</td><td id="publicIP"></td></tr>
+                                    <tr><td>SystemID:</td><td id="systemId"></td></tr>
+                                </table>
+
+                                <div id="datareciver">
+                                    <h2>Datenempfänger</h2>
+                                    Alle Daten werden an die Adresse <span id="masterURL"></span> gesendet.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-3@m">
+                            <h2>Überprüfung</h2>
+                            Bitte prüfen Sie hier, ob eine Internetverbindung existiert und die Systemzeit richtig eingestellt ist. Sie sollte sich nach Herstellen einer
+                            Internetverbindung automatisch korrigieren.
+                        </div>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <a href="#modal-group-2" class="uk-button uk-button-primary" uk-toggle>Weiter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-group-2" class="uk-modal-full" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">SmartMonitoring Setup - Schritt 2</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div uk-grid>
+                        <div class="uk-width-expand@m">
+                            <div id="question_location" swa="Question FROM ../data/question/location.json"></div>
+                        </div>
+                        <div class="uk-width-1-3@m">
+                            <h2>Wofür benötigen wir diese Daten?</h2>
+                            Die hier gemachten Angaben zum Namen und zur Adresse benötigen wir, um sie im Fehlerfall kontaktieren zu können und einen
+                            Servicetechniker zu ihnen schicken zu können, der ein ggf. defektes Gerät austauscht.
+                            <br><br>
+                            In den zusätzlichen Angaben kann der Installateur auf Besonderheiten der Installation hinweisen. (z.B. festgestellte schlechte Netzwerkverbindung,
+                            das Gerät befindet sich auf dem Schrank,...)
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <a href="#modal-group-3" class="uk-button uk-button-primary" uk-toggle>Weiter</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-group-3" class="uk-modal-full" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">SmartMonitoring Setup - Schritt 3</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div uk-grid>
+                        <div class="uk-width-expand@m">
+                            <h2 class="uk-heading-divider">Datentemplates</h2>
+                            <div id="datatemplatelist" swa="Select FROM ../data/select/datatemplates.json TEMPLATE checkboxes"></div>
+                        </div>
+                        <div class="uk-width-1-3@m">
+                            <h2>Datentemplates</h2>
+                            Hier sehen Sie die Liste der verfügbaren Datentemplates.
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button id="installTemplates" class="uk-button uk-button-primary">Weiter</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-group-4" class="uk-modal-full" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">SmartMonitoring Setup - Schritt 4</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div uk-grid>
+                        <div class="uk-width-expand@m">
+                            <h2 class="uk-heading-divider">Neue Geräte anlegen</h2>
+                            <div id="objectlist" swa="Present tbl_observedobject_type">
+                                <table class="uk-table uk-table-hover uk-table-divider">
+                                    <tbody>
+                                        <tr class="swac_repeatForSet">
+                                            <td>{id}</td>
+                                            <td>{name}</td>
+                                            <td><a href="#modal-object" class="installObject" uk-toggle>Installieren</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-3@m">
+                            <h2>Geräte</h2>
+                            Hier sehen Sie die Liste der verfügbaren Geräte, die Sie installieren können.
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button id="finishSetup" class="uk-button uk-button-primary">Setup abschließen</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-object" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">Gerät anlegen</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <label class="uk-form-label">Name</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="objectName" type="text" placeholder="Geben Sie einen Name an...">
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <a class="uk-button uk-button-default" href="#modal-group-4" uk-toggle>Abbrechen</a>
+                    <button id="installObject" class="uk-button uk-button-primary" type="button">Installieren</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1521 @@
+{
+    "records": [
+        {
+            "measurementtype_id": 1,
+            "description": "Zeitstempel LocalDateTime",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "humidity_inside_lowest",
+            "description": "geringste Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "humidity_inside_low",
+            "description": "geringeres drittel Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "humidity_inside_middle",
+            "description": "durchschnittliche Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "humidity_inside_high",
+            "description": "hoheres drittel Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "humidity_inside_highest",
+            "description": "hoechste Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "humidity_inside_median",
+            "description": "durchschnittliche Luftfeuchtigkeit in Prozent",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_inside_lowest",
+            "description": "Temperatur im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_inside_low",
+            "description": "Temperatur im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_inside_middle",
+            "description": "Temperatur im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_inside_high",
+            "description": "Temperatur im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_inside_highest",
+            "description": "Temperatur im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_inside_median",
+            "description": "Temperatur im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_inside_lowest",
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft niedrigster wert",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_inside_low",
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft niedrig",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_inside_middle",
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft im Durchschnitt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_inside_high",
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft hoch",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_inside_highest",
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft am hoechsten",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "co2_inside_median",
+            "description": "CO2 - Kohlenstoffdioxidgehalt der Luft im Durchschnitt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_wall_inside_lowest",
+            "description": "Temperatur der Auenwand im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_wall_inside_low",
+            "description": "Temperatur der Auenwand im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_wall_inside_middle",
+            "description": "Temperatur der Auenwand im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_wall_inside_high",
+            "description": "Temperatur der Auenwand im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_wall_inside_highest",
+            "description": "Temperatur der Auenwand im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_wall_inside_median",
+            "description": "Temperatur der Auenwand im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_heater_inside_lowest",
+            "description": "Temperatur des Heizkrpers im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_heater_inside_low",
+            "description": "Temperatur des Heizkrpers im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_heater_inside_middle",
+            "description": "Temperatur des Heizkrpers im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_heater_inside_high",
+            "description": "Temperatur des Heizkrpers im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_heater_inside_highest",
+            "description": "Temperatur des Heizkrpers im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "temperature_heater_inside_median",
+            "description": "Temperatur des Heizkrpers im Innenraum",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_lowest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_low",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_middle",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_high",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_highest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_median",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_lowest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_low",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_middle",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_high",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_highest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_median",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count24h_lowest",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count24h_low",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count24h_middle",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count24h_high",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count24h_highest",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count24h_median",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count24h_lowest",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count24h_low",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count24h_middle",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count24h_high",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count24h_highest",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count24h_median",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count24h_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count24h_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count24h_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count24h_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count24h_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count24h_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count24h_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count24h_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count24h_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count24h_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count24h_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count24h_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count24h_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count24h_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count24h_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count24h_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count24h_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count24h_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count24h_lowest",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count24h_low",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count24h_middle",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count24h_high",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count24h_highest",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count24h_median",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count24h_lowest",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count24h_low",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count24h_middle",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count24h_high",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count24h_highest",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count24h_median",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count24h_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count24h_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count24h_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count24h_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count24h_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count24h_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count24h_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count24h_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count24h_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count24h_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count24h_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count24h_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h_lowest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h_low",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h_middle",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h_high",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h_highest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count24h_median",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h_lowest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h_low",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h_middle",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h_high",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h_highest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count24h_median",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count7d_lowest",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count7d_low",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count7d_middle",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count7d_high",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count7d_highest",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count7d_median",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count7d_lowest",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count7d_low",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count7d_middle",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count7d_high",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count7d_highest",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count7d_median",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count7d_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count7d_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count7d_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count7d_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count7d_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count7d_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count7d_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count7d_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count7d_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count7d_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count7d_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count7d_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count7d_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count7d_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count7d_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count7d_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count7d_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count7d_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count7d_lowest",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count7d_low",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count7d_middle",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count7d_high",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count7d_highest",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count7d_median",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count7d_lowest",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count7d_low",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count7d_middle",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count7d_high",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count7d_highest",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count7d_median",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count7d_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count7d_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count7d_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count7d_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count7d_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count7d_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count7d_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count7d_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count7d_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count7d_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count7d_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count7d_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d_lowest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d_low",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d_middle",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d_high",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d_highest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count7d_median",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d_lowest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d_low",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d_middle",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d_high",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d_highest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count7d_median",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count30d_lowest",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count30d_low",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count30d_middle",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count30d_high",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count30d_highest",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ventilation_recommendation_1_count30d_median",
+            "description": "Die Lftungsempfehlung ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count30d_lowest",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count30d_low",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count30d_middle",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count30d_high",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count30d_highest",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "mold_risk_1_count30d_median",
+            "description": "Gibt die Schimmelgefahr an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count30d_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count30d_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count30d_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count30d_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count30d_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_0_count30d_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count30d_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count30d_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count30d_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count30d_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count30d_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_1_count30d_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count30d_lowest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count30d_low",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count30d_middle",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count30d_high",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count30d_highest",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "air_quality_2_count30d_median",
+            "description": "Die Raumluftqualitt gem. DIN Normen ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count30d_lowest",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count30d_low",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count30d_middle",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count30d_high",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count30d_highest",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "heating_activated_1_count30d_median",
+            "description": "Zeigt ein krzliches anschalten des Heizkrpers an ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count30d_lowest",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count30d_low",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count30d_middle",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count30d_high",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count30d_highest",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_temperature_inside_delta_count30d_median",
+            "description": "Zeigt die Differenz zwischen Raumluft- und Heizkrpertemberatur ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count30d_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count30d_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count30d_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count30d_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count30d_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_count30d_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count30d_lowest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count30d_low",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count30d_middle",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count30d_high",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count30d_highest",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "heater_wattage_per_cubic_meter_count30d_median",
+            "description": "Aktuelle Wattleistung des Heizkrpers je Raumkubikmeter ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d_lowest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d_low",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d_middle",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d_high",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d_highest",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "co2_kg_emission_kwh_to_half_minute_count30d_median",
+            "description": "Aktuell produzierten co2 emissionen in kg der Heizleistung, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d_lowest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d_low",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d_middle",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d_high",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d_highest",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "how_many_beech_trees_emission_to_half_minute_count30d_median",
+            "description": "Aktuell bentigten Buche Bume um die produzierten co2 emissionen in kg wieder abzubauen, ueber Zeit geszaehlt",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

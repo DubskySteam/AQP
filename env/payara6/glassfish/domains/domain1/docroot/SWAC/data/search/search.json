@@ -1,0 +1,19 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Suchergebnis Nr. 1",
+            "desc": "Beschreibung"
+        },
+        {
+            "id": 2,
+            "title": "Suchergebnis Nr. 2",
+            "desc": "Beschreibung"
+        },
+        {
+            "id": 3,
+            "title": "Suchergebnis Nr. 3",
+            "desc": "Beschreibung"
+        }
+    ]
+}

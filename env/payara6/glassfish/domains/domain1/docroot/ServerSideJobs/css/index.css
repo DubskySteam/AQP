@@ -1,0 +1,6 @@
+.tview[val="0"] {
+    visibility: hidden;
+}
+.tview:not([val]) {
+    visibility: hidden;
+}

@@ -1,0 +1,172 @@
+{
+    "records": [
+        {
+            "measurementtype_id": 2,
+            "name": "hersteller",
+            "description": "Hersteller des Photovoltaik Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "key",
+            "description": "unique Schlüssel für ein einzelnes Modul",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "modul",
+            "description": "Name des Photovoltaik Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "version",
+            "description": "Monat und Jahr des Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "land",
+            "description": "Land in dem das Modul hergestellt wird",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "zelltyp",
+            "description": "Der Typ der einzelnen Zellen des Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "zellhersteller",
+            "description": "Der Hersteller der einzelnen Zellen des Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "name": "nennleistung_watt",
+            "description": "Nennleistung des Moduls in Watt",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "umpp",
+            "description": "Der U Wert des Mpps",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 4,
+            "name": "leerlaufspannung",
+            "description": "leerlaufspannung",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 1,
+            "name": "kurzschlussstrom",
+            "description": "kurzschlussstrom",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 5,
+            "name": "ff",
+            "description": "Füllfaktor",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "zell_laenge",
+            "description": "Lnge einer Photovoltaik Zelle",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "zell_breite",
+            "description": "Breite einer Photovoltaik Zelle",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 7,
+            "name": "zellen_anzahl",
+            "description": "Anzahl von Zellen in einem Photovoltaik Modul",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 7,
+            "name": "zellstrings_anzahl",
+            "description": "Anzahl von Zellstrings",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 7,
+            "name": "zellen_pro_zellstrings",
+            "description": "Anzahl von Zellen pro Zellstring",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "modul_hoehe",
+            "description": "Höhe eines Photovoltaik Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "modul_breite",
+            "description": "Breite eines Photovoltaik Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "modul_tiefe",
+            "description": "Tiefe eines Photovoltaik Moduls",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 6,
+            "name": "glasstaerke_front",
+            "description": "Stärke, bzw. Dicke des Glases auf der Oberseite",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 7,
+            "name": "bypassdioden_anzahl",
+            "description": "Anzahl der Bypassdioden",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 8,
+            "name": "parallelwiderstand_rp",
+            "description": "Parallel Widerstand Rp",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 8,
+            "name": "serienwiderstand_rs",
+            "description": "Serien Widerstand Rs",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "leerlaufspannung_tk",
+            "description": "TK der Leerlaufspannung in %/K",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "kurzschlussstrom_tk",
+            "description": "TK des Kurzschlussstroms in %/K",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 9,
+            "name": "leistung_tk",
+            "description": "TK der Leistung in %/K",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 1,
+            "name": "impp",
+            "description": "Der I Wert des Mpps",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

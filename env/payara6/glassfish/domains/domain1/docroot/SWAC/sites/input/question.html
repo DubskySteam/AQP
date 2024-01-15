@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Question component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/input/question.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+
+            <h3>Example 1: Question data for a event request</h3>
+            Create questions and surveys quickly by defining datasets with questions.
+            <pre><code class="lang-html">
+&lt;div id="question_example1" swa="Question FROM ../data/question/examplequestions.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+
+        </code></pre>
+            
+            <div id="question_example1" swa="Question FROM ../../data/input/question/examplequestions.json"></div>
+
+            <h3>Example 2: Questioning with reanswer time</h3>
+            You can set a wait time after that the question(s) can be reanswered.
+            <pre><code class="lang-html">
+&lt;div id="question_example2" swa="Question FROM ../data/question/examplequestions2.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="lang-javascript">
+var example2_options = {};
+example2_options.timeToReanswer = 1;
+example2_options.afterSaveTxt = 'Thank you for your input!';        
+        </code></pre>
+            <div id="question_example2" swa="Question FROM ../../data/input/question/examplequestions2.json"></div>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

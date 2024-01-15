@@ -1,0 +1,44 @@
+{
+    "records": [
+        {
+            "name": "ts",
+            "description": "Zeitstempel",
+            "type": "timestamp"
+        },
+        {
+            "name": "ID",
+            "description": "Identifikationsnummer",
+            "type": "varchar"
+        },
+        {
+            "unit": "°C",
+            "name": "T",
+            "description": "Temperatur",
+            "type": "float8"
+        },
+        {
+            "unit": "W/m2",
+            "name": "P/A",
+            "description": "Leistung/Fläche",
+            "type": "float8"
+        },
+        {
+            "unit": "A",
+            "name": "I",
+            "description": "Stromstärke",
+            "type": "float8"
+        },
+        {
+            "unit": "V",
+            "name": "U",
+            "description": "Spannungsstärke",
+            "type": "float8"
+        },
+        {
+            "unit": "W",
+            "name": "P",
+            "description": "Leistung",
+            "type": "float8"
+        }
+    ]
+}

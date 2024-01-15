@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "card_id": 1,
+        "user_id": 4,
+        "next_card": 0,
+        "prev_card": 0,
+        "visible": true,
+        "data_from": "2020-09-30T00:00:00",
+        "data_until": "2020-10-30T00:00:00"
+    }
+]

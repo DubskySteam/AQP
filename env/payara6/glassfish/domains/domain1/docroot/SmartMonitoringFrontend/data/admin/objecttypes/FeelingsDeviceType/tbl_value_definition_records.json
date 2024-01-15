@@ -1,0 +1,19 @@
+{
+    "records": [
+        {
+            "val": "0",
+            "ootypejoinmtype_id": 1,
+            "name": "Gut"
+        },
+        {
+            "val": "1",
+            "ootypejoinmtype_id": 1,
+            "name": "Neutral"
+        },
+        {
+            "val": "2",
+            "ootypejoinmtype_id": 1,
+            "name": "Schlecht"
+        }
+    ]
+}

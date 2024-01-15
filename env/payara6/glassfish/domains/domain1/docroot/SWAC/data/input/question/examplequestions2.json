@@ -1,0 +1,31 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "attr": "feeling",
+            "name": "Your feeling",
+            "question": "How do you feel?",
+            "type": "icon",
+            "multiple": false,
+            "options": [
+                {
+                    "value": 1,
+                    "title": "good",
+                    "image": "/SWAC/swac/components/Icon/imgs/glassy-smiley-good.svg"
+                },
+                {
+                    "value": 2,
+                    "title": "middle",
+                    "image": "/SWAC/swac/components/Icon/imgs/glassy-smiley-neutral.svg"
+                },
+                {
+                    "value": 3,
+                    "title": "bad",
+                    "image": "/SWAC/swac/components/Icon/imgs/glassy-smiley-bad.svg"
+                }
+            ],
+            "required": true,
+            "target": "ref://../data/input/question/savetarget_persons.json"
+        }
+    ]
+}

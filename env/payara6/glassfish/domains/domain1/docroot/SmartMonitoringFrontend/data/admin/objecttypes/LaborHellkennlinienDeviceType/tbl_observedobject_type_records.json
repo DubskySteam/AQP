@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": true,
+            "name": "Laborhellkennliniengerät",
+            "description": "Gerät zur Erfassung von Laborhellkennlinien"
+        }
+    ]
+}

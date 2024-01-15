@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="about_system_title">About > System information</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/about/system.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <article class="uk-article">
+            <div style="float:right">
+                <img src="../../customisations/logo-ife.png" alt="IFE Logo"/>
+                <img src="../../customisations/logo-fhb.png" alt="FH Bielefeld Logo"/>
+            </div>
+            <h1 class="uk-article-title">SmartMonitoring</h1>
+            <h2>SmartMonitoingFrontend</h2>
+            <p swac_lang="about_system_frontend_desc"></p>
+            <table class="uk-table">
+                <tr><td>Version</td><td>3.0.0. Alpha 1</td></tr>
+                <tr><td>SWAC Version</td><td class="swac_version"></td></tr>
+                <tr><td>Zeit</td><td class="local_time"></td></tr>
+            </table>
+            <br><a href="http://git04-ifm-min.ad.fh-bielefeld.de/forschung/smartecosystem/smartmonitoringfrontend/-/wikis/home">about_system_frontend_wiki</a>
+            <br>
+            <h2>SmartMonitoringBackend</h2>
+            <p swac_lang="about_system_backend_desc"></p>
+            <div id="systeminfo" swa="Present FROM system/info"></div>
+            <br><a href="http://git04-ifm-min.ad.fh-bielefeld.de/forschung/smartecosystem/smartmonitoringbackend/-/wikis/home">about_system_backend_wiki</a>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

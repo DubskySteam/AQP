@@ -1,0 +1,14 @@
+[
+    {
+        "swac_lng": "de",
+        "swac_files": [
+            "data/languages/app_de.js"
+        ]
+    },
+    {
+        "swac_lng": "en",
+        "swac_files": [
+            "data/languages/app_en.js"
+        ]
+    }
+]

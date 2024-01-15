@@ -1,0 +1,14 @@
+{
+    "list": [
+        {
+            "id": 4,
+            "title": "Bärlauch",
+            "desc": "Zwiebelgemüse"
+        },
+        {
+            "id": 7,
+            "title": "Bambussprossen",
+            "desc": "Sonstiges Gemüse"
+        }
+    ]
+}
