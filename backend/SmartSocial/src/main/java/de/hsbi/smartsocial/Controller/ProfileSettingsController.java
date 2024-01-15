@@ -1,5 +1,6 @@
 package de.hsbi.smartsocial.Controller;
 
+import de.fhbielefeld.smartuser.annotations.SmartUserAuth;
 import de.hsbi.smartsocial.Exceptions.ProfileSettingsNotFoundException;
 import de.hsbi.smartsocial.Model.ProfileSetting;
 import de.hsbi.smartsocial.Service.GroupService;
@@ -72,6 +73,7 @@ public class ProfileSettingsController {
     @POST
     @Path("/setVisibility/{id}/{mode}")
     @Produces("application/json")
+    @SmartUserAuth
     @ApiResponse(responseCode = "200", description = "Sets the visibility for the given id")
     public String setVisibilityById(@PathParam("id") Long id, @PathParam("mode") boolean mode) {
         String visibility = profileSettingsService.setVisibility(id, mode);
