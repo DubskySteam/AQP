@@ -116,7 +116,7 @@
       <application-ref ref="SmartData" virtual-servers="server"></application-ref>
       <application-ref ref="SmartMonitoringBackend" virtual-servers="server"></application-ref>
       <application-ref ref="SmartUser" virtual-servers="server"></application-ref>
-      <application-ref ref="SmartSocial-2.2" virtual-servers="server"></application-ref>
+      <application-ref ref="SmartSocial" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
@@ -694,14 +694,15 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application deployment-time="12465" context-root="/SmartSocial" object-type="user" name="SmartSocial-2.2" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial-2.2/" time-deployed="1705324757485">
-      <property name="archiveType" value="war"></property>
+    <application deployment-time="10209" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705337945762">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111760075411423232"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
-      <property name="defaultAppName" value="SmartSocial-23894096114332553253.2"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial-2.2/SmartSocial-23894096114332553253.2.war"></property>
-      <property name="java-web-start-enabled" value="true"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="111759517898506240"></property>
-      <module name="SmartSocial-2.2">
+      <property name="archiveType" value="war"></property>
+      <property name="preserveAppScopedResources" value="false"></property>
+      <property name="defaultAppName" value="SmartSocial-26045432271030928742.2"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-26045432271030928742.2.war"></property>
+      <property name="implicitCdiEnabled" value="true"></property>
+      <module name="SmartSocial">
         <engine sniffer="cdi"></engine>
         <engine sniffer="ejb"></engine>
         <engine sniffer="health"></engine>
