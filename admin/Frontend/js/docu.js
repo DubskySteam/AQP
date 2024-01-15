@@ -29,11 +29,11 @@ function createEndpointCard(path, method, endpoint) {
     title.textContent = `${method.toUpperCase()} ${path}`;
 
     const description = document.createElement('p');
-    const successResponse = endpoint.responses["200"] || {}; // Get the 200 response
+    const successResponse = endpoint.responses["200"] || {};
     description.textContent = successResponse.description || 'No description available';
 
     const httpCode = document.createElement('p');
-    httpCode.textContent = `HTTP Status Code: 200`; // Assuming success response; adjust as needed
+    httpCode.textContent = `HTTP Status Code: 200`;
 
     card.appendChild(title);
     card.appendChild(description);
@@ -51,7 +51,7 @@ function getBackgroundColorForMethod(method) {
         case 'delete':
             return '#fc265f';
         default:
-            return 'lightgray'; // Default background for other methods
+            return 'lightgray';
     }
 }
 
