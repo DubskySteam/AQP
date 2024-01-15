@@ -18,5 +18,10 @@
         "name": "Get all",
         "url": "http://localhost:8080/SmartSocial/api/achievement/getAll",
         "method": "GET"
+    },
+    {
+        "name": "Get Achievements by User Id",
+        "url": "http://localhost:8080/SmartSocial/api/achievement/getByUserId/",
+        "method": "GET"
     }
 ]
