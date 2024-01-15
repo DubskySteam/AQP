@@ -65,6 +65,8 @@ function displayEndpointStatuses() {
         const card = createEndpointCard(endpoint);
         g_container.appendChild(card);
     });
+
+    setTimeout(displayEndpointStatuses, 5000);
 }
 
 window.onload = displayEndpointStatuses;
