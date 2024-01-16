@@ -45,9 +45,8 @@ public class GroupRepository {
                 .getSingleResult();
     }
 
-    public Groupmember findGroupmemberByUserId(Long id) {
-        return entityManager.createQuery("SELECT gm FROM Groupmember gm WHERE gm.user.id = :id", Groupmember.class)
-                .setParameter("id", id)
+    public Group findGroupByUserId(Long id) {
+        return entityManager.createQuery("SELECT g FROM Groupmember gm JOIN Group g ON gm.group.id = g.id WHERE gm.user.id = :id", Group.class)
                 .getSingleResult();
     }
 

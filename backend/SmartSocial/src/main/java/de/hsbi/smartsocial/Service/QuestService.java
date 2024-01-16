@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Service;
 
 import de.hsbi.smartsocial.Model.Quest;
+import de.hsbi.smartsocial.Model.Userquest;
 import de.hsbi.smartsocial.Persistence.QuestRepository;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -24,11 +25,11 @@ public class QuestService {
 
     public List<Quest> getExample() {
         List<Quest> quests = new ArrayList<>();
-        Quest quest = new Quest(1L, "Ride 10km", 100L);
+        Quest quest = new Quest(1L, "Ride 10km", 100L, "distance", 10L, "Rider");
         quests.add(quest);
-        Quest quest2 = new Quest(2L, "Ride 20km", 200L);
+        Quest quest2 = new Quest(2L, "Ride 20km", 200L, "distance", 20L, "Rider 2");
         quests.add(quest2);
-        Quest quest3 = new Quest(3L, "Ride 30km", 300L);
+        Quest quest3 = new Quest(3L, "Ride 30km", 300L, "distance", 30L, "Rider 3");
         quests.add(quest3);
         return quests;
     }
@@ -41,7 +42,7 @@ public class QuestService {
         return questRepository.getById(id);
     }
 
-    public List<Quest> getByUserId(Long id) {
+    public List<Userquest> getByUserId(Long id) {
         return questRepository.getByUserId(id);
     }
 

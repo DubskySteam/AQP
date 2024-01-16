@@ -13,10 +13,6 @@ import Mediacode from './Mediacode.js';
 
 export default class Mediaplayer extends View {
 
-    /*
-     * Constructs a new component object and transfers the config to the
-     * object
-     */
     constructor(options = {}) {
         super(options);
         this.name = 'Mediaplayer';
@@ -220,6 +216,20 @@ export default class Mediaplayer extends View {
         if (!options.titleLinkBase)
             this.options.titleLinkBase = null;
 
+        this.desc.opts[12] = {
+            name: 'titleDownload',
+            desc: 'If true title download is alowed'
+        };
+        if (typeof options.titleDownload === 'undefined')
+            this.options.titleDownload = true;
+
+        this.desc.opts[13] = {
+            name: 'titleDownloadBase',
+            desc: 'Base path to a title download page'
+        };
+        if (!options.titleDownloadBase)
+            this.options.titleDownloadBase = null;
+
         // Load language file for mediacode
         SWAC.lang.loadTranslationFile('../swac/components/Mediaplayer/langs/mediacode', 'Mediacode');
 
@@ -310,6 +320,49 @@ export default class Mediaplayer extends View {
                 }
             }
 
+            let thisRef = this;
+            // Add control over mediaAPI
+            const actionHandlers = [
+                ['play', (evt) => {
+                        evt.preventDefault();
+                        thisRef.startPlay()
+                    }],
+                ['pause', (evt) => {
+                        evt.preventDefault();
+                        thisRef.stopPlay();
+                    }],
+                ['previoustrack', (evt) => {
+                        evt.preventDefault();
+                        thisRef.playPrevTitle()
+                    }],
+                ['nexttrack', (evt) => {
+                        evt.preventDefault();
+                        thisRef.playNextTitle()
+                    }],
+                ['stop', (evt) => {
+                        evt.preventDefault();
+                        thisRef.stopPlay()
+                    }],
+//                ['seekbackward',  (details) => { /* ... */ }],
+//                ['seekforward',   (details) => { /* ... */ }],
+//                ['seekto',        (details) => { /* ... */ }],
+                /* Presenting slides actions */
+                ['previousslide', () => {
+                        thisRef.playPrevTitle()
+                    }],
+                ['nextslide', () => {
+                        thisRef.playNextTitle()
+                    }],
+            ];
+
+            for (const [action, handler] of actionHandlers) {
+                try {
+                    navigator.mediaSession.setActionHandler(action, handler);
+                } catch (error) {
+                    console.log(`The media session action "${action}" is not supported yet.`);
+                }
+            }
+
             resolve();
         });
     }
@@ -331,7 +384,7 @@ export default class Mediaplayer extends View {
         let setAreas = this.requestor.querySelectorAll('[swac_fromname="' + set.swac_fromName + '"][swac_setid="' + setId + '"]');
         let mediaAreaFound = false;
         for (let curSetArea of setAreas) {
-            let titlelinkElem = curSetArea.querySelector('.swac_mediaplayer_titlelink');
+            let titlelinkElem = curSetArea.querySelector('.swac_mediaplayer_info');
             if (this.options.titleLinkBase && titlelinkElem) {
                 let aText = SWAC.lang.dict.Mediaplayer.titlepage;
                 let aElem = document.createElement('a');
@@ -345,21 +398,47 @@ export default class Mediaplayer extends View {
                 titlelinkElem.appendChild(aElem);
             }
 
+            let basepath = this.options.mediaBasePath;
+            let path = set[this.options.pathattr];
+            // Use absolute path if given
+            if (path.startsWith('/') || path.startsWith('http') || path.startsWith('.') || path.startsWith('data:'))
+                basepath = '';
+            else if (!this.options.mediaBasePath) {
+                // Use path of index file as root if no basepath is set
+                let lastslash = set.swac_fromName.lastIndexOf('/');
+                basepath = set.swac_fromName.substring(0, lastslash) + '/';
+            }
+            let titleDownloadLink = curSetArea.querySelector('.swac_mediaplayer_title_download');
+            if (!this.options.titleDownload && titleDownloadLink) {
+                titleDownloadLink.style = 'display:none;';
+            } else if (this.options.titleDownloadBase && titleDownloadLink) {
+                // Call download page
+                if (!titleDownloadLink.hasGoToDownload) {
+                    titleDownloadLink.hasGoToDownload = true;
+                    let thisRef = this;
+                    titleDownloadLink.addEventListener('click', function (evt) {
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                        window.open(thisRef.options.titleDownloadBase + set.id);
+                    });
+                }
+            } else if (titleDownloadLink) {
+                // Direct download link
+                titleDownloadLink.href = basepath + set.path;
+                titleDownloadLink.setAttribute('download', set.title);
+                if (!titleDownloadLink.hasGoToDownload) {
+                    titleDownloadLink.hasGoToDownload = true;
+                    titleDownloadLink.addEventListener('click', function (evt) {
+                        evt.stopPropagation();
+                    });
+                }
+            }
+
             let mediaArea = curSetArea.querySelector('.swac_mediaplayer_media');
             if (mediaArea) {
                 let slideArea = curSetArea;
                 mediaAreaFound = true;
 
-                let basepath = this.options.mediaBasePath;
-                let path = set[this.options.pathattr];
-                // Use absolute path if given
-                if (path.startsWith('/') || path.startsWith('http') || path.startsWith('.') || path.startsWith('data:'))
-                    basepath = '';
-                else if (!this.options.mediaBasePath) {
-                    // Use path of index file as root if no basepath is set
-                    let lastslash = set.swac_fromName.lastIndexOf('/');
-                    basepath = set.swac_fromName.substring(0, lastslash) + '/';
-                }
                 let mediaCode = new Mediacode(this.data, set, this.options.pathattr, 'mimetype', basepath);
                 if (!set.alternative && !set.startonkey && !set.stoponkey) {
                     // Create first element for media
@@ -645,7 +724,11 @@ export default class Mediaplayer extends View {
             if (slider.swac_dataset.fadein && mediaElem.currentTime === 0) {
                 this.fadein(mediaElem, slider.swac_dataset.fadein);
             } else {
-                mediaElem.play();
+                try {
+                    mediaElem.play();
+                } catch (e) {
+                    Msg.error('Mediaplayer','Error while start playing: ' + e, this.requestor);
+                }
             }
         }
         let setid = slider.getAttribute('swac_setid');
@@ -660,6 +743,18 @@ export default class Mediaplayer extends View {
         for (let curPlayBtn of playBtns) {
             curPlayBtn.setAttribute('uk-icon', 'ban');
             curPlayBtn.setAttribute('uk-tooltip', SWAC.lang.dict.Mediaplayer.pause);
+        }
+        // Update media metadata
+        if ("mediaSession" in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: slider.swac_dataset.title,
+                artist: slider.swac_dataset.artist,
+                album: slider.swac_dataset.album,
+                artwork: [
+                    {src: slider.swac_dataset.image, sizes: 'any', type: 'image/jpg'},
+                ]
+            });
+            navigator.mediaSession.playbackState = 'playing';
         }
     }
 
@@ -684,6 +779,11 @@ export default class Mediaplayer extends View {
         for (let curPlayBtn of playBtns) {
             curPlayBtn.setAttribute('uk-icon', 'play');
             curPlayBtn.setAttribute('uk-tooltip', SWAC.lang.dict.Mediaplayer.play);
+        }
+
+        // Update media metadata
+        if ("mediaSession" in navigator) {
+            navigator.mediaSession.playbackState = 'paused';
         }
     }
 
@@ -1018,7 +1118,6 @@ export default class Mediaplayer extends View {
         let clickedSetId = playlistEntry.getAttribute('swac_setid');
         // Get slider
         let slider = this.slideshowElem.querySelector('[swac_setid="' + clickedSetId + '"]');
-
         // Get sliders index
         let sliderIndex = 0;
         while (slider.previousElementSibling) {
@@ -1027,8 +1126,12 @@ export default class Mediaplayer extends View {
         }
         let t = UIkit.slideshow(this.slideshowElem).show(sliderIndex);
         // When now slide change return
-        if (!t)
+        if (!t) {
+            if (!this.interval) {
+                this.startPlay();
+            }
             return;
+        }
         let thisRef = this;
         t.then(function () {
             if (!thisRef.interval) {
@@ -1211,8 +1314,8 @@ export default class Mediaplayer extends View {
         let thisRef = this;
         this.options.commentRequestor.requestor = this.requestor;
         Model.load(this.options.commentRequestor).then(
-                function (result) {
-                    for (let curComment of result.data) {
+                function (data) {
+                    for (let curComment of data) {
                         // Jump over empty sets
                         if (!curComment)
                             continue;

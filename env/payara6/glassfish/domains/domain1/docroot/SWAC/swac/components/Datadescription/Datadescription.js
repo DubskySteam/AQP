@@ -21,8 +21,13 @@ export default class Datadescription extends View {
             style: 'datadescription',
             desc: 'Shows the legend of the data'
         };
+        
+        this.desc.reqPerTpl[0] = {
+            selc: '.swac_repeatForLegend',
+            desc: 'Element that is repeated for each legend.'
+        };
         this.desc.optPerTpl[0] = {
-            selc: '#swac_datadescription_legendtitle',
+            selc: '.swac_datadescription_legendtitle',
             desc: 'Element where to insert the legends title'
         };
         this.desc.optPerTpl[1] = {
@@ -37,6 +42,10 @@ export default class Datadescription extends View {
             selc: '.swac_datadescription_attribution',
             desc: 'Element where to insert the attribution.'
         };
+        this.desc.reqPerSet[0] = {
+            name: 'txt_title',
+            desc: 'Legends title.'
+        };
         this.desc.optPerSet[0] = {
             name: 'sourcename',
             desc: 'Name to display below the legend as attribution.'
@@ -46,46 +55,50 @@ export default class Datadescription extends View {
             desc: 'Link to show in the attribution.'
         };
         this.desc.optPerSet[2] = {
+            name: 'txt_desc',
+            desc: 'Description of the legend.'
+        };
+        this.desc.optPerSet[3] = {
             name: 'ATTRIBUTENAME.txt_title',
             desc: 'Title of the attribute as shown in the legend.'
         };
-        this.desc.optPerSet[3] = {
+        this.desc.optPerSet[4] = {
             name: 'ATTRIBUTENAME.txt_desc',
             desc: 'Description of the attribute.'
         };
-        this.desc.optPerSet[4] = {
+        this.desc.optPerSet[5] = {
             name: 'ATTRIBUTENAME.txt_uknw',
             desc: 'Default text for display, when no value is presend.'
         };
-        this.desc.optPerSet[5] = {
+        this.desc.optPerSet[6] = {
             name: 'ATTRIBUTENAME.col',
             desc: 'Color to use for visualising the attribute. (Supports css color names, css hex codes and RGBA values)'
         };
-        this.desc.optPerSet[6] = {
+        this.desc.optPerSet[7] = {
             name: 'ATTRIBUTENAME.minValue',
             desc: 'Estimated minimum value for this attribute. Used for normalizing the data.'
         };
-        this.desc.optPerSet[7] = {
+        this.desc.optPerSet[8] = {
             name: 'ATTRIBUTENAME.maxValue',
             desc: 'Estimated maximum value for this attribute. Used for normalizing the data.'
         };
-        this.desc.optPerSet[8] = {
+        this.desc.optPerSet[9] = {
             name: 'ATTRIBUTENAME.calcmode',
             desc: 'Mode the values (like color, text) will be calculated. Default is = (equality check on the values under ATTRIBUTENAME.values[VALUE]. Other supported: <'
         };
-        this.desc.optPerSet[9] = {
+        this.desc.optPerSet[10] = {
             name: 'ATTRIBUTENAME.values',
             desc: 'Object containing the values that should be visualized as attributes with objects holding visualisation information, as described below.'
         };
-        this.desc.optPerSet[10] = {
+        this.desc.optPerSet[11] = {
             name: 'ATTRIBUTENAME.scale',
             desc: 'Factor with wich the value should be scaled for presentation.'
         };
-        this.desc.optPerSet[11] = {
+        this.desc.optPerSet[12] = {
             name: 'ATTRIBUTENAME.values[VALUE].col',
             desc: 'Color that should be used to visualise this value. (Supports css color names, css hex codes and RGBA values)'
         };
-        this.desc.optPerSet[12] = {
+        this.desc.optPerSet[13] = {
             name: 'ATTRIBUTENAME.values[VALUE].txt',
             desc: 'Text describing this value. Used in legend and as vocable in description texts.'
         };
@@ -94,21 +107,24 @@ export default class Datadescription extends View {
             desc: 'Name or id of the dataset that should be described. \n\
 Searches the dataset in the given data. Example: var obj[0]={..}, obj[1]={...} \n\
 can be accessed with visuDataset=1. Single objects can be accessed by setting \n\
-this option to null.'
+this option to null.',
+            example: 1
         };
         if (!options.visuDataset)
             this.options.visuDataset = null;
         this.desc.opts[1] = {
             name: 'visuAttribute',
             desc: 'Name of the attribute that should be visualised by default.\n\
-Example: in obj[0] = { attr1=1, attr2=2} can the second attribute be accessed with visuAttribute=attr2.'
+Example: in obj[0] = { attr1=1, attr2=2} can the second attribute be accessed with visuAttribute=attr2.',
+            example: 'attr2'
         };
         if (!options.visuAttribute)
             this.options.visuAttribute = null;
 // Options for setting event handlers
         this.desc.opts[2] = {
             name: 'onLegendEntryClick',
-            desc: 'Array with event handler that will be called if the user clicks on a legend entry'
+            desc: 'Function to execute, if the user clicks on a legend entry',
+            example: function(evt) { console.log('User clicked on legend entry.')}
         };
         if (!options.onLegendEntryClick)
             this.options.onLegendEntryClick = null;
@@ -120,8 +136,21 @@ Example: in obj[0] = { attr1=1, attr2=2} can the second attribute be accessed wi
             this.options.showLegend = true;
 
         // For further development only internal used yet
-        this.options.activeSource = null;
-        this.options.activeSet = null;
+        this.desc.opts[4] = {
+            name: 'activeSource',
+            desc: 'Name of the source the description is used from.',
+            example: 'mysource'
+        };
+        if(!options.activeSource)
+            this.options.activeSource = null;
+        
+        this.desc.opts[5] = {
+            name: 'activeSet',
+            desc: 'Id of the set the description is used from.',
+            example: 1
+        };
+        if(!options.activeSet)
+            this.options.activeSet = null;
 
         this.desc.funcs[0] = {
             name: 'getLegend',
@@ -268,19 +297,19 @@ Example: in obj[0] = { attr1=1, attr2=2} can the second attribute be accessed wi
      * @returns {String} Description of the dataset
      */
     getDatasetDescription(set, visuDataset = null) {
-        set = this.getDescribedDataset(dataset, visuDataset);
+        set = this.getDescribedDataset(set, visuDataset);
         if (set.length === 0) {
             return SWAC.lang.dict.datadescription.nodata;
         }
         // Check if datadescription is available
-        if(!this.data[this.options.activeSource])
-            Msg.error('Datadescription','There is no description definition for >' + this.options.activeSource + '<',this.requestor);
+        if (!this.data[this.options.activeSource])
+            Msg.error('Datadescription', 'There is no description definition for >' + this.options.activeSource + '<', this.requestor);
 
         let legenddata = this.data[this.options.activeSource].getSet(this.options.activeSet);
 
         var desc = '';
-        for (var attribute in dataset) {
-            var voc = this.getVocable(dataset, visuDataset, attribute);
+        for (var attribute in set) {
+            var voc = this.getVocable(set, visuDataset, attribute);
             var desctpl;
             if (typeof legenddata[attribute] === 'undefined') {
                 desctpl = SWAC.lang.dict.datadescription.nodescription;
@@ -643,7 +672,7 @@ Example: in obj[0] = { attr1=1, attr2=2} can the second attribute be accessed wi
                     colorBtn.style.backgroundColor = col;
                     optionElem.appendChild(colorBtn);
                     var titleBtn = document.createElement('div');
-                    titleBtn.setAttribute('swac_lang',option.txt);
+                    titleBtn.setAttribute('swac_lang', option.txt);
                     titleBtn.innerHTML = option.txt;
                     optionElem.appendChild(titleBtn);
                     acordCont.appendChild(optionElem);

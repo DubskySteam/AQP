@@ -28,6 +28,16 @@ export default class Present extends View {
             name: '*',
             desc: 'at least one value as an attribute (named whatever you want)'
         };
+        
+        this.desc.optPerSet[0] = {
+            name: 'id',
+            desc: 'Datasets id. Required for ordering.'
+        };
+        
+        this.desc.optPerSet[1] = {
+            name: 'parent',
+            desc: 'Parent set id. Required for ordering.'
+        };
 
         this.desc.opts[0] = {
             name: 'arangeable',
@@ -68,9 +78,14 @@ export default class Present extends View {
     }
 
     afterAddSet(set, repeateds) {
+        // Get repeateds if they are unkown
+        if(!repeateds) {
+            repeateds = this.requestor.querySelectorAll('[swac_setid="' + set.id + '"][swac_fromName="'+set.swac_fromName+'"]');
+        }
+        
         super.afterAddSet(set, repeateds);
         // Check for missing table cells on table template
-        if (this.requestor.templateName.includes('table')) {
+        if (this.requestor.templateName.includes('table') && repeateds) {
             for (let curRepeated of repeateds) {
                 let repForVal = curRepeated.querySelector('.swac_repeatForValue');
                 if (repForVal) {

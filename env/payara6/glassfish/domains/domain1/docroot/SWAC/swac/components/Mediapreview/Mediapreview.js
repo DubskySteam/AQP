@@ -11,7 +11,7 @@ export default class Mediapreview extends View {
         this.desc.text = 'Creates a preview for media files.';
         this.desc.developers = 'Florian Fehring (FH Bielefeld)';
         this.desc.license = 'GNU Lesser General Public License';
-        
+
         this.desc.templates[0] = {
             name: 'mediapreview',
             style: 'mediapreview',
@@ -29,10 +29,17 @@ export default class Mediapreview extends View {
             selc: '.swac_mediapreview_filterattr',
             desc: 'Area that displays a filter attribute and there in the values where filtering for is possible.'
         };
-
+        this.desc.reqPerTpl[3] = {
+            selc: '.swac_mediapreview_filterattrname',
+            desc: 'Element where to place a attribute name for filtering.'
+        };
+        this.desc.reqPerTpl[4] = {
+            selc: '.swac_mediapreview_filter',
+            desc: 'Element where the filters where palced.'
+        };
 
         this.desc.optPerTpl[0] = {
-            selc: 'swac_mediapreview_editbutton',
+            selc: '.swac_mediapreview_editbutton',
             desc: 'Button that opens the media editor. Automatically is hidden, when the option.mediaeditor is not set.'
         };
         this.desc.reqPerSet[0] = {
@@ -51,11 +58,26 @@ export default class Mediapreview extends View {
             name: 'preview_mimetype',
             desc: 'Mimetype of the preview media. Only needed if it is other than the main mimetype.'
         };
+        this.desc.optPerSet[1] = {
+            name: 'title',
+            desc: 'Media title'
+        };
+        this.desc.optPerSet[2] = {
+            name: 'name',
+            desc: 'Media name'
+        };
+        this.desc.optPerSet[3] = {
+            name: 'link',
+            desc: 'Link to follow on click on media file.'
+        };
 
         this.options.showWhenNoData = true;
         this.desc.opts[0] = {
-            name: "mediaeditor",
-            desc: "Id of the element where the mediaeditor should be displayed."
+            name: "onClickMediaEdit",
+            desc: "Function to execute, when the edit button is clicked. If this is undefined, the edit button is not displayed.",
+            example: function (evt) {
+                console.log('Event:', evt)
+            }
         };
         if (!options.onClickMediaEdit)
             this.options.onClickMediaEdit = null;
@@ -125,13 +147,13 @@ export default class Mediapreview extends View {
     toggleMediaEditorButtons() {
         let mediaeditorButtons = this.requestor.querySelectorAll('.swac_mediapreview_editbutton');
         if (this.options.onClickMediaEdit) {
-            Msg.warn('Mediapreview', 'Mediaeditor is set. Activateing edit buttons.');
+            Msg.info('Mediapreview', 'Action for click on edit button is set. Activateing edit buttons.', this.requestor);
             for (let curMeButton of mediaeditorButtons) {
                 curMeButton.classList.remove('swac_dontdisplay');
                 curMeButton.addEventListener('click', this.options.onClickMediaEdit.bind(this), false);
             }
         } else {
-            Msg.warn('Mediapreview', 'Mediaeditor is not set. Deactivateing edit buttons.');
+            Msg.info('Mediapreview', 'Action for click on edit button is not set. Deactivateing edit buttons.', this.requestor);
             for (let curMeButton of mediaeditorButtons) {
                 curMeButton.classList.add('swac_dontdisplay');
             }
@@ -472,7 +494,7 @@ export default class Mediapreview extends View {
         let filterarea = this.requestor.querySelector('.swac_mediapreview_filterarea');
         let filterattrElem = filterarea.querySelector('.swac_mediapreview_filterattr');
 
-        if (!this.filtersBuildHistory[curFilterAttr]) { 
+        if (!this.filtersBuildHistory[curFilterAttr]) {
 
             let curFilterAttrElem = filterattrElem.cloneNode(true);
             curFilterAttrElem.classList.remove('swac_dontdisplay');
@@ -480,7 +502,7 @@ export default class Mediapreview extends View {
             let curFilterNameElem = curFilterAttrElem.querySelector('.swac_mediapreview_filterattrname');
             curFilterNameElem.innerHTML = curFilterAttr;
             let filterValueElem = curFilterAttrElem.querySelector('[uk-filter-control]');
-            
+
             // Add filter control for elements with this attribute missing
             let misFilterValueElem = filterValueElem.cloneNode(true);
             misFilterValueElem.setAttribute('uk-filter-control', "filter: :not([" + curFilterAttr + "]); group: " + curFilterAttr);
@@ -495,7 +517,7 @@ export default class Mediapreview extends View {
             this.filtersBuildHistory[curFilterAttr] = new Map();
 
             return curFilterAttrElem;
-        } 
+        }
 
         return filterarea.querySelector('.swac_mediapreview_filterattrname_' + curFilterAttr);
 
@@ -511,11 +533,11 @@ export default class Mediapreview extends View {
      * @returns 
      */
     buildFilterControl(filterAttrElem, curFilterAttr, curFilterValue) {
-        if(!this.filtersBuildHistory[curFilterAttr].get(curFilterValue)) {
+        if (!this.filtersBuildHistory[curFilterAttr].get(curFilterValue)) {
 
             let misFilterValueElem = filterAttrElem.querySelector('[uk-filter-control]');
-           
-            
+
+
             if (typeof curFilterValue === 'string' && curFilterValue.indexOf('ref://') === 0) {
                 if (typeof this.filterrefers[curFilterValue] === 'undefined') {
                     let refObjPromise = Model.getFromReference(curFilterValue);
@@ -531,7 +553,7 @@ export default class Mediapreview extends View {
             let filterDivUlLiA = curFilterValueElem.querySelector('a');
             filterDivUlLiA.setAttribute('filterval', curFilterValue);
             filterDivUlLiA.innerHTML = curFilterValue;
-            misFilterValueElem.parentNode.insertBefore(curFilterValueElem, misFilterValueElem); 
+            misFilterValueElem.parentNode.insertBefore(curFilterValueElem, misFilterValueElem);
 
             this.filtersBuildHistory[curFilterAttr].set(curFilterValue, true);
             return

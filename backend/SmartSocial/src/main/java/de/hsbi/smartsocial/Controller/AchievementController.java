@@ -11,9 +11,13 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 
 import java.util.List;
+
+import static de.hsbi.smartsocial.Service.UtilityService.isUserValid;
 
 /**
  * Author: Clemens Maas
@@ -70,17 +74,20 @@ public class AchievementController {
         return Response.ok(achievement).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getByUserId/{id}")
     @Produces("application/json")
-    @SmartUserAuth
     @ApiResponse(responseCode = "200", description = "Returns all achievements of a user")
-    public Response getByUserId(@PathParam("id") Long id) {
-        List<Userachievement> userachievement = achievementService.getByUserId(id);
-        if (userachievement == null || userachievement.isEmpty()) {
-            throw new AchievementNotFoundException(id);
+    public Response getByUserId(@PathParam("id") Long id, @Context ContainerRequestContext requestContext) {
+        if (isUserValid(id, requestContext)) {
+            List<Userachievement> userachievement = achievementService.getByUserId(id);
+            if (userachievement == null || userachievement.isEmpty()) {
+                throw new AchievementNotFoundException(id);
+            }
+            return Response.ok(userachievement).build();
         }
-        return Response.ok(userachievement).build();
+        return Response.status(Response.Status.FORBIDDEN).build();
     }
 
 }

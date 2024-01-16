@@ -1,13 +1,3 @@
-/*
-    Default css for the loadingbar
- 
-    Created on : 18.09.2019
-    Author     : Fabian-Hu
-*/
-
-/*
-    Loading bar color
-*/
 .uk-progress::-webkit-progress-value {
     /* 
         Default color 

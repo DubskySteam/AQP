@@ -21,6 +21,9 @@ public class GroupService {
     @Inject
     private GroupRepository groupRepository;
 
+    @Inject
+    private LeaderboardService leaderboardService;
+
     public String ping() {
         return groupRepository.ping();
     }
@@ -33,8 +36,8 @@ public class GroupService {
         return groupRepository.findGroupByName(name);
     }
 
-    public Groupmember findGroupmemberByUserId(Long id) {
-        return groupRepository.findGroupmemberByUserId(id);
+    public Group findGroupByUserId(Long id) {
+        return groupRepository.findGroupByUserId(id);
     }
 
     public List<Groupmember> findGroupmembersByGroupId(Long id) {
@@ -49,6 +52,15 @@ public class GroupService {
         return groupRepository.findAllGroups();
     }
 
+    public double getGroupDistance(Long id) {
+        List<Groupmember> groupmembers = groupRepository.findGroupmembersByGroupId(id);
+        double distance = 0;
+        for (Groupmember groupmember : groupmembers) {
+            distance += leaderboardService.getPersonalStats(groupmember.getUser().getId()).getKilometers().doubleValue();
+        }
+        return distance;
+    }
+
     @Transactional
     public Group joinGroup(Long userId, String code) {
         return groupRepository.joinGroup(userId, code);
@@ -56,6 +68,11 @@ public class GroupService {
 
     @Transactional
     public Group createGroup(Group group) {
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            code.append((int) (Math.random() * 10));
+        }
+        group.setCode(code.toString());
         return groupRepository.createGroup(group);
     }
 

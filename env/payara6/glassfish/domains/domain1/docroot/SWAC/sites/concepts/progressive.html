@@ -49,8 +49,8 @@
             <pre><code class="lang-javascript">
 ...
 
-SWAC_config.progressive = {};
-SWAC_config.progressive.active = true;
+progressive: {
+    active: true,
 
 ...
         </code></pre>
@@ -63,6 +63,17 @@ SWAC_config.progressive.active = true;
 
             <div id="fetching_example" swa="Present FROM ../../data/exampledata_list.json"></div>
 
+            <h2>Control maximum age of cached files</h2>
+            <p>You can set the maximum age of cached files in days. After those days
+                the cached files are replaced with new ones. If the time is over but the 
+                user is offline, the old cached once are used until next connection.</p>
+
+            <pre><code class="lang-javascript">
+progressive: {
+        active: false,
+        cachetimeout: 30, // Timeout in days after that a reload should be done or unused pages leave the cache
+        </code></pre>
+
             <h2>Control pre cached files</h2>
             <p>Simply note all files that should be precached for offline use. Most
                 common once are allready listed.</p>
@@ -70,29 +81,25 @@ SWAC_config.progressive.active = true;
             <pre><code class="lang-javascript">
 ...
 
-SWAC_config.progressive.precache = [];
-// List files here that should be available offline for the user after first visit
-SWAC_config.progressive.precache[0] = SWAC_config.app_root + '/css/global.css';
-SWAC_config.progressive.precache[1] = SWAC_config.app_root + '/sites/index.html';
-SWAC_config.progressive.precache[2] = SWAC_config.app_root + '/css/index.css';
-// basic content (design pictures)
-SWAC_config.progressive.precache[3] = SWAC_config.app_root + '/content/header.jpg';
-SWAC_config.progressive.precache[4] = SWAC_config.app_root + '/content/logo.jpg';
-// default data
-SWAC_config.progressive.precache[5] = SWAC_config.app_root + '/manifest.json';
-SWAC_config.progressive.precache[6] = SWAC_config.app_root + '/configuration.js';
-SWAC_config.progressive.precache[7] = SWAC_config.app_root + '/data/routes.json';
-
+progressive: {
+        active: false,
+        cachetimeout: 30, // Timeout in days after that a reload should be done or unused pages leave the cache
+        precache: [
+            // List files here that should be available offline for the user after first visit
+            // All files here are noted with SWAC.config.app_root as base
+            '/css/global.css',
+            '/sites/index.html',
+            '/css/index.css',
+            // basic content (design pictures)
+            '/content/logo.avif',
+            '/content/logo.png',
+            '/content/logo.webp',
+            // default data
+            '/manifest.json',
+            '/configuration.js',
+            '/data/routes.json'
+        ],
 ...
-        </code></pre>
-
-            <h2>Control maximum age of cached files</h2>
-            <p>You can set the maximum age of cached files in days. After those days
-                the cached files are replaced with new ones. If the time is over but the 
-                user is offline, the old cached once are used until next connection.</p>
-
-            <pre><code class="lang-javascript">
-SWAC_config.progressive.cachetimeout = 30;
         </code></pre>
 
             <h2>Useing components offline</h2>
@@ -101,8 +108,29 @@ SWAC_config.progressive.cachetimeout = 30;
                 about caching all the files needed by the component.</p>
 
             <pre><code class="lang-javascript">
-SWAC_config.progressive.components = [];
-SWAC_config.progressive.components[0] = 'Navigation';
+progressive: {
+        active: false,
+        cachetimeout: 30, // Timeout in days after that a reload should be done or unused pages leave the cache
+        precache: [
+            // List files here that should be available offline for the user after first visit
+            // All files here are noted with SWAC.config.app_root as base
+            '/css/global.css',
+            '/sites/index.html',
+            '/css/index.css',
+            // basic content (design pictures)
+            '/content/logo.avif',
+            '/content/logo.png',
+            '/content/logo.webp',
+            // default data
+            '/manifest.json',
+            '/configuration.js',
+            '/data/routes.json'
+        ],
+        // List components here that should be precached
+        components: [
+            'Navigation'
+        ]
+    },
         </code></pre>        
 
             <h2>Offline fallback content</h2>

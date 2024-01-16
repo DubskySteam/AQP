@@ -1,5 +1,6 @@
 package de.hsbi.smartsocial.Controller;
 
+import de.fhbielefeld.smartuser.annotations.SmartUserAuth;
 import de.hsbi.smartsocial.Exceptions.GroupForMemberNotFoundException;
 import de.hsbi.smartsocial.Exceptions.GroupJoinException;
 import de.hsbi.smartsocial.Exceptions.GroupNotFoundException;
@@ -12,11 +13,15 @@ import de.hsbi.smartsocial.Service.GroupService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import static de.hsbi.smartsocial.Service.UtilityService.isUserValid;
 
 /**
  * Author: Clemens Maas
@@ -49,6 +54,7 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getById/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -61,6 +67,7 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getByName/{name}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -73,18 +80,20 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getByUserId/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @ApiResponse(responseCode = "200", description = "Returns all for a user")
+    @ApiResponse(responseCode = "200", description = "Returns group for a user")
     public Response getAllGroupsByUser(@PathParam("id") Long id) {
-        Groupmember groupmember = groupService.findGroupmemberByUserId(id);
-        if (groupmember == null) {
-            throw new GroupForMemberNotFoundException(id);
+        Group group = groupService.findGroupByUserId(id);
+        if (group == null) {
+            throw new GroupNotFoundException(id);
         }
-        return Response.ok(groupmember).build();
+        return Response.ok(group).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getMembersByGroupId/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -97,6 +106,7 @@ public class GroupController {
         return Response.ok(groupmembers).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getMembersByGroupId_SV/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -109,6 +119,7 @@ public class GroupController {
         return Response.ok(groupmembers).build();
     }
 
+    @SmartUserAuth
     @GET
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
@@ -119,10 +130,22 @@ public class GroupController {
     }
 
     @GET
+    @Path("/getGroupDistance/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns the distance of a group")
+    public Response getGroupDistance(@PathParam("id") Long id) {
+        return Response.ok(groupService.getGroupDistance(id)).build();
+    }
+
+    @SmartUserAuth
+    @GET
     @Path("/join/{userId}/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Joins a group")
-    public Response joinGroup(@PathParam("userId") Long userId, @PathParam("code") String code) {
+    public Response joinGroup(@PathParam("userId") Long userId, @PathParam("code") String code, @Context ContainerRequestContext requestContext) {
+        if (!isUserValid(userId, requestContext)) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
         Group group = groupService.joinGroup(userId, code);
         if (group == null) {
             throw new GroupJoinException("Couldn't find group or wrong code");
@@ -130,6 +153,7 @@ public class GroupController {
         return Response.ok(group).build();
     }
 
+    @SmartUserAuth
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -143,6 +167,7 @@ public class GroupController {
         return Response.status(Response.Status.CREATED).entity(createdGroup).build();
     }
 
+    @SmartUserAuth
     @POST
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -156,12 +181,20 @@ public class GroupController {
         return Response.ok(updatedGroup).build();
     }
 
+    @SmartUserAuth
     @DELETE
     @Path("/delete/{id}")
     @ApiResponse(responseCode = "204", description = "Deletes group")
-    public Response deleteGroup(@PathParam("id") Long id) {
-        groupService.deleteGroup(id);
-        return Response.status(Response.Status.NO_CONTENT).build();
+    public Response deleteGroup(@PathParam("id") Long id, @Context ContainerRequestContext requestContext) {
+        if (isUserValid(id, requestContext)) {
+//            Group group = groupService.findGroupById(id);
+//            if (requestContext.getSecurityContext().getUserPrincipal() == group.getAdminUser().getId() {
+//
+//            }
+            groupService.deleteGroup(id);
+            return Response.status(Response.Status.NO_CONTENT).build();
+        } else
+            return Response.status(Response.Status.FORBIDDEN).build();
     }
 
 

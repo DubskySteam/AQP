@@ -9,3 +9,35 @@
     width: 50%;
     padding: 10px;
 }
+
+.home-container-1 {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.home-container-2 {
+    background-color: #398EDE;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-bottom: -5%;
+}
+
+.home-container-2 ul {
+    list-style-type: none;
+}
+
+.home-container-2 li {
+    background-color: rgb(255, 255, 255);
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 5em;
+}

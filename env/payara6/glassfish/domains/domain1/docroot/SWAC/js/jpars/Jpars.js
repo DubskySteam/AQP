@@ -224,8 +224,6 @@ async function configspeicher() {
 
 /**
  * shows the json wiche is loaded in via the input in the json textbox
- * 
- * METHOD MOVED -> SWAC Component
  */
 function change() {
     let input = document.getElementById("Jsontextinput");
@@ -372,8 +370,6 @@ async function createTable(datenbankname) {
 
 /**
  * Reads the Url for the Json and shows it in the Textfield for the json
- * 
- * METHOD MOVED -> SWAC Component
  */
 async function readurlj() {
     var url = document.getElementById("urlj").value;
@@ -479,8 +475,6 @@ function nestedLoop2(obj, checksplitt, test) {
  * This function first reads the file from the textbox and then starts to go recursively into the branches of the JSON file to find all keys.
  * If a key is an object or an array, the function recursively calls itself again and goes deeper into the branch to look for keys.
  * The function only adds keys, that contain only premitive values. No Arrays or Objects are added, except for Arrays, which only contain values.
- * 
- * METHOD MOVED -> SWAC Component
  */
 function Keyoutput() {
     uniqueKeys = [];

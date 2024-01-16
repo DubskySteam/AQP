@@ -4,107 +4,53 @@
         <title>SmartWebApplicationComponents</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/global.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <noscript>
         <link rel="stylesheet" type="text/css" href="css/noscript.css">
         </noscript>
 
-        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <link rel="stylesheet" type="text/css" href="../SWAC/swac/libs/uikit/css/uikit.min.css">
+        <link rel="stylesheet" type="text/css" href="css/global.css">
         <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
         <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
         <script src="/SWAC/swac/swac.js" type="module"></script>
         <script src="/SWAC/swac/legacybrowser.js"></script>
+        <script type="module" src="/SWAC/js/userinterface/index.js"></script>
     </head>
     <body>
-        <header id="head_navigation" swa="Navigation FROM routes.json"></header>
+        <header id="head_navigation">
+            <ul>
+                <li><a href="index.html" onclick="Navigation.routeTo('index.html', {id: 0});" style="float: left; margin-top: -15px; margin-left: 5px;"><img src="./content/cloud.png" alt="Home" width="45" height="45"></a></li>
+                <li><a href="./sites/userinterface/menu.html" onclick="Navigation.routeTo('./sites/userinterface/menu.html', {id: 2});" style="float: right; margin-right: 5px; margin-top: -17px;"><img src="./content/Menu.png" alt="Menu" width="45" height="45"></a></li>
+                <li><a id="account_login_link" href="" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="./content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
+            </ul>
+        </header>
         <noscript>
         <div class="noscript_nav">
             <a href="sites/sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
             <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
         </div>
         </noscript>
-
-        <article>
-            <div class="uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
-                <div></div>
-                <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m">
-                    <div id="livepresent_input" swa="Present FROM startpage.json">
-                        <div class="swac_repeatForSet">
-                            <textarea id="code" class="uk-textarea" rows="5">{set_json}</textarea>
-                        </div>
-                    </div>
-                    <span uk-icon="icon: plus; ratio: 2"></span>
-                    <code>
-                        &lt;div id="live_show" swa="Present FROM startpage.json"&gt;&lt;/div&gt;
-                    </code>
-                </div>
-                <div>
-                    <!--                    <select class="uk-select">
-                                            <option>Present</option>
-                                            <option>Chart</option>
-                                        </select>-->
-                    <span id="livepresent_arrow" uk-icon="icon: play; ratio: 3"></span>
-                </div>
-                <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m">
-                    <div id="livepresent_show" swa="Present FROM startpage.json"></div>
-                </div>
-                <div></div>
-            </div>
-
-            <div class="funcshow uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <h2>Quickstart</h2>
-                        <span uk-icon="icon: check; ratio: 2"></span>
-                        <p>Declare what you want by choosing a component 
-                            - feed data and youre done.</p>
-                        <a href="sites/concepts/1_quickstart.html">See how easy it is</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <h2>Components</h2>
-                        <span uk-icon="icon: code; ratio: 2"></span>
-                        <p>Lots of easy to use components.</p>
-                        <a href="sites/concepts/2_components.html">See the work is done for you</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <h2>Datadriven</h2>
-                        <span uk-icon="icon: database; ratio: 2"></span>
-                        <p>Concentrate on your data, not on implementation.</p>
-                        <a href="sites/concepts/3_data.html">See how your data comes into life</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <h2>Designable</h2>
-                        <span uk-icon="icon: paint-bucket; ratio: 2"></span>
-                        <p>Separation of code and ui makes it easy for you to 
-                            modify the design of the given components.</p>
-                        <a href="sites/concepts/design.html">See how to skin components</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <h2>Extensible</h2>
-                        <span uk-icon="icon: plus-circle; ratio: 2"></span>
-                        <p>There are a lot of functions build in. But sometimes 
-                            you need more.</p>
-                        <a href="sites/lowlevelapi/writeview.html">See how to write own components</a>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <a class="uk-button uk-button-primary uk-align-center" href="../content/SWACtemplate.zip">Download QuickStart Template page</a>
-
+        <div class="home-container-1">
+            <h1>AQP</h1>
+            <h1>AirQualityProject</h1>
+            <h4>Messe mit uns die Luftqualität</h4>
+            <br>
+            <a href="./sites/register/register.html" style="font-weight: bolder; color: #073A5F;">Schließe dich uns an</a>
+        </div>
+        <div id="home_data" class="home-container-2" >
+            <ul>
+                <li><h2 id="number_of_participants">Keine Daten Vorhanden</h2></li>
+                <li><h2 id="sum_of_all_kilometer">Keine Daten Vorhanden</h2></li>
+                <li><h2 id="number_of_groups">Keine Daten Vorhanden</h2></li>
+                <li><h2 id="percent_of_minden">Keine Daten Vorhanden</h2></li>
+            </ul>
+        </div>
         <footer>
-            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
-            <a href="about/imprint.html">Imprint / Impressum</a>
-            <a class="toplink" href="#">Top</a>
+            <a href="./sites/footer/more.html">Mehr</a>
+            <a href="./sites/footer/about.html">Über</a>
+            <a href="./sites/footer/privacy.html">Datenschutzerklärung</a>
+            <a href="./sites/footer/imprint.html">Impressum</a>
         </footer>
     </body>
 </html>

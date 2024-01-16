@@ -3,7 +3,7 @@
  */
 let core_de = {
     waitingbackend: 'Die App wird gestartet, bitte habe einen Moment Geduld.',
-    sourceerror: 'Eine Datenquelle steht nicht zur verfügung. Wir versuchen es gleich noch einmal.',
+    sourceerror: 'Die Datenquelle %source% steht nicht zur Verfügung. Prüfen sie die Konfiguration.',
     loaderror: 'Die Anwendung konnte nicht geladen werden. Klicken sie auf OK um es noch einmal zu versuchen.',
     loadingdata: "Lade Daten",
     loadingtemplate: "Lade Ansicht",

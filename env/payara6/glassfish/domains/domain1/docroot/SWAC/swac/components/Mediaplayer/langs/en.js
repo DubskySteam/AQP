@@ -14,6 +14,7 @@ var Mediaplayer_en = {
     save: 'Save playlist',
     titlepage: 'Go to titles page',
     title: "Title",
+    title_download: "Download this",
     artist: "Artist",
     album: "Album",
     license: "License",

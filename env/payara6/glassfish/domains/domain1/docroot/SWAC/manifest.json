@@ -1,15 +1,17 @@
 {
   "name": "SmartWebApplicationComponents",
+  "description": "Online documentation for SWAC web developers",
   "short_name": "SWAC",
+  "categories": "development",
   "display": "standalone",
-  "start_url": "sites/index.html",
+  "start_url": "index.html",
   "background_color": "#34495e",
   "theme_color": "#8e44ad",
   "icons": [
     {
-      "src": "content/logo.jpg",
-      "type": "image/jpg",
-      "sizes": "256x256"
+      "src": "content/logo.png",
+      "type": "image/png",
+      "sizes": "any"
     }
   ]
 }

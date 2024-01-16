@@ -10,6 +10,8 @@ class SearchEntryMakerDescription extends SearchEntryMaker {
         this.descattr = 'desc';
         this.linkattr = 'link';
         this.linknameattr = null;
+        this.linkurl = null;
+        this.linktitle = null;
     }
 
     /**
@@ -44,12 +46,20 @@ class SearchEntryMakerDescription extends SearchEntryMaker {
         // Create title
         let newtitle = document.createElement('div');
         newtitle.classList.add('search_resulttitle');
-        newtitle.innerHTML = result.result[this.titleattr];
+        // Use language entry if exists
+        let tlng = window.swac.lang.dict.app[result.result[this.titleattr]];
+        if (tlng) {
+            newtitle.innerHTML = tlng;
+        } else {
+            newtitle.innerHTML = result.result[this.titleattr];
+        }
         newentry.appendChild(newtitle);
         // Create desc
-        let newdesc = document.createElement('div');
-        newdesc.innerHTML = result.result[this.descattr];
-        newentry.appendChild(newdesc);
+        if (this.descattr && result.result[this.descattr]) {
+            let newdesc = document.createElement('div');
+            newdesc.innerHTML = result.result[this.descattr];
+            newentry.appendChild(newdesc);
+        }
         // Create link
         if (result.result[this.linktitleattr]) {
             let newlink = document.createElement('a');
@@ -57,6 +67,23 @@ class SearchEntryMakerDescription extends SearchEntryMaker {
             let newlinktitle;
             if (this.linktitleattr) {
                 newlinktitle = result.result[this.linktitleattr];
+            } else {
+                newlinktitle = window.swac.lang.dict.Search.gotoresult;
+            }
+            newlink.innerHTML = newlinktitle;
+            newentry.appendChild(newlink);
+        } else if (this.linkurl) {
+            let newlink = document.createElement('a');
+            let link = this.linkurl;
+            for (let attr in result.result) {
+                link = link.replace('{' + attr + '}', result.result[attr]);
+            }
+
+            newlink.setAttribute('href', link);
+            let newlinktitle;
+            if (this.linktitle && window.swac.lang.dict.app[this.linktitle]) {
+                // Use link text from app language file
+                newlinktitle = window.swac.lang.dict.app[this.linktitle];
             } else {
                 newlinktitle = window.swac.lang.dict.Search.gotoresult;
             }

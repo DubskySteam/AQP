@@ -29,7 +29,7 @@
         <article class="uk-article">
             <h1 class="uk-article-title">Easy to use</h1>
             <p class="uk-text-lead">
-                SWAC is design to ease the creation of web applications, speed up
+                SWAC is designed to ease the creation of web applications, speed up
                 development but also leave all possibilities where they belong:
                 Functionalities to the programmers and design to the designers.
             </p>
@@ -59,12 +59,11 @@
                 </li>
                 <li>
                     Add an object to SWAC_config.datasources. It must contain an 
-                    attribute url, which specifies the path to your data and 
-                    can contain a interfaces configuration.
+                    attribute url, which specifies the path to your API or file directory.
+                    SWAC is often used in combination with SmartData.
                 </li>
                 <li>
-                    Other configuration options are explained on detail in the sections
-                    where they are used for.
+                    If your API uses different HTTP-Methods and path parts for requests you can specify these in the interface object.
                 </li>
             </ul>
 
@@ -88,6 +87,16 @@ SWAC_config.datasources = [
     }
 ];    
             </code></pre>
+            
+            <b>Explanaition:</b>
+            <ul>
+                <li>The [fromName] will be replaced by the name of the datasource, you use at the components declaration.</li>
+                <li>The [iface] will be replaced by the interface path part depending on the type of request.</li>
+                <li>Types of request are: get (get a single dataset), list (get more than one dataset), defs (get data definition), create (create one or more datasets), update (update one or more datasets), delete</li>
+                <li>First value in each interface entry, is the HTTP-Method to use. Second one is the path part to use.</li>
+                <li>Components choose the type of request automatically.</li>
+            </ul>
+            
             
             <h2 class="uk-heading-divider"><img src="../../swac/components/Icon/imgs/server_options.svg" width="50" height="50"> Step 3: Choose your component</h2>
             <p>First step is to decide what you want. For example you want to show an list

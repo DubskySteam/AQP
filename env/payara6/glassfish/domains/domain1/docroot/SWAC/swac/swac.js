@@ -12,7 +12,7 @@ import Model from './Model.js';
 var SWAC = {
     desc: {
         name: 'core',
-        version: '25.09.2023'
+        version: '01.12.2023'
     },
     config: {},
     msgs: new Map(),
@@ -108,6 +108,7 @@ SWAC.init = function () {
     });
     scriptElem.addEventListener('error', function () {
         console.error('Could not load >' + scriptElem.src + '<');
+        alert("configuration.js could not be found. It is expected in " + app_root + '/configuration.js');
     });
     document.head.appendChild(scriptElem);
 };
@@ -126,7 +127,7 @@ SWAC.loadGlobalComponents = function () {
         linkElem.setAttribute('href', this.config.app_root + '/manifest.json');
         document.head.appendChild(linkElem);
         // Register swac serviceworker
-        navigator.serviceWorker.register('/serviceworker.js')
+        navigator.serviceWorker.register(this.config.app_root + '/serviceworker.js')
                 .then(function (registration) {
                     var serviceWorker;
                     if (registration.installing) {
@@ -175,23 +176,28 @@ SWAC.loadGlobalComponents = function () {
                     // Start onlineReactions
                     SWAC.onlineReactions = new OnlineReactions(thisRef.config);
                     // Check if datasources are available
-                    if (thisRef.config.datasources.length > 0) {
+                    if (thisRef.config.datasourcescheck && thisRef.config.datasources.length > 0) {
                         let fetchproms = [];
                         for (let curSource of thisRef.config.datasources) {
                             let ki = curSource.url.indexOf('[');
                             let url = curSource.url.substring(0, ki);
-                            fetchproms.push(fetch(url, {mode: 'cors'}));
+                            url = url.replace('/smartdata/','/');
+                            let fetchsource = fetch(url, {mode: 'cors'});
+                            fetchproms.push(fetchsource);
+                            fetchsource.then(function(res) {
+                                if(!res.ok) {
+                                    let msg = SWAC.lang.dict.core.sourceerror.replace('%source%', url);
+                                    UIkit.modal.alert(msg);
+                                }
+                            });
                         }
 
                         Promise.all(fetchproms).then(function () {
                             SWAC.waitForStartup();
-                        }).catch(function (e) {
-                            UIkit.modal.alert(SWAC.lang.core.sourceerror);
-                            setTimeout(function () {
-                                window.location.reload(true);
-                            }, 1000);
                         });
-                    }
+                    } else {
+						SWAC.waitForStartup();
+					}
                 });
             }
     );
