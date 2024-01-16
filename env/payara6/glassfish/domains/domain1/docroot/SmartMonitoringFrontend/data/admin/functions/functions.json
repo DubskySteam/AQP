@@ -1,0 +1,1664 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "name": "func_objectmanagement"
+        },
+        {
+            "id": 2,
+            "parent": 1,
+            "name": "func_objectcreate",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring&filter=id,eq,3",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 3, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 3, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "parent": 1,
+            "name": "func_objectscheme",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring&filter=id,eq,5",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 5, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 5, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "schemes",
+                    "attributes": [
+                        {
+                            "name": "id",
+                            "type": "bigserial",
+                            "isNullable": false,
+                            "isIdentity": true,
+                            "isAutoIncrement": true
+                        },
+                        {
+                            "name": "name",
+                            "type": "varchar",
+                            "isNullable": false
+                        }    
+                    ]
+                },
+                {
+                    "name": "schemes_visuals",
+                    "attributes": [
+                        {
+                            "name": "id",
+                            "type": "bigserial",
+                            "isNullable": false,
+                            "isIdentity": true,
+                            "isAutoIncrement": true
+
+                        },
+                        {
+                            "name": "schemes_id",
+                            "type": "bigint",
+                            "isNullable": false,
+                            "refCollection": "schemes",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring",
+                            "refOnDelete": "CASCADE",
+                            "refOnUpdate": "CASCADE"
+                        },
+                        {
+                            "name": "observedobject_id",
+                            "type": "bigint",
+                            "isNullable": false,
+                            "refCollection": "tbl_observedobject",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring",
+                            "refOnDelete": "CASCADE",
+                            "refOnUpdate": "CASCADE"
+                        },
+                        {
+                            "name": "name",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "x",
+                            "type": "int",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "y",
+                            "type": "int",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "width",
+                            "type": "int",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "height",
+                            "type": "int",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "parent_id",
+                            "type": "bigint",
+                            "isNullable": true,
+                            "refCollection": "schemes_visuals",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring",
+                            "refOnDelete": "CASCADE",
+                            "refOnUpdate": "CASCADE"
+                        },
+                        {
+                            "name": "image",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "fillcolor",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "bordercolor",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "desc",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "type",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "kind",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "linecalc",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "part1",
+                            "type": "bigint",
+                            "isNullable": true,
+                            "refCollection": "schemes_visuals",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring",
+                            "refOnDelete": "CASCADE",
+                            "refOnUpdate": "CASCADE"
+                        },
+                        {
+                            "name": "part2",
+                            "type": "bigint",
+                            "isNullable": true,
+                            "refCollection": "schemes_visuals",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring",
+                            "refOnDelete": "CASCADE",
+                            "refOnUpdate": "CASCADE"
+                        },
+                        {
+                            "name": "strokecolor",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "storkewidth",
+                            "type": "int",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "stroketension",
+                            "type": "int",
+                            "isNullable": true
+                        }
+                    ]
+                }
+
+            ]
+        
+        },
+        {
+            "id": 5,
+            "parent": 1,
+            "name": "func_datavisualisation",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,4",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 4, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 4, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "func_data"
+        },
+        {
+            "id": 11,
+            "parent": 10,
+            "name": "func_dataupload",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring&filter=id,eq,11",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 11, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 11, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "func_media"
+        },
+        {
+            "id": 21,
+            "parent": 20,
+            "name": "func_mediaupload",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=ckey,eq,func_mediaupload",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 26, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 22, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 26, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 22, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "parent": 20,
+            "name": "func_mediagalery",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=ckey,eq,func_mediagalery",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 27, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 21, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 27, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 21, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+            
+                    "name": "media_reference",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "media_id1",
+                            "type": "bigint",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "collection1",
+                            "type": "integer",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "media_id2",
+                            "type": "bigint",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "collection2",
+                            "type": "integer",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "description",
+                            "type": "string",
+                            "isNullable": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "name": "func_label"
+        },
+        {
+            "id": 41,
+            "parent": 40,
+            "name": "func_labeling",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring&filter=id,eq,32",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 32, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 32, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "label_labels",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "name",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "color",
+                            "type": "varchar"
+                        },
+                        {
+                            "name": "isavailforobjects",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isavailfordatasets",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isavailformediasets",
+                            "type": "boolean"
+                        }
+
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "parent": 40,
+            "name": "func_objectlabeling",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,1",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 1, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 1, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "label_observedobject",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "label_id",
+                            "type": "bigint",
+                            "isNullable": false,
+                            "refCollection": "label_labels",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring"
+                        },
+                        {
+                            "name": "oo_id",
+                            "type": "bigint",
+                            "isNullable": false,
+                            "refCollection": "tbl_observedobject",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "parent": 40,
+            "name": "func_datalabeling",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,2",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 2, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 2, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "label_datasets",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "label_id",
+                            "type": "bigint",
+                            "isNullable": false,
+                            "refCollection": "label_labels",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring"
+                        },
+                        {
+                            "name": "collection",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "set_id",
+                            "type": "bigint",
+                            "isNullable": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "parent": 40,
+            "name": "func_medialabeling",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,28",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 28, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 28, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "label_media",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "label_id",
+                            "type": "bigint",
+                            "isNullable": false,
+                            "refCollection": "label_labels",
+                            "refAttribute": "id",
+                            "refStorage": "smartmonitoring"
+                        },
+                        {
+                            "name": "collection",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "set_id",
+                            "type": "bigint",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "polygons",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "title",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "description",
+                            "type": "varchar",
+                            "isNullable": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "name": "func_other"
+        },
+        {
+            "id": 51,
+            "parent": 50,
+            "name": "func_userlogin",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,25",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 25, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 30, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 31, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 32, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 33, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 34, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 25, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 30, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 31, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 32, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 33, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                },
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 34, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+
+            ]
+        },
+        {
+            "id": 52,
+            "parent": 50,
+            "name": "func_userdashboard",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,29",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 29, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 29, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "collections": [
+                {
+                    "name": "dashboard_cards",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "title",
+                            "type": "varchar",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "desc",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "type",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "ecocard",
+                            "type": "boolean",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "avail",
+                            "type": "boolean",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "card_visible_default",
+                            "type": "boolean",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "data_source",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_ts_col",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_from_selectable",
+                            "type": "boolean",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_from_default",
+                            "type": "timestamp",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_until_selectable",
+                            "type": "boolean",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_until_default",
+                            "type": "timestamp",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_comp",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_comp_opts",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_comp_tpl",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "content",
+                            "type": "varchar",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_from_min",
+                            "type": "timestamp",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_until_max",
+                            "type": "timestamp",
+                            "isNullable": true
+                        }
+                    ]
+                },
+                {
+                    "name": "dashboard_cards_usersettings",
+                    "attributes": [
+                        {
+                            "isIdentity": true,
+                            "isAutoIncrement": true,
+                            "isNullable": false,
+                            "name": "id",
+                            "type": "bigserial"
+                        },
+                        {
+                            "name": "card_id",
+                            "type": "integer",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "user_id",
+                            "type": "integer",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "next_card",
+                            "type": "integer",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "prev_card",
+                            "type": "integer",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "visible",
+                            "type": "boolean",
+                            "isNullable": false
+                        },
+                        {
+                            "name": "data_from",
+                            "type": "timestamp",
+                            "isNullable": true
+                        },
+                        {
+                            "name": "data_until",
+                            "type": "timestamp",
+                            "isNullable": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "parent": 50,
+            "name": "func_userfavs",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,30",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 30, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 30, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 100,
+            "name": "func_objectmap_heading"
+        },
+        {
+            "id": 101,
+            "parent": 100,
+            "name": "func_objectmap",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring&filter=id,eq,6",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 6, \"active\": true}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 6, \"active\": false}",
+                    "url": "records/tbl_navigationroute?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 102,
+            "parent": 100,
+            "name": "func_objectmap_createobject",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,5",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 5, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 5, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 103,
+            "parent": 100,
+            "name": "func_objectmap_objectdata",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,6",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 6, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 6, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 104,
+            "parent": 100,
+            "name": "func_objectmap_navigation",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,7",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 7, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 7, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 105,
+            "parent": 100,
+            "name": "func_objectmap_magicmapper",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,8",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 8, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 8, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 106,
+            "parent": 100,
+            "name": "func_objectmap_search",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,9",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 9, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 9, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 107,
+            "parent": 100,
+            "name": "func_objectmap_filter",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,10",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 10, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 10, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 108,
+            "parent": 100,
+            "name": "func_objectmap_toggleclickinteraction",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,11",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 11, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 11, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 109,
+            "parent": 100,
+            "name": "func_objectmap_togglelatchonlocation",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,12",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 12, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 12, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 110,
+            "parent": 100,
+            "name": "func_objectmap_help",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,13",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 13, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 13, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 111,
+            "parent": 100,
+            "name": "func_objectmap_labels",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,24",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 24, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 24, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 120,
+            "name": "func_datamap_heading"
+        },
+        {
+            "id": 121,
+            "parent": 120,
+            "name": "func_datamap",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,3",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 3, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 3, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        }, 
+        {
+            "id": 122,
+            "parent": 120,
+            "name": "func_datamap_datashowmodal",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,14",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 14, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 14, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 123,
+            "parent": 120,
+            "name": "func_datamap_timeline",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,15",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 15, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 15, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 124,
+            "parent": 120,
+            "name": "func_datamap_navigation",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,16",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 16, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 16, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 125,
+            "parent": 120,
+            "name": "func_datamap_magicmapper",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,17",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 17, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 17, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 126,
+            "parent": 120,
+            "name": "func_datamap_search",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,18",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 18, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 18, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 127,
+            "parent": 120,
+            "name": "func_datamap_filter",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,19",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 19, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 19, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 128,
+            "parent": 120,
+            "name": "func_datamap_toggleclickinteraction",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,20",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 20, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 20, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 129,
+            "parent": 120,
+            "name": "func_datamap_togglelatchonlocation",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,21",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 21, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 21, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 130,
+            "parent": 120,
+            "name": "func_datamap_help",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,22",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 22, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 22, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        },
+        {
+            "id": 131,
+            "parent": 120,
+            "name": "func_datamap_labels",
+            "version": "3.0 alpha 1",
+            "state": [
+                {
+                    "type": "rest",
+                    "method": "get",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring&filter=id,eq,23",
+                    "check": "active=true"
+                }
+            ],
+            "activate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 23, \"active\": true}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ],
+            "deactivate": [
+                {
+                    "type": "rest",
+                    "method": "put",
+                    "body": "{\"id\": 23, \"active\": false}",
+                    "url": "records/tbl_systemconfiguration?storage=smartmonitoring"
+                }
+            ]
+        }
+
+
+    ]
+}

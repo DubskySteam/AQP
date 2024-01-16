@@ -1,0 +1,30 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "din": "10217",
+            "durchmesser": "DN300",
+            "laenge": 10500,
+            "beschichtung": "Pulverbeschichtung",
+            "farbe": "RAL3000",
+            "abgeklebt": false,
+            "abschluss_links": "Sägeschnitt",
+            "abschluss_rechts": "Sägeschnitt",
+            "no": 1,
+            "anzahl": 2
+        },
+        {
+            "id": 2,
+            "din": "10217",
+            "durchmesser": "DN300",
+            "laenge": 10500,
+            "beschichtung": "Pulverbeschichtung",
+            "farbe": "RAL3000",
+            "abgeklebt": false,
+            "abschluss_links": "Sägeschnitt",
+            "abschluss_rechts": "Sägeschnitt",
+            "no": 1,
+            "anzahl": 2
+        }
+    ]
+}

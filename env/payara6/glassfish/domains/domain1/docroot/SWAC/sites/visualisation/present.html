@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - present component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/visualisation/present.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+        <div id="explaincomponent" swa="ExplainComponents"></div>
+
+        <h2>Examples</h2>
+        <h3>Example 1: Present datasets with default template "table_per_dataset"</h3>
+        <pre><code class="lang-html">
+&lt;div id="present_example1" swa="Present FROM exampledata_list"&gt;&lt;/div&gt;
+        </code></pre>
+        Will print out all data attributes from an plain old javascript object line by line.
+
+        <div id="present_example1" swa="Present FROM exampledata_list"></div>
+
+        <h3>Example 2: Show datasets with the "table_for_all_datasets" template</h3>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example2" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <div id="present_example2" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"></div>
+
+        <h3>Example 3: Show datasets with the "card_per_dataset" template</h3>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example3" swa="Present FROM exampledata_list TEMPLATE card_per_dataset"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <div id="present_example3" swa="Present FROM exampledata_list TEMPLATE card_per_dataset"></div>
+
+        <h3>Example 4: Show datasets with custom template</h3>
+        <p>Custom template gives you full options on what and how to display. More 
+            on how to create your own template under <a href="../concepts/4_design.html">skinable</a></p>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example4" swa="Present FROM exampledata_list"&gt;
+    &lt;article class="swac_repeatForSet"&gt;
+        &lt;header&gt;&lt;h1&gt;{stringval}&lt;/h1&gt;&lt;/header&gt;
+        &lt;p&gt;{doubleval}&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/div&gt;
+        </code></pre>
+        Will print out the data attributes, u have placed bindpoints in your custom code.
+
+        <div id="present_example4" swa="Present FROM exampledata_list">
+            <article class="swac_repeatForSet">
+                <header><h1>{stringval}</h1></header>
+                <p>{doubleval}</p>
+            </article>
+        </div>
+
+        <h3>Example 5: Useing TableFilter plugin</h3>
+        <p>TableFilter plugin adds filter possibility for table based presents.</p>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example5" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <pre><code class="lang-javascript">
+var present_example5_options = {
+    plugins: new Map()
+};
+present_example5_options.plugins.set('TableFilter', {
+    id: 'TableFilter',
+    active: true
+});        
+        </code></pre>
+        
+        <div id="present_example5" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"></div>
+
+        <h3>Example 6: Useing TableSort plugin</h3>
+        <p>TableFilter plugin adds sorting possibility for table based presents.</p>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example6" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <pre><code class="lang-javascript">
+var present_example6_options = {
+    plugins: new Map()
+};
+present_example6_options.plugins.set('TableSort', {
+    id: 'TableSort',
+    active: true
+});        
+        </code></pre>
+        
+        <div id="present_example6" swa="Present FROM exampledata_list TEMPLATE table_for_all_datasets"></div>
+        
+        <h3>Example 7: Useing lazy loading</h3>
+        <p>Present component supports lazy loading of data, as any other component.</p>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example7" swa="Present FROM exampledata_biglist.json TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+        
+        <pre><code class="lang-javascript">
+var present_example7_options = {
+    lazyLoading: 5
+};
+
+document.addEventListener('swac_present_example7_complete', function (evt) {
+    let present_example7_btn = document.querySelector('.present_example7_btn');
+    present_example7_btn.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        let comp = document.querySelector('#present_example7').swac_comp;
+        comp.addDataLazy();
+    });
+});
+        </code></pre>
+        
+        <div id="present_example7" swa="Present FROM exampledata_biglist.json TEMPLATE table_for_all_datasets"></div>
+        <button class="present_example7_btn uk-button uk-button-primary">Load next 5 sets</button>
+        
+        <h3>Example 8: Automatic lazy loading</h3>
+        <p>All components can lazyly load new data when the components end comes in the viewport (becomes visible to the user).
+        Be aware, that scince if one component recives data from a datasource that is used on another component too, the other
+        component is updated, too.</p>
+
+        <pre><code class="lang-html">
+&lt;div id="present_example8" swa="Present FROM exampledata_biglist.json TEMPLATE table_for_all_datasets"&gt;&lt;/div&gt;
+        </code></pre>
+        
+        <pre><code class="lang-javascript">
+var present_example8_options = {
+    lazyLoading: 5,
+    lazyLoadMode: 'end'
+};
+        </code></pre>
+        
+        <div id="present_example8" swa="Present FROM exampledata_biglist.json TEMPLATE table_for_all_datasets"></div>
+        
+        <h3>Example 9: Create cells for missing attributes</h3>
+        <p>Sometimes there are datasets where not all attributes are available. To avoid missleading display in those cases, table cells for missing attributes are generated when useing a table template</p>
+
+        <div id="present_example9" swa="Present FROM exampledata_gaps.json TEMPLATE table_for_all_datasets"></div>
+
+        <h3>Example 10: Live adding data over input</h3>
+        <p>View of any data accessable by URL can be allowed by useing the showAddDataInput option.
+            <br>Once activated a URL input box is displayed below the component and allows the addition of data.
+            <br>This option is available on all components and allows any datasources SWAC can use as pre configured datasource.</p>
+
+        <pre><code class="lang-javascript">
+var present_example10_options = {
+    showAddDataInput: true
+};        
+        </code></pre>
+        
+        <a href="present_example10.html" target="_blank">Open example</a>
+        
+        <h3>Example 11: Show data from source given by URL</h3>
+        <p>The datasource to show can also be given by URL parameter build from the id of the requestor and _data e.g. "present_example10_data". This way calling
+        pages to show data with custom datasources is easy to implement by create to pages with list components.
+        <br>First one with a list of all datasources, and second one that accepts the datasource by url.</p>
+        
+        <a href="present_example10.html?present_example10_data=exampledata_gaps.json" target="_blank">Open example</a>
+        <br><b>More examples:</b>
+        <br><a href="present_example10.html?present_example10_data=https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/rhein-kreis-neuss-windenergieanlagen/exports/json" target="_blank">Windenergieanlagen im Rhein-Neuss-Kreis</a>
+        
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

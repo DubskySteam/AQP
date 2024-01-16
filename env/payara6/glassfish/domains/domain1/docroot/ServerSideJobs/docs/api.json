@@ -1,0 +1,616 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ServerSideJobs REST API",
+    "description": "API for the communication between the frontend and backend of ServerSideJobs.",
+    "version": "1.0.1",
+    "contact": {
+      "email": "chris-r@posteo.net"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://epigraf01.ad.fh-bielefeld.de:8080/ServerSideJobsBackend/serversidejobs/",
+      "description": "Backend server",
+      "variables": {
+        "basePath": {
+          "default": "serversidejobs"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/jobs": {
+      "get": {
+        "summary": "Returns jobs",
+        "description": "Returns all jobs or a specific one.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ID of the requested job",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of the jobs",
+            "content" : {
+              "application/json": {
+                "examples": {
+                  "1": {
+                    "value": {
+                        "list": [
+                            {
+                                "id": 1,
+                                "name": "Update Server",
+                                "description": "update all software on the server",
+                                "personId": 1,
+                                "startTime": "2020-12-04T15:00:00Z",
+                                "endTime": "",
+                                "active": true,
+                                "timeout": 0,
+                                "interval": {
+                                    "minute": [10],
+                                    "hour": [20],
+                                    "day": [1, 3],
+                                    "month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                                },
+                                "status": "waiting",
+                                "parameters": [],
+                                "nextOnSuccessId": 3,
+                                "nextOnFailureId": 2,
+                                "class": "de.fhbielefeld.jobs.CommandJob"
+                            },
+                            {
+                                "id": 2,
+                                "name": "Send E-Mail",
+                                "description": "Send an E-Mail to the admin",
+                                "personId": 1,
+                                "startTime": "2020-12-04T15:00:00Z",
+                                "endTime": "",
+                                "active": true,
+                                "timeout": 1800,
+                                "interval": {
+                                    "minute": [],
+                                    "hour": [],
+                                    "day": [],
+                                    "month": []
+                                },
+                                "status": "not scheduled",
+                                "parameters": [
+                                    {
+                                        "name": "to",
+                                        "type": "string",
+                                        "content": "max.mustermann@fh-bielefeld.de"
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "string",
+                                        "content": "Update Server error log"
+                                    }
+                                ],
+                                "nextOnSuccessId": -1,
+                                "nextOnFailureId": -1,
+                                "class": "de.fhbielefeld.jobs.EMailJob"
+                            },
+                            {
+                                "id": 3,
+                                "name": "Start my amazing Docker container",
+                                "description": "starts my docker container",
+                                "personId": 2,
+                                "startTime": "",
+                                "endTime": "",
+                                "active": true,
+                                "timeout": 0,
+                                "interval": {
+                                    "minute": [0],
+                                    "hour": [0],
+                                    "day": [1, 8, 15, 22, 29],
+                                    "month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                                },
+                                "status": "waiting",
+                                "parameters": [
+                                    {
+                                        "name": "container",
+                                        "type": "string",
+                                        "content": "Ubuntu"
+                                    },
+                                    {
+                                        "name": "ipcmode",
+                                        "type": "string",
+                                        "content": "shareable"
+                                    }
+                                ],
+                                "nextOnSuccessId": -1,
+                                "nextOnFailureId": -1,
+                                "class": "de.fhbielefeld.jobs.DockerJob"
+                            }
+                        ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new job",
+        "description": "Creates a new job.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON representation of the new job",
+            "required": true,
+            "schema": {
+              "type": "object",
+                      "required": [
+                          "name",
+                          "description",
+                          "className",
+                          "personId",
+                          "interval"
+                      ],
+                      "properties": {
+                          "name": {
+                              "type": "string"
+                          },
+                          "description": {
+                              "type": "string"
+                          },
+                          "className": {
+                              "type": "string"
+                          },
+                          "personId": {
+                              "type": "integer"
+                          },
+                          "interval": {
+                              "type": "object",
+                              "schema": {
+                                "required": [
+                                    "minute",
+                                    "hour",
+                                    "day",
+                                    "month"
+                                ],
+                                "properties": {
+                                    "minute": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "hour": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "day": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "month": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                          },
+                          "startTime": {
+                              "type": "string"
+                          },
+                          "endTime": {
+                              "type": "string"
+                          },
+                          "timeout": {
+                              "type": "integer"
+                          },
+                          "parameters": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "schema": {
+                                  "required": [
+                                    "name",
+                                    "type",
+                                    "content"
+                                  ],
+                                  "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                          },
+                          "nextOnSuccessId": {
+                              "type": "integer"
+                          },
+                          "nextOnFailureId": {
+                              "type": "integer"
+                          }
+                      }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Job created (returns the URI of the newly created job)"
+          },
+          "400": {
+            "description": "some argument is wrong"
+          }
+        }
+      },
+      "put": {
+        "summary": "Changes a job",
+        "description": "Changes a job, e.g. its name and description",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON representation of the new job",
+            "required": true,
+            "schema": {
+              "type": "object",
+                      "required": [
+                          "id"
+                      ],
+                      "properties": {
+                          "id": {
+                              "type": "integer"
+                          },
+                          "name": {
+                              "type": "string"
+                          },
+                          "description": {
+                              "type": "string"
+                          },
+                          "personId": {
+                              "type": "integer"
+                          },
+                          "interval": {
+                              "type": "object",
+                              "schema": {
+                                "required": [
+                                    "minute",
+                                    "hour",
+                                    "day",
+                                    "month"
+                                ],
+                                "properties": {
+                                    "minute": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "hour": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "day": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "month": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                          },
+                          "startTime": {
+                              "type": "string"
+                          },
+                          "endTime": {
+                              "type": "string"
+                          },
+                          "timeout": {
+                              "type": "integer"
+                          },
+                          "parameters": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "schema": {
+                                  "required": [
+                                    "name",
+                                    "type",
+                                    "content"
+                                  ],
+                                  "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                          },
+                          "nextOnSuccessId": {
+                              "type": "integer"
+                          },
+                          "nextOnFailureId": {
+                              "type": "integer"
+                          }
+                      }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Job has been changed"
+          },
+          "400": {
+            "description": "some arguments are wrong"
+          }
+        }
+      }
+    },
+    "/persons": {
+      "get": {
+        "summary": "Gives a list of persons back",
+        "description": "Gives a list of all persons or a specific person back",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id of the person",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of persons",
+            "content" : {
+              "application/json": {
+                "examples": {
+                  "1": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "name": "Max Mustermann",
+                        "email": "max.mustermann@fh-bielefeld.de"
+                      },
+                      {
+                          "id": 2,
+                          "name": "no one",
+                          "email": "noreply@fh-bielefeld.de"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a person",
+        "description": "Creates a person.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON representation of the new person",
+            "required": true,
+            "schema": {
+              "type": "object",
+                      "required": [
+                          "name",
+                          "email"
+                      ],
+                      "properties": {
+                          "name": {
+                              "type": "string"
+                          },
+                          "email": {
+                              "type": "string"
+                          }
+                      }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Person has been created (returns URI for the person)"
+          },
+          "400": {
+            "description": "Some argument is wrong"
+          }
+        }
+      }
+    },
+    "/logs": {
+      "get": {
+        "summary": "Gives a list of logs back",
+        "description": "Gives a list of all logs or logs up until a max age back",
+        "parameters": [
+          {
+            "name": "maxage",
+            "in": "query",
+            "description": "maximum age of the logs (in seconds)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of logs",
+            "content" : {
+              "application/json": {
+                "examples": {
+                  "1": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "time": "2021-01-19T00:52:19+01",
+                        "successful": true,
+                        "hasbeenseen": false,
+                        "jobname": "My famous ping job",
+                        "jobid": 3,
+                        "message": "Ping google successfully"
+                      },
+                      {
+                        "id": 2,
+                        "time": "2021-01-20T10:12:18+01",
+                        "successful": false,
+                        "hasbeenseen": false,
+                        "jobname": "The greatest job ever",
+                        "jobid": 1,
+                        "message": "job aborted by user"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobclassess": {
+      "get": {
+        "summary": "Returns all job classes",
+        "description": "Returns all job classes. Each created job is of one of those classes.",
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all job classes",
+            "content" : {
+              "application/json": {
+                "examples": {
+                  "1": {
+                    "value": [
+                        {
+                            "class": "de.fhbielefeld.jobs.PingJob",
+                            "parameters": [
+                              {
+                                "name": "Address",
+                                "type": "STRING",
+                                "description": "Ping a computer.",
+                                "required": true
+                              }
+                            ]
+                        },
+                        {
+                            "class": "de.fhbielefeld.jobs.CommandJob",
+                            "parameters": [
+                              {
+                                "name": "command",
+                                "type": "STRING",
+                                "description": "Command to execute.",
+                                "required": true
+                              },
+                              {
+                                "name": "options",
+                                "type": "STRING",
+                                "description": "Command line options.",
+                                "required": false
+                              }
+                            ]
+                        }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/abortjob": {
+      "post": {
+        "summary": "Abort a running job",
+        "description": "Request to abort a currently running job",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id of the job",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "job aborted"
+          },
+          "400": {
+            "description": "no id given or no job with that id"
+          }
+        }
+      }
+    },
+    "/startjob": {
+      "post": {
+        "summary": "Start a job manually",
+        "description": "Start a job manually",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id of the job",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "delay",
+            "in": "query",
+            "description": "delay in seconds until the job is run",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "job runs"
+          },
+          "400": {
+            "description": "no id given or no job with that id"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@font-face {
+    font-family: inter;
+    src: url("/SWAC/font/Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+html {  
+    font-family: inter;
+    height: 100%;
+    box-sizing: border-box;	/* Box-size on border for footer */
+}
+
+/* Inherit box-sizing for footer stay on bottom on small pages, and at the end of page at large pages */
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    background: #fff1e0;
+    background: linear-gradient(150deg, #fff1e0 18%,#cdebfa 77%);
+    background: -moz-linear-gradient(150deg, #fff1e0 18%,#cdebfa 77%);
+    background: -webkit-linear-gradient(150deg, #fff1e0 18%,#cdebfa 77%);	
+}
+
+article {
+    padding: 1em;
+}
+
+.toplink {
+    color: #ffffff;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #00008B;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#head_navigation {
+    position: sticky;
+    top: 0px;
+    min-height: 60px;
+    background-color: #073A5F;
+    z-index: 10;
+}
+
+#head_navigation ul {
+    display: inline; 
+    list-style-type: none; 
+}
+
+/* footer */
+body > footer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+    width: 100%;
+    background: #073A5F;
+    color: #ffffff;
+}
+body footer a {
+    color: #ffffff;
+    position: relative;
+    bottom: -15px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#more {
+    left: 10%;
+}
+
+#about {
+    left: 30%;
+}
+
+#privacy {
+    left: 50%;
+}
+
+#imprint {
+    left: 70%;
+}

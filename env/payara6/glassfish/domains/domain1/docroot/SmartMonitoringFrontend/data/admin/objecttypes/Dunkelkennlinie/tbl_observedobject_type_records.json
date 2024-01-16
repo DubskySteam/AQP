@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": false,
+            "name": "Dunkelkennlinie",
+            "description": "Hellkennlinie eines Photovoltaikmoduls, bzw. -strings"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "filenamepattern": ".*moduldaten.((XLSX)|(xlsx))",
+            "savefile": true,
+            "importername": "FilesImporter",
+            "defaultdevicename": "PVModulDatenblatt",
+            "parsername": "XLSXParser",
+            "observedobjecttype_id": 1
+        }
+    ]
+}

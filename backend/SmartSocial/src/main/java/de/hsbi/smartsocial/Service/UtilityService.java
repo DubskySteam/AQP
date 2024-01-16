@@ -5,20 +5,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javadocmd.simplelatlng.LatLng;
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
+import de.fhbielefeld.smartuser.securitycontext.SmartPrincipal;
 import de.hsbi.smartsocial.Exceptions.APICallException;
+import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
 import de.hsbi.smartsocial.Exceptions.RefreshException;
-import de.hsbi.smartsocial.Model.DataPoint;
-import de.hsbi.smartsocial.Model.ProfileSetting;
+import de.hsbi.smartsocial.Model.*;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +40,9 @@ public class UtilityService {
 
     @Inject
     private ProfileSettingsService profileSettingsService;
+
+    @Inject
+    QuestService questService;
 
     public Response refreshData() {
 
@@ -131,10 +140,57 @@ public class UtilityService {
 
             double distance = LatLngTool.distance(startLatLng, endLatLng, LengthUnit.KILOMETER);
 
-            totalDistance += distance;
+            if (distance < 2.0) {
+                totalDistance += distance;
+            }
         }
 
         return totalDistance;
+    }
+
+
+    public ArrayList<DataPoint> getRoute(Long userId) {
+        ArrayList<DataPoint> route = new ArrayList<>();
+        ProfileSetting profileSetting = profileSettingsService.getSettings(userId);
+        if (profileSetting == null) {
+            return route;
+        }
+
+        if (profileSetting.getDevice() == null) {
+            return route;
+        }
+        String jsonArrayString = makeApiCall("http://localhost:8080/SmartDataAirquality/smartdata/records/" + profileSetting.getDevice());
+        List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
+
+        int start = dataPoints.size() - 20;
+        if (start < 0) {
+            start = 0;
+        }
+        for (int i = start; i < dataPoints.size(); i++) {
+            route.add(dataPoints.get(i));
+        }
+
+        return route;
+    }
+
+    public boolean checkQuests(Long userId) {
+        List<Userquest> userquests = questService.getByUserId(userId);
+
+        if (userquests == null || userquests.isEmpty()) {
+            return false;
+        }
+
+        for (Userquest userquest : userquests) {
+            if (userquest.getCompletionDate() == null) {
+                if (userquest.getQuest().getType().equals("distance")) {
+                    BigDecimal distance = leaderboardService.getPersonalStats(userId).getKilometers();
+                    if (userquest.getQuest().getAmount() <= distance.doubleValue()) {
+                        userquest.setCompletionDate(LocalDate.now());
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -151,4 +207,22 @@ public class UtilityService {
         return Response.ok(Response.Status.NOT_IMPLEMENTED).build();
     }
 
+    /**
+     * Checks if the user is valid
+     * TODO: SmartUserAuth is semi-broken at the moment. If it's fixes, reverse the return values.
+     */
+    public static boolean isUserValid(Long userId, ContainerRequestContext requestContext) {
+        SecurityContext sc = requestContext.getSecurityContext();
+        if (sc != null) {
+            SmartPrincipal sp = (SmartPrincipal) sc.getUserPrincipal();
+            if (sp != null) {
+                for (Long curSet : sp.getContextRight().getIds()) {
+                    if (curSet.equals(userId)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

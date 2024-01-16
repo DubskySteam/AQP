@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > low level api > document a component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+        <h1>How to easily document a component</h1>
+        <p>SWAC makes it easy to document your components.
+            <br>With the concept of functional documentation you get more as a
+            simple documentation webpage from your documentation effort.</p>
+
+        <h2>Generated documentation pages</h2>
+        <p>You get automatically generated documentation pages from your component
+            code. There are areas showing the expected or optional used data from the
+            datasets given to your component. And the requirements to a template 
+            code are documented, too. Furthermore there is a section showing the 
+            available templates with highlighted code. And the dependencies of your
+            component are listed, too.
+            <br>And its easy to create a documentation just do:</p>
+
+        <pre><code class="lang-html">
+&lt;div id="compDescription" swa="EXPLAIN SWAC_edit"&gt;&lt;/div&gt;
+        </code></pre>
+
+        <h2>Checking datasets</h2>
+        <p>But if you documented the data requirements of your component your
+            documentation is not only used for an explanation page. When a component
+            becomes data it is allways checked against the requirements. If there
+            is a required attribute missing in your data swac will inform you.</p>
+
+        <h2>Checking templates</h2>
+        <p>Templates are checked, too. If there is a element missing wich you 
+            decleared as required then SWAC will give you an error of this.</p>
+
+        <h2>Data delivery optimisation hints</h2>
+        <p>If the data you give to a component is not completely used by it
+            you get hints (with activated hint mode). So you can optimise your
+            datasource or interface to not deliver more data than needed.</p>
+
+        <h2>Automatic including dependencies</h2>
+        <p>All files you documented as dependencies are automatically included
+            for you, when the component loads. So you don't have to add script tags
+            on your page.</p>
+
+        <h2>Start documenting now</h2>
+        <p>The way of documenting is included in the component template. Every
+            documentation belonges to the "desc" attribute of your component.
+            <br>These are the documentation attributs within the desc-Attribute:</p>
+
+        <table>
+            <tr><th>Name</th><th>Attribute</th><th>Description</th></tr>
+            <tr><td>depends</td><td><td>A file that is needed by the component. May be javascript or css file.</td></tr>
+            <tr><td></td><td>name</td><td>Name of the dependency</td></tr>
+            <tr><td></td><td>path</td><td>Path to the dependend file</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the dependency</td></tr>
+            <tr><td>templates</td><td></td><td>A template that can be used for display of the component</td></tr>
+            <tr><td></td><td>name</td><td>Name of the template (and the templates filename without fileending)</td></tr>
+            <tr><td></td><td>style</td><td>Name of the style (and the css filename without fileending)</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the template</td></tr>
+            <tr><td>styles</td><td></td><td>A style can be set to display a component</td></tr>
+            <tr><td></td><td>selc</td><td>Selector on which the style will be applied</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the style</td></tr>
+            <tr><td>reqPerTpl</td><td></td><td>A html element required in the template.</td></tr>
+            <tr><td></td><td>selc</td><td>CSS selector for the element.</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the element</td></tr>
+            <tr><td>optPerTpl</td><td></td><td>A html element in template, that is optional. If available useually activates a extra function.</td></tr>
+            <tr><td></td><td>selc</td><td>CSS selector for the element.</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the element, and which function it activates.</td></tr>
+            <tr><td>optPerPage</td><td></td><td>A html element somewhere on the page (even out of the requestors scope)</td></tr>
+            <tr><td></td><td>selc</td><td>CSS selector for the element.</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the element and what the component does with it.</td></tr>
+            <tr><td>reqPerSet</td><td></td><td>A attribute that must be in every dataset given to the component.</td></tr>
+            <tr><td></td><td>name</td><td>Name of the attribute</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the attribute and why it is needed.</td></tr>
+            <tr><td>optPerSet</td><td></td><td>A attribute that, if contained in a dataset, has a special effect</td></tr>
+            <tr><td></td><td>name</td><td>Name of the attribute</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the attribute and what effect it has, if its in the dataset</td></tr>
+            <tr><td>opts</td><td></td><td>An option of the component.</td></tr>
+            <tr><td></td><td>name</td><td>Name of the option</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the option. (not their default value, this is get from the component class)</td></tr>
+            <tr><td></td><td>type</td><td>Datatype of the parameter. (determined automatically when default value or example is set)</td></tr>
+            <tr><td></td><td>example</td><td>Example value for this option (default value will be documented from value set in class)</td></tr>
+            <tr><td>funcs</td><td></td><td>A external useable function</td></tr>
+            <tr><td></td><td>name</td><td>Functions name</td></tr>
+            <tr><td></td><td>desc</td><td>Description of the function.</td></tr>
+            <tr><td></td><td>params</td><td>Array of objects with name and description describing a param.</td></tr>
+            <tr><td></td><td>returns</td><td>Object with description of the return value. desc and type attributes are used.</td></tr>
+        </table>
+
+        <pre><code class="lang-javascript">
+/**
+ * Sample component for development of own components
+ */
+
+class Sample extends Component {
+
+    /*
+     * Constructs a new component object and transfers the config to the
+     * object
+     */
+    constructor(options = {}) {
+        super(options);
+        this.name = 'Sample';
+
+        this.desc.text = 'Description of this component for documentation.';
+        this.desc.depends[0] = {
+            name: 'dependency.js',
+            path: SWAC.config.swac_root + '/swac/components/Sample/libs/dependency.js',
+            desc: 'Description for what the file is required.'
+        };
+        this.desc.templates[0] = {
+            name: 'templatefilename',
+            style: 'stylefilename',
+            desc: 'Description of the template.'
+        };
+        this.desc.styles[0] = {
+            selc: 'cssSelectorForTheStyle',
+            desc: 'Description of the provided style.'
+        };
+        this.desc.reqPerTpl[0] = {
+            selc: 'cssSelectorForRequiredElement',
+            desc: 'Description why the element is expected in the template'
+        };
+        this.desc.optPerTpl[0] = {
+            selc: 'cssSelectorForOptionalElement',
+            desc: 'Description what is the expected effect, when this element is in the template.'
+        };
+        this.desc.optPerPage[0] = {
+            selc: 'cssSelectorForOptionalElement',
+            desc: 'Description what the component does with the element if its there.'
+        };
+        this.desc.reqPerSet[0] = {
+            name: 'id',
+            desc: 'The attribute id is required for the component to work properly.'
+        };
+        this.desc.optPerSet[0] = {
+            name: 'nameOfTheAttributeOptionalInEachSet',
+            desc: 'Description what is the expected effect, when this attribute is in the set.'
+        };
+        // opts ids over 1000 are reserved for Component independend options
+        this.desc.opts[0] = {
+            name: "OptionsName",
+            desc: "This is the description of an option"
+        };
+        // Setting a default value, only applying when the options parameter does not contain this option
+        if (!options.OptionsName)
+            this.options.OptionsName = 'defaultvalue';
+        // Sample for useing the general option showWhenNoData
+        if (!options.showWhenNoData)
+            this.options.showWhenNoData = true;
+        // function ids over 1000 are reserved for Component independend functions
+        this.desc.funcs[0] = {
+            name: 'name of the function',
+            desc: 'Functions description',
+            params: [
+                {
+                    name: 'name of the parameter',
+                    desc: 'Description of the parameter',
+                    type: 'Expected type(s) of parameter'
+                }
+            ],
+            returns: {
+                desc: 'Description of the return value',
+                type: 'WatchableSet'
+            }
+        };
+
+        //Documentation for events the component can fire
+        this.desc.events[0] = {
+            name: 'swac_REQUESTOR_ID_sample_click',
+            desc: 'An event fired when the user clicks on the component.',
+            data: 'Delivers the JS event object of the click event.'
+        }
+    }
+
+    /*
+     * This method will be called when the component is complete loaded
+     * At this thime the template code is loaded, the data inserted into the 
+     * template and even plugins are ready to use.
+     */ 
+    init() {
+        return new Promise((resolve, reject) => {
+
+            // here we can do what we want with the data and template.
+            
+            // we can access the date over the data attrbute
+            console.log('Data inside the sample component:');
+            console.log(this.data);
+            
+            resolve();
+        });
+    }
+}
+        </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

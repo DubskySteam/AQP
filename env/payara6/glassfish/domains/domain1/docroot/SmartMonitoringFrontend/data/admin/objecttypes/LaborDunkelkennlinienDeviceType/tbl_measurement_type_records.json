@@ -1,0 +1,27 @@
+{
+    "records": [
+        {
+            "name": "ts",
+            "description": "Zeitstempel",
+            "type": "timestamp"
+        },
+        {
+            "unit": "°C",
+            "name": "T",
+            "description": "Temperatur",
+            "type": "float8"
+        },
+        {
+            "unit": "A",
+            "name": "I",
+            "description": "Stromstärke",
+            "type": "float8"
+        },
+        {
+            "unit": "V",
+            "name": "U",
+            "description": "Spannungsstärke",
+            "type": "float8"
+        }
+    ]
+}

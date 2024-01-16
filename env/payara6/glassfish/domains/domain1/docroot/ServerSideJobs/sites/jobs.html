@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ServerSideJobs - jobs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="../css/noscript.css">
+    </noscript>
+
+    <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+    <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+    <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+    <script src="/SWAC/swac/swac.js" type="module"></script>
+
+    <!-- Datasources -->
+    <script src="../data/routes.js"></script>
+    <script src="../js/jobs.js"></script>
+  </head>
+  <body>
+    <nav id="nav" swa="Navigation FROM routes"></nav>
+    <noscript>
+      <div class="noscript_nav">
+        <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+        <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+      </div>
+    </noscript>
+
+    <div class="uk-container">
+      <h1>Jobs</h1>
+      <p>Hier können Sie ihre eigenen Jobs erstellen</p>
+
+      <form id="job-form" class="uk-form-horizontal" type="multipart/formdata">
+        <div class="uk-padding-small uk-padding-remove-horizontal">
+          <label class="uk-form-label">
+            Jobname
+            <span class="uk-text-warning uk-text-bold"> *</span>
+          </label>
+          <div class="uk-form-controls">
+            <input type="text" name="name" class="uk-input" required>
+          </div>
+        </div>
+        <div class="uk-padding-small uk-padding-remove-horizontal">
+          <label class="uk-form-label">
+            Beschreibung
+            <span class="uk-text-warning uk-text-bold"> *</span>
+          </label>
+          <div class="uk-form-controls">
+            <input type="text" name="description" class="uk-input" required>
+          </div>
+        </div>
+        <div class="uk-padding-small uk-padding-remove-horizontal">
+          <label class="uk-form-label">Frühste Ausführung</label>
+          <div class="uk-form-controls">
+            <input type="date" name="startDate" class="uk-input uk-form-width-small">
+            <input type="time" name="startTime" class="uk-input uk-form-width-small">
+          </div>
+        </div>
+        <div class="uk-padding-small uk-padding-remove-horizontal">
+          <label class="uk-form-label">Späteste Ausführung</label>
+          <div class="uk-form-controls">
+            <input type="date" name="endDate" class="uk-input uk-form-width-small">
+            <input type="time" name="endTime" class="uk-input uk-form-width-small">
+          </div>
+        </div>
+        <div class="uk-padding-small uk-padding-remove-horizontal">
+          <label for="repeat" class="uk-form-label">Wiederholung</label>
+          <div class="uk-form-controls">
+            <input type="number" name="repeatDay"  class="uk-input uk-form-width-small" placeholder="Tag">
+            <input type="number" name="repeatHour" class="uk-input uk-form-width-small" placeholder="Stunde">
+            <input type="number" name="repeatMinute" class="uk-input uk-form-width-small" placeholder="Minute">
+            <input type="number" name="repeatSecond" class="uk-input uk-form-width-small" placeholder="Sekunde">
+          </div>
+        </div>
+        <input type="hidden" name="personId" value="1">
+        <div class="uk-padding-small uk-padding-remove-horizontal">
+          <label class="uk-form-label" for="job-form-class-select">
+            Aktion
+            <span class="uk-text-warning uk-text-bold"> *</span>
+          </label>
+          <div class="uk-form-controls">
+            <select id="job-form-class-select" name="action" class="uk-select">
+            </select>
+          </div>
+        </div>
+        <div id="csel" class="uk-padding-remove">
+          <hr>
+          <h2 class="uk-padding-remove">Job Parameter</h2>
+        </div>
+        <div id="job-form-controls">
+          <p>Bitte zuerst eine Jobklasse auswählen.</p>
+        </div>
+      </form>
+
+      <footer>
+        <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+        <a href="about/imprint.html">Imprint / Impressum</a>
+        &copy; 2020 - 2021 FH Bielefeld <a class="toplink" href="#">Top</a>
+      </footer>
+  </body>
+</html>

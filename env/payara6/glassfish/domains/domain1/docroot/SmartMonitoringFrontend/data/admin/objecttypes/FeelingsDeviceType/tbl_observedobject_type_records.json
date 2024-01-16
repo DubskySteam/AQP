@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": false,
+            "name": "WohlfuehlErfasser",
+            "description": "Erfasst Nutzereingaben zum Wohlbefinden des Nutzers"
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+var exampledata_list = [
+    {
+        id: 1,
+        name: "Datensatz 1",
+        doubleval: 92.0123,
+        intval: 1234,
+        boolval: true,
+        stringval: 'string',
+        ts: '2019-10-28T07:46:59',
+        dateval: '2019-10-28',
+        refval: 'ref://exampledata_list/2',
+        mimetype: 'audio/mp3',
+        colval: 'blue',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+    }, 
+    {
+        id: 2,
+        name: "Datensatz 2",
+        doubleval: 519.0234,
+        intval: 2345,
+        boolval: false,
+        stringval: 'string2',
+        ts: '2019-10-29T07:47:59',
+        dateval: '2019-10-29',
+        refval: 'ref://exampledata_list/2',
+        mimetype: 'audio/ogg',
+        colval: '#ffffff',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_star.svg'
+    }, {
+        id: 3,
+        name: "Datensatz 3",
+        doubleval: 1042.0345,
+        intval: 3456,
+        boolval: true,
+        stringval: 'string',
+        ts: '2019-10-30T07:48:59',
+        dateval: '2019-10-30',
+        refval: 'ref://exampledata_list/2',
+        mimetype: 'video/mpeg',
+        colval: '#000000',
+        urlval: 'https://someothersite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_fail.svg'
+    }
+];

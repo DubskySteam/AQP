@@ -1,0 +1,28 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "String 1"
+        },
+        {
+            "id": 2,
+            "title": "Modul 1-1-1",
+            "source": "../../data/algorithms/datacalculator/dashboard_yield1.json"
+        },
+        {
+            "id": 3,
+            "title": "Modul 1-1-2",
+            "source": "../../data/algorithms/datacalculator/dashboard_yield2.json"
+        },
+        {
+            "id": 4,
+            "title": "Modul 1-1-3",
+            "source": "../../data/algorithms/datacalculator/dashboard_yield3.json"
+        },
+        {
+            "id": 5,
+            "title": "Modul 1-1-4",
+            "source": "../../data/algorithms/datacalculator/dashboard_yield4.json"
+        }
+    ]
+}

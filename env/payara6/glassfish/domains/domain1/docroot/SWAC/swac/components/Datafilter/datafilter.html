@@ -1,0 +1,134 @@
+<fieldset class="uk-fieldset">      
+    <legend class="uk-legend">Datafilter.filter</legend>
+    <select class="active_filter_configuration uk-select">       
+        <option value="" id="filter_-1" selected>Datafilter.filterselect</option>        
+    </select>  
+    <br />
+    <button class="swac_datafilter_apply uk-button">Datafilter.apply</button>
+    <button class="editButton uk-button" uk-toggle="target: #filterconfig" type="button">Datafilter.edit</button>
+    <!-- This is the modal -->
+    
+    <div id="filterconfig" style="height: 100%" class="uk-modal-full uk-width-1-1" uk-modal>
+        <div id="mainPanel" style="overflow-y:scroll;height: 100%;position: relative" class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+            <div>
+                <h2 align="center" swac_lang="Datafilter.datafilter">Filter</h2>
+            <h3 align="center" id="observedobject_list">ObservedObject</h3>
+            <br />
+            <div id="filtername_container"> 
+                <select class="active_filter_configuration uk-select uk-width-1-6">       
+                    <option value="" id="filter_-1" selected swac_lang="Datafilter.filterselect">Select one</option>       
+                </select>                               
+                <label class="uk-label">Datafilter.filtername</label>
+                <input id="filtername" class="uk-input uk-width-1-6">
+            </div> 
+            <br />
+            <div id="chart_list">
+                <label id="chart_bar" class="uk-label">Datafilter.barchart</label>
+                <input class="uk-checkbox" type="checkbox" value="barchart" checked>
+
+                <label id="chart_line" class="uk-label">Datafilter.linechart</label>
+                <input class="uk-checkbox" type="checkbox" value="linechart" checked>
+
+                <label id="chart_pie" class="uk-label">Datafilter.piechart</label>
+                <input class="uk-checkbox" type="checkbox" value="piechart">               
+
+                <label id="chart_table" class="uk-label">Datafilter.table</label>
+                <input class="uk-checkbox" type="checkbox" value="table">
+            </div>           
+            <div class="uk-grid uk-padding-small" uk-grid="masonry: true">
+                <div id="filtercomp" class="uk-width-1-3">
+                    <div class="xAxisOptions">
+                        <h4 swac_lang="Datafilter.axis">Axis</h4>
+                        <hr>
+                        <label class="uk-label">Datafilter.xaxis</label>                   
+                        <br />
+                        <select class="uk-width-auto uk-select" id="swac_chart_xaxis"></select>
+                        <br />
+                    </div>
+                    <br />
+                    <div class="yAxisOptions">
+                        <label class="uk-label">Datafilter.yaxis</label>
+                        <br />
+                        <select class="uk-width-auto uk-select" id="swac_chart_yaxis"></select>
+                        <br />
+                        <label><input class="swac_datafilter_yaxis_sumValue uk-checkbox" type="checkbox">Datafilter.sumValue</label>
+                        <br />
+                        <label><input class="swac_datafilter_yaxis_countValue uk-checkbox" type="checkbox">Datafilter.countValue</label>                    
+                        <br />
+                    </div>
+                    <br />
+                </div>
+
+                <div id="filtercomp" class="uk-width-1-3">
+                    <h4 class="Datafilter.filterconfig">Configuration</h4>
+                    <hr>
+                    <div id="filterrows">
+                        <div id="filter_template" class="swac_dontdisplay">
+                            <label class="uk-label">Datafilter.messtype</label>
+                            <select class="filterSelection uk-width-auto uk-select"></select> 
+                            <br />
+                            <label class="uk-label">Datafilter.operation</label>                          
+                            <select class="filterSelection uk-width-auto uk-select">
+                                <option value="="> = </option>
+                                <option value="<"> < </option>
+                                <option value=">"> > </option>
+                            </select>    
+                            <br />
+                            <label class="uk-label">Datafilter.values</label>
+                            <select class="filterSelection uk-width-auto uk-select"></select>
+                            <ul uk-accordion>
+                                <li>
+                                    <a class="uk-accordion-title" href="#">Datafilter.data</a>
+                                    <div class="uk-accordion-content" style="height: 150px; overflow: auto;">
+                                        
+                                    </div>
+                                </li>
+                            </ul>
+                            <input type="button" value="##Datafilter.removeFilter##" class="uk-button">   
+                            <br />
+                            <br />
+                            <hr>
+                        </div>
+                    </div>
+                    <input class="swac_datafilter_filter uk-button" type="button" value="##Datafilter.addFilter##">  
+                    <br />
+                    <br />
+                </div>
+
+                <div id="filtercomp" class="uk-width-1-3">
+                    <h4 swac_lang="Datafilter.setconfig">Set configuration</h4>
+                    <hr>
+                    <span swac_lang="Datafilter.splitattribute"></span> <select class="uk-width-auto uk-select" id="swac_split_select">
+                        <option value="" disabled selected hidden>Datafilter.pleaseChoose</option>     
+                    </select>
+                    <br />
+                    <br />
+                    <div id="setrow" class="uk-width-expand">
+                        <span id="sets_template" class="uk-width-1-5@m swac_dontdisplay">
+                            <input type="text" name="nameTextField" placeholder="Setname" class="uk-input">
+                            <ul uk-accordion>
+                                <li>
+                                    <a class="uk-accordion-title" href="#">Datafilter.data</a>
+                                    <div class="uk-accordion-content" style="height: 150px; overflow: auto;"></div>
+                                </li>
+                            </ul>
+                            <input type="button" value="##Datafilter.removeSet##" class="uk-button">
+                            <br />
+                            <br />
+                            <hr>
+                        </span>
+                    </div>
+                    <input class="swac_datafilter_set uk-button" type="button" value="##Datafilter.addSet##">
+                    <br />
+                </div>                
+            </div>
+            <div>
+                <button class="swac_datafilter_save uk-modal-close uk-button" type="button">Datafilter.save</button>           
+                <button class="swac_datafilter_apply uk-modal-close uk-button">Datafilter.apply</button> 
+                <button class="uk-modal-close uk-button" type="button">Datafilter.cancle</button>
+            </div>
+        </div>
+    </div>
+   
+</fieldset> 

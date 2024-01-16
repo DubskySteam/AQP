@@ -1,0 +1,27 @@
+[swac_attrname="yield"]:after {
+    content: " W";
+}
+
+[swac_attrname="voltage"]:after {
+    content: " V";
+}
+
+[swac_attrname="current"]:after {
+    content: " A";
+}
+
+[swac_attrname="temperature"]:after {
+    content: " °C";
+}
+
+[swac_calculate_sumfor="yield"] {
+    font-size: 48px;
+}
+
+[swac_attrname="modulecount"]::after {
+    content: " / 132";
+}
+
+[swac_calculate_sumfor="modulecount"] {
+    font-size: 48px;
+}

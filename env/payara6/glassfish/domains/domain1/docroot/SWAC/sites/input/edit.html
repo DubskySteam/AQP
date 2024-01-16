@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - edit component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/input/edit.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+            
+            <!--<div id="testcomponent" swa="TestComponents"></div>-->
+
+            <h3>Example 1: Edit form with acordion layout</h3>
+            Will create an editor that allows simple editing of all attributes of an javascript object.
+
+            <pre><code class="lang-html">
+&lt;div id="edit_example1" swa="Edit FROM ../../data/exampledata_list.json"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <div id="edit_example1" swa="Edit FROM ../../data/exampledata_list.json"></div>
+
+            <h3>Example 2: Allow to add new datasets</h3>
+            This editor can create forms for new datasets based on the existing datasets.
+            <pre><code class="lang-html">
+&lt;div id="edit_example2" swa="Edit FROM ../../data/exampledata_list.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example2_options = {
+    showWhenNoData: true,
+    allowAdd: true
+}
+        </code></pre>
+
+            <div id="edit_example2" swa="Edit FROM ../../data/exampledata_list.json"></div>
+
+            <h3>Example 3: Hide attributes from editor </h3>
+            You can easyly hide attributes from the editor, so that those cannot be edited by the user.
+            In this example id and dateval are hidden.
+            <pre><code class="lang-html">
+&lt;div id="edit_example3" swa="Edit FROM ../../data/exampledata_list.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+let nShowAttrProject = {};
+nShowAttrProject['../data/defaults/project.json'] = ['id', 'dateval'];
+var edit_example3_options = {
+    showWhenNoData: true,
+    allowAdd: true,
+    notShownAttrs: nShowAttrProject
+};
+        </code></pre>
+
+            <div id="edit_example3" swa="Edit FROM ../../data/exampledata_list.json"></div>
+
+            <h3>Example 4: Editor with list layout</h3>
+            This editor can create forms for new datasets based on definitions.
+            <pre><code class="lang-html">
+&lt;div id="edit_example4" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE list"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example4_options = {
+    showWhenNoData: true,
+    allowAdd: true,
+    fetchDefinitions: false
+}
+        </code></pre>
+
+            <div id="edit_example4" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE list"></div>
+
+            <h3>Example 5: Editor useing a target outside the requestor for displaying the edit form</h3>
+            This editor can create forms for new datasets based on definitions.
+            <b>Note:</b> When you click the save button, you will get a failure message, 
+            because our server does not accept update requests.
+            <pre><code class="lang-html">
+&lt;div uk-grid&gt;
+    &lt;div id="edit_example5" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE list"&gt;&lt;/div&gt;
+    &lt;div id="example5_editortarget"&gt;When you click a entry the editor should apear here.&lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example5_options = {};
+edit_example5_options.showWhenNoData = true;
+edit_example5_options.allowAdd = true;
+edit_example5_options.fetchDefinitions = true;
+edit_example5_options.editorTargetElement = '#example5_editortarget';
+        </code></pre>
+
+            <div uk-grid>
+                <div id="edit_example5" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE list"></div>
+                <div id="example5_editortarget">When you click a entry the editor should apear here.</div>
+            </div>
+
+            <h3>Example 6: Editor with table layout</h3>
+            Useing the table layout for haveing a compact overview over all datasets.
+            <pre><code class="lang-html">
+&lt;div id="edit_example6" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE table"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example6_options = {};
+edit_example6_options.showWhenNoData = true;
+edit_example6_options.allowAdd = true;
+edit_example6_options.fetchDefinitions = false;
+        </code></pre>
+
+            <div id="edit_example6" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE table"></div>
+
+            <h3>Definitions for automatic form generation</h3>
+            <p>SWAC can use definition of attributes to automatically generate 
+                user friendly input fields. Those definitions can be provided by 
+                configuration or REST interface. The table below shows all interpreted 
+                attributes of those definitions.</p>
+            <table class="uk-table">
+                <thead>
+                    <tr><th>Attribute</th><th>Possible values</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>name</td><td>String</td><td>Name of the attribute. Displayed as label.</td></tr>
+                    <tr><td>type</td><td>bool|int4|int8|float4|float8|date|time|timestamp|interval|varchar|text|color|url|email|password|reference</td><td>Name of the datatype. Determines the input fields choise.</td></tr>
+                    <tr><td>isNullable</td><td>true|false</td><td>States if the value can be null. Defaults to true. Makes the input mendatory.</td></tr>
+                    <tr><td>isIdentity</td><td>true|false</td><td>States if the value identifies the dataset.</td></tr>
+                    <tr><td>isAutoIncrement</td><td>true|false</td><td>States if the value will be calculated by the database itself.</td></tr>
+                    <tr><td>defaultvalue</td><td>String</td><td>Represents the default value when user does not input one.</td></tr>
+                    <tr><td>possibleValues</td><td>String</td><td>A list of values possible values. Either String array or comata separated list.</td></tr>
+                    <tr><td>refCollection</td><td>String</td><td>Name of the collection this attribute references to</td></tr>
+                    <tr><td>refAttribute</td><td>String</td><td>Name of the attribute this attribute references to</td></tr>
+                    <tr><td>refStorage</td><td>String</td><td>Name of the storage this attribute references to</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Example 7: Create new datasets from definitions</h3>
+            This editor can create forms for new datasets based on definitions.
+            <pre><code class="lang-html">
+&lt;div id="edit_example7" swa="Edit FROM ../../data/exampledata_empty.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example7_options = {
+    mainSource: 'observedobject/list',
+    showWhenNoData: true,
+    allowAdd: true,
+    directOpenNew: true,
+    definitions: new Map()
+};
+        </code></pre>
+
+            <div id="edit_example7" swa="Edit FROM ../../data/exampledata_empty.json"></div>
+            
+            <h3>Example 8: Editor with table layout and use of definitions</h3>
+            The table layout can be used with definitions too.
+            <pre><code class="lang-html">
+&lt;div id="edit_example8" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE table"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example8_options = {
+    showWhenNoData: true,
+    allowAdd: false,
+    fetchDefinitions: true
+};
+        </code></pre>
+
+            <div id="edit_example8" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE table"></div>
+
+            <h3>Example 9: Editor with custom definitions</h3>
+            This edit form uses custom definitions from javascript and shows useage
+            of the password type. Also it demonstrates the setting of default values.
+            See last definition for that.
+            <pre><code class="lang-html">
+&lt;div id="edit_example9" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE list"&gt;&lt;/div&gt;
+        </code></pre>
+            <pre><code class="javascript">
+var edit_example9_options = {
+    showWhenNoData: true,
+    allowAdd: true,
+    definitions: new Map()
+};
+edit_example9_options.definitions.set("../../data/edit/persons.json", [
+    {
+        name: 'username',
+        type: 'string',
+        required: true
+    },{
+        name: 'firstname',
+        type: 'string'
+    },
+    {
+        name: 'lastname',
+        type: 'string'
+    },
+    {
+        name: 'email',
+        type: 'email'
+    },
+    {
+        name: 'password',
+        type: 'password'
+    },
+    {
+        name: 'street',
+        type: 'string'
+    },
+    {
+        name: 'houseno',
+        type: 'string'
+    },
+    {
+        name: 'zipcode',
+        type: 'string'
+    },
+    {
+        name: 'city',
+        type: 'string'
+    },
+    {
+        name: 'country',
+        type: 'string',
+        defaultvalue: 'Germany'
+    }
+]);
+        </code></pre>
+
+        <div id="edit_example9" swa="Edit FROM ../../data/edit/persons.json TEMPLATE fulllist"></div>
+
+        <h3>Example 10: Give a set of possible values</h3>
+        <p>The possible values per attribute can be given as array of values or as string with comma separated values.</p>
+        
+        <div id="edit_example10" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE fulllist"></div>
+        
+        <pre><code class="javascript">
+var edit_example10_options = {
+    showWhenNoData: true,
+    allowAdd: true,
+    definitions: new Map()
+};
+edit_example10_options.definitions.set("../../data/exampledata_list.json", [
+    {
+        name: 'name',
+        type: 'string'
+    },
+    {
+        name: 'doubleval',
+        type: 'float8',
+        min: -12,
+        max: 49.7
+    },
+    {
+        name: 'intval',
+        type: 'int4',
+        min: 18,
+        max: 99
+    },
+    {
+        name: 'stringval',
+        possibleValues: ['Deutschland','Östereich','Schweiz']
+    },
+    {
+        name: 'dateval',
+        type: 'date',
+        min: '2020-10-01',
+        max: '2021-12-31'
+    },
+    {
+        name: 'mimetype',
+        possibleValues: 'audio/mp3,audio/avif'
+    }
+]);           
+        </code></pre>
+        
+        <h3>Example 11: Get possible values from database</h3>
+        <p>Possible values for an option can be retrived from database (or any other supported datasource) useing a reference.
+            <br>Since then data objects are returned you can specify which attributes are used as value and as name.</p>
+        
+        <div id="edit_example11" swa="Edit FROM ../../data/exampledata_list.json TEMPLATE fulllist"></div>
+        
+        <pre><code class="javascript">
+var edit_example11_options = {
+    showWhenNoData: true,
+    allowAdd: true,
+    definitions: new Map()
+};
+edit_example11_options.definitions.set("../../data/exampledata_list.json", [
+    {
+        name: 'name',
+        type: 'string'
+    },
+    {
+        name: 'doubleval',
+        type: 'float8',
+        min: -12,
+        max: 49.7
+    },
+    {
+        name: 'intval',
+        type: 'int4',
+        min: 18,
+        max: 99
+    },
+    {
+        name: 'stringval',
+        possibleValues: 'ref://../../data/edit/possibleStringVals.json'
+    },
+    {
+        name: 'dateval',
+        type: 'date',
+        min: '2020-10-01',
+        max: '2021-12-31'
+    },
+    {
+        name: 'mimetype',
+        possibleValues: 'ref://../../data/edit/possibleMimeVals.json',
+        possibleValueAttr: "no", // defaults to "id"
+        possibleValueName: "mime" // defaults to "name"
+    }
+]);          
+        </code></pre>
+        
+        possibleStringVals.json:
+        <pre><code class="json">
+[
+    {
+        "id": 1,
+        "name": "stringval1"
+    },
+    {
+        "id": 2,
+        "name": "stringval2"
+    }
+]       
+        </code></pre>
+        
+        possibleMimeVals.json:
+        <pre><code class="json">
+[
+    {
+        "no": 1,
+        "mime": "audio/mp3"
+    },
+    {
+        "no": 2,
+        "mime": "video/mpeg"
+    }
+]   
+        </code></pre>
+        
+        <h3>Example 12: Hide input fields</h3>
+        <p>You can hide input fields by specifing the visibility.
+            <br>If the input fields are placed inside a reapeadForValue are, that complete area is hidden.</p>
+        
+        <div id="edit_example12" swa="Edit FROM ../../data/exampledata_list.json"></div>
+        
+         <pre><code class="javascript">
+var edit_example12_options = {
+    inputsVisibility: [
+        {
+            hide: ['id']
+        }
+    ]
+};        
+        </code></pre>
+        
+        <h3>Example 13: Hide input fields on conditions</h3>
+        <p>Input fields can be hidden on conditions that match a dataset.
+            <br>In the example the id input field is hidden on sets, where "stringval" is "string".</p>
+        
+        <div id="edit_example13" swa="Edit FROM ../../data/exampledata_list.json"></div>
+        
+        <pre><code class="javascript">
+var edit_example13_options = {
+    inputsVisibility: [
+        {
+            applyOnAttr: 'stringval',
+            applyOnVal: 'string',
+            hide: ['id']
+        }
+    ]
+};     
+        </code></pre>
+        
+        <h3>Example14: Automatic calculate values and update them</h3>
+        <p>If you need values that are filled in automatically and calculated you 
+            can use the "auto" object in the data definition.
+            <br>It has two modes "requestor" and "script", that allow fetching data 
+        from standard requestor or calculateing data.
+        <br>With use of options.customOnStartAutoData you can do calculations when 
+        the user starts the automatic mode. (In the example a session id is generated)</p>
+        
+        <pre><code class="javascript">
+edit_example14_options.definitions.set("airquality_a3", [
+    {
+        name: 'id',
+        type: 'int8',
+        isNullable: false,
+        isIdentity: true,
+        isAutoIncrement: true,
+        defaultvalue: 'nextval()'
+    },
+    {
+        name: 'session',
+        type: 'varchar'
+    },
+    {
+        name: 'pm10',
+        type: 'float8',
+        auto: {
+            requestor: {fromName: '../../data/edit/autovalue.json',
+                fromWheres: {
+                    filter: 'id,lt,10'
+                }
+            },
+            update: 5
+        }
+    },
+    {
+        name: 'ts',
+        type: 'timestamp',
+        auto: {
+            script: function(inputElem) {
+                const d = new Date();
+                let dstr = d.toISOString();
+                let dotpos = dstr.indexOf('.');
+                dstr = dstr.substring(0,dotpos);
+                inputElem.value = dstr;
+                
+                // Find component level
+                let compElem = inputElem;
+                while(!compElem.hasAttribute('swa') && compElem.parentElement) {
+                    compElem = compElem.parentElement;
+                }
+                if(compElem.swac_comp) {
+                    compElem.swac_comp.saveAndNew();
+                }
+            },
+            update: 5
+        }
+    }
+]);    
+        </code></pre>
+        
+        <div id="edit_example14" swa="Edit"></div>
+        
+        <h3>Example15: Autocollect template</h3>
+        <p>If you need values that are filled in automatically and calculated you 
+            can use the "auto" object in the data definition.
+            <br>It has two modes "requestor" and "script", that allow fetching data 
+        from standard requestor or calculateing data.
+        <br>With use of options.customOnStartAutoData you can do calculations when 
+        the user starts the automatic mode. (In the example a session id is generated)</p>
+        
+<!--        
+        <h3>Example 99: Editor with child datasets</h3>
+        
+        <div id="edit_example99" swa="Edit FROM ../../data/edit/persons.json TEMPLATE fulllist"></div>-->
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

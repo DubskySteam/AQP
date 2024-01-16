@@ -1,0 +1,11 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "Live stream",
+            "path": "http://localhost:8081/samplestream",
+            "mimetype": "video/mp4",
+            "stream": true
+        }
+    ]
+}

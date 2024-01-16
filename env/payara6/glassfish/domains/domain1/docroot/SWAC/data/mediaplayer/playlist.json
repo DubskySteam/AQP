@@ -1,0 +1,18 @@
+{
+    "title": "My Playlist",
+    "trackList": [
+        {
+            "location": "/SWAC/data/media/Adrenaline.mp3",
+            "title": "Adrenaline",
+            "creator": "Gavin Rossdale",
+            "album": "Best of Alternative",
+            "trackNum": 1,
+            "image": "/SWAC/data/media/cover.jpg",
+            "duration": 255268
+        }, {
+            "location": "/SWAC/data/media/Adrenaline.ogg",
+            "image": "/SWAC/data/media/cover.jpg",
+            "duration": 132000
+        }
+    ]
+}

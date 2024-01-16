@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Concepts - Plugins</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/concepts/plugins.js"></script>
+        <script src="../../swac/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>Plugins</h1>
+
+            <p>Components can have plugins. Plugins are a collection of features that 
+                extend a components functionallity. They can be activated by the components 
+                options and can have their own configuration. Plugins can have a
+                own html template that is inserted into the component at specified 
+                places.</p>
+
+            <h2>Activate a plugin</h2>
+            <p>To use a plugin configure it in the component options. It must have an id and 
+            set to active: true. The folowing example shows the plugins content.</p>
+
+            <pre><code class="lang-javascript">
+window['sample_plugin_1_options'] = {
+    plugins: new Map()
+};
+window['sample_plugin_1_options'].plugins.set('SamplePlugin', {
+    id: 'SamplePlugin',
+    active: true
+});
+        </code></pre>
+
+            <div id="sample_plugin_1" swa="Sample"></div>
+            
+            <h2>Setting plugin options</h2>
+            <p>Options for a plugin are setted in the same way as options for components.
+                <br>You can store the options in an object placed in the browsers window variable.</p>
+
+            <pre><code class="lang-javascript">
+window['sample_plugin_2_options'] = {
+    plugins: new Map()
+};
+window['sample_plugin_2_options'].plugins.set('SamplePlugin', {
+    id: 'SamplePlugin',
+    active: true
+});
+// Setting plugins options
+window['SamplePlugin_sample_plugin_2_options'] = {
+    modaloption: true
+};
+        </code></pre>
+            
+            <div id="sample_plugin_2" swa="Sample"></div>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

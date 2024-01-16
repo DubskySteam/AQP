@@ -1,0 +1,19 @@
+{
+    "records": [
+        {
+            "measurementtype_id": 1,
+            "description": "Wie zufrieden sind Sie mit dem Raumklima?",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 2,
+            "name": "user_id",
+            "description": "ID des Benutzers, der den Wert erfasst hat",
+            "observedobjecttype_id": 1
+        },
+        {
+            "measurementtype_id": 3,
+            "observedobjecttype_id": 1
+        }
+    ]
+}

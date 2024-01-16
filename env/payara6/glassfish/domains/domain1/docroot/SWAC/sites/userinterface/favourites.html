@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Favourites component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/userinterface/favourites.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Complete view</h3>
+            <p>Adds a favourite icon, the favourite list and the history list to the page.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="favourites_example1" swa="Favourites"&gt;&lt;/div&gt;
+        </code></pre>
+            
+            <div id="favourites_example1" swa="Favourites"></div>
+
+            <h3>Example 2: Show only fav icon</h3>
+            <p>Set only the showFavIcon option for only display the fav icon.</p>
+            
+            <pre><code class="lang-javascript">
+window["favourites_example2_options"] = {
+    showFavIcon: true,
+    showFavList: false,
+    showHistList: false
+};
+        </code></pre>
+            
+            <a href="favourites_example2.html" target="_blank">Open example</a>
+            
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

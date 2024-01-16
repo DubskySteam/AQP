@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="object_view_title">Object > View</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/object/view.js"></script>
+        <script src="../../js/general/oo_change.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+        <div id="oo_change" swa="Select FROM tbl_observedobject WHERE filter=collection,nis AND includes=name,id,manualcapture,description,ip"></div>
+        
+        <div id="parents" swa="Present FROM observedobject/listParents WHERE id={{id}}">
+            <ul class="uk-breadcrumb">
+                <li class="swac_repeatForSet"><a href="view.html?id={id}&collection={{collection}}">{name}</a></li>
+            </ul>
+        </div>
+        <div id="labels" swa="Labeling FROM label_observedobject WHERE filter=oo_id,eq,{{id}}"></div>
+        <article id="objectarticle" swa="Present FROM tbl_observedobject WHERE filter=id,eq,{{id}} AND includes=name,id,manualcapture,description,ip">
+            
+            <h1 class="uk-article-title" uk-tooltip="Observedobject id: {id}">{name}</h1>
+            <p class="uk-article-meta">{description}</p>
+            
+            <div uk-grid>
+                <div class="uk-width-auto@m">
+                    <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+                        <li><a href="#" uk-icon="icon: home; ratio: 2" uk-tooltip="Overview"></a></li>
+                        <!--<li><a href="#" uk-icon="icon: social; ratio: 2" uk-tooltip="Childs"></a></li>-->
+                        <!--<li><a href="#" uk-icon="icon: database; ratio: 2" uk-tooltip="Attributes"></a></li>-->
+<!--                                                    <li><a href="#" uk-icon="icon: link; ratio: 2" uk-tooltip="title: Verknüpfte Daten"></a></li>
+                                                    <li><a href="#" uk-icon="icon: folder; ratio: 2" uk-tooltip="title: Dateien"></a></li>
+                                                    <li><a href="#" uk-icon="icon: file-text; ratio: 2" uk-tooltip="title: Metadaten"></a></li>
+                                                    <li><a href="#" uk-icon="icon: settings; ratio: 2" uk-tooltip="title: Einstellungen"></a></li>
+                                                    <li><a href="#" uk-icon="icon: cloud-upload; ratio: 2" uk-tooltip="title: Daten Synchronisation"></a></li>-->
+                        <li class="swac_dontdisplay"><a href="#"></a> Workaround </li>
+                    </ul>
+                </div>
+                <div class="uk-width-expand@m">
+                    <ul id="component-tab-left" class="uk-switcher">
+                        <li>
+                            <h3 class="uk-heading-divider">Overview</h3>
+                            <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                                <div>
+                                    <img src="{icon}" alt="">
+                                    <a href="https://{ip}:8181" target="_blank" class="todevice_https uk-button uk-button-primary">object_view_todevice</a>
+                                    <a href="../data/collect.html?id={{id}}&collection={{collection}}" class="uk-button uk-button-primary" swac_display="{manualcapture}">object_view_collect</a>
+                                    <a href="../data/list.html?id={{id}}&collection={{collection}}" class="uk-button uk-button-primary">object_view_showdata</a>
+                                    <a href="../data/visualisation.html?id={{id}}&collection={{collection}}" class="data_visualisation uk-button uk-button-primary">object_view_visualisation</a>
+                                    <a href="map.html?id={{id}}" class="objectmap uk-button uk-button-primary">object_view_objectmap</a>
+                                    <a href="../data/map.html?id={{id}}&collection={{collection}}" class="datamap uk-button uk-button-primary">object_view_datamap</a>
+                                </div>
+<!--                                <div>
+                                    <div id="objectdata_stat_{id}" swa="Present FROM /SmartDataLyser/smartdatalyser/statistic/whole?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts">
+                                        
+                                        
+                                        <table class="uk-table uk-table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <td swac_lang="availablesets">Available datasets</td>
+                                                    <td>{count}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td swac_lang="firstset">First dataset</td>
+                                                    <td>{firstset}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td swac_lang="lastset">Last dataset</td>
+                                                    <td>{lastset}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>-->
+<!--                                <div>
+                                    <div id="misschart" swa="Charts FROM /SmartDataLyser/smartdatalyser/check/completeness?smartdataurl={{smartdataurl}}&collection={{collection}}&storage=smartmonitoring&dateattribute=ts&measurefreq={{measurefreq}}"></div>
+                                    <div id="misschart_legend" swa="Datadescription FROM misschart_legend_data"></div>
+                                    <a href="status.html?id={{id}}&collection={collection}" class="uk-button uk-button-default">Status</a>
+                                </div>-->
+                            </div>
+                        </li>
+<!--                        <li>
+                            <h3 class="uk-heading-divider">Childs</h3>
+                            <div id="childs_{id}" swa="Present FROM observedobject/listChilds WHERE parent_id={{id}}">
+                                <div class="swac_repeatForSet">
+                                    <div class="uk-card uk-card-default uk-card-body">
+                                        <h4><a href="view.html?id={id}">{name}</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>-->
+<!--                        <li>
+                            <h3 class="uk-heading-divider">Attributes</h3>
+                            <p swac_lang="object_view_attributes_desc"></p>
+                            <div id="typeview_{id}" swa="Present FROM observedobjecttypejoinmeasurementtype/listForObservedObject WHERE ooid={id}">
+                                <table class="uk-table">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Unit</th>
+                                    </tr>
+                                    <tr class="swac_repeatForSet">
+                                        <td uk-tooltip="{mtype_description}">
+                                            {name}
+                                        </td>
+                                        <td>
+                                            {description}
+                                        </td>
+                                        <td>
+                                            {unit}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </li>-->
+<!--                                                    <li>
+                                                        <h3 class="uk-heading-divider">Verknüpfte Daten</h3>
+                                                        <h4>Zu verknüpfendes Objekt und Datensatz</h4>
+                                                        <form class="uk-form-stacked">
+                        
+                                                            <div class="uk-margin">
+                                                                <label class="uk-form-label" for="form-stacked-text">Verknüpftes Objekt</label>
+                                                                <div class="uk-form-controls">
+                                                                    <div id="linkedobject" swa="Select FROM observedobject/listCollectingData TEMPLATE selectbox"></div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <div class="uk-margin">
+                                                                <label class="uk-form-label" for="form-stacked-select">Verknüpfter Datensatz</label>
+                                                                <div class="uk-form-controls">
+                                                                    <div id="linkedset" swa="Select FROM observedobjectjoindataset/getDataSetsForDescribingObservedObject WHERE ooid={id} TEMPLATE datalist"></div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <button id="linkeddata_savebutton" class="uk-button uk-button-default">Speichern</button>
+                                                        </form>
+                        
+                                                        <h4>Daten des verknüpften Datensatzes</h4>
+                                                        <div id="linkeddata" swa="Present FROM observedobjectjoindataset/getDataSetsForDescribedObservedObject WHERE ooid={id} TEMPLATE table_per_dataset"></div>
+                                                    </li>
+                         Dateien 
+                                                    <li>
+                                                        <h3 class="uk-heading-divider">Dateien</h3>
+                        
+                                                        <div id="files" swa="Present FROMfile file/listForObservedObject WHERE ooid={id}">
+                                                            <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="uk-table-shrink">Dateiname</th>
+                                                                        <th class="uk-table-shrink">Uploaddatum</th>
+                                                                        <th class="uk-table-shrink">Aktionen</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="swac_repeatForSet" id="{id}" parent="{parent_id}">
+                                                                        <td>{filename}</td>
+                                                                        <td>{uploaddate}</td>
+                                                                        <td><a href="{downloadpath}" target="_blank" uk-icon="icon: download" uk-tooltip="title: Datei herunterladen" download></a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </li>
+                         Metadata 
+                                                    <li>
+                                                        <h2>Metadaten</h2>
+                                                        <div id="metadata_edit" swa="Edit FROM observedobjectmetadata/listForObservedObject WHERE ooid={id}">
+                                                            <table id="configuration-table" class="uk-table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Eigenschaft</th>
+                                                                        <th>Wert</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="swac_repeatForSet">
+                                                                        <td swac_editunique="{name}" uk-tooltip="title: {description}">{name}</td><td><input class="uk-input" name="val" type="text" value="{val}"><input name="type" type="hidden" value="{type}"><input name="observedobject" type="hidden" value=""></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <button class="uk-button uk-button-default swac_editSaveAllButton">##core.saveall##</button>
+                                                        </div>
+                                                    </li>
+                         settings 
+                                                    <li>
+                                                        <h2>Einstellungen</h2>
+                                                        <h3>Allgemeine Einstellungen</h3>
+                        
+                                                        <input id="manualdatacapture" type="checkbox" class="uk-checkbox manualdatacapture"> Manuelle Datenerfassung erlauben
+                                                    </li>
+                         Synchronisation 
+                                                    <li>
+                                                        <h2>Daten-Synchronisation</h2>
+                                                        <div id="exchangeconfigurations" swa="SWAC_edit FROM exchangeconfiguration/listForObservedObject WHERE ooid={id}">
+                                                            <table id="exchange-table" class="uk-table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>RemoteURL</th>
+                                                                        <th>RemoteKey</th>
+                                                                        <th>RemoteObject</th>
+                                                                        <th>Aktiv</th>
+                                                                        <th>Verschlüsselt</th>
+                                                                        <th>Letzter Start</th>
+                                                                        <th>Letztes Ende</th>
+                                                                        <th>Aktionen</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="swac_repeatForSet">
+                                                                        <td>{remote_url}</td>
+                                                                        <td>{remote_key}</td>
+                                                                        <td>{remote_observedobject_id}</td>
+                                                                        <td>{active}</td>
+                                                                        <td>{encrypt}</td>
+                                                                        <td>{last_start}</td>
+                                                                        <td>{last_end}</td>
+                                                                        <td>
+                                                                            <a href="#" uk-icon="icon: refresh" class="startExchangeButton" uk-tooltip="title: Synchronisation starten"></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <a href="#" class="uk-icon-button swac_editAddSetButton" uk-icon="plus" uk-tooltip="title: Neue Synchronisationskonfiguration anlegen"></a>
+                                                            <form class="swac_editForm swac_dontdisplay">
+                                                                <fieldset class="uk-fieldset">
+                                                                    <legend class="uk-legend">Synchronisationsziel anlegen / bearbeiten</legend>
+                                                                    <div class="uk-margin">
+                                                                        <label class="uk-form-label">Remote-URL:</label>
+                                                                        <input name="remote_url" class="uk-input remote_url" type="url" value="{remote_url}">
+                                                                    </div>
+                                                                    <div class="uk-margin">
+                                                                        <label class="uk-form-label">Remote-Key (optional):</label>
+                                                                        <input name="remote_key" class="uk-input remote_key" value="{remote_key}">
+                                                                    </div>
+                        
+                                                                    <div class="uk-margin">
+                                                                        <label class="uk-form-label">Remote-Objekt:</label>
+                                                                        <div id="loading_remote_spinner" class="swac_dontdisplay" uk-spinner></div>
+                                                                        <select name="remote_observedobject_id" class="uk-select remoteObject" disabled>
+                                                                            <option>Bitte zuerst eine RemoteURL angeben</option>
+                                                                        </select>
+                                                                    </div>
+                        
+                                                                    <div class="uk-margin">
+                                                                        <label class="uk-form-label">Aktivieren:</label>
+                                                                        <input name="active" class="uk-checkbox" type="checkbox">
+                                                                    </div>
+                        
+                                                                    <div class="uk-margin">
+                                                                        <label class="uk-form-label">Verschlüsselte Übertragung:</label>
+                                                                        <input name="encrypt" class="uk-checkbox" type="checkbox">
+                                                                    </div>
+                                                                </fieldset>
+                                                                <button class="uk-button uk-button-default swac_editSaveButton">##core.save##</button>
+                                                            </form>
+                                                        </div>
+                                                    </li>-->
+                        <li class="swac_dontdisplay"> This is workaround for bug that allways the last tab is opend on page load </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

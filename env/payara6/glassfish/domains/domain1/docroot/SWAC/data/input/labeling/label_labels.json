@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "id": 1,
+            "name": "Label1"
+        },
+        {
+            "id": 2,
+            "name": "Label2"
+        }
+    ]
+}

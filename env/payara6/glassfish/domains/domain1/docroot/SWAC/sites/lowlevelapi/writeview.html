@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > low level api > Write a new component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <h1>How to write a new view</h1>
+            <p>If there is no view available fitting your needs, you can easyly
+                write your own SWAC view. A view is a component, that aims at 
+                visual reperesentation and user useage. Make useage of all data 
+                reciving, templateing, plugin, debugging and automated 
+                documentation functions.</p>
+
+            <h2>Important rules</h2>
+            <p>Here are some important rules to follow when implementing a new SWAC view:</p>
+            <ul>
+                <li>All SWAC views are abstracted from a usecase.</li>
+                <li>Never request data directly from a component, use the Model instead.</li>
+                <li>Never build a template specific to a use case. Define a 
+                    minimum required data and use it but also have in mind that 
+                    there could be an attribute more.</li>
+            </ul>
+
+            <h2>Artifacts</h2>
+            <p>Each view consists of a folder having the name of the view
+                and located in the "swac/components" folder. Inside this a js-file with the 
+                views name is stored and language files. Optionally templates 
+                and css files can be found there, too.</p>
+
+            <ul>
+                <li>swac
+                    <ul>
+                        <li>components
+                            <ul>
+                                <li>Sample
+                                    <ul>
+                                        <li>langs
+                                            <ul>
+                                                <li>de.js</li>
+                                                <li>en.js</li>
+                                            </ul>
+                                        </li>
+                                        <li>Sample.js</li>
+                                        <li>template1.html</li>
+                                        <li>style1.css</li>
+                                        <li>template2.html</li>
+                                        <li>...</li>
+                                        <li>templateN.html</li>
+                                        <li>styleN.css</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2>Views js</h2>
+            <p>The views main javascript file contains a class extending the
+                View class, this extends the Component class. 
+                <br>The View class contains methods available for all views.
+                <br>The Component class holds the implementation for the
+                components abstract usecase.</p>
+            <h2>init() method</h2>
+            <p>A View has a init() method, that is called, after the
+                view is completely loaded, including html and data and booth bound
+                together. This method should be used for:</p>
+            <ul>
+                <li>Registering events in the requestor template</li>
+                <li>Do first calculations with the data, without user interaction</li>
+                <li>Responds with a promise that resolves when the init is done</li>
+            </ul>
+
+            <p>There can be more methods in this class and there can more classes used
+                by this class.</p>
+
+            <h2>Langage files</h2>
+            <p>A view must have at least one language file. This language 
+                file stores the translation of words used in the views template or 
+                javascript code.</p>
+
+            <pre><code class="lang-javascript">
+var ViewName_de = {
+    languageentry: "Translation",
+    ...
+};
+export default ViewName_de;
+        </code></pre>
+
+            <h2>Template files</h2>
+            <p>Each view can have one ore more template files. These contain the
+                view (html code). Templates are written like described
+                on <a href="../concepts/4_design.html">Design</a> page. And can be choosen
+                in the requestors tag statement by the TEMPLATE keyword.</p>
+
+            <h2>Style files</h2>
+            <p>Each template can have a (optional) css file. If a template is choosen
+                then the style file is used, that is noted in the templates documentation.</p>
+
+            <h2>Functional documentation</h2>
+            <p>Each view has a special documentation that is not only intended 
+                for documenting available options, but also for automatic check 
+                and debug possibilities.
+                For more information about the documentation see the <a href="documentcomponent.html">Document a component page</a></p>
+
+            <h2>Sample View component</h2>
+            There is a sample view within "components/Sample" you can use as a 
+            startpoint for implementing. It has a base implementation.
+
+            <pre><code class="lang-javascript">
+import SWAC from '../../swac.js';
+import View from '../../View.js';
+import Msg from '../../Msg.js';
+
+/**
+ * Sample component for development of own components
+ */
+export default class Sample extends View {
+
+    /*
+     * Constructs a new component object and transfers the config to the
+     * object
+     */
+    constructor(options = {}) {
+        super(options);
+        this.name = 'Sample';
+
+        this.desc.text = 'Description of this component for documentation.';
+        // Include an external library that does not use export
+        // Include files that use export by import statement at start of the file
+        this.desc.depends[0] = {
+            name: 'dependency.js',
+            path: SWAC.config.swac_root + 'components/Sample/libs/dependency.js',
+            desc: 'Description for what the file is required.'
+        };
+        this.desc.templates[0] = {
+            name: 'templatefilename',
+            style: 'stylefilename',
+            desc: 'Description of the template.'
+        };
+        this.desc.styles[0] = {
+            selc: 'cssSelectorForTheStyle',
+            desc: 'Description of the provided style.'
+        };
+        this.desc.reqPerTpl[0] = {
+            selc: 'cssSelectorForRequiredElement',
+            desc: 'Description why the element is expected in the template'
+        };
+        this.desc.optPerTpl[0] = {
+            selc: 'cssSelectorForOptionalElement',
+            desc: 'Description what is the expected effect, when this element is in the template.'
+        };
+        this.desc.optPerPage[0] = {
+            selc: 'cssSelectorForOptionalElement',
+            desc: 'Description what the component does with the element if its there.'
+        };
+        this.desc.reqPerSet[0] = {
+            name: 'id',
+            desc: 'The attribute id is required for the component to work properly.'
+        };
+        this.desc.optPerSet[0] = {
+            name: 'nameOfTheAttributeOptionalInEachSet',
+            desc: 'Description what is the expected effect, when this attribute is in the set.'
+        };
+        // opts ids over 1000 are reserved for Component independend options
+        this.desc.opts[0] = {
+            name: "OptionsName",
+            desc: "This is the description of an option"
+        };
+        // Setting a default value, only applying when the options parameter does not contain this option
+        if (!options.OptionsName)
+            this.options.OptionsName = 'defaultvalue';
+        // Sample for useing the general option showWhenNoData
+        if (!options.showWhenNoData)
+            this.options.showWhenNoData = true;
+        // function ids over 1000 are reserved for Component independend functions
+        this.desc.funcs[0] = {
+            name: 'name of the function',
+            desc: 'Functions description',
+            params: [
+                {
+                    name: 'name of the parameter',
+                    desc: 'Description of the parameter'
+                }
+            ]
+        };
+
+        //Documentation for events the component can fire
+        this.desc.events[0] = {
+            name: 'swac_REQUESTOR_ID_sample_click',
+            desc: 'An event fired when the user clicks on the component.',
+            data: 'Delivers the JS event object of the click event.'
+        }
+    }
+
+    /*
+     * This method will be called when the component is complete loaded
+     * At this thime the template code is loaded, the data inserted into the 
+     * template and even plugins are ready to use.
+     */
+    init() {
+        return new Promise((resolve, reject) => {
+
+            // here we can do what we want with the data and template.
+
+            // we can access the date over the data attrbute
+            console.log('Data inside the sample component:');
+            console.log(this.data);
+            Msg.flow('Sample', 'Flow messages symbolise a important waypoint in the programm', this.requestor);
+            Msg.hint('Sample', 'With hin messages you can give developers help how to use your component', this.requestor);
+            Msg.warn('Sample', 'Give warnings for example when an element in the template is missing', this.requestor);
+            Msg.error('Sample', 'This is a sample of createing an error message', this.requestor);
+            resolve();
+        });
+    }
+
+    /**
+     * Method thats called before adding a dataset
+     * This overrides the method from View.js
+     * 
+     * @param {String} fromName Name of the resource, where the set comes from
+     * @param {Object} set Object with attributes to add
+     * @returns {Object} (modified) set
+     */
+    beforeAddSet(set) {
+        // You can check or transform the dataset here
+        return set;
+    }
+
+    /**
+     * Method thats called after a dataset was added.
+     * This overrides the method from View.js
+     * 
+     * @param {String} fromName Name of the resource, where the set comes from
+     * @param {Object} set Object with attributes to add
+     * @returns {undefined}
+     */
+    afterAddSet(set) {
+        // You can do after adding actions here. At this timepoint the template
+        // repeatForSet is also repeated and accessable.
+        // e.g. generate a custom view for the data.
+        return;
+    }
+}
+        </code></pre>
+
+            <h2>Dependend components</h2>
+            <p>A component can use other components functionality by depending them.
+                <br>Dependend components are not visable directly but all neccessery
+                files are loaded, including language contents and even sub depending files.</p>
+
+            <pre><code class="lang-javascript">
+this.desc.depends[0] = {
+    name: 'Icon component',
+    component: 'Icon',
+    desc: 'SWAC Icon component'
+};
+
+...
+
+let iconConf = [};
+let iconComp = new Icon(iconConf);        
+        </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

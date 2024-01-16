@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="admin_layout_title">Admin > Layout</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/admin/dataview.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+            <h1>Diese Seite muss überarbeitet werden!</h1>
+
+            <article class="uk-article">
+                <h1 class="uk-article-title"><a class="uk-link-reset" href="">Einstellungen : Datenanzeige</a></h1>
+                <p class="uk-article-meta">Hier können Sie die Optionen für die Datenanzeige festlegen</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+
+
+            <div id="userinterface_content"  class="uk-form-horizontal uk-form-width-Large uk-padding">
+                <div id="alert_no_interface" class="uk-alert-danger" uk-alert hidden>
+                    Es existieren keine Interface Settings mit der angegebenen ID!
+                </div>
+                <h2>Userinterface Einstellungen</h2>
+                <hr>
+                <h3>Website Weiterleitung</h3>
+
+                <div class="uk-margin">
+                    <label class="uk-form-label">Anzeigedauer (in Sekunden)</label>
+                    <div class="uk-form-controls">
+                        <input id="input_displayduration" type="number" class="uk-input uk-form-width-large">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label">Nächste Seite</label>
+                    <div class="uk-form-controls">
+                        <input id="input_hyperlink" class="uk-input uk-form-width-large">
+                    </div>
+                </div>
+
+                <hr>
+                <h3>Historie</h3>
+
+                <div class="uk-margin">
+                    <label class="uk-form-label">Zeitspanne (in Tagen)</label>
+                    <div class="uk-form-controls">
+                        <input id="input_timespan" type="number" class="uk-input uk-form-width-large">
+                    </div>
+                </div>
+
+                <hr>
+                <h3>Anzuzeigende Daten</h3>
+
+                <ul class="uk-tab" data-uk-tab="{connect:'#tabs_list'}">
+                    <li id="in_tab_before"><a href="#">+</a></li>
+                </ul>
+                <ul id="tabs_list" class="uk-switcher uk-margin">
+                    <li id="in_content_before">
+                        <div class="uk-margin">
+                            <button id="btn_add_diagram" class="uk-button">Diagramm hinzufügen</button>
+                        </div>
+                    </li>
+                </ul>
+                <hr>
+                <button id="btn_save" class="uk-button">Userinterface Einstellungen speichern</button>
+            </div>
+
+        </div>
+
+        <!--PREFABS-->
+    <li id="prefab_tab" hidden><a href="#">name</a></li>
+    <li id="prefab_diagram" class="sm_data_diagram" hidden>
+        <label class="uk-form-label" hidden>ID</label>
+        <div id="input_id" class=" uk-form-controls"hidden>
+            <input type="text" class="uk-input">
+        </div>
+        <label class="uk-form-label">ID</label>
+        <div id="input_name" class=" uk-form-controls uk-form-width-large">
+            <input type="text" class="uk-input uk-text-center" readonly>
+        </div>
+        <label class="uk-form-label">ObservedObject</label>
+        <div class=" uk-form-controls uk-form-width-large">
+            <button class="uk-button-default uk-input" type="button">ObservedObject</button>
+            <div uk-dropdown="mode: click">
+            </div>
+        </div>
+        <label class="uk-form-label">OoTypeJoinMType</label>
+        <div class=" uk-form-controls uk-form-width-large">
+            <button class="uk-button-default uk-input" type="button">OoTypeJoinMType</button>
+            <div uk-dropdown="mode: click">
+            </div>
+        </div>
+        <label class="uk-form-label">Einheit</label>
+        <div class=" uk-form-controls uk-form-width-large">
+            <input type="text" class="uk-input uk-text-center">
+        </div>
+        <label class="uk-form-label">Diagramm Typ</label>
+        <div class=" uk-form-controls uk-form-width-large">
+            <button class="uk-button-default uk-input" type="button">Diagramm Typ</button>
+            <div uk-dropdown="mode: click">
+            </div>
+        </div>
+        <label class="uk-form-label">Wetterdiagramm</label>
+        <div class=" uk-form-controls uk-form-width-large">
+            <label class="uk-width-small">normal</label>
+            <input class="uk-form-width-auto" type="range" value="0" min="0" max="1" step="1">
+            <label class="uk-width-small">wetter</label>
+        </div>
+        <button id="btn_add_color_range" class="uk-button uk-margin-top">Farbbereich hinzufügen</button>
+        <button id="btn_delete_diagram" class="uk-button uk-margin-top">Diagram löschen</button>
+    </li>
+    <div id="prefab_color_range" style="border-left: 2px solid #39f;" class="sm_data_color_range uk-margin uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-padding-remove-right" hidden>
+        <h5 style="margin-bottom: 12px;">Farbbereich</h5>
+        <label class="uk-form-label" hidden>ID</label>
+        <div class=" uk-form-controls" hidden>
+            <input type="text" class="uk-input">
+        </div>
+        <label class="uk-form-label">Von</label>
+        <div class=" uk-form-controls uk-form-width-large">
+            <input type="text" class="uk-input">
+        </div>
+        <label class="uk-form-label">Bis</label>                                
+        <div class="uk-form-controls uk-form-width-large">
+            <input type="text" class="uk-input">
+        </div>
+        <label class="uk-form-label">Farbe</label>
+        <div class="uk-form-controls uk-form-width-large">
+            <input type="color" class="uk-input">
+        </div>
+        <button id="btn_delete_color_range" class="uk-button uk-margin-top">Farbbereich löschen</button>
+        <div id="favs" swa="Favourites"></div>
+</body>
+</html>

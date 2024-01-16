@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="object_list_title">SmartMonitoring > Object list</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/object/list.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+        
+        <article>
+            <h1 class="uk-article-title" swac_lang="object_list_headline">Object list</h1>
+            <div id="objectlist" swa="Present FROM tbl_observedobject WHERE order=id,ASC">
+                <ul class="uk-list">
+                    <li class="swac_repeatForSet" swac_parent="{parent}">
+                        <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                            <div id="objecttype_{id}" class="uk-card-badge uk-label" swa="Present FROM tbl_observedobject_type WHERE filter=id,eq,{type_id}"> <span>{name}</span></div>
+                             <div uk-grid>
+                                <div class="uk-width-small">
+                                    <picture>
+                                        <source srcset="../../customisations/object/icons/{icon}.avif" type="image/avif">
+                                        <img src="../../customisations/object/icons/{icon}.png" alt="object icon" width="100" height="100" style="float: left;">
+                                    </picture> 
+                                </div>
+                                <div class="uk-width-expand@m">
+                                    <h3 class="uk-card-title" uk-tooltip="{id}">{name}</h3>
+                                    <ul class="uk-subnav uk-subnav-divider" uk-margin>
+                                        <li><a href="view.html?id={id}&collection={collection}">Details</a></li>
+                                        <li><a href="status.html?id={id}&collection={collection}">State</a></li>
+                                        <li class="data_visualisation"><a href="../data/visualisation.html?id={id}">Datavisual</a></li>
+                                        <li><a href="../data/list.html?id={id}&collection={collection}">Datalist</a></li>
+                                        <li class="datamap"><a href="../data/map.html?id={id}&collection={collection}">Datamap</a></li>
+                                        <li swac_display="{manualcapture}"><a href="../data/collect.html?id={id}&collection={collection}">Add Data</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                               
+                            <ul class="swac_forChilds uk-list">
+                                <li class="swac_child">
+                                    <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                                        <div id="objecttype_sub_{id}" class="uk-card-badge uk-label" swa="Present FROM tbl_observedobject_type WHERE filter=id,eq,{type_id}">{name}</div>
+                                        <div uk-grid>
+                                            <div class="uk-width-small">
+                                                <picture>
+                                                    <source srcset="../../customisations/object/icons/{icon}.avif" type="image/avif">
+                                                    <img src="../../customisations/object/icons/{icon}.png" alt="object icon" width="100" height="100" style="float: left;">
+                                                </picture> 
+                                            </div>
+                                            <div class="uk-width-expand@m">
+                                                <h3 class="uk-card-title">{name}</h3>
+                                                <ul class="uk-subnav uk-subnav-divider" uk-margin>
+                                                    <li><a href="view.html?id={id}">Details</a></li>
+                                                    <li><a href="status.html?id={id}&collection={collection}">State</a></li>
+                                                    <li class="data_visualisation"><a href="../data/visualisation.html?id={id}">Datavisual</a></li>
+                                                    <li><a href="../data/list.html?id={id}&collection={collection}">Datalist</a></li>
+                                                    <li class="datamap"><a href="../data/map.html?id={id}&collection={collection}">Datamap</a></li>
+                                                    <li swac_display="{manualcapture}"><a href="../data/collect.html?id={id}&collection={collection}">Add Data</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="swac_forChilds uk-list uk-list-decimal"></ul>
+                                    <hr>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

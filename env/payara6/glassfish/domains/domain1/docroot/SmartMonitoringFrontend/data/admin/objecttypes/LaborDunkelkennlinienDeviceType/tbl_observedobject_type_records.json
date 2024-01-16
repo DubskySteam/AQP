@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": true,
+            "name": "Labordunkelkennliniengerät",
+            "description": "Gerät zur Erfassung von im Labor erzeugten Dunkelkennlinien"
+        }
+    ]
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - Translator component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/userinterface/translator.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+            <p>Translator component translates page contents with help of language files.
+                <br>The choosen language is rememberd for the next users visit.</p>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Include translation tools</h3>
+            <pre><code class="lang-html">
+&lt;div id="translate_example1" swa="Translator FROM ../../data/translation/translatorexample.json"&gt;&lt;/div&gt;
+        </code></pre>
+            Dispays the language selection box.
+
+            <div id="translate_example1" swa="Translator FROM ../../data/translator/translatorexample.json"></div>
+
+            The used translation file contains a single object with translations. Each translation file is for one language and must contain the language code.
+            The path is given as path from the app_root (this is configured in the configuration.js or automatically detected)
+            <pre><code class="lang-json">
+[
+    {
+        "swac_lng": "de",
+        "swac_files": ["data/translator/de.json"]
+    },
+    {
+        "swac_lng": "en",
+        "swac_filse": ["data/translator/en.json"]
+    }
+]
+        </code></pre>
+
+            <h3>Example 2: Translate textblocks</h3>
+            To add a translation to a textblock, simply add the swac_translator 
+            attribute to the surrounding element of the block.
+
+            <pre><code class="lang-html">
+&lt;p swac_lang="Example.myTextblock"&gt;
+    This is my original text. It should be replaced if i choose a
+   translation.
+&lt;/p&gt;
+        </code></pre>
+
+            <p swac_lang="Example.myTextblock">
+                This is my original text. It should be replaced if i choose a translation.
+            </p>
+
+            <h3>Example 3: Translate placeholders</h3>
+
+            <pre><code class="lang-html">
+&lt;input type="text" class="uk-input" placeholder="Example.myPlaceholder"&gt;
+        </code></pre>
+
+            <input type="text" class="uk-input" placeholder="Example.myPlaceholder">
+
+            <h3>Example 4: Translate button captions</h3>
+
+            <pre><code class="lang-html">
+&lt;input type="submit" class="uk-button" value="Example.myButtonCaption"&gt;
+        </code></pre>
+
+            <input type="submit" class="uk-button" value="Example.myButtonCaption">
+
+            <h3>Example 5: Link captions</h3>
+
+            <pre><code class="lang-html">
+&lt;a href="#top"&gt;
+    Example.myLinkCaption
+&lt;/a&gt;
+        </code></pre>
+
+            <a href="#top">Example.myLinkCaption</a>
+
+            <h3>Example 6: Translate labels</h3>
+
+            <pre><code class="lang-html">
+&lt;label class="uk-form-label" for="from"&gt;
+    Example.myLabel
+&lt;/label&gt;
+        </code></pre>
+
+            <label class="uk-form-label" for="from">Example.myLabel</label>
+            
+            <h3>Example 7: Choosing language also changes language in component</h3>
+            <p>This example show that the language entries in a component are 
+            updated too, when selecting another language.</p>
+            
+            <div id="translator_example7" swa="Present FROM exampledata_list"></div>
+            
+            <h3>Example 8: Useing appwide language entries</h3>
+            <p>If you want to use a general translation without need to use a 
+            prefix, you can define an app language. This can be used to translate 
+            even attribute names.</p>
+            
+            <pre><code class="lang-javascript">
+[
+    {
+        "swac_lng": "de",
+        "swac_files": [
+            "data/translator/Example_de.js",
+            "data/translator/app_de.js"
+        ]
+    },
+    {
+        "swac_lng": "en",
+        "swac_files": [
+            "data/translator/Example_en.js",
+            "data/translator/app_en.js"
+        ]
+    }
+]
+        </code></pre>
+            
+            <h3>Example 9: Language dependend locale formats</h3>
+            <p>Format of numbers and dates can be different from country to country.
+                <br>This aspect can be held by the language files, too.</p>
+            
+            <div id="translator_example9" swa="Present FROM exampledata_list">
+                <div class="swac_repeatForSet">
+                    <div swac_lang_format="decimal">{doubleval}</div>
+                    <div swac_lang_format="datetime">{ts}</div>
+                    <div swac_lang_format="date">{dateval}</div>
+                    <div swac_lang_format="time">{ts}</div>
+                    <hr>
+                </div>
+            </div>
+            
+            <p>Mark the content that should be formated by use the swac_lang_format attribute:</p>
+            <pre><code class="lang-html">
+&lt;div id="translator_example9" swa="Present FROM exampledata_list"&gt;
+    &lt;div class="swac_repeatForSet"&gt;
+        &lt;div swac_lang_format="decimal"&gt;{doubleval}&lt;/div&gt;
+        &lt;div swac_lang_format="datetime"&gt;{ts}&lt;/div&gt;
+        &lt;div swac_lang_format="date"&gt;{dateval}&lt;/div&gt;
+        &lt;div swac_lang_format="time"&gt;{ts}&lt;/div&gt;
+        &lt;hr&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+            <p>Supported formats are:</p>
+            <table class="uk-table">
+                <tr><th>Value</th><th>Explanation</th></tr>
+                <tr><td>decimal</td><td>Formats the value as decimal value. e.g. 12.4</td></tr>
+                <tr><td>datetime</td><td>Formats the value as datetime value.</td></tr>
+                <tr><td>date</td><td>Formats the value as date value.</td></tr>
+                <tr><td>time</td><td>Formats the value as time value.</td></tr>
+            </table>
+            
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

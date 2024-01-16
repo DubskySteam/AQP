@@ -1,0 +1,14 @@
+{
+    "list": [
+        {
+            "id": 9,
+            "title": "Himbere",
+            "desc": "Sammelsteinfrucht"
+        },
+        {
+            "id": 12,
+            "title": "Hagebutte",
+            "desc": "Sammelnussfrucht"
+        }
+    ]
+}

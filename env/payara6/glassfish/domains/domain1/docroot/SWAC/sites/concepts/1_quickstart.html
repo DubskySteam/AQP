@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > concepts > Quickstart</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/exampledata_list.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article class="uk-article">
+            <h1 class="uk-article-title">Easy to use</h1>
+            <p class="uk-text-lead">
+                SWAC is designed to ease the creation of web applications, speed up
+                development but also leave all possibilities where they belong:
+                Functionalities to the programmers and design to the designers.
+            </p>
+
+            <h2 class="uk-heading-divider">Step 1: Include SWAC javascript</h2>
+            <p>Start by simply adding the swac.js file and uikit 
+                libs to your webpage. You only need to include these files, 
+                all other files are loaded by the script dynamically if they are 
+                needed.
+                <br>The icons.min.js you only need if you want to use the uikit icons.</p>
+
+            <pre>
+&lt;link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css"&gt;
+&lt;script src="/SWAC/swac/libs/uikit/js/uikit.min.js"&gt;&lt;/script&gt;
+&lt;script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"&gt;&lt;/script&gt;
+&lt;script src="/SWAC/swac/swac.js" type="module"&gt;&lt;/script&gt;
+            </pre>
+
+            <h2 class="uk-heading-divider">Step 2: Add your datasource</h2>
+            <p>SWAC displays data on your page from datasources. Those datasources 
+                can be files or REST-interfaces. You add a datasource by adding the 
+                path to the datasources-configuration.</p>
+
+            <ul>
+                <li>
+                    Open the configuration.js
+                </li>
+                <li>
+                    Add an object to SWAC_config.datasources. It must contain an 
+                    attribute url, which specifies the path to your API or file directory.
+                    SWAC is often used in combination with SmartData.
+                </li>
+                <li>
+                    If your API uses different HTTP-Methods and path parts for requests you can specify these in the interface object.
+                </li>
+            </ul>
+
+            <pre><code class="lang-javascript">
+SWAC_config.datasources = [
+    // Load data from files
+    {
+        url: "/SWAC/data/[fromName]"
+    },
+    // Load data from SmartData REST-interface
+    {
+        url: "/SmartData/smartdata/[iface]/[fromName]?storage=smartmonitoring",
+        interfaces: {
+            get: ['GET','records'],
+            list: ['GET','records'],
+            defs: ['GET','collection'],
+            create: ['POST','records'],
+            update: ['PUT','records'],
+            delete: ['DELETE','records']
+        }
+    }
+];    
+            </code></pre>
+            
+            <b>Explanaition:</b>
+            <ul>
+                <li>The [fromName] will be replaced by the name of the datasource, you use at the components declaration.</li>
+                <li>The [iface] will be replaced by the interface path part depending on the type of request.</li>
+                <li>Types of request are: get (get a single dataset), list (get more than one dataset), defs (get data definition), create (create one or more datasets), update (update one or more datasets), delete</li>
+                <li>First value in each interface entry, is the HTTP-Method to use. Second one is the path part to use.</li>
+                <li>Components choose the type of request automatically.</li>
+            </ul>
+            
+            
+            <h2 class="uk-heading-divider"><img src="../../swac/components/Icon/imgs/server_options.svg" width="50" height="50"> Step 3: Choose your component</h2>
+            <p>First step is to decide what you want. For example you want to show an list
+                of available books on your page. So simply have a look at the <a href="present.html">present component</a>.
+                <br>All available components are found in the site menue.</p>
+
+            <table class="uk-table">
+                <tr>
+                    <th>Component</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Present</td>
+                    <td>Component for presenting data</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Component for editing data</td>
+                </tr>
+                <tr>
+                    <td>Navigation</td>
+                    <td>Create a navigation menue from data</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </table>
+
+            <h2 class="uk-heading-divider"><img src="../../swac/components/Icon/imgs/data/database_add.svg" width="50" height="50"> Step 4: Bring your data in form</h2>
+            <p>SWAC components work with every data that is object-property noted.
+                This means you just have to deliver your data in the attributes of an object.
+                <br>The data can be given by json-file, javascript-file or rest-interface with json support.
+                See <a href="3_data.html">datasources</a> for more information.
+                <br>Some components have special data requirements:</p>
+
+            <table class="uk-table">
+                <tr>
+                    <th>Component</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Present</td>
+                    <td>Has no requirements to the data.</td>
+                </tr>
+                <tr>
+                    <td>Edit</td>
+                    <td>Every dataset must have the id attribute, if the dataset should be editable.</td>
+                </tr>
+                <tr>
+                    <td>Navigation</td>
+                    <td>A dataset must contain a name attribute for nameing the menue entry...</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </table>
+
+            <pre><code class="lang-javascript">
+var exampledata_list = [
+    {
+        id: 1,
+        name: "Datensatz 1",
+        doubleval: 12.0123,
+        intval: 1234,
+        boolval: true,
+        stringval: 'string',
+        ts: '28.10.2019 7:46:59',
+        dateval: '28.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/mp3',
+        colval: 'blue',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+    }, {
+        id: 2,
+        name: "Datensatz 2",
+        doubleval: 19.0234,
+        intval: 2345,
+        boolval: false,
+        stringval: 'string2',
+        ts: '29.10.2019 7:47:59',
+        dateval: '29.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/ogg',
+        colval: '#ffffff',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_star.svg'
+    }, {
+        id: 3,
+        name: "Datensatz 3",
+        doubleval: 42.0345,
+        intval: 3456,
+        boolval: true,
+        stringval: 'string',
+        ts: '30.10.2019 7:48:59',
+        dateval: '30.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'video/mpeg',
+        colval: '#000000',
+        urlval: 'https://someothersite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_fail.svg'
+    }
+];
+            </code></pre>
+
+            <h2 class="uk-heading-divider"><img src="../../swac/components/Icon/imgs/tag_checked.svg" width="50" height="50"> Step 5: Define a SWAC requestor</h2>
+            <p>A SWAC requestor is an div tag with the swa attribute. The swa attribute
+                contains a short statement with the name of the component you want to use 
+                and the datasource name.</p>
+            <pre>
+&lt;div id="mylist" swa="Present FROM exampledata_list"&gt;&lt;/div&gt;
+            </pre>
+            Will create a list that shows you all objects and their attribute values.
+
+            <div id="documentlist" swa="Present FROM exampledata_list"></div>
+
+            <h2 class="uk-heading-divider">Step 6: Change to your need</h2>
+            <p>Every component has a set of standard functions. Some more functions 
+                can be activated by specific attributes in the data and / or configuration.
+                <br>Greater functional enhancements are activateable by plugins.
+                <br>Have a look at the <a href="../visualisation/present.html">present component</a> page to learn
+                more about </p>
+            
+            <h2 class="uk-heading-divider">Next</h2>
+            <p>Dig deeper into components at the <a href="2_components.html">component</a> page.</p>
+        </article>
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

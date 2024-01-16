@@ -1,0 +1,17 @@
+.uk-card {
+    width: 100%;
+}
+.noscript_nav {
+    background: #000011;
+    position: sticky;
+    top: 0px;
+    height: 80px;
+    z-index: 10;
+}
+.noscript_nav a {
+    float: left;
+}
+
+[swa] {
+ display: none;   
+}

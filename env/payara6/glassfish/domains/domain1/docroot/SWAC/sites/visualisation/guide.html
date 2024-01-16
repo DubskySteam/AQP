@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - guide component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        
+        <script src="../../js/visualisation/guide.js"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/guide/exampleguide.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>
+
+            <h2>Examples</h2>
+            <h3>Example 1: Presentation</h3>
+
+            Click somewhere on the page to start the presentation.
+            <pre><code class="lang-html">
+&lt;div id="guide" swa="Guide FROM exampleguide"&gt;&lt;/div&gt;
+        </code></pre>
+            <div id="guide" swa="Guide FROM exampleguide"></div>
+
+            <button type="button" id="guidebutton" class="uk-button uk-button-default">Example button</button>
+            <button type="button" id="morebutton" class="uk-button uk-button-default">More</button>
+
+            <pre><code class="lang-javascript">
+var exampleguide = [];
+exampleguide[0] = {
+    onevt: "click", 
+    onelement: "document", 
+    type: "message",
+    title: "SWAC guide component", 
+    message: 'Welcome to the SWAC_guide component!&lt;br/&gt;\n\
+With this component you can create nice demonstrations of your web application, or\n\
+a guide to assist first time users.&lt;b&gt;>\n\
+This guide will show you how to create a presentation.'
+    };
+exampleguide[1] = {
+    onevt: "step",
+    type: "message",
+    title: 'Simple slide',
+    message: 'You can create a simple slide by defining a dataset with the attributes:&lt;dl&gt;\n\
+&lt;dt&gt;onevt&lt;/dt&gt;\n\
+&lt;dd&gt;Set onevt to "step" so it will be shown as a slide&lt;/dd&gt;\n\
+&lt;dt&gt;type&lt;/dt&gt;\n\
+&lt;dd&gt;Set type to "message" to display a message centered on the screen&lt;/dd&gt;\n\
+&lt;dt&gt;title&lt;/dt&gt;\n\
+&lt;dd&gt;You can give your slide a title&lt;/dd&gt;\n\
+&lt;dt&gt;message&lt;/dt&gt;\n\
+&lt;dd&gt;The message to display. It supports full html formating.&lt;/dd&gt;\n\
+&lt;/dl&gt;'
+};  
+exampleguide[2] = {
+    onevt: "step",
+    type: "message",
+    onelement: "#guidebutton",
+    tooltip: "Tooltip from the presentation.",
+    title: 'Point to the elements you mean',
+    message: 'With the attribute &lt;b&gt;"onelement"&lt;/b&gt; you can define a css-selector\n\
+pointing to an element you refering to with your slide. It will then be marked\n\
+with a step number. The same number as your slide has.&lt;br&gt;\n\
+Additionaly you can use the &lt;b&gt;"tooltip"&lt;/b&gt; attribute. The text in this attribute is\n\
+displayed at the onelement, even if the slideshow is not active. So you can\n\
+assist the users even after the show.'};
+
+exampleguide[3] = {
+    onevt: "step",
+    type: "message",
+    startfunc: function() { alert('Some litte custom code executed.'); },
+    title: 'Starting custom functions',
+    message: 'You can call your own functions when a slides come up. Simply\n\
+put your function call into the &lt;b&gt;"startfunc"&lt;/b&gt; attribute.'};
+
+exampleguide[4] = {
+    onevt: "step",
+    type: "message",
+    title: 'Show the page free',
+    message: 'If you want to show the whole page for just one slide you can use\n\
+the type &lt;b&gt;display&lt;/b&gt;. It will hide the messsage area.'};
+
+exampleguide[5] = {
+    onevt: "step",
+    type: "display",
+    title: "Show the page"
+};
+
+exampleguide[6] = {
+    onevt: "step",
+    type: "message",
+    title: 'Only go on when clicking on special element',
+    message: 'The next step only shows up, when you click the "more" button. Search it now.'};
+
+exampleguide[7] = {
+    onevt: "click", 
+    onelement: "#morebutton", 
+    type: "message",
+    title: "Congratulations!", 
+    message: 'Wonderfull you found the "more" button. To archive this, simply define\n\
+onevt: "click" and onelement: "your-css-selector" in the step.'
+    };
+
+exampleguide[8] = {
+    onevt: "step",
+    type: "message",
+    title: 'Thats it for now',
+    message: 'That are the possibilities for now. More to come in future releases.\n\
+&lt;br&gt;Some last thing: There is a default ending slide...'};
+        </code></pre>
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

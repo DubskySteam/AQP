@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - user component - example 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/userinterface/user_example4.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <p>
+                Input your data below for registration.
+                <br>Note: This example uses SmartUser. You need a running SmartUser 
+                instance reachable from this site under /SmartUser/smartuser/user
+                for complete work.
+                <br>If there is an error message like "error loading data from..." 
+                SmartUser is not reachable.
+            </p>
+            <h3>Users data</h3>
+            <div id="create_user" swa="Edit FROM /SmartUser/smartuser/user">
+                <form class="swac_repeatForSet swac_editForm">
+                    <fieldset class="uk-fieldset">
+                        <label class="uk-label" for="username">Username</label>
+                        <br><input id="username" class="uk-input uk-form-width-medium" name="username" required>
+                        <br>
+                        <label class="uk-label" for="password">Password</label>
+                        <br><input id="password" class="uk-input uk-form-width-medium" name="password" type="password" required>
+                        <br>
+                        <label class="uk-label" for="name">Name</label>
+                        <br><input id="name" class="uk-input uk-form-width-medium" name="name" required>
+                        <br>
+                        <label class="uk-label" for="email">Email</label>
+                        <br><input id="email" class="uk-input uk-form-width-medium" name="email" type="email" required>
+                        <br>
+                        <label class="uk-label" for="street">Street</label>
+                        <br><input id="street" class="uk-input uk-form-width-large" name="street">
+                        <input id="houseno" class="uk-input uk-form-width-xsmall" name="houseno">
+                        <br>
+                        <label class="uk-label" for="zipcode">City</label>
+                        <br><input id="zipcode" class="uk-input uk-form-width-small" name="zipcode">
+                        <input id="city" class="uk-input uk-form-width-medium" name="city">
+                        <br>
+                        <label class="uk-label" for="country">Country</label>
+                        <br><input id="country" class="uk-input uk-form-width-medium" name="country">
+                        <br>
+                        <label class="uk-label" for="language">Language</label>
+                        <br><select id="language" class="uk-select uk-form-width-medium" name="language">
+                            <option value="de">Deutsch</option>
+                            <option value="en">English</option>
+                        </select>
+                        <br>
+                        <label class="uk-label" for="privacy_accepted">Privacy</label>
+                        <br><input id="privacy_accepted" name="privacy_accepted" type="checkbox">
+                        <span swac_lang="privacy_accepted">I accept the privacy statement</span>
+                        <br>
+                        <label class="uk-label" for="terms_accepted">Terms</label>
+                        <br><input id="terms_accepted" name="terms_accepted" type="checkbox">
+                        <span swac_lang="terms_accepted">I accept the terms of service</span>
+                        <br>
+                    </fieldset>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-default swac_editSaveButton">Edit.save</button>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </body>
+</html>

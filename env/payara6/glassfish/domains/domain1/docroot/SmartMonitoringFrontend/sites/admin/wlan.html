@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="adm_wlan_title">Administration > WLAN</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/admin/wlan.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+        <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+        <div id="userform" swa="User"></div>
+        <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+        <article class="uk-article">
+            <h1 class="uk-article-title" swac_lang="adm_wlan">WLAN options</h1>
+            <p class="uk-article-meta" swac_lang="adm_wlan_desc"></p>
+
+            <form id="adm_wlan_form" class="uk-form-stacked">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text" swac_lang="adm_wlan_ssid">SSID</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="adm_wlan_ssid" type="text" required>
+                    </div>
+                </div>
+                
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text" swac_lang="adm_wlan_psk">PSK</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="adm_wlan_psk" type="password"  minlength="8" required>
+                    </div>
+                </div>
+                
+                <button class="adm_wlan_save uk-button uk-button-primary" swac_lang="adm_wlan_save"></button>
+            </form>
+        </article>
+        <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "name": "DragParent",
+            "x": 150,
+            "y": 30,
+            "width": 20,
+            "height": 20,
+            "parent": 1,
+            "label0fillColor": "#000000"
+        },
+        {
+            "id": 2,
+            "name": "Kk",
+            "x": 200,
+            "y": 30,
+            "width": 10,
+            "height": 20,
+            "parent": 1,
+            "label0fillColor": "#000000"
+        },
+        {
+            "id": 3,
+            "name": "Ke",
+            "x": 300,
+            "y": 30,
+            "width": 5,
+            "height": 20,
+            "parent": 1,
+            "label0fillColor": "#000000"
+        },
+        {
+            "id": 4,
+            "name": "Kl",
+            "x": 800,
+            "y": 30,
+            "width": 1,
+            "height": 20,
+            "parent": 1,
+            "label0fillColor": "#000000"
+        }
+    ]
+}

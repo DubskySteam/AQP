@@ -1,0 +1,122 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "name": "Ihre Daten",
+            "question": "Wir möchten ein wenig über Sie erfahren.",
+            "type": "group",
+            "target": "ref://../data/input/question/savetarget_persons.json"
+        },
+        {
+            "id": 2,
+            "attr": "sex",
+            "name": "Geschlecht",
+            "question": "Wählen Sie ihr Geschlecht aus",
+            "type": "icon",
+            "multiple": false,
+            "options": [
+                "woman",
+                "man",
+                "group"
+            ],
+            "parent": "ref://../data/input/question/examplequestions.json?id=1",
+            "required": true
+        },
+        {
+            "id": 3,
+            "attr": "age",
+            "name": "Alter",
+            "question": "Geben Sie ihr Alter an",
+            "type": "number",
+            "parent": "ref://../data/input/question/examplequestions.json?id=1",
+            "required": true
+        },
+        {
+            "id": 4,
+            "attr": "forename",
+            "name": "Vorname",
+            "question": "Geben Sie ihren Vornamen an",
+            "type": "text",
+            "parent": "ref://../data/input/question/examplequestions.json?id=1",
+            "required": true,
+            "min": 2,
+            "max": 50
+        },
+        {
+            "id": 5,
+            "attr": "lastname",
+            "name": "Nachname",
+            "question": "Geben Sie ihren Nachnamen an",
+            "type": "text",
+            "parent": "ref://../data/input/question/examplequestions.json?id=1",
+            "required": true,
+            "min": 2,
+            "max": 50
+        },
+        {
+            "id": 6,
+            "name": "Ihre Veranstaltung",
+            "question": "Wählen Sie ihre Veranstaltung aus",
+            "type": "group",
+            "target": "ref://../data/input/question/savetarget_events.json"
+        },
+        {
+            "id": 7,
+            "attr": "motto",
+            "name": "Motto",
+            "question": "Welches Motto soll ihre Feier haben?",
+            "type": "select",
+            "options": [
+                {"value":1,"title":"Geburtstag - Piratenparty!"},
+                {"value":2,"title":"Geburtstag - Prinzessinenschloss"},
+                {"value":3,"title":"Jahreshauptversammlung"}
+            ],
+            "parent": "ref://../data/input/question/examplequestions.json?id=6",
+            "required": true
+        },
+        {
+            "id": 8,
+            "attr": "eat",
+            "name": "Essen",
+            "question": "Welches Essen soll dabei sein?",
+            "type": "select",
+            "options": [
+                {"value":1,"title":"Gemüsenuggets"},
+                {"value":2,"title":"Pommes"},
+                {"value":3,"title":"Kartoffelecken"}
+            ],
+            "parent": "ref://../data/input/question/examplequestions.json?id=6",
+            "required": false,
+            "multiple": true
+        },
+        {
+            "id": 9,
+            "attr": "participants",
+            "name": "Teilnehmer",
+            "question": "Wieviele Teilnehmer gibt es?",
+            "type": "range",
+            "min": 1,
+            "max": 40,
+            "parent": "ref://../data/input/question/examplequestions.json?id=6",
+            "required": true
+        },
+        {
+            "id": 10,
+            "attr": "date",
+            "name": "Datum und Uhrzeit",
+            "question": "Wann soll ihre Veranstaltung sein?",
+            "type": "datetime",
+            "parent": "ref://../data/input/question/examplequestions.json?id=6",
+            "required": true
+        },
+        {
+            "id": 11,
+            "attr": "other",
+            "name": "Sonstiges",
+            "question": "Wollen Sie uns sonst noch etwas mitteilen?",
+            "type": "text",
+            "parent": "ref://../data/input/question/examplequestions.json?id=6",
+            "required": false
+        }
+    ]
+}

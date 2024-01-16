@@ -1,0 +1,122 @@
+{
+    "list": [
+        {
+            "id": 1,
+            "name": "Job erstellen",
+            "question": "Hier können Sie die Eigenschaften ihres Jobs festlegen",
+            "type": "group",
+            "target": "ref://../data/savetarget_job.json"
+        },
+        {
+            "id": 2,
+            "attr": "name",
+            "name": "Job Name",
+            "question": "Geben Sie Ihrem Job einen Namen",
+            "type": "text",
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": true,
+            "min": 2,
+            "max": 50
+        },
+        {
+            "id": 3,
+            "attr": "command",
+            "name": "Befehl",
+            "question": "Welchen Befehl soll Ihr Job haben?",
+            "type": "select",
+            "options": [
+                {"value": 1, "title": "Mail senden"},
+                {"value": 2, "title": "Docker starten"},
+                {"value": 3, "title": "Ping"},
+                {"value": 4, "title": "Programm starten"},
+                {"value": 5, "title": "Aufrufen einer Rest-Schnittstelle"}
+            ],
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": true
+        },
+        {
+            "id": 4,
+            "attr": "argument1",
+            "name": "Argument 1",
+            "question": "Geben Sie Agrumente für Ihren Job an",
+            "type": "text",
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": true,
+            "min": 2,
+            "max": 50
+        },
+        {
+            "id": 5,
+            "attr": "argument2",
+            "name": "Argument 2",
+            "question": "Geben Sie Argumente für Ihren Job an",
+            "type": "text",
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": true,
+            "min": 2,
+            "max": 50
+        },
+        {
+            "id": 6,
+            "attr": "execute",
+            "name": "Startzeit",
+            "question": "Wann soll ihr Job ausgeführt werden?",
+            "type": "datetime",
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": true
+        },
+        {
+            "id": 7,
+            "attr": "repeat",
+            "name": "Wiederholen",
+            "question": "Wie häufig soll der Job wiederholt werden?",
+            "type": "select",
+            "options": [
+                {"value": 1, "title": "nie"},
+                {"value": 2, "title": "jede Stunde"},
+                {"value": 3, "title": "alle 3 Stunden"},
+                {"value": 4, "title": "alle 6 Stunden"},
+                {"value": 5, "title": "alle 12 Stunden"},
+                {"value": 6, "title": "jeden Tag"},
+                {"value": 7, "title": "alle 3 Tage"},
+                {"value": 8, "title": "jede Woche"},
+                {"value": 9, "title": "jeden Monat"},
+                {"value": 10, "title": "alle 3 Monate"}
+            ],
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": true
+        },
+        {
+            "id": 8,
+            "attr": "success",
+            "name": "Folgejob bei Erfolg",
+            "question": "Was soll nach erfolgreichem Abarbeiten getan werden?",
+            "type": "select",
+            "options": [
+                {"value": 1, "title": "<Nichts>"},
+                {"value": 2, "title": "Update Server"},
+                {"value": 3, "title": "Ping Host"},
+                {"value": 4, "title": "Check Docker"}
+            ],
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": false,
+            "multiple": true
+        },
+        {
+            "id": 9,
+            "attr": "failed",
+            "name": "Folgejob bei Fehlschlag",
+            "question": "Was soll nach fehlerhaftem Abarbeiten getan werden?",
+            "type": "select",
+            "options": [
+                {"value": 1, "title": "<Nichts>"},
+                {"value": 2, "title": "Update Server"},
+                {"value": 3, "title": "Ping Host"},
+                {"value": 4, "title": "Check Docker"}
+            ],
+            "parent": "ref://../data/jobsExampleData.json?id=1",
+            "required": false,
+            "multiple": true
+        }
+    ]
+}

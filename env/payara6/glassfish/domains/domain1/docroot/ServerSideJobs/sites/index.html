@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ServerSideJobs - dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/global.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <!-- Datasources -->
+        <script src="../data/routes.js"></script>
+        <script src="../js/index.js"></script>
+
+    </head>
+    <body>      
+        <nav id="nav" swa="Navigation FROM routes"></nav>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>
+            Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. /
+            Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <div class="uk-container">
+            <h1>Dashboard</h1>
+            <p>Auf dieser Seite werden alle Server Sides Jobs angezeigt.</p>
+
+            <div id="joblist" swa="Present FROM jobs TEMPLATE table_for_all_datasets">
+                <table class="uk-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Beschreibung</th>
+                            <th>Wiederholung</th>
+                            <th>Status</th>
+                            <th>Aktiviert</th>
+                            <th>Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="swac_repeatForSet">
+                            <td uk-tooltip="Name">{name}</td>
+                            <td uk-tooltip="Beschreibung">{description}</td>
+                            <td uk-tooltip="Wiederholung">
+                                <span class="tview" val="{repeatDay}" uk-tooltip="Tage">{repeatDay}:</span>
+                                <span class="tview" val="{repeatHour}" uk-tooltip="Stunden">{repeatHour}:</span>
+                                <span class="tview" val="{repeatMinute}" uk-tooltip="Minuten">{repeatMinute}:</span>
+                                <span class="tview" val="{repeatSecond}" uk-tooltip="Sekunden">{repeatSecond}</span>
+                            </td>
+                            <td>
+                                <img src="../content/stateimgs/{status}.svg" alt="Der Status des Jobs ist {status}"
+                                     width="30"
+                                     height="30"
+                                     class="statusimg"
+                                     uk-tooltip="{lastMessage}">
+                            </td>
+                            <td uk-tooltip="Aktiv">
+                                <img src="/SWAC/swac/components/Icon/imgs/{active}.svg" 
+                                     width="30"
+                                     height="30"
+                                     class="activeimg"
+                                     alt="Der Job ist aktiv: {active}">  
+                            </td>
+                            <td>
+                                <!--                        <a href="jobs.html?id={id}" uk-tooltip="Job bearbeiten">
+                                                            <span uk-icon="settings"></span>
+                                                        </a>-->
+                                <a href="logs.html?id={id}" uk-tooltip="Logs anzeigen">
+                                    <span uk-icon="history"></span>
+                                </a>
+                                <a href="#"
+                                   class="changeJobExecBtn"
+                                   uk-tooltip="Job starten">
+                                    <span uk-icon="play-circle"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <a class="uk-button uk-button-primary" href="jobs.html">
+                Neuen Job anlegen
+            </a>
+        </div>
+
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            &copy; 2020 - 2021 FH-Bielefeld <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC - labeling component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+        <script src="../../js/input/labeling.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="../sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article>
+            <div id="explaincomponent" swa="ExplainComponents"></div>         
+
+            <h3>Example 1: Simple labeling</h3>
+            <p>Add a simple labeling feature to your datasets.
+                <br>Note that adding a label by click on the labels name will not 
+                work in this example, because the example file is not writeable.</p>
+            
+            <pre><code class="lang-javascript">
+var labeling_example1_options = {
+    showWhenNoData: true,
+    labelidAttr: 'label_id',
+    labeledidAttr: 'oo_id',
+    labelSource: {
+        fromName: '../../data/input/labeling/label_labels.json'
+    },
+    showNoDataInfo: false
+};
+</code></pre>
+            
+            <pre><code class="lang-html">
+&lt;div id="labeling_example1" swa="Labeling FROM input/labeling/label_example.json"&gt;&lt;/div&gt;
+        </code></pre>
+            <div id="labeling_example1" swa="Labeling FROM input/labeling/label_example.json"></div>
+
+        </article>
+        <footer>
+            <a href="../about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="../about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

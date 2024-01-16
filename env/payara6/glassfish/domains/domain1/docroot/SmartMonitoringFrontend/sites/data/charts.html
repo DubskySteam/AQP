@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title swac_lang="data_charts_title">Data > Charts</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../../customisations/favicon.png">
+        <link rel="stylesheet" href="../../css/global.css" />
+
+        <link rel="stylesheet" href="/SWAC/swac/libs/uikit/css/uikit.min.css" />
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <script src="../../js/data/charts.js"></script>
+        <script src="../../customisations/data/datadesc.js"></script>
+        
+        <link rel="stylesheet" href="../../customisations/global.css" />
+    </head>
+
+    <body>
+            <nav id="main_navigation" class="swac_navigation_head" swa="Navigation FROM tbl_navigationroute WHERE filter=active,eq,true AND order=id,ASC"></nav>
+            <div id="userform" swa="User"></div>
+            <div id="translate" swa="Translator FROM ../../data/languages/translations.json"></div>
+
+            <article class="uk-article">
+                <div uk-grid>
+                    <div class="uk-width-expand@m uk-overflow-auto">
+                        <div id="charts" swa="Charts"></div>
+                    </div>
+                    <div class="uk-width-1-5@m">
+                        <div id="selectobject" swa="Select FROM tbl_observedobject TEMPLATE checkboxes"></div>
+    <!--                        <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Auswahl</legend>
+                                <ul class="swac_repeatForSet uk-list">
+                                    <li swac_parent="{parent}">
+                                        <input id="select_{id}" class="uk-checkbox" type="checkbox" name="{name}" value="{setRef}">
+                                        <a href="#" id="expand_{id}" class="swac_select_expandSubSource" uk-tooltip="Datensätze auswählen">+</a>
+                                        <label for="select_{id}">{name}</label>
+                                        <a href="../object/view.html?id={id}" uk-icon="icon: info"></a>
+                                        <ul class="swac_forChilds uk-list">
+                                            <li class="swac_child" swac_id="{id}">
+                                                <input class="expand_input uk-checkbox" id="select_{id}" type="checkbox" name="{name}" value="{setRef}">
+                                                <a class="swac_select_delAddAtOpt" href="#" id="expand_{id}" uk-tooltip="Datensatzauswahl">+</a>
+                                                <label for="select_{id}">{name}</label>
+                                                <a class="swac_select_delAddAtOpt" href="../object/view.html?id={id}" uk-icon="icon: info"></a>
+                                                <ul class="swac_forChilds"></ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </div>-->
+                    </div>
+                    <div id="charts_legend" swa="Datadescription FROM datadesc"></div>
+                </div>
+            </article>
+            <div id="favs" swa="Favourites"></div>
+    </body>
+</html>

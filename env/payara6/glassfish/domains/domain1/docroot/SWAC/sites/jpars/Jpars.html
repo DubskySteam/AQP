@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SmartWebApplicationComponents Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../css/newcss.css">
+    <link rel="stylesheet" type="text/css" href="../../css/jpars/Jpars.css">
+
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="css/noscript.css">
+    </noscript>
+    <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+    <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+    <script src="/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>
+    <script src="/SWAC/swac/swac.js" type="module"></script>
+    <script src="/SWAC/swac/legacybrowser.js"></script>
+    <script src="../../js\jpars\Jpars.js"></script>
+    <script src="data/routes.js"></script>
+
+
+</head>
+
+<body onload="pageselector(event, 'PageZero',3,1,false, false),selectbox()">
+    <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+    <div class="flex">
+        <img src="../../content/jpars/jparsLogo.png" height="300pix" width="300pix"></img>
+    </div>
+    <article>
+        <div class="uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
+            <div></div>
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m">
+                <div class="tab">
+                    <h3>Json</h3>
+                </div>
+
+                <div id="PageZero" class="tabcontentzero">
+                    <div class="tab">
+                        <h3>Json einfügen</h3>
+                        <button class="tablinks" onclick="openTabs(event, 'ADDJ',1)">UPLOAD</button>
+                        <button class="tablinks" onclick="openTabs(event, 'URLJ',1)">URL</button>
+                    </div>
+                    <div id="ADDJ" class="tabcontent">
+                        <p>
+                        <div>
+                            <input type="file" id="Jsontextinput" onchange="change()"></input>
+                        </div>
+                    </div>
+                    <div id="URLJ" class="tabcontent">
+
+                        <p>
+                        <div>
+                            <input type="text" id="urlj" name="file" rows="1" onchange="readurlj()">
+                        </div>
+                    </div>
+                    <textarea id="Jsontext" cols="30" rows="15"
+                        placeholder="Json kann hier eingetragen werden oder über Url "></textarea>
+                    <div>
+                        <button onclick="pageselector(event, 'Firstpage',3,0,true,false),openTabs(event, 'ADDC',0)">Weiter</button>
+                    </div>
+                </div>
+
+
+
+                <div id="Firstpage" class="tabcontentzero">
+                    <div class="tabc">
+                        <h3>Config</h3>
+                        <button class="tablinksc" onclick="openTabs(event, 'ADDC',0)">Voreinstellung</button>
+                        <button class="tablinksc" onclick="openTabs(event, 'URLC',0)">Wenn Config vorhanden</button>
+                    </div>
+                    <div id="ADDC" class="tabcontentc" style="display: active;">
+                        <div>
+                            <h3>Voreinstellung</h3>
+                        </div>
+                        <div>
+                            <p>
+                                <label>Collection:</label>
+                                <input type="text" id="collection" name="file" accept=".json" rows="1"
+                                    value="Beispiel1,Beispiel2">
+                            <div>
+                                <label style="font-size: 12px; color: rgb(255, 8, 0)">Collections mit Komma getrennt
+                                    eintragen</label>
+                            </div>
+                            </p>
+                            <p>
+                                <label>Name der Config:</label>
+                                <textarea id="Configname" cols="20" rows="1" placeholder="Name der Config"></textarea>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="URLC" class="tabcontentc">
+                            <div>
+
+                                <h3>Wenn Config vorhanden</h3>
+                            </div>
+                            <div>
+                                <p>
+                                    <label>über Datei laden:</label>
+                                    <input type="file" id="Configtextinput" onchange=" checker()">
+                                    <script>
+                                        function checker(){
+                                             pageselector(event, 'Thirdpage',3,2,true,true);
+                                             changec()                                    
+                                        }
+                                    </script>
+                                </p>
+                                <p>
+                                    <label for="datenbankconfig">aus Datenbank Laden:</label>
+                                    <select name="datenbankconfig" id="datenbankc" onchange="check()">
+                                    </select>  
+                                    <script>
+                                        function check(){
+                                            if(document.getElementById("datenbankc").value != 0){
+                                             pageselector(event, 'Thirdpage',3,2,true,true);
+                                             loadconfig()
+                                            }
+                                            
+                                        }
+                                    </script>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="pageselector(event, 'PageZero',3,1,false,false)">Zurück</button>
+                        <button onclick="pageselector(event, 'Secondpage',3,1,true,false)">Weiter</button>
+                    </div>
+                </div>
+
+
+
+                <div id="Secondpage" class="tabcontentzero">
+                    <p id="demo"></p>
+                    <button onclick="pageselector(event, 'Firstpage',3,2,false,false)">Zurück</button><button
+                        onclick="pageselector(event, 'Thirdpage',3,2,true,false)">Weiter</button>
+                </div>
+                <div id="Thirdpage" class="tabcontentzero">
+                    <textarea id="Jsontextausgabe" cols="30" rows="15" disabled="true"></textarea>
+                    <div>
+                        <button onclick="pageselector(event, 'Secondpage',3,3,false,false)">Zurück</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="tabc">
+                        <h3>Config</h3>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <textarea id="Configtext" cols="30" rows="15"
+                            placeholder="Config wird hier entstehen"></textarea>
+                    </div>
+
+                    <button onclick="configspeicher()">Config speichern</button>
+
+                </div>
+            </div>
+
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m">
+                <div class="tabt">
+                    <h1>TABELLEN</h1>
+                    <button class="tablinkst" onclick="openTabs(event, 'Vorschau',2)">Vorschau</button>
+                    <button class="tablinkst" onclick="openTabs(event, 'Datenbank',2)">Configfiles in Datenbank</button>
+                </div>
+                <div id="Datenbank" class="tabcontentt">
+                    <h3>Alle gespeicherten Configurationen</h3>
+                   
+                    <div class="scroller">
+                        <div id="livepresent_show" swa="Present FROM configfiles">
+                            <table class="uk-table">
+                                <tr>
+                                    <th class="swac_repeatForAttribute">{attrName}</th>
+                                </tr>
+                                <tr class="swac_repeatForSet">
+                                    <td class="swac_repeatForValue">
+                                        <span uk-tooltip="title: {attrName}">{*}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p id="Datenbankinhalt"></p>
+                    </div>
+                </div>
+                <div id="Vorschau" class="tabcontentt">
+                    <h3>Vorschautabelle</h3>
+                    <button onclick="vorschauerstellen()">Vorschau erstellen</button>
+                    <div class="scroller">
+                        <p id="tabbelvorschau"></p>
+                    </div>
+                </div>
+                <div>
+                    <button ref="SWAC.js" onclick="senddata()" style="font-size: 2em ;">
+                        In Datenbank speichern
+                    </button>
+                </div>
+            </div>
+            <div></div>
+        </div>
+
+
+
+    </article>
+    <footer>
+        <a href="about/privacy.html">Privacy policy / DatenschutzerklÃ¤rung</a>
+        <a href="about/imprint.html">Imprint / Impressum</a>
+        <a class="toplink" href="#">Top</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SWAC > concepts > data</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/global.css">
+        <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/noscript.css">
+        </noscript>
+
+        <link rel="stylesheet" type="text/css" href="/SWAC/swac/libs/uikit/css/uikit.min.css">
+        <script src="/SWAC/swac/libs/uikit/js/uikit.min.js"></script>
+        <script src="/SWAC/swac/swac.js" type="module"></script>
+
+        <!-- Datasources -->
+        <script src="../../data/exampledata_object.js"></script>
+        <script src="../../data/exampledata_list.js"></script>
+        <script src="../../data/exampledata_metalist.js"></script>
+    </head>
+    <body>
+        <header id="head_navigation" swa="Navigation FROM ../../data/routes.json"></header>
+        <noscript>
+        <div class="noscript_nav">
+            <a href="sitemap.html" class="uk-button uk-button-primary">Sitemap</a>
+            <br>Bitte aktiviere Javascript, um die bestmögliche Ansicht zu haben. / Please activate Javascript for the best experience.
+        </div>
+        </noscript>
+
+        <article class="uk-article">
+            <h1 class="uk-article-title">Data</h1>
+            <p class="uk-text-lead">
+                All components can work with data from different sources. All data is 
+                recived and prechecked by the model and bound to the components by the bind.
+                SWAC automatically searches an datasource for the given source expression
+                after the keyword FROM.
+                <br>Components may expect some attributes in the data. You can see this
+                expectations in the components documentation.
+            </p>
+
+            <h2 class="uk-heading-divider">Datasources</h2>
+            <p>SWAC can handle data from a varitie of datasources.</p>
+            <h3>Global variable</h3>
+            <p>SWAC can use every object that is available as global variable as a
+                data source. It even has not to be specially written for SWAC. This 
+                allows you to quickly view data from other client side scripts with
+                SWAC components.
+                <br>
+                For example lets use the browsers information stored in the global
+                available navigator object.
+            </p>
+            <pre><code class="lang-html">
+&lt;div id="data_example1" swa="Present FROM navigator"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example1.html">See working example here</a>
+
+            <h3>JSON file</h3>
+            <p>As easy as you can use javascript objects as datasource, as easy it 
+                is to use a json file.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example2" swa="Present FROM ../data/exampledata_list.json"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example2.html">See working example here</a>
+
+            <h3>REST resources</h3>
+            <p>You can simply use REST resources as datasource, as long as they 
+                return JSON formatted data.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example3" swa="Present FROM /SmartData/smartdata/records/tbl_observedobject"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example3.html">See working example here</a>
+
+            <h2 class="uk-heading-divider">Useing configured datasources</h2>
+
+            <h3>Datasource configuration</h3>
+            <p>Datasources can be configured globaly in the configuration.js file.
+                Add as many datasources as you want.
+                <br>On those way you get some advantages:
+            </p>
+            <dl>
+                <dt>Matching datasource detection</dt>
+                <dd>SWAC uses the first datasource the path can be found on</dd>
+                <dt>Redundance specification</dt>
+                <dd>If one source is not reachable the others will be searched for the data</dd>
+                <dt>Less path writing</dt>
+                <dd>No longer need to fully specify the part at each component</dd>
+                <dt>Automatic create / update / delete support</dt>
+                <dd>Components can translate the once given path for all CRUD operations</dd>
+            </dl>
+            <p>
+                The part of your swa after FROM keyword is the datasource name.
+                The rest of the URL and the HTTP-operation comes from configuration.
+                <br>You can specify which resource is used for reciving a
+                single dataset or a list of datasets and on which endpoint
+                youre REST interface can create or delete objects.
+            </p>
+            <pre><code class="lang-javascript">
+SWAC_config.datasources = [
+    {
+        // Simple path as source for all CRUD operations, may a simple docroot path
+        url: "/SWAC/data/[fromName]",
+        // Exclude names that should never tried to fiend on this resource
+        exclude: ['name_of_dbtable','name_of_rest_api']
+    },
+    {
+        // Complex configuration, may a REST interface path
+        url: "/SmartData/smartdata/[iface]/[fromName]?storage=smartmonitoring",
+        interfaces: {
+            get: ['GET','records'],         // When fetch a single dataset use method GET and replace [iface] with records
+            list: ['GET','records'],        // When fetch a list of datasets use method GET and replace [iface] with records
+            defs: ['GET','collection'],     // Get definitions on the data from collection interface (special of SmartData)
+            create: ['POST','records'],     // Create new datasets useing POST on the records path
+            update: ['PUT','records'],
+            delete: ['DELETE','records']
+        }
+    }
+];
+            </code></pre>
+            <pre><code class="lang-html">
+&lt;div id="data_example4" swa="Present FROM tbl_observedobject"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example4.html">See working example here</a>
+
+            <h3>Get data with parameters</h3>
+            <p>If you want to use a REST interface and give there options with it
+                simply add an WHERE clause to your swa statement.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example5" swa="Present FROM tbl_observedobject WHERE filter=id,eq,1"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example5.html">See working example here</a>
+
+            <h3>Use parameter from page URL</h3>
+            <p>If your option comes from the url you can simply use an placeholder.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example6" swa="Present FROM observedobject WHERE filter=id,eq,&#123;&#123;id&#125;&#125;"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example6.html?id=1">See working example here</a>
+
+            <h4>Excursion: Use parameters on page</h4>
+            <p>Beside the useage in WHERE, parameters from URL can replace placeholder marks everywhere on page, too.</p>
+            <pre><code class="lang-html">
+&lt;span title="Also in title: &#123;&#123;id&#125;&#125;"&gt;You have inserted id: &#123;&#123;id&#125;&#125;&lt;/span&gt;
+            </code></pre>
+            <span title="Also in title: {{id}}">You have inserted id: {{id}}</span>
+
+            <h3>Use multiple parameters</h3>
+            <p>You can use multiple parameters by listing them with the AND clause.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example7" swa="Present FROM tbl_observedobject WHERE filter=id,gt,5 AND filter=id,lt,10"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example7.html">See working example here</a>
+            
+            <h3>Parameter from Configuration</h3>
+            <p>You can define global parameters in the configuration file, that 
+                will take place if there is no parameter given by url.</p>
+            <span title="Example global: {{exampleglobal}}">Value from configuration.js: {{exampleglobal}}</span>
+            <pre><code class="lang-javascript">
+SWAC_config.globalparams = {
+    exampleglobal: 2
+};
+            </code></pre>
+            
+            <h3>Use special parameters</h3>
+            <p>There are some usefull build in parameters. Those replace placeholders with calculated values.
+                <br>See the network requests in your browsers development tools to see the effect on request uri.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example_sp" swa="Present FROM ../../data/exampledata_object.json WHERE filter=ts,gt,&#123;&#123;date:m-1442&#125;&zwnj;&#125; AND filter=ts,lt,&#123;&#123;date:m-1438&#125;&zwnj;&#125;"&gt;&lt;/div&gt;
+            </code></pre>
+            <div id="data_example_sp" swa="Present FROM ../../data/exampledata_object.json WHERE filter=ts,gt,{{date:m-1442}} AND filter=ts,lt,{{date:m-1438}}"></div>
+            
+            <table class="uk-table">
+                <tr><th>Parameter</th><th>Example</th><th>Explanation</th></tr>
+                <tr><td>&#123;&#123;date:m-X&#125;&zwnj;&#125;</td><td>{{date:m-1440}}</td><td>Replaced by the current date substracted with X seconds.</td></tr>
+                <tr><td>&#123;&#123;date:m+X&#125;&zwnj;&#125;</td><td>{{date:m+1440}}</td><td>Replaced by the current date added with X seconds.</td></tr>
+            </table>
+            
+            <h3>Global filtering</h3>
+            <p>Additional to the coded and predefined parameters and placeholders for parameters on the swa statement
+            users can allways filter sets to their needs by useing the filter parameter in URL.
+            <br>Note that this filter can only narrow the datasets, never get more datasets than specified in the SWA statement.
+            <br>To prevent from filterein on all components, you can use a fourth attribute in the filter statement, so filter only apply on the component with the given id.</p>
+
+            <b>Without URL filter</b>
+            <br><a href="../visualisation/worldmap2d_example12.html?zoomSource=../../data/worldmap2d/worldmap2d_example5.json&zoomSet=181" target="_blank">Open map with data</a>
+            <br><b>Useing URL filter</b>
+            <br><a href="../visualisation/worldmap2d_example12.html?zoomSource=../../data/worldmap2d/worldmap2d_example5.json&zoomSet=181&filter=id,eq,181" target="_blank">&filter=id,eq,181</a>
+            <br><b>Use URL filter only on requestor with id example</b>
+            <br><a href="../visualisation/worldmap2d_example12.html?zoomSource=../../data/worldmap2d/worldmap2d_example5.json&zoomSet=181&filter=id,eq,181,example" target="_blank">&filter=id,eq,181,example</a>
+            <br>
+            
+            <h2 class="uk-heading-divider">Datastructures</h2>
+            <p>We are useing data in different forms and variations inprogramming.
+                SWAC aims to make it easy to reuse data that was builded with other tools.
+                <br>It does not depend on the datasource.
+                <br>This chapter descripes which datastructures SWAC supports.</p>
+
+            <h3>Object / Dataset</h3>
+            <p>In web programming the simplest datastructure is
+                a object. A object consits of a number of attributes. SWAC treats
+                a object as "dataset". Every attribute is one value of this dataset.
+                SWAC makes every attribute useable in it's components. You can refer
+                to an attribut by simply name it.
+                <br>Below is a very simple example of one dataset. Once as javascript
+                array and once as json.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example7" swa="Present FROM exampledata_object"&gt;&lt;/div&gt;
+        </code></pre>
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">Datasource</a>
+                    <div class="uk-accordion-content">
+                        <pre><code class="lang-javascript">
+var exampledata_object =
+        {
+            id: 1,
+            name: "Datensatz 1",
+            doubleval: 12.0123,
+            intval: 1234,
+            boolval: true,
+            stringval: 'string',
+            ts: '28.10.2019 7:46:59',
+            dateval: '28.10.2019',
+            refval: 'ref://exampledata/2',
+            mimetype: 'audio/mp3',
+            colval: 'blue',
+            urlval: 'https://somesite',
+            emailval: 'support@swac.de',
+            passwordval: 'MyUnsecurePwd',
+            icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+        };
+                    </code></pre>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">Working example</a>
+                    <div class="uk-accordion-content">
+                        <div id="data_example7" swa="Present FROM exampledata_object"></div>
+                    </div>
+                </li>
+            </ul>
+
+            <pre><code class="lang-html">
+&lt;div id="data_example8" swa="Present FROM ../../data/exampledata_object.json"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">Datasource</a>
+                    <div class="uk-accordion-content">
+                        <pre><code class="lang-json">
+{    
+    "id": 1,
+    "name": "Datensatz 1",
+    "doubleval": 12.0123,
+    "intval": 1234,
+    "boolval": true,
+    "stringval": "string",
+    "ts": "28.10.2019 7:46:59",
+    "dateval": "28.10.2019",
+    "refval": "ref://exampledata/2",
+    "mimetype": "audio/mp3",
+    "colval": "blue",
+    "urlval": "https://somesite",
+    "emailval": "support@swac.de",
+    "passwordval": "MyUnsecurePwd",
+    "icopath": "../../swac/components/Icon/imgs/book_checked.svg"
+}
+                    </code></pre>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">Working example</a>
+                    <div class="uk-accordion-content">
+                        <div id="data_example8" swa="Present FROM ../../data/exampledata_object.json"></div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Array of objects / Datasets</h3>
+            <p>Most SWAC components do not only support single datasets but also
+                a collection of datasets. You can simply create a collection of 
+                datasets by useing a javascript array or JSON array structure.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example9" swa="Present FROM exampledata_list"&gt;&lt;/div&gt;
+        </code></pre>
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">Datasource</a>
+                    <div class="uk-accordion-content">
+                        <pre><code class="lang-javascript">
+var exampledata_list = [
+    {
+        id: 1,
+        name: "Datensatz 1",
+        doubleval: 12.0123,
+        intval: 1234,
+        boolval: true,
+        stringval: 'string',
+        ts: '28.10.2019 7:46:59',
+        dateval: '28.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/mp3',
+        colval: 'blue',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+    }, {
+        id: 2,
+        name: "Datensatz 2",
+        doubleval: 19.0234,
+        intval: 2345,
+        boolval: false,
+        stringval: 'string2',
+        ts: '29.10.2019 7:47:59',
+        dateval: '29.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/ogg',
+        colval: '#ffffff',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_star.svg'
+    }, {
+        id: 3,
+        name: "Datensatz 3",
+        doubleval: 42.0345,
+        intval: 3456,
+        boolval: true,
+        stringval: 'string',
+        ts: '30.10.2019 7:48:59',
+        dateval: '30.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'video/mpeg',
+        colval: '#000000',
+        urlval: 'https://someothersite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_fail.svg'
+    }
+];
+                    </code></pre>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">Working example</a>
+                    <div class="uk-accordion-content">
+                        <div id="data_example9" swa="Present FROM exampledata_list"></div>
+                    </div>
+                </li>
+            </ul>
+            <pre><code class="lang-html">
+&lt;div id="data_example10" swa="Present FROM ../../data/exampledata_list.json"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">Datasource</a>
+                    <div class="uk-accordion-content">
+                        <pre><code class="lang-json">
+[
+    {
+        "id": 1,
+        "name": "Datensatz 1",
+        "doubleval": 12.0123,
+        "intval": 1234,
+        "stringval": "string",
+        "ts": "28.10.2019 7:46:59",
+        "dateval": "2016-05-25T09:24:15",
+        "refval": "ref://../data/exampledata_list.json?id=2",
+        "mimetype": "audio/mp3",
+        "colval": "blue",
+        "urlval": "https://somesite",
+        "emailval": "support@swac.de",
+        "passwordval": "MyUnsecurePwd",
+        "icopath": "../../swac/components/Icon/imgs/book_checked.svg"
+    },
+    {
+        "id": 2,
+        "name": "Datensatz 2",
+        "doubleval": 19.0234,
+        "intval": 2345,
+        "stringval": "string2",
+        "ts": "29.10.2019 7:47:59",
+        "dateval": "2016-05-25T09:24:15",
+        "refval": "ref://../data/exampledata_list.json?id=1",
+        "mimetype": "audio/ogg",
+        "colval": "#ffffff",
+        "urlval": "https://somesite",
+        "emailval": "support@swac.de",
+        "passwordval": "MyUnsecurePwd",
+        "icopath": "../../swac/components/Icon/imgs/book_star.svg"
+    },
+    {
+        "id": 3,
+        "name": "Datensatz 3",
+        "doubleval": 42.0345,
+        "intval": 3456,
+        "stringval": "string",
+        "dateval": "2016-05-25T09:24:15",
+        "ts": "30.10.2019 7:48:59",
+        "refval": "ref://../data/exampledata_list.json?id=2",
+        "mimetype": "video/mpeg",
+        "colval": "#000000",
+        "urlval": "https://someothersite",
+        "emailval": "support@swac.de",
+        "passwordval": "MyUnsecurePwd",
+        "icopath": "../../swac/components/Icon/imgs/book_fail.svg"
+    }
+]
+                    </code></pre>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">Working example</a>
+                    <div class="uk-accordion-content">
+                        <div id="data_example10" swa="Present FROM ../../data/exampledata_list.json"></div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Metalists</h3>
+            <p>Sometimes you want to deliver some meta information for your datasets.
+                For this purpose SWAC supports the list datalayout. Here you put your
+                datasets into an attribute named "list". Also the TreeQL default 
+                identifier "records" is supported.</p>
+
+            <pre><code class="lang-html">
+&lt;div id="data_example11" swa="Present FROM exampledata_metalist"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">Datasource</a>
+                    <div class="uk-accordion-content">
+                        <pre><code class="lang-json">
+var exampledata_metalist = {};
+exampledata_metalist.metadata = 'Some metadata';
+exampledata_metalist.list = [
+    {
+        id: 1,
+        name: "Datensatz 1",
+        doubleval: 12.0123,
+        intval: 1234,
+        boolval: true,
+        stringval: 'string',
+        ts: '28.10.2019 7:46:59',
+        dateval: '28.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/mp3',
+        colval: 'blue',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_checked.svg'
+    }, {
+        id: 2,
+        name: "Datensatz 2",
+        doubleval: 19.0234,
+        intval: 2345,
+        boolval: false,
+        stringval: 'string2',
+        ts: '29.10.2019 7:47:59',
+        dateval: '29.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'audio/ogg',
+        colval: '#ffffff',
+        urlval: 'https://somesite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_star.svg'
+    }, {
+        id: 3,
+        name: "Datensatz 3",
+        doubleval: 42.0345,
+        intval: 3456,
+        boolval: true,
+        stringval: 'string',
+        ts: '30.10.2019 7:48:59',
+        dateval: '30.10.2019',
+        refval: 'ref://exampledata/2',
+        mimetype: 'video/mpeg',
+        colval: '#000000',
+        urlval: 'https://someothersite',
+        emailval: 'support@swac.de',
+        passwordval: 'MyUnsecurePwd',
+        icopath: '../../swac/components/Icon/imgs/book_fail.svg'
+    }
+];
+                    </code></pre>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">Working example</a>
+                    <div class="uk-accordion-content">
+                        <div id="data_example11" swa="Present FROM exampledata_metalist"></div>
+                    </div>
+                </li>
+            </ul>
+
+            <pre><code class="lang-html">
+&lt;div id="data_example12" swa="Present FROM ../../data/exampledata_metalist.json"&gt;&lt;/div&gt;
+        </code></pre>
+
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">Datasource</a>
+                    <div class="uk-accordion-content">
+                        <pre><code class="lang-json">
+{
+    "records": [
+        {
+            "id": 1,
+            "name": "Datensatz 1",
+            "doubleval": 12.0123,
+            "intval": 1234,
+            "stringval": "string",
+            "ts": "28.10.2019 7:46:59",
+            "dateval": "2016-05-25T09:24:15",
+            "refval": "ref://../data/exampledata_metalist.json?id=2",
+            "mimetype": "audio/mp3",
+            "colval": "blue",
+            "urlval": "https://somesite",
+            "emailval": "support@swac.de",
+            "passwordval": "MyUnsecurePwd",
+            "icopath": "../../swac/components/Icon/imgs/book_checked.svg"
+        },
+        {
+            "id": 2,
+            "name": "Datensatz 2",
+            "doubleval": 19.0234,
+            "intval": 2345,
+            "stringval": "string2",
+            "ts": "29.10.2019 7:47:59",
+            "dateval": "2016-05-25T09:24:15",
+            "refval": "ref://../data/exampledata_metalist.json?id=1",
+            "mimetype": "audio/ogg",
+            "colval": "#ffffff",
+            "urlval": "https://somesite",
+            "emailval": "support@swac.de",
+            "passwordval": "MyUnsecurePwd",
+            "icopath": "../../swac/components/Icon/imgs/book_star.svg"
+        },
+        {
+            "id": 3,
+            "name": "Datensatz 3",
+            "doubleval": 42.0345,
+            "intval": 3456,
+            "stringval": "string",
+            "dateval": "2016-05-25T09:24:15",
+            "ts": "30.10.2019 7:48:59",
+            "refval": "ref://../data/exampledata_metalist.json?id=2",
+            "mimetype": "video/mpeg",
+            "colval": "#000000",
+            "urlval": "https://someothersite",
+            "emailval": "support@swac.de",
+            "passwordval": "MyUnsecurePwd",
+            "icopath": "../../swac/components/Icon/imgs/book_fail.svg"
+        }
+    ]
+}
+                    </code></pre>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">Working example</a>
+                    <div class="uk-accordion-content">
+                        <div id="data_example12" swa="Present FROM ../../data/exampledata_metalist.json"></div>
+                    </div>
+                </li>
+            </ul>
+
+            <h2 class="uk-heading-divider">Databinding</h2>
+            <p>SWAC uses the concept of databinding not only for attributes but 
+                also on datasets and datasources. All datasets requested are 
+                automatically stored in WatchableSources and WatchableSets 
+                and all values displayed by a component are bound to these by a 
+                BindPoint.
+                <br>This has the effect, that values are consistent over any component.</p>
+            <pre><code class="lang-html">
+&lt;div id="data_example13" swa="Edit FROM ../../data/routes.json"&gt;&lt;/div&gt;
+            </code></pre>
+            <a href="3_data_example13.html">See working example here</a>
+
+            <h3>Useing databinding in your code</h3>
+            <p>If you need values in your own code, request the data as WatchableSource. 
+                Then you can simply modify the attributes as allways but you will 
+                have the advantage of databinding.
+                <br>Modify in your code - automatic see results in components. 
+                <a href="dataaccess.html">See details</a></p>
+
+            <h2 class="uk-heading-divider">Advanced topics when working with data</h2>
+            <p>In this section some advanced functions described for working with 
+                data.</p>
+
+            <h3>Metadata</h3>
+            <p>SWAC creates some metadata information. This is available in the 
+                components too. For a full list of available metadata refere to the
+                <a href="4_design.html">skinable</a> page</p>
+
+            <h3>Default values for missing attributes</h3>
+            <p>You can specify default values that will apply if there are attributes 
+                missing on some datasets. Defaults are defined per datasource.
+                <br>If you want to have a default over all datasources use * as datasource name.</p>
+            <pre><code class="lang-javascript">
+var data_example14_options = {
+  attributeDefaults: new Map([['../../data/exampledata_list.json',{job: 'programmer'}]])
+};
+            </code></pre>
+            <a href="3_data_example14.html">See working example here</a>
+
+            <h3>Calculated default values</h3>
+            <p>Default values can also be calculated from the other values of the set.</p>
+            <pre><code class="lang-javascript">
+var data_example14_1_options = {
+  attributeDefaults: new Map([['../../data/exampledata_list.json',{multiply: '%doubleval% + %intval%'}]])
+};
+            </code></pre>
+            <a href="3_data_example14_1.html">See working example here</a>
+            
+            <h2>Renameing attributes</h2>
+            <p>Sometimes you want the data show up with another name in frontend as 
+                it is named in the database. Or you just have an attribute that is 
+                required by an component, but its wrong named.
+                <br>For this cases you can rename attributes by simple configuration.
+                <br>In the above example doubleval and intval attribute are renamed.</p>
+
+            <pre><code class="lang-javascript">
+var personlist_renameing_options = {
+    attributeRenames: new Map([['doubleval', 'float'],['intval','long']])
+};
+            </code></pre>
+            <a href="3_data_example15.html">See working example here</a>
+
+            <h3>Use data only within time bounds</h3>
+            <p>You can use the special attributes "swac_from" and "swac_until" in 
+                your datasets to specify when datasets should be used by any component.
+                <br>In this example an dataset is only visible, when the computers 
+                clock is on the 01.10.2021.</p>
+
+            <pre><code class="lang-javascript">
+{
+    "list": [
+        {
+            "id": 1,
+            "title": "This is allways there"
+        },
+        {
+            "id": 2,
+            "title": "This is only shown before 01.10.2021",
+            "swac_until": "2021-10-01T00:00:00"
+        },
+        {
+            "id": 3,
+            "title": "This is only shown after 01.10.2021",
+            "swac_from": "2021-10-02T00:00:00"
+        }
+    ]
+}
+            </code></pre>
+            <div id="data_example16" swa="Present FROM ../../data/exampledata_timed.json"></div>
+
+            <h3>Automatic reload component data</h3>
+            <pre><code class="lang-javascript">
+data_example17_options = {
+    reloadInterval: 10
+};
+            </code></pre>
+            <a href="3_data_example17.html">See working example here</a>
+
+            <h3>Data live mode</h3>
+            <p>Components can use a live mode, where they automatically fetch new data from their known sources.</p>
+            <pre><code class="lang-javascript">
+data_example18_options = {
+    liveMode: 10 //Updates data every 10 seconds
+};
+            </code></pre>            
+            
+            <h3>Add data per interface</h3>
+            <p>By activateing the showAddDataInput function a input field is shown where 
+            users can add an URL to a datasource file and add the data to the component.</p>
+            <pre><code class="lang-javascript">
+var present_example10_options = {
+    showAddDataInput: true
+};
+            </code></pre>  
+            
+            <h2 class="uk-heading-divider">Automatic datavolume saveing</h2>
+            <p>SWAC components can use the same data. In those cases SWAC automatically 
+                detect the same useage and shares the one time fetsched data over all 
+                components. This avoids uneccessery network requests.</p>
+            
+            <h2 class="uk-heading-divider">CORS roundtrip</h2>
+            <p>SWACs components are universal tools to show and manipulate data. So you can use many
+            datasources from anywhere on the web. But not all sources are freely accessable because of CORS.
+            <br>With the combination of SmartFile you can even add those data to your webapplication.
+            <br>If you give to any of the interfaces a datasource URL and SWAC odemtofoes the CORS error,
+            it can download the file over SmartFile and use the downloaded file instead of the original.
+            <br>Anything neccessery is to deploy the SmartFile on your server and configure the 
+            corsavoidurl option.</p>
+            
+            <pre><code class="lang-javascript">
+var SWAC_config = {
+    // ...
+    datasources: [
+        {
+            url: "/SWAC/data/[fromName]"
+        }
+    ],
+    corsavoidurl: 'http://localhost:8080/SmartFile/smartfile/file/download?filespace=[FILESPACENAME]&url=%url%',
+    // ...
+};
+            </code></pre> 
+            
+            <h2 class="uk-heading-divider">Accessing data programaticly</h2>
+            <p>If you need to access the components data from a custom script, have a look at the Low Level API > </p>
+            
+        </article>
+
+        <footer>
+            <a href="about/privacy.html">Privacy policy / Datenschutzerklärung</a>
+            <a href="about/imprint.html">Imprint / Impressum</a>
+            <a class="toplink" href="#">Top</a>
+        </footer>
+    </body>
+</html>

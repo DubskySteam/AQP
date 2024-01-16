@@ -1,0 +1,26 @@
+{
+  "attributes": [
+    {
+      "isAutoIncrement": false,
+      "isNullable": false,
+      "name": "name",
+      "isIdentity": false,
+      "type": "varchar"
+    },
+    {
+      "isAutoIncrement": false,
+      "isNullable": true,
+      "name": "description",
+      "isIdentity": false,
+      "type": "varchar"
+    },
+    {
+      "isAutoIncrement": true,
+      "isNullable": false,
+      "name": "id",
+      "isIdentity": true,
+      "defaultvalue": "nextval('smartmonitoring.tbl_observedobject_metadata_type_id_seq'::regclass)",
+      "type": "int8"
+    }
+  ]
+}

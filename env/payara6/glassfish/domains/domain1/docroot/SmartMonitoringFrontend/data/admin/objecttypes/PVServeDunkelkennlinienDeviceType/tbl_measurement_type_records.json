@@ -1,0 +1,43 @@
+{
+    "records": [
+        {
+            "name": "ts",
+            "description": "Zeitstempel",
+            "type": "timestamp"
+        },
+        {
+            "unit": "°C",
+            "name": "T",
+            "description": "Temperatur",
+            "type": "float8"
+        },
+        {
+            "name": "A",
+            "description": "Flächeninhalt",
+            "type": "float8"
+        },
+        {
+            "unit": "Ohm",
+            "name": "R",
+            "description": "Widerstand",
+            "type": "float8"
+        },
+        {
+            "unit": "V",
+            "name": "U",
+            "description": "Spannungsstärke",
+            "type": "float8"
+        },
+        {
+            "name": "Kennlinientyp",
+            "description": "Name eines Typs",
+            "type": "varchar"
+        },
+        {
+            "unit": "A",
+            "name": "I",
+            "description": "Stromstärke",
+            "type": "float8"
+        }
+    ]
+}

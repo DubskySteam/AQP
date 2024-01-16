@@ -1,0 +1,93 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{markdown}
+\usepackage{graphicx}
+\usepackage{tikz-uml}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[section]{placeins}
+
+%opening
+\title{Anforderungsanalyse}
+\author{Julian Hildebrand\and{}Julian Wasilewski\and{}Lukas Pöhler\and{}Christoph Raitzig}
+    
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Mock-Ups}
+Die Weboberfläche braucht 3 Seiten.\\
+In Abb. \ref{dashboard} ist das Mock-Up fürs Dashboard zu sehen. In Abb. \ref{jobs} ist das Erstellen bzw. Bearbeiten von Jobs dargestellt. In Abb. \ref{logs} kann man Logs sehen.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{../Mock-Ups/mockup-dashboard}
+	\caption{Dashboard}
+	\label{dashboard}
+\end{figure}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{../Mock-Ups/mockup-jobs}
+	\caption{Jobs erstellen bzw. bearbeiten}
+	\label{jobs}
+\end{figure}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{../Mock-Ups/mockup-logs}
+	\caption{Logs/Historie}
+	\label{logs}
+\end{figure}
+
+%\section{Use-Cases}
+\input{usecases.tex}
+
+\section{Komponentendiagramm}
+Das Komponentendiagramm ist in Abb. \ref{komponentendiagramm} dargestellt. Der direkte Zugriff auf die Datenbankschnittstelle ohne das Backend als prüfende Instanz beinhaltet ein gewisses Risiko. Nach Rücksprache mit dem Auftraggeber wurde abgeklärt, dass bereits vorher eine Authentifizierung der Nutzer stattfindet und den angemeldeten Nutzern vertraut werden kann.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{../Components}
+	\caption{Komponentendiagramm}
+	\label{komponentendiagramm}
+\end{figure}
+
+\section{Datenbank-ER-Diagramm}
+Das ER-Diagramm der Datenbank ist in Abb. \ref{dber} dargestellt.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{ER-Diagramm}
+	\caption{ER-Diagramm}
+	\label{dber}
+\end{figure}
+
+\section{Klassendiagramm}
+\subsection{Backend}
+\input{klassendiagramm.tex}
+\subsection{Frontend}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{KlassendiagrammFrontend.png}
+	\caption{Klassendiagramm vom Frontend}
+	\label{klassendiagrammFrontend}
+\end{figure}
+
+\section{Sequenzdiagramm}
+Das Sequenzdiagramm für das manuelle Starten eines Jobs ist in Abb. \ref{seqStartJobManually} dargestellt.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{Sequenzdiagramm.png}
+	\caption{Sequenzdiagramm: Job manuell starten}
+	\label{seqStartJobManually}
+\end{figure}
+
+\section{Meilensteinplan}
+\input{meilensteinplan.tex}
+
+\section{Aufgabenverteilung}
+\input{aufgabenverteilung.tex}
+
+\end{document}

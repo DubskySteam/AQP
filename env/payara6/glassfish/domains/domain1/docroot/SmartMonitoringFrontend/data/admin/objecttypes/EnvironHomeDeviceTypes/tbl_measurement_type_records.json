@@ -1,0 +1,55 @@
+{
+    "records": [
+        {
+            "name": "ts",
+            "description": "Zeitstempel",
+            "type": "timestamp"
+        },
+        {
+            "unit": "%",
+            "name": "humidity",
+            "description": "Luftfeuchtigkeit",
+            "type": "float8"
+        },
+        {
+            "unit": "hPa",
+            "name": "pressure",
+            "description": "Druck",
+            "type": "float8"
+        },
+        {
+            "unit": "C",
+            "name": "temperature",
+            "description": "Temperatur",
+            "type": "float8"
+        },
+        {
+            "unit": "ppm",
+            "name": "co2",
+            "description": "Kohlenstoffdioxidgehalt",
+            "type": "integer"
+        },
+        {
+            "name": "state",
+            "description": "Gertezustand: Bitte immer Bedeutung der Werte angeben.",
+            "type": "integer"
+        },
+        {
+            "unit": "Grad",
+            "name": "angle",
+            "description": "Winkel",
+            "type": "float8"
+        },
+        {
+            "unit": "km/h",
+            "name": "speed",
+            "description": "Geschwindigkeit",
+            "type": "float8"
+        },
+        {
+            "name": "count",
+            "description": "Anzahl",
+            "type": "integer"
+        }
+    ]
+}

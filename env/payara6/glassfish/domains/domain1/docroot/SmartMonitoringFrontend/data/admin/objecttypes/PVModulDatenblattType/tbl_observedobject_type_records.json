@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "flatendsets": false,
+            "name": "PVModulDatenblatt",
+            "description": "Photovoltaik Modul"
+        }
+    ]
+}
