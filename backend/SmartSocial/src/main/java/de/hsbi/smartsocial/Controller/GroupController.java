@@ -84,13 +84,13 @@ public class GroupController {
     @GET
     @Path("/getByUserId/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @ApiResponse(responseCode = "200", description = "Returns all for a user")
+    @ApiResponse(responseCode = "200", description = "Returns group for a user")
     public Response getAllGroupsByUser(@PathParam("id") Long id) {
-        Groupmember groupmember = groupService.findGroupmemberByUserId(id);
-        if (groupmember == null) {
-            throw new GroupForMemberNotFoundException(id);
+        Group group = groupService.findGroupByUserId(id);
+        if (group == null) {
+            throw new GroupNotFoundException(id);
         }
-        return Response.ok(groupmember).build();
+        return Response.ok(group).build();
     }
 
     @SmartUserAuth
@@ -127,6 +127,14 @@ public class GroupController {
     public Response getAllGroups() {
         List<Group> groups = groupService.findAllGroups();
         return Response.ok(groups).build();
+    }
+
+    @GET
+    @Path("/getGroupDistance/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns the distance of a group")
+    public Response getGroupDistance(@PathParam("id") Long id) {
+        return Response.ok(groupService.getGroupDistance(id)).build();
     }
 
     @SmartUserAuth
