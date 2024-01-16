@@ -1,0 +1,4 @@
+"quest_id","description","xp_reward","type","amount","title"
+3,Travel 30km,1200,distance,30,Enthusiast
+2,Travel 20km,800,distance,20,Hiker
+1,Travel 10km,400,distance,10,Average Joe
