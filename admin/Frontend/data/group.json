@@ -30,6 +30,11 @@
         "method": "GET"
     },
     {
+        "name": "Get Group distance",
+        "url": "http://localhost:8080/SmartSocial/api/group/getGroupDistance/",
+        "method": "GET"
+    },
+    {
         "name": "Get Groups",
         "url": "http://localhost:8080/SmartSocial/api/group/getAll",
         "method": "GET"
