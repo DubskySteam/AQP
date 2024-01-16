@@ -134,7 +134,10 @@ public class GroupController {
     @Path("/join/{userId}/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(responseCode = "200", description = "Joins a group")
-    public Response joinGroup(@PathParam("userId") Long userId, @PathParam("code") String code) {
+    public Response joinGroup(@PathParam("userId") Long userId, @PathParam("code") String code, @Context ContainerRequestContext requestContext) {
+        if (!isUserValid(userId, requestContext)) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
         Group group = groupService.joinGroup(userId, code);
         if (group == null) {
             throw new GroupJoinException("Couldn't find group or wrong code");

@@ -53,15 +53,14 @@ public class ProfileSettingsController {
     @Consumes("application/json")
     @ApiResponse(responseCode = "200", description = "Sets the settings for the given id")
     public Response setSettings(@PathParam("id") Long id, ProfileSetting profileSetting, @Context ContainerRequestContext requestContext) {
-        if (isUserValid(id, requestContext)) {
-            ProfileSetting tmp = profileSettingsService.setSettings(id, profileSetting);
-            if (tmp == null) {
-                throw new ProfileSettingsNotFoundException("Error while setting settings for id " + id);
-            }
-            return Response.ok(tmp).build();
-        } else {
+        if (!isUserValid(id, requestContext)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        ProfileSetting tmp = profileSettingsService.setSettings(id, profileSetting);
+        if (tmp == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting settings for id " + id);
+        }
+        return Response.ok(tmp).build();
     }
 
     @GET
@@ -82,15 +81,14 @@ public class ProfileSettingsController {
     @Produces("application/json")
     @ApiResponse(responseCode = "200", description = "Sets the visibility for the given id")
     public Response setVisibilityById(@PathParam("id") Long id, @PathParam("mode") boolean mode, @Context ContainerRequestContext requestContext) {
-        if (isUserValid(id, requestContext)) {
-            String visibility = profileSettingsService.setVisibility(id, mode);
-            if (visibility == null) {
-                throw new ProfileSettingsNotFoundException("Error while setting visibility for id " + id);
-            }
-            return Response.ok(visibility).build();
-        } else {
+        if (!isUserValid(id, requestContext)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        String visibility = profileSettingsService.setVisibility(id, mode);
+        if (visibility == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting visibility for id " + id);
+        }
+        return Response.ok(visibility).build();
     }
 
     @GET
@@ -111,15 +109,15 @@ public class ProfileSettingsController {
     @Produces("application/json")
     @ApiResponse(responseCode = "200", description = "Sets the image for the given id")
     public Response setPicture(@PathParam("id") Long id, @PathParam("picture") String picture, @Context ContainerRequestContext requestContext) {
-        if (isUserValid(id, requestContext)) {
-            String tmp = profileSettingsService.setPicture(id, picture);
-            if (tmp == null) {
-                throw new ProfileSettingsNotFoundException("Error while setting image for id " + id);
-            }
-            return Response.ok(tmp).build();
-        } else {
+        if (!isUserValid(id, requestContext)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        String tmp = profileSettingsService.setPicture(id, picture);
+        if (tmp == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting image for id " + id);
+        }
+        return Response.ok(tmp).build();
+
     }
 
 
@@ -129,15 +127,15 @@ public class ProfileSettingsController {
     @Produces("application/json")
     @ApiResponse(responseCode = "200", description = "Returns the device for the given id")
     public Response getDevice(@PathParam("id") Long id, @Context ContainerRequestContext requestContext) {
-        if (isUserValid(id, requestContext)) {
-            String device = profileSettingsService.getDevice(id);
-            if (device == null) {
-                throw new ProfileSettingsNotFoundException("No settings(device) found for id " + id);
-            }
-            return Response.ok(device).build();
-        } else {
+        if (!isUserValid(id, requestContext)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        String device = profileSettingsService.getDevice(id);
+        if (device == null) {
+            throw new ProfileSettingsNotFoundException("No settings(device) found for id " + id);
+        }
+        return Response.ok(device).build();
+
     }
 
     @SmartUserAuth
@@ -146,15 +144,15 @@ public class ProfileSettingsController {
     @Produces("application/json")
     @ApiResponse(responseCode = "200", description = "Sets the device for the given id")
     public Response setDevice(@PathParam("id") Long id, @PathParam("device") String device, @Context ContainerRequestContext requestContext) {
-        if (isUserValid(id, requestContext)) {
-            String tmp = profileSettingsService.setDevice(id, device);
-            if (tmp == null) {
-                throw new ProfileSettingsNotFoundException("Error while setting device for id " + id);
-            }
-            return Response.ok(tmp).build();
-        } else {
+        if (!isUserValid(id, requestContext)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        String tmp = profileSettingsService.setDevice(id, device);
+        if (tmp == null) {
+            throw new ProfileSettingsNotFoundException("Error while setting device for id " + id);
+        }
+        return Response.ok(tmp).build();
+
     }
 
 }
