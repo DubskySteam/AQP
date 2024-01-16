@@ -1,6 +1,7 @@
 package de.hsbi.smartsocial.Persistence;
 
 import de.hsbi.smartsocial.Model.Quest;
+import de.hsbi.smartsocial.Model.Userquest;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -29,8 +30,8 @@ public class QuestRepository {
         return entityManager.createNamedQuery("Quest.findById", Quest.class).setParameter("id", id).getSingleResult();
     }
 
-    public List<Quest> getByUserId(Long id) {
-        return entityManager.createNamedQuery("Userquest.findByUserId", Quest.class).setParameter("id", id).getResultList();
+    public List<Userquest> getByUserId(Long id) {
+        return entityManager.createNamedQuery("Userquest.findByUserId", Userquest.class).setParameter("id", id).getResultList();
     }
 
     public Quest create(Quest quest) {

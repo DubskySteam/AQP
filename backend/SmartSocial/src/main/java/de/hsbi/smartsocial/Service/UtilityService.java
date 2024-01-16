@@ -10,9 +10,7 @@ import de.hsbi.smartsocial.Exceptions.APICallException;
 import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
 import de.hsbi.smartsocial.Exceptions.RefreshException;
-import de.hsbi.smartsocial.Model.DataPoint;
-import de.hsbi.smartsocial.Model.ProfileSetting;
-import de.hsbi.smartsocial.Model.Userachievement;
+import de.hsbi.smartsocial.Model.*;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.container.ContainerRequestContext;
@@ -23,8 +21,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +40,9 @@ public class UtilityService {
 
     @Inject
     private ProfileSettingsService profileSettingsService;
+
+    @Inject
+    QuestService questService;
 
     public Response refreshData() {
 
@@ -168,6 +171,26 @@ public class UtilityService {
         }
 
         return route;
+    }
+
+    public boolean checkQuests(Long userId) {
+        List<Userquest> userquests = questService.getByUserId(userId);
+
+        if (userquests == null || userquests.isEmpty()) {
+            return false;
+        }
+
+        for (Userquest userquest : userquests) {
+            if (userquest.getCompletionDate() == null) {
+                if (userquest.getQuest().getType().equals("distance")) {
+                    BigDecimal distance = leaderboardService.getPersonalStats(userId).getKilometers();
+                    if (userquest.getQuest().getAmount() <= distance.doubleValue()) {
+                        userquest.setCompletionDate(LocalDate.now());
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     /**

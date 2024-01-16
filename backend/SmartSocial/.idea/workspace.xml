@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="977a4a0a-101e-426c-8816-e22bd02b6900" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/ProfileSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/ProfileSettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/UtilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/UtilityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/QuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Controller/QuestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Model/Quest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/QuestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Persistence/QuestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/QuestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/QuestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/UtilityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/smartsocial/Service/UtilityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/de/hsbi/smartsocial/Controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/de/hsbi/smartsocial/Controller/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/de/hsbi/smartsocial/Controller/ProfileSettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/de/hsbi/smartsocial/Controller/ProfileSettingsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/de/hsbi/smartsocial/Controller/QuestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/de/hsbi/smartsocial/Controller/QuestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/project-info.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/SmartSocial/WEB-INF/classes/project-info.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/applications/__internal/SmartSocial/SmartSocial-26045432271030928742.2.war" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/domain.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/domain.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/docroot/SWAC/sites/leaderboard/leaderboard.html" beforeDir="false" />
@@ -356,7 +361,7 @@
       <workItem from="1704807148204" duration="332000" />
       <workItem from="1705056557805" duration="613000" />
       <workItem from="1705311345296" duration="818000" />
-      <workItem from="1705312186459" duration="16302000" />
+      <workItem from="1705312186459" duration="18440000" />
     </task>
     <servers />
   </component>

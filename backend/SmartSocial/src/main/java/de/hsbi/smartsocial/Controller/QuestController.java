@@ -4,6 +4,7 @@ import de.fhbielefeld.smartuser.annotations.SmartUserAuth;
 import de.hsbi.smartsocial.Exceptions.QuestInvalidException;
 import de.hsbi.smartsocial.Exceptions.QuestNotFoundException;
 import de.hsbi.smartsocial.Model.Quest;
+import de.hsbi.smartsocial.Model.Userquest;
 import de.hsbi.smartsocial.Service.QuestService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
@@ -12,8 +13,6 @@ import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import static de.hsbi.smartsocial.Service.UtilityService.isUserValid;
@@ -67,7 +66,7 @@ public class QuestController {
     @ApiResponse(responseCode = "200", description = "Returns all quests by user id")
     public Response getByUserId(@PathParam("id") Long id, @Context ContainerRequestContext requestContext) {
         if (isUserValid(id, requestContext)) {
-            List<Quest> quests = questService.getByUserId(id);
+            List<Userquest> quests = questService.getByUserId(id);
             if (quests != null) {
                 return Response.ok(quests).build();
             } else {
