@@ -35,21 +35,32 @@ export default class Upload extends View {
             desc: 'Input element which allows selecting a file.'
         };
         this.desc.reqPerTpl[2] = {
-            selc: '.swac_uploadresult',
-            desc: 'Table element where the results can be displayed.'
-        };
-        this.desc.reqPerTpl[3] = {
-            selc: '.swac_uploadprogressbar',
+            selc: '.swac_upload_progressbar',
             desc: 'Progressbar element where to display the upload progress.'
         };
+        this.desc.reqPerTpl[3] = {
+            selc: '.swac_upload_status',
+            desc: 'Table element where status information about uploads are displayed.'
+        };
+
         this.desc.optPerTpl[0] = {
-            selc: '.swac_uploadDoBtn',
+            selc: '.swac_upload_doBtn',
             desc: 'Button to start the upload process manually.'
         };
         this.desc.optPerTpl[1] = {
-            selc: '.swac_uploadClrBtn',
+            selc: '.swac_upload_ClrBtn',
             desc: 'Button to clear all files for upload in queue.'
         };
+        this.desc.optPerTpl[2] = {
+            selc: '.swac_upload_removeBtn',
+            desc: 'Button to remove all files from upload queue.'
+        };
+        this.desc.optPerTpl[3] = {
+            selc: '.swac_upload_preview',
+            desc: 'Area where previews of the upload files are displayed.'
+        };
+
+
         this.desc.reqPerSet[0] = {
             name: 'id',
             desc: 'The id of the upload, maybe positive (for allready uploaded files) or negative (for only local available files)'
@@ -62,6 +73,11 @@ export default class Upload extends View {
             name: 'state',
             desc: 'State of the file. Either one of local or uploaded.'
         };
+        this.desc.reqPerSet[3] = {
+            name: 'title',
+            desc: 'Upload files title.'
+        };
+
 
         if (!options.showWhenNoData)
             this.options.showWhenNoData = true;
@@ -73,7 +89,8 @@ export default class Upload extends View {
             this.options.multiple = true;
         this.desc.opts[1] = {
             name: "uploadTargetURL",
-            desc: "Address of the REST-Interface accepting file uploads"
+            desc: "Address of the REST-Interface accepting file uploads",
+            example: '/SmartFile/smartfile/file/MYFILESPACE'
         };
         if (!options.uploadTargetURL)
             this.options.uploadTargetURL = null;
@@ -85,7 +102,15 @@ export default class Upload extends View {
             this.options.uploadTargetVar = 'file';
         this.desc.opts[3] = {
             name: "dataComponents",
-            desc: "Datacomponents are components (swac components) wich data should be send along with the file upload. To add datacomponents specify objects with selector = a css selector required = true or false if required or not requiredMessage = Message to show when required data is not given requiredGt = Value should be grather then (gt)"
+            desc: "Datacomponents are components (swac components) wich data should be send along with the file upload. To add datacomponents specify objects with selector = a css selector required = true or false if required or not requiredMessage = Message to show when required data is not given requiredGt = Value should be grather then (gt)",
+            example: [{
+                    selector: '#example2_select',
+                    sendAttribute: 'selection',
+                    required: true,
+                    requiredMessage: 'Please choose a target',
+                    requiredGt: 0,
+                    requiredGtMessage: 'The target must be greater than 0.'
+                }]
         };
         if (!options.dataComponents)
             this.options.dataComponents = [];
@@ -101,11 +126,16 @@ export default class Upload extends View {
         };
         if (!options.processingExecutionApi)
             this.options.processingExecutionApi = 'fileprocessing/process';
-
-        // ==== NEW ====
         this.desc.opts[6] = {
             name: "smartDataPorter",
-            desc: "Can be used to send uploaded files to a SmartDataPorter instance after the upload.\nfilespaceURL: URL to the filespace where the file will be uploaded.\nconfig: body that will be sent to the SmartDataPorter instance."
+            desc: "Can be used to send uploaded files to a SmartDataPorter instance after the upload.\n filespaceURL: URL to the filespace where the file will be uploaded.\n config: body that will be sent to the SmartDataPorter instance.",
+            example: {
+                filespaceURL: '/SmartFile/smartfile/',
+                config: {
+                    importer: 'FileImporter',
+                    parser: 'JSONParser'
+                }
+            }
         };
         if (!options.smartDataPorter)
             this.options.smartDataPorter = null;
@@ -117,20 +147,24 @@ export default class Upload extends View {
         };
         if (typeof options.autoUpload === 'undefined')
             this.options.autoUpload = false;
-        
+
         this.desc.opts[8] = {
             name: "dbname",
             desc: "Database name for indexedDB"
         };
         if (typeof options.dbname === 'undefined')
             this.options.dbname = false;
-        
+
         this.desc.opts[9] = {
             name: "objectstorename",
             desc: "Object store name for indexedDB"
         };
         if (typeof options.objectstorename === 'undefined')
             this.options.objectstorename = false;
+
+        this.desc.events[0] = {
+
+        }
 
         // Internal values
         this.preconditionsGiven = false;
@@ -325,7 +359,7 @@ export default class Upload extends View {
             });
 
             // Register upload on click function if button is available
-            let upDoBtn = this.requestor.querySelector('.swac_uploadDoBtn');
+            let upDoBtn = this.requestor.querySelector('.swac_upload_doBtn');
             if (upDoBtn) {
                 upDoBtn.onclick = (evt) => {
                     evt.preventDefault();
@@ -334,18 +368,20 @@ export default class Upload extends View {
             }
 
             // Register clear files on click function if button is available
-            let upClrBtn = this.requestor.querySelector('.swac_uploadClrBtn');
+            let upClrBtn = this.requestor.querySelector('.swac_upload_ClrBtn');
             if (upClrBtn) {
                 upClrBtn.onclick = (evt) => {
                     evt.preventDefault();
                     this.filesdb.clearFiles().then(() => {
-                        let resulttableElem = document.querySelector('.swac_uploadstatus');
+                        let resulttableElem = document.querySelector('.swac_upload_status');
                         while (resulttableElem.children.length > 1) {
                             resulttableElem.removeChild(resulttableElem.lastChild);
                         }
-                        let previewElem = document.querySelector('.swac_uploadpreview');
-                        while (previewElem.children.length > 0) {
-                            previewElem.removeChild(previewElem.lastChild);
+                        let previewElem = document.querySelector('.swac_upload_preview');
+                        if (previewElem) {
+                            while (previewElem.children.length > 0) {
+                                previewElem.removeChild(previewElem.lastChild);
+                            }
                         }
                     });
                 };
@@ -506,7 +542,7 @@ export default class Upload extends View {
      */
     uploadFiles() {
         // Disable upload button
-        let upDoBtn = this.requestor.querySelector('.swac_uploadDoBtn');
+        let upDoBtn = this.requestor.querySelector('.swac_upload_doBtn');
         if (upDoBtn) {
             upDoBtn.disabled = true;
         }
@@ -584,29 +620,32 @@ export default class Upload extends View {
                     localdb_key: set.localdb_key,
                 });
                 // Update preview title
-                if (previewElement) previewElement.querySelector('.title').innerHTML = set.title;
+                if (previewElement)
+                    previewElement.querySelector('.title').innerHTML = set.title;
             }
         }
 
         //Preview
         let previewElement = null;
-        const parentPreviewElement = this.requestor.querySelector('.swac_uploadpreview');
+        const parentPreviewElement = this.requestor.querySelector('.swac_upload_preview');
         if (parentPreviewElement) {
             previewElement = this.createPreviewElement(set);
-            if (previewElement) parentPreviewElement.appendChild(previewElement);
+            if (previewElement)
+                parentPreviewElement.appendChild(previewElement);
         }
 
         // register remove button
-        let removeBtn = this.requestor.querySelector('[swac_setid="' + set.id + '"] .swac_uploadRemoveBtn');
+        let removeBtn = this.requestor.querySelector('[swac_setid="' + set.id + '"] .swac_upload_removeBtn');
         if (removeBtn) {
             removeBtn.onclick = (evt) => {
                 evt.preventDefault();
                 this.filesdb.deleteFile(set)
-                .then((file) => {
-                    this.requestor.querySelector('[swac_setid="' + set.id + '"]').remove();
-                    // Remove preview element
-                    if (previewElement) previewElement.remove();
-                })
+                        .then((file) => {
+                            this.requestor.querySelector('[swac_setid="' + set.id + '"]').remove();
+                            // Remove preview element
+                            if (previewElement)
+                                previewElement.remove();
+                        })
             }
         }
     }
@@ -619,7 +658,7 @@ export default class Upload extends View {
      */
     generateStatusTR(upFile) {
         Msg.warn('upload', 'Generate statusTR for uploadid: ' + upFile.uploadid);
-        let resulttableElem = document.querySelector('.swac_uploadstatus');
+        let resulttableElem = document.querySelector('.swac_upload_status');
         // Check if a old status exists
         let oldResultTR = resulttableElem.querySelector('#status_' + upFile.uploadid);
         if (oldResultTR !== null) {
@@ -1059,26 +1098,27 @@ export default class Upload extends View {
      */
     createPreviewElement(set) {
         const media_elem = this.getMediaElement(set);
-        if (!media_elem) return null;
+        if (!media_elem)
+            return null;
         media_elem.style = 'width: 400px; height: 400px; object-fit: contain;'
 
         const preview_elem = document.createElement('div');
         preview_elem.style = 'width: 430px; height: 430px;'
         preview_elem.setAttribute('swac_fileid', set.localdb_key);
-    
+
         const background_elem = document.createElement('div');
         background_elem.style = 'width: 430px; height: 430px; background: #f2f2f2; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 10px;'
-    
+
         const title_elem = document.createElement('div');
         title_elem.innerText = set.title ? set.title : set.filename;
         title_elem.style = 'padding-top: 20px; text-align: center;'
         title_elem.classList.add('uk-text-bold')
         title_elem.classList.add('title')
-    
+
         preview_elem.appendChild(title_elem);
         preview_elem.appendChild(background_elem);
         background_elem.appendChild(media_elem);
-    
+
         return preview_elem;
     }
 

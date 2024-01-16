@@ -67,7 +67,7 @@ window['mycomp_options] = {
    templateName: 'mytemplate'
 };
                     </code></pre>
-                
+
             <hr class="uk-divider-icon">
 
             <h2>Create a skin for an instance</h2>
@@ -118,6 +118,7 @@ window['mycomp_options] = {
                 <tr><td>swac_repeatedForValue</td><td>The content of this area was repeated for a value. It contains bindPoints fot the data.</td></tr>
                 <tr><td>swac_repeatForPluginNav</td><td>Marks an area as point for inserts of navigation information from view plugins</td></tr>
                 <tr><td>swac_repeatForPluginCont</td><td>Marks an area as point for inserts of contents from view plugins</td></tr>
+                <tr><td>swac_parseBindPoints</td><td>Marks an CODE or PRE element, that placeholder {data} should be converted to bindpoints.</td></tr>
             </table>
 
             <h2>Data placeholders</h2>
@@ -132,7 +133,9 @@ window['mycomp_options] = {
                 <br>
                 Finally {attrName} is a metadata placeholder. It will be filled whith the 
                 name of the attribute which is handled inside the block. All metadata
-                placeholders will be generated from SWAC.</p>
+                placeholders will be generated from SWAC.
+                <br>Placeholder inside of PRE and CODE element are not converted 
+                to bindpoints unless you add the attribute swac_parseBindPoints.</p>
 
             Table of metadata placeholders:
             <table class="uk-table uk-table-divider">
@@ -146,12 +149,10 @@ window['mycomp_options] = {
             </table>
 
             <h2>Data formation</h2>
-            <p>Inserted data can be formatted by swac. Use the swac_round attribute to round numbers. More styling can be done with the Datadescription component.</p>
-            
-            <pre><code class="lang-html">
-                &lt;span swac_round="2"&gt;{value}&lt;span&gt;
-            </code></pre>
-            
+            <p>Data can be formatted by swac. Language depending formataions are described on <a href="multilanguage.html">Multilanguage support</a>.
+                Value depending formations can be done by the <a href="../visualisation/datadescription.html">Datadescription component</a>.</p>
+
+
             <h2>Working with images</h2>
             <p>Path to images can be used the same way like other data attributes.
                 But to prevent uneccessery requests to the placeholder mark, place the 
@@ -222,6 +223,12 @@ window['mycomp_options] = {
                 <tr><td>.swac_onscreen</td><td>Only shown when page is viewed on screen</td></tr>
                 <tr><td>.swac_pagebreakbefore</td><td>Make a pagebreak when printing the page right before the element.</td></tr>
             </table>
+
+            <h2>Custom style instructions</h2>
+            <p>If you create a component template (not custom templte), all used 
+                css classes are automatically documented on the documentation page.
+                For this you need to add reqPerTpl oder optPerTpl descriptions in the components "desc" attribute. See example at the Sample Component.
+                If you have style instructions that are only with visual effects you should name them with prefix "swac_format". Then you don't need a desc entry.</p>
 
             <h2>Next</h2>
             <p>Have a look at <a href="5_nested.html">how to nest components together.</a></p>

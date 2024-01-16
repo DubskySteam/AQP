@@ -14,9 +14,10 @@ var Mediaplayer_de = {
     save: 'Playlist speichern',
     titlepage: 'Mehr zum Titel',
     title: "Titel",
+    title_download: "Dieses herunterladen",
     artist: "Künstler",
     album: "Album",
     license: "Lizenz",
-    link: "Infos"
+    info: "Infos"
 };
 export default Mediaplayer_de;

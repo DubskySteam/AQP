@@ -11,7 +11,7 @@ export default class Texteditor extends View {
 Can be used as texteditor with formating and lots of other enhanced functions.';
         this.desc.developers = 'Florian Fehring';
         this.desc.license = '(c) by Florian Fehring';
-        
+
         this.desc.depends[0] = {
             name: 'tinymce.min.js',
             path: SWAC.config.swac_root + 'components/Texteditor/libs/tinymce/tinymce.min.js',
@@ -90,7 +90,7 @@ Can be used as texteditor with formating and lots of other enhanced functions.';
                 id: 'infoconnect',
                 active: false
             });
-        }
+    }
     }
 
     init() {
@@ -184,16 +184,8 @@ Can be used as texteditor with formating and lots of other enhanced functions.';
         let thisRef = this;
         let savePromise = Model.save(dataCapsle);
         savePromise.then(function (dataCaps) {
-            // Add dataset to component if it is new
-            if (!formElem.getAttribute('swac_id')) {
-                for (let curResult of dataCaps) {
-                    thisRef.addSet(dataCapsle.fromName, curResult);
-                }
-            } else {
-                //Update dataset stored
-                for (let curResult of dataCaps) {
-                    thisRef.updateSet(dataCapsle.fromName, curResult);
-                }
+            for (let curResult of dataCaps) {
+                thisRef.addSet(dataCapsle.fromName, curResult);
             }
         });
     }

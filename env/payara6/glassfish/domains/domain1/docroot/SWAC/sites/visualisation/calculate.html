@@ -33,6 +33,16 @@
             <pre><code class="lang-html">
 &lt;div id="calculate_example1" swa="Calculate FROM ../data/visualisation/calculate/uicurve_ohnep.json"&gt;&lt;/div&gt;
         </code></pre>
+            <pre><code class="lang-javascript">
+window['calculate_example1_options'] = {
+    calculations: [
+        {
+            formular: "u * i",  // Any JS formular
+            target: "p"         // Name of the target attribute
+        }
+    ]
+};            
+</code></pre>
             <p>Calculates the P column.</p>
 
             <div id="calculate_example1" swa="Calculate FROM ../../data/visualisation/calculate/uicurve_ohnep.json"></div>
@@ -43,7 +53,19 @@
             <pre><code class="lang-html">
 &lt;div id="calculate_example2" swa="Calculate FROM ../../data/visualisation/calculate/fromsources.json TEMPLATE sumonly"&gt;&lt;/div&gt;
         </code></pre>
+            <pre><code class="lang-javascript">
+window['calculate_example2_options'] = {
+    sourceattr: 'source', // Name of the attribute that contains an URL to the datasets
+    calculations: [
+        {
+            formular: "voltage * current",
+            target: "yield"
+        }
+    ]
+};
+            </code></pre>
             
+            <b>The datasource used. Contains URLs to datasets.</b>
             <pre><code class="lang-json">
 {
     "list": [

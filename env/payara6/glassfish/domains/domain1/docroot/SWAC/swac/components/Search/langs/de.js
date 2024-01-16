@@ -1,4 +1,5 @@
 var Search_de = {
+    search: 'Suchen Sie hier',
     running: 'Suche läuft...',
     nothingfound: 'Es wurde nichts gefunden',
     searcherror: 'Es ist ein Fehler aufgetreten',

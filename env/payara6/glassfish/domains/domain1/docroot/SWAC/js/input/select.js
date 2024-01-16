@@ -36,8 +36,7 @@ expandSourcesMap.set('../../data/input/select/exampleHierarchical.json', {
     sizeRequestor: {
         fromName: '../../data/input/select/exampleExpandsize.json',
         fromWheres: {
-            id: '{swac_setid}',
-            no: '{swac_setno}'
+            id: '{swac_setid}'
         }
     },
     dataRequestor: {
@@ -56,8 +55,7 @@ expandSourcesMap10.set('../../data/input/select/exampleHierarchical.json', {
     sizeRequestor: {
         fromName: '../../data/input/select/exampleExpandsize.json',
         fromWheres: {
-            id: '{swac_setid}',
-            no: '{swac_setno}'
+            id: '{swac_setid}'
         }
     },
     clusterMinimum: 10,

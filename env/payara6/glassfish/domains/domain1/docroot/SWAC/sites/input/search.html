@@ -59,7 +59,7 @@
         </code></pre>
 
             <pre><code class="lang-javascript">
-search_example1_options = {
+var search_example1_options = {
     searchsources: [
         {
             type: 'SearchProviderFile',
@@ -79,7 +79,7 @@ search_example1_options = {
         </code></pre>
 
             <pre><code class="lang-javascript">
-search_example2_options = {
+var search_example2_options = {
     searchsources: [
         {
             type: 'SearchProviderRest',
@@ -99,7 +99,7 @@ search_example2_options = {
         </code></pre>
 
             <pre><code class="lang-javascript">
-search_example3_options = {
+var search_example3_options = {
     searchsources: [
         {
             type: 'SearchProviderRest',
@@ -110,7 +110,8 @@ search_example3_options = {
 
 // SearchEntryMakers must be loaded before they can used so wait for the
 // component that delivers the SearchEntryMaker
-window.SWAC.reactions.addReaction(function (requestors) {
+document.addEventListener('swac_components_complete', function () {
+  window.swac.reactions.addReaction(function (requestors) {
     // Get search component
     let searchcomp = requestors['search_example3'].swac_comp;
     // Register searchEntryMaker
@@ -121,7 +122,8 @@ window.SWAC.reactions.addReaction(function (requestors) {
     // Name of the attribut that holds the description
     searchcomp.options.searchresultentrymakers[0].descattr = 'desc';
     // There are linkattr and linktitleattr too
-}, 'search_example3');
+  }, 'search_example3');
+});
         </code></pre>
 
             <h3>Example 4: Useing advanced search with index search</h3>
@@ -136,7 +138,7 @@ window.SWAC.reactions.addReaction(function (requestors) {
         </code></pre>
 
             <pre><code class="lang-javascript">
-search_example4_options = {
+var search_example4_options = {
     searchsources: [
         {
             type: 'SearchProviderRest',
@@ -155,7 +157,8 @@ search_example4_options = {
     ]
 };
 
-window.SWAC.reactions.addReaction(function (requestors) {
+document.addEventListener('swac_components_complete', function () {
+  window.swac.reactions.addReaction(function (requestors) {
     // Get search component
     let searchcomp = requestors['search_example4'].swac_comp;
     // Register searchEntryMaker
@@ -166,7 +169,8 @@ window.SWAC.reactions.addReaction(function (requestors) {
     // Name of the attribut that holds the description
     searchcomp.options.searchresultentrymakers[0].attrs = ['title','desc','cat'];
     // There are linkattr and linktitleattr too
-}, 'search_example4');
+  }, 'search_example4');
+});
         </code></pre>
 
             <h3>Example 5: Useing more than one searchsource and group results</h3>
@@ -182,7 +186,7 @@ window.SWAC.reactions.addReaction(function (requestors) {
         </code></pre>
 
             <pre><code class="lang-javascript">
-search_example5_options = {
+var search_example5_options = {
     searchsources: [
         {
             type: 'SearchProviderRest',
@@ -213,7 +217,8 @@ search_example5_options = {
     ]
 };
 
-window.SWAC.reactions.addReaction(function (requestors) {
+document.addEventListener('swac_components_complete', function () {
+  window.swac.reactions.addReaction(function (requestors) {
     // Get search component
     let searchcomp = requestors['search_example5'].swac_comp;
     // Register searchEntryMaker
@@ -225,7 +230,8 @@ window.SWAC.reactions.addReaction(function (requestors) {
     searchcomp.options.searchresultentrymakers[0].attrs = ['title','desc','cat'];
     searchcomp.options.searchresultentrymakers[0].resulturl = 'result.html?id={id}';
     // There are linkattr and linktitleattr too
-}, 'search_example5');
+  }, 'search_example5');
+});
         </code></pre>
             
             <h3>Example 6: Find datasources with search</h3>
@@ -235,7 +241,7 @@ window.SWAC.reactions.addReaction(function (requestors) {
             <div id="search_example6" swa="Search"></div>
             
             <pre><code class="lang-javascript">
-search_example6_options = {
+var search_example6_options = {
     searchsources: [
         {
             type: 'SearchProviderRest',

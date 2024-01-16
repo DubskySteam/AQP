@@ -6,10 +6,7 @@ import Msg from '../../Msg.js';
  * This component realises an navigation and it's navigation layout elements
  */
 export default class Navigation extends View {
-    /*
-     * Constructs a new component object and transfers the config to the
-     * object
-     */
+
     constructor(options = {}) {
         super(options);
         this.name = 'Navigation';
@@ -42,8 +39,16 @@ export default class Navigation extends View {
         };
 
         this.desc.optPerTpl[0] = {
-            sel: '.swac_nav_addons',
+            selc: '.swac_nav_addons',
             desc: 'Place where to add addons to the navigation. (User, language selection, ...)'
+        }
+        this.desc.optPerTpl[1] = {
+            selc: '.swac_nav_sitemap',
+            desc: 'Element where to place a sitemap.'
+        }
+        this.desc.optPerTpl[2] = {
+            selc: '.swac_navigation_sitemapsave',
+            desc: 'Button to save the sitemap.'
         }
 
         this.desc.reqPerSet[0] = {
@@ -118,7 +123,7 @@ export default class Navigation extends View {
             let srcsets = this.requestor.querySelectorAll('[srcset]');
             for (let curImg of srcsets) {
                 let imgsrc = curImg.getAttribute('srcset').replace('logo', this.options.logoName);
-                curImg.setAttribute('srcset', SWAC.config.app_root + imgsrc);
+                curImg.setAttribute('srcset', SWAC.config.app_root + '/' + imgsrc);
             }
             let srcs = this.requestor.querySelectorAll('[src]');
             for (let curImg of srcs) {

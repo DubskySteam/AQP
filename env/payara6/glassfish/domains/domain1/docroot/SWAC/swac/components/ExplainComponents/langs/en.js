@@ -9,8 +9,12 @@ var ExplainComponents_en = {
     functions : "Functions",
     noFunctions : "This component has no external useable functions.",
     noParams : 'This method has no parameters',
-    paramName : 'Name',
-    paramDescription : 'Description',
+    paramName : 'Parameter name',
+    paramType : 'Parameter type',
+    paramDesc : 'Description',
+    noReturn: 'No return value',
+    returnType: 'Return type',
+    returnDesc: 'Return description',
     templates : "Available templates",
     template : "Template requirements",
     tplsNone : "This component has no Templates.",
@@ -35,6 +39,9 @@ var ExplainComponents_en = {
     optionsDefault : "Default",
     optionsExample: "Example",
     optionsNoExample: "No example available",
-    plugins: "Plugins"
+    plugins: "Plugins",
+    params: "Parameters and return value",
+    events: 'Events',
+    eventsdesc: 'Here are the events listed, thrown by this component. Each event is implemented as a JS CustomEvent. The field "detail" contains the described data.'
 };
 export default ExplainComponents_en;

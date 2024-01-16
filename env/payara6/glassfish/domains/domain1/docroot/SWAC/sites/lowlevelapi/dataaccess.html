@@ -30,6 +30,30 @@
                 as allways but you will have the advantage of databinding. Modify in 
                 your code - automatic see results in components.</p>
 
+            <h2>Access data from component</h2>
+            <p>If you need data, that is allready loaded by a component. You can access those data over the component object.
+                <br>Be aware, that if you modify the content of a dataset, it will change the data in the component, too.</p>
+            
+            <pre><code class="lang-javascript">
+// Wait for component to be ready
+window.swac.reactions.addReaction(function (requestors) {
+    // Get the component element
+    let mycompelem = document.querySelector('#mycomp');
+    // If you are inside a reaction, you can use also use the requestors parameter
+    mycompelem = requestors["present_example1"];
+    // Get the component data array
+    let datasources = mycompelem.swac_comp.data;
+    // Get a datasource that name you know (else iterate through the array)
+    let mydatasource = datasources['mydatasource'];
+    // Get sets
+    let mydatasets = mydatasource.getSets();
+    // Access set with it 2
+    let set2 = mydatasets[2];
+}, "present_example1");
+</code></pre>
+            
+            
+            
             <h2>Load data with DataRequestor</h2>
             <p>You can access data by useing window.swac.Model.load(). The 
                 object given to Model.load() is a DataRequestor.

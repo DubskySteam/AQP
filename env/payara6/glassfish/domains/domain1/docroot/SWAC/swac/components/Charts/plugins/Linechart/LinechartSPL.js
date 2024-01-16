@@ -57,6 +57,15 @@ export default class LinechartSPL extends Plugin {
         // Get component where this plugin instance belongs to
         let comp = this.requestor.parent.swac_comp;
 
+        // Check if xAxis attr exists
+        if (!set[comp.options.xAxisAttrName]) {
+            Msg.error('LinechartSPL', 'The attribute >' + comp.options.xAxisAttrName + '< does not exists in dataset >' + set.swac_fromName + '[' + set.id + ']<. Cannot add set to chart.', comp.requestor);
+            return;
+        }
+
+        // Add x value
+        this.chart.config._config.data.labels.push(set[comp.options.xAxisAttrName]);
+
         // Calculate color for dataset useing datadescription component
         let col = 'gray';
         if (comp.datadescription)
@@ -64,14 +73,17 @@ export default class LinechartSPL extends Plugin {
 
         let rsName = comp.getReadableSourceName(set.swac_fromName);
         let sourceFound = false;
+        // Add y values to the datasets
         for (let curSets of this.chart.data.datasets) {
-            // Add new dataset to the correct chart datasets
-            if (rsName === curSets.label) {
-                curSets.data.push(set);
-                if (comp.datadescription)
-                    curSets.backgroundColor.push(col);
-                sourceFound = true;
-                break;
+            for (let curYAttr of comp.options.yAxisAttrNames) {
+                // Add new dataset to the correct chart datasets
+                if (rsName + '_' + curYAttr === curSets.label) {
+                    curSets.data.push(set);
+                    if (comp.datadescription)
+                        curSets.backgroundColor.push(col);
+                    sourceFound = true;
+                    break;
+                }
             }
         }
 
@@ -87,7 +99,6 @@ export default class LinechartSPL extends Plugin {
             this.chart.data.datasets.push(odesc);
         }
 
-        this.chart.update();
         this.chart.update();
     }
 
@@ -114,74 +125,80 @@ export default class LinechartSPL extends Plugin {
                 text: comp.options.xAxisAttrName
             };
         }
+
+        // Check if xAxis attr exists
+        if (!set[comp.options.xAxisAttrName]) {
+            Msg.error('LinechartSPL', 'The attribute >' + comp.options.xAxisAttrName + '< does not exists in dataset >' + set.swac_fromName + '[' + set.id + ']<. Cannot add set to chart.', comp.requestor);
+            return;
+        }
+
         // Set type of xAxis
         if (!this.options.scales.x.type) {
             this.options.scales.x.type = comp.getScaleTypeForAttr(comp.options.xAxisAttrName);
         }
 
-        // Auto confgure yAxis1
-        if (!this.options.scales.y) {
-            this.options.scales.y = {};
-        }
-        // Add title for yAxis if not configured
-        if (!this.options.scales.y.title) {
-            this.options.scales.y.title = {
-                display: 'true',
-                align: 'center',
-                text: comp.options.yAxis1AttrName
-            }
-        }
-        // Set type of yAxis
-        if (!this.options.scales.y.type) {
-            let stype = comp.getScaleTypeForAttr(comp.options.yAxis1AttrName);
-            // Category type is only for x axis
-            if (stype !== 'category')
-                this.options.scales.y.type = stype;
-        }
-
-        //TODO reimplement yAxis2 support
-        // Auto confgure yAxis2
-//        if (comp.options.yAxis2AttrName && this.options.scales.yAxis2) {
-//            // Add title for yAxis if not configured
-//            if (!this.options.scales.yAxis2.title) {
-//                this.options.scales.yAxis2.title = {
-//                    display: 'true',
-//                    align: 'center',
-//                    text: comp.options.yAxis2AttrName
-//                }
-//            }
-//            // Set type of xAxis
-//            if (!this.options.scales.yAxis2.type) {
-//                this.options.scales.yAxis2.type = comp.getScaleTypeForAttr(comp.options.yAxis2AttrName);
-//            }
-//            this.options.scales.yAxis2.grid = {
-//                drawOnChartArea: false, // only want the grid lines for one axis to show up
-//            }
-//        } else if (!comp.options.yAxis2AttrName) {
-//            delete this.options.scales.yAxis2;
-//        }
+        // Add x value to list of labels
+        let label_inst = [set[comp.options.xAxisAttrName]];
 
         let readableSourceName = comp.getReadableSourceName(set.swac_fromName);
 
-        let ddesc = {
-            label: readableSourceName,
-            data: [set],
-            borderWidth: 1
+        // Create datasets array
+        let datasets_inst = [];
+
+        // Create parsing instruction (e.g. which attr should be shown on which axis?)
+        let parsing_inst = {
+            xAxisKey: comp.options.xAxisAttrName,
         };
-        // Calculate color for dataset useing datadescription component
-        if (comp.datadescription)
-            ddesc.backgroundColor = [comp.datadescription.getValueColor(set)];
+
+        // Create scales for y axis
+        for (let curYAttr of comp.options.yAxisAttrNames) {
+            // Auto confgure yAxis1
+            if (!this.options.scales['y_' + curYAttr]) {
+                this.options.scales['y_' + curYAttr] = {};
+            }
+            // Add title for yAxis if not configured
+            if (!this.options.scales['y_' + curYAttr].title) {
+                this.options.scales['y_' + curYAttr].title = {
+                    display: 'true',
+                    align: 'center',
+                    text: curYAttr
+                }
+            }
+            // Set type of yAxis
+            if (!this.options.scales['y_' + curYAttr].type) {
+                let stype = comp.getScaleTypeForAttr(curYAttr);
+                // Category type is only for x axis
+                if (stype !== 'category')
+                    this.options.scales['y_' + curYAttr].type = stype;
+            }
+            // Set assignmet of variable to axis
+            parsing_inst['y_' + curYAttr] = curYAttr;
+
+            // Create datasets description
+            let ddesc = {
+                label: readableSourceName + '_' + curYAttr,
+                data: [set],
+                borderWidth: 1,
+                yAxisID: 'y_' + curYAttr,
+                parsing: {
+                    xAxisKey: comp.options.xAxisAttrName,
+                    yAxisKey: curYAttr
+                }
+            };
+            // Calculate color for dataset useing datadescription component
+            if (comp.datadescription)
+                ddesc.backgroundColor = [comp.datadescription.getValueColor(set)];
+            datasets_inst.push(ddesc);
+        }
 
         this.chart = new Chart(ctx, {
             type: 'line',
             data: {
-                datasets: [ddesc]
+                labels: label_inst,
+                datasets: datasets_inst
             },
             options: {
-                parsing: {
-                    xAxisKey: comp.options.xAxisAttrName,
-                    yAxisKey: comp.options.yAxis1AttrName
-                },
+                parsing: parsing_inst,
                 scales: this.options.scales,
                 plugins: {
                     zoom: {
@@ -202,23 +219,27 @@ export default class LinechartSPL extends Plugin {
             }
         });
 
+        // Add zoom plugin
         var js = document.createElement("script");
-
         js.type = "text/javascript";
         js.src = '/SWAC/swac/components/Charts/libs/chartjs/chartjs-plugin-zoom.min.js';
-
         document.body.appendChild(js);
     }
 
     afterRemoveSet(fromName, id) {
+        // Get component where this plugin instance belongs to
+        let comp = this.requestor.parent.swac_comp;
+        let rsName = comp.getReadableSourceName(fromName);
         // Look at each source (datasets array entry in chart.js)
         for (let curSets of this.chart.data.datasets) {
-            if (curSets.label === fromName) {
-                // Look at each set
-                for (let i in curSets.data) {
-                    if (curSets.data[i].id === id) {
-                        curSets.data.splice(i, 1);
-                        break;
+            for (let curYAttr of comp.options.yAxisAttrNames) {
+                if (rsName + '_' + curYAttr === curSets.label) {
+                    // Look at each set
+                    for (let i in curSets.data) {
+                        if (curSets.data[i].id === id) {
+                            curSets.data.splice(i, 1);
+                            break;
+                        }
                     }
                 }
             }

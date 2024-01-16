@@ -35,7 +35,7 @@ export default class Download extends View {
             name: 'path',
             desc: 'Path to the downloadable file.'
         };
-        this.desc.reqPerSet[0] = {
+        this.desc.reqPerSet[1] = {
             name: 'mimetype',
             desc: 'Downloadable files mimetype.'
         };

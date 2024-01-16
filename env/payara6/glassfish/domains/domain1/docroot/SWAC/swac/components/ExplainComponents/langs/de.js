@@ -9,8 +9,12 @@ var ExplainComponents_de = {
     functions : "Funktionen",
     noFunctions : "Diese Komponente bietet keine extern nutzbaren Funktionen.",
     noParams : 'Diese Methode hat keine Parameter',
-    paramName : 'Name',
-    paramDescription : 'Beschreibung',
+    paramName : 'Paramater Name',
+    paramType: 'Parameter Typ',
+    paramDesc : 'Beschreibung',
+    noReturn: 'Kein Rückgabewert',
+    returnType: 'Rückgabetyp',
+    returnDesc: 'Rückgabe Beschreibung',
     templates : "Vefügbare Templates",
     template : "Anfoderungen an Templates",
     tplsNone : "Diese Komponente hat keine Templates.",
@@ -35,6 +39,9 @@ var ExplainComponents_de = {
     optionsDefault : "Standardwert",
     optionsExample: "Beispiel",
     optionsNoExample: "Kein Beispiel vorhanden",
-    plugins: "Plugins"
+    plugins: "Plugins",
+    params: "Parameter und Rückgabe",
+    events: 'Events',
+    eventsdesc: 'Nachfolgend sind die Events aufgeführt, welche von dieser Komponente gefeuert werden können. Jedes Event ist ein JS CustomEvent und die angegebene Daten werden im Attribut "detail" geliefert. REQUESTOR_Id ist durch die ID des swa-Elements zu ersetzen.'
 };
 export default ExplainComponents_de;

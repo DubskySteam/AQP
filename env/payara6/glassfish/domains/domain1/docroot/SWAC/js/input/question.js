@@ -4,7 +4,6 @@ var explaincomponent_options = {
 
 var example1_options = {};
 example1_options.showWhenNoData = false;
-example1_options.defaultSaveData = null;
 example1_options.timeToReanswer = null;
 example1_options.afterSaveTxt = 'Thank you for your request. We will answer as soon as possible.';
 example1_options.afterSaveLoc = 'http://vielendankseite';

@@ -22,7 +22,7 @@
 
 .swac_mediaplayer_control {
     display: inline-grid;
-    grid-template-columns: 210px auto 290px;
+    grid-template-columns: 125px auto 360px;
     width: 100%;
     background: #4d4444;
     color: #ffffff;
@@ -53,13 +53,13 @@ input[class="swac_mediaplayer_progress"]::-webkit-slider-runnable-track, input[c
 }
 
 input[type=range]::-moz-range-track {
- width: 100%;
- height: 19px;
- cursor: pointer;
- box-shadow: 0 4px 4px rgba(0,0,0,0.3) inset;
- background: linear-gradient(to right, #005fc2, #35A834 40%, #ffd400 65%, #FF6400);
- border-radius: 20px;
- border: 0.2px solid #010101;
+    width: 100%;
+    height: 19px;
+    cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.3) inset;
+    background: linear-gradient(to right, #005fc2, #35A834 40%, #ffd400 65%, #FF6400);
+    border-radius: 20px;
+    border: 0.2px solid #010101;
 }
 
 .swac_mediaplayer_overlay_default {
@@ -80,7 +80,7 @@ input[type=range]::-moz-range-track {
 
 .swac_mediaplayer_overlaymedia {
     margin: 0 auto;
-    border-radius: 10px; 
+    border-radius: 10px;
     width: 75%;
     height: 100%;
     overflow: hidden;
@@ -99,4 +99,53 @@ input[type=range]::-moz-range-track {
 .swac_mediaplayer_playing {
     font-weight: bold;
     border: 1px solid blue;
+}
+
+@media all and (max-width:640px) {
+    .swac_mediaplayer_fullscreen, .swac_mediaplayer_muteBtn, .swac_mediaplayer_volume, .swac_mediaplayer_downloadBtn {
+        display: none;
+    }
+
+    .swac_mediaplayer_table, .swac_mediaplayer_table thead, .swac_mediaplayer_table tbody, .swac_mediaplayer_table tr, .swac_mediaplayer_table th, .swac_mediaplayer_table td {
+        display: block;
+    }
+
+    .swac_mediaplayer_table {
+        text-align: right;
+    }
+    
+    .swac_mediaplayer_table th {
+        display: none;
+    }
+
+    .swac_mediaplayer_table .swac_repeatForSet {
+        display: none;
+    }
+
+    .swac_mediaplayer_table td:before {
+        float: left;
+        padding: 0 10px 0 0;
+        content: attr(data-label) ":";
+    }
+    
+    .swac_mediaplayer_table td {
+        height: 20px;
+    }
+
+    .swac_mediaplayer_control {
+        display: inline-grid;
+        grid-template-columns: 125px auto 150px;
+    }
+}
+
+@media print {
+    .swac_mediaplayer_title_download {
+        display: none;
+    }
+    .swac_mediaplayer_control {
+        display: none;
+    }
+    td {
+        padding: 0px !important;
+    }
 }

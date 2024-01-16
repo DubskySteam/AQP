@@ -46,6 +46,12 @@ export default class MapPinModalSPL extends Plugin {
                 },
             }
         };
+        this.desc.opts[1] = {
+            name: 'data_size',
+            desc: 'Number of datasets that should be displayed in the data view.'
+        };
+        if(typeof options.data_size === 'undefined')
+            this.options.data_size = 10;
 
         // Attributes for internal usage
         this.mappinmodal = null;
@@ -369,7 +375,7 @@ export default class MapPinModalSPL extends Plugin {
         const edit = document.createElement('div');
         edit.id = 'mappinmodal_swac_edit_marker_data';
         edit.classList.add('mappinmodal_swac_edit_marker_data');
-        edit.setAttribute('swa', `Edit FROM ${this.marker.feature.set.collection} TEMPLATE accordion_worldmap2d`);
+        edit.setAttribute('swa', 'Edit FROM ' + this.marker.feature.set.collection + ' WHERE size='+ this.options.data_size +' TEMPLATE accordion_worldmap2d');
         window.mappinmodal_swac_edit_marker_data_options = {
             mainSource: this.marker.feature.set.collection,
             notShownAttrs: {[this.marker.feature.set.collection]: ['id', 'name']},

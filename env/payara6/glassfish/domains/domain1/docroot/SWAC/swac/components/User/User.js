@@ -25,54 +25,58 @@ export default class User extends View {
             name: 'user_modal',
             desc: 'Opens an overlay about the whole page when the user is not logged in and gives the screen free when user is confirmed.'
         };
+
         this.desc.reqPerTpl[0] = {
-            selc: '.swac_user_loginform',
-            desc: 'Form element which contains the login dialog.'
-        };
-        this.desc.reqPerTpl[1] = {
-            selc: '.swac_user_form_username',
+            selc: '.swac_user_username',
             desc: 'Input element which provides the username from the loginform.'
         };
-        this.desc.reqPerTpl[2] = {
-            selc: '.swac_user_form_password',
+        this.desc.reqPerTpl[1] = {
+            selc: '.swac_user_password',
             desc: 'Input element which provides the password from the loginform.'
         };
-        this.desc.reqPerTpl[3] = {
+        this.desc.reqPerTpl[2] = {
             selc: '.swac_user_logining',
             desc: 'Area to display, when the login is in progress.'
         };
-        this.desc.reqPerTpl[4] = {
-            selc: '.swac_user_loginmodal',
-            desc: 'Area that should be displayed as dialog in modal login mode.'
-        };
-        this.desc.reqPerTpl[5] = {
-            selc: '.swac_user_modal_username',
-            desc: 'Input element which provides the username from the login modal.'
-        };
-        this.desc.reqPerTpl[6] = {
-            selc: '.swac_user_modal_password',
-            desc: 'Input element which provides the password from the login modal.'
-        };
-        this.desc.reqPerTpl[7] = {
+        this.desc.reqPerTpl[3] = {
             selc: '.swac_user_loginButtons',
             desc: 'Button that starts the login process.'
         };
-        this.desc.reqPerTpl[8] = {
+        this.desc.reqPerTpl[4] = {
             selc: '.swac_user_loginForms',
             desc: 'Forms that starts the login process when submitted.'
         };
-        this.desc.reqPerTpl[9] = {
+        this.desc.reqPerTpl[5] = {
             selc: '.swac_user_userarea',
             desc: 'Element that should be displayed for a logged in user.'
         };
-        this.desc.reqPerTpl[10] = {
+        this.desc.reqPerTpl[6] = {
             selc: '.swac_user_logout',
             desc: 'Element that loggs the user out, if clicked on.'
         };
-        this.desc.reqPerTpl[11] = {
+        this.desc.reqPerTpl[7] = {
             selc: '.swac_user_register',
             desc: 'Links where to click to be redirected to registration page.'
         }
+        this.desc.reqPerTpl[8] = {
+            selc: '.message-placeholder',
+            desc: 'Element where to place info and error messages.'
+        }
+
+        this.desc.optPerTpl[0] = {
+            selc: '.user_username',
+            desc: 'Elements where the username should be shown.'
+        };
+        this.desc.optPerTpl[1] = {
+            selc: '.swac_user_pwdlost',
+            desc: 'A-Elements where a link to the password lost page should be placed.'
+        };
+        this.desc.optPerTpl[2] = {
+            selc: '.swac_user_usraccount',
+            desc: 'Elemente where informations about the user account are displayed. If it contains a link element there is a link placed to the account page.'
+        };
+
+
 
         this.desc.optPerPage[0] = {
             selc: '.swac_userRegconfirmInput',
@@ -93,14 +97,15 @@ export default class User extends View {
 
         this.options.showWhenNoData = true;
         this.desc.opts[2] = {
-            name: "loginURL",
-            desc: "URL on which the login should be performed."
+            name: 'loginURL',
+            desc: 'URL on which the login should be performed. URLs to other webservers have to include the protocol (e.g. https://)',
+            example: '/SmartUser/smartuser/performLogin'
         };
         if (!options.loginURL)
             this.options.loginURL = null;
         this.desc.opts[3] = {
             name: "loginURLUsernameAttribute",
-            desc: "Name of the attribute where the username should be send in."
+            desc: "Name of the attribute where the username can be found."
         };
         if (!options.loginURLUsernameAttribute)
             this.options.loginURLUsernameAttribute = 'username';
@@ -115,24 +120,27 @@ export default class User extends View {
             desc: "A function that should be executed after login."
         };
         if (!options.afterLoginFunc)
-            this.options.afterLoginFunc = null;
+            this.options.afterLoginFunc = function () {};
 
         this.desc.opts[6] = {
             name: "afterLoginLoc",
-            desc: "URL to which the user should be redirected after login."
+            desc: "URL to which the user should be redirected after login.",
+            example: '../mywelcomepage.html'
         };
         if (!options.afterLoginLoc)
             this.options.afterLoginLoc = null;
 
         this.desc.opts[7] = {
-            name: "logoutURL",
-            desc: "URL on which the logout should be performed. If not given only the local login information will be deleted."
+            name: 'logoutURL',
+            desc: 'URL on which the logout should be performed. If not given only the local login information will be deleted.',
+            example: '/SmartUser/smartuser/performLogout'
         };
         if (!options.logoutURL)
             this.options.logoutURL = null;
         this.desc.opts[8] = {
             name: "afterLogoutLoc",
-            desc: "URL to which the user should be redirected after logout."
+            desc: "URL to which the user should be redirected after logout.",
+            example: "../mybyebyepage.html"
         };
         if (!options.afterLogoutLoc)
             this.options.afterLogoutLoc = null;
@@ -148,70 +156,80 @@ export default class User extends View {
             desc: "Function to execute every time a user is identified as logged in. Becomes the userdata as parameter."
         };
         if (!options.loggedinFunc)
-            this.options.loggedinFunc = null;
+            this.options.loggedinFunc = function () {};
         this.desc.opts[11] = {
             name: "loggedoutFunc",
             desc: "Function to execute every time a user is identified as logged out."
         };
         if (!options.loggedoutFunc)
-            this.options.loggedoutFunc = null;
+            this.options.loggedoutFunc = function () {};
         this.desc.opts[12] = {
             name: "registrationLink",
-            desc: "Link to the page where new users can register."
+            desc: "Link to the page where new users can register.",
+            example: "/SmartUser/sites/register.html"
         };
         if (!options.registrationLink)
             this.options.registrationLink = null;
         this.desc.opts[13] = {
             name: "confirmURL",
-            desc: "Link to the page where the confirm request should be send."
+            desc: "Link to the page where the confirm request should be send.",
+            example: "/SmartUser/smartuser/user/confirm"
         };
         if (!options.confirmURL)
             this.options.confirmURL = null;
         this.desc.opts[14] = {
             name: "loginPageURL",
-            desc: "Link to the page where the user can login"
+            desc: "Link to the page where the user can login",
+            example: "../myloginpage.html"
         };
         if (!options.loginPageURL)
             this.options.loginPageURL = null;
         this.desc.opts[15] = {
             name: "accountURL",
-            desc: "Link to the page where the user can edit the account"
+            desc: "Link to the page where the user can edit the account",
+            example: "../myaccountpage.html"
         };
         if (!options.accountURL)
             this.options.accountURL = null;
-        this.desc.opts[15] = {
+        this.desc.opts[16] = {
             name: "pwdlostURL",
-            desc: "Link to the page where the user can retrive a lost password"
+            desc: "Link to the page where the user can retrive a lost password",
+            example: "../mylostpwd.html"
         };
         if (!options.pwdlostURL)
             this.options.pwdlostURL = null;
-        this.desc.opts[15] = {
+        this.desc.opts[17] = {
             name: "privacyURL",
-            desc: "Link where the user can find the privcy statement."
+            desc: "Link where the user can find the privacy statement.",
+            example: "../privacy.html"
         };
         if (!options.privacyURL)
             this.options.privacyURL = null;
-        this.desc.opts[16] = {
+        this.desc.opts[18] = {
             name: "termsURL",
-            desc: "Link whre the user can find the terms of use."
+            desc: "Link whre the user can find the terms of use.",
+            example: "../terms.html"
         };
         if (!options.termsURL)
             this.options.termsURL = null;
-        this.desc.opts[17] = {
+        this.desc.opts[19] = {
             name: "saveURL",
-            desc: "URL where to send users data to create or update users"
+            desc: "URL where to send users data to create or update users",
+            example: "/SmartUser/smartuser/create"
         };
         if (!options.saveURL)
             this.options.saveURL = null;
-        this.desc.opts[18] = {
+        this.desc.opts[20] = {
             name: "requestMailloginURL",
-            desc: "URL where to request the send of a one time login mail"
+            desc: "URL where to request the send of a one time login mail",
+            example: "/SmartUser/smartuser/onetimelogin"
         };
         if (!options.requestMailloginURL)
             this.options.requestMailloginURL = '/SmartUser/smartuser/user/requestmaillogin';
-        this.desc.opts[19] = {
+        this.desc.opts[21] = {
             name: "performMailloginURL",
-            desc: "URL where to request the login with a one time token"
+            desc: "URL where to request the login with a one time token",
+            example: "/SmartUser/smartuser/onetimelogin"
         };
         if (!options.performMailloginURL)
             this.options.performMailloginURL = '/SmartUser/smartuser/user/performmaillogin';
@@ -392,7 +410,7 @@ export default class User extends View {
         if (!formElem.classList.contains('swac_user_loginForms')) {
             return;
         }
-        
+
         // Check if form was filled
         let datathere = formElem.reportValidity();
         if (!datathere) {
@@ -406,9 +424,9 @@ export default class User extends View {
         // Get logindata
         let logindata = {};
         logindata[this.options.loginURLUsernameAttribute] =
-                formElem.querySelector('[name="swac_user_username"]').value;
+                formElem.querySelector('.swac_user_username').value;
         logindata[this.options.loginURLPasswordAttribute] =
-                formElem.querySelector('[name="swac_user_password"]').value;
+                formElem.querySelector('.swac_user_password').value;
 
         // Perform login with post
         let thisRef = this;
@@ -476,26 +494,29 @@ export default class User extends View {
             thisRef.hideLoginProgress();
             thisRef.showLogin();
             let mphs = document.querySelectorAll('.message-placeholder');
-            if (response.status === 404) {
+
+            response.json().then(function (erg) {
+                // Get and translate messages
+                let errmsg;
+                for (let curErr of erg.errors) {
+                    if (SWAC.lang.dict.App && SWAC.lang.dict.User[curErr])
+                        errmsg += SWAC.lang.dict.User[curErr];
+                    else
+                        errmsg += curErr;
+                }
+                // Default err message
+                if (!errmsg)
+                    errmsg = SWAC.lang.dict.User.nologinpossible;
+
+                // Show messages
                 if (mphs.length === 0) {
-                    UIkit.modal.alert(SWAC.lang.dict.User.nologinpossible);
+                    UIkit.modal.alert(errmsg);
                 } else {
                     for (let placeholder of mphs) {
-                        placeholder.innerHTML = SWAC.lang.dict.User.nologinpossible;
+                        placeholder.innerHTML = erg.errors[0];
                     }
                 }
-            } else if (response.json) {
-                response.json().then(function (erg) {
-                    if (mphs.length === 0) {
-                        UIkit.modal.alert(erg.errors[0]);
-                    } else {
-                        for (let placeholder of mphs) {
-                            placeholder.innerHTML = erg.errors[0];
-                        }
-                    }
-                    return true;
-                });
-                } else {
+            }).catch(function (e) {
                 if (mphs.length === 0) {
                     UIkit.modal.alert(response);
                 } else {
@@ -503,13 +524,17 @@ export default class User extends View {
                         placeholder.innerHTML = response;
                     }
                 }
-            }
+            });
         });
     }
 
     saveLogin(userdata) {
-        // Set authtoken as cookie
-        document.cookie = "authtoken=" + userdata.data.authtoken + "; path=/; SameSite=None; Secure";
+        // Cookie setting not needed, cookies will be set by User Service (SmartUser)
+//        let cok = "authtoken=" + userdata.data.authtoken + "; path=/;";
+//        if(location.protocol === 'HTTPS')
+//            cok += " SameSite=None; Secure";
+//        // Set authtoken as cookie
+//        document.cookie = cok;
         localStorage.setItem('swac_currentUser', JSON.stringify(userdata.data));
         this.afterPerformLogin(userdata);
     }
@@ -551,7 +576,7 @@ export default class User extends View {
      * @returns {undefined}
      */
     showLoginProgress() {
-        let loginElem = document.querySelector('#swac_user_logining');
+        let loginElem = document.querySelector('.swac_user_logining');
         loginElem.classList.remove('swac_dontdisplay');
     }
 
@@ -561,7 +586,7 @@ export default class User extends View {
      * @returns {undefined}
      */
     hideLoginProgress() {
-        let loginElem = document.querySelector('#swac_user_logining');
+        let loginElem = document.querySelector('.swac_user_logining');
         loginElem.classList.add('swac_dontdisplay');
     }
 
@@ -584,26 +609,36 @@ export default class User extends View {
      * @returns {undefined}
      */
     showUser() {
+        Msg.flow('User', 'showUser() called', this.requestor);
         // Make userarea visible
         let userarea = document.querySelector('.swac_user_userarea');
         userarea.classList.remove('swac_dontdisplay');
         let usrlogin = document.querySelector('#swac_user_logindialog');
         usrlogin.classList.add('swac_dontdisplay');
         let useracc = document.querySelector('.swac_user_usraccount');
-        if (!useracc)
-            return;
-        if (this.options.accountURL) {
+        if (this.options.accountURL && useracc) {
             useracc.classList.remove('swac_dontdisplay');
             useracc.querySelector('a').href = this.options.accountURL;
         }
 
         let user = this.getCurrentUser();
+        Msg.flow('User', 'User >' + user.id + '< logged in. Showing users data on page', this.requestor);
         // Get users attributes
         for (let curUserAttr in user) {
             let usernameElems = document.querySelectorAll(".user_" + curUserAttr);
             for (let elem of usernameElems) {
                 elem.innerHTML = user[curUserAttr];
             }
+        }
+        let navElem = document.querySelector('[SWA^="Navigation"]');
+        if (navElem) {
+            // Add users id to urls in links
+            document.addEventListener('swac_' + navElem.id + '_repeatedForSet', function (evt) {
+                let useridElems = evt.detail.requestor.querySelectorAll('[href$="user_id="]');
+                for (let curUseridElem of useridElems) {
+                    curUseridElem.href = curUseridElem.href + user.id;
+                }
+            });
         }
 
         // Register logout function
@@ -711,7 +746,7 @@ export default class User extends View {
             this.showLogin();
         }
         if (this.options.loggedoutFunc)
-        this.options.loggedoutFunc();
+            this.options.loggedoutFunc();
     }
 
     /**
@@ -723,6 +758,10 @@ export default class User extends View {
 
         let codeElem = document.querySelector('.swac_userRegconfirmInput');
         let confurl = this.options.confirmURL;
+        if (!this.options.confirmURL) {
+            Msg.error('User', 'Confirmation could not be done. The option confirmURL is not set.', this.requestor);
+            return;
+        }
         // Build up logout data
         let confdata = {
             confirmToken: codeElem.value
@@ -751,8 +790,8 @@ export default class User extends View {
         let thisRef = this;
         Remote.fetchGet(confurl, confdata).then(function (response) {
             if (thisRef.options.afterLogoutLoc) {
-                UIkit.modal.alert(SWAC.lang.dict.User.mailloginsend).then(function() {
-                  window.location.href = thisRef.options.afterLogoutLoc;  
+                UIkit.modal.alert(SWAC.lang.dict.User.mailloginsend).then(function () {
+                    window.location.href = thisRef.options.afterLogoutLoc;
                 })
             } else {
                 UIkit.modal.alert(SWAC.lang.dict.User.mailloginsend);

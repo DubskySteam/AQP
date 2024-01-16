@@ -3,7 +3,7 @@
  */
 let core_en = {
     waitingbackend: "The app is starting. Please be patient.",
-    sourceerror: 'One datasource is not available. Will try it again soon.',
+    sourceerror: 'Datasource %source% is not available. Check configuration.',
     loaderror: 'Application could not be loaded. Click ok to try again.',
     loadingdata: "Loading data",
     loadingtemplate: "Loading view",

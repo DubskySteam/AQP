@@ -3,10 +3,10 @@ textarea {
     height: 400px;
 }
 
-.jsonreader_repeatForKey {
+.swac_jsonreader_repeatForKey {
     display: none;
 }
 
-.jsonreader_repeatForCollection, .jsonreader_repeatForDataKey, .jsonreader_repeatForDataset, .jsonreader_repeatForDataValue {
+.swac_jsonreader_repeatForCollection, .swac_jsonreader_repeatForDataKey, .swac_jsonreader_repeatForDataset, .swac_jsonreader_repeatForDataValue {
     display: none;
 }

@@ -36,7 +36,7 @@
         </code></pre>
             <pre><code class="lang-javascript">
 var user_options = {
-    loginURL: '../data/user/exampleuserdata.json'   // URL where to verify user
+    loginURL: '../../data/userinterface/user/exampleuserdata.json'   // URL where to verify user
 };
         </code></pre>
 
@@ -51,7 +51,7 @@ var user_options = {
         </code></pre>
             <pre><code class="lang-javascript">
 var user_options = {
-    loginURL: '../data/user/exampleuserdata.json'
+    loginURL: '../../data/userinterface/user/exampleuserdata.json'
 };
         </code></pre>
             <a href="user_example2.html" target="_blank">Open example</a>
@@ -67,7 +67,7 @@ var user_options = {
         </code></pre>
             <pre><code class="lang-javascript">
 var user_options = {
-    loginURL: '../data/user/exampleuserdata.json',
+    loginURL: '../../data/userinterface/user/exampleuserdata.json',
     afterLoginLoc: '../sites/user_example1.html',
     afterLogoutLoc: '../sites/user.html'
 };
@@ -81,23 +81,28 @@ var user_options = {
             <br>List of supported user attributes:
             </p>
             <ul>
-                <li>Username</li>
-                <li>Password</li>
-                <li>Firstname</li>
-                <li>Lastname</li>
-                <li>Street</li>
-                <li>Houseno</li>
-                <li>Zipcode</li>
-                <li>City</li>
-                <li>Country</li>
-                <li>Email</li>
-                <li>Phone</li>
-                <li>Language</li>
+                <li>username</li>
+                <li>password</li>
+                <li>firstname</li>
+                <li>lastname</li>
+                <li>street</li>
+                <li>houseno</li>
+                <li>zipcode</li>
+                <li>city</li>
+                <li>country</li>
+                <li>email</li>
+                <li>phone</li>
+                <li>lang</li>
+                <li>privacy_accepted</li>
+                <li>terms_accepted</li>
+                <li>parent_id</li>
             </ul>
-            
+            <br>Attribute "lang" stands for language and "parent_id" allows to set the id of the parent user (can be a group user)
+            <br>
+            <br>Sample code for useing the Edit component as registration form.
             <pre><code class="lang-html">
 &lt;div id="create_user" swa="Edit FROM ../../SmartUser/smartuser/user"&gt;
-    &lt;form class="swac_editForm"&gt;
+    &lt;form class="swac_repeatForSet swac_editForm"&gt;
         &lt;label class="uk-label" for="username">Username&lt;/label&gt;
         &lt;br&gt;&lt;input id="username" class="uk-input uk-form-width-medium" name="username" required&gt;
             &lt;br&gt;
@@ -110,13 +115,14 @@ var user_options = {
     &lt;/form&gt;
 &lt;/div&gt;
         </code></pre>
+            <br>Sample Edit component configuration for registration form:
             <pre><code class="lang-javascript">
 var create_user_options = {
     showWhenNoData: true,
     allowAdd: true,
     directOpenNew: true,
-    aterSave: function(fromName, set) {
-        UIkit.modal.alert(window.swac.lang.dict.RoNeKo.savedredirect);
+    afterSave: function(fromName, set) {
+        // Redirect to a site after registration
         window.location = 'regconfirm.html';
     }
 }; 
@@ -140,7 +146,15 @@ var create_user_options = {
             <br>This can also be used for setting a new password.</p>
             <a href="user_example6.html" target="_blank">Open example</a>
             
-            <h3>Example 7: Check if user is logged in</h3>
+            <h3>Example 7: How to use userdata on page</h3>
+            <p>Userdata is loaded after login and stored in localstorage. To use users data on the page, create tags with a class named user_ followed by the attribute you want to display on page.</p>
+            <pre><code class="lang-html">
+&lt;div class="user_firstname"&gt;&lt;/div&gt;
+&lt;div class="user_lastname"&gt;&lt;/div&gt;
+&lt;div class="user_otherattribute"&gt;&lt;/div&gt;
+            </code></pre>
+            
+            <h3>Example 8: Check if user is logged in and use usersdata</h3>
             <p>You can request the user component to get information about the currently logged in user.</p>
             <pre><code class="lang-javascript">
 // Get user User component from page
@@ -151,6 +165,10 @@ if(userElem?.swac_comp.userData) {
     userElem.swac_comp.userData.isadmin // usersdata should provide this boolean flag
 }
 </code></pre>
+            
+            
+            
+            
             
         </article>
         <footer>

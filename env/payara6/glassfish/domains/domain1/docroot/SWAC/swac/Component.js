@@ -29,56 +29,65 @@ export default class Component {
         this.options = options;
         this.desc.opts[1000] = {
             name: "attributeOrder",
-            desc: "Establish the order of the attributes from datasets. Attributes that are not in dataset will be not added."
+            desc: "Establish the order of the attributes from datasets. Attributes that are not in dataset will be not added.",
+            example: ["id", "title", "name"]
         };
         if (!this.options.attributeOrder)
             this.options.attributeOrder = ["id", "title", "name"];
         this.desc.opts[1001] = {
             name: "attributeDefaults",
-            desc: "Default data values for attributes in datasts, when they are not existing."
+            desc: "Default data values for attributes in datasts, when they are not existing. Defined per datasource.",
+            example: new Map([['../../data/exampledata_list.json', {job: 'programmer'}]])
         };
         if (!this.options.attributeDefaults)
             this.options.attributeDefaults = new Map();
         this.desc.opts[1002] = {
             name: "attributeRenames",
-            desc: "Renameing of attributes. Define incoming attribute name as key and target name as value"
+            desc: "Renameing of attributes. Define incoming attribute name as key and target name as value",
+            example: new Map([['doubleval', 'float'], ['intval', 'long']])
         };
         if (!this.options.attributeRenames)
             this.options.attributeRenames = new Map();
         this.desc.opts[1003] = {
             name: "reloadInterval",
-            desc: "Interval in which the component automaticaly reloads its data (-1 to deactivate)"
+            desc: "Interval in which the component automaticaly reloads its data (-1 to deactivate)",
+            example: 30
         };
         if (typeof this.options.reloadInterval === 'undefined')
             this.options.reloadInterval = -1;
-        this.desc.opts[1003] = {
+        this.desc.opts[1004] = {
             name: "plugins",
-            desc: "Configurations for plugins"
+            desc: "Configurations for plugins",
+            type: 'Map',
+            example: 'See plugins help page'
         };
         if (!this.options.plugins)
             this.options.plugins = null;
-        this.desc.opts[1004] = {
+        this.desc.opts[1005] = {
             name: "saveAlongData",
-            desc: "Data that shold be send to the API along with every saveDataset call."
+            desc: "Data that shold be send to the API along with every saveDataset call.",
+            example: {someattr: 'with some value'}
         };
         if (!this.options.saveAlongData)
             this.options.saveAlongData = null;
 
-        this.desc.opts[1005] = {
+        this.desc.opts[1006] = {
             name: "mainSource",
-            desc: "Name / Path of the source that contains the main datasets"
+            desc: "Name / Path of the source that contains the main datasets",
+            example: 'mydata.json'
         };
         if (!this.options.mainSource)
             this.options.mainSource = null;
 
-        this.desc.opts[1006] = {
+        this.desc.opts[1007] = {
             name: 'parentIdAttr',
-            desc: 'Name of the attribute that stores the reference to the parent dataset in child datasets'
+            desc: 'Name of the attribute that stores the reference to the parent dataset in child datasets',
+            example: 'parent_id'
         };
         if (!options.parentIdAttr)
             this.options.parentIdAttr = 'parent';
 
-        this.desc.opts[1007] = {
+        this.desc.opts[1008] = {
             name: "customAfterLoad",
             desc: "Function to execute after components load. Executed in Component context.",
             params: [
@@ -91,7 +100,7 @@ export default class Component {
         };
         if (!options.customAfterLoad)
             this.options.customAfterLoad = function () {};
-        this.desc.opts[1008] = {
+        this.desc.opts[1009] = {
             name: 'customBeforeAddSet',
             desc: 'Function to execute before a set is added. Executed in Component context.',
             params: [
@@ -104,7 +113,7 @@ export default class Component {
         };
         if (!options.customBeforeAddSet)
             this.options.customBeforeAddSet = function () {};
-        this.desc.opts[1009] = {
+        this.desc.opts[1010] = {
             name: 'customAfterAddSet',
             desc: 'Function to execute after a set was added. Executed in Component context.',
             params: [
@@ -117,7 +126,7 @@ export default class Component {
         };
         if (!options.customAfterAddSet)
             this.options.customAfterAddSet = function () {};
-        this.desc.opts[1010] = {
+        this.desc.opts[1011] = {
             name: 'customAfterRemoveSet',
             desc: 'Function to execute after a set was removed. Executed in Component context.',
             params: [
@@ -130,7 +139,7 @@ export default class Component {
         };
         if (!options.customAfterRemoveSet)
             this.options.customAfterRemoveSet = function () {};
-        this.desc.opts[1011] = {
+        this.desc.opts[1012] = {
             name: 'customBeforeSave',
             desc: 'Method that should be executed before save. Executed in Component context. \n\
                     If it returns false the save process is stopped.',
@@ -148,7 +157,7 @@ export default class Component {
         };
         if (!options.customBeforeSave)
             this.options.customBeforeSave = function () {};
-        this.desc.opts[1012] = {
+        this.desc.opts[1013] = {
             name: 'customAfterSave',
             desc: 'Method that should be executed after succsessfull save. Executed in Component context.',
             params: [
@@ -162,56 +171,59 @@ export default class Component {
         if (!options.customAfterSave)
             this.options.customAfterSave = function () {};
 
-        this.desc.opts[1013] = {
+        this.desc.opts[1014] = {
             name: 'supressChildMessages',
-            desc: 'If true messages from saveing childs are not shown.'
+            desc: 'If true messages from saveing childs are not shown.',
         };
         if (!options.supressChildMessages)
             this.options.supressChildMessages = true;
 
-        this.desc.opts[1014] = {
+        this.desc.opts[1015] = {
             name: 'makereadableDatesFrom',
-            desc: 'Makes user readable dates from ISO Dates of the given attributes if present.'
+            desc: 'Makes user readable dates from ISO Dates of the given attributes if present.',
+            example: ['ts', 'date']
         };
         if (!options.makereadableDatesFrom)
             this.options.makereadableDatesFrom = [];
 
-        this.desc.opts[1015] = {
+        this.desc.opts[1016] = {
             name: 'hideAfter',
-            desc: 'Makes the dataset is hidden, after the date stated in the given attribute.'
+            desc: 'Makes the dataset is hidden, after the date stated in the given attribute.',
         };
         if (!options.hideAfter)
             this.options.hideAfter = 'swac_until';
 
-        this.desc.opts[1016] = {
+        this.desc.opts[1017] = {
             name: 'checkSets',
-            desc: 'If true sets are checked on matching fromWheres before adding them. Setting nothing lets automatic determine right mode.'
+            desc: 'If true sets are checked on matching fromWheres before adding them. Setting nothing lets automatic determine right mode.',
+            example: true
         };
         if (!options.checkSets)
             this.options.checkSets = null;
 
-        this.desc.opts[1017] = {
+        this.desc.opts[1018] = {
             name: 'definitions',
-            desc: 'Map of definitions about expected data in the component. The key is the name of the datasource the definitions apply to and the value is an arraylist of objects with name, type, required attributes.'
+            desc: 'Map of definitions about expected data in the component. The key is the name of the datasource the definitions apply to and the value is an arraylist of objects with name, type, required attributes.',
         };
         if (!options.definitions)
             this.options.definitions = new Map();
 
-        this.desc.opts[1018] = {
+        this.desc.opts[1019] = {
             name: 'lazyLoading',
-            desc: 'The number of sets that should be lazy loaded on lazy load events. If 0 all data is loaded at once.'
+            desc: 'The number of sets that should be lazy loaded on lazy load events. If 0 all data is loaded at once.',
+            example: 10
         };
         if (!options.lazyLoading)
             this.options.lazyLoading = 0;
 
-        this.desc.opts[1019] = {
+        this.desc.opts[1020] = {
             name: 'lazyOrder',
             desc: 'Name of the attribute to order by when useing lazy fetching, and type of ordering e.g. DESC|ASC.'
         };
         if (!options.lazyOrder)
             this.options.lazyOrder = 'id,DESC';
 
-        this.desc.opts[1020] = {
+        this.desc.opts[1021] = {
             name: 'activeOn',
             desc: 'A datarequestor that indicates if the component should be shown or not. If the request returns with at least one dataset, the component is shown, otherwise it is not loaded.',
             example: {
@@ -224,14 +236,15 @@ export default class Component {
         if (!options.activeOn)
             this.options.activeOn = null;
 
-        this.desc.opts[1021] = {
+        this.desc.opts[1022] = {
             name: 'liveMode',
-            desc: 'In live mode the component fetches new data (with higher ids) periodically. Timespan is given in seconds.'
+            desc: 'In live mode the component fetches new data (with higher ids) periodically. Timespan is given in seconds.',
+            example: 10
         };
         if (!options.liveMode)
             this.options.liveMode = null;
 
-        this.desc.opts[1022] = {
+        this.desc.opts[1023] = {
             name: 'ecoMode',
             desc: 'Options for ecoMode. {liveMode= Seconds for liveMode update in ecoMode, reloadinterval= Seconds for reload in ecoMode, ecoColumn= Name of the column identifying sets for ecoMode}'
         };
@@ -268,14 +281,18 @@ export default class Component {
         };
         this.desc.funcs[1002] = {
             name: 'getParent',
-            desc: 'Gets the parent for the given dataset if it is registred in the component.',
+            desc: 'Gets the parent for the given dataset if it is registred in the component. But only if it is available in component.',
             params: [
                 {
                     name: 'set',
-                    desc: 'Parent dataset if available',
+                    desc: 'One dataset from the component.',
                     type: 'WatchableSet'
                 }
-            ]
+            ],
+            returns: {
+                desc: 'The dataset that is parent of the given dataset.',
+                type: 'WatchableSet'
+            }
         };
         this.desc.funcs[1003] = {
             name: 'getChilds',
@@ -286,7 +303,11 @@ export default class Component {
                     desc: 'Child datasets',
                     type: 'WatchableSet'
                 }
-            ]
+            ],
+            returns: {
+                desc: 'Array of datasets that are child datasets to the main datasets.',
+                type: 'WatchableSet[]'
+            }
         };
         this.desc.funcs[1004] = {
             name: 'getDataSorted',
@@ -297,7 +318,11 @@ export default class Component {
                     desc: 'Name of the attribute to sort after',
                     type: 'SourceAttribute'
                 }
-            ]
+            ],
+            returns: {
+                desc: 'Components data sorted by value, organised by datasource',
+                type: 'String[WatchableSet[]]'
+            }
         };
         this.desc.funcs[1005] = {
             name: 'removeData',
@@ -316,11 +341,11 @@ export default class Component {
         };
         this.desc.funcs[1007] = {
             name: 'addSet',
-            desc: 'Adds an single dataset to the chart. If dataset with id allready exists, it will be updated.',
+            desc: 'Adds an single dataset. Updates set if allready exists.',
             params: [
                 {
                     name: 'fromName',
-                    desc: 'Name of the datasource',
+                    desc: 'DEPRECATED Name of the datasource (fromName is also delivered in set.swac_fromName)',
                     type: 'SourceName'
                 },
                 {
@@ -335,30 +360,11 @@ DEFINTION of SET:\n\
 - optional: arrays in attributes are ignored',
                     type: 'WatchableSet'
                 }
-            ]
-        };
-        this.desc.funcs[1008] = {
-            name: 'updateSet',
-            desc: 'Updates a dataset. If youre unsure you can simply use addSet.',
-            params: [
-                {
-                    name: 'fromName',
-                    desc: 'Name of the datasource',
-                    type: 'SourceName'
-                },
-                {
-                    name: 'set',
-                    desc: 'Set with information (can be every kind of object with any number of attributes) \n\
-DEFINTION of SET:\n\
-- required: set.id = id of the dataset (unique across the given fromname)\n\
-- required: at least one value as an attribute (named whatever you want)\n\
-- optional: n values as attributes (named whatever you want)\n\
-- optional: functions are ignored\n\
-- optional: objects in attributes are ignored\n\
-- optional: arrays in attributes are ignored',
-                    type: 'WatchableSet'
-                }
-            ]
+            ],
+            returns: {
+                desc: 'Dataset added',
+                type: 'WatchableSet'
+            }
         };
         this.desc.funcs[1009] = {
             name: 'removeSets',
@@ -388,27 +394,33 @@ DEFINTION of SET:\n\
         this.desc.funcs[1011] = {
             name: 'getAvailableAttributes',
             desc: 'Gets all occuring attributes and their number of occurence over all loaded datasources.',
-            ret: 'Map of all attributes for every datasource. Map<String,String[]>'
+            returns: {
+                desc: 'Map of all attributes for every datasource.',
+                type: 'Map<String,String[]>'
+            }
         };
         this.desc.funcs[1012] = {
             name: 'getAvailableAttributesForDatasource',
             desc: 'Gets all occuring attributes and their number of occurence for a specific datasources.',
-            ret: 'List of all attributes fot the datasource. String[]',
             params: [
                 {
                     name: 'fromName',
                     desc: 'Datasource name',
                     type: 'SourceName'
                 }
-            ]
+            ],
+            returns: {
+                desc: 'List of all attributes fot the datasource.',
+                type: 'String[]',
+            }
         };
         this.desc.funcs[1013] = {
             name: 'reload',
-            desc: 'Reloads the data from the datasource and updates the component.'
-        };
-        this.desc.funcs[1014] = {
-            name: 'update',
-            desc: 'Updates the component with the data currently in data storage.'
+            desc: 'Reloads the data from the datasource and updates the component.',
+            returns: {
+                desc: 'Promise that resolves when the reload process is done.',
+                type: 'Promise'
+            }
         };
         this.desc.funcs[1015] = {
             name: 'exportJson',
@@ -440,7 +452,11 @@ DEFINTION of SET:\n\
                     desc: 'Number of space chars used for auto indent formating.',
                     type: 'int'
                 }
-            ]
+            ],
+            returns: {
+                desc: 'JSON representation of components data.',
+                type: 'String'
+            }
         };
         this.desc.funcs[1017] = {
             name: 'saveData',
@@ -537,6 +553,18 @@ DEFINTION of SET:\n\
                 type: 'boolean'
             }
         }
+        
+        this.desc.funcs[1026] = {
+            name: 'getData',
+            desc: 'Gets all datasources, with all data accessable by the component.',
+            returns: {
+                desc: 'Object with watchable sources. With key is the name of the source. Containing WatchableSets accessable with .getSets()',
+                type: 'WatchableSource{}'
+            }
+        }
+
+        // Documentation for events
+        this.desc.events = [];
 
         // Component data
         // key = fromName = Sooure of the data
@@ -613,17 +641,20 @@ DEFINTION of SET:\n\
         }
 
         // Add data to source
-        for(let curSet of data) {
-            if(curSet) {
+        for (let curSet of data) {
+            if (curSet) {
                 this.data[fromName].addSet(curSet);
             }
         }
+    }
+    
+    getData() {
+        return this.data;
     }
 
     // public function
     addDataFromReference(reference, idAttr, attributeDefaults, attributeRenames, reloadInterval) {
         return new Promise((resolve, reject) => {
-            let thisRef = this;
             Model.getFromReference(reference, idAttr, attributeDefaults, attributeRenames, reloadInterval, [this], this).then(function (dataCapsule) {
                 resolve(dataCapsule.data);
             }).catch(function (err) {
@@ -757,8 +788,8 @@ DEFINTION of SET:\n\
 
     //public function
     removeAllData() {
-        for (let curFromName in this.data) {
-            this.removeData(curFromName);
+        for (let curRemSource in this.data) {
+            this.removeData(curRemSource);
         }
     }
 
@@ -819,11 +850,12 @@ DEFINTION of SET:\n\
             return;
         }
         if (!this.requestor) {
-            Msg.error('Component', 'addSet() called on component class instead on component instance');
+            Msg.error('Component', 'addSet() called on component class instead on component instance', this.requestor);
             return;
         }
         if (Array.isArray(set)) {
-            Msg.error('Component', 'Given array as set. Use only single sets on addSet()');
+            Msg.error('Component', 'Given array as set. Use only single sets on addSet()', this.requestor);
+            return;
         }
         set.swac_fromName = fromName;
 
@@ -834,7 +866,8 @@ DEFINTION of SET:\n\
         }
         // Create WatchableSet if is not
         if (set.constructor.name !== 'WatchableSet') {
-//            set = new WatchableSet(set);
+            Msg.warn('Component', 'Given set >' + set.id + '< was no WatchableSet. Created WatchableSet. If this makes problems please create a bug report.', this.requestor);
+            set = new WatchableSet(set);
         }
         // Check if set can be used here
         if (!this.checkAcceptSet(set))
@@ -870,7 +903,7 @@ DEFINTION of SET:\n\
         }
         // update filter for ecoMode
         if (this.ecoMode.active)
-            this.requestor.fromWheres.filter = this.requestor.fromWheres.filter.replace('ecomode,eq,false','ecomode,eq,true');
+            this.requestor.fromWheres.filter = this.requestor.fromWheres.filter.replace('ecomode,eq,false', 'ecomode,eq,true');
 
         // If there is no mainSource or given set is of mainSource, check match filter
         if (this.requestor.fromWheres && Object.keys(this.requestor.fromWheres).length > 0
@@ -914,7 +947,11 @@ DEFINTION of SET:\n\
         if (this.options.customAfterAddSet) {
             // Set method to this to use context of component in method
             this.customAfterAddSet = this.options.customAfterAddSet;
-            this.customAfterAddSet(set);
+            try {
+                this.customAfterAddSet(set);
+            } catch (e) {
+                Msg.error('Component', 'Error while executeing >.customAfterAddSet(' + set.swac_fromName + '[' + set.id + ']: ' + e, this.requestor);
+            }
         }
         // Inform plugins about added sets
         if (this.pluginsystem) {
@@ -924,40 +961,6 @@ DEFINTION of SET:\n\
                 }
             }
         }
-    }
-
-    //public function
-    updateSet(fromName, set) {
-        if (!this.requestor) {
-            Msg.error('Component', 'updateSet() called on component class instead on component instance');
-            return;
-        }
-        if (!set) {
-            Msg.error('Component', 'No set given');
-            return;
-        }
-        if (!this.data[fromName]) {
-            Msg.error('Component', 'Datasource >' + fromName + '< is unkown.');
-            return;
-        }
-
-        let watchableSet = this.data[fromName].getSet(set.id);
-        if (watchableSet.notify) {
-            // Update attributes each for notification
-            for (let curAttr in set) {
-                watchableSet[curAttr] = set[curAttr];
-            }
-        } else {
-            Msg.warn('Component', 'Stored set >' + fromName
-                    + '[' + set.id + ']< is no WatchableSet.');
-            this.data[fromName].addSet(set);
-        }
-        this.afterUpdateSet(fromName, set);
-    }
-
-    //public function
-    afterUpdateSet(fromName, set) {
-        return;
     }
 
     //public function
@@ -1057,10 +1060,10 @@ DEFINTION of SET:\n\
      * @param {WatchableSource} source Source where the set was added
      * @param {WatchableSet} set Set that was added
      */
-    notifyDelSet(source, set) {
-        Msg.flow('Component', 'NOTIFY about deleted set >' + source.swac_fromName + '[' + set.id + ']< recived', this.requestor);
+    notifyDelSet(set) {
+        Msg.flow('Component', 'NOTIFY about deleted set >' + set.swac_fromName + '[' + set.id + ']< recived', this.requestor);
         set.id = parseInt(set.id);
-        this.afterRemoveSet(source.swac_fromName, set.id);
+        this.afterRemoveSet(set.swac_fromName, set.id);
     }
 
     //public function
@@ -1172,6 +1175,47 @@ DEFINTION of SET:\n\
             });
         });
     }
+    
+    /**
+     * Detects the attribute from data, that is best suited to be used for x-axis (labels)
+     * 
+     * @param {Object[]} data Object with datasources[datasets[dataobjects{}]]
+     * @param {Type} preferType Name of the datatype prefered for useage
+     * @param {String[]} ignore List of attribute names that should be ignored
+     * @returns {String} Name of the attribute to use for x-axis
+     */
+    getAllOverAvailableAttr(ignore = ['id'], typeOrder = ['timestamp', 'date', 'time', 'int8', 'int4', 'float8', 'float4']) {
+        let thisRef = this;
+        return new Promise((resolve, reject) => {
+            thisRef.getAttributeUseage().then(function (candidates) {
+                let allDatasetsCount = thisRef.countSets();
+                let candSorted = new Map();
+
+                // Sort after type
+                for (let curCandidate of candidates.values()) {
+                    if (!candSorted.has(curCandidate.type))
+                        candSorted.set(curCandidate.type, []);
+                    candSorted.get(curCandidate.type).push(curCandidate);
+                }
+                // Use first matching type
+                let firstMatch = null;
+                for (let curType of typeOrder) {
+                    let curCandidates = candSorted.get(curType);
+                    if (!curCandidates)
+                        continue;
+                    for (let curCand of curCandidates) {
+                        if (!ignore.includes(curCand.name) && curCand.count === allDatasetsCount) {
+                            firstMatch = curCand.name;
+                            break;
+                        }
+                    }
+                    if (firstMatch)
+                        break;
+                }
+                resolve(firstMatch);
+            });
+        });
+    }
 
     countSets(fromName) {
         let count = 0;
@@ -1264,11 +1308,6 @@ DEFINTION of SET:\n\
     }
 
     // public function
-    update() {
-        Msg.warn('Component', 'update() function not implemented yet.', this.requestor);
-    }
-
-    // public function
     exportJson(fromName, indent) {
         let data = this.getJson(fromName, indent);
         let dataURL = 'data:application/json,' + data;
@@ -1295,6 +1334,7 @@ DEFINTION of SET:\n\
 
     // public function
     saveData() {
+        Msg.flow('Component', 'saveData()', this.requestor);
         // Execute custom customBeforeSave()
         if (this.options.customBeforeSave) {
             this.options.customBeforeSave.bind(this);
@@ -1317,11 +1357,15 @@ DEFINTION of SET:\n\
                 fromName: curFromName
             };
             // Save data
-            Model.save(dataCapsle).then(function (dataCaps) {
+            Model.save(dataCapsle).then(function (data) {
                 thisRef.afterSave(dataCapsle);
                 if (thisRef.options.customAfterSave) {
                     thisRef.options.customAfterSave.bind(thisRef);
-                    thisRef.options.customAfterSave(thisRef.data[curFromName]);
+                    try {
+                        thisRef.options.customAfterSave(data);
+                    } catch (e) {
+                        Msg.error('Component', 'Error execution options.customAfterSave(): ' + e, this.requestor);
+                    }
                 }
             }).catch(function (error) {
                 UIkit.modal.alert(SWAC.lang.dict.core.model_saveerror);
@@ -1337,11 +1381,12 @@ DEFINTION of SET:\n\
     // public function
     async saveSet(set, supressMessages, setupdate = true) {
         Msg.flow('Component', 'saveSet()', this.requestor);
+        let thisRef = this;
         return new Promise((resolve, reject) => {
             // Execute custom customBeforeSave()
             if (this.options.customBeforeSave) {
-                this.options.customBeforeSave.bind(this);
-                if (this.options.customBeforeSave(set) === false) {
+                this.customBeforeSave = this.options.customBeforeSave;
+                if (this.customBeforeSave(set) === false) {
                     Msg.warn('Edit', 'customBeforeSave() returned false');
                     return;
                 }
@@ -1360,33 +1405,62 @@ DEFINTION of SET:\n\
                     saveset[curAttr] = this.options.saveAlongData[curAttr];
                 }
             }
+            // Set fromName if not given
+            if (!saveset.swac_fromName) {
+                saveset.swac_fromName = this.options.mainSource ? this.options.mainSource : this.requestor.fromName;
+            }
+
             let dataCapsule = {
                 data: [saveset],
                 fromName: saveset.swac_fromName
             };
-            let thisRef = this;
             Model.save(dataCapsule, supressMessages).then(function (dataCaps) {
+                // Get first dataset
+                let savedSet;
+                for (let curSet of dataCaps) {
+                    if (!curSet)
+                        continue;
+                    savedSet = curSet;
+                    break;
+                }
+
                 // Reorder when id has changed
-                let newId = parseInt(dataCaps[0].data[0].id);
+                // Following line is old implementation that made error: dataCaps[0].data[0] is null
+//                let newId = parseInt(dataCaps[0].data[0].id);
+                let newId = savedSet.id;
                 // There is no id deliverd on update
                 if (setupdate && !isNaN(newId) && newId !== oldId) {
                     saveset.id = newId;
-                    thisRef.removeSet(set.swac_fromName, oldId);
+                    thisRef.removeSet(savedSet.swac_fromName, oldId);
                     thisRef.addSet(saveset.swac_fromName, saveset);
                 } else {
                     newId = oldId;
                 }
                 // Save childs if there
-                if (thisRef.options.mainSource === set.swac_fromName) {
+                if (thisRef.options.mainSource === savedSet.swac_fromName) {
                     thisRef.saveChilds(oldId, newId).then(function (savedChilds) {
                         thisRef.afterSave(dataCapsule);
                         if (thisRef.options.customAfterSave) {
                             thisRef.options.customAfterSave.bind(thisRef);
-                            thisRef.options.customAfterSave([saveset], oldId);
+                            try {
+                                thisRef.options.customAfterSave(savedSet);
+                            } catch (e) {
+                                Msg.error('Component', 'Error execution options.customAfterSave(); ' + e, thisRef.requestor);
+                            }
                         }
                         resolve(saveset);
                     });
                 } else {
+                    thisRef.afterSave(dataCapsule);
+                    if (thisRef.options.customAfterSave) {
+                        Msg.flow('Component', 'Calling customAfterSave() from ' + thisRef.requestor.id + '_options', thisRef.requestor);
+                        thisRef.options.customAfterSave.bind(thisRef);
+                        try {
+                            thisRef.options.customAfterSave(savedSet);
+                        } catch (e) {
+                            Msg.error('Component', 'Error executing options.customAfterSave(): ' + e, thisRef.requestor);
+                        }
+                    }
                     resolve(saveset);
                 }
             }).catch(function (err) {
@@ -1472,9 +1546,9 @@ DEFINTION of SET:\n\
             }
             // Unload subrequestors
             let subReqs = this.requestor.querySelectorAll('[swa]');
-            for(let curSub of subReqs) {
+            for (let curSub of subReqs) {
                 let i = window['loadingrequestors'].indexOf(curSub.id);
-                window['loadingrequestors'].splice(i,1);
+                window['loadingrequestors'].splice(i, 1);
             }
             // Delete old data
             this.removeAllData();
