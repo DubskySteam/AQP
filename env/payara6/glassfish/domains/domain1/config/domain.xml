@@ -694,14 +694,13 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application deployment-time="10209" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705337945762">
-      <property name="org.glassfish.ejb.container.application_unique_id" value="111760075411423232"></property>
-      <property name="cdiDevModeEnabled" value="false"></property>
+    <application deployment-time="9396" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705372266461">
       <property name="archiveType" value="war"></property>
-      <property name="preserveAppScopedResources" value="false"></property>
-      <property name="defaultAppName" value="SmartSocial-26045432271030928742.2"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-26045432271030928742.2.war"></property>
-      <property name="implicitCdiEnabled" value="true"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="defaultAppName" value="SmartSocial-212586101922798375628.2"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-212586101922798375628.2.war"></property>
+      <property name="java-web-start-enabled" value="true"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111760075411423232"></property>
       <module name="SmartSocial">
         <engine sniffer="cdi"></engine>
         <engine sniffer="ejb"></engine>
