@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -27,17 +28,6 @@ public class UtilityController {
 
     @Inject
     private UtilityService utilityService;
-
-    private static Map<String, String> getStringStringMap(String manifestPath) throws IOException {
-        Manifest manifest = new Manifest(new URL(manifestPath).openStream());
-        Attributes attr = manifest.getMainAttributes();
-        Map<String, String> info = new HashMap<>();
-        info.put("Implementation-Title", attr.getValue("Implementation-Title"));
-        info.put("Implementation-Version", attr.getValue("Implementation-Version"));
-        info.put("Java-Version", attr.getValue("Java-Version"));
-        info.put("Gradle-Version", attr.getValue("Gradle-Version"));
-        return info;
-    }
 
     @GET
     @ApiResponse(responseCode = "200", description = "Returns pong. Used to check if the utility controller is working")
@@ -72,6 +62,22 @@ public class UtilityController {
     @ApiResponse(responseCode = "200", description = "Refreshes the leaderboard data")
     public Response refreshData() {
         return utilityService.refreshData();
+    }
+
+    @GET
+    @Path("/getRoute/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Returns the route of the user")
+    public Response getRoute(@PathParam("id") Long id) {
+        return Response.ok(utilityService.getRoute(id)).build();
+    }
+
+    @GET
+    @Path("/checkQuests/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(responseCode = "200", description = "Checks if the quests are done and awards the users")
+    public Response checkQuests(@PathParam("id") Long id) {
+        return Response.ok(utilityService.checkQuests(id)).build();
     }
 
     @GET

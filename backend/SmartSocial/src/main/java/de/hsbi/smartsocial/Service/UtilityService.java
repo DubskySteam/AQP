@@ -22,6 +22,7 @@ import jakarta.ws.rs.core.SecurityContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -136,10 +137,37 @@ public class UtilityService {
 
             double distance = LatLngTool.distance(startLatLng, endLatLng, LengthUnit.KILOMETER);
 
-            totalDistance += distance;
+            if (distance < 2.0) {
+                totalDistance += distance;
+            }
         }
 
         return totalDistance;
+    }
+
+
+    public ArrayList<DataPoint> getRoute(Long userId) {
+        ArrayList<DataPoint> route = new ArrayList<>();
+        ProfileSetting profileSetting = profileSettingsService.getSettings(userId);
+        if (profileSetting == null) {
+            return route;
+        }
+
+        if (profileSetting.getDevice() == null) {
+            return route;
+        }
+        String jsonArrayString = makeApiCall("http://localhost:8080/SmartDataAirquality/smartdata/records/" + profileSetting.getDevice());
+        List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
+
+        int start = dataPoints.size() - 20;
+        if (start < 0) {
+            start = 0;
+        }
+        for (int i = start; i < dataPoints.size(); i++) {
+            route.add(dataPoints.get(i));
+        }
+
+        return route;
     }
 
     /**
@@ -174,5 +202,4 @@ public class UtilityService {
         }
         return true;
     }
-
 }
