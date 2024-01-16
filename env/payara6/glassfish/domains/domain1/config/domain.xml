@@ -694,11 +694,11 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application deployment-time="9396" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705372266461">
+    <application deployment-time="9837" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705373232383">
       <property name="archiveType" value="war"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
-      <property name="defaultAppName" value="SmartSocial-212586101922798375628.2"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-212586101922798375628.2.war"></property>
+      <property name="defaultAppName" value="SmartSocial-2566943129925251518.4.0"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-2566943129925251518.4.0.war"></property>
       <property name="java-web-start-enabled" value="true"></property>
       <property name="org.glassfish.ejb.container.application_unique_id" value="111760075411423232"></property>
       <module name="SmartSocial">
