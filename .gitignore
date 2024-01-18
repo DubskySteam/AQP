@@ -1,3 +1,4 @@
+# Mac Stuff
 .DS_Store
 
 # Payara Server specific
@@ -9,3 +10,6 @@ env/payara6/glassfish/domains/domain1/osgi-cache/*
 *.log
 *.tmp
 *.temp
+
+# Temporary Payara Cortex
+admin/Frontend/Cortex/*
