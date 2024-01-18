@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     const openDialogButton = document.getElementById('open-dialog-btn');
     openDialogButton.addEventListener('click', function() {

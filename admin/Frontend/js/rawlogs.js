@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 document.addEventListener('DOMContentLoaded', async function() {
     const logText = await fetchLog();
     const logContainer = document.getElementById('log-container');

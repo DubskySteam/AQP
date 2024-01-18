@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 async function checkApplicationStatus(appName) {
     try {
         const url = `http://localhost:8080/admin/api/application/getStatus/${appName}`;
@@ -54,7 +58,7 @@ function createApplicationCard(appName, appUrl) {
 async function performAction(appName, action) {
     /*
     * This function is still bugged, because the server returns a 500 error even though the action is performed correctly.
-    * This is because of an API bug, which will be fixed in the next version.
+    * This is because of an API bug, which will (maybe? :D) be fixed in the next version.
     */
     const url = `http://localhost:8080/admin/api/application/toggle/${appName}/${action}`;
 
