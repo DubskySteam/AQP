@@ -2,7 +2,7 @@
 
 ### Version & Stack Info
 
-![](https://img.shields.io/badge/Web%20Version-2.4-green?style=for-the-badge&logo=git)
+![](https://img.shields.io/badge/Web%20Version-2.5-green?style=for-the-badge&logo=git)
 ![](https://img.shields.io/badge/API%20Version-1.4-green?style=for-the-badge&logo=git)
 
 ### Stack Info
@@ -12,9 +12,16 @@
 
 ![](https://img.shields.io/badge/Gradle-8.4-blue?style=for-the-badge&logo=gradle)
 
+___
+
+[![](https://img.shields.io/badge/Standalone%20Project-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/DubskySteam/PayaraCortex)
+
 ## Use Case
 
 As the payara server admin panel is not very user friendly, this project aims to provide a more user friendly interface that also provides some additional features for specific use cases like the SmartSocial Microservice.
+
+The standalone version (more features, but not specific to a project) of this project can be found here:
+[GitHub - PayaraCortex](https://github.com/DubskySteam/PayaraCortex)
 
 ## Features
 
