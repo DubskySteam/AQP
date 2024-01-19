@@ -83,7 +83,7 @@ async function performAction(appName, action) {
         console.error('Error toggling application:', error);
         //alert(`Error toggling application: ${error.message}`);
     }
-    setTimeout(displayApplicationStatuses, 1000);
+    setTimeout(displayApplicationStatuses, 2000);
 }
 
 function performRelaunch(appName) {
