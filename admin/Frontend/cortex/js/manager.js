@@ -6,7 +6,7 @@ async function checkApplicationStatus(appName) {
     try {
         const url = `http://localhost:8080/admin/api/application/getStatus/${appName}`;
         const response = await fetch(url);
-        const data = await response.json(); // Parse the JSON response
+        const data = await response.json();
         return data.status === "enabled" ? "Enabled" : "Disabled";
     } catch (error) {
         console.error('Error checking application status:', error);
@@ -36,16 +36,19 @@ function createApplicationCard(appName, appUrl) {
     const enableButton = document.createElement('button');
     enableButton.classList.add('enable-button');
     enableButton.title = 'Enable Application';
+    enableButton.textContent = 'Enable';
     enableButton.onclick = () => performAction(appName, 'enable');
 
     const disableButton = document.createElement('button');
     disableButton.classList.add('disable-button');
     disableButton.title = 'Disable Application';
+    disableButton.textContent = 'Disable';
     disableButton.onclick = () => performAction(appName, 'disable');
 
     const relaunchButton = document.createElement('button');
     relaunchButton.classList.add('relaunch-button');
     relaunchButton.title = 'Relaunch Application';
+    relaunchButton.textContent = 'Re-launch';
     relaunchButton.onclick = () => performRelaunch(appName);
 
     card.appendChild(enableButton);

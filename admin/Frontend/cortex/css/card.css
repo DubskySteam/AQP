@@ -28,27 +28,31 @@
 }
 
 .card button {
-    width: 15px;
-    height: 15px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    text-align: center;
-    border-radius: 40%;
-    border: none;
     cursor: pointer;
-    line-height: 30px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.card button:hover {
+    transform: scale(1.1);
+    color: white;
+    font-weight: bold;
+    background-color: rgba(255, 0, 106, 0.993);
 }
 
 .enable-button {
-    background-color: lightgreen;
+    padding: 10px;
+    margin: 5px;
 }
 
 .disable-button {
-    background-color: rgb(255, 0, 76);
+    padding: 10px;
+    margin: 5px;
 }
 
 .relaunch-button {
-    background-color: rgb(0, 119, 255);
+    padding: 10px;
+    margin: 5px;
 }
 
 .card-header {
