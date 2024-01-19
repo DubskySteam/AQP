@@ -21,6 +21,16 @@
     padding-bottom: 50px;
 }
 
+.sidebar-title a {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-left: 10px; /* Left padding */
+    padding-right: 10px; /* Right padding */
+    padding-bottom: 50px;
+    text-decoration: none;
+}
+
 .category {
     margin-bottom: 20px;
 }
