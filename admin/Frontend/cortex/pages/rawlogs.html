@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Clemens Maas">
+    <title>Admin Panel [Cortex]</title>
+    <!-- Google Font API -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- CSS-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/rawlog.css">
+    <!-- JS -->
+    <script src="../js/sidebar.js" defer></script>
+    <script src="../js/rawlogs.js" defer></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-title">Admin Cortex</div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> API</div>
+            <ul class="sub-pages">
+                <li><a href="../index.html">✅ Endpoints</a></li>
+                <li><a href="debugger.html">🔧 Debugger</a></li>
+                <li><a href="documentation.html">📖 Documentation</a></li>
+            </ul>
+        </div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> SmartSocial</div>
+            <ul class="sub-pages">
+                <li><a href="groups.html">🤝 Groups</a></li>
+                <li><a href="quests.html">🔥 Quests</a></li>
+                <li><a href="leaderboard.html">🏆 Leaderboard</a></li>
+            </ul>
+        </div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> Payara</div>
+            <ul class="sub-pages">
+                <li><a href="manager.html">🎛️ App Manager</a></li>
+                <li><a href="rawlogs.html">👨‍💻 Logs</a></li>
+                <li><a href="http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server"
+                        target="_blank">👨‍💻 Logs [REF]</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <h1>Payara Log</h1>
+        <div class="log-search">
+            <input type="text" id="log-search-input" placeholder="Search log entries...">
+            <button id="log-search-button">Search</button>
+        </div>
+        <div id="log-container" class="log-container"></div>
+    </div>
+</body>
+
+</html>

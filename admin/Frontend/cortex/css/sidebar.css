@@ -1,0 +1,72 @@
+.sidebar {
+    min-width: 200px;
+    width: 200px;
+    height: 100vh;
+    background-color: #2b2d42;
+    padding: 20px; /* Top and bottom padding */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    margin-right: 5px;
+    color: #ffffff;
+}
+
+.sidebar-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-left: 10px; /* Left padding */
+    padding-right: 10px; /* Right padding */
+    padding-bottom: 50px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category-title {
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+    padding-left: 10px; /* Left padding */
+    padding-right: 10px; /* Right padding */
+    /* ... (other properties) ... */
+}
+
+.sub-pages {
+    list-style: none;
+    padding-left: 30px; /* Increased left padding to indent sub-pages more than the titles */
+    padding-right: 10px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    max-height: 500px; /* Start with sub-pages visible */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* This class will now be used to hide the sub-pages */
+.sub-pages.active {
+    max-height: 0; /* Hide sub-pages */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+.sub-pages li {
+    padding: 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.sub-pages li:hover {
+    background-color: #9900ff;
+}
+
+
+.sub-pages li a {
+    padding: 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+}

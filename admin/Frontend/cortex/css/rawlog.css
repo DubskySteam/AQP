@@ -1,0 +1,39 @@
+#log-container {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    height: 800px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+}
+
+.timestamp {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.payara-version {
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.log-search {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#log-search-input {
+    width: 80%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#log-search-button {
+    width: 15%;
+    padding: 10px;
+    cursor: pointer;
+}
