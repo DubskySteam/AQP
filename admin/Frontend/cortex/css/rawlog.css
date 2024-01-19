@@ -8,6 +8,10 @@
     overflow-y: auto;
     font-family: 'Courier New', Courier, monospace;
     white-space: pre;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .timestamp {

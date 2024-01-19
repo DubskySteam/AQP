@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 function filterLogEntries(logText, searchTerm) {
-    const logEntries = logText.split('\n');
+    const entryPattern = /\[\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}\+\d{4}\]/;
+    const logEntries = logText.split(entryPattern).filter(entry => entry.trim() !== '');
     const filteredEntries = logEntries.filter(entry => entry.toLowerCase().includes(searchTerm.toLowerCase()));
     return filteredEntries.join('\n');
 }
+
 
 async function fetchLog() {
     const response = await fetch('http://localhost:8080/admin/api/log/getLog');
