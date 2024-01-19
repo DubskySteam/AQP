@@ -8,11 +8,11 @@ body {
 
 
 .main-content {
-    flex-grow: 1; /* Take up remaining space */
-    padding: 20px; /* Apply uniform padding to all sides */
-    overflow-y: auto; /* Scroll if content exceeds viewport height */
-    background-color: #ffffff; /* Contrasting background */
-    margin-left: 20px; /* Space between sidebar and main content */
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    margin-left: 20px;
 }
 
 @media (max-width: 768px) {
