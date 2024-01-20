@@ -1,6 +1,7 @@
 /**
  * Author: Clemens Maas
  */
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', async function() {
     const logText = await fetchLog();
@@ -25,7 +26,7 @@ function filterLogEntries(logText, searchTerm) {
 
 
 async function fetchLog() {
-    const response = await fetch('http://localhost:8080/admin/api/log/getLog');
+    const response = await fetch(config.Cortex + 'log/getLog');
     return await response.text();
 }
 

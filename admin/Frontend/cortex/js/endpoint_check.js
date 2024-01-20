@@ -1,20 +1,21 @@
 /**
  * Author: Clemens Maas
  */
+import config from './config.js';
 
 const endpoints = [
-    { url: "http://localhost:8080/SmartSocial/api/group/", category: "Group" },
-    { url: "http://localhost:8080/SmartSocial/api/leaderboard/", category: "Leaderboard" },
-    { url: "http://localhost:8080/SmartSocial/api/profilesettings/", category: "Profile settings" },
-    { url: "http://localhost:8080/SmartSocial/api/quest/", category: "Quests" },
-    { url: "http://localhost:8080/SmartSocial/api/achievement/", category: "Achievements" },
-    { url: "http://localhost:8080/SmartSocial/api/utility/", category: "Utility" },
+    { url: config.SmartSocial + "group/", category: "Group" },
+    { url: config.SmartSocial + "leaderboard/", category: "Leaderboard" },
+    { url: config.SmartSocial + "profilesettings/", category: "Profile settings" },
+    { url: config.SmartSocial + "quest/", category: "Quests" },
+    { url: config.SmartSocial + "achievement/", category: "Achievements" },
+    { url: config.SmartSocial + "utility/", category: "Utility" },
 ];
 
 const g_endpoints = [
-    { url: "http://localhost:8080/SmartSocial/api/test/ping", category: "SmartSocial" },
-    { url: "http://localhost:8080/SmartUser/smartuser/user/", category: "SmartUser" },
-    { url: "http://localhost:8080/SmartData/smartdata/system/info", category: "SmartData" },
+    { url: config.SmartSocial + "test/ping", category: "SmartSocial" },
+    { url: config.Server + "SmartUser/smartuser/user/", category: "SmartUser" },
+    { url: config.Server + "SmartData/smartdata/system/info", category: "SmartData" },
 ];
 
 function checkEndpointStatus(endpoint) {

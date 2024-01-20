@@ -1,6 +1,7 @@
 /**
  * Author: Clemens Maas
  */
+import config from './config.js';
 
 let apiData = [];
 
@@ -9,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadApiData() {
-    fetch('http://localhost:8080/SmartSocial/api/openapi.json')
+    fetch(config.SmartSocial + 'openapi.json')
         .then(response => response.json())
         .then(data => {
             apiData = Object.entries(data.paths);

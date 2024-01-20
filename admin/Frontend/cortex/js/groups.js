@@ -1,6 +1,7 @@
 /**
  * Author: Clemens Maas
  */
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const openDialogButton = document.getElementById('open-dialog-btn');
@@ -34,7 +35,7 @@ document.getElementById('group-form').addEventListener('submit', function (event
         description: document.getElementById('description').value
     };
 
-    fetch('http://localhost:8080/SmartSocial/api/group/createGroup', {
+    fetch(config.SmartSocial + 'group/createGroup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ document.getElementById('group-form').addEventListener('submit', function (event
 
 function loadGroups() {
     console.log('loadGroups() called');
-    fetch('http://localhost:8080/SmartSocial/api/group/getAll')
+    fetch(config.SmartSocial + 'group/getAll')
         .then(response => response.json())
         .then(data => {
             createGroupTable(data);
