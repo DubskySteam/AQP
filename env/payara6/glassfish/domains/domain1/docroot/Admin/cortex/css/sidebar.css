@@ -1,0 +1,84 @@
+.sidebar {
+    min-width: 200px;
+    width: 200px;
+    height: 100vh;
+    background-color: #2b2d42;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    margin-right: 5px;
+    color: #ffffff;
+}
+
+.sidebar-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+}
+
+.sidebar-title a {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+    text-decoration: none;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category-title {
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sub-pages {
+    list-style: none;
+    padding-left: 30px;
+    padding-right: 10px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    max-height: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sub-pages.active {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+.sub-pages li {
+    padding: 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.sub-pages li:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.2);
+    color: white;
+    font-weight: bold;
+    background-color: rgba(255, 0, 106, 0.993);
+}
+
+
+.sub-pages li a {
+    padding: 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+}

@@ -1,18 +1,41 @@
 /**
  * Author: Clemens Maas
  */
-
-let apiData = [];
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadApiData();
+    initializeApiSelector();
+    document.getElementById('searchInput').addEventListener('input', searchCards);
 });
 
-function loadApiData() {
-    fetch('http://localhost:8080/SmartSocial/api/openapi.json')
+function initializeApiSelector() {
+    fetch('../data/openapi.json')
+        .then(response => response.json())
+        .then(apis => {
+            populateApiSelector(apis);
+            loadApiData(apis[0].url);
+        });
+}
+
+function populateApiSelector(apis) {
+    const apiSelector = document.getElementById('apiSelector');
+    apis.forEach((api, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = api.name;
+        apiSelector.appendChild(option);
+    });
+    apiSelector.addEventListener('change', (event) => {
+        const selectedApi = apis[event.target.value];
+        loadApiData(selectedApi.url);
+    });
+}
+
+function loadApiData(apiUrl) {
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            apiData = Object.entries(data.paths);
+            const apiData = Object.entries(data.paths);
             renderCards(apiData);
         });
 }

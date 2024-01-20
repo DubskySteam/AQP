@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Info",
+        "url": "http://localhost:8080/SmartSocial/api/utility/info",
+        "method": "GET"
+    },
+    {
+        "name": "Refresh Data",
+        "url": "http://localhost:8080/SmartSocial/api/utility/refreshData",
+        "method": "GET"
+    },
+    {
+        "name": "Check Quests",
+        "url": "http://localhost:8080/SmartSocial/api/utility/checkQuests/",
+        "method": "GET"
+    },
+    {
+        "name": "Get Route",
+        "url": "http://localhost:8080/SmartSocial/api/utility/getRoute/",
+        "method": "GET"
+    }
+]

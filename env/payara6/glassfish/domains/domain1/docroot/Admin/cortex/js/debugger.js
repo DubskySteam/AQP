@@ -48,7 +48,7 @@ function populateCategorySelector() {
 }
 
 function fetchCategoryEndpoints(categoryFile) {
-    fetch('data/' + categoryFile)
+    fetch('../data/' + categoryFile)
         .then(response => response.json())
         .then(data => {
             currentEndpoints = data;
