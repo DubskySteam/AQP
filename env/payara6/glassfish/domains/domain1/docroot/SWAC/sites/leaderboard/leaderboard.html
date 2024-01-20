@@ -15,7 +15,7 @@
     <script src="leaderboard.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="../../css/global.css">
-    <link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="leaderboard.css">
     
 </head>
 <body>
@@ -30,14 +30,24 @@
 
     <h1>Leaderboard</h1>
 
-    <div id="button-group">
-        <button id="apiButton1">Get by Kilometers</button>
-        <button id="apiButton2">Get by Quests</button>
+    <!-- HIER die Logik -->
+
+    <div class="label-and-dropdown">
+        <label for="sortOptions"><strong>Sortieren </strong>nach  </label>
+        <select id="sortOptions" onchange="handleSort()">
+            <option value="kilometers">KM</option>
+            <option value="finishedquests">Anzahl Quests</option>
+            <option value="amountrewards">Anzahl Rewards</option>
+        </select>
     </div>
     
-    <div id="api-data-container"></div>
+    
 
-    <div id="api-data-container"></div>
+    <div id="present_example6" swa="Present FROM leaderboard/getList/2">
+
+    </div>
+
+    <!-- ENDE -->
 
     <footer>
         <a id="more" href="./more.html">Mehr</a>
@@ -46,6 +56,5 @@
         <a id="imprint" href="./imprint.html">Impressum</a>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
