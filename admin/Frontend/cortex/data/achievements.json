@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Achievement example",
+        "url": "http://localhost:8080/SmartSocial/api/achievement/example",
+        "method": "GET"
+    },
+    {
+        "name": "Get Achievement by Id",
+        "url": "http://localhost:8080/SmartSocial/api/achievement/getById/",
+        "method": "GET"
+    },
+    {
+        "name": "Get Achievement by Name",
+        "url": "http://localhost:8080/SmartSocial/api/achievement/getByName/",
+        "method": "GET"
+    },
+    {
+        "name": "Get all",
+        "url": "http://localhost:8080/SmartSocial/api/achievement/getAll",
+        "method": "GET"
+    },
+    {
+        "name": "Get Achievements by User Id",
+        "url": "http://localhost:8080/SmartSocial/api/achievement/getByUserId/",
+        "method": "GET"
+    }
+]

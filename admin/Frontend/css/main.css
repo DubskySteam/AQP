@@ -21,6 +21,12 @@ html {
     margin-left: 3px;
 }
 
+.menu-category {
+    color: white;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
 .container {
     display: flex;
 }

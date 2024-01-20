@@ -1,0 +1,60 @@
+#endpoint-selector, #test-button {
+    margin: 10px;
+}
+
+#response-container {
+    margin-top: 20px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    white-space: pre;
+    font-family: monospace;
+    overflow-x: auto;
+    background-color: #f9f9f9;
+}
+
+#json-input {
+    width: 100%;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: monospace;
+    background-color: #f9f9f9;
+}
+
+#test-button {
+    font-family: 'Gabarito', sans-serif;
+    font-size: 110%;
+    padding: 10px;
+    background-color: #333333;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#test-button:hover {
+    background-color: rgb(3, 133, 12);
+}
+
+.selector {
+    font-family: 'Gabarito', sans-serif;
+    font-size: 110%;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff7f7;
+    cursor: pointer;
+}
+
+#response-result {
+    font-family: 'Gabarito', sans-serif;
+    font-size: 110%;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff7f7;
+}

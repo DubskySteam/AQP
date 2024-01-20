@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 const endpoints = [
     { url: "http://localhost:8080/SmartSocial/api/group/", category: "Group" },
     { url: "http://localhost:8080/SmartSocial/api/leaderboard/", category: "Leaderboard" },

@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 let currentEndpoints = [];
 
 document.addEventListener('DOMContentLoaded', function () {
