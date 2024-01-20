@@ -53,17 +53,15 @@
     </div>
     <div class="main-content">
         <h1>API Documentation</h1>
-        <div class="button-group">
-            <button onclick="sortCards('group')">Group</button>
-            <button onclick="sortCards('achievement')">Achievement</button>
-            <button onclick="sortCards('leaderboard')">Leaderboard</button>
-            <button onclick="sortCards('profilesettings')">Profile-Settings</button>
-            <button onclick="sortCards('quest')">Quest</button>
-            <button onclick="sortCards('utility')">Utility</button>
-        </div>
-
-        <div class="search-box">
-            <input type="text" id="searchInput" onkeyup="searchCards()" placeholder="Search for endpoints...">
+        <div class="controls-container">
+            <div class="button-group">
+                <select id="apiSelector">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for endpoints...">
+            </div>
         </div>
 
         <div id="api-cards" class="grid-container"></div>
