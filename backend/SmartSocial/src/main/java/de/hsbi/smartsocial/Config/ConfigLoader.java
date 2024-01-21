@@ -33,5 +33,3 @@ public class ConfigLoader {
         return properties.getProperty(key);
     }
 }
-
-
