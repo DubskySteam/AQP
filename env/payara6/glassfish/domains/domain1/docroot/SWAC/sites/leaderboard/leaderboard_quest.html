@@ -12,7 +12,7 @@
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
 
-    <script src="leaderboard.js" defer></script>
+    <script src="leaderboard_quest.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="../../css/global.css">
     <link rel="stylesheet" href="leaderboard.css">
@@ -31,22 +31,18 @@
     <h1>Leaderboard</h1>
 
     <!-- HIER die Logik -->
-   
+
     <div class="label-and-dropdown">
         <label for="sortOptions"><strong>Sortieren </strong>nach  </label>
-        <select id="sortOptions" onchange="handleSort()">
+        <select id="sortOptions" onchange="window.location.href=this.value">
             <option value="leaderboard_quest.html">Anzahl Quests</option>
-            <option value="leaderboard.html">KM</option>
-            <!--<option value="amountrewards">Anzahl Rewards</option>-->
+            <option value="leaderboard.html">Anzahl KM</option>
         </select>
     </div>
-    <div id="present_example6" swa="Present FROM leaderboard/getListByQuests/10">
-        <div class="swac_repeatForSet">
-            <p>{finishedQuests}</p>
-            <p></p>
-        </div>
-    </div>
-   
+    
+    
+
+    <div id="present_example6" swa="Present FROM leaderboard/getListByQuests/2"></div>
 
     <!-- ENDE -->
 

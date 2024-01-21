@@ -4,7 +4,7 @@ document.addEventListener('swac_ready', function () {
     window.swac.reactions.addReaction(function (requestors) {
         comp = requestors["present_example6"];
         let datasources = comp.swac_comp.data;
-        let mydatasource = datasources['leaderboard/getList/2']
+        let mydatasource = datasources['leaderboard/getListByQuests/2']
         let json_data = mydatasource.getSets();
 
         if (Array.isArray(json_data)) {
@@ -13,8 +13,7 @@ document.addEventListener('swac_ready', function () {
                 let convertedSet = {
                     userID: set.id,
                     username: set.users.username,
-                    kilometers: set.kilometers,
-                    finishedQuests: set.finishedQuests,
+                    finishedQuests: set.finishedQuests
                 };
                 data.push(convertedSet);
             });
@@ -50,7 +49,7 @@ function renderData(){
   
         var valueDiv = document.createElement("div");
         valueDiv.classList.add("user-value");
-        valueDiv.innerText = user.kilometers;
+        valueDiv.innerText = user.finishedQuests;
         userDiv.appendChild(valueDiv);
   
         leaderboardDiv.appendChild(userDiv);
