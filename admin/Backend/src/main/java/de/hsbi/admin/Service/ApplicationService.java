@@ -1,5 +1,6 @@
 package de.hsbi.admin.Service;
 
+import de.hsbi.admin.Config.ConfigLoader;
 import de.hsbi.admin.Config.Manager;
 import jakarta.ejb.Stateless;
 import jakarta.json.Json;
@@ -33,7 +34,9 @@ public class ApplicationService {
 
     public HashMap<String, String> getApplications() {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(Manager.PAYARA_SERVER_URL + "management/domain/applications/application");
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        WebTarget target = client.target(baseUrl + "management/domain/applications/application");
 
         try {
             Response response = target.request().header("Accept", "application/json").get();
@@ -60,7 +63,9 @@ public class ApplicationService {
 
     public boolean isApplicationEnabled(@PathParam("appName") String appName) {
         Client client = ClientBuilder.newClient();
-        String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/application/" + appName + "/show-component-status";
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        String url = baseUrl + "management/domain/applications/application/" + appName + "/show-component-status";
 
         try {
             Response response = client.target(url)
@@ -93,7 +98,9 @@ public class ApplicationService {
 
     public boolean toggleApplication(String appName, String action) {
         Client client = ClientBuilder.newClient();
-        String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/application/" + appName + "/" + action;
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        String url = baseUrl + "management/domain/applications/application/" + appName + "/" + action;
 
         try {
             Response response = client.target(url)
@@ -113,7 +120,9 @@ public class ApplicationService {
 
     public boolean undeployApplication(String appName) {
         Client client = ClientBuilder.newClient();
-        String url = Manager.PAYARA_SERVER_URL + "management/domain/applications/undeploy";
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        String url = baseUrl + "management/domain/applications/undeploy";
 
         try {
             JsonObject jsonBody = Json.createObjectBuilder()
