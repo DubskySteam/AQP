@@ -18,6 +18,13 @@
 ___
 [![](https://img.shields.io/badge/Download-Latest-blue?style=for-the-badge&logo=)](https://github.com/DubskySteam/AQP/releases)
 
+### Config file
+This service uses SmartData. The URL to the SmartData service is located in the config file and has to be changed
+if the service is not running on the same machine. The config file can be found here:
+````
+    \payara6\glassfish\domains\domain1\config\config_smartsocial.properties
+````
+
 ### Managed Dependencies
 
 The dependencies are managed by Gradle, so you don't need to worry about them. If you need to update a dependency, you can do so by editing the `build.gradle` file.
@@ -54,8 +61,9 @@ The dependencies are managed by Gradle, so you don't need to worry about them. I
 ### Self-Managed Dependencies
 
 The dependencies are included in the project, but critical updates may be needed to be done manually.
+To be found in the /war directory.
 ````
-    NGI Logger 
+    SmartUserAuth
 ````
 
 ## How to use
