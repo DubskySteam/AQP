@@ -4,7 +4,7 @@ document.addEventListener('swac_ready', function () {
     window.swac.reactions.addReaction(function (requestors) {
         comp = requestors["present_example6"];
         let datasources = comp.swac_comp.data;
-        let mydatasource = datasources['leaderboard/getList/2']
+        let mydatasource = datasources['leaderboard/getList/3']
         let json_data = mydatasource.getSets();
 
         if (Array.isArray(json_data)) {
@@ -18,20 +18,22 @@ document.addEventListener('swac_ready', function () {
                 data.push(convertedSet);
             });
             console.log("Nach dem Konvertieren:", data);
-            renderData();
+            renderData("kilometers");
         } else {
             console.error("json_data ist kein Array.");
         }
     }, "present_example6");
 });
 
-function renderData(){
+function renderData(sortBy) {
     var leaderboardDiv = document.getElementById("present_example6");
     leaderboardDiv.innerHTML = "";
   
-    var renderData = [...data];
+    var sortedData = [...data];
   
-    renderData.forEach(function(user, index) {
+    sortedData.sort((a, b) => b[sortBy] - a[sortBy]);
+  
+    sortedData.forEach(function(user, index) {
         var userDiv = document.createElement("div");
         userDiv.classList.add("user-entry");
         userDiv.classList.add(index % 2 === 0 ? "blue-bg" : "white-bg");
@@ -49,9 +51,14 @@ function renderData(){
   
         var valueDiv = document.createElement("div");
         valueDiv.classList.add("user-value");
-        valueDiv.innerText = user.kilometers;
+        valueDiv.innerText = user[sortBy];
         userDiv.appendChild(valueDiv);
   
         leaderboardDiv.appendChild(userDiv);
     });
+  }
+  
+function handleSort() {
+    var sortBy = document.getElementById("sortOptions").getAttribute("sortByValue");
+    renderData(sortBy);
 }
