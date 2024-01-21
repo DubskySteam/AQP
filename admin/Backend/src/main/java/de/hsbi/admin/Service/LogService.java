@@ -1,5 +1,6 @@
 package de.hsbi.admin.Service;
 
+import de.hsbi.admin.Config.ConfigLoader;
 import de.hsbi.admin.Config.Manager;
 import de.hsbi.admin.Utility.RequestBuilder;
 import jakarta.ejb.Stateless;
@@ -17,12 +18,16 @@ public class LogService {
 
     public String getLogNew() {
         RequestBuilder requestBuilder = new RequestBuilder();
-        requestBuilder.setTarget("http://localhost:4848/management/domain/view-log");
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        requestBuilder.setTarget(baseUrl + "management/domain/view-log");
         return requestBuilder.send();
     }
 
     public String getLog() {
-        String url = Manager.PAYARA_SERVER_URL + "management/domain/view-log";
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        String url = baseUrl + "management/domain/view-log";
         Client client = ClientBuilder.newClient();
 
         try {

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Clemens Maas">
+    <title>Admin Panel [Cortex]</title>
+    <!-- Google Font API -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- CSS-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/card.css">
+    <!-- JS -->
+    <script src="js/sidebar.js"></script>
+    <script type="module" src="js/endpoint_check.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-title"><a href="../index.html">Admin Cortex</a></div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> API</div>
+            <ul class="sub-pages">
+                <li><a href="index.html">✅ Endpoints</a></li>
+                <li><a href="pages/debugger.html">🔧 Debugger</a></li>
+                <li><a href="pages/documentation.html">📖 Documentation</a></li>
+            </ul>
+        </div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> SmartSocial</div>
+            <ul class="sub-pages">
+                <li><a href="pages/groups.html">🤝 Groups</a></li>
+                <li><a href="pages/quests.html">🔥 Quests</a></li>
+                <li><a href="pages/leaderboard.html">🏆 Leaderboard</a></li>
+            </ul>
+        </div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> Payara</div>
+            <ul class="sub-pages">
+                <li><a href="pages/manager.html">🎛️ App Manager</a></li>
+                <li><a href="pages/rawlogs.html">👨‍💻 Logs</a></li>
+                <li><a href="http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server"
+                        target="_blank">👨‍💻 Logs [REF]</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <h1>API Endpoints</h1>
+        <div id="endpoint-status-container"></div>
+        <h1>Global API Endpoints</h1>
+        <div id="endpoint-status-global-container"></div>
+    </div>
+</body>
+
+</html>

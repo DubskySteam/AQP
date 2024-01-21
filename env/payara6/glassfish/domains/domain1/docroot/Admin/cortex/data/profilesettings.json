@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Settings example",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/example",
+        "method": "GET"
+    },
+    {
+        "name": "Get settings by ID",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getSettings/",
+        "method": "GET"
+    },
+    {
+        "name": "Set settings by ID",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setSettings/",
+        "method": "POST"
+    },
+    {
+        "name": "Get visibility by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getVisibility/",
+        "method": "GET"
+    },
+    {
+        "name": "Set visibility by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setVisibility/",
+        "method": "POST"
+    },
+    {
+        "name": "Get image by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getImage/",
+        "method": "GET"
+    },
+    {
+        "name": "Set image by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setPicture/",
+        "method": "POST"
+    },
+    {
+        "name": "Get device by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/getDevice/",
+        "method": "GET"
+    },
+    {
+        "name": "Set device by Id",
+        "url": "http://localhost:8080/SmartSocial/api/profilesettings/setDevice/",
+        "method": "POST"
+    }
+]

@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 let apiData = [];
 
 document.addEventListener('DOMContentLoaded', function() {

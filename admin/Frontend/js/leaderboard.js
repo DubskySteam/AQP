@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 function loadLeaderboard() {
     fetch('http://localhost:8080/SmartSocial/api/leaderboard/getList/30')
         .then(response => response.json())

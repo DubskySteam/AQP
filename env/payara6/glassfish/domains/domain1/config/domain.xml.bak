@@ -3,13 +3,13 @@
   <security-configurations>
     <authentication-service default="true" name="adminAuth" use-password-credential="true">
       <security-provider provider-name="adminSpc" name="spcrealm" type="LoginModule">
-        <login-module-config module-class="com.sun.enterprise.admin.util.AdminLoginModule" control-flag="sufficient" name="adminSpecialLM">
+        <login-module-config control-flag="sufficient" module-class="com.sun.enterprise.admin.util.AdminLoginModule" name="adminSpecialLM">
           <property name="config" value="server-config"></property>
           <property name="auth-realm" value="admin-realm"></property>
         </login-module-config>
       </security-provider>
       <security-provider provider-name="adminFile" name="filerealm" type="LoginModule">
-        <login-module-config module-class="com.sun.enterprise.security.auth.login.FileLoginModule" control-flag="sufficient" name="adminFileLM">
+        <login-module-config control-flag="sufficient" module-class="com.sun.enterprise.security.auth.login.FileLoginModule" name="adminFileLM">
           <property name="config" value="server-config"></property>
           <property name="auth-realm" value="admin-realm"></property>
         </login-module-config>
@@ -23,7 +23,7 @@
   </security-configurations>
   <managed-job-config></managed-job-config>
   <system-applications>
-    <application context-root="" object-type="system-admin" name="__admingui" directory-deployed="true" location="${com.sun.aas.installRootURI}/lib/install/applications/__admingui">
+    <application context-root="" object-type="system-admin" directory-deployed="true" name="__admingui" location="${com.sun.aas.installRootURI}/lib/install/applications/__admingui">
       <module name="__admingui">
         <engine sniffer="web"></engine>
         <engine sniffer="security"></engine>
@@ -112,10 +112,10 @@
   <servers>
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
-      <application-ref ref="AdminPanel" virtual-servers="server"></application-ref>
       <application-ref ref="SmartData" virtual-servers="server"></application-ref>
       <application-ref ref="SmartMonitoringBackend" virtual-servers="server"></application-ref>
       <application-ref ref="SmartUser" virtual-servers="server"></application-ref>
+      <application-ref ref="AdminPanel" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
@@ -357,7 +357,7 @@
         </transports>
       </network-config>
       <thread-pools>
-        <thread-pool name="admin-thread-pool" min-thread-pool-size="1" max-queue-size="256" max-thread-pool-size="15"></thread-pool>
+        <thread-pool name="admin-thread-pool" min-thread-pool-size="1" max-thread-pool-size="15" max-queue-size="256"></thread-pool>
         <thread-pool name="http-thread-pool"></thread-pool>
         <thread-pool name="thread-pool-1" max-thread-pool-size="200"></thread-pool>
       </thread-pools>
@@ -587,7 +587,7 @@
       <thread-pools>
         <thread-pool name="http-thread-pool"></thread-pool>
         <thread-pool name="thread-pool-1" min-thread-pool-size="2" max-thread-pool-size="200"></thread-pool>
-        <thread-pool name="admin-thread-pool" min-thread-pool-size="1" max-queue-size="256" max-thread-pool-size="15"></thread-pool>
+        <thread-pool name="admin-thread-pool" min-thread-pool-size="1" max-thread-pool-size="15" max-queue-size="256"></thread-pool>
       </thread-pools>
       <group-management-service>
         <failure-detection></failure-detection>
@@ -616,27 +616,7 @@
   <deployment-groups></deployment-groups>
   <clusters></clusters>
   <applications>
-    <application deployment-time="3067" context-root="/admin" object-type="user" name="AdminPanel" location="${com.sun.aas.instanceRootURI}/applications/AdminPanel/" time-deployed="1705055224594">
-      <property name="org.glassfish.ejb.container.application_unique_id" value="111742499065888768"></property>
-      <property name="cdiDevModeEnabled" value="false"></property>
-      <property name="archiveType" value="war"></property>
-      <property name="preserveAppScopedResources" value="false"></property>
-      <property name="defaultAppName" value="admin-115413763035069725582.4"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/AdminPanel/admin-115413763035069725582.4.war"></property>
-      <property name="implicitCdiEnabled" value="true"></property>
-      <module name="AdminPanel">
-        <engine sniffer="cdi"></engine>
-        <engine sniffer="ejb"></engine>
-        <engine sniffer="health"></engine>
-        <engine sniffer="metrics"></engine>
-        <engine sniffer="openapi"></engine>
-        <engine sniffer="security"></engine>
-        <engine sniffer="config"></engine>
-        <engine sniffer="jpa"></engine>
-        <engine sniffer="web"></engine>
-      </module>
-    </application>
-    <application deployment-time="1062" context-root="/SmartData" object-type="user" name="SmartData" location="${com.sun.aas.instanceRootURI}/applications/SmartData/" time-deployed="1705075156654">
+    <application context-root="/SmartData" deployment-time="1062" object-type="user" name="SmartData" time-deployed="1705075156654" location="${com.sun.aas.instanceRootURI}/applications/SmartData/">
       <property name="org.glassfish.ejb.container.application_unique_id" value="0"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
       <property name="archiveType" value="war"></property>
@@ -654,7 +634,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application deployment-time="9675" context-root="/SmartMonitoringBackend" object-type="user" name="SmartMonitoringBackend" location="${com.sun.aas.instanceRootURI}/applications/SmartMonitoringBackend/" time-deployed="1705075406500">
+    <application context-root="/SmartMonitoringBackend" deployment-time="9675" object-type="user" name="SmartMonitoringBackend" time-deployed="1705075406500" location="${com.sun.aas.instanceRootURI}/applications/SmartMonitoringBackend/">
       <property name="org.glassfish.ejb.container.application_unique_id" value="111743766022717440"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
       <property name="archiveType" value="war"></property>
@@ -674,7 +654,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/SmartUser" deployment-time="10630" object-type="user" name="SmartUser" time-deployed="1705321708432" location="${com.sun.aas.instanceRootURI}/applications/SmartUser/">
+    <application deployment-time="10630" context-root="/SmartUser" object-type="user" name="SmartUser" location="${com.sun.aas.instanceRootURI}/applications/SmartUser/" time-deployed="1705321708432">
       <property name="org.glassfish.ejb.container.application_unique_id" value="0"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
       <property name="archiveType" value="war"></property>
@@ -690,6 +670,25 @@
         <engine sniffer="config"></engine>
         <engine sniffer="jpa"></engine>
         <engine sniffer="security"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+    <application deployment-time="1317" context-root="/admin" object-type="user" name="AdminPanel" location="${com.sun.aas.instanceRootURI}/applications/AdminPanel/" time-deployed="1705839550812">
+      <property name="archiveType" value="war"></property>
+      <property name="cdiDevModeEnabled" value="false"></property>
+      <property name="defaultAppName" value="admin-17106902511479024731.4"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/AdminPanel/admin-17106902511479024731.4.war"></property>
+      <property name="java-web-start-enabled" value="true"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111742499065888768"></property>
+      <module name="AdminPanel">
+        <engine sniffer="cdi"></engine>
+        <engine sniffer="ejb"></engine>
+        <engine sniffer="health"></engine>
+        <engine sniffer="metrics"></engine>
+        <engine sniffer="openapi"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="config"></engine>
+        <engine sniffer="jpa"></engine>
         <engine sniffer="web"></engine>
       </module>
     </application>

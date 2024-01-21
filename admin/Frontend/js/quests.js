@@ -1,3 +1,7 @@
+/**
+ * Author: Clemens Maas
+ */
+
 function loadQuests() {
     fetch('http://localhost:8080/SmartSocial/api/quest/getAll')
         .then(response => response.json())
