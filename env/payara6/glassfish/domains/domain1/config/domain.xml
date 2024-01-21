@@ -115,8 +115,8 @@
       <application-ref ref="SmartData" virtual-servers="server"></application-ref>
       <application-ref ref="SmartMonitoringBackend" virtual-servers="server"></application-ref>
       <application-ref ref="SmartUser" virtual-servers="server"></application-ref>
-      <application-ref ref="SmartSocial" virtual-servers="server"></application-ref>
       <application-ref ref="AdminPanel" virtual-servers="server"></application-ref>
+      <application-ref ref="SmartSocial" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
@@ -674,14 +674,14 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application deployment-time="10323" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705837967227">
+    <application deployment-time="1317" context-root="/admin" object-type="user" name="AdminPanel" location="${com.sun.aas.instanceRootURI}/applications/AdminPanel/" time-deployed="1705839550812">
       <property name="archiveType" value="war"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
-      <property name="defaultAppName" value="SmartSocial-27951608561870723414.4.0"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-27951608561870723414.4.0.war"></property>
+      <property name="defaultAppName" value="admin-17106902511479024731.4"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/AdminPanel/admin-17106902511479024731.4.war"></property>
       <property name="java-web-start-enabled" value="true"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="111760075411423232"></property>
-      <module name="SmartSocial">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111742499065888768"></property>
+      <module name="AdminPanel">
         <engine sniffer="cdi"></engine>
         <engine sniffer="ejb"></engine>
         <engine sniffer="health"></engine>
@@ -693,14 +693,14 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application deployment-time="1693" context-root="/admin" object-type="user" name="AdminPanel" location="${com.sun.aas.instanceRootURI}/applications/AdminPanel/" time-deployed="1705838353611">
+    <application deployment-time="9734" context-root="/SmartSocial" object-type="user" name="SmartSocial" location="${com.sun.aas.instanceRootURI}/applications/SmartSocial/" time-deployed="1705839689296">
       <property name="archiveType" value="war"></property>
       <property name="cdiDevModeEnabled" value="false"></property>
-      <property name="defaultAppName" value="admin-19550303122301228884.4"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/AdminPanel/admin-19550303122301228884.4.war"></property>
+      <property name="defaultAppName" value="SmartSocial-23125206409514603769.4.0"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/SmartSocial/SmartSocial-23125206409514603769.4.0.war"></property>
       <property name="java-web-start-enabled" value="true"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="111742499065888768"></property>
-      <module name="AdminPanel">
+      <property name="org.glassfish.ejb.container.application_unique_id" value="111760075411423232"></property>
+      <module name="SmartSocial">
         <engine sniffer="cdi"></engine>
         <engine sniffer="ejb"></engine>
         <engine sniffer="health"></engine>

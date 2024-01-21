@@ -1,8 +1,10 @@
 package de.hsbi.smartsocial.Config;
 
-import java.io.IOException;
 import java.util.Properties;
 import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 public class ConfigLoader {
     private static ConfigLoader instance;
@@ -10,12 +12,18 @@ public class ConfigLoader {
 
     private ConfigLoader() {
         properties = new Properties();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
+
+        String domainDir = System.getProperty("com.sun.aas.instanceRoot");
+        if (domainDir == null) {
+            throw new IllegalStateException("Domain directory property (com.sun.aas.instanceRoot) is not set.");
+        }
+
+        String configFilePath = Paths.get(domainDir, "config", "config_smartsocial.properties").toString();
+        try (InputStream input = new FileInputStream(configFilePath)) {
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                System.out.println("Sorry, unable to find config.properties at " + configFilePath);
                 return;
             }
-
             properties.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();
