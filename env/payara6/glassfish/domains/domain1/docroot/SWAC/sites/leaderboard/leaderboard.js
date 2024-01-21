@@ -4,7 +4,7 @@ document.addEventListener('swac_ready', function () {
     window.swac.reactions.addReaction(function (requestors) {
         comp = requestors["present_example6"];
         let datasources = comp.swac_comp.data;
-        let mydatasource = datasources['leaderboard/getListByQuests/2']
+        let mydatasource = datasources['leaderboard/getList/2']
         console.log("datasource", datasources)
         console.log("mydatasource", mydatasource)
         let json_data = mydatasource.getSets();
