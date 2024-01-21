@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e9a8d52-74f1-400b-86af-60d2af70b83a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/projects/SmartSocial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Config/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Config/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Service/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Service/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/hsbi/admin/Service/LogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backend/SmartSocial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/SmartSocial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backend/SmartSocial/src/main/java/de/hsbi/smartsocial/Config/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/SmartSocial/src/main/java/de/hsbi/smartsocial/Config/ConfigLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backend/war/SmartSocial-2.2.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/domain.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/domain.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/domain.xml.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/domain.xml.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/local-password" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/local-password" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/pid" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/pid.prev" beforeDir="false" afterPath="$PROJECT_DIR$/../../env/payara6/glassfish/domains/domain1/config/pid.prev" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,23 +80,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Backend [build].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;backend&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/cmaas/GitHub/AQ/admin/Backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Backend [build].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "backend",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/cmaas/GitHub/AQP/admin/Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Backend [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -135,6 +143,7 @@
       <updated>1704525685490</updated>
       <workItem from="1704525686570" duration="5493000" />
       <workItem from="1704704779272" duration="1280000" />
+      <workItem from="1705837882651" duration="448000" />
     </task>
     <servers />
   </component>
