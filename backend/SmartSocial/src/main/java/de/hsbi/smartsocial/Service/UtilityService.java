@@ -6,6 +6,7 @@ import com.javadocmd.simplelatlng.LatLng;
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
 import de.fhbielefeld.smartuser.securitycontext.SmartPrincipal;
+import de.hsbi.smartsocial.Config.ConfigLoader;
 import de.hsbi.smartsocial.Exceptions.APICallException;
 import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
@@ -56,7 +57,9 @@ public class UtilityService {
             if (user.getDevice() == null) {
                 continue;
             }
-            String jsonArrayString = makeApiCall("http://localhost:8080/SmartDataAirquality/smartdata/records/" + user.getDevice());
+            ConfigLoader configLoader = ConfigLoader.getInstance();
+            String baseUrl = configLoader.getProperty("api.base.url");
+            String jsonArrayString = makeApiCall(baseUrl + "SmartDataAirquality/smartdata/records/" + user.getDevice());
             List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
             double totalDistance = calculateTotalDistance(dataPoints);
             leaderboardService.addKilometers(user.getId(), totalDistance);
@@ -159,7 +162,9 @@ public class UtilityService {
         if (profileSetting.getDevice() == null) {
             return route;
         }
-        String jsonArrayString = makeApiCall("http://localhost:8080/SmartDataAirquality/smartdata/records/" + profileSetting.getDevice());
+        ConfigLoader configLoader = ConfigLoader.getInstance();
+        String baseUrl = configLoader.getProperty("api.base.url");
+        String jsonArrayString = makeApiCall(baseUrl + "SmartDataAirquality/smartdata/records/" + profileSetting.getDevice());
         List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
 
         int start = dataPoints.size() - 20;
