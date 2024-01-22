@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Quests</title>
+    <title>Join Team</title>
 
     <!-- SWAC -->
     <!--<link rel="stylesheet" type="text/css" href="/frontend/SWAC/swac/libs/uikit/css/uikit.min.css">-->
     <!--<script src="/frontend/SWAC/swac/libs/uikit/js/uikit.min.js"></script>-->
     <!--<script src="/frontend/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>-->
-    <script src="/frontend/SWAC/swac/swac.js" type="module"></script>
+    <!--<script src="/SWAC/swac/swac.js" type="module"></script>-->
 
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
@@ -31,19 +31,20 @@
     <h1>Join Team</h1>
 
     <!-- HIER die Logik -->
-<div id="present_example6" swa="Present FROM join_data">
-    <div class="input-container">
-        <label for="team-name">Team Name</label>
-        <input type="text" id="team-name" name="team-name" placeholder="Gib hier deinen Teamnamen ein">
+    <div id="present_example6" swa="Present FROM group/getAll">
+        <div class="input-container">
+            <label for="team-name">Team Name</label>
+            <input type="text" id="team-name" name="team-code" placeholder="Code des Teams">
+        </div>
+        <div id="teamSelectionPopup" class="team-selection-popup">
+            <h4>Waehle ein vorhandenes Team aus</h4>
+            <ul id="teamList">
+            </ul>
+        </div>
+        <button class="joinButton" onclick="saveTeamName()">Join</button>
+        <div id="outputMessage"></div>
     </div>
-    <div id="teamSelectionPopup" class="team-selection-popup">
-        <h4>Waehle ein vorhandenes Team aus</h4>
-        <ul id="teamList">
-        </ul>
-    </div>
-    <button class="joinButton">Join</button>
-</div>
-<!-- ENDE -->
+    <!-- ENDE -->
 
 
     <footer>
