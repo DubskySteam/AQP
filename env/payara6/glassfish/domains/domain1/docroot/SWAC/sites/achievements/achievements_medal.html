@@ -12,7 +12,7 @@
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
 
-    <script src="achievements.js" defer></script>
+    <script src="achievements_medal.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="../../css/global.css">
     <link rel="stylesheet" href="achievements.css">
@@ -28,15 +28,15 @@
         </ul>
     </header>
 
-    <h1>Rewards</h1>
+    <h1>Achievements</h1>
 
     <!-- HIER die Logik-->
 
     <div class="label-and-dropdown">
         <label for="sortOptions"><strong>Sortieren </strong>nach  </label>
-        <select id="sortOptions" onchange="handleSort()">
-            <option value="besitz">Besitz</option>
-            <option value="medal">Medaille</option>
+        <select id="sortOptions" onchange="window.location.href=this.value">
+            <option value="achievements_medal.html">Medaille</option>
+            <option value="index.html">Besitz</option>
         </select>
     </div>
 

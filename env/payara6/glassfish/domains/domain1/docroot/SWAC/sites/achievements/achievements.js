@@ -141,36 +141,3 @@ function displayAchievements() {
         achievementContainer.appendChild(achievementDiv);
     })
 }
-
-/*
-function sortRewardsByMedal() {
-    const medalOrder = { Gold: 1, Silber: 2, Bronze: 3 };
-    data.sort((a, b) => medalOrder[a.medal] - medalOrder[b.medal]);
-    displayRewards(data); // Aktualisierte Liste anzeigen
-  }
-  
-  function sortRewardsByOwnership() {
-    data.sort((a, b) => {
-        if (a.besitz && !b.besitz) {
-            return -1;
-        } else if (!a.besitz && b.besitz) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
-  
-    displayRewards(data); // Aktualisierte Liste anzeigen
-  }
-
-function handleSort() {
-    var sortOptions = document.getElementById("sortOptions");
-    var selectedOption = sortOptions.value;
-  
-    if (selectedOption === "medal") {
-        sortRewardsByMedal();
-    } else if (selectedOption === "besitz") {
-        sortRewardsByOwnership();
-    }
-  }
-*/ 
