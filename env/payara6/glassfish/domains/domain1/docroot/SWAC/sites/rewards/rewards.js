@@ -1,31 +1,70 @@
 data = [];
+const userID = 2;
+const url = `http://localhost:8080/SmartSocial/api/achievement/getByUserId/${userID}`;
 
 document.addEventListener('swac_ready', function () {
-    window.swac.reactions.addReaction(function (requestors) {
+    window.swac.reactions.addReaction(async function (requestors) {
         comp = requestors["present_example6"];
         let datasources = comp.swac_comp.data;
-        let mydatasource = datasources['rewards_data']
+        let mydatasource = datasources['achievement/getAll'];
         let json_data = mydatasource.getSets();
-        console.log("JSON-Data: ", json_data);
 
         if (Array.isArray(json_data)) {
-            json_data.forEach(function (set) {
-                let convertedSet = {
-                    title: set.title,
-                    medal: set.medal,
-                    besitz: set.besitz
-                };
-                data.push(convertedSet);
-            });
+            try {
+                // Erstelle ein Array von Promises für jede fetch-Anfrage
+                const fetchPromises = json_data.map(async function (set) {
+                    let convertedSet = {
+                        achievementId: set.id,
+                        title: set.name,
+                        medal: "Silber",
+                        besitz: false
+                    };
 
-            // displayRewards(data);
+                    // Führe die fetch-Anfrage aus und warte darauf, dass sie abgeschlossen ist
+                    try {
+                        const isCompletedValue = await isAchieved(url, convertedSet.achievementId);
+                        convertedSet.besitz = isCompletedValue;
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+
+                    console.log(convertedSet);
+                    data.push(convertedSet);
+                });
+
+                // Warte darauf, dass alle Promises abgeschlossen sind
+                await Promise.all(fetchPromises);
+
+                console.log("data package", data);
+                displayRewards(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
         } else {
             console.error("json_data ist kein Array.");
         }
     }, "present_example6");
 });
 
-/*
+function isAchieved(url, achievementId) {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(dataArray => {
+            // Prüfe, ob die achievementId im JSON vorhanden ist
+            console.log("data array", dataArray)
+            return dataArray.some(item => item.id.achievementId === achievementId);
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            return false;
+        });
+}
+
 function displayRewards(rewards_list) {
     
     // var super_container = document.querySelector(".present_example6");
@@ -50,7 +89,6 @@ function displayRewards(rewards_list) {
         container.appendChild(rewardDiv);
     });
 }
-*/
 
 /*
 function sortRewardsByMedal() {
