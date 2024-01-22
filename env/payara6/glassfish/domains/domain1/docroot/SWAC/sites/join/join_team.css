@@ -103,3 +103,8 @@ input:focus {
     background-color: #45A049;
     color: white;
 }
+
+.output_txt {
+    color: white;
+    font-style: italic;
+}

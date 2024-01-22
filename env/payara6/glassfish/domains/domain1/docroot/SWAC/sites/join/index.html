@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Leaderboard</title>
+    <title>Join Team</title>
 
     <!-- SWAC -->
     <!--<link rel="stylesheet" type="text/css" href="/frontend/SWAC/swac/libs/uikit/css/uikit.min.css">-->
     <!--<script src="/frontend/SWAC/swac/libs/uikit/js/uikit.min.js"></script>-->
     <!--<script src="/frontend/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>-->
-    <script src="/SWAC/swac/swac.js" type="module"></script>
+    <!--<script src="/SWAC/swac/swac.js" type="module"></script>-->
 
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
 
-    <script src="leaderboard.js" defer></script>
+    <script src="join_team.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="../../css/global.css">
-    <link rel="stylesheet" href="leaderboard.css">
+    <link rel="stylesheet" href="join_team.css">
     
 </head>
 <body>
@@ -28,23 +28,24 @@
         </ul>
     </header>
 
-    <h1>Leaderboard</h1>
+    <h1>Join Team</h1>
 
     <!-- HIER die Logik -->
-
-    <div class="label-and-dropdown">
-        <label for="sortOptions"><strong>Sortieren </strong>nach  </label>
-        <select id="sortOptions" onchange="window.location.href=this.value">
-            <option value="index.html" sortByValue="kilometers">Anzahl KM</option>
-            <option value="leaderboard_quest.html" sortByValue="finishedQuests">Anzahl Quests</option>
-        </select>
+    <div id="present_example6" swa="Present FROM group/getAll">
+        <div class="input-container">
+            <label for="team-name">Team Name</label>
+            <input type="text" id="team-name" name="team-code" placeholder="Code des Teams">
+        </div>
+        <div id="teamSelectionPopup" class="team-selection-popup">
+            <h4>Waehle ein vorhandenes Team aus</h4>
+            <ul id="teamList">
+            </ul>
+        </div>
+        <button class="joinButton" onclick="saveTeamName()">Join</button>
+        <div id="outputMessage"></div>
     </div>
-    
-    
-
-    <div id="present_example6" swa="Present FROM leaderboard/getList/3"></div>
-
     <!-- ENDE -->
+
 
     <footer>
         <a id="more" href="./more.html">Mehr</a>

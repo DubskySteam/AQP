@@ -37,7 +37,7 @@ h1 {
   padding: 10px;
 }
 
-.reward {
+.achievement {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,20 +57,7 @@ h1 {
   padding-right: 50px;
 }
 
-
-[besitz="true"] {
+.achievement.true {
   background-color: #398EDE;
   color: white;
-}
-
-[medal_gold="Gold"] path {
-  fill: #FFE500;
-}
-
-[medal_gold="Silber"] path {
-  fill: #DCDCDC;
-}
-
-[medal_gold="Bronze"] path {
-  fill: #D97500;
 }

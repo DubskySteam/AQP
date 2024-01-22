@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Leaderboard</title>
+    <title>Achievements</title>
 
     <!-- SWAC -->
     <!--<link rel="stylesheet" type="text/css" href="/frontend/SWAC/swac/libs/uikit/css/uikit.min.css">-->
@@ -12,10 +12,10 @@
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
 
-    <script src="leaderboard.js" defer></script>
+    <script src="achievements.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="../../css/global.css">
-    <link rel="stylesheet" href="leaderboard.css">
+    <link rel="stylesheet" href="achievements.css">
     
 </head>
 <body>
@@ -28,21 +28,23 @@
         </ul>
     </header>
 
-    <h1>Leaderboard</h1>
+    <h1>Achievements</h1>
 
-    <!-- HIER die Logik -->
+    <!-- HIER die Logik-->
 
     <div class="label-and-dropdown">
         <label for="sortOptions"><strong>Sortieren </strong>nach  </label>
         <select id="sortOptions" onchange="window.location.href=this.value">
-            <option value="index.html" sortByValue="kilometers">Anzahl KM</option>
-            <option value="leaderboard_quest.html" sortByValue="finishedQuests">Anzahl Quests</option>
+            <option value="index.html">Besitz</option>
+            <option value="achievements_medal.html">Medaille</option>
         </select>
     </div>
-    
-    
 
-    <div id="present_example6" swa="Present FROM leaderboard/getList/3"></div>
+    
+    
+    <div id="present_example6" swa="Present FROM achievement/getAll">
+        
+    </div>
 
     <!-- ENDE -->
 
@@ -52,6 +54,6 @@
         <a id="privacy" href="./privacy.html">Datenschutzerklärung</a>
         <a id="imprint" href="./imprint.html">Impressum</a>
     </footer>
-
+    
 </body>
 </html>

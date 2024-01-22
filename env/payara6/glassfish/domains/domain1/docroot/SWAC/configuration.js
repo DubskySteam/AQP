@@ -22,10 +22,10 @@ var SWAC_config = {
         {
             url: "/SWAC/data/[fromName]"
         },
-        /*
         {
-            url: "/SmartSocial/api/group/[fromName]"
+            url: "http://localhost:8080/SmartSocial/api/[fromName]"
         },
+        /*
         {
             url: "/SmartSocial/api/achievements/[fromName]"
         },
