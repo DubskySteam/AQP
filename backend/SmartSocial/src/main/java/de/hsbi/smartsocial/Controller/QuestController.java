@@ -93,6 +93,21 @@ public class QuestController {
     }
 
     @SmartUserAuth
+    @POST
+    @Path("/create")
+    @Consumes("application/json")
+    @Produces("application/json")
+    @ApiResponse(responseCode = "201", description = "Creates a new quest for a user")
+    public Response create(Userquest nquest , @Context ContainerRequestContext requestContext) {
+            Userquest userquest = questService.create(nquest);
+            if (userquest != null) {
+                return Response.status(Response.Status.CREATED).entity(userquest).build();
+            } else {
+                throw new QuestInvalidException("Quest is invalid");
+            }
+    }
+
+    @SmartUserAuth
     @DELETE
     @Path("/delete/{id}")
     @ApiResponse(responseCode = "204", description = "Deletes a quest by id")

@@ -2,15 +2,13 @@ package de.hsbi.smartsocial.Controller;
 
 import de.fhbielefeld.smartuser.annotations.SmartUserAuth;
 import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
+import de.hsbi.smartsocial.Exceptions.CreateException;
 import de.hsbi.smartsocial.Model.Achievement;
 import de.hsbi.smartsocial.Model.Userachievement;
 import de.hsbi.smartsocial.Service.AchievementService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
@@ -88,6 +86,32 @@ public class AchievementController {
             return Response.ok(userachievement).build();
         }
         return Response.status(Response.Status.FORBIDDEN).build();
+    }
+
+    @POST
+    @Path("/create")
+    @Consumes("application/json")
+    @Produces("application/json")
+    @ApiResponse(responseCode = "201", description = "Creates a new achievement")
+    public Response createAchievement(Achievement achievement) {
+        Achievement newAchievement = achievementService.createAchievement(achievement);
+        if (newAchievement == null) {
+            throw new CreateException("Achievement could not be created");
+        }
+        return Response.status(Response.Status.CREATED).entity(newAchievement).build();
+    }
+
+    @POST
+    @Path("/createUserAchievement")
+    @Consumes("application/json")
+    @Produces("application/json")
+    @ApiResponse(responseCode = "201", description = "Creates a userachievement")
+    public Response createUserAchievement(Userachievement userachievement) {
+        Userachievement newUserachievement = achievementService.createAchievement(userachievement);
+        if (newUserachievement == null) {
+            throw new CreateException("Userachievement could not be created");
+        }
+        return Response.status(Response.Status.CREATED).entity(newUserachievement).build();
     }
 
 }

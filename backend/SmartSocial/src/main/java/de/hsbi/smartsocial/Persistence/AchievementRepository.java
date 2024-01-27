@@ -52,4 +52,14 @@ public class AchievementRepository {
                 .getSingleResult();
     }
 
+    public Achievement createAchievement(Achievement achievement) {
+        entityManager.persist(achievement);
+        return achievement;
+    }
+
+    public Userachievement createAchievement(Userachievement userachievement) {
+        entityManager.persist(userachievement);
+        return userachievement;
+    }
+
 }

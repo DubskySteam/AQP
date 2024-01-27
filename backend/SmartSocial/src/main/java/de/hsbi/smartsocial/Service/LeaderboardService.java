@@ -41,4 +41,12 @@ public class LeaderboardService {
         leaderboardRepository.update(leaderboard);
     }
 
+    public void createLeaderboard(Long id) {
+        Leaderboard leaderboard = new Leaderboard();
+        leaderboard.setId(id);
+        leaderboard.setKilometers(new java.math.BigDecimal(0));
+        leaderboard.setFinishedQuests(0);
+        leaderboardRepository.create(leaderboard);
+    }
+
 }

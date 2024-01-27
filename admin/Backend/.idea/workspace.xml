@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e9a8d52-74f1-400b-86af-60d2af70b83a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../backend/SmartSocial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/SmartSocial/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/SmartSocial/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/SmartSocial/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="5e9a8d52-74f1-400b-86af-60d2af70b83a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +130,7 @@
       <updated>1704525685490</updated>
       <workItem from="1704525686570" duration="5493000" />
       <workItem from="1704704779272" duration="1280000" />
-      <workItem from="1705837882651" duration="1926000" />
+      <workItem from="1705837882651" duration="1927000" />
     </task>
     <servers />
   </component>
