@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Leaderboard</title>
+
+    <!-- SWAC -->
+    <!--<link rel="stylesheet" type="text/css" href="/frontend/SWAC/swac/libs/uikit/css/uikit.min.css">-->
+    <!--<script src="/frontend/SWAC/swac/libs/uikit/js/uikit.min.js"></script>-->
+    <!--<script src="/frontend/SWAC/swac/libs/uikit/js/uikit-icons.min.js"></script>-->
+    <script src="/SWAC/swac/swac.js" type="module"></script>
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+
+    <script src="leaderboard_quest.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="../../css/global.css">
+    <link rel="stylesheet" href="leaderboard.css">
+    
+</head>
+<body>
+
+    <header id="head_navigation">
+        <ul>
+            <li><a href="../../index.html" onclick="Navigation.routeTo('../../index.html', {id: 0});" style="float: left; margin-top: -15px; margin-left: 5px;"><img src="../../content/cloud.png" alt="Home" width="45" height="45"></a></li>
+            <li><a href="../userinterface/menu.html" onclick="Navigation.routeTo('../userinterface/menu.html', {id: 2});" style="float: right; margin-right: 5px; margin-top: -17px;"><img src="../../content/Menu.png" alt="Menu" width="45" height="45"></a></li>
+            <li><a href="../userinterface/login.html" onclick="Navigation.routeTo('../userinterface/login.html', {id: 1});" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
+        </ul>
+    </header>
+
+    <h1>Leaderboard</h1>
+
+    <!-- HIER die Logik -->
+
+    <div class="label-and-dropdown">
+        <label for="sortOptions"><strong>Sortieren </strong>nach  </label>
+        <select id="sortOptions" onchange="window.location.href=this.value">
+            <option value="leaderboard_quest.html" sortByValue="finishedQuests">Anzahl Quests</option>
+            <option value="index.html" sortByValue="kilometers">Anzahl KM</option>
+        </select>
+    </div>
+    
+    
+
+    <div id="present_example6" swa="Present FROM leaderboard/getListByQuests/3"></div>
+
+    <!-- ENDE -->
+
+    <footer>
+        <a id="more" href="./more.html">Mehr</a>
+        <a id="about" href="./about.html">Über</a>
+        <a id="privacy" href="./privacy.html">Datenschutzerklärung</a>
+        <a id="imprint" href="./imprint.html">Impressum</a>
+    </footer>
+
+</body>
+</html>

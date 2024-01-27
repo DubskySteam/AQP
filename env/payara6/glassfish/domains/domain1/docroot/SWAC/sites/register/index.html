@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+
+    <!-- SWAC -->
+    <!--
+    <link rel="stylesheet" type="text/css" href="../../swac/libs/uikit/css/uikit.min.css">
+    <script src="../../swac/libs/uikit/js/uikit.min.js"></script>
+    <script src="../../swac/libs/uikit/js/uikit-icons.min.js"></script>-->
+    <script src="/SWAC/swac/swac.js" type="module"></script>
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+
+    <script src="register.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="../../css/global.css">
+    <link rel="stylesheet" href="register.css">
+    
+</head>
+<body>
+
+    <header id="head_navigation">
+        <ul>
+            <li><a href="../../index.html" onclick="Navigation.routeTo('../../index.html', {id: 0});" style="float: left; margin-top: -15px; margin-left: 5px;"><img src="../../content/cloud.png" alt="Home" width="45" height="45"></a></li>
+            <li><a href="../userinterface/menu.html" onclick="Navigation.routeTo('../userinterface/menu.html', {id: 2});" style="float: right; margin-right: 5px; margin-top: -17px;"><img src="../../content/Menu.png" alt="Menu" width="45" height="45"></a></li>
+            <li><a href="../userinterface/login.html" onclick="Navigation.routeTo('../userinterface/login.html', {id: 1});" style="float: right; margin-right: 5px; margin-top: -18px;"><img src="../../content/profil.png" alt="Lgoin" width="45" height="45"></a></li>
+        </ul>
+    </header>
+
+    <div id="registration">
+
+        <h1>Register</h1>
+
+        <!-- Benutzername -->
+        <label for="username">Benutzername</label>
+        <input type="text" id="username" name="username">
+        <br>
+
+        <!-- Passwort -->
+        <label for="password">Passwort</label>
+        <input type="text" id="password" name="password">
+        <br>
+
+        <!-- Vorname -->
+        <label for="Vorname">Vorname</label>
+        <input type="text" id="Vorname" name="Vorname">
+        <br>
+
+        <!-- Nachname -->
+        <label for="Nachname">Nachname</label>
+        <input type="text" id="Nachname" name="Nachname">
+        <br>
+
+        <!-- E-Mail -->
+        <label for="E-Mail">E-Mail</label>
+        <input type="text" id="E-Mail" name="E-Mail">
+
+        <!-- Privacy accepted -->
+        <input type="checkbox" id="privacy_accepted" name="privacy">
+
+        <!-- Terms accepted -->
+        <input type="checkbox" id="terms_accepted" name="terms">
+        <br>
+
+        <button type="submit" onclick="register()">Registrieren</button>
+    </div>
+
+    <footer>
+        <a id="more" href="./more.html">Mehr</a>
+        <a id="about" href="./about.html">Über</a>
+        <a id="privacy" href="./privacy.html">Datenschutzerklärung</a>
+        <a id="imprint" href="./imprint.html">Impressum</a>
+    </footer>
+
+</body>
+</html>

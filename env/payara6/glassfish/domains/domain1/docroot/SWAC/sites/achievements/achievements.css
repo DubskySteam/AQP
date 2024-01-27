@@ -1,0 +1,63 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: white;
+  color: #404040;
+}
+
+h1 {
+  text-align: center;
+  color: #398EDE;
+  padding: 40px;
+}
+
+.label-and-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-and-dropdown label {
+  margin-right: 5px; /* Hier kannst du die Breite des Abstands einstellen */
+}
+
+#sortOptions {
+  border: none;
+  color: #398EDE;
+  background-color: transparent;
+  font-weight: bold;
+  height: auto;
+}
+
+#sortOptions option {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.achievement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  margin: 30px 30px;
+}
+
+.medal, .title {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding-right: 50px;
+}
+
+.achievement.true {
+  background-color: #398EDE;
+  color: white;
+}

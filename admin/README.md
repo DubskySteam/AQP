@@ -70,3 +70,12 @@ After you build the application you can now just run the script, which will depl
 ## Bugs and known issues
 
 - Nothing noteworthy at the moment
+
+## Screenshots of features
+
+![](../docs/Admin/debugger.png)
+![](../docs/Admin/endpoints.png)
+![](../docs/Admin/manager.png)
+![](../docs/Admin/log.png)
+![](../docs/Admin/documentation.png)
+![](../docs/Admin/groups.png)

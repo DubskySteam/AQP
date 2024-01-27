@@ -42,4 +42,8 @@ public class LeaderboardRepository {
     public void update(Leaderboard leaderboard) {
         entityManager.merge(leaderboard);
     }
+
+    public void create(Leaderboard leaderboard) {
+        entityManager.persist(leaderboard);
+    }
 }

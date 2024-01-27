@@ -79,4 +79,8 @@ public class ProfileSettingsRepository {
                 .getSingleResult();
     }
 
+    public void createProfileSettings(ProfileSetting profileSetting) {
+        entityManager.persist(profileSetting);
+    }
+
 }

@@ -23,8 +23,9 @@ public class RabbitConsumer {
         channel = connection.createChannel();
     }
 
-    public void subscribe(String queueName, MessageHandler messageHandler) throws Exception {
+    public void subscribe(String queueName, MessageHandler messageHandler, String routingKey) throws Exception {
         channel.queueDeclare(queueName, true, false, false, null);
+        channel.queueBind(queueName, "smartuser", routingKey);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             byte[] body = delivery.getBody();

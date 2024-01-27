@@ -39,6 +39,11 @@ public class QuestRepository {
         return quest;
     }
 
+    public Userquest create(Userquest userquest) {
+        entityManager.persist(userquest);
+        return userquest;
+    }
+
     public Quest delete(int quest) {
         entityManager.remove(quest);
         return entityManager.find(Quest.class, quest);
