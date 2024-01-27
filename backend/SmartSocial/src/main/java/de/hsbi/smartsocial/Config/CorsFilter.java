@@ -20,6 +20,7 @@ public class CorsFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
+        // * is meant to be deprecated, but in local testing it worked without problems in chrome, chromium, firefox and edge.
         httpResponse.setHeader("Access-Control-Allow-Origin", "*");
         httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
         httpResponse.setHeader("Access-Control-Max-Age", "3600");

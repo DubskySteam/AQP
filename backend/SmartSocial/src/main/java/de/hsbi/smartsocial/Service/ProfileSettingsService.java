@@ -65,4 +65,14 @@ public class ProfileSettingsService {
         return profileSettingsRepository.setDevice(id, device);
     }
 
+    public void createProfileSettings(Long id) {
+        ProfileSetting profileSetting = new ProfileSetting();
+        profileSetting.setId(id);
+        profileSetting.setProfileVisibility("public");
+        profileSetting.setNotificationsEnabled(false);
+        profileSetting.setPicture("https://www.stockvault.net/data/2013/09/14/147895/preview16.jpg");
+        profileSetting.setDevice(null);
+        profileSettingsRepository.createProfileSettings(profileSetting);
+    }
+
 }

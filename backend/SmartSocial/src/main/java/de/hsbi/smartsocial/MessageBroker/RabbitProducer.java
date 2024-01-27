@@ -12,6 +12,10 @@ import de.hsbi.smartsocial.Model.Group;
 public class RabbitProducer {
 
 
+    /**
+     * This class is a template basically. It's used to send messages to the RabbitMQ message broker.
+     * @param group The group object that should be sent to the message broker.
+     */
     public void doStuff(Group group) {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");

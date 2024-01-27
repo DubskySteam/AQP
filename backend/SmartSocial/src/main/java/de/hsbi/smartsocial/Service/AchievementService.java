@@ -50,4 +50,12 @@ public class AchievementService {
         return achievementRepository.check(id, achievementId);
     }
 
+    public Achievement createAchievement(Achievement achievement) {
+        return achievementRepository.createAchievement(achievement);
+    }
+
+    public Userachievement createAchievement(Userachievement userachievement) {
+        return achievementRepository.createAchievement(userachievement);
+    }
+
 }

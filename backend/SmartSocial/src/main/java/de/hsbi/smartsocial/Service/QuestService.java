@@ -50,6 +50,10 @@ public class QuestService {
         return questRepository.create(quest);
     }
 
+    public Userquest create(Userquest userquest) {
+        return questRepository.create(userquest);
+    }
+
     public Quest delete(int quest) {
         return questRepository.delete(quest);
     }

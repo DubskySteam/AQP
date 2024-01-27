@@ -18,6 +18,13 @@
 ___
 [![](https://img.shields.io/badge/Download-Latest-blue?style=for-the-badge&logo=)](https://github.com/DubskySteam/AQP/releases)
 
+### Config file
+This service uses SmartData. The URL to the SmartData service is located in the config file and has to be changed
+if the service is not running on the same machine. The config file can be found here:
+````
+    \payara6\glassfish\domains\domain1\config\config_smartsocial.properties
+````
+
 ### Managed Dependencies
 
 The dependencies are managed by Gradle, so you don't need to worry about them. If you need to update a dependency, you can do so by editing the `build.gradle` file.
@@ -49,13 +56,17 @@ The dependencies are managed by Gradle, so you don't need to worry about them. I
     
     // CALCULATION DEPENDENCIES
     implementation group: 'com.javadocmd', name: 'simplelatlng', version: '1.4.0'
+
+    // RabbitMQ DEPENDENCIES
+    implementation('com.rabbitmq:amqp-client:5.20.0')
 ```
 
 ### Self-Managed Dependencies
 
 The dependencies are included in the project, but critical updates may be needed to be done manually.
+To be found in the /war directory.
 ````
-    NGI Logger 
+    SmartUserAuth
 ````
 
 ## How to use
@@ -100,15 +111,101 @@ Go to "Exchanges" and create the following exchanges
 smartuser | direct
 ````
 
+**6. Create the queues**
+Go to "Queues" and create the following queues
+````
+user.created.sc | durable
+````
+
 ## Deployment errors & solutions
 
 ````
 Initialization failed for Singleton RabbitOverlord
 ````
 **Solution:** RabbitMQ is not running. Start it up and try again.
-
 ````
 SmartUserPU Hibernate Error
 ````
-**Solution:** The database is not running. Start it up and try again.
+**Solution:** The database is not reachable. Start it up and try again.
 Also has been known to happen when the database is not setup correctly.
+
+## Implementation of RabbitMQ Producers
+Example with SmartUser
+
+**1. Pull the dependency**
+````xml
+<dependency>
+    <groupId>com.rabbitmq</groupId>
+    <artifactId>amqp-client</artifactId>
+    <version>5.12.0</version> <!-- Use the latest version -->
+</dependency>
+````
+
+**2. Create the producer class**
+````java
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
+public class RabbitMQProducer {
+
+    private final String host;
+    private final int port;
+    private Connection connection;
+    private Channel channel;
+
+    public RabbitMQProducer(String host, int port) {
+        this.host = host;
+        this.port = port;
+        initializeConnection();
+    }
+
+    private void initializeConnection() {
+        try {
+            ConnectionFactory factory = new ConnectionFactory();
+            factory.setHost(host);
+            factory.setPort(port);
+            connection = factory.newConnection();
+            channel = connection.createChannel();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle exception (e.g., log or throw a custom exception)
+        }
+    }
+
+    public void sendMessage(String exchange, String routingKey, String message) {
+        try {
+            channel.basicPublish(exchange, routingKey, null, message.getBytes());
+            System.out.println("Message sent: " + message);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle exception (e.g., log or throw a custom exception)
+        }
+    }
+
+    public void close() {
+        try {
+            if (channel != null && channel.isOpen()) {
+                channel.close();
+            }
+            if (connection != null && connection.isOpen()) {
+                connection.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle exception (e.g., log or throw a custom exception)
+        }
+    }
+}
+````
+
+**3. Usage**
+````java
+public class RestApiClass {
+    public static void main(String[] args) {
+        RabbitMQProducer producer = new RabbitMQProducer("localhost", 5672);
+        producer.sendMessage("smartuser", "userCreated", "Your message content");
+        producer.close();
+    }
+}
+````

@@ -11,6 +11,7 @@ import de.hsbi.smartsocial.Exceptions.APICallException;
 import de.hsbi.smartsocial.Exceptions.AchievementNotFoundException;
 import de.hsbi.smartsocial.Exceptions.ParseJsonArrayException;
 import de.hsbi.smartsocial.Exceptions.RefreshException;
+import de.hsbi.smartsocial.Logging.CLogger;
 import de.hsbi.smartsocial.Model.*;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -28,6 +29,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Author: Clemens Maas
@@ -45,6 +48,10 @@ public class UtilityService {
     @Inject
     QuestService questService;
 
+    /**
+     * Refreshes the leaderboard data
+     * @return Success message
+     */
     public Response refreshData() {
 
         List<ProfileSetting> valid_users = profileSettingsService.getAllProfileSettings();
@@ -59,15 +66,22 @@ public class UtilityService {
             }
             ConfigLoader configLoader = ConfigLoader.getInstance();
             String baseUrl = configLoader.getProperty("api.base.url");
+            CLogger.getInstance().log(Level.INFO,"Utility", "Logging data for user " + user.getId() + " with device " + user.getDevice());
             String jsonArrayString = makeApiCall(baseUrl + "SmartDataAirquality/smartdata/records/" + user.getDevice());
             List<DataPoint> dataPoints = parseJsonArray(jsonArrayString);
             double totalDistance = calculateTotalDistance(dataPoints);
+            CLogger.getInstance().log(Level.INFO,"Utility", "Total distance for user " + user.getId() + " is " + totalDistance);
             leaderboardService.addKilometers(user.getId(), totalDistance);
         }
 
         return Response.ok("Leaderboard data has refreshed :)").build();
     }
 
+    /**
+     * Makes an API call to the given URL and returns the response as a string
+     * @param apiUrl The URL
+     * @return The response as a string
+     */
     private String makeApiCall(String apiUrl) {
         StringBuilder response = new StringBuilder();
 
@@ -100,6 +114,11 @@ public class UtilityService {
         return response.toString();
     }
 
+    /**
+     * Parses a JSON array into a list of DataPoints
+     * @param jsonArrayString The JSON array
+     * @return The list of DataPoints
+     */
     private List<DataPoint> parseJsonArray(String jsonArrayString) {
         List<DataPoint> dataPoints = new ArrayList<>();
 
@@ -128,6 +147,11 @@ public class UtilityService {
     }
 
 
+    /**
+     * Calculates the total distance of a route in kilometers
+     * @param dataPoints The route
+     * @return The total distance in kilometers
+     */
     private double calculateTotalDistance(List<DataPoint> dataPoints) {
         double totalDistance = 0;
 
@@ -143,7 +167,8 @@ public class UtilityService {
 
             double distance = LatLngTool.distance(startLatLng, endLatLng, LengthUnit.KILOMETER);
 
-            if (distance < 2.0) {
+            // Only add distance if it's less than 1km, to avoid outliers
+            if (distance < 1) {
                 totalDistance += distance;
             }
         }
@@ -152,6 +177,11 @@ public class UtilityService {
     }
 
 
+    /**
+     * Returns the route of the user
+     * @param userId The user ID
+     * @return The route
+     */
     public ArrayList<DataPoint> getRoute(Long userId) {
         ArrayList<DataPoint> route = new ArrayList<>();
         ProfileSetting profileSetting = profileSettingsService.getSettings(userId);
@@ -162,6 +192,8 @@ public class UtilityService {
         if (profileSetting.getDevice() == null) {
             return route;
         }
+
+        CLogger.getInstance().log(Level.INFO,"Utility", "Getting route for user " + userId + " with device " + profileSetting.getDevice());
         ConfigLoader configLoader = ConfigLoader.getInstance();
         String baseUrl = configLoader.getProperty("api.base.url");
         String jsonArrayString = makeApiCall(baseUrl + "SmartDataAirquality/smartdata/records/" + profileSetting.getDevice());
@@ -178,6 +210,11 @@ public class UtilityService {
         return route;
     }
 
+    /**
+     * Checks if the quests are done and awards the users
+     * @param userId The user ID
+     * @return Success message
+     */
     public boolean checkQuests(Long userId) {
         List<Userquest> userquests = questService.getByUserId(userId);
 

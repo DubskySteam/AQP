@@ -2,53 +2,60 @@
 <html lang="en">
 
 <head>
+    <!-- Meta -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="css/main.css">
-
+    <meta author="Clemens Maas">
+    <title>Admin Panel [Cortex]</title>
+    <!-- Google Font API -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- CSS-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <!-- JS -->
+    <script src="../js/sidebar.js" defer></script>
+    <script type="module" src="../js/quests.js" defer></script>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="navbar-left"><img class="gif" src="res/icons8-admin.gif" />Admin Panel</div>
-        <div class="navbar-right">v2.5</div>
-    </header>
-    <div class="container">
-        <nav class="sidebar">
-            <p class="menu-category">API</p>
-            <ul>
-                <li><a href="index.html">✅ API Endpoints</a></li>
-                <li><a href="http://localhost:15672" target="_blank"><img src="res/rabbitmq_logo.png" class="logo" />RabbitMQ</a></li>
-                <li><a href="debug.html">🔧 Debug</a></li>
+    <div class="sidebar">
+        <div class="sidebar-title"><a href="../../index.html">Admin Cortex</a></div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> API</div>
+            <ul class="sub-pages">
+                <li><a href="../index.html">✅ Endpoints</a></li>
+                <li><a href="debugger.html">🔧 Debugger</a></li>
                 <li><a href="documentation.html">📖 Documentation</a></li>
             </ul>
-            <p class="menu-category">SmartSocial</p>
-            <ul>
+        </div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> SmartSocial</div>
+            <ul class="sub-pages">
                 <li><a href="groups.html">🤝 Groups</a></li>
                 <li><a href="quests.html">🔥 Quests</a></li>
                 <li><a href="leaderboard.html">🏆 Leaderboard</a></li>
             </ul>
-            <p class="menu-category">Payara</p>
-            <ul>
+        </div>
+        <div class="category">
+            <div class="category-title"><span class="icon">&#9660;</span> Payara</div>
+            <ul class="sub-pages">
                 <li><a href="manager.html">🎛️ App Manager</a></li>
                 <li><a href="rawlogs.html">👨‍💻 Logs</a></li>
                 <li><a href="http://localhost:4848/common/logViewer/logViewerRaw.jsf?instanceName=server"
                         target="_blank">👨‍💻 Logs [REF]</a></li>
             </ul>
-        </nav>
-        <main class="main-content">
-            <h1>Quests</h1>
+        </div>
+    </div>
+    <div class="main-content">
+        <h1>Quests</h1>
             <section id="quests">
                 <div id="quests-table"></div>
             </section>
-        </main>
     </div>
-    <script src="js/quests.js"></script>
 </body>
 
 </html>

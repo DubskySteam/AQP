@@ -6,10 +6,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+/**
+ * Author: Clemens Maas
+ * Date: 2023/1/14
+ */
 public class ConfigLoader {
     private static ConfigLoader instance;
     private Properties properties;
 
+    /**
+     * The ConfigLoader loads the config file from the domain directory and provides the url properties needed for the API calls.
+     */
     private ConfigLoader() {
         properties = new Properties();
 
